@@ -8,8 +8,11 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      "Home": "https://xufei.biz",
+      "Tags": "https://xuf-95.github.io/xufei-wiki/tags/",
+      "GitHub": "https://github.com/xuf-95",
+      "xufei.site": "https://xufei.site",
+      "Bento.me": "https://bento.me/xfei",
     },
   }),
 }
