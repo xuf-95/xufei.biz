@@ -7,7 +7,7 @@ tags:
   - homepage
 date: 2025-03-04
 ---
-
+<!-- 
 ***
 > [!column]
 >> [!obsidian] > [[Data Architecture]]
@@ -64,7 +64,7 @@ date: 2025-03-04
 >> Catalog 
 >> - [[CDC（Change-Data-Capture）]]
 >> - [[MMP（Massively-Parallel-Processing）]]
->> - [[DCMM]]
+>> - [[DCMM]] -->
 
 <!-- <!DOCTYPE html>
 <html>

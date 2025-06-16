@@ -1,4 +1,6 @@
 ---
+title: Non-relational Database
+date: 2023-22-12
 aliases:
   - non-relational data
   - NoSQL

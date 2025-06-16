@@ -6,10 +6,11 @@ aliases:
   - Data Store
 title: Data Store Homepage
 tags:
-  - store
+  - bigdata
   - database
-  - home
-draft:
+  - sec-index
+date: 2022-12-02
+draft: false
 ---
 ## 数据存储分类
 

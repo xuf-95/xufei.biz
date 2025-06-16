@@ -1,15 +1,20 @@
 ---
-title: "xufei.wiki"
+title: "welcome my wiki"
 ---
+
 ![bg](nishaung.png)
 
-I'm xufei, a data architect, digital nomad explorer. Currently I am working on a data cloud delivery related project in Shanghai. This is my wiki vault & _[[Digital Garden HomePage|digital garden]]_ on the internet. make yourself at home!
+I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> Obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
 
-As far as 'about' pages go, I hope this acts as an open invitation into the many winding paths throughout this garden. Here are some places you may want to visit:
+## bigdata Contents
 
-- [[AI]]: data + ai, not a ai rebot;
-- [[bigdata|Data Engineering Vault]]: which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM|dcmm]];
-- [The hand-crafted workbench](thoughts/craft.md): craft I am proud of (websites, talks, workshops, projects, etc.);
+| AREA                                       | INCLUDE                                                                                   |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \| [[Flow-Batch Integration ]]  \| [[Lake-DataWarehouse Integration]]                                  |
+| [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache DolphinScheduler]] \| [[Apache Flume]] \| [[Apache Airflow]] |
+| [[01 Data Store Homepage\|Data Store]]     | [[MySQL]] \| [[Apache Hive]] \| [[Apache Hbase]] \| [[StarRocks]] \| [[Apache Doris]] \| [[ClickHouse]] |
+| Data Compute | [[Apache Flink]] \| [[Apache Spark]] \| [[Apache Hadoop]] \| [[Apache Storm]]             |
+| [[Data Visual]]                            | [[Data Visual Product & Tools]]                                                           |
+| [[数据治理（Data Governance）\|Data Governance]] | [[Apache Atlas]]                                                                          |
+|                                            |                                                                                           |
 
-You can see through _[my personal blog](https://xufei.site/)_ to explore the various topics that interest me. Enjoy cycling, coffee & coding
- 

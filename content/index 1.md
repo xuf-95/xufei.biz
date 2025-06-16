@@ -3,12 +3,26 @@ title: Welcome to My Wiki
 tags:
   - demo
 draft: true
+publish: flase
 ---
-![bg](content/images/nishaung.png)
 
 <p>I’m Xufei, a Big Data Developer with over three years of hands-on experience in the ever-evolving world of data. This is a space where I store my work notes, ideas, insights, and connections I’ve made throughout my life. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected.</p>
 
 I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]]. The wiki is based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> Obsidian </a> for document management. I have engaged in ali cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
+
+
+
+![bg](nishaung.png)
+
+I'm xufei, a data architect, digital nomad explorer. Currently I am working on a data cloud delivery related project in Shanghai. This is my wiki vault & _[[Digital Garden HomePage|digital garden]]_ on the internet. make yourself at home!
+
+As far as 'about' pages go, I hope this acts as an open invitation into the many winding paths throughout this garden. Here are some places you may want to visit:
+
+- [[AI]]: data + ai, not a ai rebot;
+- [[bigdata|Data Engineering Vault]]: which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM|dcmm]];
+- [The hand-crafted workbench](thoughts/craft.md): craft I am proud of (websites, talks, workshops, projects, etc.);
+
+You can see through _[my personal blog](https://xufei.site/)_ to explore the various topics that interest me. Enjoy cycling, coffee & coding
 
 
 I welcome your feedback and encourage contributes to enhance the accuracy of my notes.

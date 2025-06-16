@@ -1,10 +1,10 @@
 ---
+title: Apache Hadoop
 aliases:
   - Hadoop
-title: Apache Hadoop
 tags:
   - bigdata
-  - datastore
+  - data-compute
   - hadoop
   - apache
 draft: false

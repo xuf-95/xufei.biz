@@ -2,7 +2,7 @@
 aliases:
   - Data Governance
 tags:
-  - home
+  - sec-index
   - governance
 date: 2023-09-11
 draft: false

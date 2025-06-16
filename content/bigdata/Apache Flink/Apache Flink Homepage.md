@@ -3,7 +3,9 @@ aliases:
   - flink
 tags:
   - bigdata
+  - data-compute
   - flink
+  - apache
 date: 2023-02-10
 draft: true
 ---

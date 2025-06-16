@@ -1,5 +1,5 @@
 ---
-aliases: 
+title: Document Database
 tags:
   - evergreen
 date: 

@@ -1,6 +1,7 @@
 ---
 title: Data Visual
 tags:
+  - sec-index
   - Visual
   - BI
 date: 2023-10-23
