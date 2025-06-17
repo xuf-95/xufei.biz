@@ -48,3 +48,4 @@ date: 2023-10-23
 ### Resource 
 
 - [castordoc bi tools](https://notion.castordoc.com/catalog-of-bi-tools)
+- https://www.datavisualizationsociety.org/

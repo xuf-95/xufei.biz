@@ -6,8 +6,7 @@ tags:
   - pipeline
   - etl
 date: 2023-07-06
-aliases: 
-draft:
+draft: false
 ---
 
 ##  Airflow 概述

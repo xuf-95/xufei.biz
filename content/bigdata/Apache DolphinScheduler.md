@@ -1,11 +1,10 @@
 ---
 title: Apache DolphinScheduler
 tags:
-  - data-integration
   - apache
   - sync
 date: 2023-11-18
-draft:
+draft: false
 ---
 ## Apache DolphinScheduler ？
 
