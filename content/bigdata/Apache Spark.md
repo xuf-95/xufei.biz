@@ -8,14 +8,42 @@ tags:
   - apache
   - comput
 ---
-![[Pasted image 20250315224848.png]]
-### spark 概述
 
-#### 什么是spark？
+## What is Apache Spark?
+Apache Spark is a unified analytics engine for large-scale distributed data processing. It provides high-level APIs in Java, Scala, Python, and R, and includes libraries for SQL, streaming, machine learning, and graph processing. Spark can run on Hadoop, standalone, or in the cloud, and can access diverse data sources.
 
-> **Apache Spark™** is a unified analytics engine for large-scale data processing.
+### Key features include:
+- Fast in-memory computation
+- Support for diverse workloads (batch, interactive, streaming, ML)
+- Unified programming model across languages
+- Rich ecosystem of libraries and tools
 
-Apache Spark是一个针对于大规模数据处理的统一分析引擎
+## Spark Architecture
+
+![[spark-architecture.png]]
+
+
+## Core Components
+
+![[core-components.png]]
+
+### Spark Core
+
+- Distributed task dispatching
+- Scheduling
+- Basic I/O functionalities
+- RDD (Resilient Distributed Dataset) API
+
+### Spark SQL
+
+![[spark-sql.png]]
+
+Spark SQL provides a programming interface for processing structured and semi-structured data. It includes:
+
+- DataFrame and Dataset APIs
+- SQL interface for querying data
+- Catalyst optimizer for query optimization
+- Various data source connectors
 
 
 > [!NOTE] 只计算

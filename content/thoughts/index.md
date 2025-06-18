@@ -1,6 +1,7 @@
 ---
+title: Posts
 aliases:
-  - Digital Garden
+  - thought
 date: 2024-01-09
 ---
 
