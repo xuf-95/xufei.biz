@@ -4,7 +4,7 @@ tags:
   - shell
   - snippets 
 date: 2022-07-08
-draft:
+draft: false
 ---
 ![[Shell Basic.png]]
 ### Variables

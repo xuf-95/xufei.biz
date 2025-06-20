@@ -4,7 +4,6 @@ tags:
   - rule
   - theory
 date: 2023-02-05
-publish: true
 draft: false
 ---
 ### 定义

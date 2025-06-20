@@ -3,7 +3,7 @@ tags:
   - snippets
   - shell
 date: 2022-02-20
-draft:
+draft: false
 ---
 ### install_jdk.sh
 

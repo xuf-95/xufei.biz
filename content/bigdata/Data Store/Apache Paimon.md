@@ -5,11 +5,8 @@ tags:
   - streaming
   - data-lake
 date: 2025-01-21
-draft:
+draft: false
 ---
-## 概述
-
-### 定义
 
 > A lake format that enables building a Realtime Lakehouse Architecture with Flink and Spark for both streaming and batch operations. Innovatively combines lake format and LSM structure, bringing realtime streaming updates into the lake architecture.
 

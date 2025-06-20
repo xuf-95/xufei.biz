@@ -6,24 +6,17 @@ tags:
 date: 2022-02-09
 draft: false
 ---
-## 概述
 
-### 定义
 
-> _Faker_ is a Python package that generates fake data for you.
+> _Faker_ is a Python package that generates fake data for you. Faker 是一个用于生成伪造数据的 Python 库，特别适用于测试和开发环境。它可以生成诸如姓名、地址、电子邮件、电话号码等多种类型的随机数据
 
-Faker 是一个用于生成伪造数据的 Python 库，特别适用于测试和开发环境。它可以生成诸如姓名、地址、电子邮件、电话号码等多种类型的随机数据
-
-## 开发文档
 ### Install Faker
 
 ```python
 pip install Faker
 ```
 
-### 案例
-
-##### Demo 01
+### Demo 01
 
 ```python
 from faker import Faker
@@ -138,7 +131,7 @@ for _ in range(10):
 ```
 
 
-## 生成用户测试数据
+### 生成用户测试数据
 
 ```python
 from odps import ODPS
@@ -209,6 +202,6 @@ for _ in range(100):
 print("100 rows of test data inserted successfully.")
 ```
 
-## Reference
+### Reference
 
 - [Welcome to Faker’s documentation! — Faker 30.3.0 documentation](https://faker.readthedocs.io/en/master/)

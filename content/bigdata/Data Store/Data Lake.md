@@ -3,8 +3,9 @@ title: Data Lake
 tags:
   - datastore
   - datalake
+date: 2020-12-18
+draft: false
 ---
-## 
 
 > [AWS, What is a data lake?](https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/)
 > 

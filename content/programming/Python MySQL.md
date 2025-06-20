@@ -4,8 +4,8 @@ aliases:
 tags:
   - Python
   - mysql
-date: 
-draft:
+date: 2023-07-12
+draft: false
 ---
 
 ![[Python MySQL.png]]

@@ -8,5 +8,5 @@ draft: false
 
 
 
-![[english++.png]]_**English++ Project_**
+![[english++.png]]_**English++ Project**_
 

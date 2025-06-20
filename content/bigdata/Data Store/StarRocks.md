@@ -1,9 +1,9 @@
 ---
 aliases:
-  - StarRocks
+  - SR
 tags:
   - bigdata
-date: 
+date: 2024-09-12
 draft: false
 ---
 

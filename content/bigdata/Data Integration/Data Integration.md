@@ -9,7 +9,7 @@ tags:
   - homepage
   - data-integration
 date: 2022-01-21
-draft:
+draft: false
 ---
 # MindMap
 
