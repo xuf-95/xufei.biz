@@ -4,6 +4,7 @@ aliases:
 tags:
   - Python
   - mysql
+  - snippets
 date: 2023-07-12
 draft: false
 ---

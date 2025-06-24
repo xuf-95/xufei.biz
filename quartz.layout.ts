@@ -1,5 +1,9 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { SimpleSlug } from "./quartz/util/path"
+
+
+
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -9,7 +13,7 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       "Home": "https://xufei.biz",
-      "Tags": "https://xuf-95.github.io/xufei-wiki/tags/",
+      "Tags": "https://xuf-95.github.io/xufei.biz/tags/",
       "GitHub": "https://github.com/xuf-95",
       "xufei.site": "https://xufei.site",
       "Bento.me": "https://bento.me/xfei",
@@ -41,7 +45,26 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    // Component.Explorer(),
+    Component.DesktopOnly(
+      Component.RecentNotes({
+        title: "Recent Writing",
+        limit: 2,
+        filter: (f) =>
+          f.slug!.startsWith("bigdata/") && f.slug! !== "bigdata/index" && !f.frontmatter?.noindex,
+        linkToMore: "bigdata/" as SimpleSlug,
+      }),
+    ),
+    Component.DesktopOnly(
+      Component.RecentNotes({
+        title: "Recent Notes",
+        limit: 2,
+        filter: (f) => f.slug!.startsWith("thoughts/"),
+        linkToMore: "thoughts/" as SimpleSlug,
+      }),
+    ),
+
+
   ],
   right: [
     Component.Graph(),

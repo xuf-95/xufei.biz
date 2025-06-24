@@ -1,5 +1,5 @@
 ---
-title: 分布式系统中，常见的数据分布方式
+title: distribute system 
 tags:
   - bigdata
   - distribute
