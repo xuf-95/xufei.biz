@@ -130,7 +130,6 @@ C --> D
 - [Azure Architecture Examples](https://learn.microsoft.com/en-us/azure/architecture/browse/)
 - [GCP Architecture Center](https://cloud.google.com/architecture)
 
-***
 ## Reference
 
 - [深入理解大数据架构之——Lambda架构](https://www.cnblogs.com/cciejh/p/lambda-architecture.html)

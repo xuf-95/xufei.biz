@@ -8,7 +8,8 @@ tags:
   - mq
 date: 2023-10-04
 ---
-## Kafka 概述
+
+![[kafka-logo-readme-dark.svg]]
 
 ### 定义
 

@@ -62,7 +62,6 @@ tags:
 - [Obsidian-Excalidraw](https://excalidraw-obsidian.online/Welcome)
 - [Ewan](https://gassandrid.xyz/) a second year student , studying Computer Science and robotics.
 - [Essays](https://gwern.net/index) write about AI, psychology, & statistics
-- [Aaron's notes](https://aarnphm.xyz/)
 - [Evan Boehs](https://boehs.org/)   
 - [Garden's Gate](https://www.pmcf.xyz/topo-da-mente/)
 - [John Hays](https://jonhays.net/) 
@@ -76,3 +75,4 @@ tags:
 - [Pelayo Arbués](https://www.pelayoarbues.com/)
 - [zen docs](https://docs.zen-browser.app/) rebuild directory and simaple
 - [Gatekeeper ](https://www.gatekeeper.wiki/) is a fast-paced rogue-lite, beautiful card
+- [the pudding](https://pudding.cool/) A digital publication that...
