@@ -72,12 +72,10 @@ Kafka拥有三个非常重要的角色特性
 
 
 ### Business Example
+ 
+![[Apache Kafka.png]]_**Kafka at LinkedIn**_
 
-- Kafka at LinkedIn
-![[Apache Kafka.png]]
-- 2019-05-17 [快手万亿级别Kafka集群应用实践与技术演进之路](https://www.infoq.cn/article/Q0o*QzLQiay31MWiOBJH)
-	- 快手 Kafka 使用场景
-	- Kafka 的 5 点重要改进：平滑扩容、Mirror 集群化、资源隔离、cache 改造以及消费智能限速
+- 2019-05-17 [快手万亿级别Kafka集群应用实践与技术演进之路](https://www.infoq.cn/article/Q0o*QzLQiay31MWiOBJH) 涉及 Kafka 使用场景以及Kafka 的 5 点重要改进：平滑扩容、Mirror 集群化、资源隔离、cache 改造以及消费智能限速
 
 ### Reference
 
@@ -96,8 +94,8 @@ Kafka拥有三个非常重要的角色特性
 
 - [KAFKA EAGLE](https://www.kafka-eagle.org/#) short name EFAK (Eagle For Apache Kafka, previously known as Kafka Eagle) is A DISTRIBUTED AND HIGH-PERFORMANCE KAFKA MONITORING SYSTEM By Mr Smartloli.
 
-![EFKA.png]__***EFKA Dashboard UI***__
+![[EFKA.png]]_***EFKA Dashboard UI***_
 
 - [CMAK](https://github.com/yahoo/CMAK) is a tool for managing Apache Kafka clusters
 
-![EMAK.png]_***EMAK***_
+![[EMAK.png]]_***EMAK***_
