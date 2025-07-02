@@ -7,6 +7,9 @@ tags:
   - homepage
 date: 2025-03-04
 ---
+
+![[bigdata-develop.png]]_***来源：中国信息通信研究院***_
+
 <!-- 
 ***
 > [!column]

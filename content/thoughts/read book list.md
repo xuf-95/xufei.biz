@@ -1,5 +1,5 @@
 ---
-title: read book list.md
+title: read book list
 tags:
   - note
 date: 2025-06-14
