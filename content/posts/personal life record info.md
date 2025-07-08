@@ -8,7 +8,7 @@ date: 2025-06-14
 draft: false
 ---
 
-![[pr-er.png]]
+![[content/posts/images/pr-er.png]]
 
 
 ### MySQL DDL

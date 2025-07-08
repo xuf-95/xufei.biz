@@ -8,5 +8,5 @@ draft: false
 
 
 
-![[english++.png]]_**English++ Project**_
+![[content/posts/images/english++.png]]_**English++ Project**_
 

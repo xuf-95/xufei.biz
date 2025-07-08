@@ -72,7 +72,6 @@ CREATE TABLE `dim_xx_meta_blood_relation_detail` (
   `dt` varchar(255) DEFAULT NULL COMMENT '分区'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='xx_元数据数据质量';
 ```
-***
-## Reference
+
 
 
