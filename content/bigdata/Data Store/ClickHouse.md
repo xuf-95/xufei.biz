@@ -20,7 +20,17 @@ draft:
 
 - `column-oriented` SQL database 
 
+### R & W
+
+![[ck-sync.png]]
+
+
+
 ## Quick Start
+
+```sh
+curl https://clickhouse.com/ | sh
+```
 
 ### Create Database
 
@@ -80,11 +90,10 @@ graph LR
     B --> C[Test the Integration]
 ```
 
-***
 ## Reference
 
 - [Fast Open-Source OLAP DBMS - ClickHouse](https://clickhouse.com/?country=en)
 - [ClickHouse Playground](https://sql.clickhouse.com/)
-	![[content/bigdata/01 Data Store Homepage/image/ClickHouse.png|Code]]
+	![[ClickHouse.png|Code]]
 
 - [CryptoHouse](https://crypto.clickhouse.com/)
