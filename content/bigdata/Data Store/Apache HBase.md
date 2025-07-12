@@ -13,18 +13,38 @@ date: 2023-06-08
 
 >[!info] HBase is a non-relational, distributed database modeled after Google's Bigtable. It provides random, real-time read/write access to large datasets - billions of rows with millions of columns - atop clusters of commodity hardware. Unlike traditional relational databases, HBase is designed for wide tables and prioritizes scalability over features like SQL support, typed columns, or advanced query languages.
 
+
 > Hbase（Hadoop on database）是基于hdfs进行数据的存储，具有高可靠. 高性能. 列存储. 可伸缩. 实时读写的nosql数据库。它可以存储海量数据，并且后期查询性能很多，可以实现上亿条数据的秒级返回。
 
-**Hbase历史**：  
-- 2006年Google发表BigTable白皮书  
-- 2006年开始开发HBase  
-- 2008年北京成功开奥运会，程序员默默地将HBase弄成了Hadoop的子项目  
-- 2010年HBase成为Apache顶级项目  
+### Key characteristics of HBase include:
+
+- Strongly consistent reads/writes: HBase is not an "eventually consistent" data store
+- Automatic sharding: Tables are distributed across the cluster via regions
+- Automatic failover: Built-in support for RegionServer failure recovery
+- Hadoop/HDFS integration: Native support for HDFS as its distributed file system
+- Linear scalability: Add more RegionServers to increase capacity
+- Block cache and Bloom filters: Optimizations for high-volume query performance
+
+> [!abstract]+ Can callouts be _nested_?
+>
+> > s
+> > ss
+
+
+### When to Use HBase:
+
+HBase is most suitable when:
+
+- You have hundreds of millions or billions of rows
+- You can work without RDBMS features like typed columns, secondary indexes, transactions, and SQL
+- You have enough hardware (at least 5 DataNodes for a proper HDFS cluster)
+- You need random, real-time read/write access to your Big Data
+For smaller datasets (thousands/millions of rows), a traditional RDBMS might be a better choice.
 
 场景：
 - 可利用HBASE技术可在廉价PC Server上搭建起大规模结构化存储集群
 - HBase的目标是存储并处理大型的数据，更具体来说是仅需使用普通的硬件配置，就能够处理由成千上万的行和列所组成的大型数据
-- HBase是Google Bigtable的开源实现，但是也有很多不同之处。比如：Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MAPREDUCE来处理Bigtable中的海量数据，HBase同样利用Hadoop MapReduce来处理HBase中的海量数据；Google Bigtable利用Chubby作为协同服务，HBase利用Zookeeper作为对应  
+
 
 #### HBase 特性
 - 大：hbase表可以存储海量数据。Hbase适合**存储PB级别的海量数据**，在PB级别的数据以及采用廉价PC存储的情况下，能在几十到百毫秒内返回数据
@@ -324,3 +344,7 @@ DML // put 、delete 、get 、scan
 ```
 
 ![[apache-hbase-logo.png]]
+
+## Summary
+
+Hbase is a distributed NoSQL database built on Hadoop that provides random, real-time read/write access to large datasets. Its architecture consists of a Master server for cluster management, RegionServers for data operations, ZooKeeper for coordination, and HDFS for storage. The system is designed for horizontal scalability and fault tolerance while offering multiple client interfaces for integration with various applications.
