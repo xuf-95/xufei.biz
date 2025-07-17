@@ -1,10 +1,7 @@
 ---
 title: AIGC
-aliases:
-  - Ai
 tags:
-  - ai
-  - homepage
+  - index
 date: 2024-01-09
 draft: false
 ---

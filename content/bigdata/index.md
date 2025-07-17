@@ -1,14 +1,23 @@
 ---
-aliases:
-  - bigdata homepage
-title: Bigdata
+title: bigdata
 tags:
   - index
-  - homepage
 date: 2025-03-04
 ---
 
 ![[bigdata-develop.png]]_***来源：中国信息通信研究院***_
+
+## bigdata Contents
+
+| AREA                                       | INCLUDE                                                                                   |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \| [[Flow-Batch Integration ]]  \| [[Lake-DataWarehouse Integration]]                                  |
+| [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache DolphinScheduler]] \| [[Apache Flume]] \| [[Apache Airflow]] |
+| [[01 Data Store Homepage\|Data Store]]     | [[MySQL]] \| [[Apache Hive]] \| [[Apache Hbase]] \| [[StarRocks]] \| [[Apache Doris]] \| [[ClickHouse]] |
+| Data Compute | [[Apache Flink]] \| [[Apache Spark]] \| [[Apache Hadoop]] \| [[Apache Storm]]             |
+| [[Data Visual]]                            | [[Data Visual Product & Tools]]                                                           |
+| [[数据治理（Data Governance）\|Data Governance]] | [[Apache Atlas]]                                                                          |
+|                                            |                                                                                           |
 
 <!-- 
 ***

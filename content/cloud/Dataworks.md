@@ -4,7 +4,6 @@ aliases:
 tags:
   - aliyun
   - ide
-  - data-altas
 date: 2023-01-31
 ---
 
