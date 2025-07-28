@@ -94,6 +94,25 @@ Apache Flink是一个框架和分布式处理引擎，用于在无界和有界�
 - 有状态 与 无状态
 ![[Apache Flink-3.png]]
 
+## Flink 组件栈
+
+### Deploy
+- Local: Single JVM
+- Cluster: [[YARN]], Standalone
+- Cloud: CE2, GE
+
+### Core
+- Runtime: Distribute Streaming Dataflow
+
+### APIS & Libraries
+- [[DataStream]]
+  - [[CEP]](Event Perocessing)
+  - Table(Relational)
+- [[Dataset]] 
+  - FlinkML(Flink Machine Learning)
+  - Table(Relational)
+  - Gelly(Graphy Processing)
+
 ## 运行架构
 
 ### Flink 运行时的组件
