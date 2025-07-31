@@ -12,7 +12,7 @@ date: 2025-03-04
 | AREA                                       | INCLUDE                                                                                   |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------- |
 | [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \| [[Flow-Batch Integration ]]  \| [[Lake-DataWarehouse Integration]]                                  |
-| [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache DolphinScheduler]] \| [[Apache Flume]] \| [[Apache Airflow]] |
+| [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache Pulsar]] \| [[Apache Flume]] \| [[Apache Airflow]] |
 | [[01 Data Store Homepage\|Data Store]]     | [[MySQL]] \| [[Apache Hive]] \| [[Apache Hbase]] \| [[StarRocks]] \| [[Apache Doris]] \| [[ClickHouse]] |
 | Data Compute | [[Apache Flink]] \| [[Apache Spark]] \| [[Apache Hadoop]] \| [[Apache Storm]]             |
 | [[Data Visual]]                            | [[Data Visual Product & Tools]]                                                           |
