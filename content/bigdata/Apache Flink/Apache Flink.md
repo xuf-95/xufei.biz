@@ -11,6 +11,8 @@ date: 2023-06-07
 draft:
 ---
 
+[!note] 其他模块 [[Flink SQL]] & [[Flink CDC]]
+
 ## 简介
 
 Apache Flink 是一个开源的流处理框架，具有强大的流处理和批处理功能
