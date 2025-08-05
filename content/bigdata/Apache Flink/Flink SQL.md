@@ -89,6 +89,7 @@ EnvironmentSettings bbSettings = EnvironmentSettings.newInstance() .useBlinkPlan
 TableEnvironment bbTableEnv = TableEnvironment.create(bbSettings);
 ```
 
+
 ### 开发案例
 
 ```Java
