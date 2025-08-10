@@ -17,7 +17,7 @@ Hive本质：将HQL转化成 [[MapReduce]] 程序
 
 - hive处理的数据存在[[HDFS]]
 - hive默认分析计算引擎是[[MapReduce]]
-- hive执行程序运行在[[Apache Yarn]]
+- hive执行程序运行在[[Hadoop Yarn]]
 
 > [!warning] Hive是针对数据仓库应用设计的，而数据仓库的内容是`读多写少`的。因此，Hive中不建议对数据的改写，所有的数据都是在加载的时候确定好的
 > 
