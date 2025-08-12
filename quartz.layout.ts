@@ -45,24 +45,24 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    // Component.Explorer(),
-    Component.DesktopOnly(
-      Component.RecentNotes({
-        title: "Recent Writing",
-        limit: 3,
-        filter: (f) =>
-          f.slug!.startsWith("bigdata/") && f.slug! !== "bigdata/index" && !f.frontmatter?.noindex,
-        linkToMore: "bigdata/" as SimpleSlug,
-      }),
-    ),
-    Component.DesktopOnly(
-      Component.RecentNotes({
-        title: "Recent Notes",
-        limit: 2,
-        filter: (f) => f.slug!.startsWith("posts/"),
-        linkToMore: "posts/" as SimpleSlug,
-      }),
-    ),
+    Component.Explorer(),
+    // Component.DesktopOnly(
+    //   Component.RecentNotes({
+    //     title: "Recent Writing",
+    //     limit: 3,
+    //     filter: (f) =>
+    //       f.slug!.startsWith("bigdata/") && f.slug! !== "bigdata/index" && !f.frontmatter?.noindex,
+    //     linkToMore: "bigdata/" as SimpleSlug,
+    //   }),
+    // ),
+    // Component.DesktopOnly(
+    //   Component.RecentNotes({
+    //     title: "Recent Notes",
+    //     limit: 2,
+    //     filter: (f) => f.slug!.startsWith("posts/"),
+    //     linkToMore: "posts/" as SimpleSlug,
+    //   }),
+    // ),
 
 
   ],

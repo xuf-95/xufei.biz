@@ -1,5 +1,5 @@
 ---
-title: bigdata
+title: Big Data
 tags:
   - index
 date: 2025-03-04

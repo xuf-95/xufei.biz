@@ -1,9 +1,6 @@
 ---
-title: cloud
-tags:
-  - index 
+title: Cloud
 date: 2022-01-09
-draft: false
 ---
 
 | 核心产品 | 阿里云 | 华为云 | 腾讯云 | 火山引擎 | 京东云 |
