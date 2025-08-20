@@ -6,8 +6,17 @@ tags:
   - data-compute
   - sec-index
 ---
-
-- [[HDFS]] 
-- [[MapReduce]]
-- [[Hadoop Yarn]]
-- [[Apache Hbase]] 
+```mermaid
+mindmap
+  root((Apache Hadoop))
+    HDFS
+    MapReduce
+    Yarn
+    Apache Hive
+    Apache Flume
+    Apache Storm
+    Apache Hbase
+    Apache Spark
+    Common Infrastructure
+    Cloud Storage Integration
+```

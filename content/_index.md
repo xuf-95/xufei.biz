@@ -8,6 +8,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 Wiki Contets:
 
+- 数据治理: 数据治理体系、
 - [[bigdata]]: include data structred、data engineer、data warehouse、datalake、 data with ai... 
 - [[cloud]]: aliyun cloud、jingdong cloud、a litter aws cloud.
 - [[ai]]: coding third model

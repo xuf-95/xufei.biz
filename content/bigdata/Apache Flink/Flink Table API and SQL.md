@@ -1,5 +1,5 @@
 ---
-title: Flink SQL
+title: Flink Table API and SQL
 tags:
   - bigdata
   - datastore
