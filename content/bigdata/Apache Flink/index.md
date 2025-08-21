@@ -12,7 +12,6 @@ mindmap
     Flink CDC
     Table API and SQL
     Flink CEP
-    Flink Table
     Streaming Processing
     Build System and Development
 ```
