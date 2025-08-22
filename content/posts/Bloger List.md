@@ -11,20 +11,33 @@ draft: false
 - [Tim Yang](https://timyang.net/about/) Tim's blog, 关于架构、互联网、技术人生等思考.Westar Labs 创始人、中国计算机学会CCF TF主席。专注技术创新与行业赋能，拥有丰富的互联网架构及管理经验。曾任新浪微博研发副总经理，负责微博整体架构工作。
 - [卢昌海个人主页](https://www.changhai.org/index.php)
 - [onebird](https://onebird.net/) 张总，空间有形，梦想无限
+- [王建硕 \| 《旅行的艺术》是本好书](https://home.wangjianshuo.com/cn/) 英文博客 [Wangjianshuo's Blog \| Events (in Shanghai) that affect my life (and others')](https://home.wangjianshuo.com/)
+- [Anthony Fu](https://antfu.me/)
+- [代码家](https://daimajia.com/about-me/) 创办了[掘金](http://juejin.im/)（2014-2016），在 [峰瑞资本](http://freesvc.com/) 深造过（2016-2019），目前在 [真格基金](http://zhenfund.com/)（2019-至今）
+- 
 
 ### Bloger
 - [PM Thinking & 产品沉思录](https://www.pmthinking.com/) 少楠
 - [陈锐同学](https://www.chenrui.com/about.html) 记录活着…… 字是树洞，也是记忆的锚点。不为深刻，只为留住人间烟火里的自己。（2025.8.8）
 - [来自西北人的坏印象 - 见字如面](https://hiwannz.com/archives/339.html#more-339)
+- [屠·城 \| 屠夫9441の域](https://www.haomwei.com/) 
+- [Free Mind](https://freemind.pluskid.org/) 欢迎来到 Free Mind ，这是由 pluskid 所维护的 blog ，主要记录一些机器学习、程序设计以及各种技术和非技术的相关内容
 
 ### Collectiion 
 - [Dead Simple Sites — Minimal Website Inspiration](https://deadsimplesites.com/)
+- [GitHub - timqian/chinese-independent-blogs: 中文独立博客列表](https://github.com/timqian/chinese-independent-blogs#%E4%BB%80%E4%B9%88%E6%98%AF%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2)
+- [GitHub - 1c7/chinese-independent-developer: 👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么](https://github.com/1c7/chinese-independent-developer)
 ### Other Blogs
 - [Bret Victor, human being](https://worrydream.com/) old website [Bret Victor, beast of burden](https://worrydream.com/Home2011/)
 - [**Louie Mantia**](https://lmnt.me/intro/) an artist and designer, with a **20-year** focus on [icon design](https://lmnt.me/intro/portfolio/) and illustration.
 - [Stephen Wolfram](https://www.stephenwolfram.com/about/) is the creator of [Mathematica](https://www.wolfram.com/products/mathematica/), [Wolfram|Alpha](https://www.wolframalpha.com/) and the [Wolfram Language](https://www.wolfram.com/language/); the author of [_A New Kind of Science_](https://www.wolframscience.com/); the originator of the [Wolfram Physics Project](https://www.wolframphysics.org/); and the founder and CEO of [Wolfram Research](https://www.wolfram.com/). Over the course of more than four decades, he has been a pioneer in the development and application of computational thinking—and has been responsible for many discoveries, inventions and innovations in science, technology and business.
 - [Alexander Obenauer](https://alexanderobenauer.com/)
 - [Josh W. Comeau](https://www.joshwcomeau.com/)
+- [LMNT](https://lmnt.me/) 字体和图标
+- [My home - Programming, developer relations, and general nonsense from Sean Falconer](https://thefalc.com/)
+- [Frank Chimero ](https://frankchimero.com/) 极简风格，blog一直下翻会经过渐变会从新回到主页
+- [okmij.org](https://okmij.org/) 
+- [Bjarne Stroustrup's Homepage](https://www.stroustrup.com/index.html) C++ Father
 
 
 ## Tech Bloger Theme
