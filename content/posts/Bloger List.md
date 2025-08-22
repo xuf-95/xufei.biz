@@ -22,6 +22,8 @@ draft: false
 - [来自西北人的坏印象 - 见字如面](https://hiwannz.com/archives/339.html#more-339)
 - [屠·城 \| 屠夫9441の域](https://www.haomwei.com/) 
 - [Free Mind](https://freemind.pluskid.org/) 欢迎来到 Free Mind ，这是由 pluskid 所维护的 blog ，主要记录一些机器学习、程序设计以及各种技术和非技术的相关内容
+- [Randy's Blog](https://lutaonan.com/) 卢涛南 (Randy Lu)
+- 
 
 ### Collectiion 
 - [Dead Simple Sites — Minimal Website Inspiration](https://deadsimplesites.com/)
@@ -38,6 +40,8 @@ draft: false
 - [Frank Chimero ](https://frankchimero.com/) 极简风格，blog一直下翻会经过渐变会从新回到主页
 - [okmij.org](https://okmij.org/) 
 - [Bjarne Stroustrup's Homepage](https://www.stroustrup.com/index.html) C++ Father
+- [Tobias van Schneider](https://vanschneider.com/) Mymind apps
+- 
 
 
 ## Tech Bloger Theme

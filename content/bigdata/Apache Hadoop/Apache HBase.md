@@ -7,8 +7,6 @@ tags:
   - apache
 date: 2023-06-08
 ---
-
-
 ## What is HBase?
 
 >[!info] HBase is a non-relational, distributed database modeled after Google's Bigtable. It provides random, real-time read/write access to large datasets - billions of rows with millions of columns - atop clusters of commodity hardware. Unlike traditional relational databases, HBase is designed for wide tables and prioritizes scalability over features like SQL support, typed columns, or advanced query languages.
@@ -25,12 +23,6 @@ date: 2023-06-08
 - Linear scalability: Add more RegionServers to increase capacity
 - Block cache and Bloom filters: Optimizations for high-volume query performance
 
-> [!abstract]+ Can callouts be _nested_?
->
-> > s
-> > ss
-
-
 ### When to Use HBase:
 
 HBase is most suitable when:
@@ -45,27 +37,19 @@ For smaller datasets (thousands/millions of rows), a traditional RDBMS might be 
 - 可利用HBASE技术可在廉价PC Server上搭建起大规模结构化存储集群
 - HBase的目标是存储并处理大型的数据，更具体来说是仅需使用普通的硬件配置，就能够处理由成千上万的行和列所组成的大型数据
 
-
 #### HBase 特性
 - 大：hbase表可以存储海量数据。Hbase适合**存储PB级别的海量数据**，在PB级别的数据以及采用廉价PC存储的情况下，能在几十到百毫秒内返回数据
-
 - 无模式
     - mysql表中每一行数据他 们的字段都是一样
     - hbase表中不同的行可以有不同的列（字段）
-        
 - 面向列
     - mysql表中的数据是基于行进行存储，把每一行数据写入到磁盘文件中
     - hbase表中的数据是基于列进行存储，把相同列的数据写入到磁盘文件中、
     - 列式存储其实说的是**列族（Column Family）存储，Hbase是根据列族来存储数据的**。列族下面可以有非常多的列，列族在创建表的时候就必须指定
-        
 - 稀疏：hbase表中为null的列，不占用实际的存储空间
-        
 - 数据的多版本：hbase表中的数据在进行更新操作的时候，并没有直接把原始数据删除掉，而是保留数据的多个版本，这个数据的版本号就是按照数据插入时的时间戳去确定
-        
 - 数据类型单一：无论你的数据是什么，在hbase表中统一使用字节数组进行存储
-
 - 极易扩展：Hbase的扩展性主要体现在两个方面，一个是**基于上层处理能力（RegionServer）的扩展**，一个是**基于存储的扩展（HDFS）** 。通过横向添加RegionSever的机器，进行水平扩展，提升Hbase上层的处理能力，提升Hbsae服务更多Region的能力
-
 - 高并发（多核）：由于目前大部分使用Hbase的架构，都是采用的廉价PC，因此单个IO的延迟其实并不小，一般在几十到上百ms之间。这里说的高并发，主要是在并发的情况下，Hbase的单个IO延迟下降并不多。能获得高并发、低延迟的服务
 
 ### Hbase的内部原理
