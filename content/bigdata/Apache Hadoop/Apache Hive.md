@@ -13,15 +13,6 @@ draft: false
 
 > Hive由Facebook开源，是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张表，并提供类`SQL`查询功能，解决 `海量结构化日志` 的数据统计工具
 
-Hive本质：将HQL转化成 [[MapReduce]] 程序
-
-- hive处理的数据存在[[HDFS]]
-- hive默认分析计算引擎是[[MapReduce]]
-- hive执行程序运行在[[Hadoop Yarn]]
-
-> [!warning] Hive是针对数据仓库应用设计的，而数据仓库的内容是`读多写少`的。因此，Hive中不建议对数据的改写，所有的数据都是在加载的时候确定好的
-> 
-
 ## Hive Architecture
 
 - 用户接口：Client
@@ -36,6 +27,28 @@ Hive本质：将HQL转化成 [[MapReduce]] 程序
 	- 编译器（Physical Plan）：将AST编译生成逻辑执行计划
 	- 优化器（Query Optimizer）：对逻辑执行计划进行优化
 	-  执行器（Execution）：把逻辑执行计划转换成可以运行的物理计划。对于Hive来说，就是MR/Spark
+
+![[hive.png]]
+
+Hive本质：将HQL转化成 [[MapReduce]] 程序
+
+- hive处理的数据存在[[HDFS]]
+- hive默认分析计算引擎是[[MapReduce]]
+- hive执行程序运行在[[Hadoop Yarn]]
+
+> [!warning] Hive是针对数据仓库应用设计的，而数据仓库的内容是`读多写少`的。因此，Hive中不建议对数据的改写，所有的数据都是在加载的时候确定好的
+
+
+ ## Hive的数据模型
+
+| Hive | HDFS |
+| ---- | ---- |
+| 表    | 目录   |
+| 分区   | 目录   |
+| 数据   | 文件   |
+| 桶    | 文件   |
+| 视图   | /    |
+
 
 ## Documentations
 
@@ -63,7 +76,7 @@ Hive本质：将HQL转化成 [[MapReduce]] 程序
 
 ## Deploy Documentation
 
-- [Installing Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Installation
+- [Installing Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Installation)
 - [Configuring Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Configuration)
 - [Setting Up Metastore](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Metastore+Administration) [Hive Schema Tool](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool)
 - [Setting Up Hive Web Interface](https://cwiki.apache.org/confluence/display/Hive/HiveWebInterface)

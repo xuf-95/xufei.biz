@@ -9,12 +9,11 @@ draft: false
 ### Famous Bloger
 - [陈皓](https://coolshell.cn/haoel) 网名**左耳朵耗子**（很多人问我为什么要叫这个“一只耳”的名字，你们猜），对了，我真的不是高手，我也不是牛人，离他们的距离还很大。我从2003年开始在网上记录一些自己的技术知识和想法，今天我还在努力学习希望能成长一个高手，因为，面对生活在今天这样技术日新月异的时代，我们每个人都是一个新人。我很幸运出生在这个时代——第三次工业革命的时代，也很幸运选对了专业，所以，可以算是一只“风口上的猪”了，就是运气好，赶上了这个好的时代，我要唯一要做的就是不要辜负这个时代，无它。[GitHub - megaease/Remembering-Haoel: 记录您对左耳朵耗子（陈皓）的点滴回忆](https://github.com/megaease/Remembering-Haoel?tab=readme-ov-file)
 - [Tim Yang](https://timyang.net/about/) Tim's blog, 关于架构、互联网、技术人生等思考.Westar Labs 创始人、中国计算机学会CCF TF主席。专注技术创新与行业赋能，拥有丰富的互联网架构及管理经验。曾任新浪微博研发副总经理，负责微博整体架构工作。
-- [卢昌海个人主页](https://www.changhai.org/index.php)
+- [卢昌海个人主页](https://www.changhai.org/index.php) 除了自己的无知, 我什么都不懂。－苏格拉底
 - [onebird](https://onebird.net/) 张总，空间有形，梦想无限
 - [王建硕 \| 《旅行的艺术》是本好书](https://home.wangjianshuo.com/cn/) 英文博客 [Wangjianshuo's Blog \| Events (in Shanghai) that affect my life (and others')](https://home.wangjianshuo.com/)
 - [Anthony Fu](https://antfu.me/)
 - [代码家](https://daimajia.com/about-me/) 创办了[掘金](http://juejin.im/)（2014-2016），在 [峰瑞资本](http://freesvc.com/) 深造过（2016-2019），目前在 [真格基金](http://zhenfund.com/)（2019-至今）
-- 
 
 ### Bloger
 - [PM Thinking & 产品沉思录](https://www.pmthinking.com/) 少楠
@@ -23,7 +22,7 @@ draft: false
 - [屠·城 \| 屠夫9441の域](https://www.haomwei.com/) 
 - [Free Mind](https://freemind.pluskid.org/) 欢迎来到 Free Mind ，这是由 pluskid 所维护的 blog ，主要记录一些机器学习、程序设计以及各种技术和非技术的相关内容
 - [Randy's Blog](https://lutaonan.com/) 卢涛南 (Randy Lu)
-- 
+
 
 ### Collectiion 
 - [Dead Simple Sites — Minimal Website Inspiration](https://deadsimplesites.com/)
@@ -41,7 +40,6 @@ draft: false
 - [okmij.org](https://okmij.org/) 
 - [Bjarne Stroustrup's Homepage](https://www.stroustrup.com/index.html) C++ Father
 - [Tobias van Schneider](https://vanschneider.com/) Mymind apps
-- 
 
 
 ## Tech Bloger Theme

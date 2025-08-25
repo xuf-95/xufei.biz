@@ -20,7 +20,7 @@ As far as 'about' pages go, I hope this acts as an open invitation into the many
 
 - [[AI]]: data + ai, not a ai rebot;
 - [[bigdata|Data Engineering Vault]]: which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM|dcmm]];
-- [The hand-crafted workbench](craft.md): craft I am proud of (websites, talks, workshops, projects, etc.);
+- [The hand-crafted workbench](Interesting%20Website.md): craft I am proud of (websites, talks, workshops, projects, etc.);
 
 You can see through _[my personal blog](https://xufei.site/)_ to explore the various topics that interest me. Enjoy cycling, coffee & coding
 

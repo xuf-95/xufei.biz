@@ -1,0 +1,13 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      or:
+        - '!file.name.containsAny(".mjs", "html", ".ts", ".js", ".d.mts", ".cc")'
+    order:
+      - file.name
+    sort:
+      - property: file.name
+        direction: ASC
+  - type: table
+    name: View
