@@ -15,5 +15,3 @@ date: 2024-03-04
 
 ## Reference
 - [什么是 SQL Server？ - SQL Server \| Microsoft Learn](https://learn.microsoft.com/zh-cn/sql/sql-server/what-is-sql-server?view=sql-server-ver17)
-- 
-- 

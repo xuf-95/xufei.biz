@@ -8,9 +8,6 @@ tags:
   - mq
 date: 2023-10-04
 ---
-
-![[kafka-logo-readme-dark.svg]]
-
 ### 定义
 
 Kafka 由`Scala`和`Java`编写,Kafka是一种`高吞吐量`的分布式`发布-订阅`消息系统，默认端口: 9092：
@@ -19,7 +16,16 @@ Kafka 由`Scala`和`Java`编写,Kafka是一种`高吞吐量`的分布式`发布-
 
 - `发布/订阅`：消息的发布者不会将消息直接发送给特定的订阅者，而是将发布的消息分为不同的类别，订阅者只接收感兴趣的消息
 
+## Version
 
+|版本|核心亮点|
+|---|---|
+|**3.0**|强化交付保障，升级 ZooKeeper|
+|**3.6**|Tiered Storage 支持|
+|**3.7**|MSK 支持 KRaft，多 broker 扩展|
+|**3.8**|压缩级别配置、JBOD、预览 rebalance 协议|
+|**3.9**|动态 KRaft quorum，淘汰 ZooKeeper|
+|**4.0**|完全 KRaft，Queue 模式，rebalance 协议完善，多项现代化更新|
 ### API
 
 Kafka拥有三个非常重要的角色特性
@@ -41,6 +47,89 @@ Kafka拥有三个非常重要的角色特性
 - **削峰填谷**：所谓的“削峰填谷”就是指缓冲上下游瞬时突发流量，使其更平滑
 - **解耦** ：即允许独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束
 - **异步通信**：即允许把一个消息放入队列，但并不立即处理它们，然后再需要的时候才去处理它们。
+
+## 总体模块划分（server 侧）
+
+```sql
+kafka/
+ ├─ server/           # Broker 主流程：网络、协议分发、Replica 管理、协调器等
+ ├─ storage/          # 日志存储：Log/Segment/Index/records 压缩与保留
+ ├─ raft/             # KRaft 实现：Raft 日志、投票、快照、Controller
+ ├─ controller/       # 元数据控制器（KRaft），分区/副本状态机
+ ├─ zookeeper/        # 兼容旧架构（如仍使用 ZK）
+ ├─ network/          # SocketServer/Reactor/Selector/Quota
+ ├─ coordinator/      # GroupCoordinator/TxnCoordinator（消费组与事务）
+ ├─ common/clients/   # 通用协议、Record 格式、压缩等（客户端与服务端共用）
+ └─ tools/            # 维护工具
+```
+
+### 启动与主循环
+#### Broker 启动
+
+- 入口：`kafka.Kafka`（`main`）→ `KafkaServer`
+- 核心步骤：加载配置 → 日志目录检查 → 网络层 `SocketServer` 启动 → `ReplicaManager` 启动 → 协调器（Group/Txn）→ 控制器客户端（ZK 或 KRaft）初始化 → 接受请求。
+#### 网络与请求分发
+
+- **关键类**
+    - `SocketServer` / `KafkaRequestHandlerPool`
+    - `Processor`（NIO 线程）+ `RequestChannel`
+    - `KafkaApis`：**协议分发中心**（handleProduce/handleFetch/handleJoinGroup/...）
+- **要点**
+    - **Reactor** 模型：Acceptor → 多个 Processor（Selector）→ 请求队列 → 多个 Handler 线程执行业务。
+    - **零拷贝**：发送 `.log` 文件时可使用 `transferTo`
+### 存储子系统（Log）
+
+#### 数据结构
+
+- **Log/LogSegment**
+    - `Log`: 分区在磁盘的抽象；包含多个 `LogSegment`
+    - `LogSegment`: 三元组文件
+        - `.log`（RecordBatch 流）
+        - `.index`（offset → 文件位置稀疏索引）
+        - `.timeindex`（timestamp → 文件位置）
+- **Record & RecordBatch**
+    - 批为单位（压缩/CRC/魔数），含 `baseOffset`、`producerId/epoch/sequence`（用于幂等/事务）
+- **Offset 边界**
+    - LEO（log end offset）
+    - HW（high watermark，同步副本可见的最高 offset）
+#### 写入路径（Produce）
+
+```mathematica
+KafkaApis.handleProduce
+  → ReplicaManager.appendRecords()
+    → Partition.appendRecordsToLeader()
+      → Log.append()
+        → 当前 segment 追加（可能 roll）
+        → 更新 LEO/索引/时间索引
+  → 等待副本复制达成acks条件（ISR 达到 → 提升 HW）
+
+```
+#### 读取路径（Fetch）
+
+```pgsql
+KafkaApis.handleFetch
+  → ReplicaManager.fetchMessages()
+    → Partition.readRecords()
+      → Log.read()
+        → 索引定位（offset/time），从 .log 顺序读（可能零拷贝）
+  → 返回 RecordBatch（可带压缩）
+```
+
+
+## 维护任务
+
+- **保留与清理**
+    - 基于时间/大小的保留：`log.cleaner`/`log.retention.*`
+    - **Log Compaction**：按 key 保留“最新值”（`LogCleaner` 后台线程：从源 segment 合并成新的 compacted 段）
+- **Segment 滚动**
+    - 触发条件：大小/时间/批次首时间戳跨越等
+### 复制与一致性
+
+#### 副本角色与 ISR
+
+- **Leader/Follower**：`ReplicaManager` 维护
+- **ISR（in-sync replicas）**：满足追赶与滞后阈值的副本集合
+- **高水位 HW**：最慢 ISR 的 LEO → 读一致性依据（只对 HW 以内可见）
 
 ### Resource  
 
@@ -99,3 +188,6 @@ Kafka拥有三个非常重要的角色特性
 - [CMAK](https://github.com/yahoo/CMAK) is a tool for managing Apache Kafka clusters
 
 ![[EMAK.png]]_***EMAK***_
+
+
+![[kafka-logo-readme-dark.svg]]
