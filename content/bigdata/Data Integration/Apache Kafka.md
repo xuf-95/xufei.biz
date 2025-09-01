@@ -131,6 +131,19 @@ KafkaApis.handleFetch
 - **ISR（in-sync replicas）**：满足追赶与滞后阈值的副本集合
 - **高水位 HW**：最慢 ISR 的 LEO → 读一致性依据（只对 HW 以内可见）
 
+## 消息队列对比表
+
+| 特性维度  | Kafka                        | Pulsar                      | RabbitMQ              | ActiveMQ            | NATS       | Redis Streams   | AWS Kinesis     | Google Pub/Sub |
+| ----- | ---------------------------- | --------------------------- | --------------------- | ------------------- | ---------- | --------------- | --------------- | -------------- |
+| 架构模型  | 分布式日志，Broker 负责存储和消费         | 存储（BookKeeper）与计算（Broker）分离 | 基于 AMQP，Exchange 路由消息 | 基于 JMS，传统 Broker 模型 | 轻量级，基于订阅发布 | 基于 Redis 内部数据结构 | 托管服务，分片存储       | 托管服务，全球分布式     |
+| 消息存储  | 持久化日志，分区存储                   | BookKeeper 持久化日志            | 队列存储，支持持久化            | 队列存储，支持持久化          | 默认内存，可持久化  | Redis AOF / RDB | 托管存储（24h~7d 保留） | 托管存储（7d 保留）    |
+| 吞吐量   | 极高（百万级 TPS）                  | 极高（百万级 TPS）                 | 中等（十万级 TPS）           | 中等（万级 TPS）          | 高（十万级 TPS） | 中等（十万级 TPS）     | 高，按分片扩展         | 高，自动扩展         |
+| 延迟    | 低（ms 级）                      | 低（ms 级）                     | 较低（ms~几十 ms）          | 较高（>10ms）           | 极低（µs 级）   | 低（ms 级）         | ms~秒级           | ms~秒级          |
+| 消息模型  | 流式（分区日志）                     | 同时支持流式 & 队列                 | 队列 + 发布订阅             | 队列 + 发布订阅           | 发布订阅       | 流式结构            | 流式事件            | 发布订阅           |
+| 扩展性   | 高，分区水平扩展                     | 更高，支持无限水平扩展                 | 一般，集群扩展有限             | 较差                  | 高，支持集群     | 一般（依赖 Redis 集群） | 自动扩展            | 全球级扩展          |
+| 典型场景  | 大数据、日志采集、流计算                 | 云原生、多租户、大规模流处理              | 企业应用解耦、订单系统           | 传统企业应用、JMS 场景       | 微服务通信、IoT  | 小规模数据流、轻量实时处理   | AWS 内大数据、日志流    | 跨区域分布式消息       |
+| 运维复杂度 | 中等，需要 Zookeeper（新版本可选 KRaft） | 较高，需要管理 BookKeeper          | 低                     | 低                   | 低          | 低               | 无需运维            | 无需运维           |
+
 ### Resource  
 
 - Books ：[2170922-EB-I\_Heart\_Logs.pdf](https://assets.confluent.io/m/48c5ed8540ec1f7e/original/2170922-EB-I_Heart_Logs.pdf?_gl=1*rzw9o1*_gcl_au*MTA0NTQwODY3OC4xNzI4NjE2MDMzLjIwNDM1MDgzMjEuMTcyODYxNjUyNi4xNzI4NjE2NTI1*_ga*MTgxMDc0MjE0Ni4xNzI4NjE2MDM3*_ga_D2D3EGKSGD*MTcyODYxNjAzNi4xLjEuMTcyODYxNjUyNy41OC4wLjA.&_ga=2.264712591.1058057393.1728616037-1810742146.1728616037)
