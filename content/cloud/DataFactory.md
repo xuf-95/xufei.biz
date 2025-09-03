@@ -2,6 +2,7 @@
 title: DataFactory
 tags:
   - Azure
+  - sqlserver
 date: 2025-07-06
 draft: false
 ---
