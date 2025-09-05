@@ -12,23 +12,36 @@ draft: false
 	
 核心思想是，监测并捕获'数据库的变动'（包括数据或数据表的插入、更新以及删除等），将这些变更按发生的顺序完整记录下来，写入到消息中间件中以供其他服务进行订阅及消费。
 	
-Flink-CDC ： 可以直接从 MySQL，PostgreSQL 等数据库 基于"Binlog"直接"读取全量数据"和"增量变更数据"的 source 组件
+Flink-CDC ： 可以直接从 [[MySQL Binlog]]，PostgreSQL等数据库 基于"Binlog"直接"读取全量数据"和"增量变更数据"的 source 组件
 
-#### CDC技术应用场景
+### CDC技术应用场景
 
 - 数据同步，用于备份，容灾
 - 数据分发，一个数据源发送到多个下游
 - 数据采集，面向数据仓库/数据湖的ETL数据集成
 
-- 常见的开源CDC
+### 常见的开源CDC对比
 
-![[Pasted image 20241007224505.png]]
+|          | Flink CDC | Debezium | DataX | Canal | Kettle | Oracle Goldengate |
+| -------- | --------- | -------- | ----- | ----- | ------ | ----------------- |
+| CDC机制    | 日志        | 日志       | 查询    | 日志    | 查询     | 日志                |
+| 架构       | 分布式架构     | 分布式架构    | 单机    | 单机    | 分布式架构  | 单机                |
+| 是否可以断点续传 | 是         | 是        | 否     | 是     | 否      | 是                 |
+| 是否可以增量同步 | 是         | 是        | 否     | 是     | 否      | 是                 |
+| 是否可以全量同步 | 是         | 是        | 是     | 否     | 是      | 是                 |
+| 全量+增量同步  | 是         | 是        | 否     | 否     | 否      | 是                 |
 
-- CDC 分类：`基于查询` 和 `基于Binlog`
+### CDC 分类：**基于查询** 和 **基于Binlog**
 
-![[Pasted image 20241007224544.png]]
+|               | 基于Binlog               | 基于查询                    |
+| ------------- | ---------------------- | ----------------------- |
+| 产品            | Canal、Maxwell、Debezium | Kafka JDBC Source|
+| 执行模式          | Streaming              | Batch                   |
+| 是否可以捕获所有数据的变化 | 是                      | 否                       |
+| 延迟性           | 低延迟                    | 高延迟                     |
+| 是否增加数据库压力     | 否                      | 是                       |
 
-- 传统 CDC ETL 分析 
+### 传统 CDC ETL 分析 
 
 ```mermaid
 graph LR
@@ -37,46 +50,33 @@ graph LR
     B --> D[Cache]
 ```
 
-- 基于Flink CDC 的ETL 分析
-![[Pasted image 20241007224615.png]]
+### 基于Flink CDC 的ETL 分析
+
+
+
+![[content/Apache Flink/images/flinkcdc-etl.png]]
 ![[Pasted image 20241007224623.png]]
 
-- 基于Flink CDC 的数据打宽
+### 基于Flink CDC 的数据打宽
 ![[Pasted image 20241007224631.png]]
 
-- 基于Flink CDC 的聚合分析
+### 基于Flink CDC 的聚合分析
 ![[Pasted image 20241007224641.png]]
 
-### 基础环境
+### CDC设计实现
+- Chunk切分
+- Chunk读取
+- Chunk分配
+- Chunk汇报
+- Chunk分配
 
+![[Pasted image 20241007224753.png]]
+
+### flink 开启CDC功能
 ```shell
-#################################################
-# mysql 开启 binlog
-vim /etc/my.cnf
-
-server-id=1
-log-bin=mysql-bin
-binlog_format=row
-binlog-do-db=cdc_test
-
-systemctl restart mysqld # 重启mysql
-
-create database cdc_test;
-
-CREATE TABLE cdc_test.user_info(
-id VARCHAR(200) PRIMARY KEY,
-NAME VARCHAR(200),
-sex VARCHAR(200));
-
-INSERT INTO cdc_test.user_info VALUES ('1001','AA','0');
-INSERT INTO cdc_test.user_info VALUES ('1002','BB','0');
-INSERT INTO cdc_test.user_info VALUES ('1003','CC','0');
-
-#################################################
 cd /opt/module/flink-1.13.1/lib
 flink-shaded-hadoop-2-uber-2.8.3-10.0.jar
     
-#################################################
 bin/start-cluster.sh #  开启flink
 #  运行
 bin/flink run -m hadoop102:8081  -c com.atguigu.FlinkCDC /home/zhj/atguigu-flink-cdc-1.0-SNAPSHOT-jar-with-dependencies.jar
@@ -261,13 +261,6 @@ public class FlinkSQLCDC {
 
 ---
 
-CDC设计实现:
-
-    1、Chunk切分
-    2、Chunk读取
-    3、Chunk分配
-    4、Chunk汇报
-    5、Chunk分配
 
 
-![[Pasted image 20241007224753.png]]
+

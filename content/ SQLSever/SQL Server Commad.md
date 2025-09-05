@@ -6,7 +6,7 @@ date: 2024-03-04
 
 ### 查看用户的数据库角色成员身份
 
-```SQL
+```sql
 SELECT
 	r.name AS RoleName,
 	r.type_desc AS RoleType,
@@ -20,7 +20,7 @@ ORDER BY r.name, m.name;
 
 ###   查看当前数据库中的所有用户
 
-```SQL
+```sql
 SELECT
 	name AS UserName,
 	type_desc AS UserType,
@@ -54,4 +54,5 @@ ORDER BY
 
 
 ## Reference
+
 - [什么是 SQL Server？ - SQL Server \| Microsoft Learn](https://learn.microsoft.com/zh-cn/sql/sql-server/what-is-sql-server?view=sql-server-ver17)
