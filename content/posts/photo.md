@@ -1,6 +1,5 @@
 ---
 title: photo
-tags:
 date: 2025-06-14
 draft: false
 ---
@@ -9,4 +8,3 @@ draft: false
 - [lmnt](https://lmnt.me/blog/photos/) Photos I’ve taken with my iPhone or _Lumix GF1_.
 - [Anthony Fu](https://antfu.me/photos)
 - [Camarts](https://camarts.app/?bN)  Dandy Tianxin Weng
-- 
