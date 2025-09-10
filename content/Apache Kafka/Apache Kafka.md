@@ -154,25 +154,6 @@ KafkaApis.handleFetch
 
 - Presentation：[Keynote Session | Kafka Summit London 2024](https://www.confluent.io/events/kafka-summit-london-2024/keynote-session/)
 
-### Question
-
-- Kafka是如何保障数据不丢失的？
-    
-- 如何解决Kafka数据丢失问题？
-    
-- Kafka可以保障永久不丢失数据吗？
-    
-- 如何保障Kafka中的消息是有序的？
-    
-- 如何确定Kafka主题的分区数量？
-    
-- 如何调整生产环境中Kafka主题的分区数量？
-    
-- 如何重平衡Kafka集群？
-    
-- 如何查看消费者组是否存在滞后消费？
-
-
 ### Business Example
  
 ![[Apache Kafka.png]]_**Kafka at LinkedIn**_
@@ -204,3 +185,22 @@ KafkaApis.handleFetch
 
 
 ![[kafka-logo-readme-dark.svg]]
+
+
+### Question
+
+- Kafka是如何保障数据不丢失的？
+    
+- 如何解决Kafka数据丢失问题？
+    
+- Kafka可以保障永久不丢失数据吗？
+    
+- 如何保障Kafka中的消息是有序的？
+    
+- 如何确定Kafka主题的分区数量？
+    
+- 如何调整生产环境中Kafka主题的分区数量？
+    
+- 如何重平衡Kafka集群？
+    
+- 如何查看消费者组是否存在滞后消费？
