@@ -3,10 +3,10 @@ title: Interesting Website
 tags:
   - demo
 date: 2025-02-14
-draft: false
+draft: true
 ---
 
-![[content/posts/images/english++.png]]_**English++ Project**_
+![[english++.png]]_**English++ Project**_
 
 
 

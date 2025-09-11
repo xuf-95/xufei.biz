@@ -1,6 +1,6 @@
 
 # V1.0 
-![[wikiV1.0.png]]
+![[content/images/wikiV1.0.png]]
 
 # 2.0 
 ![[wiki2.0.png]]
