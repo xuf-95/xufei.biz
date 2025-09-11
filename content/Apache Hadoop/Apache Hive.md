@@ -32,7 +32,7 @@ mindmap
 
 ## Hive Architecture
 
-![[content/Apache Hadoop/images/hive.png]]
+![[hive.png]]
 
 - 用户接口：Client
 	- CLI（command-line interface）、JDBC/ODBC(jdbc访问hive)、WEBUI（浏览器访问hive）

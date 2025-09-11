@@ -77,7 +77,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 
 **事务处理 OLTP**
 
-![[content/Apache Flink/images/flink-olap.png]]
+![[flink-olap.png]]
 
 - 分析处理 OLAP ： 将数据从业务数据库复制到数仓，再进行分析和查询
 
@@ -129,7 +129,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 
 ### Flink 运行时的组件
 
-![[content/Apache Flink/images/flink-architecture.png]]
+![[flink-architecture.png]]
 
 1. 作业管理器 JobManager
 2. 资源管理器 ResourceManager
@@ -151,7 +151,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 ### 典型的Master-Slave 架构
 #### 任务提交流程
 
-![[content/Apache Flink/images/flink-job.png]]
+![[flink-job.png]]
 
 #### 任务调度原理
 
