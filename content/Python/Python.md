@@ -1,7 +1,6 @@
 ---
 title: Python
-tag: 
-  - python
+tag:
 date: 2023-11-09
 draft: true
 ---

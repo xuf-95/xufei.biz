@@ -1,0 +1,28 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - "!title.isEmpty()"
+        - file.folder.startsWith("content")
+    order:
+      - file.name
+      - title
+      - draft
+      - publish
+      - file.folder
+      - file.ctime
+      - file.tags
+      - aliases
+      - date
+      - description
+    sort:
+      - property: tag
+        direction: DESC
+    columnSize:
+      note.title: 183
+      file.ctime: 183
+      note.aliases: 149
+      note.date: 127
+  - type: cards
+    name: View
