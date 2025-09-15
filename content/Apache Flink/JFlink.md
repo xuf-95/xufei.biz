@@ -2,8 +2,7 @@
 title: JFlink
 tags:
   - bigdata
-  - data-compute
-  - sec-index
+  - jd-cloud
 date: 2025-05-25
 draft: false
 ---

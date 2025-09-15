@@ -3,7 +3,10 @@ title: JFlink
 aliases:
   - 实时计算开发治理平台
 tags:
-  - jdcloud
+  - flink
+  - cloud
+  - jingdong-cloud
+  - ide
 date: 2025-07-06
 draft: false
 ---
