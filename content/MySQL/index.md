@@ -1,5 +1,5 @@
 ---
-title: index
+title: MySQL
 date: 2021-10-14
 ---
 

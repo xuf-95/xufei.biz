@@ -179,6 +179,8 @@ KafkaApis.handleFetch
 
 ![[EFKA.png]]_***EFKA Dashboard UI***_
 
+- [KnowStreaming](https://doc.knowstreaming.com/product/1-brief-introduction) 是一套云原生的 Kafka 管控平台，脱胎于众多互联网内部多年的 Kafka 运营实践经验，专注于 Kafka 运维管控、监控告警、资源治理、多活容灾等核心场景，在用户体验、监控、运维管控上进行了平台化、可视化、智能化的建设，提供一系列特色的功能，极大地方便了用户和运维人员的日常使用，让普通运维人员都能成为 Kafka 专家
+
 - [CMAK](https://github.com/yahoo/CMAK) is a tool for managing Apache Kafka clusters
 
 ![[EMAK.png]]_***EMAK***_

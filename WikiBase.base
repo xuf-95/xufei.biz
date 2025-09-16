@@ -8,15 +8,21 @@ views:
     order:
       - file.name
       - title
+      - file.folder
+      - file.tags
       - draft
       - publish
-      - file.folder
-      - file.ctime
-      - file.tags
       - aliases
       - date
       - description
+      - file.ctime
     sort:
+      - property: file.folder
+        direction: ASC
+      - property: file.name
+        direction: ASC
+      - property: file.tags
+        direction: DESC
       - property: tag
         direction: DESC
     columnSize:
