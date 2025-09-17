@@ -3,9 +3,9 @@ aliases:
   - clickhouse
 tags:
   - data-warehouse
-  - opensource
   - database
   - olap
+  - data-store
 date: 2022-03-11
 draft:
 ---
