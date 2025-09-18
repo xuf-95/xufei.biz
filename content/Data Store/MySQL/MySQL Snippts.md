@@ -120,8 +120,6 @@ INSERT INTO salary (department_id, name, salary) VALUES (3, 'Harry', 3000);
 
 ```
 
-
-
 ## Data Quality SQl DDL
 ```mysql
 /*
@@ -169,6 +167,57 @@ CREATE TABLE `met_quality_task` (
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='数据质量-质检任务';
 ```
 
+
+## 检查MySQL主从同步状
+
+```sh
+#!/bin/bash 
+USER=user101 
+PASSWD=123
+IO_SQL_STATUS=$(mysql -u$USER -p$PASSWD -e show slave statusG |awk -F: /Slave_.*_Running/{gsub(": ",":");print $0} )  
+for i in $IO_SQL_STATUS; do 
+	THREAD_STATUS_NAME=${i%:*} 
+	THREAD_STATUS=${i#*:} 
+	if [ "$THREAD_STATUS" != "Yes" ]; then 
+			echo "Error: MySQL Master-Slave $THREAD_STATUS_NAME status is $THREAD_STATUS!" 
+	fi 
+done
+```
+
+
+```sh
+#!/bin/bash
+DATE=$(date +%F_%H-%M-%S)
+HOST=192.168.1.120
+DB=test
+USER=bak
+PASS=123456
+MAIL="zhangsan@example.com lisi@example.com"
+BACKUP_DIR=/data/db_backup
+SQL_FILE=${DB}_full_$DATE.sql
+BAK_FILE=${DB}_full_$DATE.zip
+
+cd $BACKUP_DIR
+if mysqldump -h$HOST -u$USER -p$PASS --single-transaction --routines --triggers -B $DB > $SQL_FILE; then
+    zip $BAK_FILE $SQL_FILE && rm -f $SQL_FILE
+    if [ ! -s $BAK_FILE ]; then
+            echo "$DATE 内容" | mail -s "主题" $MAIL
+    fi
+else
+
+    echo "$DATE 内容" | mail -s "主题" $MAIL
+
+fi
+find $BACKUP_DIR -name '*.zip' -ctime +14 -exec rm {} \;
+```
+
+
+```mysql
+```
+
+
+```mysql
+```
 
 
 ```mysql

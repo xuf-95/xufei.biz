@@ -23,12 +23,12 @@ Apache Spark is a powerful unified analytics engine for big data processing, wit
 
 ## Spark Architecture
 
-![[spark-architecture.png]]
+![[content/Apache Hadoop/images/spark-architecture.png]]
 
 
 ## Core Components
 
-![[core-components.png]]
+![[content/Apache Hadoop/images/core-components.png]]
 
 ### Spark Core
 
@@ -39,7 +39,7 @@ Apache Spark is a powerful unified analytics engine for big data processing, wit
 
 ### Spark SQL
 
-![[spark-sql.png]]
+![[content/Apache Hadoop/images/spark-sql.png]]
 
 Spark SQL provides a programming interface for processing structured and semi-structured data. It includes:
 
