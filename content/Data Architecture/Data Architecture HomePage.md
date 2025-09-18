@@ -92,30 +92,7 @@ C --> D
 
 ### [[Kappa Architecture]]
 
-```mermaid
-%%{init: { "flowchart": { "useMaxWidth": true } } }%%
-graph LR
-
-A((Data Source))
-
-subgraph Batch Layer
-B("Batch view(s)")
-end
-subgraph Speed Layer
-C("Real-time view(s)")
-end
-
-A --> B
-A --> C
-
-subgraph Serving Layer
-D("Combined view(s)")
-end
-
-B --> D
-C --> D
-
-```
+![[Kappa Architecture.png]]
 ### [[Data Lake]]
 
 ### [[01 Data Store Homepage|Data Store]]

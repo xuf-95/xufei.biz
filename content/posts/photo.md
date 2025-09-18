@@ -3,8 +3,17 @@ title: photo
 date: 2025-06-14
 draft: false
 ---
-### 个人照片墙
-- [Innei's Afilmory](https://afilmory.innei.in/)
-- [lmnt](https://lmnt.me/blog/photos/) Photos I’ve taken with my iPhone or _Lumix GF1_.
-- [Anthony Fu](https://antfu.me/photos)
-- [Camarts](https://camarts.app/?bN)  Dandy Tianxin Weng
+![[camarts.png]] 
+_**[Camarts](https://camarts.app/?bN)  Dandy Tianxin Weng**_
+
+![[Imnt.png]]
+_**[lmnt](https://lmnt.me/blog/photos/) Photos I’ve taken with my iPhone or _Lumix GF1_.**_
+
+
+![[Inneis.png]]
+_**[Innei's Afilmory](https://afilmory.innei.in/)**_
+
+
+![[antfu.png]]
+_**[Anthony Fu](https://antfu.me/photos)**_
+
