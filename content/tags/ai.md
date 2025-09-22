@@ -1,4 +1,5 @@
 ---
-title: "AI"
-description: "way to agic."
+title: AI
+description: way to agic.
+draft: true
 ---

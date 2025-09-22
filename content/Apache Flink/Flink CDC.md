@@ -30,6 +30,7 @@ Flink-CDC ： 可以直接从 [[MySQL Binlog]]，PostgreSQL等数据库 基于"B
 | 是否可以增量同步 | 是         | 是        | 否     | 是     | 否      | 是                 |
 | 是否可以全量同步 | 是         | 是        | 是     | 否     | 是      | 是                 |
 | 全量+增量同步  | 是         | 是        | 否     | 否     | 否      | 是                 |
+|          |           |          |       |       |        |                   |
 
 ### CDC 分类：**基于查询** 和 **基于Binlog**
 
@@ -53,9 +54,7 @@ graph LR
 ### 基于Flink CDC 的ETL 分析
 
 
-
-![[content/Apache Flink/images/flinkcdc-etl.png]]
-![[Pasted image 20241007224623.png]]
+![[flinkcdc-etl.png]]
 
 ### 基于Flink CDC 的数据打宽
 ![[Pasted image 20241007224631.png]]

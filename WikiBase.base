@@ -11,24 +11,30 @@ views:
       - file.folder
       - file.tags
       - draft
-      - publish
-      - aliases
       - date
       - description
       - file.ctime
+      - file.mtime
+      - file.links
     sort:
       - property: file.folder
         direction: ASC
+      - property: file.tags
+        direction: ASC
+      - property: title
+        direction: DESC
+      - property: date
+        direction: ASC
+      - property: file.ctime
+        direction: ASC
       - property: file.name
         direction: ASC
-      - property: file.tags
-        direction: DESC
       - property: tag
         direction: DESC
     columnSize:
-      note.title: 183
-      file.ctime: 183
-      note.aliases: 149
+      file.name: 186
+      note.title: 191
       note.date: 127
+      file.ctime: 183
   - type: cards
     name: View

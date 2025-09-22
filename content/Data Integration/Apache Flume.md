@@ -1,45 +1,9 @@
 ---
-title: Data Serve
-aliases:
-  - Server Script
+title: Apache Flume
+date: 2022-06-20
 tags:
-  - bigdata
-  - script
-  - shell
-date: 2023-04-11
-draft: false
+  - flume
 ---
-## Cluster Start Snippets
-### 启动zookeeper服务
-
-```shell
-#!/bin/bash
-
-case $1 in
-"start"){
-    for i in bigdata101 bigdata102 bigdata103
-    do
-        echo "------------- $i -------------"
-        ssh $i "/opt/apps/zookeeper/bin/zkServer.sh start"
-    done
-};;
-"stop"){
-    for i in bigdata101 bigdata102 bigdata103
-    do
-        echo "------------- $i -------------"
-        ssh $i "/opt/apps/zookeeper/bin/zkServer.sh stop"
-    done
-};;
-"status"){
-    for i in bigdata101 bigdata102 bigdata103
-    do
-        echo "------------- $i -------------"
-        ssh $i "/opt/apps/zookeeper/bin/zkServer.sh status"
-    done
-};;
-esac
-```
-
 ### 启动Flume
 
 ```shell
@@ -99,25 +63,3 @@ esac
 ```
 
 
-### 启动kafka集群
-
-```shell
-#! /bin/bash
-
-case $1 in
-"start"){
-    for i in bigdata101 bigdata102 bigdata103
-    do
-        echo " --------启动 $i Kafka-------"
-        ssh $i "/opt/apps/kafka/bin/kafka-server-start.sh -daemon /opt/apps/kafka/config/server.properties "
-    done
-};;
-"stop"){
-    for i in bigdata101 bigdata102 bigdata103
-    do
-        echo " --------停止 $i Kafka-------"
-        ssh $i "/opt/apps/kafka/bin/kafka-server-stop.sh stop"
-    done
-};;
-esac
-```

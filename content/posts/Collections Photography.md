@@ -1,5 +1,5 @@
 ---
-title: photo
+title: Collections Photography
 date: 2025-06-14
 draft: false
 ---

@@ -1,4 +1,0 @@
----
-title: Solution
-date: 2024-03-04
----

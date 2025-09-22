@@ -101,7 +101,7 @@ graph LR
 
 | 技术               | 架构                                               | 特点                                                     |
 | ---------------- | ------------------------------------------------ | ------------------------------------------------------ |
-| [[Apache Flume]] | 由source， channel、 sink组成。多个Agent可以组成调用链          | 支持一个Agent中有多个不同类型的channel和sink，可以选择把Source的数据分发给不同的目的地 |
+| [[content/Apache Hadoop/Apache Flume]] | 由source， channel、 sink组成。多个Agent可以组成调用链          | 支持一个Agent中有多个不同类型的channel和sink，可以选择把Source的数据分发给不同的目的地 |
 | LogStash         | 包含input、 Filter、 output组成                        | 灵活性高，支持很多插件                                            |
 | Fluentd          | 包含Input. Parser、 Output、match、 Formatter、 Buffer | fluentd设计简洁，pipeline内数据传递可靠性高。                         |
 | Filebeta         | prospector和 harvesters                           | 没有任何依赖，古用资源极少，可靠性高                                     |
@@ -147,19 +147,15 @@ graph LR
 |                      |                                          |                              |
 |                      |                                          |                             |
 
-
 ## 09.数据集成面临的挑战
 
 >[!summary] 数据集成的价值：消除企业信息孤岛，实现数据集中共享，进而实现数据治理和数据应用的重要手段
-
 
 | 成本和实效                  | 数据链路管理                      | 数据质量                            |
 | ---------------------- | --------------------------- | ------------------------------- |
 | 海量数据多<br>目标存储<br>时效性要求 | 数据源兼容<br>任务隔离容错<br>数据对账<br> | 异构数据源<br>丰富的数据格式<br>多阶段数据链路<br> |
 
 ## 10. 数据集成和数据迁移的区别
-
-
 
 ***
 ## Reference

@@ -1,12 +1,12 @@
 ---
-title:  知识蒸馏（Knowledge Distillation）
+title: 知识蒸馏（Knowledge Distillation）
 aliases:
   - 知识蒸馏
 tags:
   - AI
   - model
 date: 2025-01-11
-publish: true
+publish: false
 ---
 
 > Knowledage Distillation (知识蒸馏)：KD

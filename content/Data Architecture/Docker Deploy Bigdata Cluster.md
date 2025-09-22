@@ -1,13 +1,12 @@
 ---
-title: Docker Deploy Bigdata Cluster.md
+title: Docker Deploy Bigdata Cluster
 tags:
   - bigdata
   - hadoop
-  - apache
+  - docker
 date: 2025-01-25
-draft: false
+draft: true
 ---
-
 ## Basic Environment Plan
 
 ### version

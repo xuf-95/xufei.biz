@@ -8,6 +8,7 @@ tags:
   - apache
   - compute
 date: 2023-02-24
+draft: true
 ---
 
 ## What is Apache Spark?
@@ -23,12 +24,12 @@ Apache Spark is a powerful unified analytics engine for big data processing, wit
 
 ## Spark Architecture
 
-![[content/Apache Hadoop/images/spark-architecture.png]]
+![[spark-architecture.png]]
 
 
 ## Core Components
 
-![[content/Apache Hadoop/images/core-components.png]]
+![[core-components.png]]
 
 ### Spark Core
 
@@ -39,7 +40,7 @@ Apache Spark is a powerful unified analytics engine for big data processing, wit
 
 ### Spark SQL
 
-![[content/Apache Hadoop/images/spark-sql.png]]
+![[spark-sql.png]]
 
 Spark SQL provides a programming interface for processing structured and semi-structured data. It includes:
 
@@ -103,7 +104,6 @@ Spark SQL provides a programming interface for processing structured and semi-st
 
 #### RDD的缓存机制
 
- 
 ### Spark SQL
 
 #### Spark SQL 概述
@@ -113,7 +113,6 @@ Spark SQL provides a programming interface for processing structured and semi-st
 SparkSQL是Apache Spark的一个处理结构化数据的模块
     
 它提供了一个编程抽象叫做DataFrame并且作为分布式SQL查询引擎的作用
-
 
 #### Spark SQL四大特性
 
@@ -209,6 +208,4 @@ SparkStreaming是以某一时间间隔的批量处理，它的实时性就比较
 - [Get Started with PySpark and Jupyter Notebook in 3 Minutes](https://blog.sicara.com/get-started-pyspark-jupyter-guide-tutorial-ae2fe84f594f)
 - [Dataproc cluster with Datalab and the Google Python Client API](https://codelabs.developers.google.com/codelabs/cpb102-dataproc-with-gcp)
 - [Spark Cheat Sheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PySpark_Cheat_Sheet_Python.pdf)
-
-
-[GitHub - lw-lin/CoolplaySpark: 酷玩 Spark: Spark 源代码解析、Spark 类库等](https://github.com/lw-lin/CoolplaySpark/tree/master)
+- [GitHub - lw-lin/CoolplaySpark: 酷玩 Spark: Spark 源代码解析、Spark 类库等](https://github.com/w-lin/CoolplaySpark/tree/master)

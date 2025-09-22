@@ -86,6 +86,36 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 伪集群模式
 - 集群模式
 
+### 启动zookeeper服务
+
+```shell
+#!/bin/bash
+
+case $1 in
+"start"){
+    for i in bigdata101 bigdata102 bigdata103
+    do
+        echo "------------- $i -------------"
+        ssh $i "/opt/apps/zookeeper/bin/zkServer.sh start"
+    done
+};;
+"stop"){
+    for i in bigdata101 bigdata102 bigdata103
+    do
+        echo "------------- $i -------------"
+        ssh $i "/opt/apps/zookeeper/bin/zkServer.sh stop"
+    done
+};;
+"status"){
+    for i in bigdata101 bigdata102 bigdata103
+    do
+        echo "------------- $i -------------"
+        ssh $i "/opt/apps/zookeeper/bin/zkServer.sh status"
+    done
+};;
+esac
+```
+
 ***
 ## Reference
 

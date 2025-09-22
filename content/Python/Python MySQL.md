@@ -9,7 +9,7 @@ date: 2023-07-12
 draft: false
 ---
 
-![[Python MySQL.png]]
+![[py-mysql.png]]
 
 ## Install MySQL Driver
 

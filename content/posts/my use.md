@@ -1,5 +1,5 @@
 ---
-title: my use
+title: My Use
 tags:
   - note
 date: 2025-06-14
