@@ -40,3 +40,4 @@ Apache Doris采用MySQL协议，支持标准SQL，与MySQL语法高度兼容
 ## Reference
 
 - [Apache Doris - Blog | Latest news and events - Apache Doris](https://doris.apache.org/blog?currentPage=1&currentCategory=All#blog)
+·····

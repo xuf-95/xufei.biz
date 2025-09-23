@@ -33,7 +33,7 @@ mindmap
 
 `数据集成` 是指将异构数据源（不同数据库，系统或者是其他第三方数据源）的数据，通过某种方式整合到一起。从而为数据分析或者其他应用提供统一、准确的数据视图
 
-`时延（Latency）` 是指从源生态生成数据到目标系统可用该数据的时间差。不同的数据处理方法会导致不同程度的数据延迟。延迟高 -> 批处理；延迟低 -> 事件驱动或者实时同步
+
 
 
 ## 02.数据集成发展史
@@ -101,7 +101,7 @@ graph LR
 
 | 技术               | 架构                                               | 特点                                                     |
 | ---------------- | ------------------------------------------------ | ------------------------------------------------------ |
-| [[content/Apache Hadoop/Apache Flume]] | 由source， channel、 sink组成。多个Agent可以组成调用链          | 支持一个Agent中有多个不同类型的channel和sink，可以选择把Source的数据分发给不同的目的地 |
+| [[Apache Flume 1]] | 由source， channel、 sink组成。多个Agent可以组成调用链          | 支持一个Agent中有多个不同类型的channel和sink，可以选择把Source的数据分发给不同的目的地 |
 | LogStash         | 包含input、 Filter、 output组成                        | 灵活性高，支持很多插件                                            |
 | Fluentd          | 包含Input. Parser、 Output、match、 Formatter、 Buffer | fluentd设计简洁，pipeline内数据传递可靠性高。                         |
 | Filebeta         | prospector和 harvesters                           | 没有任何依赖，古用资源极少，可靠性高                                     |

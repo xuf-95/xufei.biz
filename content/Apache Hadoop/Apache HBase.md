@@ -2,9 +2,13 @@
 title: Apache Hbase
 aliases:
   - Hbase
+  - hbase
+  - Hadoop on database
 tags:
+  - bigdata
+  - data-store
+  - hadoop
   - nosql
-  - apache
 date: 2023-06-08
 ---
 ## What is HBase?
@@ -12,7 +16,7 @@ date: 2023-06-08
 >[!info] HBase is a non-relational, distributed database modeled after Google's Bigtable. It provides random, real-time read/write access to large datasets - billions of rows with millions of columns - atop clusters of commodity hardware. Unlike traditional relational databases, HBase is designed for wide tables and prioritizes scalability over features like SQL support, typed columns, or advanced query languages.
 
 
-> Hbase（Hadoop on database）是基于hdfs进行数据的存储，具有高可靠. 高性能. 列存储. 可伸缩. 实时读写的nosql数据库。它可以存储海量数据，并且后期查询性能很多，可以实现上亿条数据的秒级返回。
+> Hbase（[[Apache Hadoop|Hadoop]] on database）是基于[[HDFS]]进行数据的存储，具有高可靠. 高性能. 列存储. 可伸缩. 实时读写的nosql数据库。它可以存储海量数据，并且后期查询性能很多，可以实现上亿条数据的秒级返回。
 
 ### Key characteristics of HBase include:
 

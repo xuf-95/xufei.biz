@@ -31,7 +31,7 @@ I welcome your feedback and encourage contributes to enhance the accuracy of my 
 
 | AREA                                       | INCLUDE                                                                                   |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| [[01 Data Integration Homepage\|Data Integration]]     | [[Apache Kafka]] \| [[Apache DolphinScheduler]] \| [[content/Apache Hadoop/Apache Flume]] \| [[Apache Airflow]] |
+| [[01 Data Integration Homepage\|Data Integration]]     | [[Apache Kafka]] \| [[Apache DolphinScheduler]] \| [[Apache Flume 1]] \| [[Apache Airflow]] |
 | [[01 Data Store Homepage\|Data Store]]                 | [[Relational Database]] \| [[Non-relational Database\|NoSQL]] \| [[Document Database]] \| |
 | [[01 Data Compute HomePage\|Data Compute]]    | [[Apache Flink]] \| [[Apache Spark]] \| [[Apache Hadoop]] \| [[Apache Storm]]             |
 | [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \|                                      |

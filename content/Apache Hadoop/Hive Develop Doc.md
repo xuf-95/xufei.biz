@@ -1,7 +1,9 @@
 ---
-title: Hive Develop Doc.md
+title: Hive Develop Doc
 tags:
-  - apache
+  - bigdata
+  - data-warehouse
+  - hive
 date: 2022-01-15
 draft: false
 ---

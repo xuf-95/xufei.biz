@@ -29,12 +29,12 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#1c1b2e",
+          light: "#020202",
           lightgray: "#2e3140",
           gray: "#4a5e6b",
-          darkgray: "#9bb7c7",
+          darkgray: "#FFF",
           dark: "#bbc7d4",
-          secondary: "#9bc9ac",
+          secondary: "#1CD760", // 9AC9AC
           tertiary: "#4bbfae",
           highlight: "rgba(123, 219, 205, 0.10)",
           textHighlight: "#b3aa0288",
@@ -52,7 +52,7 @@ const config: QuartzConfig = {
           // highlight: 'rgba(143, 159, 169, 0.15)',
           textHighlight: "#ffbe00"   // 柔和的黄橙色，用于文本高亮，增强视觉引导效果#F5C0C0 
         },
-      },
+      }
     },
   },
   plugins: {

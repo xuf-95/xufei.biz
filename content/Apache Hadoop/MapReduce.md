@@ -168,6 +168,7 @@ reduceTask的个数：自己定义的，job.setNumReduceTasks(8)
 
 mr当中的combiner  规约组件：调优用的，在map端对相同key2进行一次聚合，减少发送到reduce端的key2的数据量
 
+
 ## [MapReduce](https://cwiki.apache.org/confluence/display/HADOOP2/MapReduce) algorithm 
 
 - [HadoopMapReduce](https://cwiki.apache.org/confluence/display/HADOOP2/HadoopMapReduce)

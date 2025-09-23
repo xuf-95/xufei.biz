@@ -6,7 +6,6 @@ tags:
   - bigdata
   - data-compute
   - hadoop
-  - apache
 draft: false
 date: 2022-01-24
 ---

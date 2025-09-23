@@ -8,19 +8,32 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 | AREA                                       | INCLUDE                                                                                                                 |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \| [[Flow-Batch Integration ]]  \| [[Lake-DataWarehouse Integration]] |
-| [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache Pulsar]] \| [[content/Apache Hadoop/Apache Flume]] \| [[Apache Airflow]]                                         |
+| [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \| [[Flow-Batch Architecture]] \| [[Lake-DataWarehouse Architecture]] |
+| [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache Pulsar]] \| [[Apache Flume 1]] \| [[Apache Airflow]]                                         |
 | [[01 Data Store Homepage\|Data Store]]     | [[MySQL]] \| [[Apache Hive]] \| [[Apache HBase]] \| [[StarRocks]] \| [[Apache Doris]] \| [[ClickHouse]]                 |
 | Data Compute                               | [[Apache Flink]] \| [[Apache Spark]] \| [[Apache Hadoop]] \| [[Apache Storm]]                                           |
 | [[Data Visual]]                            | [[Data Visual Product & Tools]]                                                                                         |
 | [[数据治理（Data Governance）\|Data Governance]] | [[Apache Atlas]]                                                                                                        |
-| [[Cloud Data Solutions]]                   | [[aliyun cloud]]、[[jingdong cloud]]、[[Micsoft]]a litter aws cloud.                                                      |
+| [[Cloud Data Solutions]]                   | [[aliyun cloud]]、[[jingdong cloud]]、[[Micsoft]] a litter aws cloud.                                                     |
 
 ## Other Contents
 
 - [[AIGC]]: coding third model
 - [[Programming]]: python & java & shell & go 
 - [[Posts]]: some draft & thougts and interesting
+
+## Commits Time Distribution of my wiki
+
+<!-- Copy-paste in your Readme.md file -->
+
+<a href="https://next.ossinsight.io/widgets/official/analyze-repo-commits-time-distribution?repo_id=1001533954&period=last_1_year&zone=0" target="_blank" style="display: block" align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/analyze-repo-commits-time-distribution/thumbnail.png?repo_id=1001533954&period=last_1_year&zone=0&image_size=auto&color_scheme=dark" width="721" height="auto">
+    <img alt="Commits Time Distribution of xuf-95/xufei.biz" src="https://next.ossinsight.io/widgets/official/analyze-repo-commits-time-distribution/thumbnail.png?repo_id=1001533954&period=last_1_year&zone=0&image_size=auto&color_scheme=light" width="721" height="auto">
+  </picture>
+</a>
+
+<!-- Made with [OSS Insight](https://ossinsight.io/) -->
 
 <!-- 
 ***
