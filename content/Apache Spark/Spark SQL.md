@@ -1,5 +1,5 @@
 ---
-title: Spark SQL Architecture
+title: Spark SQL
 tags:
   - spark-sql
   - Spark
