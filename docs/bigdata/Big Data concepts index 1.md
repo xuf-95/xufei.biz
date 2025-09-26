@@ -20,7 +20,7 @@ draft: true
 >
 >>  [!ev]+  Data Pipeline Concepts
 >> 
->> - [[CDC（Change Data Capture）]]
+>> - [[CDC(Change Data Capture)]]
 >> - [[Delta Load]]
 >> - [[Full Load]]
 >> - [[Stream Data Processing]]

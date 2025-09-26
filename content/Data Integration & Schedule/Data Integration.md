@@ -61,7 +61,7 @@ graph LR
 - 准实时：处理时间极短，毫秒级
 - 实时：来一条处理一条，时间极低
 - 流数据：手机短视频播放
-- 增量同步：数据增量捕获 [[CDC（Change Data Capture）]]
+- 增量同步：数据增量捕获 [[CDC(Change Data Capture)]]
 - 物理集成 & 虚拟集成
 - [[ETL & ELT]]
 - Push & Pull & Publish/Subscribe

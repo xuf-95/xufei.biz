@@ -58,7 +58,7 @@ I welcome your feedback and encourage contributes to enhance the accuracy of my 
 >
 >> [!objectif] Big Data Concepts
 >>- [[CAP（CAP theorem）]]
->>- [[CDC（Change Data Capture）]]
+>>- [[CDC(Change Data Capture)]]
 >>- [[DFD（Data Flow Diagrams)]]
 >>- [[MQ（Message Queue）]]
 >>- [[RUP（Relation Unified Process）]]

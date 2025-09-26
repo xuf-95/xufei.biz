@@ -32,7 +32,7 @@ views:
       - property: tag
         direction: DESC
     columnSize:
-      file.name: 186
+      file.name: 225
       note.title: 191
       note.date: 127
       file.ctime: 183

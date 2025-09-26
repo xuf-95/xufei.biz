@@ -2,7 +2,7 @@
 title: Column-oriented Storage 
 aliases:
   - 列示存储
-  - col-store
+  - col-storage
 tags:
   - olap
   - data-warehouse

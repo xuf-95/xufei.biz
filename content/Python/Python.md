@@ -35,9 +35,11 @@ draft: true
 ## Resource
 
 - [GitHub - gto76/python-cheatsheet  Comprehensive Python Cheatsheet](https //github.com/gto76/python-cheatsheet)
+- [Scripton Python IDE](https://scripton.dev/)   built-in visualizations, UIs, and interactive execution to regular `.py` scripts
 
 ## Reference
 
 - [GitHub - vinta/awesome-python](https://github.com/vinta/awesome-python)
 - [Full Stack Python](https //www.fullstackpython.com/)
 - [Python Tutorials – Real Python](https://realpython.com/)
+

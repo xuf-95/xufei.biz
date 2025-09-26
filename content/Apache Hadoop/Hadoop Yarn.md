@@ -6,17 +6,23 @@ tags:
   - apache
 date: 2022-01-25
 draft: false
+description: Yet Another Resource Negotiator
 ---
 
-### Yarn资源调度器简介
+## Yarn Overwrite 
 
-> yarn是hadoop2.x当中新出来的架构模块
-> hadop2.x当中，将我们mapreduce的模块取代了，变成了yarn的资源调度; mr模块还是保留，运行在yarn上面。由yarn集群来统一的管理分配资源
+> [!info]
+> YARN 是 Yet Another Resource Negotiator（另一个资源管理器）的缩写，可充当 Hadoop 堆栈的集群协调组件。该组件负责协调并管理底层资源和调度作业的运行。通过充当集群资源的接口，YARN 使得用户能在 Hadoop 集群中使用比以往的迭代方式运行更多类型的工作负载
+
+
+
+> Yarn是hadoop2.x当中新出来的架构模块
+> hadop2.x当中，将我们[[MapReduce]]的模块取代了，变成了yarn的资源调度; mr模块还是保留，运行在yarn上面。由yarn集群来统一的管理分配资源
 
 资源调度器是Yarn中最核心的组件之一，他是ResourceManager中的一个可插拔的服务组件，负责整个集群的管理和分配。目前Yarn中的作业类型:
 
   - 批处理作业,这种作业比较耗时，对时间的完成没有严格要求，如数据挖掘和机器学习等;
-  - 交互式作业，这种作业一半希望能够及时的返回结果，例如：hive的sql查询;
+  - 交互式作业，这种作业一半希望能够及时的返回结果，例如：HiveSQL 查询;
   - 生产性作业:这种作业要求有一定量的资源保证，如统计值计算,垃圾数据分析等;
 
 > 为了满足多用户多队列的资源分配问题以及Yarn自带的FIFO(先进先出资源调度器)单队列的问题，又引入了Yahoo的Capacity Scheduler和FaceBook的Fair Scheduler

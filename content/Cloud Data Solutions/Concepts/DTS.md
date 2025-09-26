@@ -27,7 +27,7 @@ DTS：数据传输服务（Data Transmission Service）
 
 ### 数据迁移原理
 
-![[dts.png]]
+![[public/Data-Integration/images/dts.png]]
 
 
 ### Reference
