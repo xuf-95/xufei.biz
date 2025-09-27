@@ -12,11 +12,13 @@ draft: true
 ---
 
 ## What is Apache Spark?
+
 Apache Spark is a powerful unified analytics engine for large-scale distributed data processing. It provides high-level APIs in Java, Scala, Python, and R, and includes libraries for SQL, streaming, machine learning, and graph processing. Spark can run on Hadoop, standalone, or in the cloud, and can access diverse data sources.
 
 Apache Spark is a powerful unified analytics engine for big data processing, with components for SQL, streaming, machine learning, and graph processing. Its high-level APIs in multiple languages make it accessible for developers, while its optimized execution engine provides performance for large-scale processing. Spark's architecture balances ease of use with high performance, making it suitable for a wide range of data processing applications.
 
-### Key features include:
+### Key features include
+
 - Fast in-memory computation
 - Support for diverse workloads (batch, interactive, streaming, ML)
 - Unified programming model across languages

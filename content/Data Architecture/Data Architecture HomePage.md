@@ -60,6 +60,14 @@ draft: false
 - 使用 map 或 [[Apache Spark|Spark]] 数据处理技术
 - 使用 [[Apache Kafka|Kafka]] 数据传输消息队列及二进制格式
 
+- **Batch-only frameworks:** 基于分布式文件系统
+    - [[Apache Hadoop]]
+- **Stream-only frameworks:**
+    - [[Apache Storm]]
+    - [Apache Samza](https://samza.apache.org) 
+- **Hybrid frameworks:**
+    - [[Apache Spark]]
+    - [[Apache Flink]]
 ## 典型的大数据架构 
 
 ### [[Lambda Architecture]]
@@ -114,3 +122,4 @@ C --> D
 - [Questioning the Lambda Architecture – O’Reilly](https://www.oreilly.com/radar/questioning-the-lambda-architecture/)
 - [aws](https://aws.amazon.com/cn/what-is/data-architecture/) what's architecture?
 - [企业架构设计方法与实践](https://tonydeng.github.io/EA-practices/tech-arch/index.html)
+- [Hadoop, Storm, Samza, Spark, and Flink: Big Data Frameworks Compared \| DigitalOcean](https://www.digitalocean.com/community/tutorials/hadoop-storm-samza-spark-and-flink-big-data-frameworks-compared#conclusion)
