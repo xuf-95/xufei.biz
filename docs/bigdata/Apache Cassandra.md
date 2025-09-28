@@ -2,11 +2,9 @@
 aliases:
   - cassandra
 tags:
-  - bigdata
   - data-store
   - apache
   - nosql
-  - database
 date: 2023-04-21
 draft: true
 ---

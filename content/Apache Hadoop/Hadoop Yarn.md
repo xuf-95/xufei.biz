@@ -1,9 +1,8 @@
 ---
 title: Hadoop Yarn
 tags:
-  - bigdata
   - hadoop
-  - apache
+  - data-architecture
 date: 2022-01-25
 draft: false
 description: Yet Another Resource Negotiator

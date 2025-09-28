@@ -2,7 +2,8 @@
 title: Storm
 tags:
   - bigdata
-  - datastore
+  - data-compute
+  - hadoop
 draft: false
 date: 2024-07-24
 ---

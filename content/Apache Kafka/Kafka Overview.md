@@ -4,8 +4,7 @@ aliases:
   - Kafka
   - 卡夫卡
 tags:
-  - data-integration
-  - mq
+  - Overview
 date: 2023-10-04
 ---
 ### 定义

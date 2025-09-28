@@ -8,7 +8,6 @@ title: Data Store Homepage
 tags:
   - bigdata
   - database
-  - sec-index
 date: 2022-12-02
 draft: false
 ---

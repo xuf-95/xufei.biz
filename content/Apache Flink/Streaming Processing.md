@@ -1,7 +1,6 @@
 ---
 title: Streaming Processing
 tags:
-  - bigdata
   - data-compute
   - flink
 date: 2022-01-25

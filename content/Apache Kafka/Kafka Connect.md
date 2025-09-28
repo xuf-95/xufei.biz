@@ -3,6 +3,7 @@ title: Kafka Connect
 tags:
   - kafka
   - dataflow
+  - connect
 date: 2024-01-29
 draft: false
 ---

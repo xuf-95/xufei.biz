@@ -5,9 +5,8 @@ aliases:
   - hbase
   - Hadoop on database
 tags:
-  - bigdata
-  - data-store
   - hadoop
+  - database
   - nosql
 date: 2023-06-08
 ---

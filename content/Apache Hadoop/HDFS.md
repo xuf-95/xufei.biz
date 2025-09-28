@@ -1,10 +1,10 @@
 ---
 title: HDFS
 tags:
-  - bigdata
-  - datastore
   - hadoop
-  - apache
+  - database
+  - distribute
+  - file-system
 date: 2022-01-25
 draft: false
 ---

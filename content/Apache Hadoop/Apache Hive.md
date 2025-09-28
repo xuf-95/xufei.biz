@@ -2,9 +2,9 @@
 aliases:
   - hive
 tags:
-  - apache
-  - opensource
-  - tools
+  - hadoop
+  - database
+  - offline-compute
 date: 2022-01-14
 draft: false
 ---

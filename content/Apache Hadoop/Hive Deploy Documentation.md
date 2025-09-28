@@ -1,7 +1,9 @@
 ---
 title: Hive Deploy Documentation
 tags:
-  - hive
+  - hadoop
+  - database
+  - deploy
 date: 2022-01-22
 draft: false
 ---

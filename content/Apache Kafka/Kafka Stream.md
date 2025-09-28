@@ -1,7 +1,6 @@
 ---
 title: Kafka Stream
 tags:
-  - kafka
   - streaming
   - dataflow
 date: 2024-01-29

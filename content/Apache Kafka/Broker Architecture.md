@@ -1,7 +1,8 @@
 ---
 title: Broker Architecture
 tags:
-  - kafka
+  - mq
+  - distribute
 date: 2024-01-25
 draft: false
 ---

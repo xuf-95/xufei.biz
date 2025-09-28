@@ -3,9 +3,7 @@ title: Apache Flink
 aliases:
   - Flink
 tags:
-  - bigdata
   - data-compute
-  - apache
 date: 2023-06-07
 draft: false
 ---

@@ -1,11 +1,8 @@
 ---
 title: Flink Table API and SQL
 tags:
-  - bigdata
-  - datastore
   - flink
   - sql
-  - demo
 date: 2024-02-11
 draft: false
 ---
