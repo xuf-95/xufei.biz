@@ -63,22 +63,22 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 
 **事务处理 OLTP**
 
-![[Apache Flink OLTP.png]]
+![[./images/Apache Flink OLTP.png]]
 
 - 分析处理 OLAP ： 将数据从业务数据库复制到数仓，再进行分析和查
-![[olap.png]]
+![[./images/olap.png]]
 
 - [[Lambda Architecture]] :  用两套系统，同时保证低延迟和结果准确
 
 - 有状态的流式处理流程
-![[Apache Flink-4.png]]
+![[./images/Apache Flink-4.png]]
 - 本质 : 事件驱动（Event-driven）
 
-![[Pasted image 20241007221844.png]]
+![[./images/Pasted image 20241007221844.png]]
 
 - 基于流的世界观 : 一切都是由流组成的，离线数据是有界的流；实时数据是一个没有界限的流：这就是所谓的有界流和无界流
 
-![[Pasted image 20241007221904.png]]
+![[./images/Pasted image 20241007221904.png]]
 
 - Flink 分层API
 ![[Apache Flink Layer API.png| Flink 分层API]]
@@ -150,6 +150,20 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 #### 任务链
 ![[Pasted image 20241007222219.png]]
 
+### 任务执行配置
+
+Flink执行环境包括批处理和流处理两种情况，在1.12版本已经实现了流批的统一，默认执行模式为Streaming，可修改配置为Batch，在提交作业时候，设置的参数为：`execution.runtime-mode`
+
+```shell
+$ bin/flink run -Dexecution.runtime-mode=BATCH examples/streaming/WordCount.jar
+```
+
+代码中实现的方式
+
+```java
+StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+env.setRuntimeMode(RuntimeMode.BATCH);
+```
 ## DataSteam API
 
 - 流处理 API
