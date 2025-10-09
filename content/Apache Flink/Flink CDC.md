@@ -57,10 +57,10 @@ graph LR
 ![[flinkcdc-etl.png]]
 
 ### 基于Flink CDC 的数据打宽
-![[Pasted image 20241007224631.png]]
+![[flink-etl-sql.png]]
 
 ### 基于Flink CDC 的聚合分析
-![[Pasted image 20241007224641.png]]
+![[flink-cdc.png]]
 
 ### CDC设计实现
 - Chunk切分
@@ -69,7 +69,7 @@ graph LR
 - Chunk汇报
 - Chunk分配
 
-![[Pasted image 20241007224753.png]]
+![[flink-reader-binlog.png]]
 
 ### flink 开启CDC功能
 ```shell

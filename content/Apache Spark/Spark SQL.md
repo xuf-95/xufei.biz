@@ -12,7 +12,7 @@ Spark SQL is the module within Apache Spark that provides structured data proces
 
 Spark SQL's architecture consists of several key components that work together to process structured data:
 
-![[Core Components of Spark SQL.png]]
+![[sparksql-core-components.png]]
 
 ## SQL Parsing
 

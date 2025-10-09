@@ -11,7 +11,7 @@ draft: false
 
 A Kafka broker is a server process that handles client requests, stores and replicates messages, and participates in cluster coordination. Each broker runs a set of core components, each implemented as a class or subsystem in the codebase.
 
-![[Broker Architecture.png]]__***High-Level Broker Component Diagram***__
+![[kafka-broker-architecture.png]]__***High-Level Broker Component Diagram***__
 
 Key code entities:
 

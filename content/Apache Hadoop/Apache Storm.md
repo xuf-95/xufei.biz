@@ -7,7 +7,7 @@ tags:
 draft: false
 date: 2024-07-24
 ---
-![[Apache Storm.png]]
+![[storm-logo.png]]
 
 ### Why use Apache Storm?
 
@@ -21,7 +21,7 @@ Apache Storm integrates with the queueing and database technologies you already 
 
 A stream grouping tells a topology how to send tuples between two components. Remember, spouts and bolts execute in parallel as many tasks across the cluster. If you look at how a topology is executing at the task level, it looks something like this
 
-![[Apache Storm 1.png]]
+![[storm-datamodel.png]]
 
 
 ***

@@ -19,7 +19,7 @@ draft: false
 - 发布/订阅模式的分布式数据管理与协调框架
 
 ##  架构
-![[ZooKeeper 1.png]]
+![[zk-architecture.png]]
 ### Leader
 
 - 事务请求的唯一调度和处理者，保证集群事务处理的顺序性
@@ -60,7 +60,7 @@ draft: false
 #### 集群Down机后选举
 
 ## 数据模型
-![[ZooKeeper 2.png]]
+![[zk-datamodel.png]]
 ## 应用场景
 
 - 数据发布/订阅

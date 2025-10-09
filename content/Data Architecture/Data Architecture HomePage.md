@@ -100,7 +100,7 @@ C --> D
 
 ### [[Kappa Architecture]]
 
-![[Kappa Architecture.png]]
+![[content/Data Architecture/images/kappa-architecture.png]]
 ### [[Data Lake]]
 
 ### [[01 Data Store Homepage|Data Store]]
