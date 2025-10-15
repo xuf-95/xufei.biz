@@ -8,9 +8,9 @@ date: 2022-01-26
 draft: false
 ---
 > [!info] MapReduce 下文简称：MR
->  [[Apache Hadoop|Hadoop]] MR是Google MR的开源实现；同理Google的MR运行在GFS上，Hadoop MR运行在[[HDFS]]上
+>  [[Apache Hadoop|Hadoop]] MR是Google [MapReduce](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)的开源实现；同理Google的MR运行在GFS上，Hadoop MR运行在[[HDFS]] 上
 
-MR的处理流程包括两个步骤：Map和Reduce。Map步骤会将输入的数据进行处理，转换成键值对的形式；Reduce步骤会对Map处理后的键值对进行归并和汇总。MR通过分布式处理大量数据，可以显著提高数据处理效率。
+MR的处理流程包括两个步骤：Map和Reduce。Map步骤会将输入的数据进行处理，转换成键值对的形式；Reduce步骤会对Map处理后的键值对进行归并和汇总。MR通过分布式处理大量数据，可以显著提高数据处理效率
 
 **MR的优点包括**
 
@@ -20,9 +20,9 @@ MR的处理流程包括两个步骤：Map和Reduce。Map步骤会将输入的数
 
 **MR的缺点包括**
 
-- 代码复杂：编写MR程序需要一定的编程技巧，代码较为复杂。
-- 低效性：MR在处理小规模数据时效率较低，因为它需要启动很多进程来处理数据。
-- 实时性差：MR不适用于实时数据处理，因为数据处理需要多个步骤和较长的处理时间。
+- 代码复杂：编写MR程序需要一定的编程技巧，代码较为复杂
+- 低效性：MR在处理小规模数据时效率较低，因为它需要启动很多进程来处理数据
+- 实时性差：MR不适用于实时数据处理，因为数据处理需要多个步骤和较长的处理时间
 
 ## MR 整个执行流程
 
