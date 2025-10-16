@@ -127,18 +127,7 @@ alter table  INDEX_PARAMS  modify column PARAM_VALUE  varchar(4000) character se
 
 > [Configuring Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Configuration)
 
-## Hive UDF
 
-**函数类型**
-
-- 用户名脱敏: 李佳奇 -> 乐勒蹲
-- 证件号脱敏
-- 通信地址: 奇数转为X : 上海市浦东新区经济开发区 -> 上X市浦X新X经X开X区
-- 通讯号码: 后六位转换
-- Email地址: 统一指定邮箱 bianxing@bian.xing
-- IP: 取模实现
-- DNS: 取模实现
-- 密钥: 统一编写 "8888888"
 
 
 ## Resources
