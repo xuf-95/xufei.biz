@@ -33,3 +33,6 @@ draft: true
 #### Terminal
 - Iterm2
 - Warp
+
+
+- [Keychron K6 蓝牙机械键盘用户手册](https://manuals.plus/zh-CN/keychron/k6-bluetooth-mechanical-keyboard-manual)

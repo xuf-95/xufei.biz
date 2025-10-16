@@ -75,9 +75,28 @@ ORDER BY timestamp
 ALTER TABLE [<database>.]<table> UPDATE <column> = <expression> WHERE <filter_expr>
 ```
 
-> ALTER TABLE website.clicks
+```sql
+ALTER TABLE website.clicks
 UPDATE visitor_id = getDict('visitors', 'new_visitor_id', visitor_id)
 WHERE visit_date < '2022-01-01'
+```
+
+> [!note] 
+> ALTER TABLE [db.]table [ON CLUSTER cluster] DELETE WHERE filter_expr
+> 
+### Sync Delele Status
+
+```sql
+SELECT
+	database,
+	table,
+	command,
+	is_done,
+	create_time,
+	now() - create_time as running_time
+	FROM system.mutations
+WHERE database = '${database_name}' AND table = '${table_name}';
+```
 
 ## Integrating MySQL with ClickHouse
 
