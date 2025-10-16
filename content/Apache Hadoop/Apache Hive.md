@@ -73,6 +73,23 @@ mindmap
 分区是一个优化的手段，目的是**减少全表扫描**，提高查询效率
 ### 分桶
 
+### Hive 数据类型
+
+| 大类                          | 类型                                                                                    |
+| :-------------------------- | :------------------------------------------------------------------------------------ |
+| Integers（整型）                | TINYINT：1字节的有符号整数；  <br>SMALLINT：2字节的有符号整数；  <br>INT：4字节的有符号整数；  <br>BIGINT：8字节的有符号整数 |
+| Boolean（布尔型）                | BOOLEAN：TRUE/FALSE                                                                    |
+| Floating point numbers（浮点型） | FLOAT：单精度浮点型；  <br>DOUBLE：双精度浮点型                                                      |
+| Fixed point numbers（定点数）    | DECIMAL：用户自定义精度定点数，比如 DECIMAL(7,2)                                                    |
+| String types（字符串）           | STRING：指定字符集的字符序列；  <br>VARCHAR：具有最大长度限制的字符序列；  <br>CHAR：固定长度的字符序列                    |
+| Date and time types（日期时间类型） | TIMESTAMP：时间戳；  <br>TIMESTAMP WITH LOCAL TIME ZONE：时间戳，纳秒精度；  <br>DATE：日期类型           |
+| Binary types（二进制类型）         | BINARY：字节序列                                                                           |
+|                             |                                                                                       |
+> [!info] 注：`TIMESTAMP`和`TIMESTAMP WITH LOCAL TIME ZONE`的区别如下：
+> - **TIMESTAMP WITH LOCAL TIME ZONE**：用户提交`TIMESTAMP`给数据库时，会被转换成数据库所在的时区来保存。查询时，则按照查询客户端的不同，转换为查询客户端所在时区的时间
+> - **TIMESTAMP** ：提交的时间按照原始时间保存，查询时，也不做任何转换
+
+
 
 ## Hive Relateion
 
