@@ -73,7 +73,7 @@ mindmap
 分区是一个优化的手段，目的是**减少全表扫描**，提高查询效率
 ### 分桶
 
-### Hive 数据类型
+### Hive 基本数据类型
 
 | 大类                          | 类型                                                                                    |
 | :-------------------------- | :------------------------------------------------------------------------------------ |
@@ -89,8 +89,23 @@ mindmap
 > - **TIMESTAMP WITH LOCAL TIME ZONE**：用户提交`TIMESTAMP`给数据库时，会被转换成数据库所在的时区来保存。查询时，则按照查询客户端的不同，转换为查询客户端所在时区的时间
 > - **TIMESTAMP** ：提交的时间按照原始时间保存，查询时，也不做任何转换
 
+### 复杂数据类型
 
+|类型|描述|示例|
+|---|---|---|
+|STRUCT|类似于对象，是字段的集合，字段的类型可以不同，可以使用`名称.字段名`方式进行访问|STRUCT('xiaoming', 12 , '2018-12-12')|
+|MAP|键值对的集合，可以使用`名称[key]`的方式访问对应的值|map('a', 1, 'b', 2)|
+|ARRAY|数组是一组具有相同类型和名称的变量的集合，可以使用`名称[index]`访问对应的值|ARRAY('a', 'b', 'c', 'd')|
 
+```sql
+CREATE TABLE students( 
+	name STRING, -- 姓名 
+	age INT, -- 年龄 
+	subject ARRAY<STRING>, -- 学科 
+	score MAP<STRING,FLOAT>, -- 各个学科考试成绩 
+	address STRUCT<houseNumber:int, street:STRING, city:STRING, province:STRING> -- 家庭居住地址 
+	) ROW FORMAT DELIMITED FIELDS TERMINATED BY "\t";
+```
 ## Hive Relateion
 
 ### Hive Integration
