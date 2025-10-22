@@ -127,10 +127,36 @@ alter table  INDEX_PARAMS  modify column PARAM_VALUE  varchar(4000) character se
 
 > [Configuring Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Configuration)
 
+## **运维**
+
+#### 元数据管理
+
+- Hive Metastore 建议使用 MySQL/PostgreSQL
+- 定期备份 Metastore 数据库
+- 与 Apache Atlas / Data Catalog 整合实现血缘与权限管理
+#### 作业调度与监控
+
+- 使用 Airflow / Azkaban / Oozie 调度 Hive SQL
+- 建立任务 SLA、自动重试、报警机制
+- HiveServer2 可配合 Prometheus + Grafana 监控连接数、延迟、查询耗时
 
 
+#### **数据安全与访问控制**
 
-## Resources
+- 启用 Ranger 或 Sentry 管理权限
+- 支持行列级访问控制与审计日志
+- HiveServer2 支持 Kerberos + LDAP 认证
+
+#### **常见故障排查**
+
+| **问题** | **原因**          | **解决方式**         |
+| ------ | --------------- | ---------------- |
+| 查询慢    | 缺乏统计信息          | 执行 ANALYZE TABLE |
+| 元数据异常  | Metastore DB 异常 | 检查 Hive 服务和数据库连接 |
+| 小文件过多  | 数据倾斜            | 合并小文件或增加 reducer |
+
+
+## Reference
 
 - [Installing Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Installation)
 - [Setting Up Metastore](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Metastore+Administration) [Hive Schema Tool](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool)

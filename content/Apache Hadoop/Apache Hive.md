@@ -60,18 +60,23 @@ mindmap
 | 分区   | 目录   |                                                                                                |
 | 数据   | 文件   |                                                                                                |
 | 分桶   | 文件   | 分桶是针对数据文件本身进行拆分，根据表中字段（例如，编号ID）的值，经过`hash`计算规则，将数据文件划分成指定的若干个小文件；分桶的优点是**优化join查询**和**方便抽样查询** |
-| 视图   | /    |                                                                                                |
+| 视图   |  -   |                                                                                                |
+|      |      |                                                                                                |
 ### 内/外部表
 
-| 对比内容   | 内部表                                                                                                           | 外部表                                         |
-| :----- | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------ |
-| 数据存储位置 | 内部表数据存储的位置由`hive.Metastore.warehouse.dir`参数指定，  <br>默认情况下，表的数据存储在`HDFS`的`/user/hive/warehouse/数据库名.db/表名/`目录下 | 外部表数据的存储位置创建表时由`Location`参数指定               |
-| 导入数据   | 在导入数据到内部表，内部表将数据移动到自己的数据仓库目录下，  <br>数据的生命周期由`Hive`来进行管理                                                       | 外部表不会将数据移动到自己的数据仓库目录下，  <br>只是在元数据中存储了数据的位置 |
-| 删除表    | 删除元数据（metadata）和文件                                                                                            | 只删除元数据（metadata）                            |
+| 对比内容     | 内部表                                                                                                           | 外部表                                         |     |
+| :------- | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------ | --- |
+| 数据存储位置   | 内部表数据存储的位置由`hive.Metastore.warehouse.dir`参数指定，  <br>默认情况下，表的数据存储在`HDFS`的`/user/hive/warehouse/数据库名.db/表名/`目录下 | 外部表数据的存储位置创建表时由`Location`参数指定               |     |
+| 导入数据     | 在导入数据到内部表，内部表将数据移动到自己的数据仓库目录下，  <br>数据的生命周期由`Hive`来进行管理                                                       | 外部表不会将数据移动到自己的数据仓库目录下，  <br>只是在元数据中存储了数据的位置 |     |
+| 删除表      | 只删除元数据（metadata）                                                                                              | 删除元数据（metadata）和文件                          |     |
+| **使用场景** |                                                                                                               | 与 HDFS 外部文件关联                               |     |
+|          |                                                                                                               |                                             |     |
 ### 分区
 
 分区是一个优化的手段，目的是**减少全表扫描**，提高查询效率
 ### 分桶
+
+用于 Join 优化，适合采样分析
 
 ### Hive 基本数据类型
 
@@ -91,11 +96,12 @@ mindmap
 
 ### 复杂数据类型
 
-|类型|描述|示例|
-|---|---|---|
-|STRUCT|类似于对象，是字段的集合，字段的类型可以不同，可以使用`名称.字段名`方式进行访问|STRUCT('xiaoming', 12 , '2018-12-12')|
-|MAP|键值对的集合，可以使用`名称[key]`的方式访问对应的值|map('a', 1, 'b', 2)|
-|ARRAY|数组是一组具有相同类型和名称的变量的集合，可以使用`名称[index]`访问对应的值|ARRAY('a', 'b', 'c', 'd')|
+| 类型     | 描述                                         | 示例                                    |
+| ------ | ------------------------------------------ | ------------------------------------- |
+| STRUCT | 类似于对象，是字段的集合，字段的类型可以不同，可以使用`名称.字段名`方式进行访问  | STRUCT('xiaoming', 12 , '2018-12-12') |
+| MAP    | 键值对的集合，可以使用`名称[key]`的方式访问对应的值              | map('a', 1, 'b', 2)                   |
+| ARRAY  | 数组是一组具有相同类型和名称的变量的集合，可以使用`名称[index]`访问对应的值 | ARRAY('a', 'b', 'c', 'd')             |
+|        |                                            |                                       |
 
 ```sql
 CREATE TABLE students( 
@@ -103,10 +109,31 @@ CREATE TABLE students(
 	age INT, -- 年龄 
 	subject ARRAY<STRING>, -- 学科 
 	score MAP<STRING,FLOAT>, -- 各个学科考试成绩 
-	address STRUCT<houseNumber:int, street:STRING, city:STRING, province:STRING> -- 家庭居住地址 
+	address STRUCT<houseNumber:int, street:STRING, city:STRING, 
+	province:STRING> -- 家庭居住地址 
 	) ROW FORMAT DELIMITED FIELDS TERMINATED BY "\t";
 ```
+
+### 数据类型的转化
+
+Hive的原子数据类型是可以进行隐式转换的 
+- 小 -> 大 ：但是Hive不会进行反向转化
+- STRING 隐式转换成 DOUBLE
+- BOOLEAN 类型不可以转换为任何其它的类型
+
+```sql
+cast ( 值 as 数据类型 ） :   cast（ '1'  as  int)
+
+select  cast('100000000000000000000' as tinyint);  >> null
+select  cast(100000000000000000000 as tinyint);  >> -1
+select 'dd' + 1 ;      >> null
+select '1' + 1 ;       >> 2.0
+select  cast('1' as int) + 1;  >> 2  
+```
+
 ## Hive Relateion
+
+
 
 ### Hive Integration
 
@@ -129,7 +156,7 @@ CREATE TABLE students(
 - [Hive on Amazon Web Services](https://cwiki.apache.org/confluence/display/Hive/HiveAws)
 
 
-## Resources
+## Reference
 
 - [Hive Tutorial](https://cwiki.apache.org/confluence/display/Hive/Tutorial)
 - [Hive SQL Language Manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual):  [Commands](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Commands), [CLIs](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli), [Data Types](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Types),  

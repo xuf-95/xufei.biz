@@ -7,29 +7,6 @@ tags:
 date: 2022-01-15
 draft: false
 ---
-## Hive Data Type
-
-##### 基本数据类型
-
-##### 集合数据类型
-
-##### 数据类型的转化
-
-Hive的原子数据类型是可以进行隐式转换的 
-- 小 -> 大 ：但是Hive不会进行反向转化
-- STRING 隐式转换成 DOUBLE
-- BOOLEAN 类型不可以转换为任何其它的类型
-
-```sql
-cast ( 值 as 数据类型 ） :   cast（ '1'  as  int)
-
-select  cast('100000000000000000000' as tinyint);  >> null
-select  cast(100000000000000000000 as tinyint);  >> -1
-select 'dd' + 1 ;      >> null
-select '1' + 1 ;       >> 2.0
-select  cast('1' as int) + 1;  >> 2  
-```
-
 ## DDL Defined
 
 ### Database Operation 
@@ -59,12 +36,6 @@ drop database 数据库名 cascade;
 ```
 
 ### Table Operation
-
-**表的类型**
-
-- 内部表：删除表的时候，内部表的元数据和真实数据会被一起删除
-    
-- 外部表 **( 常用 )**：删除表的时候，只删除元数据，不删除真实数据
 
 ```sql
 # 展示库中所有的表
@@ -96,6 +67,11 @@ CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name   -- EXTERANL: 外部表
 [TBLPROPERTIES (property_name=property_value, ...)] -- 指定表的属性
 [AS select_statement] -- 基于某个查询建表
 ```
+
+> [!note] Data Type Standard
+> 优先使用定长类型（如 INT, BIGINT），避免滥用 STRING
+> 可使用 DECIMAL(p, s) 代替浮点类型以防止精度损失
+
 
 **管理表（内部表 Table_Type : managed_table）**
 
@@ -142,6 +118,10 @@ alter table 表名 set tblproperties('EXTERNAL'='FALSE');
 ```
 
 **修改表**
+
+>[!warning]
+>内部表：删除表的时候，内部表的元数据和真实数据会被一起删除
+> 外部表 **( 常用 )**：删除表的时候，只删除元数据，不删除真实数据
 
 ```sql
 alter table 旧表名 rename to 新表名 ;     -- 修改表名
@@ -276,6 +256,14 @@ import table mydb.student2 from '/student';
 
 ## DQL QUERY
 
+> [!note] 
+> - 统一使用小写关键字，便于版本兼容
+> - 避免使用 SELECT *，明确列名
+> - WHERE 子句中禁止复杂函数计算（会导致全表扫描）
+> - JOIN 顺序建议小表在前，大表在后
+> - 推荐显式使用 **CBO（Cost-Based Optimizer）**
+
+
 ```mermaid
 graph LR
     A[from] --> B[join on]
@@ -303,19 +291,42 @@ SELECT [ALL | DISTINCT] select_expr, select_expr, ...
  [LIMIT number]               -- 分页[显示多少行]
 ```
 
+### **常用内置函数汇总**
+
+#### **字符串函数**
+
+| **函数**                          | **示例** | **说明** |
+| ------------------------------- | ------ | ------ |
+| concat(str1, str2, ...)         | 拼接字符串  |        |
+| substr(str, start, len)         | 截取子串   |        |
+| split(str, regex)               | 分割字符串  |        |
+| regexp_replace(str, regex, rep) | 正则替换   |        |
+| upper(str) / lower(str)         | 大小写转换  |        |
+
+#### **日期与时间函数**
+
+| **函数**                 | **示例** | **说明** |
+| ---------------------- | ------ | ------ |
+| current_date()         | 当前日期   |        |
+| unix_timestamp()       | 当前时间戳  |        |
+| from_unixtime(ts, fmt) | 时间戳转日期 |        |
+| date_add(date, n)      | 日期加减   |        |
+| datediff(end, start)   | 日期差    |        |
+#### **聚合函数**
+
+| **函数**              | **示例**  | **说明** |
+| ------------------- | ------- | ------ |
+| count(col)          | 计数      |        |
+| sum(col)            | 求和      |        |
+| avg(col)            | 平均值     |        |
+| max(col) / min(col) | 最大最小值   |        |
+| collect_set(col)    | 去重聚合为数组 |        |
+####  **窗口函数（Hive 2.1+ 支持完整 ANSI SQL）**
 
 ```sql
--- 列别名,表别名
-
-select 1+1;
-
-select 1+1 value1;
-
-select 1+1 as value2;
-
-select 1+1 `1+1的值`;
-
-# select 'name' vv ; ≠  select 'name' 'vv' ;
+SELECT user_id,
+       sum(amount) OVER (PARTITION BY user_id ORDER BY dt ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS week_amount
+FROM orders;
 ```
 
 ```sql
@@ -334,12 +345,31 @@ select * from emp limit 2,4;		-- 从第3行开始取4行，从第3行到第6行
 select * from emp limit 2,-1;		-- 从第3行取到末尾
 ```
 
-  LIKE AND RLIKE
+ 
+### GROUP BY
+
+> group by 通常和聚合函数一起使用 【多进一出】,having 对分组结果的过滤
+
+```sql
+-- 求每个部门每个工种的最大工资
+select
+t.deptno,
+t.job,
+max(t.sal) max_sal			   -- 此列别名为max_sal
+from mydb.emp t				    -- 表别名为t
+group by t.deptno, t.job;     -- 代码美化
+```
+
+>[!note] having 与 where 不同点
+	- where 后面不能写分组函数，而 having 后面可以使用分组函数
+	- having 只用于 group by 分组统计语句
+	- 分组之前用where 分组之后用having
+
+### LIKE AND RLIKE
 
 - LIKE：使用LIKE运算选择类似的值；选择条件可以包含字符或数字
 	- % : 代表零个或多个字符(任意个字符)
 	- _ : 代表一个字符
-  
 - RLIKE子句：是Hive中这个功能的一个扩展，其可以通过 'Java的正则表达式' 这个更强大的语言来指定匹配条件
 
 ```sql
@@ -354,28 +384,9 @@ select * from emp limit 2,-1;		-- 从第3行取到末尾
   select * from emp where ename rlike '[S]';
 ```
 
-GROUP BY
+### Sort
 
-> group by 通常和聚合函数一起使用 【多进一出】,having 对分组结果的过滤
-
-```sql
--- 求每个部门每个工种的最大工资
-select
-t.deptno,
-t.job,
-max(t.sal) max_sal			   -- 此列别名为max_sal
-from mydb.emp t				    -- 表别名为t
-group by t.deptno, t.job;     -- 代码美化
-
-
-having 与 where 不同点
-	1、where 后面不能写分组函数，而 having 后面可以使用分组函数。
-	2、having 只用于 group by 分组统计语句
-	3、分组之前用where 分组之后用having
-```
-## Sort
-
-### ORDER BY
+#### ORDER BY
 
 > [!summary] 全局排序 order by  ，只有一个Reducer
 
@@ -387,7 +398,7 @@ select ename, sal*2 twosal from emp order by twosal;  -- 按照列别名排序
 select * from emp order by deptno , sal ;         -- 按照多列排序
 ```
 
-### SORT BY
+#### SORT BY
 
 > [!summary] 
 > - Reduce内部排序  sort by 【不单独使用】 
@@ -399,7 +410,7 @@ set mapreduce.job.reduces;     -- 查看reduce的个数
 select * from emp sort by deptno;    -- 系统内置分3个reduce，每个reduce里升序    【不单独使用】
 ```
 
-### DISTRIBUTE BY
+#### DISTRIBUTE BY
 
 > [!summary] distribute by的分区规则是根据分区字段的 **hash值**与 **reduce** 的个数进行 **取模** 后，**余数相同** 的分到一个区
 
@@ -419,7 +430,7 @@ distribute by deptno sort by sal;     -- 首先按照deptno的值的余数升序
 20 mod 3 = 2	-- 分区3
 50 mod 3 = 2	-- 分区3
 ```
-### CLUSTER BY
+#### CLUSTER BY
 
 ```sql
 et mapreduce.job.reduces=3;		-- 设置三个分区
@@ -490,6 +501,74 @@ where day = '20200401' and hour = '11';  -- 查询20200401的hour为11的内容
 
 alter table dept_partition2 drop partition(day='20200401',hour='11');  -- 删除二级分区
 ```
+
+## 自定义
+### HIVE posexplode 时间区间拆分成单独行
+
+```sql
+select tf.*,t.*, date_add(start_date,pos) 
+from (
+  select 'a' as a, '2018-11-01' as start_date, '2018-12-01' as end_date 
+) t 
+lateral view posexplode(split(space(datediff(end_date,start_date)),' ')) tf as pos,val limit 5000
+```
+
+### 自定义字符串反转函数
+
+```java
+public class ReverseUDF extends UDF {
+    public Text evaluate(Text str) {
+        if (str == null) return null;
+        return new Text(new StringBuilder(str.toString()).reverse().toString());
+    }
+}
+```
+
+**注册并使用**
+
+```sql
+ADD JAR /user/hive/udf/udf-tools.jar;
+CREATE TEMPORARY FUNCTION reverse_str AS 'com.company.hive.udf.ReverseUDF';
+SELECT reverse_str(name) FROM user_info;
+```
+
+### 使用Hive SQL创建日期维度表
+
+## **性能优化**
+
+#### **查询优化策略**
+
+| **优化点**    | **说明**        | **配置项**                                         |
+| ---------- | ------------- | ----------------------------------------------- |
+| 启用 CBO 优化器 | 根据表统计信息生成执行计划 | set hive.cbo.enable=true;                       |
+| 分区剪裁       | 查询自动过滤分区      | set hive.optimize.pruner=true;                  |
+| 动态分区       | 动态生成目标分区      | set hive.exec.dynamic.partition.mode=nonstrict; |
+| 启用并行执行     | 同时执行多个 Stage  | set hive.exec.parallel=true;                    |
+| 小文件合并      | 减少 HDFS 小文件   | set hive.merge.mapfiles=true;                   |
+#### **MapReduce / Tez / Spark 优化**
+
+- 调整并行度：set mapreduce.job.reduces = N;
+- 使用 Tez 引擎：set hive.execution.engine=tez;
+- 对 JOIN 进行 Map Join 优化: set hive.auto.convert.join=true;
+
+#### **表存储格式优化**
+
+```sql
+CREATE TABLE dwd_user_order (
+    user_id BIGINT,
+    order_id STRING,
+    amount DECIMAL(10,2),
+    dt STRING
+)
+STORED AS ORC
+TBLPROPERTIES ("orc.compress"="SNAPPY");
+```
+#### **统计信息收集**
+
+```sql
+ANALYZE TABLE dwd_user_order COMPUTE STATISTICS;
+ANALYZE TABLE dwd_user_order COMPUTE STATISTICS FOR COLUMNS user_id, amount;
+```
 ## Hive 数据倾斜
 
 > [!question] 
@@ -531,5 +610,10 @@ left join user_intend c on a.phone = c.phone
 left join t1 d on a.userkey = d.userkey;
 ```
 
+
+## Refrence
+
+- https://www.cnblogs.com/DavonC/p/13868389.html
+- 
 
  ![[Apache Hive.png|300|700]]
