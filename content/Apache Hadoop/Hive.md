@@ -26,9 +26,38 @@ mindmap
 
 > [!info] Hive本质：将HQL转化成 [[MapReduce]] 程序
 
+## Hive 与 Hadoop
+
+### Hive 产生的背景
+
+- MR 的问题
+	- 学习使用成本高，编程模型复杂
+	- 不容易实现复杂查询
+- 数仓建设需要，可作为数仓的工具
+	- 类SQL，从而转换成MR程序
+	- 支持自定义函数
+	
+### Hive与Hadoop生态的联系
+
 - hive处理的数据存在[[HDFS]]
-- hive默认分析计算引擎是[[MapReduce]]
+- hive默认分析计算引擎是[[MapReduce]]、后续版本也使用了 Tez
 - hive执行程序运行在[[Hadoop Yarn]]
+
+### Hive与 [[Apache HBase|Hbase]] 的区别
+
+`HBase`是一个面向列式存储、分布式、可伸缩的数据库，它可以提供数据的实时访问功能，而`Hive`只能处理静态数据，主要是`BI`报表数据。就设计初衷而言，在`Hadoop`上设计`Hive`，是为了减少复杂`MapReduce`应用程序的编写工作，在`Hadoop`上设计`HBase`是为了实现对数据的实时访问。所以，`HBase`与`Hive`的功能是互补的，它实现了`Hive`不能提供的功能。
+
+### Hive与传统数据库的对比
+
+| 对比内容 |        Hive         |  传统数据库  |
+| :--: | :-----------------: | :-----: |
+| 数据存储 |        HDFS         | 本地文件系统  |
+|  索引  |       支持有限索引        | 支持复杂索引  |
+|  分区  |         支持          |   支持    |
+| 执行引擎 | MapReduce、Tez、Spark | 自身的执行引擎 |
+| 执行延迟 |          高          |    低    |
+| 扩展性  |          好          |   有限    |
+| 数据规模 |          大          |    小    |
 
 ## Hive Architecture
 

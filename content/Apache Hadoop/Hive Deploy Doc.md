@@ -1,5 +1,5 @@
 ---
-title: Hive Deploy Documentation
+title: Hive Deploy Doc
 tags:
   - hadoop
   - database
@@ -16,7 +16,9 @@ tar -zxvf /opt/software/apache-hive-3.1.2-bin.tar.gz -C /opt/module/
 cd /opt/module
 mv apache-hive-3.1.2-bin/ hive
 
-# 配置环境变量 vim /etc/profile.d/my_env.sh
+# 配置环境变量 
+vim /etc/profile.d/my_env.sh
+
 #HIVE_HOME
 export HIVE_HOME=/opt/module/hive
 export PATH=$PATH:$HIVE_HOME/bin
@@ -24,7 +26,8 @@ export PATH=$PATH:$HIVE_HOME/bin
 # 环境初始化
 source /etc/profile.d/my_env.sh
 
-# 删除冲突jar	cd /opt/module/hive/lib
+# 删除冲突jar	
+cd /opt/module/hive/lib
 mv log4j-slf4j-impl-2.10.0.jar log4j-slf4j-impl-2.10.0.jar.bak
 
 # Hive元数据配置到MySQL
@@ -33,6 +36,9 @@ cp /opt/software/mysql-connector-java-5.1.38.jar /opt/module/hive/lib/
 # 配置Metastore到MySQL cd $HIVE_HOME/conf	新建hive-site.xml文件
 vim hive-site.xml
 
+```
+
+```xml title="hive-site.xml"
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -97,6 +103,8 @@ vim hive-site.xml
 
 </configuration>
 
+```
+```bash
 # 初始化元数据库 新建Hive元数据库
 mysql -uroot -p123456
 mysql> CREATE DATABASE metastore DEFAULT CHARSET utf8 COLLATE utf8_general_ci;

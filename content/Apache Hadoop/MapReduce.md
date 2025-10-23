@@ -8,7 +8,7 @@ date: 2022-01-26
 draft: false
 ---
 > [!info] MapReduce 下文简称：MR
->  [[Apache Hadoop|Hadoop]] MR是Google [MapReduce](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)的开源实现；同理Google的MR运行在GFS上，Hadoop MR运行在[[HDFS]] 上
+>  [[Hadoop|Hadoop]] MR是Google [MapReduce](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)的开源实现；同理Google的MR运行在GFS上，Hadoop MR运行在[[HDFS]] 上
 
 MR的处理流程包括两个步骤：Map和Reduce。Map步骤会将输入的数据进行处理，转换成键值对的形式；Reduce步骤会对Map处理后的键值对进行归并和汇总。MR通过分布式处理大量数据，可以显著提高数据处理效率
 
