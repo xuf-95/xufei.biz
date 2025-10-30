@@ -11,7 +11,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 | [[Data Architecture]]                      | [[Lambda Architecture]] \| [[Kappa Architecture]] \| [[Flow-Batch Architecture]] \| [[Lake-DataWarehouse Architecture]] |
 | [[Data Integration]]                       | [[Apache Kafka]] \| [[Apache Pulsar]] \| [[Apache Flume]] \| [[Apache Airflow]]                                         |
 | [[01 Data Store Homepage\|Data Store]]     | [[MySQL]] \| [[Apache Hive]] \| [[Apache HBase]] \| [[StarRocks]] \| [[Apache Doris]] \| [[ClickHouse]]                 |
-| Data Compute                               | [[Apache Flink]] \| [[Apache Spark]] \| [[Hadoop]] \| [[Apache Storm]]                                           |
+| Data Compute                               | [[Flink Overview]] \| [[Apache Spark]] \| [[Hadoop]] \| [[Apache Storm]]                                           |
 | [[Data Visual]]                            | [[Data Visual Product & Tools]]                                                                                         |
 | [[数据治理（Data Governance）\|Data Governance]] | [[Apache Atlas]]                                                                                                        |
 | [[Cloud Data Solutions]]                   | [[aliyun cloud]]、[[jingdong cloud]]、[[Micsoft]] a litter aws cloud.                                                     |

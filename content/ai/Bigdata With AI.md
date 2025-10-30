@@ -9,6 +9,10 @@ date: 2025-04-17
 Databases with AI capabilities combine traditional storage and querying functions with integrated machine learning, artificial intelligence algorithms, or smart analytics. Below are some types of databases and platforms with AI functionalities:
 
 ---
+### Datus-Agent
+
+- [GitHub - Datus-ai/Datus-agent: ](https://github.com/Datus-ai/Datus-agent)The Future of Data Engineering — A CLI SQL client for the modern data stack, enabling AI-native context engineering for data
+![[datus-agent.png]]
 
 ### Text2SQL
 

@@ -1,5 +1,5 @@
 ---
-title: Apache Hive Develop Doc
+title: Apache Hive Develop Manual
 tags:
   - bigdata
   - data-warehouse
