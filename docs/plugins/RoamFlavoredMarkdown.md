@@ -7,7 +7,7 @@ tags:
 This plugin provides support for [Roam Research](https://roamresearch.com) compatibility. See [[Roam Research Compatibility]] for more information.
 
 > [!note]
-> For information on how to add, remove or configure plugins, see the [[Configuration#Plugins|Configuration]] page.
+> For information on how to add, remove or configure plugins, see the [[docs/configuration#Plugins|Configuration]] page.
 
 This plugin accepts the following configuration options:
 

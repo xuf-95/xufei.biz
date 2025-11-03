@@ -58,7 +58,7 @@ $breakpoints: (
 
 ### Style
 
-Most meaningful style changes like colour scheme and font can be done simply through the [[configuration#General Configuration|general configuration]] options. However, if you'd like to make more involved style changes, you can do this by writing your own styles. Quartz 4, like Quartz 3, uses [Sass](https://sass-lang.com/guide/) for styling.
+Most meaningful style changes like colour scheme and font can be done simply through the [[docs/configuration#General Configuration|general configuration]] options. However, if you'd like to make more involved style changes, you can do this by writing your own styles. Quartz 4, like Quartz 3, uses [Sass](https://sass-lang.com/guide/) for styling.
 
 You can see the base style sheet in `quartz/styles/base.scss` and write your own in `quartz/styles/custom.scss`.
 

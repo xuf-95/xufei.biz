@@ -349,6 +349,7 @@ Flink 中的状态 # 类似本地变量
         事务写入:应用程序中一系列严密的操作，所有操作必须成功完成，否则在每个操作中所作的所有更改都会被撤消（ACID）；具有原子性：一个事务中的一系列的操作要么全部成功，要么一个都不做
 
 
+
 ## Reference
 
 - [本地模式安装|Apache Flink](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/try-flink/local_installation/)

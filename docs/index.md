@@ -20,7 +20,7 @@ npx quartz create
 This will guide you through initializing your Quartz with content. Once you've done so, see how to:
 
 1. [[authoring content|Writing content]] in Quartz
-2. [[configuration|Configure]] Quartz's behaviour
+2. [[docs/configuration|Configure]] Quartz's behaviour
 3. Change Quartz's [[layout]]
 4. [[build|Build and preview]] Quartz
 5. Sync your changes with [[setting up your GitHub repository|GitHub]]

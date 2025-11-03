@@ -8,7 +8,7 @@ This plugin emits a `favicon.ico` into the `public` folder. It creates the favic
 The plugin resizes `icon.png` to 48x48px to make it as small as possible.
 
 > [!note]
-> For information on how to add, remove or configure plugins, see the [[configuration#Plugins|Configuration]] page.
+> For information on how to add, remove or configure plugins, see the [[docs/configuration#Plugins|Configuration]] page.
 
 This plugin has no configuration options.
 
