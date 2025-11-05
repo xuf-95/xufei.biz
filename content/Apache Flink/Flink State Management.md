@@ -22,6 +22,7 @@ publishDate: 2025-09-26T11:51
 | State Management        | `pendingCheckpoints`, `completedCheckpointStore`         |
 | Failure Handling        | `abortPendingCheckpoints()`, `CheckpointFailureManager`  |
 | Periodic Scheduling     | `ScheduledTrigger`, `currentPeriodicTrigger`             |
+|                         |                                                          |
 
 #### PendingCheckpoint
 
@@ -31,7 +32,19 @@ publishDate: 2025-09-26T11:51
 | `DefaultCheckpointPlanCalculator` | Calculates which tasks to trigger/wait for                  |
 | `CheckpointPlan`                  | Contains lists of tasks to trigger, wait for, and commit to |
 | `VertexFinishedStateChecker`      | Handles checkpointing with finished tasks                   |
+|                                   |                                                             |
 
-## State Backends
+## State Persistence
+
+### Checkpointing 
+
+### Unaligned Checkpointing
+
+### State Backends
+
+### Exactly Once VS At Least Once
 
 ## References
+
+- [有状态流处理 \| Apache Flink](https://nightlies.apache.org/flink/flink-docs-release-2.1/zh/docs/concepts/stateful-stream-processing/)
+- 
