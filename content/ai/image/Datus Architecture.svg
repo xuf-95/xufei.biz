@@ -1,0 +1,282 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+        </linearGradient>
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <filter id="shadow">
+            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+        </filter>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+        </marker>
+        <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e3a5f" stroke-width="0.5" opacity="0.2"/>
+        </pattern>
+    </defs>
+
+    <!-- Background -->
+    <rect width="1400" height="900" fill="url(#bgGrad)"/>
+    <rect width="1400" height="900" fill="url(#grid)"/>
+
+    <!-- Title -->
+    <text x="700" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">Datus Agent Architecture</text>
+
+    <!-- Top Left: Datus-cli for data engineer -->
+    <g id="datus-cli">
+        <rect x="80" y="70" width="660" height="180" fill="#1e293b" stroke="#334155" stroke-width="2" rx="10" filter="url(#shadow)"/>
+        <text x="100" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#3b82f6">Datus-cli for data engineer</text>
+        
+        <!-- Chat command -->
+        <rect x="110" y="115" width="140" height="105" fill="url(#blueGrad)" rx="5" filter="url(#shadow)">
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+        </rect>
+        <text x="180" y="142" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">/</text>
+        <text x="180" y="160" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">chat command</text>
+        <text x="180" y="176" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Built-in &amp; configurable</text>
+        <text x="180" y="189" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">sub-agents</text>
+        
+        <!-- Context command -->
+        <rect x="263" y="115" width="140" height="105" fill="url(#purpleGrad)" rx="5" filter="url(#shadow)">
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+        </rect>
+        <text x="333" y="142" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">@</text>
+        <text x="333" y="160" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">context command</text>
+        <text x="333" y="176" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Catalog references</text>
+        <text x="333" y="189" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Subject context</text>
+        <text x="333" y="202" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">File integration</text>
+        
+        <!-- Execution command -->
+        <rect x="417" y="115" width="140" height="105" fill="url(#greenGrad)" rx="5" filter="url(#shadow)">
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" begin="1s"/>
+        </rect>
+        <text x="487" y="142" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">!</text>
+        <text x="487" y="160" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">execution command</text>
+        <text x="487" y="176" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Query search</text>
+        <text x="487" y="189" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Shell commands</text>
+        <text x="487" y="202" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Artifact save</text>
+        
+        <!-- System command -->
+        <rect x="570" y="115" width="140" height="105" fill="url(#orangeGrad)" rx="5" filter="url(#shadow)">
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+        </rect>
+        <text x="640" y="142" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">.</text>
+        <text x="640" y="160" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">system command</text>
+        <text x="640" y="176" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Session control</text>
+        <text x="640" y="189" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">MCP protocol</text>
+        <text x="640" y="202" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">System metadata</text>
+    </g>
+
+    <!-- Top Right: User interface for -->
+    <g id="user-interface">
+        <rect x="900" y="70" width="420" height="180" fill="#1e293b" stroke="#334155" stroke-width="2" rx="10" filter="url(#shadow)"/>
+        <text x="920" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981">User interface for analytics</text>
+        
+        <!-- Chatbot - NO ANIMATION -->
+        <rect x="930" y="115" width="180" height="105" fill="url(#blueGrad)" rx="5" filter="url(#shadow)"/>
+        <text x="1020" y="142" font-family="Arial, sans-serif" font-size="24" text-anchor="middle">💬</text>
+        <text x="1020" y="160" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Chatbot</text>
+        <text x="1020" y="176" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Natural language</text>
+        <text x="1020" y="189" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Interactive dialogue</text>
+        
+        <!-- API - NO ANIMATION -->
+        <rect x="1130" y="115" width="180" height="105" fill="url(#purpleGrad)" rx="5" filter="url(#shadow)"/>
+        <text x="1220" y="142" font-family="Arial, sans-serif" font-size="24" text-anchor="middle">🔧</text>
+        <text x="1220" y="160" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">API</text>
+        <text x="1220" y="176" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">Simple and seamless</text>
+        <text x="1220" y="189" font-family="Arial, sans-serif" font-size="9" fill="#e0e7ff" text-anchor="middle">integration</text>
+    </g>
+
+    <!-- Connection lines and flow -->
+    <g id="connections" opacity="0.3">
+        <path d="M740,160 L900,160" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+        <path d="M450,420 L395,420" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5"/>
+        <path d="M395,420 L395,250" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+        <path d="M1320,160 L1360,160" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5"/>
+        <path d="M1360,160 L1360,420" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5"/>
+        <path d="M1360,420 L1180,420" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+        <path d="M820,555 L820,625" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+        <path d="M675,435 L770,465" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+        <path d="M870,465 L965,435" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <!-- Develop label -->
+    <text x="820" y="150" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Develop</text>
+    
+    <!-- Feedback label -->
+    <text x="1320" y="380" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">Feedback</text>
+
+    <!-- Data Flow Animations -->
+    <!-- CLI to UI -->
+    <circle r="4" fill="#3b82f6">
+        <animateMotion path="M740,160 L900,160" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="4" fill="#fbbf24">
+        <animateMotion path="M740,160 L900,160" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    
+    <!-- CLI to Middle -->
+    <circle r="4" fill="#3b82f6">
+        <animateMotion path="M450,420 M395 420 L395,250" dur="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- UI to Central -->
+    <circle r="4" fill="#10b981">
+        <animateMotion path="M1320,160 M1360,160 L1360,420 L1180,420" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Feedback loop -->
+    <circle r="4" fill="#f59e0b">
+        <animateMotion path="M1360,420 L740,420" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Middle Section Container -->
+    <g id="middle-systems">
+        <rect x="440" y="310" width="740" height="250" fill="#1e293b" stroke="#8b5cf6" stroke-width="3" rx="15" filter="url(#glow)"/>
+        
+        <!-- Subagent system -->
+        <g transform="translate(520, 330)">
+            <rect width="280" height="110" fill="#2d3561" rx="8" filter="url(#shadow)"/>
+            <circle cx="140" cy="55" r="30" fill="url(#blueGrad)" opacity="0.3">
+                <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <text x="140" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle">Subagent system</text>
+            <text x="140" y="65" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Tools, mcp, rules, scoped context</text>
+        </g>
+        
+        <!-- Workflow system -->
+        <g transform="translate(840, 330)">
+            <rect width="280" height="110" fill="#2d3561" rx="8" filter="url(#shadow)"/>
+            <circle cx="140" cy="55" r="30" fill="url(#purpleGrad)" opacity="0.3">
+                <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+            </circle>
+            <text x="140" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#8b5cf6" text-anchor="middle">Workflow system</text>
+            <text x="140" y="65" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Node, reflection, parallel, selection</text>
+        </g>
+        
+        <!-- Context engine -->
+        <g transform="translate(660, 460)">
+            <rect width="300" height="75" fill="#374151" rx="10" filter="url(#shadow)"/>
+            <text x="150" y="27" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#10b981" text-anchor="middle">Context engine</text>
+            <text x="150" y="48" font-family="Arial, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">Metadata, Metrics, Reference sql,</text>
+            <text x="150" y="62" font-family="Arial, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">Knowledge, Success stories ...</text>
+        </g>
+    </g>
+
+    <!-- Middle system flow animations -->
+    <circle r="4" fill="#10b981">
+        <animateMotion path="M675,435 L770,465" dur="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="4" fill="#10b981">
+        <animateMotion path="M870,465 L965,435" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+
+    <!-- Middle to Bottom flows -->
+    <circle r="4" fill="#f59e0b">
+        <animateMotion path="M820,555 L820,625" dur="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="1s" repeatCount="indefinite"/>
+    </circle>
+
+
+    <!-- Bottom Section: Data sources -->
+    <g id="data-sources">
+        <rect x="150" y="630" width="1100" height="180" fill="#1e293b" stroke="#334155" stroke-width="2" rx="10" filter="url(#shadow)"/>
+        <text x="700" y="660" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#10b981" text-anchor="middle">Data &amp; Integration Layer</text>
+        
+        <!-- Data warehouse/Database -->
+        <g transform="translate(180, 680)">
+            <rect width="180" height="100" fill="#0f172a" rx="5"/>
+            <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold">📊 Data warehouse/</text>
+            <text x="90" y="48" font-family="Arial, sans-serif" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold">Database</text>
+            <text x="90" y="68" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Tables, Schemas</text>
+            <text x="90" y="82" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Queries, ETL</text>
+        </g>
+        
+        <!-- Catalog service -->
+        <g transform="translate(390, 680)">
+            <rect width="180" height="100" fill="#0f172a" rx="5"/>
+            <text x="90" y="30" font-family="Arial, sans-serif" font-size="14" fill="#8b5cf6" text-anchor="middle" font-weight="bold">📁 Catalog service on</text>
+            <text x="90" y="48" font-family="Arial, sans-serif" font-size="14" fill="#8b5cf6" text-anchor="middle" font-weight="bold">data lake</text>
+            <text x="90" y="68" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Metadata, Partitions</text>
+            <text x="90" y="82" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">S3, Delta Lake</text>
+        </g>
+        
+        <!-- Semantic layer -->
+        <g transform="translate(600, 680)">
+            <rect width="180" height="100" fill="#0f172a" rx="5"/>
+            <text x="90" y="35" font-family="Arial, sans-serif" font-size="14" fill="#10b981" text-anchor="middle" font-weight="bold">📈 Semantic layer</text>
+            <text x="90" y="60" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Metrics, KPIs</text>
+            <text x="90" y="74" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Business Logic</text>
+            <text x="90" y="88" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Definitions</text>
+        </g>
+        
+        <!-- Job scheduler -->
+        <g transform="translate(810, 680)">
+            <rect width="180" height="100" fill="#0f172a" rx="5"/>
+            <text x="90" y="35" font-family="Arial, sans-serif" font-size="14" fill="#f59e0b" text-anchor="middle" font-weight="bold">⏰ Job scheduler</text>
+            <text x="90" y="60" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Workflows, DAGs</text>
+            <text x="90" y="74" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Orchestration</text>
+            <text x="90" y="88" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Pipelines</text>
+        </g>
+        
+        <!-- BI tools -->
+        <g transform="translate(1020, 680)">
+            <rect width="180" height="100" fill="#0f172a" rx="5"/>
+            <text x="90" y="35" font-family="Arial, sans-serif" font-size="14" fill="#06b6d4" text-anchor="middle" font-weight="bold">📊 BI tools</text>
+            <text x="90" y="60" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Dashboards, Reports</text>
+            <text x="90" y="74" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Visualization</text>
+            <text x="90" y="88" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Analytics</text>
+        </g>
+    </g>
+
+    <!-- Left side: Features list -->
+    <g id="features-list">
+        <rect x="30" y="360" width="380" height="200" fill="#0f172a" opacity="0.8" rx="10" filter="url(#shadow)"/>
+        <text x="220" y="390" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">Key Capabilities</text>
+        
+        <text x="50" y="420" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0">✨ Vibe SQLing to improve efficiency</text>
+        <text x="50" y="444" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0">🤖 Deliver agents instead of tables</text>
+        <text x="50" y="468" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0">💾 Native DB, context search and filesystem tools</text>
+        <text x="50" y="492" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0">🔧 Interactive context engineering</text>
+        <text x="50" y="516" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0">📚 Learning from historical sqls</text>
+        <text x="50" y="540" font-family="Arial, sans-serif" font-size="12" fill="#e2e8f0">🔄 Evolute both context and model with subagent</text>
+    </g>
+</svg>

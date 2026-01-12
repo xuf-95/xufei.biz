@@ -1,6 +1,6 @@
 ---
 aliases:
-  - hive
+  - Apache Hive
 tags:
   - hadoop
   - database
@@ -23,10 +23,11 @@ mindmap
 
 ## Apache Hive
 
-> Hive由Facebook开源，是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张表，并提供类`SQL`查询功能，解决 `海量结构化日志` 的数据统计工具
-
 > [!info] Hive本质：将HQL转化成 [[MapReduce]] 程序
 
+Hive由Facebook开源，是基于[[Hadoop]]的一个数据仓库工具，可以将结构化的数据文件映射为一张表，并提供类`SQL`查询功能，能将SQL语句转变成MapReduce任务来执行。Hive的优点是学习成本低，可以通过类似SQL语句实现快速[[MapReduce]]统计，使MapReduce变得更加简单，而不必开发专门的MapReduce应用程序。
+
+hive强大之处不要求数据转换成特定的格式，而是利用hadoop本身`InputFormat API`来从不同的数据源读取数据，同样地使用`OutputFormat API`将数据写成不同的格式。所以对于不同的数据源，或者写出不同的格式就需要不同的对应的`InputFormat`和`OutputFormat`类的实现。以`stored as textFile`为例，其在底层java API中表现是输入`InputFormat`格式：`TextInputFormat`以及输出`OutputFormat`格式：`HiveIgnoreKeyTextOutputFormat`。这里`InputFormat`中定义了如何对数据源文本进行读取划分，以及如何将切片分割成记录存入表中。而`OutputFormat`定义了如何将这些切片写回到文件里或者直接在控制台输出。
 ## Hive 与 Hadoop
 
 ### Hive 产生的背景
@@ -44,6 +45,16 @@ mindmap
 - hive默认分析计算引擎是[[MapReduce]]、后续版本也使用了 Tez
 - hive执行程序运行在[[Hadoop Yarn]]
 
+### Hive与HDFS数据模型的区别
+
+| Hive | HDFS |
+| ---- | ---- |
+| 表    | 目录   |
+| 分区   | 目录   |
+| 数据   | 文件   |
+| 分桶   | 文件   |
+| 视图   | -    |
+|      |      |
 ### Hive与 [[Apache HBase|Hbase]] 的区别
 
 `HBase`是一个面向列式存储、分布式、可伸缩的数据库，它可以提供数据的实时访问功能，而`Hive`只能处理静态数据，主要是`BI`报表数据。就设计初衷而言，在`Hadoop`上设计`Hive`，是为了减少复杂`MapReduce`应用程序的编写工作，在`Hadoop`上设计`HBase`是为了实现对数据的实时访问。所以，`HBase`与`Hive`的功能是互补的，它实现了`Hive`不能提供的功能。
@@ -78,20 +89,13 @@ mindmap
 	-  执行器（Execution）：把逻辑执行计划转换成可以运行的物理计划。对于Hive来说，就是MR/Spark
 
 
-## Hive Metastore Server (HMS)
+
+
+## Hive 的元数据管理
 
 > [!warning] Hive是针对数据仓库应用设计的，而数据仓库的内容是`读多写少`的。因此，Hive中不建议对数据的改写，所有的数据都是在加载的时候确定好的
 
-## Hive的数据模型
-
-| Hive | HDFS |                                                                                                |
-| ---- | ---- | ---------------------------------------------------------------------------------------------- |
-| 表    | 目录   |                                                                                                |
-| 分区   | 目录   |                                                                                                |
-| 数据   | 文件   |                                                                                                |
-| 分桶   | 文件   | 分桶是针对数据文件本身进行拆分，根据表中字段（例如，编号ID）的值，经过`hash`计算规则，将数据文件划分成指定的若干个小文件；分桶的优点是**优化join查询**和**方便抽样查询** |
-| 视图   |  -   |                                                                                                |
-|      |      |                                                                                                |
+Hive Metastore Server (HMS) 拥有统一的元数据管理，所以和Spark、Impala等SQL引擎是通用的。通用是指，在拥有了统一的metastore之后，在Hive中创建一张表，在Spark/Impala中是能用的；反之在Spark中创建一张表，在Hive中也是能用的，只需要共用元数据，就可以切换SQL引擎，涉及到了Spark sql和Hive On Spark。
 ### 内/外部表
 
 | 对比内容     | 内部表                                                                                                           | 外部表                                         |     |
@@ -101,12 +105,30 @@ mindmap
 | 删除表      | 只删除元数据（metadata）                                                                                              | 删除元数据（metadata）和文件                          |     |
 | **使用场景** |                                                                                                               | 与 HDFS 外部文件关联                               |     |
 |          |                                                                                                               |                                             |     |
-### 分区
+**将内部表转成外部表** 
 
-分区是一个优化的手段，目的是**减少全表扫描**，提高查询效率
-### 分桶
+```sql
+alter table Table_A set tblproperties('EXTERNAL' = 'TRUE');
+# true一定要大写，小写不报错，但是不会进行修改
+```
 
-用于 Join 优化，适合采样分析
+**将 外部表 转成 内部表**
+
+```sql
+alter table Table_A set tblproperties('EXTERNAL' = 'FALSE');
+alter table Table_B set tblproperties('EXTERNAL' = 'false');
+#false 大小写都可以，都会进行修改
+```
+### 分区 VS 分桶
+
+|      | 分区                                        | 分桶                                                                                             |
+| ---- | ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| 场景   | 分区是一个优化的手段，目的是**减少全表扫描**，提高查询效率<br>       | 分桶是针对数据文件本身进行拆分，根据表中字段（例如，编号ID）的值，经过`hash`计算规则，将数据文件划分成指定的若干个小文件；分桶的优点是**优化join查询**和**方便抽样查询** |
+| 数据模型 | 目录                                        | 文件                                                                                             |
+| 建表语句 | 分区表使用partitioned by 子句指定，指定字段为伪列，需要指定字段类型 | 分桶表由clustered by 子句指定，指定字段为真实字段，需要指定桶的个数                                                       |
+| 形式上  | 分区表的分区个数可以增长                              | 分桶表一旦指定，不能再增长                                                                                  |
+| 作用   | 分区避免全表扫描，根据分区列查询指定目录提高查询速度                | - 分桶保存分桶查询结果的分桶结构（数据已经按照分桶字段进行了hash散列）<br>- 分桶表数据进行抽样和JOIN时可以提高MR程序效率                          |
+|      |                                           |                                                                                                |
 
 ### Hive 基本数据类型
 
@@ -161,10 +183,6 @@ select '1' + 1 ;       >> 2.0
 select  cast('1' as int) + 1;  >> 2  
 ```
 
-## Hive Relateion
-
-
-
 ### Hive Integration
 
 - [Hive on Spark: Getting Started](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Spark%3A+Getting+Started)
@@ -184,7 +202,6 @@ select  cast('1' as int) + 1;  >> 2
 - Hive on Aliyun JMR
 - Hive on JDCLoud JMR
 - [Hive on Amazon Web Services](https://cwiki.apache.org/confluence/display/Hive/HiveAws)
-
 
 ## Reference
 

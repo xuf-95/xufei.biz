@@ -39,6 +39,7 @@ draft: false
 - [杭州市数据开放平台](https://data.hangzhou.gov.cn/dop/tpl/dataOpen/dataList.html)
 - [深圳市政府数据开放平台](https://opendata.sz.gov.cn/data/dataSet/toDataSet)
 - [上海市-数据资源](https://data.sh.gov.cn/view/data-resource/index.html)
+- [新一代智能数据交易系统](https://nidts.chinadep.com/)
 
 ### Reference
 

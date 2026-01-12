@@ -7,7 +7,7 @@ tags:
 This plugin adds Citation support to Quartz.
 
 > [!note]
-> For information on how to add, remove or configure plugins, see the [[configuration#Plugins|Configuration]] page.
+> For information on how to add, remove or configure plugins, see the [[docs/configuration#Plugins|Configuration]] page.
 
 This plugin accepts the following configuration options:
 

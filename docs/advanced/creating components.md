@@ -221,7 +221,7 @@ import YourComponent from "./YourComponent"
 export { ArticleTitle, Content, Darkmode, YourComponent }
 ```
 
-Then, you can use it like any other component in `quartz.layout.ts` via `Component.YourComponent()`. See the [[configuration#Layout|layout]] section for more details.
+Then, you can use it like any other component in `quartz.layout.ts` via `Component.YourComponent()`. See the [[docs/configuration#Layout|layout]] section for more details.
 
 As Quartz components are just functions that return React components, you can compositionally use them in other Quartz components.
 

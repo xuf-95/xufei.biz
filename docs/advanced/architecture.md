@@ -23,7 +23,7 @@ This question is best answered by tracing what happens when a user (you!) runs `
    2. Recursively glob all files in the `content` folder, respecting the `.gitignore`.
    3. Parse the Markdown files.
       1. Quartz detects the number of threads available and chooses to spawn worker threads if there are >128 pieces of content to parse (rough heuristic). If it needs to spawn workers, it will invoke esbuild again to transpile the worker script `quartz/worker.ts`. Then, a work-stealing [workerpool](https://www.npmjs.com/package/workerpool) is then created and batches of 128 files are assigned to workers.
-      2. Each worker (or just the main thread if there is no concurrency) creates a [unified](https://github.com/unifiedjs/unified) parser based off of the plugins defined in the [[configuration]].
+      2. Each worker (or just the main thread if there is no concurrency) creates a [unified](https://github.com/unifiedjs/unified) parser based off of the plugins defined in the [[docs/configuration]].
       3. Parsing has three steps:
          1. Read the file into a [vfile](https://github.com/vfile/vfile).
          2. Applied plugin-defined text transformations over the content.
@@ -46,7 +46,7 @@ This question is best answered by tracing what happens when a user (you!) runs `
 1. The browser opens a Quartz page and loads the HTML. The `<head>` also links to page styles (emitted to `public/index.css`) and page-critical JS (emitted to `public/prescript.js`)
 2. Then, once the body is loaded, the browser loads the non-critical JS (emitted to `public/postscript.js`)
 3. Once the page is done loading, the page will then dispatch a custom synthetic browser event `"nav"`. This is used so client-side scripts declared by components can 'setup' anything that requires access to the page DOM.
-   1. If the [[SPA Routing|enableSPA option]] is enabled in the [[configuration]], this `"nav"` event is also fired on any client-navigation to allow for components to unregister and reregister any event handlers and state.
+   1. If the [[SPA Routing|enableSPA option]] is enabled in the [[docs/configuration]], this `"nav"` event is also fired on any client-navigation to allow for components to unregister and reregister any event handlers and state.
    2. If it's not, we wire up the `"nav"` event to just be fired a single time after page load to allow for consistency across how state is setup across both SPA and non-SPA contexts.
 
 The architecture and design of the plugin system was intentionally left pretty vague here as this is described in much more depth in the guide on [[making plugins|making your own plugin]].
