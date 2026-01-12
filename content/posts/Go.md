@@ -8,7 +8,7 @@ date: 2024-07-04
 draft: false
 ---
 
-![[go.png]]_***Gopher image by Renee French, licensed under Creative Commons 4.0 Attribution license.***_
+![[content/Posts/images/go.png]]_***Gopher image by Renee French, licensed under Creative Commons 4.0 Attribution license.***_
 
 This document provides a high-level introduction to the Go repository structure, its major architectural components, and the relationships between core systems. This overview covers the Go language specification, runtime, compiler, build system, and standard library organization.
 

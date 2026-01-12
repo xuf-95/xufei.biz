@@ -1,6 +1,7 @@
 ---
 date: 2021-01-01
 aliases:
+  - 数据指标系统
 tags:
   - bigdata
   - data-warehouse

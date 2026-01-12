@@ -116,7 +116,7 @@ I welcome your feedback and encourage contributes to enhance the accuracy of my 
 
 #### Big Data Architecture
 
-- [[Data Warehouse]] 数据仓库
+- [[docs/bigdata/Data Warehouse]] 数据仓库
 - [[Real-time Data Warehouse]]
 - [[Data Lake]] 
 - [[Lake and Warehouse]] 

@@ -33,3 +33,10 @@ Hive on Spark supports [Spark on YARN](http://spark.apache.org/docs/latest/runn
 
 ## Configuring Spark
 ***
+
+
+## Hive vs SparkSQL
+
+![[HivevsSparkSQL.png]]
+
+[hivevssparksql](https://hivevssparksql.wordpress.com/)

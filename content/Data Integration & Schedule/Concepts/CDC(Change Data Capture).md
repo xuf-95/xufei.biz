@@ -16,7 +16,35 @@ date: 2023-02-05
 
 捕获追踪数据库中数据的变化（CRUD操作），一般是分析数据库日志中的数据
 
- ![[public/Data-Integration/images/CDC.png]]_[Image Source](https://www.striim.com/blog/change-data-capture-cdc-what-it-is-and-how-it-works/)_
+ ![[CDC.png]]_[Image Source](https://www.striim.com/blog/change-data-capture-cdc-what-it-is-and-how-it-works/)_
+
+### Azure Start Up CDC
+
+```bash
+-- 1. 检查当前数据库CDC状态
+SELECT name, is_cdc_enabled 
+FROM sys.databases 
+WHERE name = ${DD_NAME};
+
+-- 2. 如果未启用，启用CDC
+USE 你的数据库名;
+GO
+
+EXEC sys.sp_cdc_enable_db;
+GO
+
+-- 3. 为表启用CDC
+EXEC sys.sp_cdc_enable_table
+    @source_schema = N'${schema_name}',
+    @source_name   = N'${table_name}',
+    @role_name     = NULL,
+    @supports_net_changes = 1;
+
+-- 4. 验证
+SELECT name, is_cdc_enabled 
+FROM sys.databases 
+WHERE name =   ${DD_NAME};
+```
 
 
 ### 案例
