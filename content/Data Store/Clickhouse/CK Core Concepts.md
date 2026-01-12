@@ -4,6 +4,7 @@ aliases:
 tags:
   - bigdata
   - data-store
+  - concepts
 description:
 draft: false
 publishDate: 2025-10-21T09:41
