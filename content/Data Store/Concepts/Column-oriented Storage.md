@@ -1,11 +1,12 @@
 ---
-title: Column-oriented Storage 
+title: Column-oriented Storage
 aliases:
   - 列示存储
   - col-storage
 tags:
   - olap
   - data-warehouse
+  - concepts
 date: 2024-05-19
 draft: false
 ---
