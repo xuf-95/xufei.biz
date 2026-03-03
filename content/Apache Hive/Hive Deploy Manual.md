@@ -102,8 +102,9 @@ vim hive-site.xml
     </property>
 
 </configuration>
-
 ```
+
+
 ```bash
 # 初始化元数据库 新建Hive元数据库
 mysql -uroot -p123456
@@ -129,7 +130,6 @@ alter table  INDEX_PARAMS  modify column PARAM_VALUE  varchar(4000) character se
 [root@hadoop102 hive]$ hiveserver2 # 此窗口不能再操作,重新开启窗口
 # 等待一分钟
 [root@hadoop102 hive]$ bin/beeline -u jdbc:hive2://hadoop102:10000 -n root 
-
 ```
 ## Configuring Hive
 
