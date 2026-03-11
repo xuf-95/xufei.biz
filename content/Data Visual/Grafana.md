@@ -5,7 +5,7 @@ tags:
 date: 2023-08-04
 draft: false
 ---
-![[public/images/Grafana.png]]_from Grafana_
+![[Grafana.png]]_from Grafana_
 
 ## 概述
 
