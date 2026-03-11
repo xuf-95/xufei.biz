@@ -45,7 +45,7 @@ draft: false
 
 - 3.0版本实现的存算分离架构模式
 
-![[content/Data Store/image/sr-compute-distribute-dispart.png]]
+![[sr-compute-distribute-dispart.png]]
 
 存算分离模式下解决了存算一体中计算与存储等比例扩缩容带来的资源浪费的问题，存储层利用对象存储实现了数据的海量存储和持久化性，保证了高可靠性，兼容S3协议多种对象存储及HFDS存储；部署模式上Kubernetes容器化部署，也可以选择公有云、私有云和本地机房进行部署；
 
@@ -69,7 +69,7 @@ draft: false
 
 ## 表设计
 
-![[content/Data Store/image/sr-db-tb.svg]]
+![[sr-db-tb.svg]]
 
 
 |                     | 主键表 (Primary Key table)                                                      | 明细表 (Duplicate Key table)                                                     | 聚合表 (Aggregate table)                                                                        | 更新表 (Unique Key table)                                                                    |
@@ -82,4 +82,4 @@ draft: false
 
 - [StarRocks - 新一代极速全场景MPP数据库](https://starrocks.io/zh/blog)
 
-![[content/Data Store/image/starrocks-banner.png]]
+![[starrocks-banner.png]]

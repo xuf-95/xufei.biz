@@ -52,7 +52,7 @@ C --> E
 > [!summary] 
 >  Kappa 架构本质上是通过改进 Lambda 架构中的加速层(删除了 Batch Layer 的架构,将数据通道以消息队列进行替代)，使它既能够进行实时数据处理，同时也有能力在业务逻辑更新的情况下重新处理以前处理过的历史数据
 
-![[content/Data Architecture/images/kappa-architecture.png]]
+![[kappa-architecture.png]]
 
 ### Lambda VS Kappa 
 
@@ -67,9 +67,6 @@ C --> E
 | 开发维护成本     | 成本预算充足                                       | 成本预算有限                                    |
 | 历史数据处理能力   | 频繁使用海量历史数据                                   | 仅使用小规模数据集                                 |
 |            |                                              |                                           |
-
-
-
 ## Kappa Architecture Advantages
 
 - Only need to maintain, develop and debug a much smaller codebase compared to Lambda architecture.

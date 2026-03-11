@@ -59,6 +59,21 @@ Spark's build system includes several tools to help with development:
 - **Docker image tools**: `bin/docker-image-tool.sh` for building container images
 - **Distribution packaging**: `dev/make-distribution.sh` for creating release packages
 
+## Spark SQL
+
+Spark SQL is the module within Apache Spark that provides structured data processing capabilities. This document provides a technical overview of Spark SQL's architecture, explaining how SQL queries and DataFrame operations are parsed, analyzed, optimized, and executed within the Spark framework. For information about the user-facing APIs, see [Apache Spark Overview](https://deepwiki.com/apache/spark/1-apache-spark-overview).
+
+### Core Components of Spark SQL
+
+Spark SQL's architecture consists of several key components that work together to process structured data:
+
+![[content/bigdata/images/sparksql-core-components.png]]
+
+### SQL Parsing
+
+The parsing phase converts SQL text into an unresolved logical plan. Spark SQL uses ANTLR4 for parsing SQL statements:
+
+
 ## Core Processing Components
 
 he fundamental data abstraction in Spark is the Resilient Distributed Dataset (RDD), which represents an immutable, partitioned collection of elements that can be operated on in parallel. RDDs are implemented in the core module and provide:

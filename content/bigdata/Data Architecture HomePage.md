@@ -5,16 +5,14 @@ tags:
   - index
 draft: false
 ---
-
 ### 数据架构的定义
 
 #### DAMA观点
 
-定义：识别企业的数据需求（无论数据结构如何），并设计和维护总监图已满足这些数据需求；使用总蓝图来指导数据集成、控制数据资产，并使数据资产与业务战略保持一致。
+定义：识别企业的数据需求（无论数据结构如何），并设计和维护总监图已满足这些数据需求；使用总蓝图来指导数据集成、控制数据资产，并使数据资产与业务战略保持一致
 
 [[DAMA]] 的数据架构主要包括企业 **数据模型** 和 **数据流的设计**（也称数据价值链的设计）
-
-#### DCMM 观点
+#### DCMM观点
 
 [[DCMM]] 的数据架构包括
 
@@ -30,13 +28,10 @@ draft: false
 #### 建设方法论
 
 架构现状分析、架构实体分、数据主题域划分、数据概念模型及数据分布规划
-
-
 #### 数据架构类型
 
 - 集中式数据架构
 - 分布式数据架构
-
 #### 数据架构框架
 
 - DAMA-DMBOK（数据管理知识体系）框架概述了整个生命周期内有效数据管理的最佳实践、原则和流程
@@ -44,7 +39,8 @@ draft: false
 
 ## 传统数据处理系统的问题
 
-传统应用的数据系统架构设计时，应用直接访问数据库系统。当用户访问量增加时，数据库无法支撑日益增长的用户请求的负载，从而导致数据库服务器无法及时响应用户请求，出现超时的错误。关于这个问题的常用解决方法如下： 
+传统应用的数据系统架构设计时，应用直接访问数据库系统。当用户访问量增加时，数据库无法支撑日益增长的用户请求的负载，从而导致数据库服务器无法及时响应用户请求，出现超时的错误
+关于这个问题的常用解决方法如下： 
 
 - 增加异步处理队列，通过工作处理层批量处理异步处理队列中的数据修改请求
 - 建立数据库水平分区，通常建立 Key 分区，以主键/唯一键 Hash 值作为 Key
@@ -59,7 +55,6 @@ draft: false
 - 基于分布式文件系统 [[Hadoop|Hadoop]] 
 - 使用 map 或 [[Apache Spark|Spark]] 数据处理技术
 - 使用 [[Apache Kafka|Kafka]] 数据传输消息队列及二进制格式
-
 - **Batch-only frameworks:** 基于分布式文件系统
     - [[Hadoop]]
 - **Stream-only frameworks:**
@@ -97,24 +92,21 @@ B --> D
 C --> D
 
 ```
-
 ### [[Kappa Architecture]]
 
-![[content/Data Architecture/images/kappa-architecture.png]]
+![[kappa-architecture.png]]
 ### [[Data Lake]]
 
 ### [[01 Data Store Homepage|Data Store]]
 
 ### 数据架构的评估
 
-[Data Architecture](https://en.wikipedia.org/wiki/Data_architecture) describes how data is processed, stored, and utilized in an [information system](https://en.wikipedia.org/wiki/Information_system "Information system").
-
+[Data Architecture](https://en.wikipedia.org/wiki/Data_architecture) describes how data is processed, stored, and utilized in an [information system](https://en.wikipedia.org/wiki/Information_system "Information system")
 ## Data Architecture Examples
 
 - [AWS Reference Architecture Examples](https://aws.amazon.com/architecture/reference-architecture-diagrams/)
 - [Azure Architecture Examples](https://learn.microsoft.com/en-us/azure/architecture/browse/)
 - [GCP Architecture Center](https://cloud.google.com/architecture)
-
 ## Reference
 
 - [深入理解大数据架构之——Lambda架构](https://www.cnblogs.com/cciejh/p/lambda-architecture.html)

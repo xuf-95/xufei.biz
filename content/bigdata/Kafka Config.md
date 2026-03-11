@@ -116,6 +116,7 @@ draft: false
 | retry.backoff.ms              | 如果上次更新失败,发起重试的间隔时间                                                                                                                                                                                                                                                                                                                                                                   | 100                                             |
 
 ## Zookeeper 
+
 ```shell
 ##zookeeper集群的地址，可以是多个，多个之间用逗号分割 hostname1:port1,hostname2:port2,hostname3:port3
 zookeeper.connect = localhost:2181

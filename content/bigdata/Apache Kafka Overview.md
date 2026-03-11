@@ -1,5 +1,5 @@
 ---
-title: Kafka Overview
+title: Apache Kafka Overview
 aliases:
   - Kafka
   - 卡夫卡
@@ -7,45 +7,85 @@ tags:
   - Overview
 date: 2023-10-04
 ---
-### 定义
+## 定义
 
-Kafka 由`Scala`和`Java`编写,Kafka是一种`高吞吐量`的分布式`发布-订阅`消息系统，默认端口: 9092：
-
-- `消息队列（mq）` : 消息的传输过程中保存消息的容器 ， 把要传输的数据放在队列中
-
+Kafka 由`Scala`和`Java`编写，Kafka是一种`高吞吐量`的分布式`发布-订阅`消息系统，默认端口: 9092：
+- `消息队列（mq）` : 消息的传输过程中保存消息的容器，把要传输的数据放在队列中
 - `发布/订阅`：消息的发布者不会将消息直接发送给特定的订阅者，而是将发布的消息分为不同的类别，订阅者只接收感兴趣的消息
-
 ## Version
 
-|版本|核心亮点|
-|---|---|
-|**3.0**|强化交付保障，升级 ZooKeeper|
-|**3.6**|Tiered Storage 支持|
-|**3.7**|MSK 支持 KRaft，多 broker 扩展|
-|**3.8**|压缩级别配置、JBOD、预览 rebalance 协议|
-|**3.9**|动态 KRaft quorum，淘汰 ZooKeeper|
-|**4.0**|完全 KRaft，Queue 模式，rebalance 协议完善，多项现代化更新|
-### API
+| 版本      | 核心亮点                                     |
+| ------- | ---------------------------------------- |
+| **3.0** | 强化交付保障，升级 ZooKeeper                      |
+| **3.6** | Tiered Storage 支持                        |
+| **3.7** | MSK 支持 KRaft，多 broker 扩展                 |
+| **3.8** | 压缩级别配置、JBOD、预览 rebalance 协议              |
+| **3.9** | 动态 KRaft quorum，淘汰 ZooKeeper             |
+| **4.0** | 完全 KRaft，Queue 模式，rebalance 协议完善，多项现代化更新 |
+## API
 
 Kafka拥有三个非常重要的角色特性
 
 - 消息系统：与传统的消息队列或者消息系统类似
 - 存储系统：可以把消息持久化到磁盘，有较好的容错性
 - 流式处理平台：可以在流式记录产生时就进行处理
+## 基础架构
 
-#### 消息队列的两种模式
+A Kafka broker is a server process that handles client requests, stores and replicates messages, and participates in cluster coordination. Each broker runs a set of core components, each implemented as a class or subsystem in the codebase.
 
-两种类型的消息传递模式可用：
+![[content/bigdata/images/kafka-broker-architecture.png]]__***High-Level Broker Component Diagram***__
 
-- 点、对点模式(一对一) : 一个生产者+一个消费者+一个topic，会删除数据 `不常用`。消费者主动拉取数据，消息收到后清除消息
-- 发布-订阅模式(多对多) : 多个生产者+多个消费者+多个topic/相互独立，不会删除数据  
-### 基础架构
-
-### **Kafka支持的主要应用场景**
+## **Kafka支持的主要应用场景**
 
 - **削峰填谷**：所谓的“削峰填谷”就是指缓冲上下游瞬时突发流量，使其更平滑
 - **解耦** ：即允许独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束
-- **异步通信**：即允许把一个消息放入队列，但并不立即处理它们，然后再需要的时候才去处理它们。
+- **异步通信**：即允许把一个消息放入队列，但并不立即处理它们，然后再需要的时候才去处理它们
+## Kafka Stream
+
+Kafka Streams is a client library for building applications and microservices, where the input and output data are stored in Kafka clusters. It combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster technology.
+
+<iframe width="615" height="346" src="https://www.youtube.com/embed/ni3XPsYC5cQ" title="Introduction to Kafka Streams" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Demo Code
+
+```java title="Java8+"
+import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.common.utils.Bytes;
+import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.KTable;
+import org.apache.kafka.streams.kstream.Materialized;
+import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.state.KeyValueStore;
+
+import java.util.Arrays;
+import java.util.Properties;
+
+public class WordCountApplication {
+
+    public static void main(final String[] args) throws Exception {
+        Properties props = new Properties();
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-application");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka-broker1:9092");
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+
+        StreamsBuilder builder = new StreamsBuilder();
+        KStream<String, String> textLines = builder.stream("TextLinesTopic");
+        KTable<String, Long> wordCounts = textLines
+            .flatMapValues(textLine -> Arrays.asList(textLine.toLowerCase().split("\\W+")))
+            .groupBy((key, word) -> word)
+            .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("counts-store"));
+        wordCounts.toStream().to("WordsWithCountsTopic", Produced.with(Serdes.String(), Serdes.Long()));
+
+        KafkaStreams streams = new KafkaStreams(builder.build(), props);
+        streams.start();
+    }
+
+}
+```
 
 ## 总体模块划分（server 侧）
 
@@ -115,7 +155,7 @@ KafkaApis.handleFetch
 ```
 
 
-## 维护任务
+### 维护任务
 
 - **保留与清理**
     - 基于时间/大小的保留：`log.cleaner`/`log.retention.*`
@@ -130,6 +170,12 @@ KafkaApis.handleFetch
 - **ISR（in-sync replicas）**：满足追赶与滞后阈值的副本集合
 - **高水位 HW**：最慢 ISR 的 LEO → 读一致性依据（只对 HW 以内可见）
 
+## 消息队列的两种模式
+
+两种类型的消息传递模式可用：
+
+- 点、对点模式(一对一) : 一个生产者+一个消费者+一个topic，会删除数据 `不常用`。消费者主动拉取数据，消息收到后清除消息
+- 发布-订阅模式(多对多) : 多个生产者+多个消费者+多个topic/相互独立，不会删除数据  
 ## 消息队列对比表
 
 | 特性维度  | Kafka                        | Pulsar                      | RabbitMQ              | ActiveMQ            | NATS       | Redis Streams   | AWS Kinesis     | Google Pub/Sub |
@@ -143,27 +189,53 @@ KafkaApis.handleFetch
 | 典型场景  | 大数据、日志采集、流计算                 | 云原生、多租户、大规模流处理              | 企业应用解耦、订单系统           | 传统企业应用、JMS 场景       | 微服务通信、IoT  | 小规模数据流、轻量实时处理   | AWS 内大数据、日志流    | 跨区域分布式消息       |
 | 运维复杂度 | 中等，需要 Zookeeper（新版本可选 KRaft） | 较高，需要管理 BookKeeper          | 低                     | 低                   | 低          | 低               | 无需运维            | 无需运维           |
 
-
-
-
-
-### Resource  
-
-- Books ：[2170922-EB-I\_Heart\_Logs.pdf](https://assets.confluent.io/m/48c5ed8540ec1f7e/original/2170922-EB-I_Heart_Logs.pdf?_gl=1*rzw9o1*_gcl_au*MTA0NTQwODY3OC4xNzI4NjE2MDMzLjIwNDM1MDgzMjEuMTcyODYxNjUyNi4xNzI4NjE2NTI1*_ga*MTgxMDc0MjE0Ni4xNzI4NjE2MDM3*_ga_D2D3EGKSGD*MTcyODYxNjAzNi4xLjEuMTcyODYxNjUyNy41OC4wLjA.&_ga=2.264712591.1058057393.1728616037-1810742146.1728616037)
-
-- Paper List：[KSQL: Streaming SQL Engine for Apache Kafka](https://openproceedings.org/2019/conf/edbt/EDBT19_paper_329.pdf) 
-
-- Projects list：[Apache Projects Directory](https://projects.apache.org/)
-
-- Presentation：[Keynote Session | Kafka Summit London 2024](https://www.confluent.io/events/kafka-summit-london-2024/keynote-session/)
-
 ### Business Example
  
 ![[Apache Kafka.png]]_**Kafka at LinkedIn**_
 
 - 2019-05-17 [快手万亿级别Kafka集群应用实践与技术演进之路](https://www.infoq.cn/article/Q0o*QzLQiay31MWiOBJH) 涉及 Kafka 使用场景以及Kafka 的 5 点重要改进：平滑扩容、Mirror 集群化、资源隔离、cache 改造以及消费智能限速
 
-### Reference
+## Kafka Monitoring and Operation Maintenance
+
+### 优雅关机
+
+```xml
+controlled.shutdown.enable=true
+```
+
+**Leader 自均衡**
+```xml
+auto.leader.rebalance.enable=true
+```
+### Broker 退役
+
+Broker 退役，先将该 Broker 上的数据迁移到其他 Broker 上(关于迁移情况下面的分区副本重分配部分)，然后直接下线就行了。
+
+### 启动kafka集群
+
+```shell
+#! /bin/bash
+
+case $1 in
+"start"){
+    for i in bigdata101 bigdata102 bigdata103
+    do
+        echo " --------启动 $i Kafka-------"
+        ssh $i "/opt/apps/kafka/bin/kafka-server-start.sh -daemon /opt/apps/kafka/config/server.properties "
+    done
+};;
+"stop"){
+    for i in bigdata101 bigdata102 bigdata103
+    do
+        echo " --------停止 $i Kafka-------"
+        ssh $i "/opt/apps/kafka/bin/kafka-server-stop.sh stop"
+    done
+};;
+esac
+```
+
+
+## Reference
 
 - [The Log](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying) : What every software engineer should know about real-time data's unifying abstraction - By Jay PKreps 201311
 - [Bufstream](https://medium.com/data-engineer-things/bufstream-stream-kafka-messages-to-iceberg-tables-in-minutes-6c60c470e67f) 几分钟内将 Kafka 消息传输到 Iceberg
@@ -175,21 +247,28 @@ KafkaApis.handleFetch
 - [源码的一些介绍](http://www.heartthinkdo.com/?p=2006#12)
 - [Kafka原理](https://www.cnblogs.com/metoy/p/4452124.html)
 - [Jmx's Blog](https://jiamaoxiang.top/2020/09/08/%E9%9D%A2%E8%AF%95-Kafka%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/)
+- [kafka-console-producersh](https://doc.knowstreaming.com/study-kafka/6-operation#618-topic-%E7%9A%84%E5%8F%91%E9%80%81-kafka-console-producersh)
+### Resource  
+
+- Books ：[2170922-EB-I\_Heart\_Logs.pdf](https://assets.confluent.io/m/48c5ed8540ec1f7e/original/2170922-EB-I_Heart_Logs.pdf?_gl=1*rzw9o1*_gcl_au*MTA0NTQwODY3OC4xNzI4NjE2MDMzLjIwNDM1MDgzMjEuMTcyODYxNjUyNi4xNzI4NjE2NTI1*_ga*MTgxMDc0MjE0Ni4xNzI4NjE2MDM3*_ga_D2D3EGKSGD*MTcyODYxNjAzNi4xLjEuMTcyODYxNjUyNy41OC4wLjA.&_ga=2.264712591.1058057393.1728616037-1810742146.1728616037)
+- Paper List：[KSQL: Streaming SQL Engine for Apache Kafka](https://openproceedings.org/2019/conf/edbt/EDBT19_paper_329.pdf) 
+- Projects list：[Apache Projects Directory](https://projects.apache.org/)
+- Presentation：[Keynote Session | Kafka Summit London 2024](https://www.confluent.io/events/kafka-summit-london-2024/keynote-session/)
 
 ### Kafka Tools
 
-- [KAFKA EAGLE](https://www.kafka-eagle.org/#) short name EFAK (Eagle For Apache Kafka, previously known as Kafka Eagle) is A DISTRIBUTED AND HIGH-PERFORMANCE KAFKA MONITORING SYSTEM By Mr Smartloli.
+- [KAFKA EAGLE](https://www.kafka-eagle.org/#) short name EFAK (Eagle For Apache Kafka， previously known as Kafka Eagle) is A DISTRIBUTED AND HIGH-PERFORMANCE KAFKA MONITORING SYSTEM By Mr Smartloli.
 
-![[public/Data-Integration/images/EFKA.png]]_***EFKA Dashboard UI***_
+![[EFKA.png]]_***EFKA Dashboard UI***_
 
 - [KnowStreaming](https://doc.knowstreaming.com/product/1-brief-introduction) 是一套云原生的 Kafka 管控平台，脱胎于众多互联网内部多年的 Kafka 运营实践经验，专注于 Kafka 运维管控、监控告警、资源治理、多活容灾等核心场景，在用户体验、监控、运维管控上进行了平台化、可视化、智能化的建设，提供一系列特色的功能，极大地方便了用户和运维人员的日常使用，让普通运维人员都能成为 Kafka 专家
 
 - [CMAK](https://github.com/yahoo/CMAK) is a tool for managing Apache Kafka clusters
 
-![[public/Data-Integration/images/EMAK.png]]_***EMAK***_
+![[EMAK.png]]_***EMAK***_
 
 
-![[kafka-logo-readme-dark.svg]]
+![[public/bigdata/images/kafka-logo-readme-dark.svg]]
 
 
 ### Question
