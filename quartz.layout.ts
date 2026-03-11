@@ -5,14 +5,14 @@ import { SimpleSlug } from "./quartz/util/path"
 
 const recentNotes = [
   Component.RecentNotes({
-    title: "Recent Writing",
+    title: "Recent Posts",
     limit: 4,
     filter: (f) =>
-      f.slug!.startsWith("Posts/") && f.slug! !== "Posts/index" && !f.frontmatter?.noindex,
-    linkToMore: "Posts/" as SimpleSlug,
+      f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+    linkToMore: "posts/" as SimpleSlug,
   }),
   Component.RecentNotes({
-    title: "Recent Notes",
+    title: "Recent BigData",
     limit: 2,
     filter: (f) => f.slug!.startsWith("bigdata/"),
     linkToMore: "bigdata/" as SimpleSlug,
@@ -75,56 +75,3 @@ export const defaultListPageLayout: PageLayout = {
   left,
   right: [],
 }
-
-// // components for pages that display a single page (e.g. a single note)
-// export const defaultContentPageLayout: PageLayout = {
-//   beforeBody: [
-//     Component.ConditionalRender({
-//       component: Component.Breadcrumbs(),
-//       condition: (page) => page.fileData.slug !== "index",
-//     }),
-//     Component.ArticleTitle(),
-//     Component.ContentMeta(),
-//     Component.TagList(),
-//   ],
-//   left: [
-//     Component.PageTitle(),
-//     Component.MobileOnly(Component.Spacer()),
-//     Component.Flex({
-//       components: [
-//         {
-//           Component: Component.Search(),
-//           grow: true,
-//         },
-//           { Component: Component.Darkmode() },
-//           { Component: Component.ReaderMode() },
-//       ],
-//     }),
-//     Component.Explorer(),
-//   ],
-//   right: [
-//     Component.Graph(),
-//     Component.DesktopOnly(Component.TableOfContents()),
-//     Component.Backlinks(),
-//   ],
-// }
-
-// // components for pages that display lists of pages  (e.g. tags or folders)
-// export const defaultListPageLayout: PageLayout = {
-//   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-//   left: [
-//     Component.PageTitle(),
-//     Component.MobileOnly(Component.Spacer()),
-//     Component.Flex({
-//       components: [
-//         {
-//           Component: Component.Search(),
-//           grow: true,
-//         },
-//         { Component: Component.Darkmode() },
-//       ],
-//     }),
-//     Component.Explorer(),
-//   ],
-//   right: [],
-// }
