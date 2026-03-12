@@ -95,6 +95,11 @@ C --> D
 ### [[Kappa Architecture]]
 
 ![[kappa-architecture.png]]
+
+### [[Flow-Batch Architecture]] 
+
+### [[Lake-DataWarehouse Architecture]]
+
 ### [[Data Lake]]
 
 ### [[01 Data Store Homepage|Data Store]]
