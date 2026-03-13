@@ -145,3 +145,8 @@ Spark applications are launched through the `SparkSubmit` class, which handles
 
 The [assembly/pom.xml28-360](https://github.com/apache/spark/blob/95a96891/assembly/pom.xml#L28-L360) module creates the final distribution package, including all necessary JARs and dependencies. The assembly process handles dependency shading and classpath management for different deployment scenarios.
 
+## Spark Performance Tunning
+
+- [Spark性能优化指南——高级篇 - 美团技术团队](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)
+- [Spark对数据倾斜的八种处理方法 \| Peripateticism \| IT瘾](https://itindex.net/detail/57899-spark-%E6%95%B0%E6%8D%AE-%E6%96%B9%E6%B3%95)
+- [Spark性能优化指南——基础篇（转载） - shishanyuan - 博客园](https://www.cnblogs.com/shishanyuan/p/8454323.html)

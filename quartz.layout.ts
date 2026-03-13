@@ -57,7 +57,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
-          showTags: false,
+          showTags: true,
         },
         globalGraph: {
           showTags: false,

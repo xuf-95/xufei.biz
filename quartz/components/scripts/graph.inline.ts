@@ -68,30 +68,6 @@ type TweenNode = {
   stop: () => void
 }
 
-// workaround for pixijs webgpu issue: https://github.com/pixijs/pixijs/issues/11389
-async function determineGraphicsAPI(): Promise<"webgpu" | "webgl"> {
-  const adapter = await navigator.gpu?.requestAdapter().catch(() => null)
-  const device = adapter && (await adapter.requestDevice().catch(() => null))
-  if (!device) {
-    return "webgl"
-  }
-
-  const canvas = document.createElement("canvas")
-  const gl =
-    (canvas.getContext("webgl2") as WebGL2RenderingContext | null) ??
-    (canvas.getContext("webgl") as WebGLRenderingContext | null)
-
-  // we have to return webgl so pixijs automatically falls back to canvas
-  if (!gl) {
-    return "webgl"
-  }
-
-  const webglMaxTextures = gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS)
-  const webgpuMaxTextures = device.limits.maxSampledTexturesPerShaderStage
-
-  return webglMaxTextures === webgpuMaxTextures ? "webgpu" : "webgl"
-}
-
 async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   const slug = simplifySlug(fullSlug)
   const visited = getVisited()
@@ -373,7 +349,6 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   tweens.forEach((tween) => tween.stop())
   tweens.clear()
 
-  const pixiPreference = await determineGraphicsAPI()
   const app = new Application()
   await app.init({
     width,
@@ -382,7 +357,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     autoStart: false,
     autoDensity: true,
     backgroundAlpha: 0,
-    preference: pixiPreference,
+    preference: "webgpu",
     resolution: window.devicePixelRatio,
     eventMode: "static",
   })
@@ -522,30 +497,41 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   if (enableZoom) {
-    select<HTMLCanvasElement, NodeData>(app.canvas).call(
-      zoom<HTMLCanvasElement, NodeData>()
-        .extent([
-          [0, 0],
-          [width, height],
-        ])
-        .scaleExtent([0.25, 4])
-        .on("zoom", ({ transform }) => {
-          currentTransform = transform
-          stage.scale.set(transform.k, transform.k)
-          stage.position.set(transform.x, transform.y)
+    const initialZoomScale = 2
+    const zoomBehavior = zoom<HTMLCanvasElement, NodeData>()
+      .extent([
+        [0, 0],
+        [width, height],
+      ])
+      .scaleExtent([0.25, 4])
+      .on("zoom", ({ transform }) => {
+        currentTransform = transform
+        const k = transform.k
+        stage.scale.set(k, k)
+        stage.position.set(transform.x, transform.y)
 
-          // zoom adjusts opacity of labels too
-          const scale = transform.k * opacityScale
-          let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
-          const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+        // zoom adjusts opacity of labels too
+        const scale = k * opacityScale
+        let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
+        const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
 
-          for (const label of labelsContainer.children) {
-            if (!activeNodes.includes(label)) {
-              label.alpha = scaleOpacity
-            }
+        for (const label of labelsContainer.children) {
+          if (!activeNodes.includes(label)) {
+            label.alpha = scaleOpacity
           }
-        }),
-    )
+        }
+      })
+    const canvasSel = select<HTMLCanvasElement, NodeData>(app.canvas)
+    canvasSel.call(zoomBehavior)
+
+    // 初始放大时，以画布中心为缩放中心，保证图形仍居中
+    const cx = width / 2
+    const cy = height / 2
+    const initialTransform = zoomIdentity
+      .translate(cx, cy)
+      .scale(initialZoomScale)
+      .translate(-cx, -cy)
+    canvasSel.call(zoomBehavior.transform, initialTransform)
   }
 
   let stopAnimation = false
