@@ -15,13 +15,21 @@ draft: false
 
 Flink 本身是批流统一的处理框架，所以Table API 和SQL，就是批流统一的上层处理API
   
-1. 基本结构 # 与流式处理的程序结构十分相似
-2. 创建 TableEnvironment
-3. 配置 TableEnvironment
-4. 创建表 # 配置水位线
-5. 表的查询 Table API
-5. 表的查询 SQL
-6. 输出表 # 输出到文件. kafka. ES. mysql
+- 基本结构 # 与流式处理的程序结构十分相似
+- 创建 TableEnvironment
+- 配置 TableEnvironment
+- 创建表 # 配置水位线
+- 表的查询 Table API
+- 表的查询 SQL
+- 输出表 # 输出到文件. kafka. ES. mysql
+
+## Architecture
+
+![[flink-sql-arch.png]]
+
+### Flink SQL — Full Parse Pipeline with Concrete SQL
+
+![[flink-sql-arch-process.png]]
 
 ## 基本代码程序结构
 
@@ -38,7 +46,6 @@ Table result = tableEnv.from("inputTable").select(...);
 Table sqlResult  = tableEnv.sqlQuery("SELECT ... FROM inputTable ...");
 // 将结果表写入输出表中
 result.insertInto("outputTable");
-
 ```
 
 ### 创建 TableEnvironment
@@ -47,10 +54,10 @@ result.insertInto("outputTable");
 StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
 
 TableEnvironment 是 flink 中集成 Table API 和 SQL 的核心概念，所有对表的操作都基于 TableEnvironment 
-– 注册 Catalog
-– 在 Catalog 中注册表
-– 执行 SQL 查询
-– 注册用户自定义函数（UDF）
+- 注册 Catalog
+- 在 Catalog 中注册表
+- 执行 SQL 查询
+- 注册用户自定义函数（UDF）
 
 ### 配置 TableEnvironment
 配置老版本 planner 的流式查询
@@ -179,7 +186,8 @@ nStatus int)with('connector.type' = 'kafka',
 ```
 
 
-
 ## Reference
 
-- [Apache Flink Documentation | Apache Flink](https://nightlies.apache.org/flink/flink-docs-release-1.14/)
+- [Overview \| Apache Flink](https://nightlies.apache.org/flink/flink-docs-release-2.2/docs/dev/table/overview/)
+- [How to write fast Flink SQL](https://www.ververica.com/blog/how-to-write-fast-flink-sql#:~:text=Flink%20SQL%20Optimizer,generate%20the%20optimal%20execution%20plan.)
+- [Top 10 Flink SQL queries to try in Amazon Kinesis Data Analytics Studio \| AWS Big Data Blog](https://aws.amazon.com/blogs/big-data/top-10-flink-sql-queries-to-try-in-amazon-kinesis-data-analytics-studio/#:~:text=Apache%20Flink's%20SQL%20support%20uses%20Apache%20Calcite%2C,into%20streaming%20tables%20defined%20in%20Apache%20Flink.)
