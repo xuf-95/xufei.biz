@@ -352,5 +352,6 @@ Flink 中的状态 # 类似本地变量
 
 ## Reference
 
-- [本地模式安装|Apache Flink](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/try-flink/local_installation/)
 - [Apache Flink Documentation | Apache Flink](https://flink.apache.org/zh/)
+- [Apache Flink Explained: Stream Processing Framework Guide \| Ververica](https://www.ververica.com/what-is-apache-flink)
+- - [本地模式安装|Apache Flink](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/try-flink/local_installation/)
