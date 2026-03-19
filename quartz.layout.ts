@@ -45,6 +45,7 @@ const left = [
         grow: true,
       },
       { Component: Component.Darkmode() },
+      { Component: Component.ReaderMode() },
     ],
   }),
   ...recentNotes.map((c) => Component.DesktopOnly(c)),

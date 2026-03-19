@@ -7,8 +7,11 @@ tags:
 date: 2023-06-07
 draft: false
 ---
+## Overview
 
-> [!info] Apache Flink is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. Flink has been designed to run in all common cluster environments, perform computations at in-memory speed and at any scale.
+> [!qu] Apache Flink is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams
+
+
 ## 简介
 
 Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用于对`无界和有界数据流`进行`状态计算`

@@ -62,7 +62,7 @@ draft: false
     - [Apache Samza](https://samza.apache.org) 
 - **Hybrid frameworks:**
     - [[Apache Spark]]
-    - [[Flink Overview]]
+    - [[What is Apache Flink?]]
 ## 典型的大数据架构 
 
 ### [[Lambda Architecture]]
