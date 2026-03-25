@@ -75,11 +75,13 @@ export function trimPathSuffix(fp: string): string {
 
 ## Wikilinks
 
-### Embeds
-
 - `![[Path to image]]`: embeds an image into the page
 - `![[Path to image|100x145]]`: embeds an image into the page with dimensions 100px by 145px
 - `![[Path to file]]`: transclude an entire page
 - `![[Path to file#anchor|Anchor]]`: transclude everything under the header `Anchor`
 - `![[Path to file#^b15695|^b15695]]`: transclude block with ID `^b15695`
-## Syntax
+
+
+
+
+

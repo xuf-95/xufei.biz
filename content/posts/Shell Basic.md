@@ -2,9 +2,9 @@
 title: Shell Basic
 tags:
   - shell
-  - snippets 
+  - snippets
 date: 2022-07-08
-draft: false
+draft: true
 ---
 ![[Shell Basic.png]]
 ### Variables
