@@ -1,5 +1,5 @@
 ---
-title: all bigdata
+title: Big Data Home
 draft: false
 date: 2022-03-04
 ---

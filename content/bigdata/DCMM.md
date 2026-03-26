@@ -1,14 +1,14 @@
 ---
-title: DCMM（Data management capability maturity assessment model）
+title: DCMM
 aliases:
   - 数据管理能力成熟度评估模型
   - dcmm
+  - Data management capability maturity assessment model
 draft: false
 date: 2024-12-01
 ---
 
-
-> DCMM()：Digital Capabilities Management Model <数据管理能力成熟度评估模型> 用于对组织的数据管理能力成熟度进行评估的模型
+> DCMM：Digital Capabilities Management Model <数据管理能力成熟度评估模型> 用于对组织的数据管理能力成熟度进行评估的模型
 
 ### 相关定义
 
