@@ -12,7 +12,7 @@ Databases with AI capabilities combine traditional storage and querying function
 ### Datus-Agent
 
 - [GitHub - Datus-ai/Datus-agent: ](https://github.com/Datus-ai/Datus-agent)The Future of Data Engineering — A CLI SQL client for the modern data stack, enabling AI-native context engineering for data
-![[datus-agent.png]]
+![[content/ai/image/datus-agent.png]]
 
 ### Text2SQL
 
@@ -22,15 +22,15 @@ Databases with AI capabilities combine traditional storage and querying function
       - CPU >= 2 Cores
       - RAM >= 4 GiB
 
-![[chat2db.png]]
+![[content/ai/image/chat2db.png]]
 
 - [SQLChat](https://github.com/sqlchat/sqlchat) is a chat-based SQL client, which uses natural language to communicate with the database to implement operations such as query, modification, addition, and deletion of the database.
 
-![[sqlchat.png]]
+![[content/ai/image/sqlchat.png]]
 
 - [vanna](https://github.com/vanna-ai/vanna)  is an MIT-licensed open-source Python RAG (Retrieval-Augmented Generation) framework for SQL generation and related functionality.
 
-![[vanna.png]]
+![[content/ai/image/vanna.png]]
 
 - [supersonic](https://github.com/tencentmusic/supersonic) is the next-generation AI+BI platform that unifies Chat BI (powered by LLM) and Headless BI (powered by semantic layer) paradigms. This unification ensures that Chat BI has access to the same curated and governed semantic data models as traditional BI. Furthermore, the implementation of both paradigms benefit from each other:
 
@@ -42,14 +42,14 @@ Databases with AI capabilities combine traditional storage and querying function
 
 - [PandasAI](https://github.com/sinaptik-ai/pandas-ai) Chat with your database or your datalake (SQL, CSV, parquet). PandasAI makes data analysis conversational using LLMs and RAG.
 
-![[pandasai.gif]]
+![[content/ai/image/pandasai.gif]]
 
 - [ChatDB](https://chatdatabase.github.io/) Augmenting LLMs with Databases as Their Symbolic Memory
 
-![[chatdb.png]]
+![[content/ai/image/chatdb.png]]
 
 ### Agent 
 
 - [WrenAI](https://github.com/Canner/WrenAI) Open-source GenBI AI Agent that empowers data-driven teams to chat with their data to generate Text-to-SQL, charts, spreadsheets, reports, dashboards and BI.
 
-![[wrenai.png]]
+![[content/ai/image/wrenai.png]]
