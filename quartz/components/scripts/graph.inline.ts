@@ -163,6 +163,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
   const width = graph.offsetWidth
   const height = Math.max(graph.offsetHeight, 250)
+  const horizontalStretch = graph.classList.contains("graph-container") ? 2 : 1
 
   // we virtualize the simulation and use pixi to actually render it
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
@@ -540,18 +541,24 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     for (const n of nodeRenderData) {
       const { x, y } = n.simulationData
       if (!x || !y) continue
-      n.gfx.position.set(x + width / 2, y + height / 2)
+      n.gfx.position.set(x * horizontalStretch + width / 2, y + height / 2)
       if (n.label) {
-        n.label.position.set(x + width / 2, y + height / 2)
+        n.label.position.set(x * horizontalStretch + width / 2, y + height / 2)
       }
     }
 
     for (const l of linkRenderData) {
       const linkData = l.simulationData
       l.gfx.clear()
-      l.gfx.moveTo(linkData.source.x! + width / 2, linkData.source.y! + height / 2)
+      l.gfx.moveTo(
+        linkData.source.x! * horizontalStretch + width / 2,
+        linkData.source.y! + height / 2,
+      )
       l.gfx
-        .lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
+        .lineTo(
+          linkData.target.x! * horizontalStretch + width / 2,
+          linkData.target.y! + height / 2,
+        )
         .stroke({ alpha: l.alpha, width: 1, color: l.color })
     }
 

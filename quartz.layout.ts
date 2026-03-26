@@ -23,7 +23,20 @@ const recentNotes = [
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [...recentNotes.map((c) => Component.MobileOnly(c))],
+  afterBody: [
+    ...recentNotes.map((c) => Component.MobileOnly(c)),
+    Component.DesktopOnly(
+      Component.Graph({
+        localGraph: {
+          showTags: true,
+        },
+        globalGraph: {
+          showTags: false,
+        },
+      }),
+    ),
+
+  ],
   footer: Component.Footer({
     links: {
       "Home": "https://xufei.biz",
@@ -52,19 +65,12 @@ const left = [
 ]
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [Component.ArticleTitle(), Component.ContentMeta(), Component.TagList()],
+  beforeBody: [
+    Component.ArticleTitle(), 
+    Component.ContentMeta(), 
+    Component.TagList()],
   left,
   right: [
-    Component.DesktopOnly(
-      Component.Graph({
-        localGraph: {
-          showTags: true,
-        },
-        globalGraph: {
-          showTags: false,
-        },
-      }),
-    ),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],

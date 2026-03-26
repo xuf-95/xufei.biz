@@ -36,7 +36,7 @@ const defaultOptions: GraphOptions = {
     centerForce: 0.3,
     linkDistance: 30,
     fontSize: 0.6,
-    opacityScale: 1,
+    opacityScale: 2,//1
     showTags: true,
     removeTags: [],
     focusOnHover: false,
@@ -51,7 +51,7 @@ const defaultOptions: GraphOptions = {
     centerForce: 0.2,
     linkDistance: 30,
     fontSize: 0.6,
-    opacityScale: 1,
+    opacityScale: 2,
     showTags: true,
     removeTags: [],
     focusOnHover: true,

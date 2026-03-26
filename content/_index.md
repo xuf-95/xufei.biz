@@ -5,8 +5,8 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 ## Contents
 
-- [[bigdata/index|Big Data]]: data architecture, data warehouse, data governance, data compute, data standard, data lifecycle… 
--  [[ai/index|AI]]: Agent, RAG, LLM..
+- [[bigdata/index|Big Data]]: data architecture, data warehouse, data governance, data compute, data standard, data lifecycle...
+- [[ai/index|AI]]: Agent, RAG, LLM...
 - [[posts/index|Posts]]: some draft & thougts and interesting
 
 **Commits Time Distribution of my wiki**
