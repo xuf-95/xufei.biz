@@ -3,6 +3,7 @@ title: Open Sources DataSets
 description: 大数据数据集
 tags:
   - datasets
+  - resource
 date: 2024-07-05
 draft: false
 ---

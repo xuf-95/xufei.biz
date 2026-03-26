@@ -4,7 +4,8 @@ aliases:
   - Kafka
   - 卡夫卡
 tags:
-  - Overview
+  - dataflow
+  - streaming
 date: 2023-10-04
 ---
 ## 定义

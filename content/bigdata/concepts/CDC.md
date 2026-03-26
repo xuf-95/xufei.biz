@@ -5,12 +5,11 @@ aliases:
   - Change Data Capture
   - 数据捕获
 tags:
-  - database
+  - data-integration
   - concepts
-  - cdc
 date: 2023-02-05
 ---
-### 定义
+### Overview
 
 > Change data capture describes the process of recording the change of data in a database. Typically, this means tracking when records are inserted, updated, and deleted along with the data itself.
 
@@ -47,7 +46,7 @@ WHERE name =   ${DD_NAME};
 ```
 
 
-### 案例
+### Case
 
 - 在 [[Apache Kafka]] 中的项目案例 [How To Implement Change Data Capture With Apache Kafka  | Estuary](https://estuary.dev/change-data-capture-kafka/)
 ### When to use change data capture
