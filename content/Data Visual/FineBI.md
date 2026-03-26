@@ -3,7 +3,7 @@ title: FineBI
 aliases:
   - 帆软
 tags:
-  - BI
+  - bi
 date: 2024-03-04
 ---
 

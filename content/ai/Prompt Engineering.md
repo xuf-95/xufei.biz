@@ -2,7 +2,7 @@
 aliases:
   - 提示词工程
 tags:
-  - AI
+  - ai
   - engineering
 date: 2025-04-10
 draft: false

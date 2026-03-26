@@ -6,6 +6,7 @@ tags:
   - database
   - olap
   - data-store
+  - col-storage
 date: 2022-03-11
 draft:
 ---

@@ -2,7 +2,7 @@
 title: Tableau
 aliases:
 tags:
-  - BI
+  - bi
 date: 2024-10-04
 ---
 

@@ -2,7 +2,7 @@
 date: 2024-01-09
 aliases:
 tags:
-  - AI
+  - ai
 description:
 draft:
 publishDate: 2026-03-20T11:21

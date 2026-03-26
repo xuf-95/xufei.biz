@@ -4,6 +4,8 @@ aliases:
   - Flink
 tags:
   - data-compute
+  - Event-driven
+  - Real-time
 date: 2023-06-07
 draft: false
 ---

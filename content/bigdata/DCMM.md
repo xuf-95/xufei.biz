@@ -4,6 +4,14 @@ aliases:
   - 数据管理能力成熟度评估模型
   - dcmm
   - Data management capability maturity assessment model
+tags:
+  - data-architecture
+  - data-goverance
+  - data-integration
+  - data-compute
+  - data-visual
+  - data-lifecycle
+  - datda-strategy
 draft: false
 date: 2024-12-01
 ---

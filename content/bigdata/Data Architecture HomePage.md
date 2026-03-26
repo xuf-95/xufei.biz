@@ -5,7 +5,7 @@ tags:
   - index
 draft: false
 ---
-### 数据架构的定义
+## 数据架构的定义
 
 #### DAMA观点
 
@@ -58,7 +58,7 @@ draft: false
 - **Batch-only frameworks:** 基于分布式文件系统
     - [[Hadoop]]
 - **Stream-only frameworks:**
-    - [[Apache Storm]]
+    - [[What is Apache Storm?]]
     - [Apache Samza](https://samza.apache.org) 
 - **Hybrid frameworks:**
     - [[What is Apache Spark?]]
@@ -92,7 +92,7 @@ B --> D
 C --> D
 
 ```
-### [[Kappa Architecture]]
+### [[what is Kappa Architecture?]]
 
 ![[kappa-architecture.png]]
 

@@ -2,7 +2,7 @@
 date: 2024-01-09
 aliases:
 tags:
-  - AI
+  - ai
   - mcp
   - data-store
 description:

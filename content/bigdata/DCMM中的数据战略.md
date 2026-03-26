@@ -2,7 +2,10 @@
 title: DCMM中的数据战略
 aliases:
   - dcmm
-draft: false
+tags:
+  - dcmm
+  - datda-strategy
+draft: true
 date: 2024-12-01
 ---
 

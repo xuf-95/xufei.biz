@@ -3,7 +3,7 @@ title: Data Visual
 tags:
   - sec-index
   - Visual
-  - BI
+  - bi
 date: 2023-10-23
 ---
 ![[数据分析价值链全景图 小红书.jpg]]

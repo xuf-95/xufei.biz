@@ -3,7 +3,7 @@ title: 知识蒸馏（Knowledge Distillation）
 aliases:
   - 知识蒸馏
 tags:
-  - AI
+  - ai
   - model
 date: 2025-01-11
 publish: false

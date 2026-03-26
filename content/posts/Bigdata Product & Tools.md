@@ -1,8 +1,8 @@
 ---
 title: Bigdata Product & Tools
 tags:
-  - BI
-  - AI
+  - bi
+  - ai
   - product
   - Introduction
 date: 2023-08-06

@@ -4,8 +4,8 @@ aliases:
 tags:
   - bigdata
   - data-compute
-  - realtime-compute
   - flink
+  - Real-time
 description:
 draft: true
 publishDate: 2025-09-26T11:51

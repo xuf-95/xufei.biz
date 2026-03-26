@@ -3,7 +3,7 @@ aliases:
   - Agent
   - 智能体
 tags:
-  - AI
+  - ai
   - Agent
 date: 2025-04-10
 draft: false

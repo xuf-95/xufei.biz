@@ -4,8 +4,8 @@ aliases:
   - zookeeper
 tags:
   - architecture
-  - apache
-  - opensource
+  - distribute
+  - data-server
 date: 2023-09-24
 draft: false
 ---

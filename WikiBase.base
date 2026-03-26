@@ -18,9 +18,7 @@ views:
       - file.links
     sort:
       - property: file.folder
-        direction: ASC
-      - property: file.tags
-        direction: ASC
+        direction: DESC
       - property: title
         direction: DESC
       - property: date

@@ -2,7 +2,7 @@
 title: Superset
 aliases:
 tags:
-  - BI
+  - bi
 date: 2024-03-04
 ---
 ## What's Superset?

@@ -2,9 +2,11 @@
 title: Kafka Config
 tags:
   - kafka
-  - env
+  - config
+  - msg
+  - dataflow
 date: 2024-01-22
-draft: false
+draft: true
 ---
 
 ## Broker

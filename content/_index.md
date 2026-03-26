@@ -9,16 +9,15 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 - [[ai/index|AI]]: Agent, RAG, LLM...
 - [[posts/index|Posts]]: some draft & thougts and interesting
 
-**Commits Time Distribution of my wiki**
 
-<!-- Copy-paste in your Readme.md file -->
+<!-- **Commits Time Distribution of my wiki**
 
 <a href="https://next.ossinsight.io/widgets/official/analyze-repo-commits-time-distribution?repo_id=1001533954&period=last_1_year&zone=0" target="_blank" style="display: block" align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/analyze-repo-commits-time-distribution/thumbnail.png?repo_id=1001533954&period=last_1_year&zone=0&image_size=auto&color_scheme=dark" width="721" height="auto">
     <img alt="Commits Time Distribution of xuf-95/xufei.biz" src="https://next.ossinsight.io/widgets/official/analyze-repo-commits-time-distribution/thumbnail.png?repo_id=1001533954&period=last_1_year&zone=0&image_size=auto&color_scheme=light" width="721" height="auto">
   </picture>
-</a>
+</a> -->
 
 <!-- ## 快速导航
 

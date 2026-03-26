@@ -1,7 +1,7 @@
 ---
 title: Bloger List
 tags:
-  - Resources
+  - resource
 date: 2025-02-14
 draft: true
 ---

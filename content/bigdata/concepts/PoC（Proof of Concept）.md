@@ -5,7 +5,6 @@ aliases:
   - 证明概念
 tags:
   - concepts
-  - system
 date: 2022-09-05
 draft: false
 ---

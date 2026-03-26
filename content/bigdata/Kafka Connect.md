@@ -4,6 +4,8 @@ tags:
   - kafka
   - dataflow
   - connect
+  - msg
+  - etl
 date: 2024-01-29
 draft: true
 ---
@@ -27,7 +29,6 @@ Kafka Connect 目前支持两种执行模式：独立（单进程）和分布式
 ```sh
 > bin/connect-standalone.sh config/connect-standalone.properties connector1.properties [connector2.properties ...]
 ```
-
 
 
 ## **配置 Connect**

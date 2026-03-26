@@ -6,8 +6,8 @@ aliases:
   - 私有网络
 tags:
   - concepts
-  - bigdata
   - cloud
+  - network
 draft: false
 date: 2024-04-08
 ---

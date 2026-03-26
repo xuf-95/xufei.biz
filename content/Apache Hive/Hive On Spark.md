@@ -4,7 +4,7 @@ tags:
   - bigdata
   - data-warehouse
   - hive
-  - Spark
+  - spark
 date: 2022-03-13
 draft: false
 ---

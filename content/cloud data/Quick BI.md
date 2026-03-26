@@ -3,7 +3,7 @@ title: Quick BI
 aliases:
 tags:
   - aliyun
-  - BI
+  - bi
 date: 2024-03-04
 ---
 ## 流程
