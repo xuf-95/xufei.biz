@@ -34,13 +34,13 @@ Flink-CDC ： 可以直接从 [[MySQL Binlog]]，PostgreSQL等数据库 基于"B
 
 ### CDC 分类：**基于查询** 和 **基于Binlog**
 
-|               | 基于Binlog               | 基于查询                    |
-| ------------- | ---------------------- | ----------------------- |
-| 产品            | Canal、Maxwell、Debezium | Kafka JDBC Source|
-| 执行模式          | Streaming              | Batch                   |
-| 是否可以捕获所有数据的变化 | 是                      | 否                       |
-| 延迟性           | 低延迟                    | 高延迟                     |
-| 是否增加数据库压力     | 否                      | 是                       |
+|               | 基于Binlog               | 基于查询              |
+| ------------- | ---------------------- | ----------------- |
+| 产品            | Canal、Maxwell、Debezium | Kafka JDBC Source |
+| 执行模式          | Streaming              | Batch             |
+| 是否可以捕获所有数据的变化 | 是                      | 否                 |
+| 延迟性           | 低延迟                    | 高延迟               |
+| 是否增加数据库压力     | 否                      | 是                 |
 
 ### 传统 CDC ETL 分析 
 
@@ -57,12 +57,15 @@ graph LR
 ![[flinkcdc-etl.png]]
 
 ### 基于Flink CDC 的数据打宽
+
 ![[flink-etl-sql.png]]
 
 ### 基于Flink CDC 的聚合分析
+
 ![[flink-cdc.png]]
 
 ### CDC设计实现
+
 - Chunk切分
 - Chunk读取
 - Chunk分配

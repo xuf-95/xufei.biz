@@ -169,7 +169,7 @@ a {
   margin: 0 auto;
   & article {
     & > h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     & li:has(> input[type="checkbox"]) {
@@ -402,19 +402,19 @@ h6 {
 
 // typography improvements
 h1 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin-top: 2.25rem;
   margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-top: 1.9rem;
   margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: 1.12rem;
+  font-size: 1.08rem;
   margin-top: 1.62rem;
   margin-bottom: 1rem;
 }
@@ -422,7 +422,7 @@ h3 {
 h4,
 h5,
 h6 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -519,7 +519,7 @@ code {
 tbody,
 li,
 p {
-  line-height: 1.6rem;
+  line-height: 1.5rem;
 }
 
 .table-container {
@@ -536,7 +536,7 @@ p {
     }
 
     & > * {
-      line-height: 2rem;
+      line-height: 1.8rem;
     }
   }
 }
