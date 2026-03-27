@@ -21,12 +21,12 @@ Apache Spark is a powerful unified analytics engine for large-scale distributed 
 
 ## Spark Architecture
 
-![[content/bigdata/images/spark-architecture.png]]
+![[spark-architecture.png]]
 
 
 ## Core Components
 
-![[content/bigdata/images/spark-core-components.png]]
+![[spark-core-components.png]]
 
 ### Spark Core
 
@@ -37,7 +37,7 @@ Apache Spark is a powerful unified analytics engine for large-scale distributed 
 
 ### Spark SQL
 
-![[content/bigdata/images/sparksql-architecture.png]]
+![[sparksql-architecture.png]]
 
 Spark SQL provides a programming interface for processing structured and semi-structured data. It includes:
 

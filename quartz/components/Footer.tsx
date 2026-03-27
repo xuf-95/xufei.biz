@@ -24,7 +24,7 @@ export default ((opts?: Options) => {
             </li>
           ))}
         </ul>
-        <div class="badges">
+        {/* <div class="badges">
           <a href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">
             <img src="https://lmnt.me/files/images/badges/wikipedia.gif" alt="Wikipedia" />
           </a>
@@ -63,7 +63,7 @@ export default ((opts?: Options) => {
             <img src="https://www.apache.org/logos/res/zookeeper/default.png" alt="Zookeeper" width="88" height="31" />
           </a>
 
-        </div>
+        </div> */}
 
       </footer>
     )

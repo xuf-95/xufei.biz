@@ -8,7 +8,7 @@ html {
   scroll-behavior: smooth;
   text-size-adjust: none;
   overflow-x: hidden;
-  width: 100vw;
+  width: 90vw;//100
 }
 
 body {
@@ -116,7 +116,10 @@ a {
     }
     &.tag-link {
       &::before {
-        content: "#";
+        content: "[";
+      }
+      &::after {
+        content: "]";
       }
     }
   }
@@ -569,7 +572,7 @@ p > img + em {
 
 hr {
   width: 100%;
-  margin: 1rem auto; // 2
+  margin: 1rem auto; // 1
   height: 1px;
   border: none;
   background-color: var(--lightgray);

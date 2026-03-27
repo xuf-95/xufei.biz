@@ -52,3 +52,30 @@ hr {
     border-radius: 6px;
   }
 }
+
+/* Underline for all internal and external links in the main content */
+article a,
+.content a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--secondary);  /* Uses your secondary color (#FF0 in light, #CCCC0 in dark) */
+  transition: text-decoration-color 0.2s ease, text-decoration-thickness 0.2s ease;
+}
+
+/* Hover effect: slightly thicker underline and change color to tertiary */
+article a:hover,
+.content a:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--tertiary);
+}
+
+/* Optional: keep header links (like in the sidebar) clean – no underline by default */
+.sidebar a {
+  text-decoration: none;
+}
+.sidebar a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--secondary);
+}

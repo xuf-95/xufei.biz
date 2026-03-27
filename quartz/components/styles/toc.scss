@@ -45,22 +45,60 @@ ul.toc-content.overflow {
   padding: 0;
   max-height: calc(100% - 2rem);
   overscroll-behavior: contain;
-  list-style: none;
 
-  & > li > a {
-    color: var(--dark);
-    opacity: 0.35;
-    transition:
-      0.5s ease opacity,
-      0.3s ease color;
-    &.in-view {
-      opacity: 0.75;
+  & > li {
+    // Depth-based indentation (original loop)
+    @for $i from 0 through 6 {
+      &.depth-#{$i} {
+        padding-left: calc(1rem * #{$i});
+      }
+    }
+
+    // Left border – creates the continuous vertical line
+    border-left: 2px solid var(--lightgray); // default line colour
+    margin-left: 0.5rem; // optional: space between line and text
+    transition: border-color 0.2s ease;
+
+    > a {
+      color: var(--dark);
+      opacity: 0.35;
+      transition:
+        0.5s ease opacity,
+        0.3s ease color;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.2rem 0;
+      padding-left: 0.75rem; // space from the line
+
+      // Hover effect: text colour changes, line stays gray
+      &:hover {
+        color: var(--secondary);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+        text-decoration-thickness: 1px;
+        opacity: 1;
+      }
+
+      // Active / in-view styling – only the left border turns white, no background, no circles
+      &.in-view,
+      &.active {
+        opacity: 1;
+        color: var(--secondary); // you can also set to white if preferred
+        font-weight: 500;
+        text-decoration: underline;
+        text-decoration-color: var(--secondary);
+      }
+    }
+
+    // The magic: when the link inside this <li> is active, the left border of the <li> turns white
+    &:has(a.in-view),
+    &:has(a.active) {
+      border-left-color: white; // the "white highlight trigger" on the straight line
     }
   }
-
-  @for $i from 0 through 6 {
-    & .depth-#{$i} {
-      padding-left: calc(1rem * #{$i});
-    }
+  &:has(a.in-view):last-of-type a.in-view {
+    // 这里可以覆盖文字样式，让最后一个标题的文字也更突出
+    color: var(--secondary);
+    font-weight: 600;
   }
 }
