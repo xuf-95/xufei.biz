@@ -19,3 +19,6 @@ _**[Anthony Fu](https://antfu.me/photos)**_
 
 ![[Thomas-Brasington.png]]
 [The Post Chaise](https://www.thepostchaise.com/?ref=deadsimplesites)
+
+![[toros-kose.png]]
+[Toros Kose Photography](https://www.toroskosephotography.com/)

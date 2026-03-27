@@ -29,18 +29,6 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#020202",
-          lightgray: "#2e3140",
-          gray: "#4a5e6b",
-          darkgray: "#FFF",
-          dark: "#bbc7d4",
-          secondary: "#1CD760", // 9AC9AC
-          tertiary: "#4bbfae",
-          highlight: "rgba(123, 219, 205, 0.10)",
-          textHighlight: "#b3aa0288",
-          
-        },
-        darkMode: {
           light: "#10183A",          // 比较深的黑色，减少纯黑的硬度，适合作为主背景色 #14141D #10183A(best VICTOR)
           lightgray: "#204491",      // 搜索框；代码框线（``）；文本分割线；graph 图框；#3e5073
           gray: "#3f72af",           // 时间 阅读时间；中灰色，适合边框、次要文本或图标
@@ -51,6 +39,18 @@ const config: QuartzConfig = {
           highlight: "rgba(220, 220, 56, 0.1)",     // 标签和Page页路由背景色，透明橙黄色，用于背景高亮，突出某些选中状态 325b8c
           // highlight: 'rgba(143, 159, 169, 0.15)',
           textHighlight: "#ffbe00"   // 柔和的黄橙色，用于文本高亮，增强视觉引导效果#F5C0C0 
+        },
+        darkMode: {
+          // deep gray background + warm white text + desaturated gray accents
+          light: "#111111",
+          lightgray: "#2a2a2a",
+          gray: "#8e8d87",
+          darkgray: "#d2d0c7",
+          dark: "#ece9df",
+          secondary: "#d8d5cb",
+          tertiary: "#b8b5ad",
+          highlight: "rgba(214, 210, 197, 0.16)",
+          textHighlight: "rgba(233, 224, 188, 0.36)",
         },
       }
     },

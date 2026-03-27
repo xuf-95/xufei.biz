@@ -10,7 +10,7 @@ hr {
     overflow: visible;
     padding: 0;
     height: 0;
-    margin: 4em auto;
+    margin: 2em auto;//4
     border: none;
     text-align: center;
     width: 100%;
@@ -24,3 +24,31 @@ hr {
       color: var(--gray);
     }
   }
+
+// Dark theme hover highlight only for non-body areas
+:root[saved-theme="dark"] {
+  .sidebar a,
+  .page-header a,
+  .page-footer a,
+  footer a {
+    transition:
+      color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      color: var(--dark);
+      box-shadow: inset 0 -0.45em 0 var(--highlight);
+    }
+  }
+
+  .sidebar button:hover,
+  .page-header button:hover,
+  .page-footer button:hover,
+  footer button:hover,
+  .sidebar .search-button:hover,
+  .page-header .search-button:hover {
+    background-color: var(--highlight);
+    border-radius: 6px;
+  }
+}
