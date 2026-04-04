@@ -22,3 +22,6 @@ _**[Anthony Fu](https://antfu.me/photos)**_
 
 ![[toros-kose.png]]
 [Toros Kose Photography](https://www.toroskosephotography.com/)
+
+![[craig-hooper.png]]
+[Craig Hooper — Refrakt](https://refrakt.app/craighooper)
