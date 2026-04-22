@@ -1,8 +1,7 @@
 ---
 title: Apache DolphinScheduler
 tags:
-  - apache
-  - sync
+  - scheduler
 date: 2023-11-18
 draft: true
 ---

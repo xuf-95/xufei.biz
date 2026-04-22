@@ -3,7 +3,6 @@ aliases:
   - cassandra
 tags:
   - data-store
-  - apache
   - nosql
 date: 2023-04-21
 draft: true

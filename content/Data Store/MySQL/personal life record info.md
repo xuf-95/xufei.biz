@@ -3,7 +3,6 @@ title: personal life record info
 tags:
   - pkm
   - note
-  - db
 date: 2025-06-14
 draft: false
 ---

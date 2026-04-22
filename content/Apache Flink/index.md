@@ -3,7 +3,9 @@ title: Apache Flink
 tags:
   - bigdata
   - data-compute
-  - sec-index
+  - flink
+  - Real-time
+  - cdc
 date: 2022-01-25
 draft: false
 ---

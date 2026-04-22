@@ -2,7 +2,6 @@
 aliases:
   - doris
 tags:
-  - apache
   - data-warehouse
   - data-lake
   - mmp

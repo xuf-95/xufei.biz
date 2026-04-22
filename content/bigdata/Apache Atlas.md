@@ -2,7 +2,6 @@
 title: Apache Atlas
 date: 2023-08-04
 tags:
-  - apache
   - atlas
 draft: false
 ---

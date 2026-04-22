@@ -3,8 +3,8 @@ title: Kafka Config
 tags:
   - kafka
   - config
-  - msg
   - dataflow
+  - mq
 date: 2024-01-22
 draft: true
 ---

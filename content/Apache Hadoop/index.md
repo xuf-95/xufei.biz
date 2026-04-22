@@ -1,10 +1,9 @@
 ---
 title: Apache Hadoop
 date: 2022-06-20
-tags: 
+tags:
   - bigdata
   - data-compute
-  - sec-index
 ---
 ```mermaid
 mindmap
@@ -20,3 +19,4 @@ mindmap
     Common Infrastructure
     Cloud Storage Integration
 ```
+

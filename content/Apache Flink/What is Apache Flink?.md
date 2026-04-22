@@ -3,9 +3,9 @@ title: Flink Overview
 aliases:
   - Flink
 tags:
-  - data-compute
-  - Event-driven
-  - Real-time
+  - homepage
+  - flink
+  - bigdata
 date: 2023-06-07
 draft: false
 ---

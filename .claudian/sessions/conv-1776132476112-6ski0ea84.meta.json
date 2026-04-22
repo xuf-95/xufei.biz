@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776132476112-6ski0ea84",
+  "providerId": "claude",
+  "title": "Complete LLMOPS.md Tutorial",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776132476112,
+  "updatedAt": 1776152435978,
+  "lastResponseAt": 1776152435978,
+  "sessionId": "2bb4143d-054d-4091-a265-8623dc5373c1",
+  "providerState": {
+    "providerSessionId": "2bb4143d-054d-4091-a265-8623dc5373c1"
+  },
+  "usage": {
+    "model": "glm-4.7",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -1,11 +1,11 @@
 ---
 title: Hadoop Yarn
+description: Yet Another Resource Negotiator
 tags:
   - hadoop
   - data-architecture
 date: 2022-01-25
 draft: false
-description: Yet Another Resource Negotiator
 ---
 
 ## Yarn Overwrite 

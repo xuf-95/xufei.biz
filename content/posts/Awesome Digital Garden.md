@@ -2,11 +2,11 @@
 title: Awesome Digital Garden
 aliases:
   - wiki
-  - digital garden
+  - garden
 date: 2024-01-09
 tags:
-  - homepage
-  - digital-nomad
+  - garden
+  - blogroll
 ---
 
 > [!cards|2]

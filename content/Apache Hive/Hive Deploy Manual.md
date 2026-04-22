@@ -4,6 +4,7 @@ tags:
   - hadoop
   - database
   - deploy
+  - hive
 date: 2022-01-22
 draft: false
 ---
@@ -134,6 +135,7 @@ alter table  INDEX_PARAMS  modify column PARAM_VALUE  varchar(4000) character se
 ## Configuring Hive
 
 > [Configuring Hive](https://cwiki.apache.org/confluence/display/Hive/AdminManual+Configuration)
+> [[Hive Deploy Manual]]
 
 ## **运维**
 
