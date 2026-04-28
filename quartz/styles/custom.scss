@@ -4,26 +4,78 @@
 
 @use "./variables.scss" as *;
 
+:root {
+  --external-link-icon-width: 0.98em;
+  --external-link-icon-height: 0.98em;
+}
+
+%external-link-icon-base {
+  content: "";
+  width: var(--external-link-icon-width);
+  height: var(--external-link-icon-height);
+  display: inline-block;
+  vertical-align: text-top;
+  margin-left: 0.26em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+a.external > .external-icon {
+  display: none;
+}
+
+a.external[data-link-icon]::after {
+  content: attr(data-link-icon);
+  display: inline-block;
+  margin-left: 0.26em;
+  font-family: var(--codeFont);
+  font-size: 0.68em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  vertical-align: super;
+  opacity: 0.9;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+a.external[data-link-icon-priority="organization"]::after {
+  @extend %external-link-icon-base;
+  content: "";
+  background-image: var(--external-link-icon-url);
+  vertical-align: -0.12em;
+  border-radius: 3px;
+  opacity: 0.95;
+}
+
+a.external:hover::after {
+  opacity: 1;
+  color: var(--tertiary);
+  transform: translateY(-0.04em);
+}
 
 //// dividers ////
 hr {
-    overflow: visible;
-    padding: 0;
-    height: 0;
-    margin: 2em auto;//4
-    border: none;
-    text-align: center;
-    width: 100%;
-   
-    &:after {
-      content: "* * *";
-      display: inline-block;
-      margin: -1em 0 0.5em;
-      font-size: 1.5em;
-      padding: 0.5em 1em;
-      color: var(--gray);
-    }
+  overflow: visible;
+  padding: 0;
+  height: 0;
+  margin: 2em auto; //4
+  border: none;
+  text-align: center;
+  width: 100%;
+
+  &:after {
+    content: "* * *";
+    display: inline-block;
+    margin: -1em 0 0.5em;
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    color: var(--gray);
   }
+}
 
 // Dark theme hover highlight only for non-body areas
 :root[saved-theme="dark"] {
@@ -59,8 +111,12 @@ article a,
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: var(--secondary);  // rgb(254, 127, 3); /* Uses your secondary color (#FF0 in light, #CCCC0 in dark) */
-  transition: text-decoration-color 0.2s ease, text-decoration-thickness 0.2s ease;
+  text-decoration-color: var(
+    --secondary
+  ); // rgb(254, 127, 3); /* Uses your secondary color (#FF0 in light, #CCCC0 in dark) */
+  transition:
+    text-decoration-color 0.2s ease,
+    text-decoration-thickness 0.2s ease;
 }
 
 /* Hover effect: slightly thicker underline and change color to tertiary */
@@ -166,7 +222,6 @@ sup {
     flex-wrap: wrap;
   }
 }
-
 
 .page-listing .tag-link {
   display: none;

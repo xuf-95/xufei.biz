@@ -36,12 +36,18 @@ TopNav.css = `
   text-decoration: none;
   font-family: var(--titleFont);
   font-size: 1rem;
+  color: var(--gray);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 0.5rem 1.5rem;
   border-right: 1px solid var(--lightgray);
   line-height: 1;
   white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.top-nav a:hover {
+  color: var(--dark);
 }
 
 .top-nav a:last-child {

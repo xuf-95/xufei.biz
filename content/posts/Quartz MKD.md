@@ -38,6 +38,8 @@ draft: true
 
 > [!quote] Aliases: "quote", "cite"
 
+> [!tree] Aliases: "quote", "cite"
+
 
 > [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md
 
