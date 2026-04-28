@@ -1,0 +1,54 @@
+@use "../base.scss";
+@use "../variables.scss" as *;
+
+/* ---- Column Callout ---- */
+
+.callout[data-callout="column"] {
+  border: none;
+  padding: 0;
+  margin: 1.25rem 0;
+}
+
+.callout[data-callout="column"] > .callout-title {
+  display: none;
+}
+
+.callout[data-callout="column"] > .callout-content {
+  display: block;
+  overflow: visible;
+}
+
+.callout[data-callout="column"] > .callout-content > .callout-content-inner {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.callout[data-callout="column"][data-callout-metadata~="2"]
+  > .callout-content
+  > .callout-content-inner {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.callout[data-callout="column"][data-callout-metadata~="3"]
+  > .callout-content
+  > .callout-content-inner {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.callout[data-callout="column"] .callout {
+  margin: 0;
+  min-width: 0;
+}
+
+.callout[data-callout="column"][data-callout-metadata~="clean"] {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+@media all and (max-width: 800px) {
+  .callout[data-callout="column"] > .callout-content > .callout-content-inner {
+    grid-template-columns: 1fr !important;
+  }
+}

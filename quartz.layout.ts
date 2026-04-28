@@ -23,20 +23,19 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [
-    Component.DesktopOnly(
-      Component.Graph({
-        localGraph: {
-          showTags: true,
-        },
-        globalGraph: {
-          showTags: false,
-        },
-      }),
-    ),
+    // Component.DesktopOnly(
+    //   Component.Graph({
+    //     localGraph: {
+    //       showTags: true,
+    //     },
+    //     globalGraph: {
+    //       showTags: false,
+    //     },
+    //   }),
+    // ),
   ],
-
+  ...recentNotes.map((c) => Component.DesktopOnly(c)),
   footer: Component.Footer({
-    ...recentNotes.map((c) => Component.DesktopOnly(c)),
     links: {
       Home: "https://xufei.biz",
       Tags: "https://xuf-95.github.io/xufei.biz/tags/",

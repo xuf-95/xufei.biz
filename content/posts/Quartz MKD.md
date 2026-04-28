@@ -85,6 +85,155 @@ export function trimPathSuffix(fp: string): string {
 - `![[Path to file#^b15695|^b15695]]`: transclude block with ID `^b15695`
 
 
+> [!column|flex 3]
+> 
+> > [!warning] Use Nested Callouts
+> > 
+> > `[column]` is designed to have callouts nested within it.
+> > 
+> > To remove styling from nested callouts, add `clean no-title` to the metadata
+> 
+> > [!NOTE|clean no-t]
+> > 
+> > This callout has `clean no-title` metadata.
+> > 
+> > ```markdown title="syntax:"
+> > > [!column]
+> > >
+> > > > [!note] title
+> > > >
+> > > > content
+> > >
+> > > > [!column] title
+> > > >
+> > > > content
+> > ```
+> 
+> > [!caption]
+> > 
+> > ![[Crossbell IPFS.png|wsmall]]
+> > 
+> > A caption callout nested in the grid.
 
+### Captions
 
+> [!caption|right]
+> 
+> ![[Crossbell IPFS.png|wsmall]]
+> 
+> `[!caption|right]` callout
 
+A borderless callout for adding captions to images. 
+
+Use [[custom-formatting-features#Callout Positioning|Callout Positioning]] metadata to float these left or right for wiki-style article image captions
+
+```markdown title="syntax"
+> [!caption]
+> 
+> ![[image.png]]
+> 
+> Image caption.
+
+```
+
+<br>
+
+### Infobox
+
+A wiki-style infobox displayed in the top right of an article to summarize data from the article, such as requirements for a tutorial article.
+
+> [!infobox]
+> 
+> ## Infobox
+> 
+> ![[Crossbell IPFS.png]]
+> 
+> ### Table
+> 
+> | Type | Name |
+> | --- | --- |
+> | Row | Row |
+> | Row | Row |
+
+**Type:**
+- `[!infobox]`
+
+**Syntax:**
+
+```
+> [!infobox]
+> 
+> ## Article Title
+> 
+> ![[image]]
+> 
+> ### Table Heading
+> 
+> | Type | Name |
+> | --- | --- |
+> | Row | Row |
+> | Row | Row |
+```
+
+---
+
+## Embed Adjustments
+
+Adjustments for Obsidian [embedded files](https://help.obsidian.md/Linking+notes+and+files/Embed+files), otherwise known as 'transclusions'
+
+```markdown title="syntax"
+![[Embedded Note|attribute attribute]]
+
+![[intereting-note-title|clean right]]
+```
+
+| Attribute | Description                        |
+| --------- | ---------------------------------- |
+| `clean`   | Removes border to hide embed style |
+| `left`    | Float                              |
+| `right`   | Floats embed to the right          |
+
+### Hide Embed Styling
+
+You can hide the borders of embedded notes and blocks by adding '`|clean]]`' to the wikilink's alias.
+^4beb5b
+
+This allows the embed to appear seamlessly as a part of the page it is embedded in. 
+
+> [!column|2 flex clean]
+> > [!example] This is a standard transclusion:
+> > ews
+> > ss
+>
+> > [!example] This is a 'clean' transclusion:
+> > we
+> > ses
+
+> [!warning] Embedding block links which float left or right
+> You must add a `left` or `right` attribute to embeds if the embedded content itself already floats left or right.
+> 
+> **Example:**
+> - The [[custom-formatting-features#Infobox|infobox callout]] already floats right. To embed it in another page, add `|right` to the embed wikilink's alias.
+> 
+> This prevents the embed from taking up 100% of the page-width, instead of wrapping around other content
+
+### Float Embed Left or Right
+
+Embeds can be made to float to the left or right of a page by adding `|left` or `|right` to the embed wikilink's alias. ^cb5c00
+
+As well as being a stylistic choice to move supplementary content outside of the main flow of the text, it is also necessary when embedding a block which contains an element with a float property already stipulated (e.g., an infobox callout).
+
+## Daedric Font
+
+Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy of George Duffner's [OMW Ayembedt font](https://github.com/georgd/OpenMW-Fonts) (license: [SIL Open Font License](https://openfontlicense.org/).
+
+**Syntax**:
+
+```markdown
+<span class="daedric">your daedric text here</span>
+```
+
+> [!example]
+> 
+> **Regular Text**: "Morrowind"
+> **Daedric Text**: "<span class="daedric">"Morrowind"</span>"

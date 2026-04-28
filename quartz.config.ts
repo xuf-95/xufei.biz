@@ -59,12 +59,13 @@ const config: QuartzConfig = {
     transformers: [
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
+
         priority: ["frontmatter", "git", "filesystem"],
       }),
       Plugin.SyntaxHighlighting({
         theme: {
-          light: "github-light",
           dark: "github-dark",
+          light: "github-light",
         },
         keepBackground: false,
       }),
@@ -77,6 +78,7 @@ const config: QuartzConfig = {
       }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
+
     ],
     filters: [Plugin.ExplicitPublish()],
     emitters: [

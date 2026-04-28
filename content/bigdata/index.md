@@ -1,7 +1,7 @@
 ---
 title: Big Data Home
 date: 2022-03-04
-draft: true
+draft: false
 ---
 **Bigdata Contents**
 ![[bigdata-develop.png]]_***来源：中国信息通信研究院***_
