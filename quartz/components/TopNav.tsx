@@ -3,10 +3,9 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 
 const links = [
-  { label: "site", href: "" },
-  { label: "pkm", href: "bigdata/" },
-  { label: "tags", href: "/tags/" },
-  { label: "about", href: "/about/" },
+  { label: "SITE", href: "" },
+  { label: "POSTS", href: "/posts/" },
+  { label: "TAGS", href: "/tags/" },
 ]
 
 const TopNav: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {

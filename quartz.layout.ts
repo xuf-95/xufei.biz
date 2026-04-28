@@ -1,46 +1,46 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { SimpleSlug } from "./quartz/util/path"
 
-
-// const recentNotes = [
-//   Component.RecentNotes({
-//     title: "Recent Posts",
-//     limit: 3,
-//     filter: (f) =>
-//       f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
-//     linkToMore: "posts/" as SimpleSlug,
-//   }),
-//   Component.RecentNotes({
-//     title: "Recent BigData",
-//     limit: 2,
-//     filter: (f) => f.slug!.startsWith("bigdata/"),
-//     linkToMore: "bigdata/" as SimpleSlug,
-//   }),
-// ]
+const recentNotes = [
+  Component.RecentNotes({
+    title: "Recent Posts",
+    limit: 3,
+    filter: (f) =>
+      f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
+    linkToMore: "posts/" as SimpleSlug,
+  }),
+  Component.RecentNotes({
+    title: "Recent BigData",
+    limit: 2,
+    filter: (f) => f.slug!.startsWith("bigdata/"),
+    linkToMore: "bigdata/" as SimpleSlug,
+  }),
+]
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [
-    // ...recentNotes.map((c) => Component.MobileOnly(c)),
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
           showTags: true,
         },
-        // globalGraph: {
-        //   showTags: false,
-        // },
+        globalGraph: {
+          showTags: false,
+        },
       }),
     ),
-
   ],
+
   footer: Component.Footer({
+    ...recentNotes.map((c) => Component.DesktopOnly(c)),
     links: {
-      "Home": "https://xufei.biz",
-      "Tags": "https://xuf-95.github.io/xufei.biz/tags/",
-      "GitHub": "https://github.com/xuf-95",
+      Home: "https://xufei.biz",
+      Tags: "https://xuf-95.github.io/xufei.biz/tags/",
+      GitHub: "https://github.com/xuf-95",
       "xufei.site": "https://xufei.site",
       "Bento.me": "https://bento.me/xfei",
     },
@@ -65,24 +65,11 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.PageTitle,
-  //   Component.Flex({
-  //     components: [
-  //       {
-  //         Component: Component.TopNav(),
-  //         grow: true,
-  //       },
-  //       {
-  //         Component: Component.Search(),
-  //       },
-  //       { Component: Component.Darkmode() },
-  //       { Component: Component.ReaderMode() },
-  //     ],
-  // }),
+    Component.TagList(),
     Component.ArticleTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.ContentMeta(), 
-    Component.TagList()
+    Component.ArticleDescription(),
+    Component.ContentMeta(),
   ],
   left: [
     Component.Flex({
@@ -92,8 +79,8 @@ export const defaultContentPageLayout: PageLayout = {
           grow: true,
         },
       ],
-  }),
-  ],  
+    }),
+  ],
   right: [
     Component.Flex({
       components: [
@@ -125,8 +112,8 @@ export const defaultListPageLayout: PageLayout = {
           grow: true,
         },
       ],
-  }),
-  ],  
+    }),
+  ],
   right: [
     Component.Flex({
       components: [
@@ -136,8 +123,13 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
         { Component: Component.ReaderMode() },
       ],
-  }),
-    Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
+    }),
+    Component.Flex({
+      direction: "column",
+      components: [
+        { Component: Component.DesktopOnly(Component.TableOfContents()) },
+        { Component: Component.Backlinks() },
+      ],
+    }),
   ],
 }

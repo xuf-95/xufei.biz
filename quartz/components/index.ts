@@ -2,6 +2,7 @@ import Content from "./pages/Content"
 import TagContent from "./pages/TagContent"
 import FolderContent from "./pages/FolderContent"
 import NotFound from "./pages/404"
+import ArticleDescription from "./ArticleDescription"
 import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
 import ReaderMode from "./ReaderMode"
@@ -26,6 +27,7 @@ import ConditionalRender from "./ConditionalRender"
 import TopNav from "./TopNav"
 
 export {
+  ArticleDescription,
   ArticleTitle,
   Content,
   TagContent,
