@@ -5,6 +5,7 @@ tags:
   - cdc
 date: 2024-09-18
 draft: false
+publish: true
 ---
 ## Flink CDC 概述
 

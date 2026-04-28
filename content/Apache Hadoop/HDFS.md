@@ -7,6 +7,7 @@ tags:
   - file-system
 date: 2022-01-25
 draft: false
+publish: true
 ---
 
 Hadoop分布式文件系统（HDFS）是Hadoop生态系统的一部分，是一个高度可靠性、高吞吐量的分布式文件系统，专为存储大规模数据集而设计。

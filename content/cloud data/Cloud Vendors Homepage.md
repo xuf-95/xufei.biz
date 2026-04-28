@@ -2,6 +2,7 @@
 title: Cloud Vendors Homepage
 data: 2024-12-28
 draft: true
+publish: true
 ---
 
 ### 各大云厂商产品栈

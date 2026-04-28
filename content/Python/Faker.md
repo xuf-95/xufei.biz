@@ -2,10 +2,11 @@
 title: Faker
 tags:
   - python
-  - package 
+  - package
   - snippets
 date: 2022-02-09
 draft: false
+publish: false
 ---
 
 

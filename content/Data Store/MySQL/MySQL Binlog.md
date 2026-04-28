@@ -3,6 +3,7 @@ title: MySQL Binlog
 tags:
   - cdc
 date: 2023-10-14
+publish: true
 ---
 ### mysql 开启binlog功能
 

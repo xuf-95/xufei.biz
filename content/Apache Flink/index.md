@@ -8,6 +8,7 @@ tags:
   - cdc
 date: 2022-01-25
 draft: false
+publish: true
 ---
 
 

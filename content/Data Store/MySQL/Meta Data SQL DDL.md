@@ -5,6 +5,7 @@ tags:
   - snippets
 date: 2023-06-03
 draft: false
+publish: true
 ---
 
 ### 元数据血缘明细表

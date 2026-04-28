@@ -5,6 +5,7 @@ tags:
   - note
 date: 2025-06-14
 draft: false
+publish: false
 ---
 
 ![[content/posts/images/pr-er.png]]

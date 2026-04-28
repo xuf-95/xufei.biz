@@ -2,6 +2,7 @@
 title: Collections Photography
 date: 2025-06-14
 draft: false
+publish: true
 ---
 ![[camarts.png]] 
 _**[Camarts](https://camarts.app/?bN)  Dandy Tianxin Weng**_

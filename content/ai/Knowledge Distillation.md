@@ -6,7 +6,7 @@ tags:
   - ai
   - model
 date: 2025-01-11
-publish: false
+publish: true
 ---
 
 > Knowledage Distillation (知识蒸馏)：KD

@@ -5,6 +5,7 @@ tags:
   - flink
 date: 2022-01-25
 draft: false
+publish: true
 ---
 
 including the `StreamTask` execution model, task lifecycle management, checkpointing integration, and input/output processing mechanisms. This is the foundational layer that executes streaming operators and manages their state and fault tolerance.

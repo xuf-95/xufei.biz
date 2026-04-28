@@ -4,6 +4,7 @@ tags:
   - demo
 date: 2025-02-14
 draft: false
+publish: true
 ---
 
 ![[english++.png]]_**English++ Project**_

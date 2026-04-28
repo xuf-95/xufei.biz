@@ -6,6 +6,7 @@ tags:
   - docker
 date: 2025-01-25
 draft: true
+publish: true
 ---
 ## Basic Environment Plan
 

@@ -6,6 +6,7 @@ tags:
 date: 2022-01-12
 draft: false
 description: Micro-batch
+publish: true
 ---
 ## Introduction
 

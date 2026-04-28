@@ -10,6 +10,7 @@ tags:
   - data-integration
 date: 2022-01-21
 draft: false
+publish: false
 ---
 # MindMap
 

@@ -4,18 +4,17 @@ views:
     filters:
       and:
         - "!title.isEmpty()"
-        - file.folder.startsWith("content")
     order:
-      - file.name
-      - title
       - file.folder
+      - file.name
+      - publish
       - file.tags
-      - draft
       - date
       - description
       - file.ctime
       - file.mtime
       - file.links
+      - draft
     sort:
       - property: file.folder
         direction: DESC
@@ -31,8 +30,7 @@ views:
         direction: DESC
     columnSize:
       file.name: 225
-      note.title: 191
-      note.date: 127
+      note.date: 163
       file.ctime: 183
   - type: cards
     name: View

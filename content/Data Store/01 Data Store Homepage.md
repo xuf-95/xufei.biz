@@ -10,6 +10,7 @@ tags:
   - database
 date: 2022-12-02
 draft: false
+publish: true
 ---
 ## 数据存储分类
 

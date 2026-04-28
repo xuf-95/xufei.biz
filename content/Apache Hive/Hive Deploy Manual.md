@@ -7,6 +7,7 @@ tags:
   - hive
 date: 2022-01-22
 draft: false
+publish: true
 ---
 ##  Hive Install
 

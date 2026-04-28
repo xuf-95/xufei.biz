@@ -4,6 +4,7 @@ tags:
   - bigdata
   - resource
 date: 2025-03-04
+publish: false
 ---
 ![[Data Build Datalog.png|800]]
 ## Platform
