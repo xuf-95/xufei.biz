@@ -3,7 +3,7 @@ title: Grafana
 tags:
   - bi
 date: 2023-08-04
-draft: false
+draft: true
 publish: false
 ---
 ![[Grafana.png]]_from Grafana_

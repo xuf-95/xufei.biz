@@ -1,6 +1,7 @@
 ---
 title: MySQLQuestion
 date: 2023-10-14
+draft: true
 ---
 
 - ERROR 1045 (28000)

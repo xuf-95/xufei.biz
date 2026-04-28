@@ -8,13 +8,13 @@ views:
       - file.folder
       - file.name
       - publish
+      - draft
       - file.tags
       - date
       - description
       - file.ctime
       - file.mtime
       - file.links
-      - draft
     sort:
       - property: file.folder
         direction: DESC

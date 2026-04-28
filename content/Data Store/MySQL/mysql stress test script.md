@@ -1,6 +1,7 @@
 ---
 title: mysql stress test script
 date: 2021-10-14
+draft: true
 ---
 
 

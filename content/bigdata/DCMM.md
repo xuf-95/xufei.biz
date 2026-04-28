@@ -12,7 +12,7 @@ tags:
   - data-visual
   - data-lifecycle
   - datda-strategy
-draft: false
+draft: true
 date: 2024-12-01
 ---
 

@@ -79,3 +79,9 @@ article a:hover,
   text-decoration-thickness: 1px;
   text-decoration-color: var(--secondary);
 }
+
+//superscripts aka footnotes being small and middled
+sup {
+  font-size: 0.65em;
+  vertical-align: top;
+}
