@@ -85,3 +85,89 @@ sup {
   font-size: 0.65em;
   vertical-align: top;
 }
+
+/* Keep title modules in the upper-middle area, similar to gwern.net/about */
+.page #quartz-body .center .page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: clamp(4rem, 10vh, 6rem);
+}
+
+.page #quartz-body .center .page-header > header,
+.page #quartz-body .center .page-header > .popover-hint {
+  width: min(100%, 56rem);
+}
+
+.page #quartz-body .center .page-header > .popover-hint {
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.page #quartz-body .center .page-header .article-title {
+  margin-top: 0.75rem;
+  font-family: var(--titleFont);
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.page #quartz-body .center .page-header .content-meta {
+  margin-top: 0.65rem;
+  font-family: var(--titleFont);
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Top toolbar: nav on the left, controls on the right */
+.page #quartz-body .center .page-header .popover-hint > .flex-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 2px;
+}
+
+.page #quartz-body .center .page-header .popover-hint > .flex-component > div:first-child {
+  min-width: 0;
+}
+
+.page #quartz-body .center .page-header .popover-hint .search {
+  max-width: 17rem;
+}
+
+.page #quartz-body .sidebar.right > .flex-component:first-child {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.page #quartz-body .sidebar.left,
+.page #quartz-body .sidebar.right {
+  position: static;
+  height: auto;
+}
+
+@media all and ($desktop) {
+  .page #quartz-body .sidebar.right > .flex-component:last-child {
+    position: sticky;
+    top: $topSpacing;
+    width: 100%;
+    align-self: flex-start;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .page #quartz-body .center .page-header .popover-hint > .flex-component {
+    flex-wrap: wrap;
+  }
+}
+
+
+.page-listing .tag-link {
+  display: none;
+}
