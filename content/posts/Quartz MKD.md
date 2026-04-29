@@ -202,12 +202,12 @@ This allows the embed to appear seamlessly as a part of the page it is embedded 
 
 > [!column|2 flex clean]
 > > [!example] This is a standard transclusion:
-> > ews
-> > ss
+> > - ews
+> > - ss
 >
 > > [!example] This is a 'clean' transclusion:
-> > we
-> > ses
+> > - we
+> > - ses
 
 > [!warning] Embedding block links which float left or right
 > You must add a `left` or `right` attribute to embeds if the embedded content itself already floats left or right.
