@@ -1,23 +1,61 @@
+@use "../../styles/variables.scss" as *;
+
 .recent-notes {
-  & > h3 {
-    margin: 0.5rem 0 0 0;
-    font-size: 1rem;
+  & > h3,
+  & > h2 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--lightgray);
   }
 
   & > ul.recent-ul {
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 0;
     padding-left: 0;
 
     & > li {
-      margin: 1rem 0;
-      .section > .desc > h3 > a {
-        background-color: transparent;
+      margin: 0.8rem 0;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--lightgray);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      .section > .desc > h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0 0 0.2rem 0;
+        line-height: 1.4;
+
+        & > a {
+          background-color: transparent;
+        }
       }
 
       .section > .meta {
-        margin: 0 0 0.5rem 0;
-        opacity: 0.6;
+        font-size: 0.78rem;
+        margin: 0 !important;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  & > p {
+    font-size: 0.82rem;
+    margin-top: 1rem;
+
+    & > a {
+      color: var(--secondary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

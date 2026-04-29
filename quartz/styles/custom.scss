@@ -276,6 +276,31 @@ sup {
   width: 100%;
 }
 
+/* ================== recentNotes two column ========================== */
+#quartz-body .center .page-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 3rem;
+  margin-top: 3rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--lightgray);
+  border-top: 1px solid var(--lightgray);
+  align-items: start;
+}
+
+#quartz-body .center .page-footer .graph {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  #quartz-body .center .page-footer {
+    grid-template-columns: 1fr;
+    gap: 2rem 0;
+  }
+}
+
+/* ============================================ */
+
 @media all and ($desktop) {
   .page #quartz-body .sidebar.right > .flex-component:last-child {
     position: sticky;

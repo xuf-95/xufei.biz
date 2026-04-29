@@ -23,18 +23,19 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [Component.TopNav(),Component.Search(),Component.Darkmode(),Component.ReaderMode()],
   afterBody: [
-    // Component.DesktopOnly(
-    //   Component.Graph({
-    //     localGraph: {
-    //       showTags: true,
-    //     },
-    //     globalGraph: {
-    //       showTags: false,
-    //     },
-    //   }),
-    // ),
+    ...recentNotes.map((c) => Component.DesktopOnly(c)),
+    Component.DesktopOnly(
+      Component.Graph({
+        localGraph: {
+          showTags: true,
+        },
+        globalGraph: {
+          showTags: false,
+        },
+      }),
+    ),
   ],
-  ...recentNotes.map((c) => Component.DesktopOnly(c)),
+  
   footer: Component.Footer({
     links: {
       Home: "https://xufei.biz",
@@ -60,7 +61,6 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Flex({
       direction: "column",
       components: [
-        { Component: Component.DesktopOnly(Component.TableOfContents()) },
         { Component: Component.Backlinks() },
       ],
     }),
