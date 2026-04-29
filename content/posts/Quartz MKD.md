@@ -78,11 +78,11 @@ export function trimPathSuffix(fp: string): string {
 
 ## Wikilinks
 
-- `![[Path to image]]`: embeds an image into the page
-- `![[Path to image|100x145]]`: embeds an image into the page with dimensions 100px by 145px
-- `![[Path to file]]`: transclude an entire page
-- `![[Path to file#anchor|Anchor]]`: transclude everything under the header `Anchor`
-- `![[Path to file#^b15695|^b15695]]`: transclude block with ID `^b15695`
+- `![[Crossbell IPFS.png]]`: embeds an image into the page
+- `![[Crossbell IPFS.png|100x145]]`: embeds an image into the page with dimensions 100px by 145px
+- `![[Link Icon Test.md]]`: transclude an entire page
+- `![[Link Icon Test.md#anchor|Anchor]]`: transclude everything under the header `Anchor`
+- `![[Link Icon Test.md#^b15695|^b15695]]`: transclude block with ID `^b15695`
 
 
 > [!column|flex 3]
@@ -130,7 +130,7 @@ Use [[custom-formatting-features#Callout Positioning|Callout Positioning]] metad
 ```markdown title="syntax"
 > [!caption]
 > 
-> ![[image.png]]
+> ![[Crossbell IPFS.png]]
 > 
 > Image caption.
 

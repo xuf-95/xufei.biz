@@ -6,7 +6,7 @@ tags:
   - deploy
   - hive
 date: 2022-01-22
-draft: false
+draft: true
 publish: true
 ---
 ##  Hive Install

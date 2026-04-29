@@ -3,50 +3,75 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 
 const links = [
-  { label: "SITE",  href: "" },
   { label: "POSTS", href: "/posts/" },
+  { label: "BG",  href: "/content/bigdata/" },
   { label: "TAGS",  href: "/tags/" },
 ]
 
-const TopNav: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
+const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponentProps) => {
   const baseDir = pathToRoot(fileData.slug!)
   const slug = fileData.slug ?? ""
+  const iconPath = baseDir + "/static/icon.png"  // 替换为你的实际图标文件名
 
   return (
-    <div class={classNames(displayClass, "top-nav")}>
-      {links.map((item) => {
-        const isActive =
-          item.href === ""
-            ? slug === "index" || slug === ""
-            : slug.startsWith(item.href.replace(/\/$/, ""))
-        return (
-          <a href={baseDir + item.href} class={isActive ? "active" : ""}>
-            {item.label}
-          </a>
-        )
-      })}
-    </div>
+    <nav class={classNames(displayClass, "top-nav")} aria-label="Primary">
+      <div class="top-nav-left">
+        <a href={baseDir} class="top-nav-logo">
+          <img src={iconPath} alt={cfg?.pageTitle ?? "site icon"} />
+        </a>
+        {links.map((item) => {
+          const isActive =
+            item.href === ""
+              ? slug === "index" || slug === ""
+              : slug.startsWith(item.href.replace(/\/$/, ""))
+          return (
+            <a href={baseDir + item.href} class={isActive ? "active" : ""}>
+              {item.label}
+            </a>
+          )
+        })}
+      </div>
+    </nav>
   )
 }
 
 TopNav.css = `
 .top-nav {
+  width: 100%;
+}
+
+.top-nav-left {
   display: flex;
   align-items: stretch;
   height: 44px;
-  flex: 1;
 }
 
-.top-nav a {
+.top-nav-logo {
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  border-right: 1px solid var(--lightgray);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.top-nav-logo img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.top-nav-left a {
   display: flex;
   align-items: center;
   padding: 0 1.4rem;
   text-decoration: none;
   font-family: var(--titleFont);
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gray);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border-right: 1px solid var(--lightgray);
   white-space: nowrap;
@@ -54,19 +79,20 @@ TopNav.css = `
   position: relative;
 }
 
-.top-nav a:first-child {
+.top-nav-left a:first-child {
   border-left: 1px solid var(--lightgray);
 }
 
-.top-nav a:hover {
+.top-nav-left a:hover {
   color: var(--dark);
 }
 
-.top-nav a.active {
+.top-nav-left a.active {
   color: var(--dark);
+  font-weight: 600;
 }
 
-.top-nav a.active::after {
+.top-nav-left a.active::after {
   content: '';
   position: absolute;
   bottom: 0;
