@@ -84,6 +84,45 @@ hr {
   }
 }
 
+header {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  grid-column: 1 / -1 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  border-bottom: 1px solid var(--lightgray);
+  height: 44px;
+
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  background-color: var(--light) !important;  /* 滚动时不透明，防止内容穿透 */
+}
+
+header > .search {
+  margin-left: auto;
+}
+
+/* Search 输入框紧凑化 */
+header > .search .search-bar {
+  padding: 4px 10px !important;
+  height: 30px !important;
+}
+
+/* Darkmode 和 ReaderMode 图标间距缩短 */
+header > .darkmode,
+header > .readermode {
+  margin-left: 3px !important;  /* 原来可能是 1rem，改为 6px */
+}
+
+/* Search 和 Darkmode 之间加一点间隔 */
+header > .search {
+  margin-right: 3px;
+}
+
 // Dark theme hover highlight only for non-body areas
 :root[saved-theme="dark"] {
   .sidebar a,
@@ -155,7 +194,7 @@ sup {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: clamp(4rem, 10vh, 6rem);
+  margin-top: 0;  // 改为 0，或者 clamp(0.5rem, 2vh, 1rem) 保留一点呼吸感
 }
 
 .page #quartz-body .center .page-header > header,
@@ -206,13 +245,35 @@ sup {
 
 .page #quartz-body .sidebar.right > .flex-component:first-child {
   width: 100%;
-  justify-content: flex-end;
+  justify-content: flex-start;
+}
+
+// 覆盖 Flex 组件生成的 inline justify-self: center
+.page #quartz-body .sidebar.right .flex-component > div {
+  justify-self: start !important;
+  align-self: start !important;
+  width: 100% !important;
 }
 
 .page #quartz-body .sidebar.left,
 .page #quartz-body .sidebar.right {
-  position: static;
-  height: auto;
+  padding-left: 32px !important;
+  padding-top: 0 !important;
+  
+}
+
+// 让 backlinks 和 TOC 左边对齐（TOC 的起始位置）
+.page #quartz-body .sidebar.right .backlinks {
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+// TOC 同样去掉左偏移，保持一致
+.page #quartz-body .sidebar.right .toc {
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%;
 }
 
 @media all and ($desktop) {

@@ -21,7 +21,7 @@ const recentNotes = [
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [Component.TopNav(),Component.Search(),Component.Darkmode(),Component.ReaderMode()],
   afterBody: [
     // Component.DesktopOnly(
     //   Component.Graph({
@@ -46,22 +46,6 @@ export const sharedPageComponents: SharedLayout = {
   }),
 }
 
-// const left = [
-//   Component.PageTitle(),
-//   Component.MobileOnly(Component.Spacer()),
-//   Component.Flex({
-//     components: [
-//       {
-//         Component: Component.Search(),
-//         grow: true,
-//       },
-//       { Component: Component.Darkmode() },
-//       { Component: Component.ReaderMode() },
-//     ],
-//   }),
-//   ...recentNotes.map((c) => Component.DesktopOnly(c)),
-// ]
-// components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.TagList(),
@@ -71,25 +55,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ContentMeta(),
   ],
   left: [
-    Component.Flex({
-      components: [
-        {
-          Component: Component.TopNav(),
-          grow: true,
-        },
-      ],
-    }),
   ],
   right: [
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
     Component.Flex({
       direction: "column",
       components: [
@@ -103,32 +70,11 @@ export const defaultContentPageLayout: PageLayout = {
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.ArticleTitle(), Component.ContentMeta()],
-  left: [
-    Component.Flex({
-      components: [
-        {
-          Component: Component.TopNav(),
-          grow: true,
-        },
-      ],
-    }),
-  ],
+  left: [],
   right: [
     Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
-    Component.Flex({
       direction: "column",
-      components: [
-        { Component: Component.DesktopOnly(Component.TableOfContents()) },
-        { Component: Component.Backlinks() },
-      ],
+      components: [],
     }),
   ],
 }

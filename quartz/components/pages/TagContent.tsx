@@ -387,7 +387,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
   padding: 1rem 1.2rem 1rem 0;
   border-right: 1px solid var(--lightgray);
   position: sticky;
-  top: 60px;
+  top: 44px;
   align-self: start;
 }
 
