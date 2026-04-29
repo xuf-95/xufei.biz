@@ -295,3 +295,69 @@ kbd:active kbd {
 }
 
 /* ===================== */
+
+
+/* ==========Tag Index 两列布局=========== */
+.tag-section {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid var(--lightgray);
+  
+  // 左列：tag 名称 + 数量
+  &-left {
+    padding: 1rem 1.2rem 1rem 0;
+    border-right: 1px solid var(--lightgray);
+    
+    // ✨ 核心：sticky 固定
+    // 左列的内容在 tag-section 的高度范围内 sticky
+    // 当滚动到最后一篇文章时，左列内容会随 tag-section 底部一起上移
+    position: sticky;
+    top: 60px; // 根据你的导航栏高度调整
+    align-self: start; // 必须有，否则 sticky 在 grid 中不生效
+    
+    .tag-label {
+      display: inline-block;
+      background: var(--highlight);
+      border-radius: 8px;
+      padding: 0.2rem 0.6rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    
+    .tag-count {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+  }
+  
+  // 右列：文章列表
+  &-right {
+    padding-left: 1.2rem;
+    
+    li {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--lightgray);
+      
+      &:first-child {
+        padding-top: 1rem; // 与左列 tag 名称顶部对齐
+      }
+      
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 1rem;
+      }
+      
+      .article-date {
+        font-size: 0.8rem;
+        color: var(--gray);
+        white-space: nowrap;
+        min-width: 80px;
+      }
+  }
+}
+}
+/* ===================== */
+

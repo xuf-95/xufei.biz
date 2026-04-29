@@ -1,23 +1,17 @@
 ---
 title: welcome my wiki
 draft: true
-description: Yet Another Resource Negotiator
 publish: true
 ---
-I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://note.md/"> note </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
+I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
 
 ***
 
-## Contents
-
-<!-- - [[bigdata/index|BigData]]: data architecture, [[bigdata/datawarehouse]], data governance, data compute, data standard, data lifecycle... 
-- [[ai/index|AI]]: Agent, RAG, LLM...
-- [[posts/index|Posts]]: some draft & thougts and interesting -->
-
+**Contents**
 > [!column|2]
 > > [!info|clean no-title] > [[Data Architecture]]
 > >
-> > ### Meta-Science
+> > **Meta-Science**
 > >
 > > - [[Lambda Architecture]]
 > > - [[Kappa Architecture]] 
@@ -26,7 +20,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 >
 > > [!info|clean no-title] 
 > >
-> > ### [[Data Integration|Data Integration]]
+> > [[Data Integration|Data Integration]]
 > >
 > > - [[Flink CDC]]
 > > - [[Apache Kafka]]
@@ -37,7 +31,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 > [!column|2 flex clean]
 > > [!note|clean no-title]
 > >
-> > ### [[01 Data Store Homepage|Data Store]]
+> > [[01 Data Store Homepage|Data Store]]
 > >
 > > - [[Apache Hive]]
 > > - [[ClickHouse]]
@@ -47,7 +41,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 >
 > > [!note|clean no-title] 
 > >
-> > ### [[01 Data Compute HomePage|Data Compute]]
+> > [[01 Data Compute HomePage|Data Compute]]
 > >
 > > - [[Apache Flink]]
 > > - [[Apache Spark]]
@@ -57,7 +51,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 > [!column|2 flex clean]
 > > [!note|clean no-title] 
 > >
-> > ### [[Data Visual]]
+> > [[Data Visual]]
 > >
 > > - [[Data Visual Product & Tools]]
 > > - [[Tableau]]
@@ -66,7 +60,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 >
 > > [!note|clean no-title]
 > >
-> > ### [[Resources]] 
+> > [[Resources]] 
 > >
 > > - [[DataSets]]
 > > - [[Bigdata Paper]]
