@@ -11,6 +11,8 @@
 @use "./custom/caption-callout.scss";
 @use "./custom/infobox-callout.scss";
 
+@use "./custom/home-layout.scss";
+
 :root {
   --external-link-icon-width: 0.98em;
   --external-link-icon-height: 0.98em;
@@ -447,3 +449,97 @@ kbd:active kbd {
 }
 /* ===================== */
 
+/* ========== banner =========== */
+.home-banner {
+  border: 1px solid var(--lightgray);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+
+  .home-banner-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .home-banner-bio {
+    font-size: 0.88rem;
+    color: var(--darkgray);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .home-banner-links {
+    display: flex;
+    gap: 8px;
+
+    a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid var(--lightgray);
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.15s, border-color 0.15s;
+
+      &:hover {
+        color: var(--dark);
+        border-color: var(--darkgray);
+      }
+    }
+  }
+}
+/* ===================== */
+
+
+// 首页 column callout 内的列表
+.callout[data-callout="column"] .callout-content {
+  .callout[data-callout="note"] ul,
+  .callout[data-callout="info"] ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      font-size: 0.88rem;
+      padding: 0.18rem 0;
+      color: var(--darkgray);
+
+      // 如果用 markdown 列表语法，前缀字符已经在文本里，不需要 ::before
+      // 如果想统一加，用这个：
+      // &::before { content: "›"; margin-right: 6px; color: var(--gray); }
+    }
+  }
+}
+
+/* ========== =========== */
+
+// 首页 Knowledge Map 卡片入场动画
+// 只对首页生效，用 body[data-slug="index"] 限定
+body[data-slug="index"] {
+  .callout[data-callout="column"] > .callout-content > .callout {
+    opacity: 0;
+    animation: home-card-fadein 0.4s ease forwards;
+
+    // 错开每列的入场时间
+    &:nth-child(1) { animation-delay: 0.05s; }
+    &:nth-child(2) { animation-delay: 0.12s; }
+    &:nth-child(3) { animation-delay: 0.19s; }
+    &:nth-child(4) { animation-delay: 0.26s; }
+  }
+}
+
+@keyframes home-card-fadein {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== =========== */

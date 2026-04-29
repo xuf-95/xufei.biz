@@ -4,7 +4,7 @@ import { classNames } from "../util/lang"
 
 const links = [
   { label: "POSTS", href: "/posts/" },
-  { label: "BG",  href: "/content/bigdata/" },
+  { label: "BG",  href: "/bigdata/" },
   { label: "TAGS",  href: "/tags/" },
 ]
 

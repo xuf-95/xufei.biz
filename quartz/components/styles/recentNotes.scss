@@ -3,14 +3,15 @@
 .recent-notes {
   & > h3,
   & > h2 {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variant-caps: small-caps;
+    letter-spacing: 0.04em;
+    color: var(--dark);
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--lightgray);
+    margin-bottom: 0.6rem;
+    font-family: var(--titleFont);
   }
 
   & > ul.recent-ul {
