@@ -1,0 +1,380 @@
+/* ── Goods Gallery ──────────────────────────────────────────────── */
+/* Place at: quartz/static/goods/goods-gallery.css                  */
+
+#goods-gallery-root {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+
+
+/* ── Category filter bar ── */
+.gg-cats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.gg-cat-btn {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid var(--lightgray, #ddd);
+  background: transparent;
+  color: var(--gray, #777);
+  font-family: inherit;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.gg-cat-btn:hover {
+  border-color: var(--darkgray, #555);
+  color: var(--dark, #1a1a1a);
+}
+
+.gg-cat-btn.active {
+  background: var(--dark, #1a1a1a);
+  color: var(--light, #fff);
+  border-color: var(--dark, #1a1a1a);
+  font-weight: 500;
+}
+
+/* ── Card grid ── */
+.gg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Individual card ── */
+.gg-card {
+  background: var(--light, #fff);
+  border: 1px solid var(--lightgray, #ddd);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  position: relative;
+  user-select: none;
+}
+
+.gg-card:hover {
+  border-color: var(--darkgray, #555);
+  transform: translateY(-2px);
+}
+
+.gg-staff-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #A07020;
+  font-size: 11px;
+  font-weight: 500;
+  z-index: 1;
+  background: rgba(253, 243, 220, 0.95);
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.gg-arrow-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--lightgray, #eee);
+  border: 1px solid var(--lightgray, #ddd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray, #777);
+  z-index: 1;
+}
+
+.gg-img-wrap {
+  background: var(--lightgray, #f5f5f5);
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gg-img-wrap img {
+  max-height: 228px;
+  max-width: 86%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.gg-card:hover .gg-img-wrap img {
+  transform: scale(1.03);
+}
+
+.gg-img-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background: var(--lightgray, #ddd);
+  opacity: 0.4;
+}
+
+.gg-card-body {
+  padding: 14px 16px 16px;
+}
+
+.gg-card-meta {
+  font-size: 11px;
+  color: var(--gray, #888);
+  margin: 0 0 3px;
+}
+
+.gg-card-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.gg-card-name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  flex: 1;
+  color: var(--dark, #1a1a1a);
+}
+
+.gg-card-price {
+  font-size: 16px;
+  color: var(--gray, #888);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Empty state ── */
+.gg-empty {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--gray, #888);
+  font-size: 14px;
+  grid-column: 1 / -1;
+}
+
+/* ── Modal overlay ── */
+.gg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+  perspective: 1000px;
+}
+
+.gg-overlay.gg-show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Modal card ── */
+.gg-modal {
+  background: var(--light, #fff);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 88vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: rotateY(90deg) scale(0.92);
+  opacity: 0;
+  transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.gg-overlay.gg-show .gg-modal {
+  transform: rotateY(0deg) scale(1);
+  opacity: 1;
+}
+
+.gg-modal-img-wrap {
+  background: var(--lightgray, #f5f5f5);
+  border-radius: 16px 16px 0 0;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.gg-modal-img-wrap img {
+  max-height: 228px;
+  max-width: 88%;
+  object-fit: contain;
+}
+
+.gg-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--lightgray, #ddd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--gray, #777);
+  line-height: 1;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  transition: color 0.15s;
+}
+
+.gg-modal-close:hover {
+  color: var(--dark, #1a1a1a);
+}
+
+.gg-modal-body {
+  padding: 20px 24px 28px;
+}
+
+.gg-modal-breadcrumb {
+  font-size: 12px;
+  color: var(--gray, #888);
+  margin: 0 0 5px;
+}
+
+.gg-modal-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.gg-modal-name {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--dark, #1a1a1a);
+  flex: 1;
+}
+
+.gg-modal-price {
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 3px;
+  color: var(--dark, #1a1a1a);
+}
+
+.gg-modal-staff {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #A07020;
+  font-size: 12px;
+  font-weight: 500;
+  background: #FDF3DC;
+  padding: 3px 9px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.gg-modal-desc {
+  font-size: 14px;
+  color: var(--darkgray, #555);
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.gg-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.gg-modal-tag {
+  font-size: 11px;
+  color: var(--gray, #888);
+  border: 1px solid var(--lightgray, #ddd);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.gg-buy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--dark, #1a1a1a);
+  color: var(--light, #fff);
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.gg-buy-btn:hover {
+  opacity: 0.85;
+}
+
+/* ── Dark mode overrides ── */
+@media (prefers-color-scheme: dark) {
+  .gg-modal-close {
+    background: rgba(40, 40, 40, 0.9);
+    border-color: var(--lightgray);
+    color: var(--gray);
+  }
+
+  .gg-staff-badge {
+    background: rgba(80, 60, 10, 0.7);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .gg-grid {
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 8px;
+  }
+
+  .gg-modal {
+    max-height: 92vh;
+  }
+
+  .gg-modal-name {
+    font-size: 18px;
+  }
+}
+
+/* tablet 降为2列 */
+@media (max-width: 900px) {
+  .gg-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

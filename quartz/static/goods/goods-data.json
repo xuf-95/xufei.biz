@@ -1,0 +1,113 @@
+[
+  {
+    "id": "garmin-fenix7",
+    "name": "Fenix 7 Pro",
+    "brand": "Apple",
+    "category": "Tech",
+    "price": "¥10999",
+    "staffPick": true,
+    "image": "/static/goods/images/iPhone17promax.png",
+    "description": "The most powerful iPhone ever. 100% recycled materials. 100% made in the USA.",
+    "link": "https://www.apple.com/iphone-17-pro-max/",
+    "tags": ["iPhone", "Tech"]
+  },
+  {
+    "id": "apple-watch-ultra-2",
+    "name": "Apple Watch Ultra 2",
+    "brand": "Apple",
+    "category": "Tech",
+    "price": "¥2,799",
+    "staffPick": true,
+    "image": "/static/goods/images/apple-watch-ultra-2.png",
+    "description": "The most advanced Apple Watch ever. 100% recycled materials. 100% made in the USA.",
+    "link": "https://www.apple.com/apple-watch-ultra-2/",
+    "tags": ["Apple Watch", "Tech"]
+  },
+  {
+    "id": "macbook-pro-m2",
+    "name": "MacBook Pro M2",
+    "brand": "Apple",
+    "category": "Tech",
+    "price": "¥6,299",
+    "staffPick": true,
+    "image": "/static/goods/images/macbook-pro-m2.png",
+    "description": "Rugged titanium case, precision dual-frequency GPS, and the brightest Apple Watch display at 3000 nits. Built for extreme sports.",
+    "link": "https://www.apple.com/macbook-pro-m2/",
+    "tags": ["MacBook", "Tech"]
+  },
+  {
+    "id": "nexode-power-bank",
+    "name": "Nexode Power Bank",
+    "brand": "Ugreen",
+    "category": "Lifestyle",
+    "price": "¥459",
+    "staffPick": false,
+    "image": "/static/goods/images/nexode-power-bank.png",
+    "description": "The most advanced Apple Watch ever. 100% recycled materials. 100% made in the USA.",
+    "link": "https://www.apple.com/nexode-power-bank/",
+    "tags": ["Power Bank", "Tech"]
+  },
+  {
+    "id": "k3-ultra-slim",
+    "name": "K3 Ultra-slim",
+    "brand": "Nexode",
+    "category": "Tech",
+    "price": "¥899",
+    "staffPick": false,
+    "image": "/static/goods/images/k3-ultra-slim.png",
+    "description": "The most advanced Apple Watch ever. 100% recycled materials. 100% made in the USA.",
+    "link": "https://www.nexode.com/products/k3-ultra-slim/",
+    "tags": ["Power Bank", "Tech"]
+  },
+
+  {
+    "id": "herman-miller-aeron",
+    "name": "Aeron Chair (B)",
+    "brand": "Herman Miller",
+    "category": "Workspace",
+    "price": "¥12,800",
+    "staffPick": true,
+    "image": "/static/goods/images/herman-miller-aeron.png",
+    "description": "Iconic ergonomic chair with 8Z Pellicle mesh that matches the body's natural contours. PostureFit SL lumbar support and 12-year warranty.",
+    "link": "https://www.hermanmiller.com/products/seating/office-chairs/aeron-chairs/",
+    "tags": ["Ergonomic", "Chair"]
+  },
+
+  {
+    "id": "leica-q3",
+    "name": "Leica Q3",
+    "brand": "Leica",
+    "category": "Photography",
+    "price": "¥10,299",
+    "staffPick": false,
+    "image": "/static/goods/images/leica-q3.png",
+    "description": "The most advanced Apple Watch ever. 100% recycled materials. 100% made in the USA.",
+    "link": "https://www.leica-camera.com/products/leica-q3",
+    "tags": ["Camera", "Tech"]
+  },
+  {
+    "id": "shimano-dura-ace",
+    "name": "Dura-Ace R9200 Di2",
+    "brand": "Shimano",
+    "category": "Cycling",
+    "price": "¥8,499",
+    "staffPick": false,
+    "image": "/static/goods/images/shimano-dura-ace.png",
+    "description": "12-speed wireless Di2 groupset with semi-wireless architecture. Larger 54T max chainring and new sprocket range for any terrain.",
+    "link": "https://bike.shimano.com/en-EU/product/component/dura-ace-r9200.html",
+    "tags": ["Groupset", "Road"]
+  },
+  {
+    "id": "shokz-openrun-air",
+    "name": "OpenRun Air",
+    "brand": "Shokz",
+    "category": "Lifestyle",
+    "price": "¥1,299",
+    "staffPick": false,
+    "image": "/static/goods/images/shokz-openrun-air.png",
+    "description": "The most advanced Apple Watch ever. 100% recycled materials. 100% made in the USA.",
+    "link": "https://www.shokz.com/products/shokz-openrun-air",
+    "tags": ["Headphones", "Tech"]
+  }
+
+]

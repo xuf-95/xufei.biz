@@ -6,6 +6,7 @@ const links = [
   { label: "POSTS", href: "/posts/" },
   { label: "BG",  href: "/bigdata/" },
   { label: "TAGS",  href: "/tags/" },
+  { label: "GOODS", href: "/hobby/goods/" }
 ]
 
 const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponentProps) => {
