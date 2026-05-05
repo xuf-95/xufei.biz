@@ -209,6 +209,42 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       document.dispatchEvent(event)
     `)
   }
+
+  // Goods 页：gallery 脚本放在 markdown 正文时，SPA 导航不会重新执行内联脚本。
+  // 在全局 postscript 里按「首屏 + 每次 nav」注入 CSS/JS，并调用 window.__goodsGalleryMount。
+  componentResources.afterDOMLoaded.push(`
+    (function () {
+      var GOODS_CSS = "/static/goods/goods-gallery.css";
+      var GOODS_JS = "/static/goods/goods-gallery.js";
+      function ensureGoodsCss() {
+        if (document.getElementById("goods-gallery-styles")) return;
+        var link = document.createElement("link");
+        link.id = "goods-gallery-styles";
+        link.rel = "stylesheet";
+        link.href = GOODS_CSS;
+        document.head.appendChild(link);
+      }
+      function bootGoodsGallery() {
+        if (!document.getElementById("goods-gallery-root")) return;
+        ensureGoodsCss();
+        var existing = document.querySelector('script[data-goods-gallery-boot="1"]');
+        if (existing) {
+          if (typeof window.__goodsGalleryMount === "function") window.__goodsGalleryMount();
+          return;
+        }
+        var s = document.createElement("script");
+        s.src = GOODS_JS;
+        s.async = true;
+        s.dataset.goodsGalleryBoot = "1";
+        s.onload = function () {
+          if (typeof window.__goodsGalleryMount === "function") window.__goodsGalleryMount();
+        };
+        document.body.appendChild(s);
+      }
+      bootGoodsGallery();
+      document.addEventListener("nav", bootGoodsGallery);
+    })();
+  `)
 }
 
 // This emitter should not update the `resources` parameter. If it does, partial
