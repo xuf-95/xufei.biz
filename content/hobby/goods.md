@@ -1,6 +1,7 @@
 ---
 title: Goods
 draft: false
+puhlish: true
 ---
 
 <div id="goods-gallery-root"></div>
