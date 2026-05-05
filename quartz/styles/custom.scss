@@ -393,14 +393,18 @@ kbd:active kbd {
   
   // 左列：tag 名称 + 数量
   &-left {
-    padding: 1rem 1.2rem 1rem 0;
+    // padding: 1rem 1.2rem 1rem 0;
+    padding: 0rem 0rem 0rem 0;
     border-right: 1px solid var(--lightgray);
+    h2 {
+      margin-top: .7rem;
+    }
     
     // ✨ 核心：sticky 固定
     // 左列的内容在 tag-section 的高度范围内 sticky
     // 当滚动到最后一篇文章时，左列内容会随 tag-section 底部一起上移
     position: sticky;
-    top: 60px; // 根据你的导航栏高度调整
+    top: 20px; // 根据你的导航栏高度调整 60
     align-self: start; // 必须有，否则 sticky 在 grid 中不生效
     
     .tag-label {
@@ -413,7 +417,7 @@ kbd:active kbd {
     }
     
     .tag-count {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--gray);
     }
   }
@@ -422,20 +426,28 @@ kbd:active kbd {
   &-right {
     padding-left: 1.2rem;
     
+
+    ul {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    
     li {
+      margin-top: 0px;
+      margin-bottom: 0px;
       display: flex;
-      gap: 1rem;
+      gap: 0.5rem;
       align-items: baseline;
-      padding: 0.6rem 0;
+      padding: 0rem 0rem 0rem 0;
       border-bottom: 1px solid var(--lightgray);
-      
+
       &:first-child {
-        padding-top: 1rem; // 与左列 tag 名称顶部对齐
+        padding-top: 0rem; // 与左列 tag 名称顶部对齐
       }
       
       &:last-child {
-        border-bottom: none;
-        padding-bottom: 1rem;
+        border-bottom: 0rem;
+        padding-bottom: 0rem;
       }
       
       .article-date {
