@@ -64,7 +64,6 @@ TopNav.css = `
   display: flex;
   align-items: center;
   padding: 0 0.8rem;
-  border-right: 1px solid var(--lightgray);
   text-decoration: none;
   flex-shrink: 0;
 }
@@ -87,14 +86,8 @@ TopNav.css = `
   color: var(--gray);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-right: 1px solid var(--lightgray);
   white-space: nowrap;
   transition: color 0.15s ease;
-  position: relative;
-}
-
-.top-nav-left a:first-child {
-  border-left: 1px solid var(--lightgray);
 }
 
 .top-nav-left a:hover {
@@ -104,16 +97,6 @@ TopNav.css = `
 .top-nav-left a.active {
   color: var(--dark);
   font-weight: 600;
-}
-
-.top-nav-left a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--dark);
 }
 `
 
