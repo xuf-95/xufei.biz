@@ -28,16 +28,17 @@ const config: QuartzConfig = {
         code: "IBM Plex Mono",
       },
       colors: {
+        // Apple-like light: white surface, black/gray type, no blue in UI tokens
         lightMode: {
           light: "#ffffff",
           lightgray: "#d2d2d7",
           gray: "#86868b",
           darkgray: "#6e6e73",
-          dark: "#1d1d1f",
-          secondary: "#0071e3",
-          tertiary: "#0077ed",
-          highlight: "rgba(206, 215, 223, 0.08)",
-          textHighlight: "rgba(26, 28, 29, 0.15)",
+          dark: "#000000",
+          secondary: "#2c2c2c",
+          tertiary: "#000000",
+          highlight: "rgba(0, 0, 0, 0.06)",
+          textHighlight: "rgba(0, 0, 0, 0.14)",
         },
         darkMode: {
           // deep gray background + warm white text + desaturated gray accents
@@ -64,7 +65,8 @@ const config: QuartzConfig = {
       Plugin.SyntaxHighlighting({
         theme: {
           dark: "github-dark",
-          light: "github-light",
+          // github-light 含大量蓝/青 token；min-light 更克制（仍可能有少量语法色相）
+          light: "min-light",
         },
         keepBackground: false,
       }),

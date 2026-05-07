@@ -159,9 +159,7 @@ article a,
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: var(
-    --secondary
-  ); // rgb(254, 127, 3); /* Uses your secondary color (#FF0 in light, #CCCC0 in dark) */
+  text-decoration-color: var(--secondary);
   transition:
     text-decoration-color 0.2s ease,
     text-decoration-thickness 0.2s ease;
