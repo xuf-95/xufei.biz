@@ -1,32 +1,45 @@
-import { pathToRoot } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import { GlobalConfiguration } from "../cfg"
 import { classNames } from "../util/lang"
 
+/** Path prefix when baseUrl is e.g. https://user.github.io/repo/ → "/repo" */
+function siteRootPrefix(cfg: GlobalConfiguration | undefined): string {
+  if (!cfg?.baseUrl) return ""
+  try {
+    const pathname = new URL(cfg.baseUrl).pathname.replace(/\/$/, "")
+    return pathname === "/" ? "" : pathname
+  } catch {
+    return ""
+  }
+}
+
+function absSitePath(cfg: GlobalConfiguration | undefined, path: string): string {
+  const p = path.startsWith("/") ? path : `/${path}`
+  return `${siteRootPrefix(cfg)}${p}`
+}
+
 const links = [
-  { label: "POSTS", href: "/posts/" },
-  { label: "BG",  href: "/bigdata/" },
-  { label: "TAGS",  href: "/tags/" },
-  { label: "GOODS", href: "/hobby/goods/" }
+  { label: "POSTS", path: "/posts/" },
+  { label: "BG", path: "/bigdata/" },
+  { label: "TAGS", path: "/tags/" },
+  { label: "GOODS", path: "/hobby/goods/" },
 ]
 
 const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponentProps) => {
-  const baseDir = pathToRoot(fileData.slug!)
   const slug = fileData.slug ?? ""
-  const iconPath = baseDir + "/static/icon.png"  // 替换为你的实际图标文件名
+  const iconPath = absSitePath(cfg, "/static/icon.png")
 
   return (
     <nav class={classNames(displayClass, "top-nav")} aria-label="Primary">
       <div class="top-nav-left">
-        <a href={baseDir} class="top-nav-logo">
+        <a href={absSitePath(cfg, "/")} class="top-nav-logo">
           <img src={iconPath} alt={cfg?.pageTitle ?? "site icon"} />
         </a>
         {links.map((item) => {
-          const isActive =
-            item.href === ""
-              ? slug === "index" || slug === ""
-              : slug.startsWith(item.href.replace(/\/$/, ""))
+          const navKey = item.path.replace(/^\//, "").replace(/\/$/, "")
+          const isActive = slug === navKey || slug.startsWith(`${navKey}/`)
           return (
-            <a href={baseDir + item.href} class={isActive ? "active" : ""}>
+            <a href={absSitePath(cfg, item.path)} class={isActive ? "active" : ""}>
               {item.label}
             </a>
           )
