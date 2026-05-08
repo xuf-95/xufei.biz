@@ -3,9 +3,7 @@ title: welcome my wiki
 draft: true
 publish: true
 ---
-![[house.png]]
-
-<div class="home-banner">
+%% <div class="home-banner">
   <div class="home-banner-left">
     <p class="home-banner-label">Data Engineer · Digital Garden</p>
     <p class="home-banner-bio">I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of <a href="./DCMM" class="internal">DCMM</a> and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
@@ -15,9 +13,9 @@ publish: true
       <a href="https://github.com/xuf-95">GitHub</a>
     </div>
   </div>
-</div>
+</div> %%
 
-
+I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
 
 ***
 
@@ -27,15 +25,14 @@ publish: true
 <ul>
 
 - [[Lambda Architecture]]
-- [[Kappa Architecture]]
-- [[ZooKeeper]]
-- [[MPP]]
+- [[what is Kappa Architecture?]]
+- [[MMP]]
 
 </ul>
 <ul>
 
 - [[Flink CDC]]
-- [[Apache Kafka]]
+- [[What is Apache Kafka?]]
 - [[Apache Pulsar]]
 - [[Apache Airflow]]
 
