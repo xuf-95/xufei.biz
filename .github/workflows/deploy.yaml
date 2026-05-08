@@ -28,6 +28,14 @@ jobs:
         run: npm ci
       - name: Build Quartz
         run: npx quartz build
+      # Quartz 输出 hobby/goods.html；GitHub Pages 访问 /hobby/goods/ 时只认 hobby/goods/index.html，否则会 404。
+      # 本地 dev server 往往会正确解析单文件路径，故仅线上表现为 404。
+      - name: Folder-style URL for hobby/goods (GitHub Pages trailing slash)
+        run: |
+          if [ -f public/hobby/goods.html ]; then
+            mkdir -p public/hobby/goods
+            cp public/hobby/goods.html public/hobby/goods/index.html
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -42,7 +42,7 @@ const config: QuartzConfig = {
         },
         darkMode: {
           // deep gray background + warm white text + desaturated gray accents
-          light: "#111111",
+          light: "#000",
           lightgray: "#2a2a2a",
           gray: "#8e8d87",
           darkgray: "#d2d0c7",
@@ -65,8 +65,7 @@ const config: QuartzConfig = {
       Plugin.SyntaxHighlighting({
         theme: {
           dark: "github-dark",
-          // github-light 含大量蓝/青 token；min-light 更克制（仍可能有少量语法色相）
-          light: "min-light",
+          light: "github-light",
         },
         keepBackground: false,
       }),
