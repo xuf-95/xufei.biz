@@ -570,8 +570,11 @@ body[data-slug="hobby/goods"] {
   }
 
   // 突破 center 栏宽度，与视口对齐；padding 保证卡片不贴边
+  // .sidebar.left 在 base.scss 有 z-index:1；全宽负边距会让画廊侵入侧栏栅格区域，
+  // 若不抬高层级，左侧按钮的点击会被「空侧栏」挡住（右侧 Tech 等仍可读）。
   #goods-gallery-root {
     position: relative;
+    z-index: 2;
     left: auto;
     transform: none;
     width: 100vw;
@@ -580,6 +583,11 @@ body[data-slug="hobby/goods"] {
     margin-right: calc(50% - 50vw);
     padding-inline: clamp(1rem, 4vw, 2.25rem);
     box-sizing: border-box;
+  }
+
+  .sidebar.left,
+  .sidebar.right {
+    pointer-events: none;
   }
 
   // 卡片网格：在窄桌面仍保持可读宽度，避免四列挤爆

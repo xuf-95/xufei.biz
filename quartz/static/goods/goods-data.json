@@ -85,18 +85,7 @@
     "link": "https://www.leica-camera.com/products/leica-q3",
     "tags": ["Camera", "Tech"]
   },
-  {
-    "id": "shimano-dura-ace",
-    "name": "Dura-Ace R9200 Di2",
-    "brand": "Shimano",
-    "category": "Cycling",
-    "price": "¥8,499",
-    "staffPick": false,
-    "image": "/static/goods/images/shimano-dura-ace.png",
-    "description": "12-speed wireless Di2 groupset with semi-wireless architecture. Larger 54T max chainring and new sprocket range for any terrain.",
-    "link": "https://bike.shimano.com/en-EU/product/component/dura-ace-r9200.html",
-    "tags": ["Groupset", "Road"]
-  },
+
   {
     "id": "shokz-openrun-air",
     "name": "OpenRun Air",
