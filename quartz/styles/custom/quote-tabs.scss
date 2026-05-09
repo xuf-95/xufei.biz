@@ -1,0 +1,111 @@
+// Markdown 内「引用 Tab」（radio + label）
+// 使用 .qt-wrap:has(#id:checked) 切换面板，避免依赖 input ~ .qt-panels（易被其它样式或 DOM 细节破坏）
+
+.qt-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 42rem;
+  margin: 2rem auto;
+  padding-inline: 0.5rem;
+  box-sizing: border-box;
+  color: var(--dark);
+
+  input.qt-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .qt-bar {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px;
+    border: 1px solid var(--lightgray);
+    border-radius: 999px;
+    box-sizing: border-box;
+  }
+
+  .qt-bar label {
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--gray);
+    opacity: 0.72;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      opacity 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .qt-panels {
+    width: 100%;
+  }
+
+  // 默认全部隐藏；仅用 :has(:checked) 打开对应块（不依赖 radio 与 .qt-panels 为兄弟节点）
+  .qt-panels .qt-panel {
+    display: none !important;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .qt-panel blockquote {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    border: none;
+    padding: 0;
+  }
+
+  .qt-attribution {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--darkgray);
+  }
+}
+
+// 选中面板（与 Quartz MKD / my use 等文中的 id 一致）
+.qt-wrap:has(#qt-cursor:checked) .qt-panels .qt-panel-cursor,
+.qt-wrap:has(#qt-lovable:checked) .qt-panels .qt-panel-lovable,
+.qt-wrap:has(#qt-cognition:checked) .qt-panels .qt-panel-cognition {
+  display: block !important;
+}
+
+// Tab 高亮 —— :has，便于与面板规则一致
+.qt-wrap:has(#qt-cursor:checked) .qt-bar label[for="qt-cursor"],
+.qt-wrap:has(#qt-lovable:checked) .qt-bar label[for="qt-lovable"],
+.qt-wrap:has(#qt-cognition:checked) .qt-bar label[for="qt-cognition"] {
+  background: var(--lightgray);
+  color: var(--dark);
+  opacity: 1;
+  font-weight: 600;
+}
+
+:root[saved-theme="dark"] {
+  .qt-wrap .qt-bar label {
+    color: rgba(236, 233, 223, 0.38);
+    opacity: 1;
+  }
+
+  .qt-wrap:has(#qt-cursor:checked) .qt-bar label[for="qt-cursor"],
+  .qt-wrap:has(#qt-lovable:checked) .qt-bar label[for="qt-lovable"],
+  .qt-wrap:has(#qt-cognition:checked) .qt-bar label[for="qt-cognition"] {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    font-weight: 600;
+  }
+}

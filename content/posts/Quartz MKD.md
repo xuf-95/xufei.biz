@@ -237,3 +237,37 @@ Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy
 > 
 > **Regular Text**: "Morrowind"
 > **Daedric Text**: "<span class="daedric">"Morrowind"</span>"
+
+<div class="qt-wrap">
+  <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-cursor" checked />
+  <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-lovable" />
+  <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-cognition" />
+
+  <div class="qt-bar">
+    <label for="qt-cursor">Cursor</label>
+    <label for="qt-lovable">Lovable</label>
+    <label for="qt-cognition">Cognition</label>
+  </div>
+
+  <div class="qt-panels">
+    <div class="qt-panel qt-panel-cursor">
+      <blockquote>
+        <p>“GPT-5.5 is noticeably smarter and more persistent than GPT-5.4, with stronger coding performance and more reliable tool use. It stays on task for significantly longer without stopping early, which matters most for the complex, long-running work our users delegate to Cursor.”
+— Michael Truell, Co-founder & CEO at Cursor</p>
+      </blockquote>
+      <p class="qt-attribution">— Michael Truell, Co-founder & CEO at Cursor</p>
+    </div>
+    <div class="qt-panel qt-panel-lovable">
+      <blockquote>
+        <p>Builders want continuous progress …（Lovable 引用正文）</p>
+      </blockquote>
+      <p class="qt-attribution">— Fabian Hedin, CTO & Co-founder at Lovable</p>
+    </div>
+    <div class="qt-panel qt-panel-cognition">
+      <blockquote>
+        <p>第三段文案 …</p>
+      </blockquote>
+      <p class="qt-attribution">— 署名</p>
+    </div>
+  </div>
+</div>

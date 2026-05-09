@@ -11,77 +11,215 @@ tags:
   - data-compute
   - data-visual
   - data-lifecycle
-  - datda-strategy
-draft: true
+  - data-strategy
+draft: false
 date: 2024-12-01
+publish: true
 ---
 
-> DCMM：Digital Capabilities Management Model <数据管理能力成熟度评估模型> 用于对组织的数据管理能力成熟度进行评估的模型
+## DCMM Overview
 
-### 相关定义
+**DCMM (数据管理能力成熟度评估模型 - Data Management Capability Maturity Assessment Model)** is China's national standard **GB/T 36073-2018** for evaluating data management capabilities. It provides a systematic framework to help organizations assess and improve their data management maturity.
 
-- 能力域(capabilityarea)：数据管理相关活动、过程等集合以及一组相关数据能力子域的集合
-- 数据战略 (data strategy)：组织开展数据工作的愿景、目的、目标和原则
-- 数据治理 (data governance)：对数据进行处置、格式化和规范化的过程
-- 数据架构 (data architecture)：通过组织级数据模型定义数据需求,指导对数据资产的分布控制和整合,部署数据的共享和应用环境,以及元数据管理的规范
-- 数据标准 (data standard)：数据的命名、定义、结构和取值的规则
-- 元数据 (metadata)：关于数据或数据元素的数据(可能包括其数据描述),以及关于数据拥有权、存取路径、访问权和数据易变性的数据
-- 元模型 (metamodel)：规定一个或多个其他数据模型的数据模型
-- 数据质量 (data quality)：在指定条件下使用时,数据的特性满足明确的和隐含的要求的程度
-- 数据安全 (data security)：数据的机密性、完整性和可用性
-- 主数据 (master data)：组织中需要跨系统、跨部门进行共享的核心业务实体数据
-- 参考数据 (reference data)：对其他数据进行分类和规范的数据
-- 数据生存周期 (data lifecycle)：将原始数据转化为可用于行动的知识的一组过程
-- 数据元 (data element)：由一组属性规定其定义、标识、表示和允许值的数据单元
+### Key Characteristics
 
+- **Standard**: GB/T 36073-2018 "Data management capability maturity assessment model"
+- **Update**: DCMM 2.0 (GB/T 36073-2025) released December 2025, effective July 2026
+- **Structure**: 8 core capability domains, 28 process areas, 445 capability standards
+- **DCMM 2.0**: Expands to 9 capability domains and 33 process areas, adds Data Assets domain
+- **Purpose**: Guide organizations in developing comprehensive data management capabilities
+- **Application**: Enterprise data management assessment and certification
 
-### 能力域和能力项
-| 能力域      | 能力子域        |
-| -------- | ----------- |
-| A、数据战略   | AA、数据战略规划   |
-|          | AB、数据战略实施   |
-|          | AC、数据战略评估   |
-| B、数据治理   | BA、数据治理组织   |
-|          | AB、数据战略实施   |
-|          | AC、数据战略评估   |
-| C、数据架构   | CA、数据模型     |
-|          | CB、数据分布     |
-|          | CC、数据集成与共享  |
-|          | CD、元数据管理    |
-| D、数据应用   | DA、数据分析     |
-|          | DB、数据开放共享   |
-|          | DC、数据服务     |
-| E、数据安全   | EA、数据安全策略   |
-|          | EB、数据安全管理   |
-|          | EC、数据安全审计   |
-| F、数据质量   | FA、数据质量需求   |
-|          | FB、数据质量检查   |
-|          | FC、数据质量分析   |
-|          | FD、数据质量提升   |
-| G、数据标准   | GA、业务术语     |
-|          | GB、参考数据和主数据 |
-|          | GC、数据元      |
-|          | GD、指标数据     |
-| H、数据生存周期 | HA、数据需求     |
-|          | HB、数据设计和开发  |
-|          | HC、数据运维     |
-|          | HD、数据退役     |
+### Official Resources
 
-## GB/T 36073—2018 能力等级评估标准
+- [Official Assessment Platform](https://www.dcmm-cfeii.com/) - Certification queries, self-assessment tools
+- [Certification Authority](http://www.dcmm.org.cn/) - Standards and announcements
 
-| 能力等级  | 能力等级标准                                                                                                                                                                                                                                                 |     |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
-| 初始级   | 数据需求的管理主要是在项目级体现,没有统一的管理流程,主要是被动式管理,具体特征如下:                                                                                                                                                                                                            | 1级  |
-|       | a ) 组织在制定战略决策时,未获得充分的数据支持;<br>b ) 没有正式的数据规划、数据架构设计、数据管理组织和流程等;<br>c ) 业务系统各自管理自己的数据,各业务系统之间的数据存在不一致现象,组织未意识到数据管<br>理或数据质量的重要性;<br>d ) 数据管理仅根据项目实施的周期进行,无法核算数据维护、管理的成本。                                                                                 |     |
-| 受管理级  | 组织已意识到数据是资产,根据管理策略的要求制定了管理流程,指定了相关人员进行初步管理,<br>具体特征如下:                                                                                                                                                                                                 | 2级  |
-|       | a ) 意识到数据的重要性,并制定部分数据管理规范,设置了相关岗位;<br>b ) 意识到数据质量和数据孤岛是一个重要的管理问题,但目前没有解决问题的办法;<br>c ) 组织进行了初步的数据集成工作,尝试整合各业务系统的数据,设计了相关数据模型和管理<br>岗位;<br>d ) 开始进行了一些重要数据的文档工作,对重要数据的安全、风险等方面设计相关管理措施。                                                                  |     |
-| 稳健级   | 数据已被当做实现组织绩效目标的重要资产,在组织层面制定了系列的标准化管理流程,促进数据<br>管理的规范化,具体特征如下:                                                                                                                                                                                          | 3级  |
-|       | a ) 意识到数据的价值,在组织内部建立了数据管理的规章和制度;<br>b ) 数据的管理以及应用能结合组织的业务战略、经营管理需求以及外部监管需求;<br>c ) 建立了相关数据管理组织、管理流程,能推动组织内各部门按流程开展工作;<br>d ) 组织在日常的决策、业务开展过程中能获取数据支持,明显提升工作效率;<br>e ) 参与行业数据管理相关培训,具备数据管理人员。                                                           |     |
-| 量化管理级 | 数据被认为是获取竞争优势的重要资源,数据管理的效率能量化分析和监控,具体特征如下:                                                                                                                                                                                                              | 4级  |
-|       | a ) 组织层面认识到数据是组织的战略资产,了解数据在流程优化、绩效提升等方面的重要作用,<br>在制定组织业务战略的时候可获得相关数据的支持;<br>b ) 在组织层面建立了可量化的评估指标体系,可准确测量数据管理流程的效率并及时优化;<br>c ) 参与国家、行业等相关标准的制定工作;<br>d ) 组织内部定期开展数据管理、应用相关的培训工作;<br>e ) 在数据管理、应用的过程中充分借鉴了行业最佳案例以及国家标准、行业标准等外部资源,促<br>进组织本身的数据管理、应用的提升。 |     |
-| 优化级   | 数据被认为是组织生存和发展的基础,相关管理流程能实时优化,能在行业内进行最佳实践分享,<br>具体特征如下:                                                                                                                                                                                                 | 5级  |
-|       | a ) 组织将数据作为核心竞争力,利用数据创造更多的价值和提升改善组织的效率;<br>b ) 能主导国家、行业等相关标准的制定工作;<br>c ) 能将组织自身数据管理能力建设的经验作为行业最佳案例进行推广。                                                                                                                                               |     |
-***
-## Reference
+---
 
+## Five Maturity Levels
+
+DCMM classifies data management capability maturity into five levels, from low to high:
+
+| Level | Name | Description |
+|-------|------|-------------|
+| **Level 1** | 初始级 (Initial) | Basic data management with ad-hoc processes |
+| **Level 2** | 受管理级 (Managed) | Defined processes and project-level management |
+| **Level 3** | 稳健级 (Robust) | Standardized processes across organization |
+| **Level 4** | 量化管理级 (Quantitatively Managed) | Measurable, data-driven management |
+| **Level 5** | 优化级 (Optimizing) | Continuous optimization and innovation |
+
+---
+
+## Eight Capability Areas
+
+The DCMM framework comprises **8 core capability domains**:
+
+### 1. 数据战略 (Data Strategy)
+- Strategic planning and alignment
+- Data policy development
+- Resource allocation and investment
+
+### 2. 数据治理 (Data Governance)
+- Governance structure and organization
+- Roles and responsibilities
+- Data stewardship and accountability
+
+### 3. 数据架构 (Data Architecture)
+- Data model design
+- Data distribution and integration
+- Technical architecture
+
+### 4. 数据标准 (Data Standards)
+
+The Data Standards capability area ensures data consistency and usability across the organization through standardized definitions, formats, and management practices. It comprises **four key capability items**:
+
+#### 4.1 业务术语 (Business Terminology)
+- **Definition**: Approved descriptions of business concepts within the organization
+- **Components**:
+  - Chinese name (中文名称)
+  - English name (英文名称)
+  - Term definition (术语定义)
+  - Business context and usage examples
+- **Purpose**: Ensure consistent business language across departments and systems
+- **Key Activities**:
+  - Terminology collection and standardization
+  - Cross-departmental review and approval
+  - Maintenance and version control
+  - Integration with system development
+
+#### 4.2 参考数据和主数据 (Reference Data & Master Data)
+- **Reference Data**: Basic data used for classification, coding, and identification
+  - Examples: Country codes, industry classifications, status codes
+  - Characteristics: Relatively stable, shared across systems
+- **Master Data**: Core business entity critical data
+  - Examples: Customer, product, supplier, employee data
+  - Characteristics: High-value, frequently accessed, shared across applications
+- **Management Focus**:
+  - Unified identification and coding rules
+  - Data source management (single source of truth)
+  - Data synchronization and consistency
+  - Change control and impact analysis
+
+#### 4.3 数据元 (Data Elements)
+- **Definition**: The smallest unit of data with specific meaning
+- **Components**:
+  - Object class (e.g., "Customer")
+  - Property (e.g., "Name")
+  - Representation (e.g., "Text string")
+- **Standardization Requirements**:
+  - Naming conventions
+  - Data type definitions
+  - Length and format specifications
+  - Value range constraints
+- **Purpose**: Foundation for data standardization and system integration
+
+#### 4.4 指标数据 (Indicator Data)
+- **Definition**: Data used to measure specific targets or objects in business analysis
+- **Components**:
+  - Indicator name (指标名称)
+  - Time dimension (时间维度)
+  - Numerical value (数值)
+  - Calculation methodology
+  - Business context and thresholds
+- **Examples**:
+  - Financial indicators: Revenue, profit margin, ROI
+  - Operational indicators: Order fulfillment rate, customer satisfaction
+  - Strategic indicators: Market share, brand awareness
+- **Management Requirements**:
+  - Unified calculation definitions
+  - Data source traceability
+  - Verification and validation processes
+  - Regular review and updates
+
+#### Data Standards Management Process
+1. **Planning**: Identify standardization requirements and priorities
+2. **Development**: Create standards through collaborative processes
+3. **Review**: Validate standards with business and technical stakeholders
+4. **Approval**: Formalize standards through governance processes
+5. **Implementation**: Apply standards in systems and processes
+6. **Maintenance**: Update standards to reflect business changes
+7. **Compliance**: Monitor adherence and enforce standards
+
+#### Business Value
+- **Consistency**: Unified data language across the organization
+- **Integration**: Foundation for system integration and data sharing
+- **Quality**: Reduced data ambiguity and errors
+- **Efficiency**: Streamlined data management and communication
+- **Analytics**: Reliable basis for business intelligence and decision-making
+
+### 5. 数据质量 (Data Quality)
+- Quality rules and metrics
+- Data quality assessment
+- Quality improvement processes
+
+### 6. 数据安全 (Data Security)
+- Security policies and controls
+- Access management
+- Data privacy and compliance
+
+### 7. 数据应用 (Data Application)
+- Data analytics and BI
+- Data services and APIs
+- Value creation from data
+
+### 8. 数据生存周期 (Data Lifecycle)
+- Data collection and creation
+- Storage and maintenance
+- Archival and disposal
+
+---
+
+## Benefits of DCMM Assessment
+
+- **Identify gaps**: Discover current data management status and existing problems
+- **Benchmark comparison**: Compare with industry averages and best practices
+- **Targeted improvement**: Receive specific guidance for capability enhancement
+- **Digital transformation**: Support organizational data-driven transformation
+- **Government incentives**: Access to subsidies and certifications (varies by region)
+- **Market recognition**: Demonstrate data management capabilities to stakeholders
+
+---
+
+## Current Trends (2024-2026)
+
+### DCMM 2.0 Update (2025-2026)
+- **New Standard**: GB/T 36073-2025 released December 2025, effective July 2026
+- **Major Enhancement**: Expansion from 8 to 9 capability domains with addition of **Data Assets** domain
+- **Capability Items**: Increased from 28 to 33 process areas
+- **Strategic Focus**: Covers full data lifecycle from "resource → asset → element" transformation
+- **Market Alignment**: Supports data要素市场化配置 reform and data asset accounting
+
+### 2024-2025 Adoption Patterns
+- **Financial services**: Banks and institutions actively pursuing DCMM certification
+- **Regional subsidies**: Multiple Chinese provinces offer financial incentives (¥100K-¥500K)
+- **Integration**: Growing alignment with international data management frameworks (DAMA-DMBOK)
+- **Enterprise adoption**: Increasing recognition as critical benchmark for digital transformation
+- **Government requirements**: DCMM certification becoming prerequisite for certain contracts and projects
+
+---
+
+## Related Concepts
+
+- [[DAMA-DMBOK]] - International data management framework
+- [[Data Governance]] - Organizational data management practices
+- [[Data Maturity Model]] - General maturity assessment approaches
+
+---
+
+## References
+
+### Official Resources
+- [DCMM Official Assessment Platform](https://www.dcmm-cfeii.com/) - Certification queries, self-assessment tools
+- [DCMM Certification Authority](http://www.dcmm.org.cn/) - Standards and announcements
+- GB/T 36073-2018 National Standard (Data management capability maturity assessment model)
+- GB/T 36073-2025 National Standard (DCMM 2.0, effective July 2026)
+
+### Data Standards Resources
+- [DCMM Data Standards Process Areas](https://www.q-ing.com.cn/industry-news/2001.html) - DCMM Level 2 data standards requirements
+- [Understanding DCMM Data Standards](https://zhuanlan.zhihu.com/p/650853317) - Comprehensive guide to business terminology, reference data, master data, data elements, and indicator data
+- [DCMM Complete Interpretation](https://zhuanlan.zhihu.com/p/611997675) - Full framework overview with 8 capability domains and 28 process areas
+
+### DCMM 2.0 Update
+- [DCMM 2.0 National Standard Upgrade](https://zhuanlan.zhihu.com/p/1997339599136104994) - First inclusion of "Data Assets" domain, effective July 2026
 

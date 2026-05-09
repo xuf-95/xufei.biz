@@ -1,14 +1,17 @@
 {
   "id": "conv-1776132476112-6ski0ea84",
   "providerId": "claude",
-  "title": "Complete LLMOPS.md Tutorial",
+  "title": "Update DCMM Research Summary",
   "titleGenerationStatus": "success",
   "createdAt": 1776132476112,
-  "updatedAt": 1776152435978,
-  "lastResponseAt": 1776152435978,
-  "sessionId": "2bb4143d-054d-4091-a265-8623dc5373c1",
+  "updatedAt": 1778296659971,
+  "lastResponseAt": 1778296659971,
+  "sessionId": "75017677-dd9c-4072-ba4a-f62377f4f91f",
   "providerState": {
-    "providerSessionId": "2bb4143d-054d-4091-a265-8623dc5373c1"
+    "providerSessionId": "75017677-dd9c-4072-ba4a-f62377f4f91f",
+    "previousProviderSessionIds": [
+      "2bb4143d-054d-4091-a265-8623dc5373c1"
+    ]
   },
   "usage": {
     "model": "glm-4.7",

@@ -26,8 +26,8 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 - [[Lambda Architecture]]
 - [[what is Kappa Architecture?]]
-- [[MMP]]
-
+- [[MMP|MMP]]
+- [[ZooKeeper|zookeeper]]
 </ul>
 <ul>
 
