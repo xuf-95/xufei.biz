@@ -82,7 +82,7 @@ TopNav.css = `
   text-decoration: none;
   font-family: var(--titleFont);
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gray);
   letter-spacing: 0.1em;
   text-transform: uppercase;
