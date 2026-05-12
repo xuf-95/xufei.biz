@@ -1,172 +1,137 @@
 @use "./variables.scss" as *;
-@use "sass:color";
+
+// ── Callout Component — Style A: Minimal Left Border ─────────────
+// Clean left-border accent, subtle tinted background, inline title.
+// No floating icons, no connectors, no floating title tricks.
+// ─────────────────────────────────────────────────────────────────
 
 .callout {
-  border: 4px double var(--border);
+  position: relative;
+  border: none;
+  border-left: 3px solid var(--color);
+  border-radius: 0 6px 6px 0;
   background-color: var(--bg);
-  border-radius: 5px;
-  padding: 0 1rem;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  overflow-y: hidden;
-  box-sizing: border-box;
-  overflow: visible;
-  background-color: transparent;
-  margin-bottom: 1.5em;
-  margin-top: 1.5em;
-  display:grid;
+  padding: 12px 16px;
+  margin: 1.2em 0;
+  display: grid;
   max-width: 100%;
-
-  & > .callout-content {
-    overflow: hidden;
-  }
+  box-sizing: border-box;
 
   & > .callout-content {
     display: grid;
-    transition: grid-template-rows 0.1s cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: grid-template-rows 0.18s cubic-bezier(0.02, 0.01, 0.47, 1);
     overflow: hidden;
 
-    & > :first-child {
-      margin-top: 0;
+    & > :first-child { margin-top: 0; }
+    & > :last-child  { margin-bottom: 0; }
+  }
+
+  // ── SVG icon definitions ───────────────────────────────────────
+  --callout-icon-note:     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="2" x2="22" y2="6"/><path d="M7.5 20.5 19 9l-4-4L3.5 16.5 2 22z"/></svg>');
+  --callout-icon-abstract: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>');
+  --callout-icon-info:     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>');
+  --callout-icon-todo:     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>');
+  --callout-icon-tip:      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>');
+  --callout-icon-success:  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');
+  --callout-icon-question: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>');
+  --callout-icon-warning:  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>');
+  --callout-icon-failure:  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+  --callout-icon-danger:   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>');
+  --callout-icon-bug:      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="14" x="8" y="6" rx="4"/><path d="m19 7-3 2"/><path d="m5 7 3 2"/><path d="m19 19-3-2"/><path d="m5 19 3-2"/><path d="M20 13h-4"/><path d="M4 13h4"/><path d="m10 4 1 2"/><path d="m14 4-1 2"/></svg>');
+  --callout-icon-example:  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>');
+  --callout-icon-quote:    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>');
+  --callout-icon-fold:     url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
+  --callout-icon-bib:      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V6a2 2 0 0 1 2-2h7"/><path d="M22 19V6a2 2 0 0 0-2-2h-7"/><path d="M2 19a9 9 0 0 1 9-9h2a9 9 0 0 1 9 9"/></svg>');
+  --callout-icon-tree:     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8 8h3l-4 6h4l-3 8"/><path d="M12 2l4 6h-3l4 6h-4l3 8"/></svg>');
+  --callout-icon-music:    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>');
+  --callout-icon-web:      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>');
+
+  // ── Color tokens — light mode ──────────────────────────────────
+  &[data-callout]                                 { --color: #4a6fa5; --bg: rgba(74,111,165,0.07);  --callout-icon: var(--callout-icon-note); }
+  &[data-callout="abstract"],
+  &[data-callout="summary"],
+  &[data-callout="tldr"]                          { --color: #2e8b9a; --bg: rgba(46,139,154,0.07);  --callout-icon: var(--callout-icon-abstract); }
+  &[data-callout="info"]                          { --color: #3a7abf; --bg: rgba(58,122,191,0.07);  --callout-icon: var(--callout-icon-info); }
+  &[data-callout="todo"]                          { --color: #5865a8; --bg: rgba(88,101,168,0.07);  --callout-icon: var(--callout-icon-todo); }
+  &[data-callout="tip"],
+  &[data-callout="hint"]                          { --color: #2a8a5a; --bg: rgba(42,138,90,0.07);   --callout-icon: var(--callout-icon-tip); }
+  &[data-callout="success"],
+  &[data-callout="check"],
+  &[data-callout="done"]                          { --color: #2a9058; --bg: rgba(42,144,88,0.07);   --callout-icon: var(--callout-icon-success); }
+  &[data-callout="question"],
+  &[data-callout="help"],
+  &[data-callout="faq"]                           { --color: #a87c2a; --bg: rgba(168,124,42,0.07);  --callout-icon: var(--callout-icon-question); }
+  &[data-callout="warning"],
+  &[data-callout="caution"],
+  &[data-callout="attention"]                     { --color: #c0652a; --bg: rgba(192,101,42,0.08);  --callout-icon: var(--callout-icon-warning); }
+  &[data-callout="failure"],
+  &[data-callout="missing"],
+  &[data-callout="fail"]                          { --color: #b03a3a; --bg: rgba(176,58,58,0.07);   --callout-icon: var(--callout-icon-failure); }
+  &[data-callout="danger"],
+  &[data-callout="error"]                         { --color: #992222; --bg: rgba(153,34,34,0.07);   --callout-icon: var(--callout-icon-danger); }
+  &[data-callout="bug"]                           { --color: #a83050; --bg: rgba(168,48,80,0.07);   --callout-icon: var(--callout-icon-bug); }
+  &[data-callout="example"]                       { --color: #6b52a8; --bg: rgba(107,82,168,0.07);  --callout-icon: var(--callout-icon-example); }
+  &[data-callout="quote"],
+  &[data-callout="cite"]                          { --color: #808080; --bg: rgba(128,128,128,0.06); --callout-icon: var(--callout-icon-quote); }
+  &[data-callout="tree"]                          { --color: #3a7a3c; --bg: rgba(58,122,60,0.07);   --callout-icon: var(--callout-icon-tree); }
+  &[data-callout="music"]                         { --color: #8a5a7a; --bg: rgba(138,90,122,0.07);  --callout-icon: var(--callout-icon-music); }
+  &[data-callout="web"]                           { --color: #4a6090; --bg: rgba(74,96,144,0.07);   --callout-icon: var(--callout-icon-web); }
+
+  // ── Dark mode: same hues, brighter values ──────────────────────
+  :root[saved-theme="dark"] & {
+    &[data-callout]                               { --color: #7a9ec8; --bg: rgba(122,158,200,0.10); }
+    &[data-callout="abstract"],
+    &[data-callout="summary"],
+    &[data-callout="tldr"]                        { --color: #52b8c8; --bg: rgba(82,184,200,0.10); }
+    &[data-callout="info"]                        { --color: #5a9fd4; --bg: rgba(90,159,212,0.10); }
+    &[data-callout="todo"]                        { --color: #8090cc; --bg: rgba(128,144,204,0.10); }
+    &[data-callout="tip"],
+    &[data-callout="hint"]                        { --color: #4ab888; --bg: rgba(74,184,136,0.10); }
+    &[data-callout="success"],
+    &[data-callout="check"],
+    &[data-callout="done"]                        { --color: #4ab878; --bg: rgba(74,184,120,0.10); }
+    &[data-callout="question"],
+    &[data-callout="help"],
+    &[data-callout="faq"]                         { --color: #c8a052; --bg: rgba(200,160,82,0.10); }
+    &[data-callout="warning"],
+    &[data-callout="caution"],
+    &[data-callout="attention"]                   { --color: #d08050; --bg: rgba(208,128,80,0.10); }
+    &[data-callout="failure"],
+    &[data-callout="missing"],
+    &[data-callout="fail"]                        { --color: #c86060; --bg: rgba(200,96,96,0.10); }
+    &[data-callout="danger"],
+    &[data-callout="error"]                       { --color: #cc4444; --bg: rgba(204,68,68,0.10); }
+    &[data-callout="bug"]                         { --color: #cc5070; --bg: rgba(204,80,112,0.10); }
+    &[data-callout="example"]                     { --color: #9070cc; --bg: rgba(144,112,204,0.10); }
+    &[data-callout="quote"],
+    &[data-callout="cite"]                        { --color: #909090; --bg: rgba(144,144,144,0.08); }
+    &[data-callout="tree"]                        { --color: #5a9a5c; --bg: rgba(90,154,92,0.10); }
+    &[data-callout="music"]                       { --color: #b07898; --bg: rgba(176,120,152,0.10); }
+    &[data-callout="web"]                         { --color: #6a80b8; --bg: rgba(106,128,184,0.10); }
+  }
+
+  // ── Collapsed ──────────────────────────────────────────────────
+  &.is-collapsed {
+    & > .callout-title > .fold-callout-icon {
+      transform: rotateZ(-90deg);
+    }
+    .callout-content > :first-child {
+      transition: height 0.14s cubic-bezier(0.02, 0.01, 0.47, 1),
+                  margin 0.14s cubic-bezier(0.02, 0.01, 0.47, 1);
+      overflow-y: clip;
+      height: 0;
+      margin-top: -1rem;
     }
   }
 
-  --callout-icon-note: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="2" x2="22" y2="6"></line><path d="M7.5 20.5 19 9l-4-4L3.5 16.5 2 22z"></path></svg>');
-  --callout-icon-abstract: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg>');
-  --callout-icon-info: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
-  --callout-icon-todo: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>');
-  --callout-icon-tip: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>');
-  --callout-icon-success: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>');
-  --callout-icon-question: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>');
-  --callout-icon-warning: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>');
-  --callout-icon-failure: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
-  --callout-icon-danger: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>');
-  --callout-icon-bug: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="14" x="8" y="6" rx="4"></rect><path d="m19 7-3 2"></path><path d="m5 7 3 2"></path><path d="m19 19-3-2"></path><path d="m5 19 3-2"></path><path d="M20 13h-4"></path><path d="M4 13h4"></path><path d="m10 4 1 2"></path><path d="m14 4-1 2"></path></svg>');
-  --callout-icon-example: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>');
-  --callout-icon-quote: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>');
-  --callout-icon-fold: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
-  --callout-icon-bib: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V6a2 2 0 0 1 2-2h7"/><path d="M22 19V6a2 2 0 0 0-2-2h-7"/><path d="M2 19a9 9 0 0 1 9-9h2a9 9 0 0 1 9 9"/></svg>');
-
-  // ── 颜色系统：低饱和度，与 dark mode 主题协调 ────────────────────
-  // 用 var(--darkgray) 作为图标色基准，各类型只做微妙色调区分
-
-  &[data-callout] {
-    --color: #6b82a8;       // 冷蓝灰，default/note
-    --border: #6b82a822;
-    --bg: #6b82a808;
-    --callout-icon: var(--callout-icon-note);
-  }
-
-  &[data-callout="abstract"] {
-    --color: #5e8f9e;       // 青灰
-    --border: #5e8f9e22;
-    --bg: #5e8f9e08;
-    --callout-icon: var(--callout-icon-abstract);
-  }
-
-  &[data-callout="info"] {
-    --color: #5a8fa8;       // 蓝灰
-    --border: #5a8fa822;
-    --bg: #5a8fa808;
-    --callout-icon: var(--callout-icon-info);
-  }
-
-  &[data-callout="todo"] {
-    --color: #5a8fa8;
-    --border: #5a8fa822;
-    --bg: #5a8fa808;
-    --callout-icon: var(--callout-icon-todo);
-  }
-
-  &[data-callout="tip"] {
-    --color: #5a9480;       // 绿灰
-    --border: #5a948022;
-    --bg: #5a940808;
-    --callout-icon: var(--callout-icon-tip);
-  }
-
-  &[data-callout="success"] {
-    --color: #5a8f72;       // 绿灰，更低调
-    --border: #5a8f7222;
-    --bg: #5a8f7208;
-    --callout-icon: var(--callout-icon-success);
-  }
-
-  &[data-callout="question"] {
-    --color: #9e8a5a;       // 暖黄灰
-    --border: #9e8a5a22;
-    --bg: #9e8a5a08;
-    --callout-icon: var(--callout-icon-question);
-  }
-
-  &[data-callout="warning"] {
-    --color: #a07a52;       // 橙灰
-    --border: #a07a5222;
-    --bg: #a07a5208;
-    --callout-icon: var(--callout-icon-warning);
-  }
-
-  &[data-callout="failure"],
-  &[data-callout="danger"],
-  &[data-callout="bug"] {
-    --color: #9e5a5a;       // 红灰，收敛
-    --border: #9e5a5a22;
-    --bg: #9e5a5a08;
-    --callout-icon: var(--callout-icon-failure);
-  }
-
-  &[data-callout="bug"] {
-    --callout-icon: var(--callout-icon-bug);
-  }
-
-  &[data-callout="danger"] {
-    --callout-icon: var(--callout-icon-danger);
-  }
-
-  &[data-callout="example"] {
-    --color: #7a6a9e;       // 紫灰
-    --border: #7a6a9e22;
-    --bg: #7a6a9e08;
-    --callout-icon: var(--callout-icon-example);
-  }
-
-  &[data-callout="quote"] {
-    --color: var(--secondary);
-    --border: var(--lightgray);
-    --callout-icon: var(--callout-icon-quote);
-  }
-
-  &[data-callout="tree"] {
-    --color: #6a8f6c;
-    --bg: transparent;
-    --border: #6a8f6c22;
-    --callout-icon: url('data:image/svg+xml; utf8, <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tree" class="svg-inline--fa fa-tree fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M378.31 378.49L298.42 288h30.63c9.01 0 16.98-5 20.78-13.06 3.8-8.04 2.55-17.26-3.28-24.05L268.42 160h28.89c9.1 0 17.3-5.35 20.86-13.61 3.52-8.13 1.86-17.59-4.24-24.08L203.66 4.83c-6.03-6.45-17.28-6.45-23.32 0L70.06 122.31c-6.1 6.49-7.75 15.95-4.24 24.08C69.38 154.65 77.59 160 86.69 160h28.89l-78.14 90.91c-5.81 6.78-7.06 15.99-3.27 24.04C37.97 283 45.93 288 54.95 288h30.63L5.69 378.49c-6 6.79-7.36 16.09-3.56 24.26 3.75 8.05 12 13.25 21.01 13.25H160v24.45l-30.29 48.4c-5.32 10.64 2.42 23.16 14.31 23.16h95.96c11.89 0 19.63-12.52 14.31-23.16L224 440.45V416h136.86c9.01 0 17.26-5.2 21.01-13.25 3.8-8.17 2.44-17.47-3.56-24.26z"></path></svg>');
-  }
-
-  &[data-callout="music"] {
-    --color: #9e7a7a;
-    --bg: transparent;
-    --border: #9e7a7a22;
-    --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>');
-  }
-
-  &[data-callout="web"] {
-    --color: #6a7aae;
-    --bg: transparent;
-    --border: #6a7aae22;
-    --callout-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>');
-  }
-
-  // ── column callout：2列卡片布局 ────────────────────────────────
-  // 参考图一：深色背景卡片，标题加粗，描述文字，底部链接
+  // ── Column callout: neutral card grid ─────────────────────────
   &[data-callout="column"] {
     border: none;
     background: transparent;
     padding: 0;
     margin: 1.5em 0;
 
-    & > .callout-title {
-      display: none;  // column 不显示标题行
-    }
+    & > .callout-title { display: none; }
 
     & > .callout-content {
       display: grid;
@@ -174,192 +139,127 @@
       gap: 12px;
       overflow: visible;
 
-      // 每个子 callout 变成卡片
       & > .callout {
         border: 1px solid var(--lightgray);
+        border-left: 1px solid var(--lightgray);
         border-radius: 10px;
         background-color: var(--light);
         padding: 1.4rem 1.6rem;
         margin: 0;
         display: flex;
         flex-direction: column;
-        transition: border-color 0.15s ease;
+        transition: border-color 0.15s, box-shadow 0.15s;
 
         &:hover {
           border-color: var(--darkgray);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
 
-        // 子卡片标题：加粗，无装饰
         & > .callout-title {
-          margin-top: 0;
-          margin-left: 0;
+          margin: 0 0 0.5rem 0;
+          padding: 0;
           background: transparent;
-          padding: 0 0 0.6rem 0;
-          border-bottom: none;
-          letter-spacing: 0.01em;
           font-variant-caps: normal;
           font-size: 1rem;
           font-weight: 600;
           color: var(--dark);
+          letter-spacing: 0;
 
-          .callout-icon {
-            display: none;  // 卡片内不显示类型图标
-          }
+          .callout-icon { display: none; }
 
           & > .callout-title-inner > p {
             color: var(--dark);
             font-size: 1rem;
             font-weight: 600;
+            margin: 0;
           }
         }
 
-        // 子卡片内容
         & > .callout-content {
           display: block;
           overflow: visible;
           flex: 1;
 
-          p {
-            font-size: 0.88rem;
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 0.8rem;
-          }
+          p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; margin-bottom: 0.8rem; }
 
-          // 链接样式：仿 OpenAI 文档底部 "Start with →"
-          ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-            li {
-              padding: 0.15rem 0;
-              font-size: 0.88rem;
-
-              a {
-                color: var(--darkgray);
-                text-decoration: none;
-                display: inline-flex;
-                align-items: center;
-                gap: 4px;
-                transition: color 0.15s;
-
-                &::after {
-                  content: "›";
-                  font-size: 1rem;
-                  opacity: 0.5;
-                  transition: opacity 0.15s, transform 0.15s;
-                }
-
-                &:hover {
-                  color: var(--dark);
-
-                  &::after {
-                    opacity: 1;
-                    transform: translateX(2px);
-                  }
-                }
+          ul { list-style: none; padding: 0; margin: 0;
+            li { padding: 0.15rem 0; font-size: 0.88rem;
+              a { color: var(--darkgray); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.15s;
+                &::after { content: "›"; font-size: 1rem; opacity: 0.5; transition: opacity 0.15s, transform 0.15s; }
+                &:hover { color: var(--dark); &::after { opacity: 1; transform: translateX(2px); } }
               }
             }
           }
 
-          // 第一个粗体段落作为模块入口链接（仿图一的 "Start with Responses ↗"）
-          strong > a,
-          b > a {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--darkgray);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 0.8rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid var(--lightgray);
-            width: 100%;
-            transition: color 0.15s;
-
-            &::after {
-              content: "↗";
-              font-size: 0.85rem;
-            }
-
-            &:hover {
-              color: var(--dark);
-            }
+          strong > a, b > a {
+            font-size: 0.88rem; font-weight: 600; color: var(--darkgray); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 5px;
+            margin-top: 0.8rem; padding-top: 0.8rem;
+            border-top: 1px solid var(--lightgray); width: 100%; transition: color 0.15s;
+            &::after { content: "↗"; font-size: 0.85rem; }
+            &:hover { color: var(--dark); }
           }
         }
       }
     }
   }
-
-  &.is-collapsed {
-    & > .callout-title > .fold-callout-icon {
-      transform: rotateZ(-90deg);
-    }
-
-    .callout-content > :first-child {
-      transition:
-        height 0.1s cubic-bezier(0.02, 0.01, 0.47, 1),
-        margin 0.1s cubic-bezier(0.02, 0.01, 0.47, 1);
-      overflow-y: clip;
-      height: 0;
-      margin-top: -1rem;
-    }
-  }
 }
 
+// ── Callout title ──────────────────────────────────────────────────
 .callout-title {
   display: flex;
-  align-items: flex-start;
-  gap: 5px;
-  color: var(--darkgray);
-  padding: 0 0.5em;
-  margin-top: -24px;
-  width: fit-content;
-  margin-left: -0.75em;
-  background-color: var(--light);
-  letter-spacing: 0.05em;
-  font-variant-caps: all-small-caps;
-  padding-top: 12px;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin: 0 0 6px 0;
+  background: transparent;
+  color: var(--color);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-caps: normal;
+  letter-spacing: 0.01em;
 
-  --icon-size: 18px;
+  --icon-size: 14px;
 
-  & .fold-callout-icon {
-    transition: transform 0.15s ease;
-    opacity: 0.8;
-    cursor: pointer;
-    --callout-icon: var(--callout-icon-fold);
-  }
-
-  & > .callout-title-inner > p {
-    color: var(--darkgray);
-    margin: 0;
-  }
-
-  .callout-icon,
-  & .fold-callout-icon {
+  .callout-icon {
     width: var(--icon-size);
     height: var(--icon-size);
     flex: 0 0 var(--icon-size);
-    background-size: var(--icon-size) var(--icon-size);
-    background-position: center;
     background-color: var(--color);
     mask-image: var(--callout-icon);
     mask-size: var(--icon-size) var(--icon-size);
     mask-position: center;
     mask-repeat: no-repeat;
-    padding: 0.2rem 0;
   }
 
-  .callout-title-inner {
-    font-weight: $semiBoldWeight;
+  .fold-callout-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    background-color: var(--color);
+    mask-image: var(--callout-icon-fold);
+    mask-size: 14px 14px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    margin-left: auto;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: transform 0.15s ease;
   }
 
-  .callout-content {
-    img {
-      max-width: 100%;
-      height: auto;
+  & > .callout-title-inner {
+    font-weight: 600;
+
+    & > p {
+      color: var(--color);
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0;
     }
+  }
+
+  .callout-content img {
+    max-width: 100%;
+    height: auto;
   }
 }
