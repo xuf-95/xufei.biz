@@ -35,15 +35,17 @@ const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponen
         <a href={absSitePath(cfg, "/")} class="top-nav-logo">
           <img src={iconPath} alt={cfg?.pageTitle ?? "site icon"} />
         </a>
-        {links.map((item) => {
-          const navKey = item.path.replace(/^\//, "").replace(/\/$/, "")
-          const isActive = slug === navKey || slug.startsWith(`${navKey}/`)
-          return (
-            <a href={absSitePath(cfg, item.path)} class={isActive ? "active" : ""}>
-              {item.label}
-            </a>
-          )
-        })}
+        <div class="top-nav-links">
+          {links.map((item) => {
+            const navKey = item.path.replace(/^\//, "").replace(/\/$/, "")
+            const isActive = slug === navKey || slug.startsWith(`${navKey}/`)
+            return (
+              <a href={absSitePath(cfg, item.path)} class={isActive ? "active" : ""}>
+                {item.label}
+              </a>
+            )
+          })}
+        </div>
       </div>
     </nav>
   )
@@ -58,14 +60,17 @@ TopNav.css = `
   display: flex;
   align-items: stretch;
   height: 44px;
+  gap: 0.5rem;
 }
 
 .top-nav-logo {
   display: flex;
   align-items: center;
   padding: 0 0.8rem;
+  margin-right: 0.5rem;
   text-decoration: none;
   flex-shrink: 0;
+  border-right: 1px solid var(--lightgray);
 }
 
 .top-nav-logo img {
@@ -75,26 +80,34 @@ TopNav.css = `
   border-radius: 4px;
 }
 
-.top-nav-left a {
+.top-nav-links {
   display: flex;
   align-items: center;
-  padding: 0 1.4rem;
+  gap: 0.4rem;
+}
+
+.top-nav-links a {
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
   text-decoration: none;
   font-family: var(--titleFont);
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--gray);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
   transition: color 0.15s ease;
+  border-radius: 4px;
 }
 
-.top-nav-left a:hover {
+.top-nav-links a:hover {
   color: var(--dark);
+  background: var(--highlight);
 }
 
-.top-nav-left a.active {
+.top-nav-links a.active {
   color: var(--dark);
   font-weight: 600;
 }

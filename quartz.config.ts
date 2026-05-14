@@ -57,6 +57,7 @@ const config: QuartzConfig = {
           dark: "#ffffff",           /* 标题颜色：纯白，突出层级 */
           secondary: "#ffffff",      /* 链接颜色：Udara 使用白色链接加下划线 */
           tertiary: "#a0a0a0",       /* 鼠标悬停时的链接颜色 */
+          highlight: "#1F1F1F",
         }
       },
     },

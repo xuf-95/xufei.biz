@@ -2,6 +2,7 @@
 aliases:
   - 垂直扩展
 tags:
+publish: true
   - architecture
 date: 2023-02-05
 draft: true

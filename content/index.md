@@ -71,6 +71,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 </div>
 </div>
 
+<!-- 
 <div class="home-two-col-section">
 <div class="home-col-left">
 <h3 class="home-col-title">DevOps & IaC</h3>
@@ -121,7 +122,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 </ul>
 </div>
-</div>
+</div> -->
 
 
 <!-- 

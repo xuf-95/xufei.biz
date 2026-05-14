@@ -4,6 +4,7 @@ aliases:
   - Hybrid Serving/Analytics Processing
   - 分析服务一体化
 tags:
+publish: true
   - data-integration
   - architecture
   - concepts

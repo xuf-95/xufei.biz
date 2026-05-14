@@ -2,22 +2,45 @@
 
 .backlinks {
   flex-direction: column;
+  text-align: center;
 
   & > h3 {
     font-size: 1rem;
-    margin: 0;
+    margin: 0 0 0.5rem 0;
+    display: inline;
+    font-style: italic;
+    font-family: var(--titleFont);
+
+    &::after {
+      content: ": ";
+    }
   }
 
   & > ul.overflow {
+    display: inline;
     list-style: none;
     padding: 0;
-    margin: 0.5rem 0;
+    margin: 0;
     max-height: calc(100% - 2rem);
     overscroll-behavior: contain;
 
     & > li {
+      display: inline;
+      font-style: italic;
+
+      &:not(:last-child)::after {
+        content: ", ";
+        color: var(--gray);
+      }
+
       & > a {
         background-color: transparent;
+        color: var(--secondary);
+
+        &:hover {
+          color: var(--dark);
+          text-decoration: underline;
+        }
       }
     }
   }

@@ -1,6 +1,7 @@
 ---
 title: DTS
 tags:
+publish: true
   - data-integration
   - cloud
 date: 2024-07-06

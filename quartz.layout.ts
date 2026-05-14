@@ -37,6 +37,7 @@ export const sharedPageComponents: SharedLayout = {
   ],
   
   footer: Component.Footer({
+    
     links: {
       Home: "https://xufei.biz",
       Tags: "https://xuf-95.github.io/xufei.biz/tags/",
@@ -54,16 +55,17 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
+    Component.Backlinks()
   ],
   left: [
   ],
   right: [
-    Component.Flex({
-      direction: "column",
-      components: [
-        { Component: Component.Backlinks() },
-      ],
-    }),
+    // Component.Flex({
+    //   direction: "column",
+    //   components: [
+    //     { Component: Component.Backlinks() },
+    //   ],
+    // }),
   ],
 }
 

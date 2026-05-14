@@ -6,6 +6,8 @@ tags:
   - data-compute
 publish: true
 ---
+
+
 ```mermaid
 mindmap
   root((Apache Hadoop))

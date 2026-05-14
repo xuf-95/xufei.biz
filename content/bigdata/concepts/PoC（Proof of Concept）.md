@@ -7,6 +7,7 @@ tags:
   - concepts
 date: 2022-09-05
 draft: false
+publish: true
 ---
 
 > [!obsidian]
