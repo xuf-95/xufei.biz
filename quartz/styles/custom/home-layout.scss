@@ -143,3 +143,70 @@
       transform: translateY(0);
     }
   }
+
+  // ── Two Column Layout with Independent Titles ────────────────────
+  .home-two-col-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+
+    .home-col-left,
+    .home-col-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .home-col-title {
+      font-size: 1rem;
+      font-weight: 700;
+      font-variant-caps: small-caps;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--lightgray);
+      margin-bottom: 0.6rem;
+      font-family: var(--titleFont);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: baseline;
+        gap: 7px;
+        padding: 3px 0;
+        font-size: 0.9rem;
+        line-height: 1.5;
+
+        &::before {
+          content: "✦";
+          font-size: 0.62rem;
+          color: var(--gray);
+          flex-shrink: 0;
+          position: relative;
+          top: -1px;
+        }
+
+        a {
+          color: var(--dark);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          text-decoration-color: var(--lightgray);
+          transition: text-decoration-color 0.15s;
+
+          &:hover {
+            text-decoration-color: var(--dark);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }

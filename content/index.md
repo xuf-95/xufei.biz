@@ -19,16 +19,21 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 ***
 
-<div class="home-section">
-<h2 class="home-section-title">Data Architecture</h2>
-<div class="home-two-col">
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Architecture Patterns</h3>
 <ul>
 
 - [[Lambda Architecture]]
 - [[what is Kappa Architecture?]]
 - [[MMP|MMP]]
 - [[ZooKeeper|zookeeper]]
+
 </ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Streaming & Integration</h3>
 <ul>
 
 - [[Flink CDC]]
@@ -37,12 +42,86 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 - [[Apache Airflow]]
 
 </ul>
-
 </div>
 </div>
 
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Data Processing</h3>
+<ul>
 
+- [[PoC]]
+- [[ETL & ELK]]
+- [[MMP|MMP]]
+- [[CDC]]
 
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Performance & Design</h3>
+<ul>
+
+- [[Latency]]
+- [[HSAP]]
+- [[DAG]]
+- [[Dataflow]]
+
+</ul>
+</div>
+</div>
+
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">DevOps & IaC</h3>
+<ul>
+
+- [[Docker]]
+- [[Kubernetes]]
+- [[Terraform]]
+- [[CI/CD]]
+
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Cloud Platforms</h3>
+<ul>
+
+- [[AWS]]
+- [[GCP]]
+- [[Azure]]
+- [[Observability]]
+
+</ul>
+</div>
+</div>
+
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Languages</h3>
+<ul>
+
+- [[Python]]
+- [[SQL]]
+- [[Git]]
+- [[Linux]]
+
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Engineering</h3>
+<ul>
+
+- [[Java]]
+- [[Go]]
+- [[Shell Scripting]]
+- [[Data Quality]]
+
+</ul>
+</div>
+</div>
 
 
 <!-- 
