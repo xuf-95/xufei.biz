@@ -1,86 +1,168 @@
-@use "../../styles/variables.scss" as *;
+// ── TOC Sidebar — Rauno-style line-density design ─────────────────
+// Each row has equal height (--rh), set dynamically by the component.
+// Body lines are shortest; h1 longest; h2→h5 decrease in between.
+// Active heading: line expands + label slides up and appears.
+// Proximity falloff: near1, near2 glow softly around active.
 
-.toc {
+.toc-sidebar {
+  // filled entirely by TOC — no other components
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
-  min-height: 1.4rem;
-  flex: 0 0.5 auto;
-  margin-top: 2rem;          // ← 整体下移（可调整数值）
-
-  &:has(button.toc-header.collapsed) {
-    flex: 0 1 1.4rem;
-  }
-}
-
-button.toc-header {
-  display: none;             // ← 完全移除红色框内的折叠按钮
-}
-
-ul.toc-content.overflow {
-  list-style: none;
-  position: relative;
-  margin: 0.5rem 0;
-  padding: 0;
-  max-height: calc(100% - 2rem);
-  overscroll-behavior: contain;
-
-  /* 隐藏滚动条但保留滚动功能 */
-  scrollbar-width: none;        // Firefox
-  -ms-overflow-style: none;       // IE/Edge
+  gap: 0;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding: 10rem 0 2rem 0;
 
   &::-webkit-scrollbar {
-    display: none;              // Chrome / Safari / Edge
+    display: none;
+  }
+}
+
+// ── Row base ──────────────────────────────────────────────────────
+.toc-row {
+  height: var(--rh, 10px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.toc-heading {
+  cursor: pointer;
+}
+
+// ── Line segment ─────────────────────────────────────────────────
+.toc-seg {
+  display: block;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--toc-line-default, rgba(128, 128, 128, 0.25));
+  flex-shrink: 0;
+  transition:
+    width   0.32s cubic-bezier(0.34, 1.4, 0.64, 1),
+    background 0.26s ease,
+    height  0.26s ease;
+}
+
+// ── Body lines: shortest ─────────────────────────────────────────
+// width set inline by component (4–12px)
+.toc-body .toc-seg {
+  background: var(--toc-line-body, rgba(128, 128, 128, 0.12));
+}
+
+// ── Heading line widths by level ─────────────────────────────────
+.toc-h1 .toc-seg { width: 54px; }
+.toc-h2 .toc-seg { width: 42px; }
+.toc-h3 .toc-seg { width: 32px; }
+.toc-h4 .toc-seg { width: 22px; }
+.toc-h5 .toc-seg { width: 14px; }
+
+// ── Label ────────────────────────────────────────────────────────
+.toc-lbl {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  pointer-events: none;
+  color: transparent;
+  transition:
+    color      0.24s ease,
+    font-size  0.22s ease,
+    font-weight 0.22s ease,
+    transform  0.24s cubic-bezier(0.34, 1.2, 0.64, 1);
+  transform: translateY(-50%) translateY(1px);
+
+  // light mode
+  :root:not([saved-theme="dark"]) & {
+    color: transparent;
+  }
+}
+
+// ── ACTIVE ───────────────────────────────────────────────────────
+.toc-heading.active {
+  .toc-seg {
+    height: 2.5px;
+    background: var(--toc-line-active, var(--dark)) !important;
   }
 
-  & > li {
-    @for $i from 0 through 6 {
-      &.depth-#{$i} {
-        padding-left: calc(1rem * #{$i});
-      }
-    }
-
-    border-left: 2px solid var(--lightgray);
-    margin-left: 0.5rem;
-    transition: border-color 0.2s ease;
-
-    > a {
-      color: var(--dark);
-      opacity: 0.35;
-      transition:
-        0.5s ease opacity,
-        0.3s ease color;
-      text-decoration: none;
-      display: inline-block;
-      padding: 0.2rem 0;
-      padding-left: 0.75rem;
-
-      &:hover {
-        color: var(--secondary);
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
-        text-decoration-thickness: 1px;
-        opacity: 1;
-      }
-
-      &.in-view,
-      &.active {
-        opacity: 1;
-        color: var(--secondary);
-        font-weight: 500;
-        text-decoration: underline;
-        text-decoration-color: var(--secondary);
-      }
-    }
-
-    &:has(a.in-view),
-    &:has(a.active) {
-      border-left-color: white;
-    }
-  }
-  
-  &:has(a.in-view):last-of-type a.in-view {
-    color: var(--secondary);
+  .toc-lbl {
+    font-size: 11.5px;
     font-weight: 600;
+    color: var(--toc-label-active) !important;
+    transform: translateY(-14px);
   }
+}
+
+// Active line widths expand slightly
+.toc-h1.active .toc-seg { width: 68px; }
+.toc-h2.active .toc-seg { width: 54px; }
+.toc-h3.active .toc-seg { width: 42px; }
+.toc-h4.active .toc-seg { width: 30px; }
+.toc-h5.active .toc-seg { width: 20px; }
+
+// ── PROXIMITY GLOW ────────────────────────────────────────────────
+.toc-heading.near1 .toc-seg {
+  background: var(--toc-line-near1, rgba(128, 128, 128, 0.45));
+}
+.toc-heading.near2 .toc-seg {
+  background: var(--toc-line-near2, rgba(128, 128, 128, 0.24));
+}
+
+// Body lines near active section
+.toc-body.bn0 .toc-seg {
+  background: var(--toc-body-near0, rgba(128, 128, 128, 0.2));
+}
+.toc-body.bn1 .toc-seg {
+  background: var(--toc-body-near1, rgba(128, 128, 128, 0.14));
+}
+
+// ── HOVER ────────────────────────────────────────────────────────
+.toc-heading:not(.active):hover {
+  .toc-seg {
+    background: var(--toc-line-hover, rgba(128, 128, 128, 0.55));
+    height: 2px;
+  }
+
+  .toc-lbl {
+    color: var(--toc-label-hover) !important;
+    transform: translateY(-14px);
+  }
+}
+
+// ── DARK MODE CSS variable overrides ─────────────────────────────
+:root[saved-theme="dark"] {
+  --toc-line-default: rgba(255, 255, 255, 0.14);
+  --toc-line-body:    rgba(255, 255, 255, 0.07);
+  --toc-line-active:  rgba(255, 255, 255, 0.92);
+  --toc-line-near1:   rgba(255, 255, 255, 0.38);
+  --toc-line-near2:   rgba(255, 255, 255, 0.2);
+  --toc-line-hover:   rgba(255, 255, 255, 0.52);
+  --toc-body-near0:   rgba(255, 255, 255, 0.18);
+  --toc-body-near1:   rgba(255, 255, 255, 0.11);
+  --toc-label-active: rgba(255, 255, 255, 0.92);
+  --toc-label-hover:  rgba(255, 255, 255, 0.52);
+}
+
+// ── LIGHT MODE CSS variable overrides ────────────────────────────
+:root:not([saved-theme="dark"]) {
+  --toc-line-default: rgba(0, 0, 0, 0.14);
+  --toc-line-body:    rgba(0, 0, 0, 0.07);
+  --toc-line-active:  var(--dark);
+  --toc-line-near1:   rgba(0, 0, 0, 0.35);
+  --toc-line-near2:   rgba(0, 0, 0, 0.18);
+  --toc-line-hover:   rgba(0, 0, 0, 0.4);
+  --toc-body-near0:   rgba(0, 0, 0, 0.16);
+  --toc-body-near1:   rgba(0, 0, 0, 0.1);
+  --toc-label-active: var(--dark);
+  --toc-label-hover:  rgba(0, 0, 0, 0.45);
 }

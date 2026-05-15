@@ -1,92 +1,86 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import legacyStyle from "./styles/legacyToc.scss"
-import modernStyle from "./styles/toc.scss"
+import tocStyle from "./styles/toc.scss"
+import tocScript from "./scripts/toc.inline"
 import { classNames } from "../util/lang"
 
-// @ts-ignore
-import script from "./scripts/toc.inline"
-import { i18n } from "../i18n"
-import OverflowListFactory from "./OverflowList"
-import { concatenateResources } from "../util/resources"
-
 interface Options {
-  layout: "modern" | "legacy"
+  maxDepth: 1 | 2 | 3 | 4 | 5 | 6
 }
 
 const defaultOptions: Options = {
-  layout: "modern",
+  maxDepth: 4,
 }
 
 export default ((opts?: Partial<Options>) => {
-  const layout = opts?.layout ?? defaultOptions.layout
-  const { OverflowList, overflowListAfterDOMLoaded } = OverflowListFactory()
-  const TableOfContents: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
-    if (!fileData.toc) {
-      return null
+  const options: Options = { ...defaultOptions, ...opts }
+
+  const TableOfContents: QuartzComponent = ({
+    fileData,
+    displayClass,
+  }: QuartzComponentProps) => {
+    if (!fileData.toc || fileData.toc.length === 0) return null
+
+    const filtered = fileData.toc.filter((e) => e.depth <= options.maxDepth)
+    if (filtered.length === 0) return null
+
+    const totalHeadings = filtered.length
+    const avgBody = 3
+    const rawBodySum = totalHeadings * avgBody
+    const totalRaw = totalHeadings + rawBodySum
+
+    const SIDEBAR_H = 460
+    const MIN_RH = 7
+    const MAX_RH = 13
+
+    let bodyScale: number
+    let rowHeight: number
+
+    if (totalRaw * MAX_RH <= SIDEBAR_H) {
+      bodyScale = 1.0
+      rowHeight = MAX_RH
+    } else {
+      const maxRows = Math.floor(SIDEBAR_H / MIN_RH)
+      const avail = maxRows - totalHeadings
+      bodyScale = Math.max(0, Math.min(1, avail / rawBodySum))
+      const actual = totalHeadings + Math.round(rawBodySum * bodyScale)
+      rowHeight = Math.min(MAX_RH, Math.max(MIN_RH, Math.floor(SIDEBAR_H / actual)))
     }
 
+    const BW = [80, 62, 88, 52, 70, 65, 46, 76, 58, 84, 50, 68, 73, 56, 64]
+
     return (
-      <div class={classNames(displayClass, "toc")}>
-        <button
-          type="button"
-          class={fileData.collapseToc ? "collapsed toc-header" : "toc-header"}
-          aria-controls="toc-content"
-          aria-expanded={!fileData.collapseToc}
-        >
-          {/* <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3> */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="fold"
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <OverflowList class={fileData.collapseToc ? "collapsed toc-content" : "toc-content"}>
-          {fileData.toc.map((tocEntry) => (
-            <li key={tocEntry.slug} class={`depth-${tocEntry.depth}`}>
-              <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                {tocEntry.text}
-              </a>
-            </li>
-          ))}
-        </OverflowList>
+      <div
+        class={classNames(displayClass, "toc-sidebar")}
+        style={"--rh:" + rowHeight + "px"}
+      >
+        {filtered.map((entry, hi) => {
+          const bodyCount = Math.max(0, Math.round(avgBody * bodyScale))
+          return (
+            <>
+              <div
+                class={"toc-row toc-heading toc-h" + entry.depth}
+                data-hi={String(hi)}
+                data-target={entry.slug}
+              >
+                <span class="toc-seg"></span>
+                <span class="toc-lbl">{entry.text}</span>
+              </div>
+              {Array.from({ length: bodyCount }, (_, b) => {
+                const w = Math.round(4 + (BW[(hi * 3 + b) % BW.length] / 100) * 8)
+                return (
+                  <div class="toc-row toc-body" data-hi={String(hi)}>
+                    <span class="toc-seg" style={"width:" + w + "px"}></span>
+                  </div>
+                )
+              })}
+            </>
+          )
+        })}
       </div>
     )
   }
 
-  TableOfContents.css = modernStyle
-  TableOfContents.afterDOMLoaded = concatenateResources(script, overflowListAfterDOMLoaded)
-
-  const LegacyTableOfContents: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
-    if (!fileData.toc) {
-      return null
-    }
-    return (
-      <details class="toc" open={!fileData.collapseToc}>
-        <summary>
-          <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
-        </summary>
-        <ul>
-          {fileData.toc.map((tocEntry) => (
-            <li key={tocEntry.slug} class={`depth-${tocEntry.depth}`}>
-              <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                {tocEntry.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
-    )
-  }
-  LegacyTableOfContents.css = legacyStyle
-
-  return layout === "modern" ? TableOfContents : LegacyTableOfContents
+  TableOfContents.css = tocStyle
+  TableOfContents.afterDOMLoaded = tocScript
+  return TableOfContents
 }) satisfies QuartzComponentConstructor
