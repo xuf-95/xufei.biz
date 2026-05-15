@@ -1,5 +1,4 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
-
 import style from "../styles/listPage.scss"
 import { PageList, SortFn } from "../PageList"
 import { Root } from "hast"
@@ -9,11 +8,9 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import { trieFromAllFiles } from "../../util/ctx"
+import folderScript from "../scripts/folderFilter.inline"
 
 interface FolderContentOptions {
-  /**
-   * Whether to display number of folders
-   */
   showFolderCount: boolean
   showSubfolders: boolean
   sort?: SortFn
@@ -30,71 +27,49 @@ export default ((opts?: Partial<FolderContentOptions>) => {
   const FolderContent: QuartzComponent = (props: QuartzComponentProps) => {
     const { tree, fileData, allFiles, cfg } = props
 
-    const trie = (props.ctx.trie ??= trieFromAllFiles(allFiles))
-    const folder = trie.findNode(fileData.slug!.split("/"))
-    if (!folder) {
-      return null
-    }
+    // Strip "/index" suffix — Quartz sets slug as "bigdata/index" for folder pages
+    const rawSlug = fileData.slug!
+    const currentSlug = rawSlug.endsWith("/index")
+      ? rawSlug.slice(0, -6)   // remove "/index"
+      : rawSlug === "index"
+      ? ""                      // root folder
+      : rawSlug
 
-    const allPagesInFolder: QuartzPluginData[] =
-      folder.children
-        .map((node) => {
-          // regular file, proceed
-          if (node.data) {
-            return node.data
-          }
+    // ── Collect ALL real files whose slug starts with currentSlug ──
+    const pagesInFolder: QuartzPluginData[] = allFiles.filter((f) => {
+      const slug = f.slug ?? ""
+      // Skip any index files (folder index pages)
+      if (slug === "index" || slug.endsWith("/index")) return false
+      // Root folder: include everything except index files
+      if (currentSlug === "") return true
+      // Must start with "currentSlug/"
+      return slug.startsWith(currentSlug + "/")
+    })
 
-          if (node.isFolder && options.showSubfolders) {
-            // folders that dont have data need synthetic files
-            const getMostRecentDates = (): QuartzPluginData["dates"] => {
-              let maybeDates: QuartzPluginData["dates"] | undefined = undefined
-              for (const child of node.children) {
-                if (child.data?.dates) {
-                  // compare all dates and assign to maybeDates if its more recent or its not set
-                  if (!maybeDates) {
-                    maybeDates = { ...child.data.dates }
-                  } else {
-                    if (child.data.dates.created > maybeDates.created) {
-                      maybeDates.created = child.data.dates.created
-                    }
+    // ── Extract direct subfolder names ────────────────────────────
+    // A file at "bigdata/Apache-Flink/Flink-CDC" → subfolder = "Apache-Flink"
+    // A file at "bigdata/DCMM" → no subfolder (direct child)
+    const subfolderSet = new Set<string>()
+    pagesInFolder.forEach((page) => {
+      const slug = page.slug ?? ""
+      // Remove the currentSlug prefix: "bigdata/Apache-Flink/Flink-CDC" → "Apache-Flink/Flink-CDC"
+      const relative = slug.slice(currentSlug.length + 1)
+      const parts = relative.split("/")
+      if (parts.length >= 2) {
+        // Has a subfolder
+        subfolderSet.add(parts[0])
+      }
+    })
+    const subfolders = Array.from(subfolderSet).sort()
 
-                    if (child.data.dates.modified > maybeDates.modified) {
-                      maybeDates.modified = child.data.dates.modified
-                    }
+    // ── Check if there are direct (root-level) files ───────────────
+    const hasRootFiles = pagesInFolder.some((page) => {
+      const relative = (page.slug ?? "").slice(currentSlug.length + 1)
+      return !relative.includes("/")
+    })
 
-                    if (child.data.dates.published > maybeDates.published) {
-                      maybeDates.published = child.data.dates.published
-                    }
-                  }
-                }
-              }
-              return (
-                maybeDates ?? {
-                  created: new Date(),
-                  modified: new Date(),
-                  published: new Date(),
-                }
-              )
-            }
-
-            return {
-              slug: node.slug,
-              dates: getMostRecentDates(),
-              frontmatter: {
-                title: node.displayName,
-                tags: [],
-              },
-            }
-          }
-        })
-        .filter((page) => page !== undefined) ?? []
     const cssClasses: string[] = fileData.frontmatter?.cssclasses ?? []
     const classes = cssClasses.join(" ")
-    const listProps = {
-      ...props,
-      sort: options.sort,
-      allFiles: allPagesInFolder,
-    }
 
     const content = (
       (tree as Root).children.length === 0
@@ -102,9 +77,18 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         : htmlToJsx(fileData.filePath!, tree)
     ) as ComponentChildren
 
-    // If baseUrl contains a pathname after the domain, use this as the home link
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const baseDir = url.pathname
+
+    // Attach subfolder info to each page as a custom field for rendering
+    // We embed data-subfolder in a wrapper div via a custom list
+    const annotatedPages = pagesInFolder.map((page) => {
+      const slug = page.slug ?? ""
+      const relative = slug.slice(currentSlug.length + 1)
+      const parts = relative.split("/")
+      const sub = parts.length >= 2 ? parts[0] : "__root__"
+      return { page, sub }
+    })
 
     return (
       <div class="popover-hint">
@@ -113,20 +97,98 @@ export default ((opts?: Partial<FolderContentOptions>) => {
           {options.showFolderCount && (
             <p class="page-listing-count">
               {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
-                count: allPagesInFolder.length,
+                count: pagesInFolder.length,
               })}
             </p>
           )}
-          <div>
-            <PageList {...listProps} />
+
+          {/* Filter pills — only show if there are subfolders */}
+          {subfolders.length > 0 && (
+            <div class="folder-filter-bar" id="folder-filter-bar">
+              <button class="folder-filter-pill active" data-filter="__all__">All</button>
+              {hasRootFiles && (
+                <button class="folder-filter-pill" data-filter="__root__">
+                  {currentSlug.split("/").pop() || "root"}
+                </button>
+              )}
+              {subfolders.map((sub) => (
+                <button class="folder-filter-pill" data-filter={sub}>
+                  {sub.replace(/-/g, " ")}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Page list — each item wrapped with data-subfolder */}
+          <div id="folder-page-list">
+            {annotatedPages.map(({ page, sub }) => (
+              <div class="folder-item-wrap" data-subfolder={sub}>
+                <PageList
+                  {...props}
+                  sort={options.sort}
+                  allFiles={[page]}
+                />
+              </div>
+            ))}
           </div>
         </div>
-        <a href={baseDir} class="internal">{i18n(cfg.locale).pages.error.home}</a>
+        <a href={baseDir} class="internal">
+          {i18n(cfg.locale).pages.error.home}
+        </a>
         <hr />
       </div>
     )
   }
 
-  FolderContent.css = concatenateResources(style, PageList.css)
+  FolderContent.css = concatenateResources(style, PageList.css, folderFilterCss)
+  FolderContent.afterDOMLoaded = folderScript
   return FolderContent
 }) satisfies QuartzComponentConstructor
+
+const folderFilterCss = `
+.folder-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+}
+
+.folder-filter-pill {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--lightgray);
+  background: transparent;
+  color: var(--gray);
+  font-family: var(--bodyFont);
+  letter-spacing: 0.02em;
+  transition: all 0.15s ease;
+}
+
+.folder-filter-pill:hover {
+  border-color: var(--darkgray);
+  color: var(--dark);
+}
+
+.folder-filter-pill.active {
+  background: var(--dark);
+  color: var(--light);
+  border-color: var(--dark);
+}
+
+.folder-item-wrap[data-hidden="true"] {
+  display: none !important;
+}
+
+.folder-item-wrap .page-listing {
+  display: contents;
+}
+
+.folder-item-wrap ul.section-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+`
