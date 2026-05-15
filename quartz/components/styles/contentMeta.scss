@@ -12,3 +12,14 @@
     }
   }
 }
+
+// lastUpdateAt
+.content-meta-dates {
+  display: inline-flex;
+  align-items: center;
+}
+
+.content-meta-separator {
+  color: var(--gray);
+  margin: 0 4px;
+}

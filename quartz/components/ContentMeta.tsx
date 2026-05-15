@@ -7,9 +7,6 @@ import { JSX } from "preact"
 import style from "./styles/contentMeta.scss"
 
 interface ContentMetaOptions {
-  /**
-   * Whether to display reading time
-   */
   showReadingTime: boolean
   showComma: boolean
 }
@@ -20,7 +17,6 @@ const defaultOptions: ContentMetaOptions = {
 }
 
 export default ((opts?: Partial<ContentMetaOptions>) => {
-  // Merge options with defaults
   const options: ContentMetaOptions = { ...defaultOptions, ...opts }
 
   function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
@@ -30,10 +26,33 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       const segments: (string | JSX.Element)[] = []
 
       if (fileData.dates) {
-        segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
+        const created = getDate(cfg, fileData)!
+
+        // publishDate may be a Date object (Quartz auto-parses date-like frontmatter)
+        // or a string — handle both, and guard against undefined/invalid values
+        const rawPublish = fileData.frontmatter?.publishDate
+        let publishDate: globalThis.Date | null = null
+
+        if (rawPublish instanceof globalThis.Date && !isNaN(rawPublish.getTime())) {
+          publishDate = rawPublish
+        } else if (typeof rawPublish === "string" && rawPublish.trim() !== "") {
+          const parsed = new globalThis.Date(rawPublish.trim())
+          if (!isNaN(parsed.getTime())) publishDate = parsed
+        }
+
+        if (publishDate) {
+          segments.push(
+            <span class="content-meta-dates">
+              <Date date={created} locale={cfg.locale} />
+              <span class="content-meta-separator"> — </span>
+              <Date date={publishDate} locale={cfg.locale} />
+            </span>
+          )
+        } else {
+          segments.push(<Date date={created} locale={cfg.locale} />)
+        }
       }
 
-      // Display reading time if enabled
       if (options.showReadingTime) {
         const { minutes, words: _words } = readingTime(text)
         const displayedTime = i18n(cfg.locale).components.contentMeta.readingTime({

@@ -1,10 +1,9 @@
 ---
 date: 2024-01-09
-aliases:
 tags:
   - post
 description:
-publishDate: 2026-03-19T10:56
+publishDate: 2026-03-19
 publish: true
 draft: true
 ---
