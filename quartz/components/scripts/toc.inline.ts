@@ -1,7 +1,18 @@
-import { registerEscapeHandler, removeAllChildren } from "./util"
-
 const tocInit = () => {
-  const sidebar = document.querySelector<HTMLElement>(".toc-sidebar")
+  // ── Collapse toggle ──────────────────────────────────────────────
+  const toggle = document.getElementById("toc-toggle")
+  const body = document.getElementById("toc-body")
+
+  if (toggle && body) {
+    toggle.addEventListener("click", () => {
+      const isCollapsed = body.dataset.collapsed === "true"
+      body.dataset.collapsed = isCollapsed ? "false" : "true"
+      toggle.setAttribute("aria-expanded", isCollapsed ? "true" : "false")
+    })
+  }
+
+  // ── Scroll-driven active state ───────────────────────────────────
+  const sidebar = document.getElementById("toc-body")
   if (!sidebar) return
   const sidebarEl: HTMLElement = sidebar
 
@@ -13,7 +24,6 @@ const tocInit = () => {
   )
   if (headingRows.length === 0) return
 
-  // Map each heading row → article heading element
   const articleHeadings = Array.from(
     document.querySelectorAll<HTMLElement>(
       "article h1, article h2, article h3, article h4, article h5, article h6",
@@ -26,7 +36,8 @@ const tocInit = () => {
       const byId = document.getElementById(targetId)
       if (byId) return byId
     }
-    const labelText = row.querySelector<HTMLElement>(".toc-lbl")?.textContent?.trim().toLowerCase() ?? ""
+    const labelText =
+      row.querySelector<HTMLElement>(".toc-lbl")?.textContent?.trim().toLowerCase() ?? ""
     const matched = articleHeadings.find(
       (h) => h.textContent?.trim().toLowerCase() === labelText,
     )

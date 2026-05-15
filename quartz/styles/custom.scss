@@ -649,9 +649,21 @@ body[data-slug="hobby/goods"] {
 }
 /* ========== TOC =========== */
 
+// .sidebar.left {
+//   padding: 0 !important;
+//   gap: 0 !important;
+// }
+
+// Left sidebar: no background, flush with content
 .sidebar.left {
-  padding: 0 !important;
-  gap: 0 !important;
+  background: transparent !important;
+  padding-top: 0 !important;
+}
+
+// TOC wrapper: align vertically with Backlinks in right sidebar
+.toc-wrapper {
+  margin-top: 10rem;
+  padding-top: 0;
 }
 
 /* ========== =========== */

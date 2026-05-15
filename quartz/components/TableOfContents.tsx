@@ -5,10 +5,12 @@ import { classNames } from "../util/lang"
 
 interface Options {
   maxDepth: 1 | 2 | 3 | 4 | 5 | 6
+  collapseByDefault: boolean
 }
 
 const defaultOptions: Options = {
   maxDepth: 4,
+  collapseByDefault: false,
 }
 
 export default ((opts?: Partial<Options>) => {
@@ -49,33 +51,62 @@ export default ((opts?: Partial<Options>) => {
     const BW = [80, 62, 88, 52, 70, 65, 46, 76, 58, 84, 50, 68, 73, 56, 64]
 
     return (
-      <div
-        class={classNames(displayClass, "toc-sidebar")}
-        style={"--rh:" + rowHeight + "px"}
-      >
-        {filtered.map((entry, hi) => {
-          const bodyCount = Math.max(0, Math.round(avgBody * bodyScale))
-          return (
-            <>
-              <div
-                class={"toc-row toc-heading toc-h" + entry.depth}
-                data-hi={String(hi)}
-                data-target={entry.slug}
-              >
-                <span class="toc-seg"></span>
-                <span class="toc-lbl">{entry.text}</span>
-              </div>
-              {Array.from({ length: bodyCount }, (_, b) => {
-                const w = Math.round(4 + (BW[(hi * 3 + b) % BW.length] / 100) * 8)
-                return (
-                  <div class="toc-row toc-body" data-hi={String(hi)}>
-                    <span class="toc-seg" style={"width:" + w + "px"}></span>
-                  </div>
-                )
-              })}
-            </>
-          )
-        })}
+      <div class={classNames(displayClass, "toc-wrapper")}>
+        {/* ── Collapse toggle header ── */}
+        <button
+          class="toc-toggle"
+          id="toc-toggle"
+          aria-expanded={options.collapseByDefault ? "false" : "true"}
+          aria-controls="toc-body"
+        >
+          <span class="toc-toggle-label">Table of Contents</span>
+          <svg
+            class="toc-chevron"
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        {/* ── TOC lines body ── */}
+        <div
+          class="toc-sidebar"
+          id="toc-body"
+          style={"--rh:" + rowHeight + "px"}
+          data-collapsed={options.collapseByDefault ? "true" : "false"}
+        >
+          {filtered.map((entry, hi) => {
+            const bodyCount = Math.max(0, Math.round(avgBody * bodyScale))
+            return (
+              <>
+                <div
+                  class={"toc-row toc-heading toc-h" + entry.depth}
+                  data-hi={String(hi)}
+                  data-target={entry.slug}
+                >
+                  <span class="toc-seg"></span>
+                  <span class="toc-lbl">{entry.text}</span>
+                </div>
+                {Array.from({ length: bodyCount }, (_, b) => {
+                  const w = Math.round(4 + (BW[(hi * 3 + b) % BW.length] / 100) * 8)
+                  return (
+                    <div class="toc-row toc-body" data-hi={String(hi)}>
+                      <span class="toc-seg" style={"width:" + w + "px"}></span>
+                    </div>
+                  )
+                })}
+              </>
+            )
+          })}
+        </div>
       </div>
     )
   }
