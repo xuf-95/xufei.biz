@@ -19,8 +19,7 @@ function absSitePath(cfg: GlobalConfiguration | undefined, path: string): string
 }
 
 const links = [
-  { label: "POSTS", path: "/posts/" },
-  { label: "BG", path: "/bigdata/" },
+  { label: "INDEX", path: "/index/" },
   { label: "TAGS", path: "/tags/" },
   { label: "GOODS", path: "/hobby/goods/" },
 ]
