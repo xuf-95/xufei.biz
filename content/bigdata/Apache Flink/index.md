@@ -2,21 +2,19 @@
 title: Apache Flink
 tags:
   - bigdata
-  - data-compute
   - flink
   - Real-time
-  - cdc
 date: 2022-01-25
 draft: false
 publish: true
 ---
 
-## Topics
+<!-- ## Topics
 
 - [[Flink State Management]]
 - [[Flink Table API and SQL]]
 - [[Streaming Processing]]
-- [[flink-temp]]
+- [[flink-temp]] -->
 
 ```mermaid
 mindmap

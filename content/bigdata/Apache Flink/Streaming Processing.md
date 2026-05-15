@@ -1,8 +1,8 @@
 ---
 title: Streaming Processing
 tags:
-  - Real-time
   - flink
+  - stream
 date: 2022-01-25
 draft: false
 publish: true

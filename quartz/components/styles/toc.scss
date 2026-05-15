@@ -6,36 +6,15 @@
   overflow-y: hidden;
   min-height: 1.4rem;
   flex: 0 0.5 auto;
+  margin-top: 2rem;          // ← 整体下移（可调整数值）
+
   &:has(button.toc-header.collapsed) {
     flex: 0 1 1.4rem;
   }
 }
 
 button.toc-header {
-  background-color: transparent;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  padding: 0;
-  color: var(--dark);
-  display: flex;
-  align-items: center;
-
-  & h3 {
-    font-size: 1rem;
-    display: inline-block;
-    margin: 0;
-  }
-
-  & .fold {
-    margin-left: 0.5rem;
-    transition: transform 0.3s ease;
-    opacity: 0.8;
-  }
-
-  &.collapsed .fold {
-    transform: rotateZ(-90deg);
-  }
+  display: none;             // ← 完全移除红色框内的折叠按钮
 }
 
 ul.toc-content.overflow {
@@ -46,17 +25,23 @@ ul.toc-content.overflow {
   max-height: calc(100% - 2rem);
   overscroll-behavior: contain;
 
+  /* 隐藏滚动条但保留滚动功能 */
+  scrollbar-width: none;        // Firefox
+  -ms-overflow-style: none;       // IE/Edge
+
+  &::-webkit-scrollbar {
+    display: none;              // Chrome / Safari / Edge
+  }
+
   & > li {
-    // Depth-based indentation (original loop)
     @for $i from 0 through 6 {
       &.depth-#{$i} {
         padding-left: calc(1rem * #{$i});
       }
     }
 
-    // Left border – creates the continuous vertical line
-    border-left: 2px solid var(--lightgray); // default line colour
-    margin-left: 0.5rem; // optional: space between line and text
+    border-left: 2px solid var(--lightgray);
+    margin-left: 0.5rem;
     transition: border-color 0.2s ease;
 
     > a {
@@ -68,9 +53,8 @@ ul.toc-content.overflow {
       text-decoration: none;
       display: inline-block;
       padding: 0.2rem 0;
-      padding-left: 0.75rem; // space from the line
+      padding-left: 0.75rem;
 
-      // Hover effect: text colour changes, line stays gray
       &:hover {
         color: var(--secondary);
         text-decoration: underline;
@@ -79,25 +63,23 @@ ul.toc-content.overflow {
         opacity: 1;
       }
 
-      // Active / in-view styling – only the left border turns white, no background, no circles
       &.in-view,
       &.active {
         opacity: 1;
-        color: var(--secondary); // you can also set to white if preferred
+        color: var(--secondary);
         font-weight: 500;
         text-decoration: underline;
         text-decoration-color: var(--secondary);
       }
     }
 
-    // The magic: when the link inside this <li> is active, the left border of the <li> turns white
     &:has(a.in-view),
     &:has(a.active) {
-      border-left-color: white; // the "white highlight trigger" on the straight line
+      border-left-color: white;
     }
   }
+  
   &:has(a.in-view):last-of-type a.in-view {
-    // 这里可以覆盖文字样式，让最后一个标题的文字也更突出
     color: var(--secondary);
     font-weight: 600;
   }

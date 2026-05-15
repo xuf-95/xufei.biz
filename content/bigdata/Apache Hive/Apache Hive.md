@@ -3,8 +3,7 @@ aliases:
   - Apache Hive
 tags:
   - hadoop
-  - database
-  - offline-compute
+  - hive
   - query-engine
 date: 2022-01-14
 draft: false

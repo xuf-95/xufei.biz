@@ -58,6 +58,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Backlinks()
   ],
   left: [
+    Component.TableOfContents()
   ],
   right: [
     // Component.Flex({

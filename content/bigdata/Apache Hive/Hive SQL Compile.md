@@ -1,8 +1,9 @@
 ---
 title: HiveSQL
 tags:
+  - hadoop
   - hive
-  - hql
+  - sql
 date: 2022-02-28
 draft: true
 publish: true

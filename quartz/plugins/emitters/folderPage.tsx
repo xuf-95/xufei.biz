@@ -49,7 +49,7 @@ async function* processFolderInfo(
       allFiles,
     }
 
-    const content = renderPage(cfg, slug, componentData, opts, externalResources)
+    const content = await renderPage(cfg, slug, componentData, opts, externalResources)
     yield write({
       ctx,
       content,
@@ -142,9 +142,43 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
         }),
       )
 
+      const folderDescriptions: Record<string, ProcessedContent> = Object.fromEntries(
+        // https://github.com/fanteastick/quartz-test/blob/v4/quartz/plugins/emitters/folderPage.tsx
+        [...folders].map((folder) => {
+          const existingContent = content.find(([_, vfile]) => vfile.data.slug === joinSegments(folder, "index"));
+          
+          if (existingContent) {
+            // Update existing folder page title if necessary
+            const updatedContent = existingContent[1].data;
+            // @ts-ignore
+            if (!updatedContent.frontmatter.title.startsWith("📂")) {
+              // @ts-ignore
+              updatedContent.frontmatter.title = `📂 ${folder.replace(/-/g, " ")}`;
+            } else {
+              // If title already starts with 📂, replace hyphens in the rest of the title
+            // @ts-ignore
+              updatedContent.frontmatter.title = `📂 ${updatedContent.frontmatter.title.slice(2).replace(/-/g, " ")}`;
+            }
+            return [folder, updatedContent];
+          } else {
+            // Create new folder page with the desired title
+            return [
+              folder,
+              defaultProcessedContent({
+                slug: joinSegments(folder, "index") as FullSlug,
+                frontmatter: {
+                  title: `📂 ${folder.replace(/-/g, " ")}`,
+                  tags: [],
+                },
+              }),
+            ];
+          }
+        }),
+      )            
       const folderInfo = computeFolderInfo(folders, content, cfg.locale)
       yield* processFolderInfo(ctx, folderInfo, allFiles, opts, resources)
     },
+    // @ts-ignore
     async *partialEmit(ctx, content, resources, changeEvents) {
       const allFiles = content.map((c) => c[1].data)
       const cfg = ctx.cfg.configuration

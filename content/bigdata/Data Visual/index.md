@@ -1,5 +1,5 @@
 ---
-title: index
+title: Folder -> Data Visual 
 tags:
   - index
 date: 2025-03-04

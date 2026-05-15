@@ -102,12 +102,16 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         : htmlToJsx(fileData.filePath!, tree)
     ) as ComponentChildren
 
+    // If baseUrl contains a pathname after the domain, use this as the home link
+    const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
+    const baseDir = url.pathname
+
     return (
       <div class="popover-hint">
         <article class={classes}>{content}</article>
         <div class="page-listing">
           {options.showFolderCount && (
-            <p>
+            <p class="page-listing-count">
               {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
                 count: allPagesInFolder.length,
               })}
@@ -117,6 +121,8 @@ export default ((opts?: Partial<FolderContentOptions>) => {
             <PageList {...listProps} />
           </div>
         </div>
+        <a href={baseDir} class="internal">{i18n(cfg.locale).pages.error.home}</a>
+        <hr />
       </div>
     )
   }

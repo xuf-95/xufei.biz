@@ -1,9 +1,9 @@
 ---
 title: Impala
 tags:
-  - bigdata
-  - data-warehouse
+  - hadoop
   - hive
+  - query-engine
 date: 2022-02-27
 draft: false
 publish: true

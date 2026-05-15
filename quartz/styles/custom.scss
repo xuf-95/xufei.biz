@@ -263,6 +263,25 @@ sup {
   
 }
 
+// Left TOC: keep the fold control unboxed and move the whole TOC lower.
+.page #quartz-body .sidebar.left .toc {
+  align-self: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.8rem auto 0;
+}
+
+.page #quartz-body .sidebar.left .toc button.toc-header,
+.page #quartz-body .sidebar.left .toc button.toc-header:hover,
+.page #quartz-body .sidebar.left .toc button.toc-header:focus,
+.page #quartz-body .sidebar.left .toc button.toc-header:focus-visible {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
 // 让 backlinks 和 TOC 左边对齐（TOC 的起始位置）
 .page #quartz-body .sidebar.right .backlinks {
   padding-left: 0;

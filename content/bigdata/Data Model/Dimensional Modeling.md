@@ -1,4 +1,5 @@
 ---
+date: 2023-03-25
 aliases:
   - Dimensional Model
   - Kimball Modeling
