@@ -3,7 +3,7 @@ title: Cloud Data
 date: 2023-06-20
 tags:
   - index
-publish: true
+publish: false
 ---
 
 ## Cloud Data Platforms

@@ -3,7 +3,7 @@ title: Data Model
 date: 2023-06-20
 tags:
   - index
-publish: true
+publish: false
 ---
 
 ## Data Models

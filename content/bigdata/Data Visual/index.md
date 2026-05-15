@@ -1,9 +1,9 @@
 ---
-title: Folder -> Data Visual 
+title: Folder -> Data Visual
 tags:
   - index
 date: 2025-03-04
-publish: true
+publish: false
 ---
 
 ## 可视化工具

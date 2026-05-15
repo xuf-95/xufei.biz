@@ -1,8 +1,11 @@
 ---
 title: Data Strategy
 description: 数据战略 - DCMM 能力域之一
-tags: [strategy, dcmm, planning]
-publish: true
+tags:
+  - strategy
+  - dcmm
+  - planning
+publish: false
 ---
 
 ## 数据战略概述

@@ -1,8 +1,11 @@
 ---
 title: Infrastructure
 description: 技术基础设施 - 大数据组件总览
-tags: [infrastructure, technology, stack]
-publish: true
+tags:
+  - infrastructure
+  - technology
+  - stack
+publish: false
 ---
 
 ## 技术基础设施概述
