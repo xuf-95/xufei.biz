@@ -21,6 +21,7 @@ publish: false
 - [[Dimensional Modeling]]
 - [[维度建模]]
 - [[范式建模]]
+- [[分析型数仓模型治理评价]]
 
 ### Design Tools
 

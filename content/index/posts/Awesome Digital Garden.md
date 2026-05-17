@@ -10,7 +10,7 @@ tags:
 publish: true
 ---
 
-> [!cards|2]
+> [!column|2 flex clean]
 > ![[worrydream.png]]
 > **[Bret Victor](https://worrydream.com/)**
 > 

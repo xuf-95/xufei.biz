@@ -23,7 +23,7 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [Component.TopNav(),Component.Search(),Component.Darkmode(),Component.ReaderMode()],
   afterBody: [
-    ...recentNotes.map((c) => Component.DesktopOnly(c)),
+    // ...recentNotes.map((c) => Component.DesktopOnly(c)),
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
