@@ -263,3 +263,44 @@
     height: auto;
   }
 }
+// ── Grey box — plain styled container, no blur, no hover effect ──
+// Usage: > [!box]
+//        > Normal content displayed inside a grey bordered box
+//
+// Aliases: box, panel, frame
+.callout[data-callout="box"],
+.callout[data-callout="panel"],
+.callout[data-callout="frame"] {
+  border: 1px solid var(--lightgray);
+  border-left: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: rgba(128, 128, 128, 0.08);
+  padding: 0;
+  margin: 1.2em 0;
+  overflow: hidden;
+
+  // Hide the title bar
+  & > .callout-title {
+    display: none;
+  }
+
+  & > .callout-content {
+    display: block;
+    overflow: hidden;
+
+    & > * {
+      padding: 1rem 1.2rem;
+      margin: 0;
+    }
+  }
+}
+
+// Dark mode: slightly stronger grey wash
+:root[saved-theme="dark"] {
+  .callout[data-callout="box"],
+  .callout[data-callout="panel"],
+  .callout[data-callout="frame"] {
+    background: rgba(80, 80, 80, 0.18);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}

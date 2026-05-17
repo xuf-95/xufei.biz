@@ -9,7 +9,7 @@ interface Options {
 }
 
 const defaultOptions: Options = {
-  maxDepth: 4,
+  maxDepth: 3,   // only 3 levels by default
   collapseByDefault: false,
 }
 
@@ -22,37 +22,46 @@ export default ((opts?: Partial<Options>) => {
   }: QuartzComponentProps) => {
     if (!fileData.toc || fileData.toc.length === 0) return null
 
+    // ── Only show first 3 levels ───────────────────────────────────
     const filtered = fileData.toc.filter((e) => e.depth <= options.maxDepth)
     if (filtered.length === 0) return null
 
-    const totalHeadings = filtered.length
-    const avgBody = 3
-    const rawBodySum = totalHeadings * avgBody
-    const totalRaw = totalHeadings + rawBodySum
+    // ── Constants ──────────────────────────────────────────────────
+    const BODY_RH = 5   // px per body line row
 
-    const SIDEBAR_H = 460
-    const MIN_RH = 7
-    const MAX_RH = 13
+    // ── Body line count per section ────────────────────────────────
+    // Estimate rawBody lines per section using character count of heading text
+    // as a rough proxy for section length.
+    // Rule: rawBody > 6 → show 2 body lines; otherwise → show 1 body line
+    // We use a simple heuristic: h1 sections tend to be longer (2 lines),
+    // h2/h3 tend to be shorter (1 line), unless explicitly many siblings.
 
-    let bodyScale: number
-    let rowHeight: number
+    // Compute body count for each entry
+    const bodyCounts = filtered.map((entry, i) => {
+      // Estimate section "size": headings that are children of this heading
+      // = number of entries between this and the next same-or-higher level
+      let childCount = 0
+      for (let j = i + 1; j < filtered.length; j++) {
+        if (filtered[j].depth <= entry.depth) break
+        childCount++
+      }
+      // rawBody proxy: h1 with children > 3 → likely long section
+      const rawBodyEstimate = entry.depth === 1
+        ? Math.max(4, childCount * 1.5)
+        : entry.depth === 2
+        ? Math.max(2, childCount)
+        : 2
 
-    if (totalRaw * MAX_RH <= SIDEBAR_H) {
-      bodyScale = 1.0
-      rowHeight = MAX_RH
-    } else {
-      const maxRows = Math.floor(SIDEBAR_H / MIN_RH)
-      const avail = maxRows - totalHeadings
-      bodyScale = Math.max(0, Math.min(1, avail / rawBodySum))
-      const actual = totalHeadings + Math.round(rawBodySum * bodyScale)
-      rowHeight = Math.min(MAX_RH, Math.max(MIN_RH, Math.floor(SIDEBAR_H / actual)))
-    }
+      // Rule: > 6 → 2 lines, else → 1 line
+      return rawBodyEstimate > 6 ? 2 : 1
+    })
 
-    const BW = [80, 62, 88, 52, 70, 65, 46, 76, 58, 84, 50, 68, 73, 56, 64]
+    // Body line widths pool (short — max 12px)
+    const BW = [78, 58, 86, 50, 68, 62, 44, 74, 55, 82, 48, 66, 72, 54, 62]
 
     return (
       <div class={classNames(displayClass, "toc-wrapper")}>
-        {/* ── Collapse toggle header ── */}
+        {/* ── Toggle header ── */}
         <button
           class="toc-toggle"
           id="toc-toggle"
@@ -63,28 +72,23 @@ export default ((opts?: Partial<Options>) => {
           <svg
             class="toc-chevron"
             xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            width="14" height="14" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           >
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
 
-        {/* ── TOC lines body ── */}
+        {/* ── TOC body ── */}
         <div
           class="toc-sidebar"
           id="toc-body"
-          style={"--rh:" + rowHeight + "px"}
+          style={"--body-rh:" + BODY_RH + "px"}
           data-collapsed={options.collapseByDefault ? "true" : "false"}
         >
           {filtered.map((entry, hi) => {
-            const bodyCount = Math.max(0, Math.round(avgBody * bodyScale))
+            const bodyCount = bodyCounts[hi]
             return (
               <>
                 <div

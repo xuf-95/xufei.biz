@@ -39,6 +39,13 @@ draft: true
 
 > [!tree] Aliases: "quote", "cite"
 
+> [!blur]
+> This content is hidden until hovered. Works as a spoiler box or redaction block.
+
+> [!box]
+> Normal content displayed inside a grey bordered box.
+> No blur, no hover effect — just a clean styled container.
+
 
 > [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md
 

@@ -1,36 +1,36 @@
-// ── TOC Sidebar — Rauno-style line-density design ─────────────────
-// Interaction model:
-//   Default:          lines dim, labels invisible
-//   Container hover:  ALL heading labels appear dimly (ghost state)
-//   Item hover:       that label brightens to accent color + line glows
-//   Active (scroll):  line expands + label bold + accent color
+// ── TOC Sidebar ────────────────────────────────────────────────────
+// Layout:
+//   Heading row: fixed height (~18px), line on left + label inline right
+//   Body row:    compressed height (--body-rh), line only, no label
+//
+// Interaction:
+//   Default:          lines dim, labels dim/small
+//   Container hover:  ALL labels brighten to ghost state
+//   Item hover:       label + line → accent color
+//   Active (scroll):  label bold + full brightness, line expands
 
 :root {
   --toc-accent: var(--secondary, #c96a2a);
 }
-// ── Wrapper ───────────────────────────────────────────────────────
+
+// ── Wrapper ────────────────────────────────────────────────────────
 .toc-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
   background: transparent;
 
-  // On hover: show the label text
   &:hover .toc-toggle-label,
-  &:hover .toc-chevron {
-    opacity: 1;
-    transform: none;
-  }
+  &:hover .toc-chevron { opacity: 1; }
 
   &:hover .toc-toggle {
     color: var(--dark);
     border-bottom-color: var(--lightgray);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 }
 
-// ── Toggle header ─────────────────────────────────────────────────
-// Always rendered but label/chevron hidden until hover
+// ── Toggle header ──────────────────────────────────────────────────
 .toc-toggle {
   display: flex;
   align-items: center;
@@ -44,13 +44,9 @@
   cursor: default;
   margin-bottom: 0;
   color: var(--gray);
-  transition:
-    color         0.18s ease,
-    border-color  0.18s ease,
-    margin-bottom 0.18s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, margin-bottom 0.18s ease;
 }
 
-// Label: hidden by default, fades in on wrapper hover
 .toc-toggle-label {
   font-size: 11px;
   font-weight: 600;
@@ -62,43 +58,66 @@
   transition: opacity 0.18s ease;
 }
 
-// Chevron: hidden by default
 .toc-chevron {
   flex-shrink: 0;
   opacity: 0;
   transition: opacity 0.18s ease;
 }
 
-// ── TOC body: ALWAYS expanded ─────────────────────────────────────
-// (override the opacity:0 default set in .toc-sidebar base block)
-
-
-
+// ── Sidebar body ───────────────────────────────────────────────────
 .toc-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 0;
   width: 100%;
+  // Must have explicit max-height for overflow-y scroll to work
+  max-height: calc(100vh - 120px);
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
-  padding: 0.6rem 0 2rem 0;
-  // Always visible — no opacity trick here
+  padding: 0.4rem 0 1.5rem 0;
+  // Allow sidebar itself to be the scroll container
+  overscroll-behavior: contain;
 
   &::-webkit-scrollbar { display: none; }
+  // Show scrollbar on hover for usability
+  &:hover {
+    scrollbar-width: thin;
+    scrollbar-color: var(--toc-line-container-hover) transparent;
+  }
+  &:hover::-webkit-scrollbar { display: block; width: 3px; }
+  &:hover::-webkit-scrollbar-thumb {
+    background: var(--toc-line-container-hover);
+    border-radius: 2px;
+  }
 }
 
+.toc-sidebar[data-collapsed="true"] { display: none; }
+
+// ── Rows ───────────────────────────────────────────────────────────
 .toc-row {
-  height: var(--rh, 10px);
   display: flex;
   align-items: center;
-  position: relative;
-  cursor: default;
+  gap: 7px;                  // gap between line and label
   flex-shrink: 0;
+  position: relative;
 }
 
-.toc-heading { cursor: pointer; }
+// Heading rows: auto height based on label text
+.toc-heading {
+  cursor: pointer;
+  // Vertical padding creates spacing between heading rows
+  padding: 0px 0;
+  min-height: 16px;
+}
 
+// Body rows: compressed, line only
+.toc-body {
+  height: var(--body-rh, 6px);
+  cursor: default;
+  padding: 0;
+}
+
+// ── Line segment ───────────────────────────────────────────────────
 .toc-seg {
   display: block;
   height: 1.5px;
@@ -106,47 +125,44 @@
   background: var(--toc-line-default);
   flex-shrink: 0;
   transition:
-    width      0.32s cubic-bezier(0.34, 1.4, 0.64, 1),
-    background 0.22s ease,
-    height     0.22s ease;
+    width      0.3s cubic-bezier(0.34, 1.4, 0.64, 1),
+    background 0.2s ease,
+    height     0.2s ease;
 }
 
 .toc-body .toc-seg {
   background: var(--toc-line-body);
+  // Body lines must never exceed h5 width (8px) — enforce via CSS
+  max-width: 12px;
 }
 
-.toc-h1 .toc-seg { width: 54px; }
-.toc-h2 .toc-seg { width: 42px; }
-.toc-h3 .toc-seg { width: 32px; }
-.toc-h4 .toc-seg { width: 22px; }
-.toc-h5 .toc-seg { width: 14px; }
+// Heading line widths by level
+// h1 longest → h5 shortest; body lines are shorter than all headings
+.toc-h1 .toc-seg { width: 40px; }
+.toc-h2 .toc-seg { width: 28px; }
+.toc-h3 .toc-seg { width: 18px; }
+.toc-h4 .toc-seg { width: 12px; }
+.toc-h5 .toc-seg { width: 8px;  }
 
-// ── Label: invisible by default ───────────────────────────────────
+// ── Label — inline right of line ───────────────────────────────────
+// No absolute positioning → no overlap possible
 .toc-lbl {
-  position: absolute;
-  left: 0;
-  top: 50%;
+  flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 140px;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  pointer-events: none;
-  color: transparent;
+  letter-spacing: 0em;
+  line-height: 1.2;
+  color: var(--toc-label-dim);           // dim but visible by default
   transition:
-    color       0.2s ease,
-    font-size   0.2s ease,
-    font-weight 0.2s ease,
-    transform   0.22s cubic-bezier(0.34, 1.2, 0.64, 1);
-  transform: translateY(-50%) translateY(1px);
+    color       0.18s ease,
+    font-size   0.18s ease,
+    font-weight 0.18s ease;
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// STATE 1: CONTAINER HOVER → all labels ghost-visible
-// ═══════════════════════════════════════════════════════════════════
+// ── STATE 1: CONTAINER HOVER → all labels ghost-bright ────────────
 .toc-sidebar:hover {
 
   .toc-heading:not(.active) .toc-seg {
@@ -155,84 +171,79 @@
 
   .toc-heading:not(.active) .toc-lbl {
     color: var(--toc-label-ghost);
-    transform: translateY(-14px);
   }
 
   .toc-body .toc-seg {
     background: var(--toc-line-body-hover);
   }
 
-  // ── STATE 2: ITEM HOVER → accent color, overrides ghost ──────
+  // ── STATE 2: ITEM HOVER → accent ──────────────────────────────
   .toc-heading:not(.active):hover {
     .toc-seg {
       background: var(--toc-accent) !important;
       height: 2px;
     }
-
     .toc-lbl {
       color: var(--toc-accent) !important;
-      font-size: 11.5px;
-      font-weight: 600;
-      transform: translateY(-14px);
+      font-weight: 500;
     }
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// STATE 3: ACTIVE (scroll) → always visible, highest priority
-// ═══════════════════════════════════════════════════════════════════
+// ── STATE 3: ACTIVE (scroll) ───────────────────────────────────────
 .toc-heading.active {
   .toc-seg {
-    height: 2.5px;
+    height: 2px;
     background: var(--toc-line-active) !important;
   }
-
   .toc-lbl {
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--toc-label-active) !important;
-    transform: translateY(-14px);
   }
 }
 
-.toc-h1.active .toc-seg { width: 68px; }
-.toc-h2.active .toc-seg { width: 54px; }
-.toc-h3.active .toc-seg { width: 42px; }
-.toc-h4.active .toc-seg { width: 30px; }
-.toc-h5.active .toc-seg { width: 20px; }
+// Active line width expansion
+.toc-h1.active .toc-seg { width: 52px; }
+.toc-h2.active .toc-seg { width: 38px; }
+.toc-h3.active .toc-seg { width: 26px; }
+.toc-h4.active .toc-seg { width: 16px; }
+.toc-h5.active .toc-seg { width: 10px; }
 
-// ── PROXIMITY GLOW (scroll-driven) ───────────────────────────────
+// ── PROXIMITY GLOW ─────────────────────────────────────────────────
 .toc-heading.near1 .toc-seg { background: var(--toc-line-near1); }
 .toc-heading.near2 .toc-seg { background: var(--toc-line-near2); }
 .toc-body.bn0 .toc-seg      { background: var(--toc-body-near0); }
 .toc-body.bn1 .toc-seg      { background: var(--toc-body-near1); }
 
-// ── DARK MODE ─────────────────────────────────────────────────────
+// ── DARK MODE ──────────────────────────────────────────────────────
 :root[saved-theme="dark"] {
-  --toc-line-default:         rgba(255, 255, 255, 0.14);
-  --toc-line-body:            rgba(255, 255, 255, 0.07);
-  --toc-line-active:          rgba(255, 255, 255, 0.92);
-  --toc-line-near1:           rgba(255, 255, 255, 0.38);
-  --toc-line-near2:           rgba(255, 255, 255, 0.2);
-  --toc-body-near0:           rgba(255, 255, 255, 0.18);
-  --toc-body-near1:           rgba(255, 255, 255, 0.11);
-  --toc-label-active:         rgba(255, 255, 255, 0.92);
-  --toc-line-container-hover: rgba(255, 255, 255, 0.28);
-  --toc-line-body-hover:      rgba(255, 255, 255, 0.13);
-  --toc-label-ghost:          rgba(255, 255, 255, 0.28);
+  --toc-line-default:         rgba(255,255,255,0.14);
+  --toc-line-body:            rgba(255,255,255,0.07);
+  --toc-line-active:          rgba(255,255,255,0.92);
+  --toc-line-near1:           rgba(255,255,255,0.36);
+  --toc-line-near2:           rgba(255,255,255,0.2);
+  --toc-body-near0:           rgba(255,255,255,0.16);
+  --toc-body-near1:           rgba(255,255,255,0.10);
+  --toc-label-active:         rgba(255,255,255,0.92);
+  --toc-label-dim:            rgba(255,255,255,0.20);  // always-on dim
+  --toc-label-ghost:          rgba(255,255,255,0.42);  // container hover
+  --toc-line-container-hover: rgba(255,255,255,0.26);
+  --toc-line-body-hover:      rgba(255,255,255,0.12);
 }
 
-// ── LIGHT MODE ────────────────────────────────────────────────────
+// ── LIGHT MODE ─────────────────────────────────────────────────────
 :root:not([saved-theme="dark"]) {
-  --toc-line-default:         rgba(0, 0, 0, 0.14);
-  --toc-line-body:            rgba(0, 0, 0, 0.07);
+  --toc-line-default:         rgba(0,0,0,0.14);
+  --toc-line-body:            rgba(0,0,0,0.07);
   --toc-line-active:          var(--dark);
-  --toc-line-near1:           rgba(0, 0, 0, 0.35);
-  --toc-line-near2:           rgba(0, 0, 0, 0.18);
-  --toc-body-near0:           rgba(0, 0, 0, 0.16);
-  --toc-body-near1:           rgba(0, 0, 0, 0.1);
+  --toc-line-near1:           rgba(0,0,0,0.32);
+  --toc-line-near2:           rgba(0,0,0,0.16);
+  --toc-body-near0:           rgba(0,0,0,0.14);
+  --toc-body-near1:           rgba(0,0,0,0.09);
   --toc-label-active:         var(--dark);
-  --toc-line-container-hover: rgba(0, 0, 0, 0.28);
-  --toc-line-body-hover:      rgba(0, 0, 0, 0.12);
-  --toc-label-ghost:          rgba(0, 0, 0, 0.28);
+  --toc-label-dim:            rgba(0,0,0,0.25);
+  --toc-label-ghost:          rgba(0,0,0,0.45);
+  --toc-line-container-hover: rgba(0,0,0,0.26);
+  --toc-line-body-hover:      rgba(0,0,0,0.11);
 }
