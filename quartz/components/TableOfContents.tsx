@@ -26,6 +26,16 @@ export default ((opts?: Partial<Options>) => {
     const filtered = fileData.toc.filter((e) => e.depth <= options.maxDepth)
     if (filtered.length === 0) return null
 
+    // ── Normalize depths so the shallowest heading = depth 1 ──────
+    // Quartz may give depths like [2,3,4] if article starts at h2.
+    // We normalize so the minimum depth in the article becomes 1,
+    // ensuring h1 CSS class always applies to the top-level headings.
+    const minDepth = Math.min(...filtered.map(e => e.depth))
+    const normalizedFiltered = filtered.map(e => ({
+      ...e,
+      depth: e.depth - minDepth + 1,
+    }))
+
     // ── Constants ──────────────────────────────────────────────────
     const BODY_RH = 5   // px per body line row
 
@@ -37,12 +47,10 @@ export default ((opts?: Partial<Options>) => {
     // h2/h3 tend to be shorter (1 line), unless explicitly many siblings.
 
     // Compute body count for each entry
-    const bodyCounts = filtered.map((entry, i) => {
-      // Estimate section "size": headings that are children of this heading
-      // = number of entries between this and the next same-or-higher level
+    const bodyCounts = normalizedFiltered.map((entry, i) => {
       let childCount = 0
-      for (let j = i + 1; j < filtered.length; j++) {
-        if (filtered[j].depth <= entry.depth) break
+      for (let j = i + 1; j < normalizedFiltered.length; j++) {
+        if (normalizedFiltered[j].depth <= entry.depth) break
         childCount++
       }
       // rawBody proxy: h1 with children > 3 → likely long section
@@ -80,6 +88,15 @@ export default ((opts?: Partial<Options>) => {
           </svg>
         </button>
 
+        {/* ── Reading progress bar ── */}
+        {/* <div class="toc-progress-wrap">
+          <div class="toc-progress-bar">
+            <div class="toc-progress-track"></div>
+            <div class="toc-progress-fill"></div>
+          </div>
+          <span class="toc-progress-pct">0%</span>
+        </div> */}
+
         {/* ── TOC body ── */}
         <div
           class="toc-sidebar"
@@ -87,7 +104,7 @@ export default ((opts?: Partial<Options>) => {
           style={"--body-rh:" + BODY_RH + "px"}
           data-collapsed={options.collapseByDefault ? "true" : "false"}
         >
-          {filtered.map((entry, hi) => {
+          {normalizedFiltered.map((entry, hi) => {
             const bodyCount = bodyCounts[hi]
             return (
               <>
@@ -111,6 +128,7 @@ export default ((opts?: Partial<Options>) => {
             )
           })}
         </div>
+        
       </div>
     )
   }

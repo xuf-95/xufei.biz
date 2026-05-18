@@ -111,6 +111,21 @@ const tocInit = () => {
     requestAnimationFrame(step)
   }
 
+  // ── Reading progress bar ──────────────────────────────────────────
+  const progressFill = document.querySelector<HTMLElement>(".toc-progress-fill")
+  const progressPct  = document.querySelector<HTMLElement>(".toc-progress-pct")
+
+  function updateProgress() {
+    const scrollTop  = window.scrollY
+    const docHeight  = document.documentElement.scrollHeight - window.innerHeight
+    const pct        = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0
+    if (progressFill) progressFill.style.width = pct + "%"
+    if (progressPct)  progressPct.textContent   = pct + "%"
+  }
+
+  window.addEventListener("scroll", updateProgress, { passive: true })
+  updateProgress()
+
   activate(0)
   window.addEventListener("scroll", onScroll, { passive: true })
   window.addCleanup(() => {

@@ -138,11 +138,12 @@
 
 // Heading line widths by level
 // h1 longest → h5 shortest; body lines are shorter than all headings
-.toc-h1 .toc-seg { width: 40px; }
-.toc-h2 .toc-seg { width: 28px; }
-.toc-h3 .toc-seg { width: 18px; }
+// Steep curve: h1 clearly dominates, each level visibly shorter
+.toc-h1 .toc-seg { width: 52px; }
+.toc-h2 .toc-seg { width: 34px; }
+.toc-h3 .toc-seg { width: 20px; }
 .toc-h4 .toc-seg { width: 12px; }
-.toc-h5 .toc-seg { width: 8px;  }
+.toc-h5 .toc-seg { width: 7px;  }
 
 // ── Label — inline right of line ───────────────────────────────────
 // No absolute positioning → no overlap possible
@@ -151,16 +152,23 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 400;
   letter-spacing: 0em;
-  line-height: 1.2;
+  line-height: 1.3;
   color: var(--toc-label-dim);           // dim but visible by default
   transition:
     color       0.18s ease,
     font-size   0.18s ease,
     font-weight 0.18s ease;
 }
+
+// ── Per-level label sizing — reinforces visual hierarchy ──────────
+.toc-h1 .toc-lbl { font-size: 11px; }
+.toc-h2 .toc-lbl { font-size: 10.5px; }
+.toc-h3 .toc-lbl { font-size: 10px; }
+.toc-h4 .toc-lbl { font-size: 10px; opacity: 0.85; }
+.toc-h5 .toc-lbl { font-size: 10px; opacity: 0.7; }
 
 // ── STATE 1: CONTAINER HOVER → all labels ghost-bright ────────────
 .toc-sidebar:hover {
@@ -204,10 +212,10 @@
 }
 
 // Active line width expansion
-.toc-h1.active .toc-seg { width: 52px; }
-.toc-h2.active .toc-seg { width: 38px; }
-.toc-h3.active .toc-seg { width: 26px; }
-.toc-h4.active .toc-seg { width: 16px; }
+.toc-h1.active .toc-seg { width: 66px; }
+.toc-h2.active .toc-seg { width: 46px; }
+.toc-h3.active .toc-seg { width: 28px; }
+.toc-h4.active .toc-seg { width: 17px; }
 .toc-h5.active .toc-seg { width: 10px; }
 
 // ── PROXIMITY GLOW ─────────────────────────────────────────────────
@@ -246,4 +254,55 @@
   --toc-label-ghost:          rgba(0,0,0,0.45);
   --toc-line-container-hover: rgba(0,0,0,0.26);
   --toc-line-body-hover:      rgba(0,0,0,0.11);
+}
+
+// ── Textured reading progress bar ────────────────────────────────
+.toc-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  margin-bottom: 10px;
+}
+
+.toc-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+// Dotted texture — the unfilled track
+.toc-progress-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background-image: radial-gradient(
+    circle,
+    var(--lightgray) 1px,
+    transparent 1px
+  );
+  background-size: 4px 4px;
+  opacity: 0.5;
+}
+
+// Solid fill — advances as page scrolls
+.toc-progress-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  border-radius: 2px;
+  background: var(--dark);
+  z-index: 1;
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
+.toc-progress-pct {
+  font-size: 10px;
+  color: var(--gray);
+  min-width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
