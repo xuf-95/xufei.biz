@@ -17,7 +17,7 @@ Expected behavior:
 - known domains should render their mapped suffixes
 - file links like PDF and ZIP should prefer file-type labels
 - unknown domains should fall back to an automatically generated short suffix
-- internal links such as [[posts/index]] should not show any external-link suffix
+- internal links such as [[content/index/Posts/index]] should not show any external-link suffix
 
 ## Organization Rules
 
@@ -78,5 +78,5 @@ Expected behavior:
 
 ## Internal Control
 
-- [[posts/index|Internal link should not show any external suffix]]
+- [[content/index/Posts/index|Internal link should not show any external suffix]]
 - [[bigdata/index|Another internal link without external icon]]

@@ -10,10 +10,11 @@ publish: true
 
 - [[Bigdata With AI]]
 - [[How Agent Work]]
+- [[Local File Report Agent]]
 - [[Knowledge Distillation]]
 - [[LLMOPS]]
 - [[MCP]]
 - [[Prompt Engineering]]
 - [[RAG]]
 - [[db9.ai?]]
-- [[大模型微调]] 
+- [[大模型微调]]

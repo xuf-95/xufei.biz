@@ -1,0 +1,90 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Animated XF signature logo</title>
+  <desc id="desc">A handwritten animated XF monogram inspired by single-stroke signature logos.</desc>
+  <style>
+    .card {
+      fill: #050505;
+    }
+
+    .mark {
+      fill: none;
+      stroke: #f8f8f8;
+      stroke-width: 11;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pathLength: 1;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: write 7.6s cubic-bezier(0.66, 0, 0.34, 1) infinite;
+    }
+
+    .cross {
+      animation-delay: 0.12s;
+    }
+
+    .stem {
+      animation-delay: 0.22s;
+    }
+
+    @keyframes write {
+      0% {
+        opacity: 0;
+        stroke-dashoffset: 1;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      46%,
+      76% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+      }
+
+      96%,
+      100% {
+        opacity: 0;
+        stroke-dashoffset: -1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mark {
+        animation: none;
+        opacity: 1;
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+
+  <rect class="card" x="36" y="36" width="440" height="440" rx="48" />
+  <path
+    class="mark loop"
+    d="M143 296
+       C121 273 126 233 155 202
+       C183 172 218 159 236 178
+       C255 198 245 243 213 277
+       C184 308 150 316 132 296
+       C113 275 124 236 156 205
+       C187 175 222 169 242 193
+       C264 219 266 258 291 273"
+  />
+  <path class="mark cross" d="M147 192 C196 232 247 271 307 287" />
+  <path
+    class="mark stem"
+    d="M285 298
+       C317 248 350 188 379 120
+       C397 79 424 60 431 84
+       C440 114 414 168 376 219
+       C338 269 291 315 270 366
+       C252 409 258 462 283 464
+       C310 466 321 409 312 358
+       C303 304 281 244 247 194"
+  />
+</svg>

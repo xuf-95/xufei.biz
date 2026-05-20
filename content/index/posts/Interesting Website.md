@@ -7,7 +7,7 @@ draft: false
 publish: true
 ---
 
-![[english++.png]]_**English++ Project**_
+![[content/index/Posts/images/english++.png]]_**English++ Project**_
 
 
 

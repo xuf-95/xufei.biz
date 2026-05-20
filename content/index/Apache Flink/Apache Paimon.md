@@ -1,11 +1,12 @@
 ---
-aliases: 
+aliases:
   - paimon
-tags: 
+tags:
   - streaming
   - data-lake
-date:  2025-01-21
-draft:  false
+date: 2025-01-21
+draft: true
+publish: true
 ---
 ## Defined
 

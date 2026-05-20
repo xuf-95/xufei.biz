@@ -10,5 +10,6 @@ private/
 .replit
 replit.nix
 .omx/
+examples/local_report_agent/out/
 .claudian/
 .claude/
