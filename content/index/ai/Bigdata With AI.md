@@ -13,25 +13,22 @@ Databases with AI capabilities combine traditional storage and querying function
 ### Datus-Agent
 
 - [GitHub - Datus-ai/Datus-agent: ](https://github.com/Datus-ai/Datus-agent)The Future of Data Engineering — A CLI SQL client for the modern data stack, enabling AI-native context engineering for data
-![[content/index/AI/image/datus-agent.png]]
-
-### Text2SQL
-
+![[datus-agent.png]]
 - [Chat2DB](https://github.com/CodePhiliaX/Chat2DB) is an intelligent, universal SQL client and data reporting tool that integrates AI capabilities. Chat2DB helps you write SQL queries faster, manage databases, generate reports, explore data, ER model, data migration, data structure synchronization and interact with multiple databases. ***System Requirements***：
       - Docker 19.03.0 or later
       - Docker Compose 1.25.0 or later
       - CPU >= 2 Cores
       - RAM >= 4 GiB
 
-![[content/index/AI/image/chat2db.png]]
+![[chat2db.png]]
 
 - [SQLChat](https://github.com/sqlchat/sqlchat) is a chat-based SQL client, which uses natural language to communicate with the database to implement operations such as query, modification, addition, and deletion of the database.
 
-![[content/index/AI/image/sqlchat.png]]
+![[sqlchat.png]]
 
 - [vanna](https://github.com/vanna-ai/vanna)  is an MIT-licensed open-source Python RAG (Retrieval-Augmented Generation) framework for SQL generation and related functionality.
 
-![[content/index/AI/image/vanna.png]]
+![[vanna.png]]
 
 - [supersonic](https://github.com/tencentmusic/supersonic) is the next-generation AI+BI platform that unifies Chat BI (powered by LLM) and Headless BI (powered by semantic layer) paradigms. This unification ensures that Chat BI has access to the same curated and governed semantic data models as traditional BI. Furthermore, the implementation of both paradigms benefit from each other:
 
@@ -43,14 +40,14 @@ Databases with AI capabilities combine traditional storage and querying function
 
 - [PandasAI](https://github.com/sinaptik-ai/pandas-ai) Chat with your database or your datalake (SQL, CSV, parquet). PandasAI makes data analysis conversational using LLMs and RAG.
 
-![[content/index/AI/image/pandasai.gif]]
+![[pandasai.gif]]
 
 - [ChatDB](https://chatdatabase.github.io/) Augmenting LLMs with Databases as Their Symbolic Memory
 
-![[content/index/AI/image/chatdb.png]]
+![[chatdb.png]]
 
 ### Agent 
 
 - [WrenAI](https://github.com/Canner/WrenAI) Open-source GenBI AI Agent that empowers data-driven teams to chat with their data to generate Text-to-SQL, charts, spreadsheets, reports, dashboards and BI.
 
-![[content/index/AI/image/wrenai.png]]
+![[wrenai.png]]

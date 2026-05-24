@@ -66,7 +66,7 @@ publish: true
     - [[What is Apache Flink?]]
 ## 典型的大数据架构 
 
-### [[Lambda Architecture]]
+### [[02 Lambda Architecture]]
 
 
 ```mermaid
@@ -93,13 +93,13 @@ B --> D
 C --> D
 
 ```
-### [[what is Kappa Architecture?]]
+### [[03 what is Kappa Architecture?]]
 
 ![[kappa-architecture.png]]
 
-### [[Flow-Batch Architecture]] 
+### [[08 Flow-Batch Architecture]] 
 
-### [[Lake-DataWarehouse Architecture]]
+### [[04 Lake-DataWarehouse Architecture]]
 
 ### [[Data Lake]]
 

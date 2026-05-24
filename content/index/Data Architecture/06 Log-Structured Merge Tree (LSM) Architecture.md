@@ -2,7 +2,7 @@
 title: Log-Structured Merge Tree (LSM) Architecture
 aliases:
   - LSM
-description:
+description: LSM，全称 **Log-Structured Merge Tree，日志结构合并树**，是一种常见的存储引擎架构
 tags:
   - index
   - storage-engine

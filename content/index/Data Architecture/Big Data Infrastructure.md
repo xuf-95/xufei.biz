@@ -1,10 +1,9 @@
 ---
-title: Infrastructure
+title: Big Data Infrastructure
 description: 技术基础设施 - 大数据组件总览
 tags:
   - infrastructure
-  - technology
-  - stack
+  - bigdata
 publish: false
 ---
 

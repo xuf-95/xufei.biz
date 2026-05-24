@@ -1,14 +1,14 @@
 ---
-date: 2024-01-09
+date: 2025-01-09
 aliases:
+description:
 tags:
-  - bigdata
   - data-architecture
   - cloud
   - data-server
-description:
-draft: false
-publishDate: 2025-09-26T16:58
+draft: true
+publishDate: 2025-01-10T16:58:00
+publish: true
 ---
 ## Serverless Architecture
 
@@ -41,7 +41,7 @@ You write functions or services, deploy them, and only pay for the compute time 
 
 | Provider         | Service                         |
 | ---------------- | ------------------------------- |
-| AWS              | [[Lambda Architecture\|Lambda]] |
+| AWS              | [[02 Lambda Architecture\|Lambda]] |
 | Google Cloud     | Cloud Functions / Cloud Run     |
 | Microsoft Azure  | Azure Functions                 |
 | Vercel / Netlify | Edge Functions                  |

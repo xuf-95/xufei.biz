@@ -2,7 +2,6 @@
 date: 2023-12-31
 aliases:
 tags:
-  - bigdata
   - cloud
   - aliyun
 description:

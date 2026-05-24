@@ -1,15 +1,14 @@
 ---
 date: 2024-01-09
 aliases:
+  - CK
+description:
 tags:
-  - bigdata
   - data-store
   - concepts
-description:
-draft: false
 publishDate: 2025-10-21T09:41
+draft: true
 ---
-
 ### CK 中是如何进行部分合并的
 
 #### 查看合并级别及存储行数
@@ -33,5 +32,3 @@ ORDER BY name ASC;
 >>[!info] 增加CPU和RAM可以增加后台合并的吞吐量
 >
 
-
-###

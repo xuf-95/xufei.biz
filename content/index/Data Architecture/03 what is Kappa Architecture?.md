@@ -6,7 +6,7 @@ tags:
 date: 2023-09-04
 publish: true
 ---
-*Kappa architecture is a big data processing pattern that has historically diverged from [[Lambda Architecture|Lambda]]. Its foundation is to treat all arriving data as a stream, therefore it contains no batch layer by design, relying solely on a [[Stream Data Processing|stream processing]] layer ("speed layer").* 
+*Kappa architecture is a big data processing pattern that has historically diverged from [[02 Lambda Architecture|Lambda]]. Its foundation is to treat all arriving data as a stream, therefore it contains no batch layer by design, relying solely on a [[Stream Data Processing|stream processing]] layer ("speed layer").* 
 
 ```mermaid
 %%{init: { "flowchart": { "useMaxWidth": true } } }%%
@@ -55,7 +55,7 @@ C --> E
 
 ![[kappa-architecture.png]]
 
-### [[Lambda Architecture|Lamdba]]VS Kappa 
+### [[02 Lambda Architecture|Lamdba]]VS Kappa 
 
 | Content    | Lambda                                                                              | Kappa                                          |     |
 | ---------- | ----------------------------------------------------------------------------------- | ---------------------------------------------- | --- |

@@ -21,12 +21,12 @@ publish: true
 >> ProtonBase is a cloud-native distributed Data Warebase（Data Warebase = Data Warehouse + Database）
 
 
-![[content/bigdata/images/protonbase-data-warehouse.png]]
+![[protonbase-data-warehouse.png]]
 
 
 ## ProtonBase Architecture
 
-![[content/bigdata/images/protonbase-architecture.png]]
+![[protonbase-architecture.png]]
 
 - 多云：支持所有主流云厂商。ProtonBase 底层建立在云上，采用了云的存储和基于容器的调度技术。 ProtonBase 目前主要支持五朵云：[[Aliyun]]、华为云、腾讯云、 [[AWS]] 和 Azure ，未来还会支持更多的云厂商 
 - 云原生：充分使用容器化的技术，发挥公有云的弹性

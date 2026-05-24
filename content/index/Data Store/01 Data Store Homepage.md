@@ -1,15 +1,16 @@
 ---
+title: Data Store Homepage
 aliases:
   - 数据存储
   - 数据库
   - DB
   - Data Store
-title: Data Store Homepage
 tags:
   - bigdata
   - database
+  - nosql
 date: 2022-12-02
-draft: false
+draft: true
 publish: true
 ---
 ## 数据存储分类

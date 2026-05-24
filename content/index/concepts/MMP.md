@@ -1,5 +1,5 @@
 ---
-title: MPP
+title: Massively Parallel Processing（MPP）
 aliases:
   - Massively Parallel Processing
   - MMP

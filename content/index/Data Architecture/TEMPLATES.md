@@ -51,11 +51,11 @@ bigdata/
 ### 02-Architecture (数据架构)
 
 #### 架构模式
-- [[Lambda Architecture]]
-- [[what is Kappa Architecture?]]
-- [[Flow-Batch Architecture]]
-- [[Lake-DataWarehouse Architecture]]
-- [[Serverless Architecture]]
+- [[02 Lambda Architecture]]
+- [[03 what is Kappa Architecture?]]
+- [[08 Flow-Batch Architecture]]
+- [[04 Lake-DataWarehouse Architecture]]
+- [[07 Serverless Architecture]]
 
 #### 逻辑架构
 - 数据建模
@@ -65,7 +65,7 @@ bigdata/
 #### 物理架构
 - [[Data Warehouse]]
 - [[Data Lake]]
-- [[Lakehouse]]
+- [[05 Lakehouse]]
 
 ### 03-Standards (数据标准)
 - 业务术语

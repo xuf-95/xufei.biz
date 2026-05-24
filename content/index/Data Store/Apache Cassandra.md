@@ -1,4 +1,5 @@
 ---
+title: Apache Cassandra
 aliases:
   - cassandra
 tags:
@@ -6,7 +7,10 @@ tags:
   - nosql
   - distributed-database
   - bigdata
+description:
 date: 2023-04-21
+publish: true
+draft: true
 ---
 
 # Apache Cassandra 详解

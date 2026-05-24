@@ -24,8 +24,8 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <h3 class="home-col-title">Architecture Patterns</h3>
 <ul>
 
-- [[Lambda Architecture]]
-- [[what is Kappa Architecture?]]
+- [[02 Lambda Architecture]]
+- [[03 what is Kappa Architecture?]]
 - [[MMP|MMP]]
 - [[ZooKeeper|zookeeper]]
 
