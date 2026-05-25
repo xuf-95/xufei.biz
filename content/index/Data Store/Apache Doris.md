@@ -2,7 +2,7 @@
 aliases:
   - doris
 tags:
-  - data-warehouse
+  - warehouse
   - data-lake
   - mmp
 date: 2024-02-13

@@ -2,7 +2,7 @@
 title: Hive On Spark
 tags:
   - bigdata
-  - data-warehouse
+  - warehouse
   - hive
   - spark
 date: 2022-03-13

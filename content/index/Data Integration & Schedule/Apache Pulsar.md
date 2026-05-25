@@ -1,7 +1,7 @@
 ---
 title: Apache Pulsar
 tags:
-  - data-integration
+  - integration
   - pulsar
 draft: false
 date: 2024-08-16

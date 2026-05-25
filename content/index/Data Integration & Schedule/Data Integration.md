@@ -7,7 +7,7 @@ aliases:
   - Data Integration Homepage
 tags:
   - homepage
-  - data-integration
+  - integration
 date: 2022-01-21
 draft: true
 publish: false

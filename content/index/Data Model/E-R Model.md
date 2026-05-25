@@ -1,7 +1,7 @@
 ---
 title: E-R Model
 tags:
-  - data-model
+  - model
   - concepts
 date: 2022-03-25
 draft: true

@@ -3,7 +3,7 @@ aliases:
   - Spark
 title: What is Apache Spark?
 tags:
-  - data-compute
+  - compute
   - compute-engine
   - micro-batch
 date: 2023-02-24

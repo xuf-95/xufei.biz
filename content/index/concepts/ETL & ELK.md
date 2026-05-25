@@ -2,7 +2,7 @@
 title: ETL & ELK
 aliases:
 tags:
-  - data-compute
+  - compute
   - concepts
 date: 2024-04-08
 draft: true

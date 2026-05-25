@@ -3,7 +3,7 @@ date: 2024-01-09
 aliases:
 tags:
   - bigdata
-  - data-compute
+  - compute
   - data-structure
 description:
 draft: true

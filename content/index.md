@@ -24,10 +24,10 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <h3 class="home-col-title">Architecture Patterns</h3>
 <ul>
 
-- [[02 Lambda Architecture]]
-- [[03 what is Kappa Architecture?]]
+- [[02 Lambda Architecture|What is Lambda Architecture]]
+- [[03 what is Kappa Architecture?|What is Kappa Architecture?]]
 - [[MMP|MMP]]
-- [[ZooKeeper|zookeeper]]
+- [[ZooKeeper|What is Apache Zookeeper?]]
 
 </ul>
 </div>
@@ -36,10 +36,10 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <h3 class="home-col-title">Streaming & Integration</h3>
 <ul>
 
-- [[Flink CDC]]
-- [[What is Apache Kafka?]]
+-  [[What is Apache Kafka?]]
+- [[Flink CDC|Flink CDC v3.6.0 Overview]]
 - [[Apache Pulsar]]
-- [[Apache Airflow]]
+- [[Apache Airflow ]]
 
 </ul>
 </div>

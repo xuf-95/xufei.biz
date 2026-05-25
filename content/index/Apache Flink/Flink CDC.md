@@ -7,6 +7,8 @@ date: 2024-09-18
 draft: false
 publish: true
 ---
+> [!info] Stable Version
+> [v3.6.0-Apache Flink CDC](https://nightlies.apache.org/flink/flink-cdc-docs-stable/)
 ## Flink CDC 概述
 
 > CDC（Change Data Capture ）：变更数据获取
@@ -263,7 +265,8 @@ public class FlinkSQLCDC {
 ```
 
 ---
-
-
+## Reference
+- [Apache Flink CDC \| Apache Flink CDC](https://nightlies.apache.org/flink/flink-cdc-docs-stable/)
+- 
 
 

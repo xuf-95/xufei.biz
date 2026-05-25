@@ -6,7 +6,7 @@ aliases:
 tags:
   - seedling
   - to-trans
-  - data-model
+  - model
 draft: true
 ---
 

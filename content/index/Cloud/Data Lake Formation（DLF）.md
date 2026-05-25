@@ -7,7 +7,7 @@ description:
 tags:
   - cloud
   - aliyun
-  - data-store
+  - store
   - ai
 date: 2024-01-09
 publishDate: 2026-05-22T15:49

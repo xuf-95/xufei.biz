@@ -3,9 +3,9 @@ date: 2024-01-09
 aliases:
 tags:
   - bigdata
-  - data-store
-  - data-architecture
-  - data-model
+  - store
+  - architecture
+  - model
 description:
 draft: true
 publishDate: 2025-09-26T15:33

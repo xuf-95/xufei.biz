@@ -3,7 +3,7 @@ date: 0022-02-12
 aliases:
 tags:
   - bigdata
-  - data-store
+  - store
   - storage-structure
   - oltp
   - mysql

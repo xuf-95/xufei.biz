@@ -4,7 +4,7 @@ aliases:
   - Hadoop
 tags:
   - bigdata
-  - data-compute
+  - compute
   - hadoop
   - homepage
 draft: false

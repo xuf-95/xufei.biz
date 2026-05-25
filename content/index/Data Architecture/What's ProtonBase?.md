@@ -4,7 +4,7 @@ date: 2024-03-04
 aliases:
   - ProtonBase
 tags:
-  - data-warehouse
+  - warehouse
   - cloud
   - aliyun
   - aws

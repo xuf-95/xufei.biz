@@ -1,5 +1,5 @@
 ---
-title: Lambda Architecture
+title: What is Lambda Architecture?
 aliases:
 date: 2023-09-08
 tags:

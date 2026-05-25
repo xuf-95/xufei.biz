@@ -5,11 +5,11 @@ aliases:
   - dcmm
   - Data management capability maturity assessment model
 tags:
-  - data-architecture
+  - architecture
   - data-goverance
-  - data-integration
-  - data-compute
-  - data-visual
+  - integration
+  - compute
+  - bi
   - data-lifecycle
   - data-strategy
 draft: false

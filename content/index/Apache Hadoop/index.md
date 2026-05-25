@@ -3,7 +3,7 @@ title: Apache Hadoop
 date: 2022-06-20
 tags:
   - bigdata
-  - data-compute
+  - compute
 publish: false
 ---
 

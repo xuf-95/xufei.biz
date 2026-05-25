@@ -4,7 +4,7 @@ aliases:
   - 数据指标系统
 tags:
   - bigdata
-  - data-warehouse
+  - warehouse
   - indicator
 description:
 draft: true

@@ -3,7 +3,7 @@ title: Parquet
 aliases:
   - Parquet 列示存储
 tags:
-  - data-store
+  - store
   - storage-format
   - col-storage
 date: 2023-06-12

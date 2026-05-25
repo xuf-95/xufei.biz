@@ -4,7 +4,7 @@ aliases:
   - CK
 description:
 tags:
-  - data-store
+  - store
   - concepts
 publishDate: 2025-10-21T09:41
 draft: true

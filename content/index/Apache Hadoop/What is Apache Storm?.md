@@ -1,7 +1,7 @@
 ---
 title: What is Apache Storm?
 tags:
-  - data-compute
+  - compute
   - hadoop
   - streaming
   - distribute

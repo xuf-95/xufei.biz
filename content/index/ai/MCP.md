@@ -4,7 +4,7 @@ aliases:
 tags:
   - ai
   - mcp
-  - data-store
+  - store
 description:
 draft:
 publishDate: 2025-09-26T11:38

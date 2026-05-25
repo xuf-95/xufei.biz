@@ -4,7 +4,7 @@ aliases:
 tags:
   - bigdata
   - olap
-  - data-store
+  - store
 date: 2024-09-12
 draft: false
 publish:
