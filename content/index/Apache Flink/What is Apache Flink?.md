@@ -1,9 +1,12 @@
 ---
 title: Flink Overview
+aliases:
+  - flink
+  - Flink
 tags:
   - flink
 date: 2023-06-07
-draft: false
+draft: true
 publish: true
 ---
 ## Overview

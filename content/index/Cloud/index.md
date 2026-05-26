@@ -1,5 +1,6 @@
 ---
 title: Cloud Data
+description: 云原生一体化
 date: 2023-06-20
 tags:
   - index
@@ -16,7 +17,7 @@ publish: false
 ### Products
 
 - [[MaxCompute]]
-- [[Dataworks]]
+- [[DataWorks]]
 - [[Hologres]]
 - [[Quick BI]]
 

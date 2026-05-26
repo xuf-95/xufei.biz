@@ -1,6 +1,7 @@
 ---
 aliases:
   - Spark
+  - spark
 title: What is Apache Spark?
 tags:
   - compute

@@ -1,54 +1,12 @@
 ---
-date: 2024-01-09
+date: 2026-05-26
 tags:
   - post
 description:
 publishDate: 2026-03-19
-publish: false
+publish: true
 draft: true
 ---
-## Callout
-
-> [!info] Default title
-
-> [!question]+ Can callouts be _nested_?
-> 
-> > [!todo]- Yes!, they can. And collapsed!
-> > 
-> > > [!example] You can even use multiple layers of nesting.
-
-> [!abstract] Aliases: "abstract", "summary", "tldr"
-
-> [!info] Aliases: "info"
-
-> [!todo] Aliases: "todo"
-
-> [!success] Aliases: "success", "check", "done"
-
-> [!question] Aliases: "question", "help", "faq"
-
-> [!failure] Aliases: "failure", "missing", "fail"
-
-> [!danger] Aliases: "danger", "error"
-
-> [!bug] Aliases: "bug"
-
-> [!example] Aliases: "example"
-
-> [!quote] Aliases: "quote", "cite"
-
-> [!tree] Aliases: "quote", "cite"
-
-> [!blur]
-> This content is hidden until hovered. Works as a spoiler box or redaction block.
-
-> [!box]
-> Normal content displayed inside a grey bordered box.
-> No blur, no hover effect — just a clean styled container.
-
-
-> [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md
-
 
 ## Mermaid
 
@@ -244,6 +202,29 @@ Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy
 > **Regular Text**: "Morrowind"
 > **Daedric Text**: "<span class="daedric">"Morrowind"</span>"
 
+## Gallery Card View
+
+Use this reusable card view on any page by copying the HTML block and changing each card link, title, and subtitle.
+
+<nav class="gallery-card-view" aria-label="Featured page gallery">
+  <a class="gallery-card internal" href="/index/Posts/Markdown%20syntax%20guide">
+    <span class="gallery-card-title">Learning English</span>
+    <span class="gallery-card-subtitle">Self-taught, total immersion</span>
+  </a>
+  <a class="gallery-card internal" href="/index/Posts/Awesome%20Digital%20Garden">
+    <span class="gallery-card-title">Building in Public</span>
+    <span class="gallery-card-subtitle">Ship, share, get noticed</span>
+  </a>
+  <a class="gallery-card internal" href="/index/Posts/Links%20Anythings">
+    <span class="gallery-card-title">Remote Careers</span>
+    <span class="gallery-card-subtitle">Visibility over CVs</span>
+  </a>
+  <a class="gallery-card internal" href="/index/Posts/Interesting%20Website">
+    <span class="gallery-card-title">Design Engineering</span>
+    <span class="gallery-card-subtitle">Design + code = superpower</span>
+  </a>
+</nav>
+
 <div class="qt-wrap">
   <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-cursor" checked />
   <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-lovable" />
@@ -277,3 +258,46 @@ Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy
     </div>
   </div>
 </div>
+
+## Callout
+
+> [!info] Default title
+
+> [!question]+ Can callouts be _nested_?
+> 
+> > [!todo]- Yes!, they can. And collapsed!
+> > 
+> > > [!example] You can even use multiple layers of nesting.
+
+> [!abstract] Aliases: "abstract", "summary", "tldr"
+
+> [!info] Aliases: "info"
+
+> [!todo] Aliases: "todo"
+
+> [!success] Aliases: "success", "check", "done"
+
+> [!question] Aliases: "question", "help", "faq"
+
+> [!failure] Aliases: "failure", "missing", "fail"
+
+> [!danger] Aliases: "danger", "error"
+
+> [!bug] Aliases: "bug"
+
+> [!example] Aliases: "example"
+
+> [!quote] Aliases: "quote", "cite"
+
+> [!tree] Aliases: "quote", "cite"
+
+> [!blur]
+> This content is hidden until hovered. Works as a spoiler box or redaction block.
+
+> [!box]
+> Normal content displayed inside a grey bordered box.
+> No blur, no hover effect — just a clean styled container.
+
+
+> [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md
+
