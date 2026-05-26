@@ -8,37 +8,6 @@ publish: true
 draft: true
 ---
 
-## Mermaid
-
-```mermaid
-sequenceDiagram
-    Alice->>+John: Hello John, how are you?
-    Alice->>+John: John, can you hear me?
-    John-->>-Alice: Hi Alice, I can hear you!
-    John-->>-Alice: I feel great!
-```
-
-## Syntax Highlighting
-
-```js title="title…" 
-export function trimPathSuffix(fp: string): string {
-  fp = clientSideSlug(fp)
-  let [cleanPath, anchor] = fp.split("#", 2)
-  anchor = anchor === undefined ? "" : "#" + anchor
- 
-  return cleanPath + anchor
-}
-```
-
-```js {1-3,4} 
-export function trimPathSuffix(fp: string): string {
-  fp = clientSideSlug(fp)
-  let [cleanPath, anchor] = fp.split("#", 2)
-  anchor = anchor === undefined ? "" : "#" + anchor
- 
-  return cleanPath + anchor
-}
-```
 
 ## Wikilinks
 
@@ -261,6 +230,10 @@ Use this reusable card view on any page by copying the HTML block and changing e
 
 ## Callout
 
+> [!box]
+> Normal content displayed inside a grey bordered box.
+> No blur, no hover effect — just a clean styled container.
+
 > [!info] Default title
 
 > [!question]+ Can callouts be _nested_?
@@ -293,10 +266,6 @@ Use this reusable card view on any page by copying the HTML block and changing e
 
 > [!blur]
 > This content is hidden until hovered. Works as a spoiler box or redaction block.
-
-> [!box]
-> Normal content displayed inside a grey bordered box.
-> No blur, no hover effect — just a clean styled container.
 
 
 > [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md

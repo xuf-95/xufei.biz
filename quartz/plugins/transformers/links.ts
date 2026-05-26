@@ -231,8 +231,11 @@ function tryParseAbsoluteUrl(dest: string): URL | null {
 }
 
 function getFaviconUrl(url: URL): string {
-  const hostname = url.hostname.replace(/^www\./i, "")
-  return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`
+  if (url.protocol !== "http:" && url.protocol !== "https:") {
+    return ""
+  }
+
+  return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(url.href)}&sz=64`
 }
 
 function maybeMatchRule(
@@ -246,7 +249,7 @@ function maybeMatchRule(
         kind: rule.kind,
         label: rule.label,
         priority,
-        faviconUrl: priority === "organization" ? getFaviconUrl(url) : undefined,
+        faviconUrl: getFaviconUrl(url) || undefined,
       }
     }
   }
@@ -366,13 +369,19 @@ function detectExternalLinkIcon(dest: string, linkText: string): LinkIconMatch |
 
   const textLabel = deriveTextLabel(linkText)
   if (textLabel) {
-    return { kind: "text", label: textLabel, priority: "fallback" }
+    return {
+      kind: "text",
+      label: textLabel,
+      priority: "fallback",
+      faviconUrl: getFaviconUrl(url) || undefined,
+    }
   }
 
   return {
     kind: "domain",
     label: deriveHostLabel(url.hostname),
     priority: "fallback",
+    faviconUrl: getFaviconUrl(url) || undefined,
   }
 }
 

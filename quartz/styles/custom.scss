@@ -53,7 +53,7 @@ a.external[data-link-icon]::after {
     color 0.2s ease;
 }
 
-a.external[data-link-icon-priority="organization"]::after {
+a.external[data-link-icon][style*="--external-link-icon-url"]::after {
   @extend %external-link-icon-base;
   content: "";
   background-image: var(--external-link-icon-url);

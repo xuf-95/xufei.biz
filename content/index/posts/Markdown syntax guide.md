@@ -92,3 +92,35 @@ alert(message);
 ## Inline code
 
 This web site is using `markedjs/marked`.
+
+## Mermaid
+
+```mermaid
+sequenceDiagram
+    Alice->>+John: Hello John, how are you?
+    Alice->>+John: John, can you hear me?
+    John-->>-Alice: Hi Alice, I can hear you!
+    John-->>-Alice: I feel great!
+```
+
+## Syntax Highlighting
+
+```js title="title…" 
+export function trimPathSuffix(fp: string): string {
+  fp = clientSideSlug(fp)
+  let [cleanPath, anchor] = fp.split("#", 2)
+  anchor = anchor === undefined ? "" : "#" + anchor
+ 
+  return cleanPath + anchor
+}
+```
+
+```js {1-3,4} 
+export function trimPathSuffix(fp: string): string {
+  fp = clientSideSlug(fp)
+  let [cleanPath, anchor] = fp.split("#", 2)
+  anchor = anchor === undefined ? "" : "#" + anchor
+ 
+  return cleanPath + anchor
+}
+```
