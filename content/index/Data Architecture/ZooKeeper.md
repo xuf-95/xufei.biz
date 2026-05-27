@@ -206,7 +206,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 集群配置管理
 
 **阿里云大数据平台**
-- [[What's MaxCompute?]]组件协调
+- [[What is MaxCompute?]]组件协调
 - [[E-MapReduce]]集群管理
 - 大数据服务集成
 

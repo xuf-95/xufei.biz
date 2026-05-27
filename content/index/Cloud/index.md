@@ -16,7 +16,7 @@ publish: false
 
 ### Products
 
-- [[What's MaxCompute?]]
+- [[What is MaxCompute?]]
 - [[DataWorks]]
 - [[Hologres]]
 - [[Quick BI]]

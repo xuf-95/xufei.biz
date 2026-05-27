@@ -26,21 +26,20 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 - [[02 Lambda Architecture|What is Lambda Architecture]]
 - [[03 what is Kappa Architecture?|What is Kappa Architecture?]]
-- [[MMP|MMP]]
-- [[ZooKeeper|What is Apache Zookeeper?]]
+- [[06 Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
+- [[MPP|Massively Parallel Processing（MPP）]]
 
 </ul>
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">Cloud </h3>
+<h3 class="home-col-title">Cloud Native</h3>
 <ul>
 
-- [[Aliyun Cloud Ecosystem]]
+- [[07 Serverless Architecture|Serverless Architecture]]
+- [[Aliyun Cloud Ecosystem]] 
 - [[Cloud Vendors Homepage]]
-- [[What's MaxCompute?]]
-- [[DataWorks|Dataworks]]
-
+- [[What is MaxCompute?]]
 
 </ul>
 </div>
@@ -94,8 +93,6 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 </ul>
 </div>
 </div>
-
-<!-- 
 <div class="home-two-col-section">
 <div class="home-col-left">
 <h3 class="home-col-title">DevOps & IaC</h3>
@@ -105,32 +102,6 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 - [[Kubernetes]]
 - [[Terraform]]
 - [[CI/CD]]
-
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">Cloud Platforms</h3>
-<ul>
-
-- [[AWS]]
-- [[GCP]]
-- [[Azure]]
-- [[Observability]]
-
-</ul>
-</div>
-</div>
-
-<div class="home-two-col-section">
-<div class="home-col-left">
-<h3 class="home-col-title">Languages</h3>
-<ul>
-
-- [[Python]]
-- [[SQL]]
-- [[Git]]
-- [[Linux]]
 
 </ul>
 </div>
@@ -146,8 +117,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 </ul>
 </div>
-</div> -->
-
+</div>
 
 **Commits Time Distribution of my wiki**
 
