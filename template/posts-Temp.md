@@ -5,6 +5,7 @@ aliases:
 tags:
   - posts
 description:
+language: EN
 draft:
 publishDate: <%tp.date.now("YYYY-MM-DD")%>T<%tp.date.now("HH:mm")%>
 ---

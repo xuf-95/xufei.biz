@@ -7,7 +7,6 @@ import { i18n } from "../../i18n"
 import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
-import { trieFromAllFiles } from "../../util/ctx"
 import folderScript from "../scripts/folderFilter.inline"
 
 interface FolderContentOptions {
@@ -16,9 +15,15 @@ interface FolderContentOptions {
   sort?: SortFn
 }
 
+type ContentLanguage = "EN" | "CN"
+
 const defaultOptions: FolderContentOptions = {
   showFolderCount: true,
   showSubfolders: true,
+}
+
+function normalizeLanguage(language: unknown): ContentLanguage {
+  return language?.toString().toUpperCase() === "CN" ? "CN" : "EN"
 }
 
 export default ((opts?: Partial<FolderContentOptions>) => {
@@ -30,10 +35,10 @@ export default ((opts?: Partial<FolderContentOptions>) => {
     // Strip "/index" suffix — Quartz sets slug as "bigdata/index" for folder pages
     const rawSlug = fileData.slug!
     const currentSlug = rawSlug.endsWith("/index")
-      ? rawSlug.slice(0, -6)   // remove "/index"
+      ? rawSlug.slice(0, -6) // remove "/index"
       : rawSlug === "index"
-      ? ""                      // root folder
-      : rawSlug
+        ? "" // root folder
+        : rawSlug
 
     // ── Collect ALL real files whose slug starts with currentSlug ──
     const pagesInFolder: QuartzPluginData[] = allFiles.filter((f) => {
@@ -87,8 +92,12 @@ export default ((opts?: Partial<FolderContentOptions>) => {
       const relative = slug.slice(currentSlug.length + 1)
       const parts = relative.split("/")
       const sub = parts.length >= 2 ? parts[0] : "__root__"
-      return { page, sub }
+      const language = normalizeLanguage(page.frontmatter?.language)
+      return { page, sub, language }
     })
+
+    const isIndexListing = currentSlug === "" || currentSlug === "index"
+    const showLanguageFilter = isIndexListing && annotatedPages.length > 0
 
     return (
       <div class="popover-hint">
@@ -102,10 +111,26 @@ export default ((opts?: Partial<FolderContentOptions>) => {
             </p>
           )}
 
+          {showLanguageFilter && (
+            <div class="language-filter-bar" id="language-filter-bar" aria-label="Language filter">
+              <button class="language-filter-pill active" data-language-filter="__all__">
+                All
+              </button>
+              <button class="language-filter-pill" data-language-filter="EN">
+                EN
+              </button>
+              <button class="language-filter-pill" data-language-filter="CN">
+                CN
+              </button>
+            </div>
+          )}
+
           {/* Filter pills — only show if there are subfolders */}
           {subfolders.length > 0 && (
             <div class="folder-filter-bar" id="folder-filter-bar">
-              <button class="folder-filter-pill active" data-filter="__all__">All</button>
+              <button class="folder-filter-pill active" data-filter="__all__">
+                All
+              </button>
               {hasRootFiles && (
                 <button class="folder-filter-pill" data-filter="__root__">
                   {currentSlug.split("/").pop() || "root"}
@@ -121,13 +146,9 @@ export default ((opts?: Partial<FolderContentOptions>) => {
 
           {/* Page list — each item wrapped with data-subfolder */}
           <div id="folder-page-list">
-            {annotatedPages.map(({ page, sub }) => (
-              <div class="folder-item-wrap" data-subfolder={sub}>
-                <PageList
-                  {...props}
-                  sort={options.sort}
-                  allFiles={[page]}
-                />
+            {annotatedPages.map(({ page, sub, language }) => (
+              <div class="folder-item-wrap" data-subfolder={sub} data-language={language}>
+                <PageList {...props} sort={options.sort} allFiles={[page]} />
               </div>
             ))}
           </div>
@@ -146,13 +167,22 @@ export default ((opts?: Partial<FolderContentOptions>) => {
 }) satisfies QuartzComponentConstructor
 
 const folderFilterCss = `
+.language-filter-bar,
 .folder-filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+
+.language-filter-bar {
+  margin-bottom: 0.7rem;
+}
+
+.folder-filter-bar {
   margin-bottom: 1.2rem;
 }
 
+.language-filter-pill,
 .folder-filter-pill {
   padding: 4px 14px;
   border-radius: 20px;
@@ -167,11 +197,13 @@ const folderFilterCss = `
   transition: all 0.15s ease;
 }
 
+.language-filter-pill:hover,
 .folder-filter-pill:hover {
   border-color: var(--darkgray);
   color: var(--dark);
 }
 
+.language-filter-pill.active,
 .folder-filter-pill.active {
   background: var(--dark);
   color: var(--light);
