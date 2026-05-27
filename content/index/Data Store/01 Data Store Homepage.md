@@ -26,7 +26,7 @@ publish: true
 
 ### Type
 
-- Data Process：OLAP ｜ OLTP｜HATP
+- Data Process：[[OLAP]] ｜ [[OLTP]]｜[[HATP]]
 - Data Model： Relational ｜Key-value｜Time Series｜Graph｜Document｜Vector｜Columnar｜Search｜Object-oriented｜Spatial｜RDF｜Multivalue｜Multivalue｜Event Store
 - Deployment Model: Distributed | Centralized | Cloud-native 
 

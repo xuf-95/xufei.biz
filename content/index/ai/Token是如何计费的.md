@@ -793,3 +793,9 @@ Token计费是AI服务的基础，理解其机制对控制成本至关重要：
 - **性能敏感型**：优先考虑响应速度
 
 通过组合使用PD分离和KV Cache等技术，可以在保证服务质量的同时，将AI服务成本降到最低，实现最佳的投入产出比。
+
+
+## Reference
+
+- [What are tokens and how to count them? \| OpenAI Help Center](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)
+- 

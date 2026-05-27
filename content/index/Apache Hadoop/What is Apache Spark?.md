@@ -55,7 +55,7 @@ Spark SQL provides a programming interface for processing structured and semi-st
 #### Spark的四大特性
 
 - **速度快**
-	- 与MR对比：spark比mapreduce在内存中快100倍，比mapreduce在磁盘中快10倍
+	- 与MR对比：spark比[[mapreduce]]在内存中快100倍，比mapreduce在磁盘中快10倍
 	- 原因：
 		- MR 中间Job输出的结果需要落盘到磁盘中，又因为Job的依赖性，需进行大量磁盘IO
 		- Spark中间Job输出的结果直接保存在内存中，大大减少了磁盘IO
@@ -65,7 +65,7 @@ Spark SQL provides a programming interface for processing structured and semi-st
 	- Spark生态的不断发展，包括了SparkSQL、SparkStreaming、Mlib、GraphX不同的子项目
 	- 一站式解决所有应用场景:  离线 & 实时 & 机器学习算法库 & 图计算
 - **兼容性**
-	- Spark任务可提交到多个计算资源环境中，如：StandAlone；Yarn；Apache Mesos
+	- Spark任务可提交到多个计算资源环境中，如：StandAlone；[[Yarn]]；Apache Mesos
 
 
 ### Spark RDD

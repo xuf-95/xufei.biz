@@ -4,13 +4,13 @@ tags:
   - bigdata
   - olap
 date: 2024-01-25
-draft: false
+draft: true
 publish: true
 ---
-### ClickHouse VS StarRcks
+### ClickHouse VS [[StarRocks]]
 
 
-| 特性      | ClickHouse                     | StarRcks                           |
+| 特性      | ClickHouse                     | StarRocks                           |
 | ------- | ------------------------------ | ---------------------------------- |
 | 核心架构    | Shared-Nothing, 侧重单机性能，分布式能力附加 | 原生 MPP Shared-Nothing, 强调分布式协同与扩展性 |
 | 存储引擎    | MergeTree 系列 (本地存储优先)          | 列存 + 多种智能索引 (支持存算分离)               |

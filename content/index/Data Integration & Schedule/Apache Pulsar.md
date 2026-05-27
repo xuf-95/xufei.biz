@@ -6,6 +6,9 @@ tags:
 draft: false
 date: 2024-08-16
 publish: true
+aliases:
+  - Pulsar
+  - pulsar
 ---
 
 ## What's  Apache Pulsar?

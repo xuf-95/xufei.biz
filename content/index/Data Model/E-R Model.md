@@ -6,7 +6,6 @@ tags:
 date: 2022-03-25
 draft: true
 ---
-
 ## 概述
 
 **R模型**，全称为**实体联系模型**、**实体关系模型**或**实体联系模式图（ERM）**（英语：Entity-relationship model）由美籍台湾人计算机科学家[陈品山](https://zh.wikipedia.org/wiki/%E9%99%88%E5%93%81%E5%B1%B1 "陈品山")发明，是[概念数据模型](https://zh.wikipedia.org/wiki/%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B "概念模型")的高层描述所使用的[数据模型](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B "数据模型")或[模式图](https://zh.wikipedia.org/w/index.php?title=%E6%A8%A1%E5%BC%8F%E5%9B%BE&action=edit&redlink=1 "模式图（页面不存在）")。

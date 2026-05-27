@@ -5,7 +5,7 @@ tags:
   - quartz
   - test
   - links
-publish: true
+publish: false
 description: A manual test page for automatic external favicon resolution, protocol handling, file links, and internal-link controls.
 draft: true
 ---

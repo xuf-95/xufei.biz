@@ -1,11 +1,14 @@
 ---
-title: MR
+title: Hadoop MapReduce
 tags:
   - hadoop
   - compute-engine
 date: 2022-01-26
 draft: false
 publish: true
+aliases:
+  - mapreduce
+  - MR
 ---
 > [!info] MapReduce 下文简称：MR
 >  [[Hadoop|Hadoop]] MR是Google [MapReduce](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)的开源实现；同理Google的MR运行在GFS上，Hadoop MR运行在[[HDFS]] 上
