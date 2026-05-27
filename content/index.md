@@ -21,7 +21,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 <div class="home-two-col-section">
 <div class="home-col-left">
-<h3 class="home-col-title">Architecture Patterns</h3>
+<h3 class="home-col-title">Data Architecture</h3>
 <ul>
 
 - [[02 Lambda Architecture|What is Lambda Architecture]]
@@ -33,7 +33,32 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">Streaming & Integration</h3>
+<h3 class="home-col-title">Cloud </h3>
+<ul>
+
+- [[Aliyun Cloud Ecosystem]]
+- [[Cloud Vendors Homepage]]
+- [[What's MaxCompute?]]
+- [[DataWorks|Dataworks]]
+
+
+</ul>
+</div>
+</div>
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Warehouse & DataLake</h3>
+<ul>
+
+- [[如何选择合适的OLAP产品]]
+- [[常见的的数据压缩算法]]
+- [[MySQL]]
+- [[Database Design]]
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Scheduler & Integration</h3>
 <ul>
 
 -  [[What is Apache Kafka?]]
@@ -44,28 +69,27 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 </ul>
 </div>
 </div>
-
 <div class="home-two-col-section">
 <div class="home-col-left">
-<h3 class="home-col-title">Data Processing</h3>
+<h3 class="home-col-title">AI Area</h3>
 <ul>
 
-- [[PoC]]
-- [[ETL & ELK]]
-- [[MMP|MMP]]
-- [[CDC]]
+- [[Bigdata With AI]]
+- [[How Agent Work]]
+- [[Prompt Engineering]]
+- [[Token是如何计费的]]
 
 </ul>
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">Performance & Design</h3>
+<h3 class="home-col-title">Recent Posts</h3>
 <ul>
 
-- [[Latency]]
-- [[HSAP]]
-- [[DAG]]
-- [[Dataflow]]
+- [[Awesome Digital Garden]]
+- [[Collections Photography]]
+- [[Bigdata Product & Tools]]
+- [[Bloger List]]
 
 </ul>
 </div>

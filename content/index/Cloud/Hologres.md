@@ -34,7 +34,7 @@ publish:
 
 支持的数据源
 
-- [[MaxCompute|MaxCompute]]
+- [[What's MaxCompute?|MaxCompute]]
 - [[Apache Hive|Apache Hive]]
 - [[Apache Paimon]]
 - [[What is Apache Flink?|Flink]]

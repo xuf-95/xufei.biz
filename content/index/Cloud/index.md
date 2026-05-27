@@ -11,12 +11,12 @@ publish: false
 
 ### Core Platforms
 
-- [[Aliyun]]
+- [[Aliyun Cloud Ecosystem]]
 - [[Cloud Vendors Homepage]]
 
 ### Products
 
-- [[MaxCompute]]
+- [[What's MaxCompute?]]
 - [[DataWorks]]
 - [[Hologres]]
 - [[Quick BI]]
