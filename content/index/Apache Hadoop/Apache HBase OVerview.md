@@ -17,7 +17,7 @@ publish: true
 >HBase is a non-relational, distributed database modeled after Google's Bigtable. It provides random, real-time read/write access to large datasets - billions of rows with millions of columns - atop clusters of commodity hardware. Unlike traditional relational databases, HBase is designed for wide tables and prioritizes scalability over features like SQL support, typed columns, or advanced query languages.
 
 
-> Hbase（[[Hadoop|Hadoop]] on database）是基于[[HDFS]]进行数据的存储，具有高可靠. 高性能. 列存储. 可伸缩. 实时读写的nosql数据库。它可以存储海量数据，并且后期查询性能很多，可以实现上亿条数据的秒级返回。
+> Hbase（[[01 Apache Hadoop Overview|Hadoop]] on database）是基于[[02 HDFS]]进行数据的存储，具有高可靠. 高性能. 列存储. 可伸缩. 实时读写的nosql数据库。它可以存储海量数据，并且后期查询性能很多，可以实现上亿条数据的秒级返回。
 
 ### Key characteristics of HBase include:
 
@@ -67,7 +67,7 @@ For smaller datasets (thousands/millions of rows), a traditional RDBMS might be 
 
 ![[hbase2 1.png]]
 
-Hbase是由Client、[[Zookeeper]]、Master、HRegionServer、[[HDFS]]等几个组件组成，几个组件的相关功能：  
+Hbase是由Client、[[Zookeeper]]、Master、HRegionServer、[[02 HDFS]]等几个组件组成，几个组件的相关功能：  
 - Client
 	- Client包含了访问Hbase的接口，另外Client还维护了对应的cache来加速Hbase的访问，比如cache的.META.元数据的信息。  
 - Zookeeper  

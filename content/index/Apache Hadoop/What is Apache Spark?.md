@@ -8,12 +8,13 @@ tags:
   - compute-engine
   - micro-batch
 date: 2023-02-24
-draft: false
-publish: true
+draft: true
+publish: false
+language: EN
 ---
 ## Overview
 
-Apache Spark is a powerful unified analytics engine for large-scale distributed data processing. It provides high-level APIs in Java, Scala, Python, and R, and includes libraries for SQL, streaming, [[machine learning]], and graph processing. Spark can run on [[Hadoop]], standalone, or in the [[cloud]], and can access diverse data sources.
+Apache Spark is a powerful unified analytics engine for large-scale distributed data processing. It provides high-level APIs in Java, Scala, Python, and R, and includes libraries for SQL, streaming, [[machine learning]], and graph processing. Spark can run on [[01 Apache Hadoop Overview]], standalone, or in the [[cloud]], and can access diverse data sources.
 ### Key features include
 
 - Fast in-memory computation
@@ -55,7 +56,7 @@ Spark SQL provides a programming interface for processing structured and semi-st
 #### Spark的四大特性
 
 - **速度快**
-	- 与MR对比：spark比[[mapreduce]]在内存中快100倍，比mapreduce在磁盘中快10倍
+	- 与MR对比：spark比[[03 MapReduce]]在内存中快100倍，比mapreduce在磁盘中快10倍
 	- 原因：
 		- MR 中间Job输出的结果需要落盘到磁盘中，又因为Job的依赖性，需进行大量磁盘IO
 		- Spark中间Job输出的结果直接保存在内存中，大大减少了磁盘IO

@@ -1,5 +1,5 @@
 ---
-title: Hive Deploy Manual
+title: Apache Hive Deploy Manual
 tags:
   - hadoop
   - database

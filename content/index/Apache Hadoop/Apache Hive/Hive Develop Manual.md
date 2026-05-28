@@ -1,7 +1,6 @@
 ---
 title: Apache Hive Develop Manual
 tags:
-  - bigdata
   - warehouse
   - hive
 date: 2022-01-15

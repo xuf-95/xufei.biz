@@ -13,7 +13,7 @@ Apache Parquet是Hadoop生态圈中一种新型列式存储格式，它可以兼
 
 - 查询引擎: [[Apache Hive]], Impala, Pig, Presto, Drill, Tajo, HAWQ, IBM Big SQL
 
-- 计算框架: [[MapReduce]], [[Spark]], Cascading, Crunch, Scalding, Kite
+- 计算框架: [[03 MapReduce]], [[Spark]], Cascading, Crunch, Scalding, Kite
 
 - 数据模型: Avro, Thrift, Protocol Buffers, POJOs
 

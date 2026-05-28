@@ -38,9 +38,9 @@ C --> D
 
 Lambda 总共由三层系统组成：批处理层（Batch Layer）， 速度处理层（Speed Layer），以及用于响应查询的 服务层（Serving Layer），是一种用于同时处理离线和实时数据的、可容错的、可扩展的分布式系统，如图所示
 
-- 批处理层：该层核心功能是存储主数据集，主数据集数据具有原始、不可变、真实的特征。批处理层周期性地将增量数据转储至主数据集，并在主数据集上执行批处理，生成批视图。架构实现方面可以使用 [[HDFS]] 或 [[Apache HBase|Hbase]] 存储主数据集，再利用 [[What is Apache Spark?|Spark]] 或 [[MapReduce]] 执行周期批处理，之后使用 MapReduce 创建批视图
+- 批处理层：该层核心功能是存储主数据集，主数据集数据具有原始、不可变、真实的特征。批处理层周期性地将增量数据转储至主数据集，并在主数据集上执行批处理，生成批视图。架构实现方面可以使用 [[02 HDFS]] 或 [[Apache HBase OVerview|Hbase]] 存储主数据集，再利用 [[What is Apache Spark?|Spark]] 或 [[03 MapReduce]] 执行周期批处理，之后使用 MapReduce 创建批视图
 
-- 加速层：该层的核心功能是处理增量实时数据，生成实时视图，快速执行即席查询。架构实现方面可以使用 [[HDFS]] 或 [[Apache HBase|Hbase]] 存储实时数据，利用 [[What is Apache Spark?|Spark]] 或 [[What is Apache Storm?]] 实现实时数据处理和实时视图。
+- 加速层：该层的核心功能是处理增量实时数据，生成实时视图，快速执行即席查询。架构实现方面可以使用 [[02 HDFS]] 或 [[Apache HBase OVerview|Hbase]] 存储实时数据，利用 [[What is Apache Spark?|Spark]] 或 [[What is Apache Storm?]] 实现实时数据处理和实时视图。
 
 - 服务层：该层的核心功能是响应用户请求，合并批视图和实时视图中的结果数据集得到最终数据集。具体来说就是接收用户请求，通过索引加速访问批视图，直接访问实时视图，然后合并两个视图的结果数据集生成最终数据集，响应用户请求。架构实现方面可以使用 HBase Cassandra 作为服务层，通过 Hive 创建可查询的视图
 

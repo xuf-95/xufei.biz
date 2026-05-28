@@ -1,4 +1,5 @@
 ---
+title: Apache Doris Overview
 aliases:
   - doris
 tags:
@@ -6,7 +7,9 @@ tags:
   - data-lake
   - mmp
 date: 2024-02-13
-draft: false
+draft: true
+publish: true
+language: CN
 ---
 ## What's Apache Doris
 
@@ -27,7 +30,7 @@ draft: false
 - **前端（FE）** ：用户请求处理、查询解析和规划、元数据管理、节点管理
 - **后端（BE）** ：数据存储和查询执行
 
-Apache Doris采用MySQL协议，支持标准SQL，与MySQL语法高度兼容
+Apache Doris采用[[MySQL]]协议，支持标准SQL，与MySQL语法高度兼容
 
 ## Query 
 
@@ -39,4 +42,3 @@ Apache Doris采用MySQL协议，支持标准SQL，与MySQL语法高度兼容
 ## Reference
 
 - [Apache Doris - Blog | Latest news and events - Apache Doris](https://doris.apache.org/blog?currentPage=1&currentCategory=All#blog)
-·····

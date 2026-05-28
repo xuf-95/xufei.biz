@@ -11,7 +11,7 @@ publish: true
 - [[Bigdata With AI]]
 - [[How Agent Work]]
 - [[Local File Report Agent]]
-- [[Knowledge Distillation]]
+- [[Knowledge Distillation（知识蒸馏）]]
 - [[LLMOPS]]
 - [[MCP]]
 - [[Prompt Engineering]]

@@ -5,6 +5,7 @@ tags:
   - sql
 date: 2024-02-11
 draft: true
+language: CN
 ---
 ## Flink SQL是什么？ 
 

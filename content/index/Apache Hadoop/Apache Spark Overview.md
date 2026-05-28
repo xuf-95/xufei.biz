@@ -2,11 +2,14 @@
 title: Apache Spark Overview
 tags:
   - bigdata
-  - sec-index
+  - spark
+  - homepage
+  - compute-engine
 date: 2022-01-12
 draft: false
 description: Micro-batch
 publish: true
+language: EN
 ---
 ## Introduction
 
