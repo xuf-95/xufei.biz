@@ -1,27 +1,17 @@
 const tocInit = () => {
-  // ── Collapse toggle ──────────────────────────────────────────────
-  const toggle = document.getElementById("toc-toggle")
-  const body = document.getElementById("toc-body")
-
-  if (toggle && body) {
-    toggle.addEventListener("click", () => {
-      const isCollapsed = body.dataset.collapsed === "true"
-      body.dataset.collapsed = isCollapsed ? "false" : "true"
-      toggle.setAttribute("aria-expanded", isCollapsed ? "true" : "false")
-    })
-  }
-
-  // ── Scroll-driven active state ───────────────────────────────────
   const sidebar = document.getElementById("toc-body")
   if (!sidebar) return
   const sidebarEl: HTMLElement = sidebar
+  const wrapper = sidebarEl.closest<HTMLElement>(".toc-wrapper")
 
-  const headingRows = Array.from(
-    sidebarEl.querySelectorAll<HTMLElement>(".toc-heading"),
-  )
-  const bodyRows = Array.from(
-    sidebarEl.querySelectorAll<HTMLElement>(".toc-body"),
-  )
+  const expand = () => wrapper?.classList.add("is-expanded")
+  const collapse = () => wrapper?.classList.remove("is-expanded")
+
+  wrapper?.addEventListener("mouseenter", expand)
+  wrapper?.addEventListener("mouseleave", collapse)
+
+  const headingRows = Array.from(sidebarEl.querySelectorAll<HTMLElement>(".toc-heading"))
+  const bodyRows = Array.from(sidebarEl.querySelectorAll<HTMLElement>(".toc-body"))
   if (headingRows.length === 0) return
 
   const articleHeadings = Array.from(
@@ -38,9 +28,7 @@ const tocInit = () => {
     }
     const labelText =
       row.querySelector<HTMLElement>(".toc-lbl")?.textContent?.trim().toLowerCase() ?? ""
-    const matched = articleHeadings.find(
-      (h) => h.textContent?.trim().toLowerCase() === labelText,
-    )
+    const matched = articleHeadings.find((h) => h.textContent?.trim().toLowerCase() === labelText)
     return matched ?? document.createElement("div")
   })
 
@@ -53,9 +41,12 @@ const tocInit = () => {
 
     headingRows.forEach((row, i) => {
       row.classList.remove("active", "near1", "near2")
+      row.removeAttribute("aria-current")
       const d = Math.abs(i - idx)
-      if (d === 0) row.classList.add("active")
-      else if (d === 1) row.classList.add("near1")
+      if (d === 0) {
+        row.classList.add("active")
+        row.setAttribute("aria-current", "location")
+      } else if (d === 1) row.classList.add("near1")
       else if (d === 2) row.classList.add("near2")
     })
 
@@ -88,11 +79,13 @@ const tocInit = () => {
   }
 
   headingRows.forEach((row, i) => {
-    row.addEventListener("click", () => {
+    row.addEventListener("click", (event) => {
+      event.preventDefault()
       const el = sections[i]
       if (el && el.offsetTop > 0) {
         const top = el.getBoundingClientRect().top + window.scrollY - 80
         window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
+        history.replaceState(null, "", `#${row.dataset.target}`)
       }
     })
   })
@@ -111,29 +104,17 @@ const tocInit = () => {
     requestAnimationFrame(step)
   }
 
-  // ── Reading progress bar ──────────────────────────────────────────
-  const progressFill = document.querySelector<HTMLElement>(".toc-progress-fill")
-  const progressPct  = document.querySelector<HTMLElement>(".toc-progress-pct")
-
-  function updateProgress() {
-    const scrollTop  = window.scrollY
-    const docHeight  = document.documentElement.scrollHeight - window.innerHeight
-    const pct        = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0
-    if (progressFill) progressFill.style.width = pct + "%"
-    if (progressPct)  progressPct.textContent   = pct + "%"
-  }
-
-  window.addEventListener("scroll", updateProgress, { passive: true })
-  updateProgress()
-
   activate(0)
+  onScroll()
   window.addEventListener("scroll", onScroll, { passive: true })
   window.addCleanup(() => {
     window.removeEventListener("scroll", onScroll)
+    wrapper?.removeEventListener("mouseenter", expand)
+    wrapper?.removeEventListener("mouseleave", collapse)
     if (rafId) cancelAnimationFrame(rafId)
   })
 }
 
 document.addEventListener("nav", tocInit)
 
-export {}
+export default tocInit

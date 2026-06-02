@@ -15,7 +15,7 @@ publish: true
 [[DAMA]] 的数据架构主要包括企业 **数据模型** 和 **数据流的设计**（也称数据价值链的设计）
 #### DCMM观点
 
-[[DCMM]] 的数据架构包括
+[[Data Management Capability Maturity Assessment Model (DCMM)]] 的数据架构包括
 
 - 数据模型 
 - 数据架构（[[Data Architecture]]）

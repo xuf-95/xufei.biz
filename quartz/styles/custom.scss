@@ -103,7 +103,7 @@ header {
   position: sticky !important;
   top: 0 !important;
   z-index: 999 !important;
-  background-color: var(--light) !important;  /* 滚动时不透明，防止内容穿透 */
+  background-color: var(--light) !important; /* 滚动时不透明，防止内容穿透 */
 }
 
 header > .search {
@@ -119,7 +119,7 @@ header > .search .search-bar {
 /* Darkmode 和 ReaderMode 图标间距缩短 */
 header > .darkmode,
 header > .readermode {
-  margin-left: 3px !important;  /* 原来可能是 1rem，改为 6px */
+  margin-left: 3px !important; /* 原来可能是 1rem，改为 6px */
 }
 
 /* Search 和 Darkmode 之间加一点间隔 */
@@ -196,7 +196,7 @@ sup {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 0;  // 改为 0，或者 clamp(0.5rem, 2vh, 1rem) 保留一点呼吸感
+  margin-top: 0; // 改为 0，或者 clamp(0.5rem, 2vh, 1rem) 保留一点呼吸感
 }
 
 .page #quartz-body .center .page-header > header,
@@ -261,15 +261,22 @@ sup {
 .page #quartz-body .sidebar.right {
   padding-left: 32px !important;
   padding-top: 0 !important;
-  
 }
 
-// Left TOC: keep the fold control unboxed and move the whole TOC lower.
+// Left TOC: keep the LessWrong-style rail close to the viewport edge.
 .page #quartz-body .sidebar.left .toc {
-  align-self: center;
-  width: fit-content;
+  position: fixed;
+  left: clamp(1.5rem, 1.8vw, 2rem);
+  top: clamp(5.5rem, 12vh, 8rem);
+  align-self: flex-start;
+  width: var(--toc-collapsed-width);
   max-width: 100%;
-  margin: 1.8rem auto 0;
+  margin: 0;
+}
+
+.page #quartz-body .sidebar.left .toc:hover,
+.page #quartz-body .sidebar.left .toc:focus-within {
+  width: var(--toc-expanded-width);
 }
 
 .page #quartz-body .sidebar.left .toc button.toc-header,
@@ -403,29 +410,28 @@ kbd:active kbd {
 
 /* ===================== */
 
-
 /* ==========Tag Index 两列布局=========== */
 .tag-section {
   display: grid;
   grid-template-columns: 200px 1fr;
   border-bottom: 1px solid var(--lightgray);
-  
+
   // 左列：tag 名称 + 数量
   &-left {
     // padding: 1rem 1.2rem 1rem 0;
     padding: 0rem 0rem 0rem 0;
     border-right: 1px solid var(--lightgray);
     h2 {
-      margin-top: .7rem;
+      margin-top: 0.7rem;
     }
-    
+
     // ✨ 核心：sticky 固定
     // 左列的内容在 tag-section 的高度范围内 sticky
     // 当滚动到最后一篇文章时，左列内容会随 tag-section 底部一起上移
     position: sticky;
     top: 20px; // 根据你的导航栏高度调整 60
     align-self: start; // 必须有，否则 sticky 在 grid 中不生效
-    
+
     .tag-label {
       display: inline-block;
       background: var(--highlight);
@@ -434,23 +440,22 @@ kbd:active kbd {
       font-weight: 600;
       margin-bottom: 0.4rem;
     }
-    
+
     .tag-count {
       font-size: 0.75rem;
       color: var(--gray);
     }
   }
-  
+
   // 右列：文章列表
   &-right {
     padding-left: 1.2rem;
-    
 
     ul {
       margin-top: 0px;
       margin-bottom: 0px;
     }
-    
+
     li {
       margin-top: 0px;
       margin-bottom: 0px;
@@ -463,20 +468,20 @@ kbd:active kbd {
       &:first-child {
         padding-top: 0rem; // 与左列 tag 名称顶部对齐
       }
-      
+
       &:last-child {
         border-bottom: 0rem;
         padding-bottom: 0rem;
       }
-      
+
       .article-date {
         font-size: 0.8rem;
         color: var(--gray);
         white-space: nowrap;
         min-width: 80px;
       }
+    }
   }
-}
 }
 /* ===================== */
 
@@ -514,7 +519,9 @@ kbd:active kbd {
       border: 1px solid var(--lightgray);
       color: var(--gray);
       text-decoration: none;
-      transition: color 0.15s, border-color 0.15s;
+      transition:
+        color 0.15s,
+        border-color 0.15s;
 
       &:hover {
         color: var(--dark);
@@ -524,7 +531,6 @@ kbd:active kbd {
   }
 }
 /* ===================== */
-
 
 // 首页 column callout 内的列表
 .callout[data-callout="column"] .callout-content {
@@ -555,10 +561,18 @@ body[data-slug="index"] {
     animation: home-card-fadein 0.4s ease forwards;
 
     // 错开每列的入场时间
-    &:nth-child(1) { animation-delay: 0.05s; }
-    &:nth-child(2) { animation-delay: 0.12s; }
-    &:nth-child(3) { animation-delay: 0.19s; }
-    &:nth-child(4) { animation-delay: 0.26s; }
+    &:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.19s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.26s;
+    }
   }
 }
 
@@ -663,7 +677,7 @@ body[data-slug="hobby/goods"] {
 
 // TOC wrapper: align vertically with Backlinks in right sidebar
 .toc-wrapper {
-  margin-top: 10rem;
+  margin-top: 0;
   padding-top: 0;
 }
 

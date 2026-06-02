@@ -65,7 +65,7 @@ The DCMM framework comprises **8 core capability domains**:
 - Roles and responsibilities
 - Data stewardship and accountability
 
-### 3. 数据架构 (Data Architecture)
+### 3. 数据架构 ([[01 Data Architecture HomePage]])
 - Data model design
 - Data distribution and integration
 - Technical architecture

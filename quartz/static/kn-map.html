@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据智能知识地图 3.0 — 数据消费</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0a0f0d;
+    --surface: #101810;
+    --card: #131f17;
+    --card2: #0f1a13;
+    --border: #1e3328;
+    --accent: #22c55e;
+    --accent2: #16a34a;
+    --accent3: #4ade80;
+    --gold: #d4a853;
+    --blue: #3b82f6;
+    --cyan: #06b6d4;
+    --orange: #f97316;
+    --purple: #a78bfa;
+    --red: #ef4444;
+    --text: #e2ede6;
+    --text2: #8aab92;
+    --text3: #567060;
+    --tag-bg: #1a2e20;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #07100a;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent3);
+    letter-spacing: .5px;
+    margin-right: 16px;
+  }
+
+  .toolbar button {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 5px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .toolbar button:hover { background: var(--border); color: var(--accent3); }
+  .toolbar button.active { background: var(--accent2); color: #fff; border-color: var(--accent); }
+
+  .toolbar-hint {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .page { padding: 24px; }
+
+  .header {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-bottom: 28px;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #0d1f12 0%, #0a1a10 100%);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(34,197,94,.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .header-logo {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent2), #14532d);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 0 24px rgba(34,197,94,.2);
+  }
+
+  .header-title h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  .header-title h1 span { color: var(--accent3); }
+  .header-title p {
+    font-size: 13px;
+    color: var(--text2);
+    margin-top: 6px;
+  }
+
+  .header-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .tag:hover, .tag.on { background: var(--accent2); color: #fff; border-color: var(--accent); }
+
+  .header-experts {
+    margin-left: auto;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .header-experts h4 { font-size: 11px; color: var(--text3); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .expert-chip {
+    display: inline-block;
+    margin: 2px;
+    background: #0f1d14;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+
+  /* ── SECTION GRID ── */
+  .sections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 1200px) { .sections-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 700px)  { .sections-grid { grid-template-columns: 1fr; } }
+
+  /* ── SECTION CARD ── */
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .section:hover { box-shadow: 0 0 20px rgba(34,197,94,.07); }
+
+  .section.span2 { grid-column: span 2; }
+  .section.span3 { grid-column: span 3; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover { background: rgba(34,197,94,.03); }
+
+  .section-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  .section-num {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    flex: 1;
+    outline: none;
+  }
+  .section-title:focus { color: var(--accent3); }
+
+  .section-toggle {
+    font-size: 14px;
+    color: var(--text3);
+    transition: transform .2s;
+  }
+  .section.collapsed .section-toggle { transform: rotate(-90deg); }
+
+  .section-body {
+    padding: 14px 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .section.collapsed .section-body { display: none; }
+
+  /* ── TOPIC BLOCK ── */
+  .topic {
+    background: #0d1810;
+    border: 1px solid #1a2e20;
+    border-left: 3px solid var(--accent2);
+    border-radius: 4px;
+    padding: 10px 12px;
+    transition: border-color .15s;
+  }
+  .topic:hover { border-left-color: var(--accent3); }
+
+  .topic-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent3);
+    margin-bottom: 6px;
+    outline: none;
+  }
+  .topic-title:focus { color: #fff; }
+
+  .topic-body {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.7;
+    outline: none;
+    white-space: pre-wrap;
+    min-height: 24px;
+  }
+  .topic-body:focus { color: var(--text); }
+
+  /* ── TAGS INLINE ── */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .pill {
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .pill-green { background: #14532d; color: #86efac; }
+  .pill-blue  { background: #1e3a5f; color: #93c5fd; }
+  .pill-gold  { background: #3d2a0a; color: #fcd34d; }
+  .pill-red   { background: #3b0f0f; color: #fca5a5; }
+  .pill-purple{ background: #2e1e5a; color: #c4b5fd; }
+  .pill-cyan  { background: #0f2d33; color: #67e8f9; }
+
+  /* ── FLOW ROW ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .flow-item {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .flow-arrow { color: var(--text3); font-size: 12px; }
+
+  /* ── TABLE ── */
+  .mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 6px;
+  }
+  .mini-table th {
+    background: #0f1f14;
+    color: var(--text3);
+    padding: 5px 8px;
+    text-align: left;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    letter-spacing: .5px;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .mini-table td {
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+  }
+  .mini-table tr:hover td { background: rgba(34,197,94,.03); }
+
+  /* ── EDIT CONTROLS ── */
+  [contenteditable="true"] {
+    border-radius: 2px;
+    transition: background .15s;
+  }
+  [contenteditable="true"]:hover { background: rgba(255,255,255,.02); }
+  [contenteditable="true"]:focus {
+    outline: none;
+    background: rgba(34,197,94,.04);
+    box-shadow: 0 0 0 1px rgba(34,197,94,.2);
+  }
+
+  /* ── LEVEL BADGE ── */
+  .level-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    margin-right: 4px;
+  }
+
+  /* ── ADD BUTTONS ── */
+  .add-btn {
+    width: 100%;
+    padding: 7px;
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    color: var(--text3);
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    transition: all .15s;
+    text-align: center;
+  }
+  .add-btn:hover { border-color: var(--accent2); color: var(--accent3); background: rgba(34,197,94,.03); }
+
+  /* ── COLOR DOTS MAP ── */
+  .dot-green  { background: var(--accent); }
+  .dot-blue   { background: var(--blue); }
+  .dot-gold   { background: var(--gold); }
+  .dot-orange { background: var(--orange); }
+  .dot-purple { background: var(--purple); }
+  .dot-cyan   { background: var(--cyan); }
+  .dot-red    { background: var(--red); }
+
+  /* ── PRINT ── */
+  @media print {
+    .toolbar { display: none; }
+    .section.collapsed .section-body { display: grid; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="toolbar-brand">⬡ 知识地图 3.0</span>
+  <button onclick="toggleAll(true)">展开全部</button>
+  <button onclick="toggleAll(false)">收起全部</button>
+  <button onclick="toggleEdit()" id="editBtn">✏️ 编辑模式</button>
+  <button onclick="exportHTML()">💾 导出 HTML</button>
+  <button onclick="window.print()">🖨️ 打印 / PDF</button>
+  <span class="toolbar-hint">点击章节标题可折叠 · 编辑模式下所有文字均可直接修改</span>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">⬡</div>
+    <div class="header-title">
+      <h1>数据智能知识地图 <span>3.0</span></h1>
+      <p contenteditable="false">数据生产 · 知识地图专业版 — 涵盖数据治理 · AB实验 · 指标体系 · DataOps</p>
+      <div class="header-tags">
+        <span class="tag on">数据治理</span>
+        <span class="tag on">AB实验</span>
+        <span class="tag on">指标体系</span>
+        <span class="tag on">DataOps</span>
+        <span class="tag on">数据安全</span>
+        <span class="tag on">元数据</span>
+      </div>
+    </div>
+    <div class="header-experts">
+      <h4>知识地图专家</h4>
+      <span class="expert-chip">雷小平 · 腾讯游戏</span>
+      <span class="expert-chip">李钰 · 阿里巴巴</span>
+      <span class="expert-chip">严海林 · 百度</span>
+      <span class="expert-chip">章鹏 · 蚂蚁数科</span>
+      <span class="expert-chip">李然辉 · 京东科技</span>
+      <span class="expert-chip">王世伟 · 货拉拉</span>
+      <span class="expert-chip">方磊 · 字节跳动</span>
+      <span class="expert-chip">马吉辉 · 永辉超市</span>
+      <span class="expert-chip">Kevin Jiao · 京东</span>
+      <span class="expert-chip">王洋 · 字节跳动</span>
+    </div>
+  </div>
+
+  <!-- =================== 数据治理 =================== -->
+  <div style="display:flex;align-items:center;gap:10px;margin:24px 0 14px;">
+    <div style="width:4px;height:22px;background:var(--accent);border-radius:2px;"></div>
+    <h2 style="font-size:18px;font-weight:900;letter-spacing:1px;" contenteditable="false">一、数据治理</h2>
+  </div>
+
+  <div class="sections-grid">
+
+    <!-- 1. 愿景与痛点 -->
+    <div class="section" id="s1">
+      <div class="section-header" onclick="toggleSection('s1')">
+        <div class="section-dot dot-green"></div>
+        <span class="section-num">01</span>
+        <span class="section-title" contenteditable="false">数据治理愿景与痛点</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🎯 愿景</div>
+          <div class="topic-body" contenteditable="false">打造企业可信的数据生态，赋能企业创新与可持续发展</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">⚠️ 三大痛点</div>
+          <div class="topic-body" contenteditable="false">1. 数据资产质量：组织庞大，资产复用差，质量较低
+2. 标准统一与安全：缺少统一数据标准与计算口径，防止数据泄密
+3. 可信任数据：持续评估改进质量；指标保持技术与业务一致理解</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 治理思维 -->
+    <div class="section" id="s2">
+      <div class="section-header" onclick="toggleSection('s2')">
+        <div class="section-dot dot-green"></div>
+        <span class="section-num">02</span>
+        <span class="section-title" contenteditable="false">数据治理思维</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🏗️ 四层架构</div>
+          <div class="topic-body" contenteditable="false">数据战略 → 组织架构 → 制度建设 → 平台工具</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📋 数据管理八大领域</div>
+          <div class="pills">
+            <span class="pill pill-green">数据标准管理</span>
+            <span class="pill pill-green">数据质量管理</span>
+            <span class="pill pill-green">元数据管理</span>
+            <span class="pill pill-green">数据架构&模型</span>
+            <span class="pill pill-blue">主数据管理</span>
+            <span class="pill pill-blue">数据服务管理</span>
+            <span class="pill pill-blue">数据安全&隐私</span>
+            <span class="pill pill-blue">数据生命周期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 解决方案 -->
+    <div class="section" id="s3">
+      <div class="section-header" onclick="toggleSection('s3')">
+        <div class="section-dot dot-green"></div>
+        <span class="section-num">03</span>
+        <span class="section-title" contenteditable="false">数据治理解决方案</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🛠️ 平台工具层</div>
+          <div class="pills">
+            <span class="pill pill-green">数据一体化开发工具</span>
+            <span class="pill pill-green">数据智能管控工具</span>
+            <span class="pill pill-green">数据建模管理工具</span>
+            <span class="pill pill-blue">大数据智能分析平台</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔧 机制建设</div>
+          <div class="topic-body" contenteditable="false">管理办法 · 考核机制 · 运营规范/监督 · 成熟度评估</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 大数据基础平台治理 -->
+    <div class="section span2" id="s4">
+      <div class="section-header" onclick="toggleSection('s4')">
+        <div class="section-dot dot-cyan"></div>
+        <span class="section-num">04</span>
+        <span class="section-title" contenteditable="false">大数据基础平台治理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">❌ 三大问题</div>
+          <div class="topic-body" contenteditable="false">1. Spark/Hive/Hadoop 运行参数是否合理影响效率和资源消耗
+2. 集群成千上万任务，手工调整参数工作量巨大
+3. 异常任务治理：失败、长尾、数据倾斜、资源浪费</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">💡 技术实现思路</div>
+          <div class="topic-body" contenteditable="false">• HBO（History Based Optimization）历史统计优化
+• 自动化调优，运行时注入方式，侵入性小
+• 灰度验证，多重保护机制
+• 成本节省：大数据成本降低 10%~30%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 基础平台数据预警治理 -->
+    <div class="section" id="s5">
+      <div class="section-header" onclick="toggleSection('s5')">
+        <div class="section-dot dot-orange"></div>
+        <span class="section-num">05</span>
+        <span class="section-title" contenteditable="false">大数据基础平台数据预警治理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">⚠️ 痛点</div>
+          <div class="topic-body" contenteditable="false">预警冗余 · 无效预警 · 准确性差 · 预警不合理 · 离职交接预警失效</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">✅ 解决措施</div>
+          <div class="topic-body" contenteditable="false">• OA 加强数据交接离职流程
+• 预警人员 Backup 机制
+• 加强业务含义规则，预警告警等级化落到责任人
+• 定期梳理无人处理任务 & 清理频繁重复预警
+• 优化集群本身导致的任务故障，加入自动化 hook</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. 数仓治理 -->
+    <div class="section span2" id="s6">
+      <div class="section-header" onclick="toggleSection('s6')">
+        <div class="section-dot dot-green"></div>
+        <span class="section-num">06</span>
+        <span class="section-title" contenteditable="false">数仓治理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:1fr 1fr;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📐 数据分层架构</div>
+          <div class="flow">
+            <span class="flow-item">STG 数据贴源层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">ODS 数据操作层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">DW 数据公共层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">DWS 数据汇总层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">DM 数据集市层</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">♻️ 模型复用价值 & 难点</div>
+          <div class="topic-body" contenteditable="false">价值：提高开发效率 · 保证数据一致性 · 降低维护成本
+
+难点：业务差异挑战 · 数据质量不一致 · 组织架构变化快（区域权限隔离）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. 数据标准管理 -->
+    <div class="section" id="s7">
+      <div class="section-header" onclick="toggleSection('s7')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">07</span>
+        <span class="section-title" contenteditable="false">数仓治理数据标准管理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📊 数据标准定义框架（三属性）</div>
+          <table class="mini-table">
+            <tr><th>属性类型</th><th>主要字段</th></tr>
+            <tr><td><span class="pill pill-green">业务属性</span></td><td>标准化名称、业务定义、制定依据、统计频率、度量单位</td></tr>
+            <tr><td><span class="pill pill-blue">管理属性</span></td><td>指标分类、归口部门、安全等级、标准管理者</td></tr>
+            <tr><td><span class="pill pill-gold">技术属性</span></td><td>数据类型、数据长度、数据格式、精度、技术规则</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. 元数据管理 -->
+    <div class="section" id="s8">
+      <div class="section-header" onclick="toggleSection('s8')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">08</span>
+        <span class="section-title" contenteditable="false">大数据功能平台元数据管理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔄 元数据管理流程</div>
+          <div class="flow">
+            <span class="flow-item">配置数据源采集</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">嵌入评审环节</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">血缘关系解析</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">预发布库管理</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">变更知会关联方</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🗂️ 表管理范围</div>
+          <div class="pills">
+            <span class="pill pill-green">Hive 表管理</span>
+            <span class="pill pill-green">Doris 表管理</span>
+            <span class="pill pill-blue">Kafka 管理</span>
+            <span class="pill pill-blue">ClickHouse 表管理</span>
+            <span class="pill pill-blue">ES 表管理</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. 元数据管理体系 -->
+    <div class="section" id="s9">
+      <div class="section-header" onclick="toggleSection('s9')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">09</span>
+        <span class="section-title" contenteditable="false">大数据功能平台元数据管理体系</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📱 应用场景</div>
+          <div class="pills">
+            <span class="pill pill-cyan">数据地图</span>
+            <span class="pill pill-cyan">数据血缘</span>
+            <span class="pill pill-green">影响分析</span>
+            <span class="pill pill-green">冷/热度分析</span>
+            <span class="pill pill-blue">成本治理</span>
+            <span class="pill pill-blue">跨环境比对</span>
+            <span class="pill pill-gold">数据编织</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📍 数据来源</div>
+          <div class="topic-body" contenteditable="false">数据仓库和数据集市 · 子公司数据 · 应用日志 · 业务系统</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. 数据服务 -->
+    <div class="section" id="s10">
+      <div class="section-header" onclick="toggleSection('s10')">
+        <div class="section-dot dot-purple"></div>
+        <span class="section-num">10</span>
+        <span class="section-title" contenteditable="false">数据服务</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🎯 目标</div>
+          <div class="topic-body" contenteditable="false">• 提升服务质量：准确性、及时性、稳定性
+• 保障数据安全：访问控制、加密、脱敏
+• 同化引擎差异：用户只关心数据本身</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔗 服务链路</div>
+          <div class="flow">
+            <span class="flow-item">离线/实时数据</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据开发</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据发布</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">内部/外部服务</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. 数据质量 -->
+    <div class="section span2" id="s11">
+      <div class="section-header" onclick="toggleSection('s11')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">11</span>
+        <span class="section-title" contenteditable="false">数据质量</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:repeat(5,1fr);gap:8px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">① 基础数据监控</div>
+          <div class="pills">
+            <span class="pill pill-green">完整性</span>
+            <span class="pill pill-green">唯一性</span>
+            <span class="pill pill-green">准确性</span>
+            <span class="pill pill-green">真实性</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">② 指标数据监控</div>
+          <div class="pills">
+            <span class="pill pill-blue">同比波动</span>
+            <span class="pill pill-blue">环比波动</span>
+            <span class="pill pill-blue">最大值</span>
+            <span class="pill pill-blue">非负</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">③ 跨系统数据监控</div>
+          <div class="topic-body" contenteditable="false">MySQL/Hive/CK 数据一致性；跨域一致性；业务一致性</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">④ 数据任务监控</div>
+          <div class="pills">
+            <span class="pill pill-gold">每天</span>
+            <span class="pill pill-gold">每周</span>
+            <span class="pill pill-gold">每月</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">⑤ 表结构监控</div>
+          <div class="pills">
+            <span class="pill pill-red">表变动</span>
+            <span class="pill pill-red">字段变动</span>
+            <span class="pill pill-red">视图变动</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. 数据报表治理 -->
+    <div class="section" id="s12">
+      <div class="section-header" onclick="toggleSection('s12')">
+        <div class="section-dot dot-orange"></div>
+        <span class="section-num">12</span>
+        <span class="section-title" contenteditable="false">数据报表治理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📋 报表治理要点</div>
+          <div class="topic-body" contenteditable="false">• 依托数据管理保障报表及时性、准确性
+• 数据慢查询治理监控（95线、90线）
+• 报表权限与数据安全一体化落地
+• 业务报表、决策报表、实时报表区分平台管理</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. 数据安全 -->
+    <div class="section span2" id="s13">
+      <div class="section-header" onclick="toggleSection('s13')">
+        <div class="section-dot dot-red"></div>
+        <span class="section-num">13</span>
+        <span class="section-title" contenteditable="false">数据安全</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:repeat(3,1fr);gap:10px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔐 数据采集阶段</div>
+          <div class="pills">
+            <span class="pill pill-red">数据源认证</span>
+            <span class="pill pill-red">数据加密</span>
+            <span class="pill pill-red">网络防泄漏</span>
+            <span class="pill pill-red">安全准入</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">💾 数据存储阶段</div>
+          <div class="pills">
+            <span class="pill pill-red">数据隔离存储</span>
+            <span class="pill pill-red">访问控制</span>
+            <span class="pill pill-red">云端存储审批</span>
+            <span class="pill pill-red">数字水印</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔄 数据交换阶段</div>
+          <div class="pills">
+            <span class="pill pill-red">数据脱敏</span>
+            <span class="pill pill-red">数字水印</span>
+            <span class="pill pill-red">数据溯源</span>
+            <span class="pill pill-red">导入导出审计</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sections-grid 数据治理 -->
+
+  <!-- =================== AB实验 =================== -->
+  <div style="display:flex;align-items:center;gap:10px;margin:32px 0 14px;">
+    <div style="width:4px;height:22px;background:var(--blue);border-radius:2px;"></div>
+    <h2 style="font-size:18px;font-weight:900;letter-spacing:1px;" contenteditable="false">二、AB 实验</h2>
+  </div>
+
+  <div class="sections-grid">
+
+    <!-- AB 01 发展 -->
+    <div class="section" id="ab1">
+      <div class="section-header" onclick="toggleSection('ab1')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">01</span>
+        <span class="section-title" contenteditable="false">AB实验的发展</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📈 演进历程</div>
+          <div class="flow">
+            <span class="flow-item">单层实验</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">层域多层并行</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">社交/双边复杂场景</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">万级并行实验</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🚀 AI 智能化趋势</div>
+          <div class="topic-body" contenteditable="false">大模型与机器学习进一步赋能实验自助化、智能化进化</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AB 02 治理总览 -->
+    <div class="section span2" id="ab2">
+      <div class="section-header" onclick="toggleSection('ab2')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">02</span>
+        <span class="section-title" contenteditable="false">实验治理总览</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:repeat(4,1fr);gap:10px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🏆 实验收益（Leader视角）</div>
+          <div class="topic-body" contenteditable="false">Holdout 机制：评估多实验叠加收益；按组织架构设计层级；评估线上实验叠加效果</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔬 实验质量（数科视角）</div>
+          <div class="pills">
+            <span class="pill pill-blue">AA回溯</span>
+            <span class="pill pill-blue">CUPED</span>
+            <span class="pill pill-blue">重随机</span>
+            <span class="pill pill-blue">多重比较修正</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">💰 成本治理</div>
+          <div class="topic-body" contenteditable="false">精准曝光 · 参数增量下发 · bitmap压缩 · Latin分流复用hash · 曝光上报限流</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🛡️ 负向治理（Metric Defender）</div>
+          <div class="pills">
+            <span class="pill pill-red">winner's curse</span>
+            <span class="pill pill-red">p-hacking</span>
+            <span class="pill pill-red">SRM</span>
+            <span class="pill pill-red">pre-experiment bias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AB 03 Holdout -->
+    <div class="section" id="ab3">
+      <div class="section-header" onclick="toggleSection('ab3')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">03</span>
+        <span class="section-title" contenteditable="false">Holdout 机制</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📌 核心价值</div>
+          <div class="topic-body" contenteditable="false">• 目前最接近真实收益的多实验效果叠加评估机制
+• 可按组织架构设计不同层级结构，精准评估每个部门收益
+• 既可评估已发布实验，也可评估线上正在跑的实验的叠加效果</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🏗️ 层级结构示例</div>
+          <div class="topic-body" contenteditable="false">Org Holdout → TeamA Holdout → TeamB Holdout
+layer_A_1 / layer_A_2 / layer_B_1 / layer_B_2 / layer_B_3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AB 04 实验质量 -->
+    <div class="section" id="ab4">
+      <div class="section-header" onclick="toggleSection('ab4')">
+        <div class="section-dot dot-blue"></div>
+        <span class="section-num">04</span>
+        <span class="section-title" contenteditable="false">实验质量</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📊 质量指标维度</div>
+          <table class="mini-table">
+            <tr><th>维度</th><th>方法</th></tr>
+            <tr><td>实验功效</td><td>AA回溯、CUPED、重随机</td></tr>
+            <tr><td>正向率</td><td>结合实验资产，提高假设正向率</td></tr>
+            <tr><td>FDR控制</td><td>多重比较修正、Sequential test</td></tr>
+            <tr><td>SRM 检测</td><td>随机性检验，确保分流质量</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- AB 05 成本治理 -->
+    <div class="section" id="ab5">
+      <div class="section-header" onclick="toggleSection('ab5')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">05</span>
+        <span class="section-title" contenteditable="false">成本治理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📉 四大成本方向</div>
+          <div class="topic-body" contenteditable="false">① 曝光上报侧限流：每分流单元每实验每天只需上报一次
+② 分流侧：Latin分流，多实验层复用一次hash；bitmap压缩
+③ 数据链路：Spark参数优化；分桶+bootstrap计算；预计算跨实验打包
+④ 实验限制：控制滥用 · 历史数据过滤假设 · 限制指标数量</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AB 06 负向治理 -->
+    <div class="section" id="ab6">
+      <div class="section-header" onclick="toggleSection('ab6')">
+        <div class="section-dot dot-red"></div>
+        <span class="section-num">06</span>
+        <span class="section-title" contenteditable="false">负向治理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🚨 全局监控体系</div>
+          <div class="topic-body" contenteditable="false">• 建立全局监控指标组，提供主动探索工具
+• 自动报警机制，按大盘影响排序召回
+• 根据用户反馈调整报警规则，告警通知合并</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🎯 精准率优化</div>
+          <div class="topic-body" contenteditable="false">结合实验资产沉淀，挖掘历史报告，总结归因链路，降低实验创建门槛</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AB 07 实验智能化 -->
+    <div class="section" id="ab7">
+      <div class="section-header" onclick="toggleSection('ab7')">
+        <div class="section-dot dot-purple"></div>
+        <span class="section-num">07</span>
+        <span class="section-title" contenteditable="false">实验智能化</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🤖 AI 赋能方向</div>
+          <div class="pills">
+            <span class="pill pill-purple">大模型结合</span>
+            <span class="pill pill-purple">MAB（多臂老虎机）</span>
+            <span class="pill pill-purple">实验仿真</span>
+            <span class="pill pill-purple">参数自动调优</span>
+            <span class="pill pill-cyan">对话式实验报告解析</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">💡 在线实验调参</div>
+          <div class="topic-body" contenteditable="false">根据用户 context 决定最佳投放策略；离线 Spark 链路优化</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /AB实验 -->
+
+  <!-- =================== 指标体系 =================== -->
+  <div style="display:flex;align-items:center;gap:10px;margin:32px 0 14px;">
+    <div style="width:4px;height:22px;background:var(--gold);border-radius:2px;"></div>
+    <h2 style="font-size:18px;font-weight:900;letter-spacing:1px;" contenteditable="false">三、指标体系构建 & 应用</h2>
+  </div>
+
+  <div class="sections-grid">
+
+    <!-- 指标 01 价值与意义 -->
+    <div class="section" id="m1">
+      <div class="section-header" onclick="toggleSection('m1')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">01</span>
+        <span class="section-title" contenteditable="false">指标体系的价值和意义</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">💎 四层价值模型（DIKW）</div>
+          <div class="flow">
+            <span class="flow-item">Data 数据层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">Information 信息层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">Knowledge 知识层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">Wisdom 洞见层</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🎯 六大应用场景</div>
+          <div class="pills">
+            <span class="pill pill-gold">信息透明</span>
+            <span class="pill pill-gold">目标管理</span>
+            <span class="pill pill-gold">决策洞察</span>
+            <span class="pill pill-green">用户运营</span>
+            <span class="pill pill-green">产品运营</span>
+            <span class="pill pill-green">过程分析</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 02 设计 -->
+    <div class="section" id="m2">
+      <div class="section-header" onclick="toggleSection('m2')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">02</span>
+        <span class="section-title" contenteditable="false">指标体系的设计</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📐 四大设计原则</div>
+          <div class="pills">
+            <span class="pill pill-gold">第一性原则</span>
+            <span class="pill pill-gold">系统性原则</span>
+            <span class="pill pill-gold">动态性原则</span>
+            <span class="pill pill-gold">典型性原则</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🛠️ 设计方法论</div>
+          <div class="pills">
+            <span class="pill pill-blue">OSM 模型</span>
+            <span class="pill pill-blue">杜邦分析</span>
+            <span class="pill pill-blue">北极星指标</span>
+            <span class="pill pill-blue">平衡计分卡</span>
+            <span class="pill pill-purple">PULSE 模型</span>
+            <span class="pill pill-purple">AIDA 模型</span>
+            <span class="pill pill-purple">4P 模型</span>
+            <span class="pill pill-purple">ARGO 模型</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 03 梳理 -->
+    <div class="section" id="m3">
+      <div class="section-header" onclick="toggleSection('m3')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">03</span>
+        <span class="section-title" contenteditable="false">指标体系的梳理</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🏗️ 数据架构体系（主题域）</div>
+          <div class="pills">
+            <span class="pill pill-green">客户</span>
+            <span class="pill pill-green">订单</span>
+            <span class="pill pill-green">营销</span>
+            <span class="pill pill-green">流量</span>
+            <span class="pill pill-blue">机构</span>
+            <span class="pill pill-blue">商品</span>
+            <span class="pill pill-blue">财务</span>
+            <span class="pill pill-blue">仓储</span>
+            <span class="pill pill-gold">供应链</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📊 指标三层分类</div>
+          <table class="mini-table">
+            <tr><th>层级</th><th>说明</th></tr>
+            <tr><td><span class="pill pill-gold">核心指标</span></td><td>北极星指标，年度目标，全/多部门KPI</td></tr>
+            <tr><td><span class="pill pill-blue">业务指标</span></td><td>业务目标，跨/单部门KPI</td></tr>
+            <tr><td><span class="pill pill-green">操作指标</span></td><td>事件目标，团队/个人KPI</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 04 OSM -->
+    <div class="section span2" id="m4">
+      <div class="section-header" onclick="toggleSection('m4')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">04</span>
+        <span class="section-title" contenteditable="false">OSM方法进行指标体系搭建（货运平台案例）</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🎯 OSM 框架</div>
+          <div class="flow">
+            <span class="flow-item">Objective 目标</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">Strategy 策略</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">Measure 度量</span>
+          </div>
+          <div class="topic-body" style="margin-top:8px;" contenteditable="false">北极星指标：扩需求，足运力，促配对（GTV）</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📈 核心指标体系（货运平台）</div>
+          <div class="topic-body" contenteditable="false">用户侧：注册/活跃/下单用户数、留存率、LTV、人均收入
+司机侧：注册/活跃/接单司机数、在线时长、留存率、运力分布
+订单侧：下单量、完单量、GTV、优惠券占比、市场份额</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 05 MECE -->
+    <div class="section" id="m5">
+      <div class="section-header" onclick="toggleSection('m5')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">05</span>
+        <span class="section-title" contenteditable="false">基于MECE原则进行指标体系搭建</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📐 MECE 五种拆解方法</div>
+          <table class="mini-table">
+            <tr><th>方法</th><th>举例</th></tr>
+            <tr><td>二(多)分法</td><td>男性/女性；工作日/节假日</td></tr>
+            <tr><td>流程法</td><td>研发→生产→销售→客服</td></tr>
+            <tr><td>要素法</td><td>按访问设备（手机/电脑/平板）</td></tr>
+            <tr><td>公式法</td><td>利润 = 收入 - 成本；收入 = 单价×销量</td></tr>
+            <tr><td>矩阵法</td><td>紧急&重要 / 重要不紧急 / 紧急不重要 / 两者皆否</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 06 构建与应用 -->
+    <div class="section span2" id="m6">
+      <div class="section-header" onclick="toggleSection('m6')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">06</span>
+        <span class="section-title" contenteditable="false">指标体系的构建与应用</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔄 设计流程</div>
+          <div class="flow">
+            <span class="flow-item">确立业务目标</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">抽象业务过程</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">定义核心指标</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">拆解过程指标</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">驱动业务优化</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🏗️ 指标生产体系</div>
+          <div class="flow">
+            <span class="flow-item">数据采集</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据清洗</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">明细/汇总层</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">指标服务</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 07 管理体系 -->
+    <div class="section" id="m7">
+      <div class="section-header" onclick="toggleSection('m7')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">07</span>
+        <span class="section-title" contenteditable="false">指标管理体系</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📦 指标管理模块</div>
+          <div class="pills">
+            <span class="pill pill-gold">原子指标管理</span>
+            <span class="pill pill-gold">派生指标管理</span>
+            <span class="pill pill-gold">衍生指标管理</span>
+            <span class="pill pill-blue">通用维度管理</span>
+            <span class="pill pill-blue">业务域管理</span>
+            <span class="pill pill-blue">限定词管理</span>
+            <span class="pill pill-green">血缘检索</span>
+            <span class="pill pill-green">关系图谱</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔄 指标需求流程</div>
+          <div class="flow">
+            <span class="flow-item">需求录入</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">指标评审</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">指标研发</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">指标发布</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 08 应用架构 -->
+    <div class="section span2" id="m8">
+      <div class="section-header" onclick="toggleSection('m8')">
+        <div class="section-dot dot-gold"></div>
+        <span class="section-num">08</span>
+        <span class="section-title" contenteditable="false">指标体系应用架构</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:repeat(3,1fr);">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">📱 应用层</div>
+          <div class="pills">
+            <span class="pill pill-gold">A/B Test</span>
+            <span class="pill pill-gold">KPI看板</span>
+            <span class="pill pill-gold">运营系统</span>
+            <span class="pill pill-gold">高峰预测</span>
+            <span class="pill pill-gold">自定义看板</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔧 服务层</div>
+          <div class="pills">
+            <span class="pill pill-blue">指标服务</span>
+            <span class="pill pill-blue">速查服务</span>
+            <span class="pill pill-blue">维度服务</span>
+            <span class="pill pill-blue">统计算法库</span>
+            <span class="pill pill-blue">日期计算服务</span>
+            <span class="pill pill-blue">用户鉴权</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🗄️ 数据层</div>
+          <div class="pills">
+            <span class="pill pill-green">HDFS</span>
+            <span class="pill pill-green">Doris</span>
+            <span class="pill pill-green">MySQL</span>
+            <span class="pill pill-green">HBase</span>
+            <span class="pill pill-green">ES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指标 09 未来趋势 -->
+    <div class="section" id="m9">
+      <div class="section-header" onclick="toggleSection('m9')">
+        <div class="section-dot dot-purple"></div>
+        <span class="section-num">09</span>
+        <span class="section-title" contenteditable="false">指标体系的未来趋势</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔮 四大趋势</div>
+          <div class="pills">
+            <span class="pill pill-purple">指标资产化</span>
+            <span class="pill pill-purple">在线建模</span>
+            <span class="pill pill-purple">指标 + BI</span>
+            <span class="pill pill-purple">指标 + AI（对话式）</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🤖 AI 对话式场景示例</div>
+          <div class="topic-body" contenteditable="false">「昨日车型下单情况？」→ 车型C贡献量最大，建议下钻城市/车型
+「今日城市A订单量为何下降？」→ 可能天气原因（暴雨）
+「城市A下单情况怎么样？」→ 未补贴订单量下降，建议调整补贴策略</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /指标体系 -->
+
+  <!-- =================== DataOps =================== -->
+  <div style="display:flex;align-items:center;gap:10px;margin:32px 0 14px;">
+    <div style="width:4px;height:22px;background:var(--cyan);border-radius:2px;"></div>
+    <h2 style="font-size:18px;font-weight:900;letter-spacing:1px;" contenteditable="false">四、DataOps</h2>
+  </div>
+
+  <div class="sections-grid">
+
+    <!-- DO 01 困境 -->
+    <div class="section" id="do1">
+      <div class="section-header" onclick="toggleSection('do1')">
+        <div class="section-dot dot-cyan"></div>
+        <span class="section-num">01</span>
+        <span class="section-title" contenteditable="false">数据开发的困境</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">⚠️ 三大核心问题</div>
+          <div class="topic-body" contenteditable="false">① 数据所有权问题：业务负责人拥有数据所有权，但受限于经营和组织压力，投入精力有限
+② 数据价值问题：最终消费者离开发者有距离，开发团队难以与业务价值直接关联
+③ 数据专业性问题：成本、效率度量困难；安全问题日益突出</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DO 02 目标 -->
+    <div class="section" id="do2">
+      <div class="section-header" onclick="toggleSection('do2')">
+        <div class="section-dot dot-cyan"></div>
+        <span class="section-num">02</span>
+        <span class="section-title" contenteditable="false">DataOps的目标</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🎯 三大目标</div>
+          <div class="topic-body" contenteditable="false">① 明确核心数据资产及相关任务，映射线上功能，体系化核心决策指标
+② 让核心数据资产具有持续主动迭代能力
+③ 核心数据资产具备完整的自动化建设能力</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DO 03 组织 -->
+    <div class="section span2" id="do3">
+      <div class="section-header" onclick="toggleSection('do3')">
+        <div class="section-dot dot-cyan"></div>
+        <span class="section-num">03</span>
+        <span class="section-title" contenteditable="false">DataOps的组织</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:repeat(4,1fr);gap:10px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🏢 数据所有者</div>
+          <div class="topic-body" contenteditable="false">认可数据价值，明确谁为业务数据负责，做好业务管理与数据体系结合</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔧 数据生产者</div>
+          <div class="topic-body" contenteditable="false">做好元数据的提供，关心数据全链路，理解数据变更对下游的影响</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">💻 数据开发者</div>
+          <div class="topic-body" contenteditable="false">持续提升研发效率，以数据消费为核心业务价值，主动解决业务问题</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">👤 数据消费者</div>
+          <div class="topic-body" contenteditable="false">拥抱数据，主动使用数据，以用数思路刻画业务流程</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DO 04 实现 -->
+    <div class="section span2" id="do4">
+      <div class="section-header" onclick="toggleSection('do4')">
+        <div class="section-dot dot-cyan"></div>
+        <span class="section-num">04</span>
+        <span class="section-title" contenteditable="false">DataOps的实现</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🔄 数据需求循环</div>
+          <div class="flow">
+            <span class="flow-item">问题提出</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">需求提出/分配</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">需求评审</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">模型评审</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据开发</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据测试</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据上线</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据验收</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">数据消费</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-item">问题解决</span>
+          </div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🛠️ DataOps 工具体系</div>
+          <div class="pills">
+            <span class="pill pill-cyan">需求管理平台</span>
+            <span class="pill pill-cyan">模型平台</span>
+            <span class="pill pill-cyan">数据开发平台</span>
+            <span class="pill pill-cyan">资产平台</span>
+            <span class="pill pill-green">全流程需求绑定</span>
+            <span class="pill pill-green">模型检测</span>
+            <span class="pill pill-green">代码检测</span>
+            <span class="pill pill-green">自动测试</span>
+            <span class="pill pill-green">发布流水线</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DO 05 难点 -->
+    <div class="section" id="do5">
+      <div class="section-header" onclick="toggleSection('do5')">
+        <div class="section-dot dot-orange"></div>
+        <span class="section-num">05</span>
+        <span class="section-title" contenteditable="false">DataOps的难点</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">⚡ 四大挑战</div>
+          <div class="topic-body" contenteditable="false">① 组织广泛认同：避免纯研发视角，以业务价值打动数据所有者
+② 工具集成：避免短视，关注完整工作流，评估对开发效率的负面影响
+③ 改造现有流程：不同团队流程尽可能敏捷统一，有明确终极目标
+④ 打通消费场景连接：避免自嗨，关注数据消费者实际感受</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DO 06 未来 -->
+    <div class="section span2" id="do6">
+      <div class="section-header" onclick="toggleSection('do6')">
+        <div class="section-dot dot-purple"></div>
+        <span class="section-num">06</span>
+        <span class="section-title" contenteditable="false">DataOps的未来</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="section-body" style="grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🚀 开发效率方向</div>
+          <div class="topic-body" contenteditable="false">• 围绕可持续迭代的数据资产，全面提升自动化水平
+• 基于线上功能上线自动实现从数据集成到指标提供</div>
+        </div>
+        <div class="topic">
+          <div class="topic-title" contenteditable="false">🤖 消费效率方向（AI驱动）</div>
+          <div class="topic-body" contenteditable="false">• 大模型数据问答是发展趋势
+• 进一步丰富元数据，持续追踪数据产生背景
+• 数仓模型层适配大模型自动生成 SQL，明细层为主、汇总层为辅</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /DataOps -->
+
+  <div style="margin:40px 0 20px;padding:20px;background:var(--card2);border:1px solid var(--border);border-radius:8px;text-align:center;color:var(--text3);font-size:12px;">
+    DataFun 数据智能知识地图 3.0 — 数据生产 · 知识地图专业版 &nbsp;|&nbsp; 可编辑版本
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  // Section toggle
+  function toggleSection(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+
+  function toggleAll(open) {
+    document.querySelectorAll('.section').forEach(s => {
+      open ? s.classList.remove('collapsed') : s.classList.add('collapsed');
+    });
+  }
+
+  // Edit mode
+  let editMode = false;
+  function toggleEdit() {
+    editMode = !editMode;
+    const btn = document.getElementById('editBtn');
+    const fields = document.querySelectorAll('.section-title, .topic-title, .topic-body, .header-title p');
+    fields.forEach(el => {
+      el.contentEditable = editMode ? 'true' : 'false';
+    });
+    btn.classList.toggle('active', editMode);
+    btn.textContent = editMode ? '✅ 退出编辑' : '✏️ 编辑模式';
+  }
+
+  // Export HTML
+  function exportHTML() {
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '知识地图-数据消费-可编辑版.html';
+    a.click();
+  }
+
+  // Tag filter (visual only)
+  document.querySelectorAll('.tag').forEach(t => {
+    t.addEventListener('click', () => t.classList.toggle('on'));
+  });
+</script>
+</body>
+</html>

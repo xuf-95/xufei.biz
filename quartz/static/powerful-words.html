@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Powerful Words for Client Presentations</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #faf8f4;
+    --gold: #c9a84c;
+    --gold-light: #f0dfa0;
+    --rust: #b84a2e;
+    --slate: #3d4a5c;
+    --muted: #8a8680;
+    --border: #e2ddd6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 48px 24px;
+  }
+
+  header {
+    max-width: 860px;
+    margin: 0 auto 48px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 28px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.6;
+  }
+
+  /* Filter tabs */
+  .filters {
+    max-width: 860px;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    padding: 7px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.18s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .filter-btn.active {
+    background: var(--ink);
+  }
+
+  /* Search */
+  .search-wrap {
+    max-width: 860px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 12px 16px 12px 44px;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-wrap input:focus { border-color: var(--ink); }
+  .search-wrap input::placeholder { color: var(--muted); }
+
+  .search-icon {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  /* Grid */
+  .grid {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--paper);
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease both;
+  }
+
+  .card:hover { background: white; }
+
+  .card.copied::after {
+    content: '✓ Copied';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--ink);
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    animation: flashIn 0.9s ease forwards;
+  }
+
+  @keyframes flashIn {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    75%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .cat-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .word {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .definition {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .context {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .hint {
+    max-width: 860px;
+    margin: 0 auto 24px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .hint span { color: var(--gold); font-weight: 500; }
+
+  .empty {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    display: none;
+  }
+
+  footer {
+    max-width: 860px;
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Presentation Toolkit</div>
+  <h1>Powerful Words<br>for Client Presentations</h1>
+  <p class="subtitle">A curated lexicon for persuasive, credible communication. Click any word to copy it instantly.</p>
+</header>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+</div>
+
+<div class="search-wrap">
+  <span class="search-icon">⌕</span>
+  <input type="text" id="search" placeholder="Search words or categories…">
+</div>
+
+<p class="hint"><span>Click a word</span> to copy it to clipboard.</p>
+
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty">No words match your search.</div>
+
+<footer>
+  <p>Tip: Filter by category to match your presentation's goal — build trust with <strong>Credibility</strong> words, drive action with <strong>Urgency</strong>, and land the sale with <strong>Value</strong>.</p>
+</footer>
+
+<script>
+const words = [
+  // VALUE
+  { word: "Transform", cat: "Value", def: "Signals dramatic, meaningful change — not incremental improvement.", context: "\"This solution will transform how your team operates.\"" },
+  { word: "Proven", cat: "Credibility", def: "Removes risk perception. Implies track record.", context: "\"A proven framework trusted by 200+ companies.\"" },
+  { word: "Tailored", cat: "Trust", def: "Shows you listened. Signals customization over generic solutions.", context: "\"A tailored approach built around your specific goals.\"" },
+  { word: "Accelerate", cat: "Value", def: "Connotes speed and momentum — attractive to decision-makers.", context: "\"We'll accelerate your path to market.\"" },
+  { word: "Seamless", cat: "Value", def: "Removes friction in the client's mind. Reduces perceived implementation risk.", context: "\"Seamless integration with your existing tools.\"" },
+  { word: "Measurable", cat: "Credibility", def: "Grounds claims in accountability. Clients love tangible outcomes.", context: "\"Delivering measurable ROI within 90 days.\"" },
+  { word: "Scalable", cat: "Value", def: "Signals future-proofing — important for growth-minded clients.", context: "\"A scalable infrastructure that grows with you.\"" },
+  { word: "Strategic", cat: "Credibility", def: "Elevates the conversation beyond tactical; signals executive alignment.", context: "\"Strategic partnership, not just a vendor relationship.\"" },
+  { word: "Streamline", cat: "Value", def: "Implies efficiency gains and removing waste — universally appealing.", context: "\"We'll streamline your approval workflows.\"" },
+  { word: "Empower", cat: "Trust", def: "Puts the client at the center. Signals agency, not dependency.", context: "\"We empower your team to own the outcomes.\"" },
+  { word: "Innovative", cat: "Credibility", def: "Positions you at the frontier — use with evidence to avoid sounding generic.", context: "\"Built on innovative architecture your competitors can't match.\"" },
+  { word: "Maximize", cat: "Value", def: "Strong results verb. Implies optimization and full potential realized.", context: "\"Designed to maximize your existing investment.\"" },
+  { word: "Dedicated", cat: "Trust", def: "Signals commitment and accountability. Reassures clients post-sale.", context: "\"A dedicated team assigned from day one.\"" },
+  { word: "Benchmark", cat: "Credibility", def: "Anchors your claim in data and industry standards.", context: "\"Benchmarking against top performers in your sector.\"" },
+  { word: "Sustainable", cat: "Value", def: "Connotes long-term thinking; resonates with ESG-conscious stakeholders.", context: "\"A sustainable model that compounds value over time.\"" },
+  { word: "Decisive", cat: "Urgency", def: "Frames the moment as requiring leadership and bold action.", context: "\"Now is the time for decisive action.\"" },
+  { word: "Comprehensive", cat: "Credibility", def: "Signals thoroughness — nothing has been missed.", context: "\"A comprehensive audit of your current stack.\"" },
+  { word: "Differentiated", cat: "Value", def: "Speaks directly to competitive advantage.", context: "\"What makes this differentiated from the status quo.\"" },
+  { word: "Robust", cat: "Credibility", def: "Implies strength, reliability, and durability under pressure.", context: "\"A robust system that holds up at enterprise scale.\"" },
+  { word: "Clarity", cat: "Trust", def: "Rare and valuable — clients want to feel understood, not confused.", context: "\"We'll bring clarity to a complex decision.\"" },
+  { word: "Momentum", cat: "Urgency", def: "Suggests things are already moving — creates FOMO without pressure.", context: "\"Build on the momentum your team has already created.\"" },
+  { word: "Elevate", cat: "Value", def: "Aspirational verb; implies moving up from the current state.", context: "\"Elevate the client experience across every touchpoint.\"" },
+  { word: "Aligned", cat: "Trust", def: "Signals you share the client's priorities — not just your own interests.", context: "\"Our incentives are fully aligned with your outcomes.\"" },
+  { word: "Unlock", cat: "Value", def: "Implies latent potential waiting to be released.", context: "\"Unlock the value trapped in your data.\"" },
+  { word: "Critical", cat: "Urgency", def: "Elevates stakes appropriately — use sparingly for maximum impact.", context: "\"This is a critical window for your market position.\"" },
+  { word: "Trusted", cat: "Trust", def: "Social proof baked into a single word.", context: "\"Trusted by organizations like yours for over a decade.\"" },
+  { word: "Impactful", cat: "Value", def: "Simple but signals consequential change that matters.", context: "\"The most impactful lever available to your team right now.\"" },
+  { word: "Precision", cat: "Credibility", def: "Implies exactness — valued in technical and analytical contexts.", context: "\"Precision targeting based on first-party data.\"" },
+  { word: "Catalyst", cat: "Urgency", def: "Metaphorically suggests triggering a larger reaction — bold and memorable.", context: "\"Think of this as the catalyst for your next phase of growth.\"" },
+  { word: "Resilient", cat: "Credibility", def: "Post-pandemic resonance — implies the ability to withstand disruption.", context: "\"A resilient supply chain built for the unexpected.\"" },
+  { word: "Pioneering", cat: "Value", def: "Positions client and partner as first-movers — aspirational.", context: "\"Pioneering a new standard in customer experience.\"" },
+  { word: "Effortless", cat: "Value", def: "Removes anxiety about implementation; signals ease of adoption.", context: "\"An effortless onboarding designed for busy teams.\"" },
+];
+
+const categories = [...new Set(words.map(w => w.cat))];
+let activeFilter = 'all';
+let searchQuery = '';
+
+// Build filter buttons
+const filtersEl = document.getElementById('filters');
+categories.forEach(cat => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn';
+  btn.dataset.filter = cat;
+  btn.textContent = cat;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = cat;
+    render();
+  });
+  filtersEl.appendChild(btn);
+});
+
+filtersEl.querySelector('[data-filter="all"]').addEventListener('click', () => {
+  activeFilter = 'all';
+  render();
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  searchQuery = e.target.value.toLowerCase();
+  render();
+});
+
+function render() {
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  grid.innerHTML = '';
+
+  const filtered = words.filter(w => {
+    const matchCat = activeFilter === 'all' || w.cat === activeFilter;
+    const matchSearch = !searchQuery ||
+      w.word.toLowerCase().includes(searchQuery) ||
+      w.cat.toLowerCase().includes(searchQuery) ||
+      w.def.toLowerCase().includes(searchQuery);
+    return matchCat && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    empty.style.display = 'block';
+    grid.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.style.display = 'grid';
+
+  filtered.forEach((w, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = `${i * 0.03}s`;
+    card.innerHTML = `
+      <div class="cat-tag">${w.cat}</div>
+      <div class="word">${w.word}</div>
+      <div class="definition">${w.def}</div>
+      <div class="context">${w.context}</div>
+    `;
+    card.addEventListener('click', () => {
+      navigator.clipboard.writeText(w.word).catch(() => {});
+      card.classList.add('copied');
+      setTimeout(() => card.classList.remove('copied'), 900);
+    });
+    grid.appendChild(card);
+  });
+}
+
+render();
+</script>
+</body>
+</html>

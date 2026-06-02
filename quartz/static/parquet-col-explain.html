@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parquet · 列式存储原理图解</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Noto+Serif+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2;
+  --bg-card:#fdfcfa;
+  --ink:#1c1b19;
+  --ink-soft:#56524c;
+  --ink-faint:#928d85;
+  --line:#e4e1da;
+  --line-strong:#d4d0c7;
+  --accent:#3a6b6f;        /* desaturated teal */
+  --accent-soft:#e4ecec;
+  --warm:#b5763a;          /* low-sat amber for "read" */
+  --warm-soft:#f3e7d8;
+  --rose:#9c5a63;
+  --rose-soft:#f0e2e3;
+  --skip:#cfccc4;
+  --radius:14px;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --serif:'Fraunces','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'SF Pro Text','Noto Serif SC',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:.01em;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- layout ---------- */
+.wrap{max-width:860px;margin:0 auto;padding:0 28px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,8vw,72px);line-height:1.02;letter-spacing:-.02em}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.5vw,38px);line-height:1.12;letter-spacing:-.015em;margin-bottom:18px}
+h3{font-family:var(--serif);font-weight:500;font-size:21px;margin-bottom:10px;letter-spacing:-.01em}
+p{color:var(--ink-soft);font-size:16.5px;margin-bottom:16px}
+p strong{color:var(--ink);font-weight:600}
+.lead{font-size:19px;color:var(--ink-soft)}
+code.k{font-family:var(--mono);font-size:.85em;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:5px;font-weight:500}
+
+/* ---------- hero ---------- */
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px;position:relative}
+.hero h1 .em{font-style:italic;color:var(--accent)}
+.hero .sub{margin-top:26px;max-width:560px;font-size:19px}
+.hero-meta{margin-top:48px;display:flex;gap:34px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);letter-spacing:.04em}
+.hero-meta b{color:var(--ink);font-weight:500}
+.scroll-cue{position:absolute;bottom:30px;left:0;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;animation:float 2.4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:1}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- card ---------- */
+.card{
+  background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;margin:26px 0;box-shadow:0 1px 2px rgba(28,27,25,.03),0 8px 28px -18px rgba(28,27,25,.18);
+}
+.note{font-size:14px;color:var(--ink-faint);font-style:italic;border-left:2px solid var(--line-strong);padding-left:14px;margin:18px 0}
+
+/* ---------- toggle / button ---------- */
+.seg{display:inline-flex;background:#ece9e3;border-radius:10px;padding:4px;gap:2px;border:1px solid var(--line)}
+.seg button{
+  font-family:var(--sans);font-size:14px;font-weight:500;border:none;background:transparent;color:var(--ink-soft);
+  padding:8px 18px;border-radius:7px;cursor:pointer;transition:.25s;letter-spacing:.02em;
+}
+.seg button.on{background:var(--bg-card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.btn{
+  font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--line-strong);
+  background:var(--bg-card);color:var(--ink);padding:9px 18px;border-radius:9px;transition:.2s;letter-spacing:.02em;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{background:#2f595c;color:#fff}
+.btn:active{transform:translateY(1px)}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+
+/* ---------- data table (row vs col) ---------- */
+.viz-data{display:grid;grid-template-columns:repeat(3,1fr);gap:0;font-family:var(--mono);font-size:13px;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;margin-bottom:6px}
+.cell{padding:9px 12px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:background .4s,color .4s,opacity .4s}
+.cell.hd{background:#efece6;font-weight:600;color:var(--ink);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.viz-data .cell:nth-child(3n){border-right:none}
+
+/* disk layout strip */
+.disk{margin-top:18px}
+.disk-label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;display:flex;justify-content:space-between}
+.strip{display:flex;flex-wrap:wrap;gap:5px}
+.blk{
+  font-family:var(--mono);font-size:12px;padding:7px 11px;border-radius:7px;background:#eceae4;color:var(--ink-soft);
+  border:1px solid var(--line);transition:all .45s cubic-bezier(.2,.7,.2,1);white-space:nowrap;
+}
+.blk.grp-name{box-shadow:inset 0 -3px 0 var(--accent)}
+.blk.grp-age{box-shadow:inset 0 -3px 0 var(--warm)}
+.blk.grp-city{box-shadow:inset 0 -3px 0 var(--rose)}
+.blk.read{background:var(--warm-soft);border-color:var(--warm);color:var(--warm);font-weight:600;transform:translateY(-2px)}
+.blk.dim{opacity:.32}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin-top:14px}
+.legend i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.readout{font-family:var(--mono);font-size:13px;margin-top:16px;padding:12px 14px;background:#efece6;border-radius:9px;color:var(--ink-soft);min-height:42px;transition:.3s}
+.readout b{color:var(--warm)}
+
+/* ---------- file structure tree ---------- */
+.fstruct{font-family:var(--mono);font-size:13px}
+.fnode{margin:5px 0}
+.fbar{
+  display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;cursor:pointer;
+  background:var(--bg-card);border:1px solid var(--line);transition:.2s;user-select:none;
+}
+.fbar:hover{border-color:var(--line-strong);background:#fbfaf7}
+.fbar .tw{color:var(--ink-faint);transition:transform .25s;font-size:11px}
+.fnode.open>.fbar .tw{transform:rotate(90deg)}
+.fbar .nm{font-weight:600;color:var(--ink)}
+.fbar .tag{margin-left:auto;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:2px 8px;border-radius:20px}
+.fbar .meta{font-size:11px;color:var(--ink-faint)}
+.fchild{display:none;margin-left:18px;padding-left:14px;border-left:1px dashed var(--line-strong);margin-top:5px}
+.fnode.open>.fchild{display:block;animation:slidein .35s ease}
+@keyframes slidein{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fdesc{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);padding:4px 14px 10px;line-height:1.6}
+.t-file{background:#3a6b6f}.t-rg{background:#b5763a}.t-cc{background:#9c5a63}.t-pg{background:#5a6b9c}.t-meta{background:#6b6b6b}.t-leaf{background:#888}
+
+/* ---------- interactive layout diagram (官方结构图重绘) ---------- */
+.pq-wrap{width:100%;overflow-x:auto}
+.pq-svg{width:100%;height:auto;display:block;min-width:540px;font-family:var(--mono)}
+.pq-svg text{font-family:var(--mono);pointer-events:none}
+.pq-container{fill:#ece9e3;stroke:#cbc7be;stroke-width:1}
+.pq-data{fill:#dde9e9;stroke:#a3c2c3;stroke-width:1;transition:fill .3s,stroke .3s}
+.pq-magic{fill:#cde2e2;stroke:#8fb6b7;stroke-width:1}
+.pq-lbl{font-size:9px;font-weight:600;fill:#3b3833}
+.pq-lbl-sm{font-size:8px;font-weight:600;fill:#6b675f}
+.pq-txt{font-size:8px;font-weight:500;fill:#2d4f51}
+.pq-txt-mid{font-size:8.5px;font-weight:600;fill:#22403f}
+.pq-zig{fill:none;stroke:#b3afa6;stroke-width:1;opacity:.7}
+.pq-arrow{fill:none;stroke:#c8c4bb;stroke-width:1.4;opacity:.45;transition:stroke .3s,stroke-width .3s,opacity .3s;marker-end:url(#pqHead)}
+.pq-link{cursor:pointer}
+.pq-link rect{transition:fill .3s,stroke .3s}
+.pq-link:hover .pq-data,.pq-link.on .pq-data{fill:#f3e7d8;stroke:#b5763a}
+/* active relationship highlighting via root data-active */
+.pq-svg .tgt{transition:fill .3s,stroke .3s}
+.pq-svg[data-active="a"] #tgt-a,.pq-svg[data-active="b"] #tgt-b,.pq-svg[data-active="c"] #tgt-c{fill:#f3e7d8;stroke:#b5763a;stroke-width:1.6}
+.pq-svg[data-active="a"] #arr-a,.pq-svg[data-active="b"] #arr-b,.pq-svg[data-active="c"] #arr-c{stroke:#b5763a;stroke-width:2;opacity:1;marker-end:url(#pqHeadOn)}
+.pq-svg[data-active="a"] #src-a .pq-data,.pq-svg[data-active="b"] #src-b .pq-data,.pq-svg[data-active="c"] #src-c .pq-data{fill:#f3e7d8;stroke:#b5763a}
+.pq-keys{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
+.pq-key{font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--line-strong);background:var(--bg-card);color:var(--ink-soft);padding:8px 14px;border-radius:9px;transition:.2s;display:flex;align-items:center;gap:8px}
+.pq-key:hover{border-color:var(--warm)}
+.pq-key.on{background:var(--warm-soft);border-color:var(--warm);color:var(--warm)}
+.pq-key .dot{width:9px;height:9px;border-radius:50%;background:var(--warm);opacity:.5}
+.pq-key.on .dot{opacity:1}
+.pq-cap{font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);margin-top:18px;padding:13px 16px;background:#efece6;border-radius:9px;line-height:1.6;min-height:46px;transition:.3s}
+.pq-cap b{color:var(--warm)}
+.pq-cap .arrow{color:var(--warm);font-weight:700}
+
+/* ---------- encoding ---------- */
+.enc-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;font-family:var(--mono);font-size:13px}
+.enc-col{background:#efece6;border-radius:10px;padding:16px;border:1px solid var(--line)}
+.enc-col h4{font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;font-weight:600}
+.enc-row{padding:5px 0;color:var(--ink-soft);transition:.4s}
+.enc-arrow{font-size:22px;color:var(--accent);text-align:center}
+.chip{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:5px;padding:1px 7px;margin:2px;font-weight:500}
+.bar-cmp{margin-top:18px}
+.bar-row{display:flex;align-items:center;gap:12px;margin:8px 0;font-family:var(--mono);font-size:12px}
+.bar-row .lbl{width:130px;color:var(--ink-soft);flex-shrink:0}
+.bar-track{flex:1;background:#e8e5df;border-radius:6px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;transition:width 1s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:11px;font-weight:600}
+
+/* ---------- dremel ---------- */
+.schema-box{font-family:var(--mono);font-size:13px;background:#26302f;color:#cfe0df;border-radius:10px;padding:18px 20px;line-height:1.8;overflow-x:auto}
+.schema-box .kw{color:#7fb0b3}.schema-box .req{color:#d49a6a}.schema-box .rep{color:#c98a92}.schema-box .fld{color:#eef3f2}
+.rec-list{display:flex;flex-direction:column;gap:8px;margin:18px 0}
+.rec{font-family:var(--mono);font-size:13px;background:#efece6;border-radius:9px;padding:10px 14px;border:1px solid var(--line);cursor:pointer;transition:.25s}
+.rec:hover{border-color:var(--accent)}
+.rec.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.rec .ri{color:var(--ink-faint);margin-right:10px}
+.rd-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin-top:8px}
+.rd-table th{font-family:var(--sans);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line-strong);font-weight:600}
+.rd-table td{padding:10px 12px;border-bottom:1px solid var(--line);transition:.3s}
+.rd-table tr.hl td{background:var(--warm-soft)}
+.rd-table .rv,.rd-table .dv{font-weight:600;text-align:center;width:60px}
+.rd-table .rv{color:var(--accent)}.rd-table .dv{color:var(--warm)}
+.rd-table .null{color:var(--rose);font-style:italic}
+
+/* ---------- query optim ---------- */
+.rg-stack{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.rg{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--bg-card);transition:.45s}
+.rg-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+.rg-head .name{font-weight:600;color:var(--ink)}
+.rg-stats{font-size:11px;color:var(--ink-faint);margin-top:4px;font-family:var(--mono)}
+.rg.skip{opacity:.4;background:#f0eee9;border-style:dashed}
+.rg.hit{border-color:var(--warm);background:var(--warm-soft)}
+.rg .verdict{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px}
+.rg.skip .verdict{background:var(--skip);color:#fff}
+.rg.hit .verdict{background:var(--warm);color:#fff}
+.query-bar{font-family:var(--mono);font-size:14px;background:#26302f;color:#cfe0df;border-radius:10px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.query-bar .sql-k{color:#7fb0b3;font-weight:600}
+.query-bar input{font-family:var(--mono);font-size:14px;width:70px;background:#36423f;border:1px solid #4a5a57;color:#fff;border-radius:6px;padding:3px 8px;text-align:center}
+.scan-readout{font-family:var(--mono);font-size:13px;margin-top:14px;padding:12px 14px;background:#efece6;border-radius:9px;color:var(--ink-soft)}
+.scan-readout b{color:var(--warm)}
+
+/* ---------- footer ---------- */
+.foot{padding:48px 0 70px;text-align:center;border-top:1px solid var(--line)}
+.foot p{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+
+@media(max-width:640px){
+  .viz-data{font-size:11px}
+  .enc-grid{grid-template-columns:1fr;gap:10px}
+  .enc-arrow{transform:rotate(90deg)}
+  .bar-row .lbl{width:90px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero wrap">
+  <div class="eyebrow reveal">Apache Parquet · 列式存储</div>
+  <h1 class="reveal">把表<span class="em">竖</span>着<br>存进磁盘</h1>
+  <p class="sub lead reveal">Parquet 不是简单地"压缩 CSV"。它重排了数据在磁盘上的物理布局，用一套精巧的元数据、编码与嵌套模型，让大数据查询只读它需要的那几列、那几个数据块。下面用交互图解，从布局到字节，逐层拆开。</p>
+  <div class="hero-meta reveal">
+    <span>格式 / <b>列式 (Columnar)</b></span>
+    <span>模型 / <b>Dremel 嵌套</b></span>
+    <span>定位 / <b>OLAP 分析型</b></span>
+  </div>
+  <div class="scroll-cue">向下滚动 ↓</div>
+</header>
+
+<!-- ============ 1. 行存 vs 列存 ============ -->
+<section class="wrap">
+  <div class="eyebrow reveal">01 — 核心抉择</div>
+  <h2 class="reveal">为什么"竖着存"</h2>
+  <p class="reveal">同一张表，可以按<strong>行</strong>挨个写到磁盘，也可以把<strong>每一列</strong>的值聚在一起写。这个布局选择，决定了一次分析查询要从磁盘搬运多少字节。下面这张三行表是同一份数据，切换布局看磁盘上字节的真实排列，再点查询看引擎读了哪些块。</p>
+
+  <div class="card reveal">
+    <div class="controls">
+      <div class="seg" id="layoutSeg">
+        <button data-layout="row" class="on">行式存储 (CSV / OLTP)</button>
+        <button data-layout="col">列式存储 (Parquet)</button>
+      </div>
+    </div>
+
+    <div class="viz-data" id="tbl"></div>
+
+    <div class="disk">
+      <div class="disk-label"><span>磁盘上的物理字节顺序 →</span><span id="diskMode">行式</span></div>
+      <div class="strip" id="strip"></div>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>name 列</span>
+        <span><i style="background:var(--warm)"></i>age 列</span>
+        <span><i style="background:var(--rose)"></i>city 列</span>
+      </div>
+    </div>
+
+    <div class="controls" style="margin-top:22px;margin-bottom:0">
+      <button class="btn primary" id="runQuery">▶ 运行查询  SELECT avg(age)</button>
+      <button class="btn" id="resetQuery">重置</button>
+    </div>
+    <div class="readout" id="readout">点击运行，看引擎为了求 <code class="k">avg(age)</code> 究竟从磁盘读了哪些块。</div>
+  </div>
+  <p class="note reveal">分析型查询(OLAP)往往只关心几列、却要扫上亿行。列式布局让"只读 age 列"成为可能 —— 同列数据类型一致、取值相近，还能被极致压缩。代价是:写入单行、或要取"整行所有列"时，列式要东拼西凑，不如行式直接。这正是 OLTP 用行存、OLAP 用列存的根因。</p>
+</section>
+
+<!-- ============ 2. 文件物理结构 ============ -->
+<section class="wrap">
+  <div class="eyebrow reveal">02 — 物理结构</div>
+  <h2 class="reveal">一个 .parquet 文件里有什么</h2>
+  <p class="reveal">这是 Apache Parquet 官方的文件结构图,这里把它<strong>重绘成可交互版本</strong>。<strong>左侧</strong>是磁盘上的物理布局:文件被横向切成 Row Group(行组),组内每一列连续存为 Column Chunk,再细分成 Page(页)—— 页才是编码与压缩的最小单元。<strong>右侧 Footer</strong> 是元数据中枢。精髓在<strong>中间的箭头</strong>:Footer 用字节偏移(offset)给左侧每一块做索引。悬停或点击右侧的元数据块试试 ↓</p>
+
+  <div class="card reveal">
+    <div class="pq-wrap">
+      <svg class="pq-svg" id="pqSvg" viewBox="0 0 600 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Parquet 文件结构交互图">
+        <defs>
+          <marker id="pqHead" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8" fill="none" stroke="#c8c4bb" stroke-width="1.4"/></marker>
+          <marker id="pqHeadOn" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8" fill="none" stroke="#b5763a" stroke-width="2"/></marker>
+        </defs>
+
+        <!-- ===== LEFT: physical file ===== -->
+        <rect class="pq-container" x="12" y="14" width="280" height="512" rx="3"/>
+        <text class="pq-lbl" x="20" y="29">File</text>
+        <rect class="pq-magic" x="22" y="36" width="260" height="22" rx="2"/>
+        <text class="pq-txt-mid" x="152" y="50" text-anchor="middle">Magic Number (4 bytes): "PAR1"</text>
+
+        <rect class="pq-container" x="22" y="66" width="260" height="360" rx="3"/>
+        <text class="pq-lbl" x="30" y="80">Row group 0</text>
+
+        <rect class="pq-container" x="30" y="88" width="244" height="250" rx="3"/>
+        <text class="pq-lbl-sm" x="38" y="101">Column a</text>
+
+        <rect class="pq-container" x="38" y="108" width="228" height="168" rx="3"/>
+        <text class="pq-lbl-sm" x="46" y="120">Page 0</text>
+        <rect id="tgt-a" class="pq-data tgt" x="46" y="126" width="212" height="20" rx="2"/>
+        <text class="pq-txt" x="152" y="139" text-anchor="middle">Page header (ThriftCompactProtocol)</text>
+        <rect class="pq-data" x="46" y="150" width="212" height="18" rx="2"/>
+        <text class="pq-txt" x="152" y="162" text-anchor="middle">Repetition levels</text>
+        <rect class="pq-data" x="46" y="172" width="212" height="18" rx="2"/>
+        <text class="pq-txt" x="152" y="184" text-anchor="middle">Definition levels</text>
+        <rect class="pq-data" x="46" y="194" width="212" height="76" rx="2"/>
+        <text class="pq-txt" x="152" y="208" text-anchor="middle">values</text>
+        <polyline class="pq-zig" points="58,258 90,232 122,252 152,224 182,254 214,230 248,252"/>
+
+        <rect class="pq-container" x="38" y="284" width="228" height="46" rx="3"/>
+        <text class="pq-lbl-sm" x="46" y="296">Page 1</text>
+        <polyline class="pq-zig" points="52,322 86,306 120,320 152,302 184,320 216,306 252,318"/>
+
+        <rect id="tgt-b" class="pq-container tgt" x="30" y="346" width="244" height="72" rx="3"/>
+        <text class="pq-lbl-sm" x="38" y="359">Column b</text>
+        <polyline class="pq-zig" points="44,408 84,378 124,402 160,374 200,402 240,378 262,400"/>
+
+        <rect id="tgt-c" class="pq-container tgt" x="22" y="438" width="260" height="80" rx="3"/>
+        <text class="pq-lbl" x="30" y="453">Row group 1</text>
+        <polyline class="pq-zig" points="40,506 90,472 140,502 188,470 238,500 274,478"/>
+
+        <!-- ===== RIGHT: footer ===== -->
+        <rect class="pq-container" x="312" y="70" width="276" height="440" rx="3"/>
+        <text class="pq-lbl" x="320" y="85">Footer</text>
+
+        <rect class="pq-container" x="320" y="90" width="260" height="348" rx="3"/>
+        <text class="pq-lbl-sm" x="450" y="103" text-anchor="middle">FileMetaData (ThriftCompactProtocol)</text>
+        <rect class="pq-data" x="326" y="108" width="248" height="56" rx="2"/>
+        <text class="pq-txt" x="334" y="123">- Version (of the format)</text>
+        <text class="pq-txt" x="334" y="137">- Schema</text>
+        <text class="pq-txt" x="334" y="151">- extra key/value pairs</text>
+
+        <rect class="pq-container" x="326" y="170" width="248" height="200" rx="3"/>
+        <text class="pq-lbl-sm" x="450" y="184" text-anchor="middle">Row group 0 meta data:</text>
+
+        <!-- SRC A : column a meta -->
+        <g id="src-a" class="pq-link" data-rel="a">
+          <rect class="pq-data" x="334" y="190" width="232" height="138" rx="2"/>
+          <text class="pq-txt-mid" x="450" y="203" text-anchor="middle">Column a meta data:</text>
+          <text class="pq-txt" x="342" y="219">- type / path / encodings / codec</text>
+          <text class="pq-txt" x="342" y="233">- num values</text>
+          <text class="pq-txt" x="342" y="247" font-weight="700" fill="#1c4e50">- offset of first data page</text>
+          <text class="pq-txt" x="342" y="261">- offset of first index page</text>
+          <text class="pq-txt" x="342" y="275">- compressed/uncompressed size</text>
+          <text class="pq-txt" x="342" y="289">- extra key/value pairs</text>
+        </g>
+
+        <!-- SRC B : column b meta -->
+        <g id="src-b" class="pq-link" data-rel="b">
+          <rect class="pq-data" x="334" y="332" width="232" height="32" rx="2"/>
+          <text class="pq-txt-mid" x="342" y="346">column "b" meta data</text>
+          <polyline class="pq-zig" points="448,360 478,346 510,358 540,344 562,356"/>
+        </g>
+
+        <!-- SRC C : row group 1 meta -->
+        <g id="src-c" class="pq-link" data-rel="c">
+          <rect class="pq-data" x="326" y="376" width="248" height="34" rx="2"/>
+          <text class="pq-txt-mid" x="450" y="391" text-anchor="middle">Row group 1 meta data</text>
+          <polyline class="pq-zig" points="338,406 380,390 430,404 470,388 520,404 562,390 572,402"/>
+        </g>
+
+        <rect class="pq-data" x="320" y="448" width="260" height="22" rx="2"/>
+        <text class="pq-txt-mid" x="450" y="462" text-anchor="middle">Footer length (4 bytes)</text>
+        <rect class="pq-magic" x="320" y="476" width="260" height="22" rx="2"/>
+        <text class="pq-txt-mid" x="450" y="490" text-anchor="middle">Magic Number (4 bytes): "PAR1"</text>
+
+        <!-- ===== arrows ===== -->
+        <path id="arr-a" class="pq-arrow" d="M334,247 C302,247 298,136 261,136"/>
+        <path id="arr-b" class="pq-arrow" d="M334,348 C302,348 304,382 277,382"/>
+        <path id="arr-c" class="pq-arrow" d="M326,393 C296,393 302,478 285,478"/>
+      </svg>
+    </div>
+
+    <div class="pq-keys" id="pqKeys">
+      <button class="pq-key" data-rel="a"><span class="dot"></span>① 数据页偏移</button>
+      <button class="pq-key" data-rel="b"><span class="dot"></span>② b 列定位</button>
+      <button class="pq-key" data-rel="c"><span class="dot"></span>③ 行组定位</button>
+    </div>
+    <div class="pq-cap" id="pqCap">悬停或点击右侧 Footer 中的任一元数据块,看它在左侧物理布局中<b>实际指向的位置</b>。这正是 Footer 作为"索引"的核心作用。</div>
+  </div>
+  <p class="note reveal">反直觉之处:统计信息要等数据全写完才能算出,所以元数据写在<strong>文件末尾</strong>。引擎读文件先 seek 到结尾读 Footer,据此精准跳转,无需扫描全文。Footer 末尾还记着自身长度(上图 Footer length),因此读取从文件<strong>最后 8 字节</strong>开始倒着来 —— 这也是 Parquet 适合"一次写、多次读"的不可变存储的原因。</p>
+</section>
+
+<!-- ============ 3. 编码 ============ -->
+<section class="wrap">
+  <div class="eyebrow reveal">03 — 编码</div>
+  <h2 class="reveal">同列同类型,才能极致压缩</h2>
+  <p class="reveal">把同一列聚在一起,最大的红利是:这些值<strong>类型相同、分布相近</strong>,于是各种轻量编码大显身手 —— 而且它们大多在通用压缩(Snappy/Zstd)之前先跑一遍。点下面看三种最常见的编码怎么省空间。</p>
+
+  <div class="card reveal">
+    <div class="controls">
+      <div class="seg" id="encSeg">
+        <button data-enc="dict" class="on">字典编码</button>
+        <button data-enc="rle">RLE 游程</button>
+        <button data-enc="delta">Delta 增量</button>
+      </div>
+    </div>
+    <div class="enc-grid">
+      <div class="enc-col">
+        <h4>原始值 (raw)</h4>
+        <div id="encRaw"></div>
+      </div>
+      <div class="enc-arrow">→</div>
+      <div class="enc-col">
+        <h4 id="encTitle">编码后</h4>
+        <div id="encOut"></div>
+      </div>
+    </div>
+    <p id="encExplain" style="margin:18px 0 0;font-size:14.5px"></p>
+  </div>
+
+  <h3 class="reveal" style="margin-top:32px">再叠一层压缩</h3>
+  <p class="reveal">编码之后,页内字节会再过一遍块压缩算法。不同算法在"压缩率 vs 速度"间取舍 —— 同一份 1GB 的列数据,大致效果:</p>
+  <div class="card reveal">
+    <div class="bar-cmp" id="compBars"></div>
+    <p class="note" style="margin-bottom:0">Snappy 解压极快是默认之选;Zstd 在近年成为兼顾压缩率与速度的新宠;Gzip 压得最狠但 CPU 开销大。注意:这些数字是<strong>示意</strong>,真实比例取决于数据本身的重复度。</p>
+  </div>
+</section>
+
+<!-- ============ 4. 嵌套数据模型 Dremel ============ -->
+<section class="wrap">
+  <div class="eyebrow reveal">04 — 数据模型</div>
+  <h2 class="reveal">最烧脑的一块:嵌套怎么拍平成列</h2>
+  <p class="reveal">列式存储的难题是:<strong>嵌套和数组怎么办?</strong> 一个人有 0 个或多个电话,光存值序列无法还原"哪些电话属于哪个人、谁的电话是空的"。Parquet 借用 Google Dremel 的方案,给每个值附带两个小整数 —— <strong>Repetition Level(R)</strong> 和 <strong>Definition Level(D)</strong> —— 就能无损拍平再还原。</p>
+
+  <div class="card reveal">
+    <h3 style="margin-bottom:8px">Schema</h3>
+    <div class="schema-box">
+<span class="kw">message</span> <span class="fld">Contact</span> {<br>
+&nbsp;&nbsp;<span class="req">required</span> <span class="kw">string</span> <span class="fld">name</span>;<br>
+&nbsp;&nbsp;<span class="rep">repeated</span> <span class="kw">string</span> <span class="fld">phone</span>;&nbsp;&nbsp;<span style="color:#7a8a88">// 0..n 个电话</span><br>
+}
+    </div>
+    <p style="margin:18px 0 8px;font-size:14.5px"><strong>三条原始记录</strong> —— 点任意一条,看它的 <code class="k">phone</code> 列被拍平后是哪几行(高亮),以及 R/D 的含义:</p>
+    <div class="rec-list" id="recList">
+      <div class="rec active" data-rec="0"><span class="ri">①</span> { name: "Alice", phone: ["111", "222"] }</div>
+      <div class="rec" data-rec="1"><span class="ri">②</span> { name: "Bob", &nbsp;&nbsp;phone: [ ] }&nbsp;&nbsp;<span style="color:var(--rose)">← 空数组</span></div>
+      <div class="rec" data-rec="2"><span class="ri">③</span> { name: "Carol", phone: ["333"] }</div>
+    </div>
+
+    <h3 style="margin-top:24px;margin-bottom:6px"><code class="k">phone</code> 列在磁盘上(拍平后)</h3>
+    <table class="rd-table" id="rdTable">
+      <thead><tr><th>来自记录</th><th>Value 值</th><th class="rv">R</th><th class="dv">D</th></tr></thead>
+      <tbody id="rdBody"></tbody>
+    </table>
+    <div class="readout" id="rdExplain" style="margin-top:16px"></div>
+  </div>
+  <p class="note reveal"><strong>R(Repetition Level)</strong> = 这个值在第几层嵌套上"重复"了上一个值。R=0 表示开启一条新记录;R=1 表示是同一条记录里数组的后续元素。<strong>D(Definition Level)</strong> = 路径上有多少个可选/重复字段"真的存在"。当 D 没达到最大值,说明这里是 NULL 或空 —— 此时不存真实值,只靠 D 还原。靠这两列整数,引擎能在<strong>完全不存 NULL 占位、不存结构标记</strong>的前提下,精确重建任意深度的嵌套。</p>
+</section>
+
+<!-- ============ 5. 查询优化 ============ -->
+<section class="wrap">
+  <div class="eyebrow reveal">05 — 查询加速</div>
+  <h2 class="reveal">元数据让引擎"跳过"大半数据</h2>
+  <p class="reveal">前面 Footer 里每个 Column Chunk 都带了 <strong>min/max 统计</strong>。这意味着:带 WHERE 条件的查询不用扫数据,先看统计就能判断"这一块根本不可能命中,直接跳过"。这就是 <strong>谓词下推(Predicate Pushdown)</strong> + <strong>行组裁剪</strong>。改下面的条件值,看哪些行组被跳过。</p>
+
+  <div class="card reveal">
+    <div class="query-bar">
+      <span><span class="sql-k">SELECT</span> * <span class="sql-k">FROM</span> events <span class="sql-k">WHERE</span> age &gt;</span>
+      <input type="number" id="predVal" value="55" min="0" max="100">
+    </div>
+    <div class="rg-stack" id="rgStack"></div>
+    <div class="scan-readout" id="scanReadout"></div>
+  </div>
+  <p class="note reveal">再叠加<strong>列裁剪(Column Pruning)</strong>:如果查询只 <code class="k">SELECT age</code>,引擎连其他列的 Column Chunk 都不会去读。两招合起来 —— 跳过无关行组、跳过无关列 —— 一次扫描可能只触碰原始文件的百分之几。这就是 Parquet 在分析场景下快得反直觉的根本原因。</p>
+</section>
+
+<footer class="foot wrap">
+  <p>列式存储 · 物理结构 · Dremel 嵌套模型 · 编码压缩 · 谓词下推</p>
+  <p style="margin-top:10px;opacity:.7">交互图解 · 滚动重温任意章节</p>
+</footer>
+
+<script>
+"use strict";
+
+/* ---------- scroll reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+
+/* ============ 1. ROW vs COL ============ */
+const DATA=[
+  {name:'"Alice"',age:'34',city:'"Paris"'},
+  {name:'"Bob"',  age:'29',city:'"Tokyo"'},
+  {name:'"Carol"',age:'41',city:'"Lima"'},
+];
+const tbl=document.getElementById('tbl');
+function buildTable(){
+  let h='<div class="cell hd">name</div><div class="cell hd">age</div><div class="cell hd">city</div>';
+  DATA.forEach(r=>{h+=`<div class="cell">${r.name}</div><div class="cell">${r.age}</div><div class="cell">${r.city}</div>`;});
+  tbl.innerHTML=h;
+}
+buildTable();
+
+let layout='row';
+const strip=document.getElementById('strip');
+function blk(txt,grp){return `<span class="blk grp-${grp}" data-grp="${grp}">${txt}</span>`;}
+function renderStrip(){
+  let h='';
+  if(layout==='row'){
+    DATA.forEach((r,i)=>{
+      h+=blk(r.name,'name')+blk(r.age,'age')+blk(r.city,'city');
+    });
+  }else{
+    DATA.forEach(r=>h+=blk(r.name,'name'));
+    DATA.forEach(r=>h+=blk(r.age,'age'));
+    DATA.forEach(r=>h+=blk(r.city,'city'));
+  }
+  strip.innerHTML=h;
+  document.getElementById('diskMode').textContent=layout==='row'?'行式 (一行接一行)':'列式 (一列接一列)';
+}
+renderStrip();
+
+document.querySelectorAll('#layoutSeg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#layoutSeg button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');layout=b.dataset.layout;renderStrip();resetQuery();
+});
+
+const readout=document.getElementById('readout');
+function resetQuery(){
+  document.querySelectorAll('#strip .blk').forEach(b=>b.classList.remove('read','dim'));
+  readout.innerHTML='点击运行，看引擎为了求 <code class="k">avg(age)</code> 究竟从磁盘读了哪些块。';
+}
+document.getElementById('resetQuery').onclick=resetQuery;
+
+document.getElementById('runQuery').onclick=()=>{
+  const blks=[...document.querySelectorAll('#strip .blk')];
+  blks.forEach(b=>b.classList.remove('read','dim'));
+  if(layout==='row'){
+    // must read everything, scattered
+    let i=0;
+    const seq=blks;
+    seq.forEach((b,idx)=>setTimeout(()=>{
+      b.classList.add(b.dataset.grp==='age'?'read':'dim');
+    },idx*90));
+    setTimeout(()=>{
+      readout.innerHTML='行式:age 值<b>散落</b>在每行中间，磁盘必须把 <b>全部 9 个块</b>都搬进来，再挑出 3 个 age。读了无关的 name/city，I/O 全浪费。';
+    },blks.length*90+150);
+  }else{
+    // only age column, contiguous
+    blks.forEach((b,idx)=>setTimeout(()=>{
+      if(b.dataset.grp==='age')b.classList.add('read');else b.classList.add('dim');
+    },idx*60));
+    setTimeout(()=>{
+      readout.innerHTML='列式:age 列<b>连续存放</b>，引擎据 Footer 偏移直接 seek 过去，<b>只读这 3 个块</b>。name/city 一个字节都没碰 —— 这就是列裁剪。';
+    },blks.length*60+150);
+  }
+};
+
+/* ============ 2. INTERACTIVE LAYOUT DIAGRAM ============ */
+(function(){
+  const svg=document.getElementById('pqSvg');
+  const cap=document.getElementById('pqCap');
+  const keys=[...document.querySelectorAll('#pqKeys .pq-key')];
+  const srcs=[...document.querySelectorAll('#pqSvg .pq-link')];
+  const CAPS={
+    a:'Footer 里 Column a 的 <b>offset of first data page</b> 记录了第一个数据页的字节偏移 <span class="arrow">→</span> 引擎据此直接 seek 到左侧 <b>Page 0 的页头</b>,跳过前面所有字节。',
+    b:'<b>column "b" meta data</b> 单独保存了 b 列在本行组的位置、编码与统计 <span class="arrow">→</span> 引擎可独立定位、<b>只读左侧 Column b</b>,这正是列裁剪(column pruning)的依据。',
+    c:'每个行组都有独立的一份 <b>Row group meta data</b> <span class="arrow">→</span> 指向左侧对应的 <b>Row group 1</b>。各行组彼此独立,可分给不同 task <b>并行读取</b>。',
+    none:'悬停或点击右侧 Footer 中的任一元数据块,看它在左侧物理布局中<b>实际指向的位置</b>。这正是 Footer 作为"索引"的核心作用。'
+  };
+  let pinned=null;
+  function setActive(rel){
+    if(rel){svg.setAttribute('data-active',rel);}else{svg.removeAttribute('data-active');}
+    cap.innerHTML=CAPS[rel||'none'];
+    keys.forEach(k=>k.classList.toggle('on',k.dataset.rel===rel));
+    srcs.forEach(s=>s.classList.toggle('on',s.dataset.rel===rel));
+  }
+  srcs.forEach(s=>{
+    const rel=s.dataset.rel;
+    s.addEventListener('mouseenter',()=>{if(!pinned)setActive(rel);});
+    s.addEventListener('mouseleave',()=>{if(!pinned)setActive(null);});
+    s.addEventListener('click',()=>{pinned=(pinned===rel)?null:rel;setActive(pinned||rel);if(!pinned)setActive(null);});
+  });
+  keys.forEach(k=>{
+    const rel=k.dataset.rel;
+    k.addEventListener('click',()=>{pinned=(pinned===rel)?null:rel;setActive(pinned);});
+    k.addEventListener('mouseenter',()=>{if(!pinned)setActive(rel);});
+    k.addEventListener('mouseleave',()=>{if(!pinned)setActive(null);});
+  });
+})();
+
+/* ============ 3. ENCODING ============ */
+const ENC={
+  dict:{
+    title:'字典编码 (Dictionary)',
+    raw:['"Tokyo"','"Paris"','"Tokyo"','"Tokyo"','"Lima"','"Paris"','"Tokyo"'],
+    render(){
+      const dict=['"Tokyo"','"Paris"','"Lima"'];
+      const idx=this.raw.map(v=>dict.indexOf(v));
+      let out='<div class="enc-row"><b style="color:var(--ink)">字典表:</b></div>';
+      dict.forEach((d,i)=>out+=`<div class="enc-row">${i} → ${d}</div>`);
+      out+='<div class="enc-row" style="margin-top:8px"><b style="color:var(--ink)">索引序列:</b></div><div class="enc-row">'+idx.map(i=>`<span class="chip">${i}</span>`).join('')+'</div>';
+      return out;
+    },
+    explain:'重复的字符串只在字典里存<strong>一次</strong>，列里改存小整数索引。城市名这种低基数(取值种类少)的列收益巨大 —— 把变长字符串变成了定长小整数，后续 RLE/位压缩还能继续压。Parquet 默认优先尝试字典编码。'
+  },
+  rle:{
+    title:'RLE 游程编码 (Run-Length)',
+    raw:['0','0','0','0','0','1','1','2','2','2'],
+    render(){
+      const runs=[];let i=0;
+      const a=this.raw;
+      while(i<a.length){let j=i;while(j<a.length&&a[j]===a[i])j++;runs.push([a[i],j-i]);i=j;}
+      let out='<div class="enc-row"><b style="color:var(--ink)">(值 × 连续次数):</b></div>';
+      runs.forEach(r=>out+=`<div class="enc-row"><span class="chip">${r[0]} × ${r[1]}</span></div>`);
+      out+=`<div class="enc-row" style="margin-top:8px;color:var(--ink-faint)">10 个值 → ${runs.length} 组</div>`;
+      return out;
+    },
+    explain:'当同一个值<strong>连续重复</strong>，只记"值 + 重复几次"。字典编码的索引序列、或排好序的列，常常一大片相同 —— RLE 把它们压成寥寥几组。Parquet 实际用的是 RLE 与位压缩(bit-packing)的混合体。'
+  },
+  delta:{
+    title:'Delta 增量编码',
+    raw:['1000','1003','1007','1010','1012','1015'],
+    render(){
+      const a=this.raw.map(Number);
+      const deltas=a.map((v,i)=>i===0?v:v-a[i-1]);
+      let out=`<div class="enc-row"><b style="color:var(--ink)">基准值:</b> <span class="chip">${a[0]}</span></div>`;
+      out+='<div class="enc-row" style="margin-top:6px"><b style="color:var(--ink)">后续存差值:</b></div><div class="enc-row">'+deltas.slice(1).map(d=>`<span class="chip">+${d}</span>`).join('')+'</div>';
+      out+='<div class="enc-row" style="margin-top:8px;color:var(--ink-faint)">大数 → 一串小数，位数骤减</div>';
+      return out;
+    },
+    explain:'递增或缓变的列(时间戳、自增 ID、有序数值)，存<strong>相邻差值</strong>而非原值。原本要 4 字节的大整数，差值往往一两个字节就够。对时间序列数据尤其高效。'
+  }
+};
+const encRaw=document.getElementById('encRaw'),encOut=document.getElementById('encOut'),
+      encTitle=document.getElementById('encTitle'),encExplain=document.getElementById('encExplain');
+function renderEnc(k){
+  const e=ENC[k];
+  encRaw.innerHTML=e.raw.map(v=>`<div class="enc-row">${v}</div>`).join('');
+  encOut.innerHTML=e.render();
+  encTitle.textContent=e.title;
+  encExplain.innerHTML=e.explain;
+}
+renderEnc('dict');
+document.querySelectorAll('#encSeg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#encSeg button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');renderEnc(b.dataset.enc);
+});
+
+/* compression bars */
+const COMP=[
+  {n:'未压缩 (raw)',v:1000,c:'#9b958b',t:'1000 MB'},
+  {n:'Snappy',v:420,c:'#3a6b6f',t:'420 MB · 极快'},
+  {n:'Zstd',v:300,c:'#b5763a',t:'300 MB · 均衡'},
+  {n:'Gzip',v:250,c:'#9c5a63',t:'250 MB · 最小/慢'},
+];
+const compBars=document.getElementById('compBars');
+compBars.innerHTML=COMP.map(c=>`<div class="bar-row"><span class="lbl">${c.n}</span><div class="bar-track"><div class="bar-fill" style="width:0;background:${c.c}" data-w="${c.v/10}">${c.t}</div></div></div>`).join('');
+const compIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){compBars.querySelectorAll('.bar-fill').forEach((f,i)=>setTimeout(()=>f.style.width=f.dataset.w+'%',i*120));compIO.disconnect();}}),{threshold:.4});
+compIO.observe(compBars);
+
+/* ============ 4. DREMEL R/D ============ */
+// phone column flattened. maxD=1, maxR=1
+const RD=[
+  {rec:0,val:'"111"',r:0,d:1,null:false},
+  {rec:0,val:'"222"',r:1,d:1,null:false},
+  {rec:1,val:'(empty)',r:0,d:0,null:true},
+  {rec:2,val:'"333"',r:0,d:1,null:false},
+];
+const REC_EXP=[
+  'Alice 有两个电话。第一个 R=0 表示"新记录开始"；第二个 R=1 表示"同一条记录、phone 数组的第 2 个元素"。两者 D=1，都达到最大定义层，是真实存在的值。',
+  'Bob 的 phone 是空数组。没有任何真实值可存，于是放一个占位行:D=0(没达到最大定义层 1 → 这里是空/NULL)，R=0(新记录)。<strong>不存任何字符串</strong>，仅靠 D=0 就记下"这条记录电话为空"。',
+  'Carol 一个电话。R=0(新记录)，D=1(存在)。简单直接。'
+];
+const rdBody=document.getElementById('rdBody'),rdExplain=document.getElementById('rdExplain');
+const recNames=['Alice','Bob','Carol'];
+function renderRD(active){
+  rdBody.innerHTML=RD.map(row=>`
+    <tr class="${row.rec===active?'hl':''}">
+      <td style="color:var(--ink-faint)">${recNames[row.rec]}</td>
+      <td class="${row.null?'null':''}">${row.val}</td>
+      <td class="rv">${row.r}</td>
+      <td class="dv">${row.d}</td>
+    </tr>`).join('');
+  rdExplain.innerHTML=REC_EXP[active];
+}
+renderRD(0);
+document.querySelectorAll('#recList .rec').forEach(r=>r.onclick=()=>{
+  document.querySelectorAll('#recList .rec').forEach(x=>x.classList.remove('active'));
+  r.classList.add('active');renderRD(+r.dataset.rec);
+});
+
+/* ============ 5. PREDICATE PUSHDOWN ============ */
+const RGS=[
+  {name:'Row Group 0',min:18,max:35},
+  {name:'Row Group 1',min:33,max:52},
+  {name:'Row Group 2',min:50,max:67},
+  {name:'Row Group 3',min:64,max:90},
+];
+const rgStack=document.getElementById('rgStack'),scanReadout=document.getElementById('scanReadout'),predVal=document.getElementById('predVal');
+function renderRG(){
+  const v=parseInt(predVal.value)||0;
+  let hit=0,total=RGS.length;
+  rgStack.innerHTML=RGS.map(rg=>{
+    // predicate age > v  => skip if rg.max <= v
+    const skip=rg.max<=v;
+    if(!skip)hit++;
+    return `<div class="rg ${skip?'skip':'hit'}">
+      <div class="rg-head"><span class="name">${rg.name}</span>
+      <span class="verdict">${skip?'跳过 SKIP':'读取 SCAN'}</span></div>
+      <div class="rg-stats">stats → min: ${rg.min} · max: ${rg.max}　${skip?`(max ${rg.max} ≤ ${v}，不可能有 age &gt; ${v}，整组略过)`:`(可能命中，需读取)`}</div>
+    </div>`;
+  }).join('');
+  const pct=Math.round(hit/total*100);
+  scanReadout.innerHTML=`条件 <b>age &gt; ${v}</b> ：仅需读取 <b>${hit} / ${total}</b> 个行组（约 ${pct}% 数据）。其余 ${total-hit} 个行组靠 min/max 统计直接排除，<b>磁盘 I/O 都省了</b>。`;
+}
+renderRG();
+predVal.oninput=renderRG;
+
+</script>
+</body>
+</html>

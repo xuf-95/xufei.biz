@@ -1,308 +1,268 @@
-// ── TOC Sidebar ────────────────────────────────────────────────────
-// Layout:
-//   Heading row: fixed height (~18px), line on left + label inline right
-//   Body row:    compressed height (--body-rh), line only, no label
-//
-// Interaction:
-//   Default:          lines dim, labels dim/small
-//   Container hover:  ALL labels brighten to ghost state
-//   Item hover:       label + line → accent color
-//   Active (scroll):  label bold + full brightness, line expands
+@use "../../styles/variables.scss" as *;
 
-:root {
-  --toc-accent: var(--secondary, #c96a2a);
-}
-
-// ── Wrapper ────────────────────────────────────────────────────────
 .toc-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: transparent;
+  --toc-rail-x: 16px;
+  --toc-collapsed-width: 38px;
+  --toc-expanded-width: 270px;
+  --toc-line: color-mix(in srgb, var(--darkgray) 34%, transparent);
+  --toc-line-soft: color-mix(in srgb, var(--darkgray) 18%, transparent);
+  --toc-active: var(--dark);
+  --toc-label: color-mix(in srgb, var(--darkgray) 86%, transparent);
+  --toc-label-muted: color-mix(in srgb, var(--darkgray) 64%, transparent);
 
-  &:hover .toc-toggle-label,
-  &:hover .toc-chevron { opacity: 1; }
+  position: relative;
+  display: block;
+  width: var(--toc-collapsed-width);
+  max-width: min(var(--toc-expanded-width), calc(100vw - 2rem));
+  min-height: calc(100vh - 8rem);
+  color: var(--toc-label);
+  transition: width 0.22s ease;
+  z-index: 3;
 
-  &:hover .toc-toggle {
-    color: var(--dark);
-    border-bottom-color: var(--lightgray);
-    margin-bottom: 0.5rem;
+  &.is-expanded,
+  &:hover,
+  &:focus-within {
+    width: var(--toc-expanded-width);
+
+    .toc-card {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .toc-lbl {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .toc-heading {
+      min-height: 1.7rem;
+    }
   }
 }
 
-// ── Toggle header ──────────────────────────────────────────────────
-.toc-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
+.toc-wrapper.desktop-only {
+  display: block;
+}
+
+.toc-card {
+  position: sticky;
+  top: 2rem;
   width: 100%;
-  padding: 0.4rem 0;
+  max-height: calc(100vh - 4rem);
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 8px;
   background: transparent;
-  border: none;
-  border-bottom: 1px solid transparent;
-  cursor: default;
-  margin-bottom: 0;
-  color: var(--gray);
-  transition: color 0.18s ease, border-color 0.18s ease, margin-bottom 0.18s ease;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
-.toc-toggle-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-family: var(--bodyFont);
-  line-height: 1;
-  opacity: 0;
-  transition: opacity 0.18s ease;
-}
-
-.toc-chevron {
-  flex-shrink: 0;
-  opacity: 0;
-  transition: opacity 0.18s ease;
-}
-
-// ── Sidebar body ───────────────────────────────────────────────────
 .toc-sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  // Must have explicit max-height for overflow-y scroll to work
-  max-height: calc(100vh - 120px);
+  position: relative;
+  max-height: calc(100vh - 4rem);
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 0.55rem 0 1rem;
   scrollbar-width: none;
-  padding: 0.4rem 0 1.5rem 0;
-  // Allow sidebar itself to be the scroll container
   overscroll-behavior: contain;
 
-  &::-webkit-scrollbar { display: none; }
-  // Show scrollbar on hover for usability
-  &:hover {
-    scrollbar-width: thin;
-    scrollbar-color: var(--toc-line-container-hover) transparent;
-  }
-  &:hover::-webkit-scrollbar { display: block; width: 3px; }
-  &:hover::-webkit-scrollbar-thumb {
-    background: var(--toc-line-container-hover);
-    border-radius: 2px;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
-.toc-sidebar[data-collapsed="true"] { display: none; }
+.toc-wrapper.is-expanded .toc-sidebar,
+.toc-wrapper:hover .toc-sidebar,
+.toc-wrapper:focus-within .toc-sidebar {
+  max-height: calc(100vh - 11rem);
+  scrollbar-width: thin;
+  scrollbar-color: var(--toc-line) transparent;
 
-// ── Rows ───────────────────────────────────────────────────────────
+  &::-webkit-scrollbar {
+    display: block;
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--toc-line);
+    border-radius: 999px;
+  }
+}
+
 .toc-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;                  // gap between line and label
-  flex-shrink: 0;
   position: relative;
+  display: grid;
+  grid-template-columns: calc(var(--toc-rail-x) * 2) minmax(0, 1fr);
+  align-items: center;
+  min-width: var(--toc-expanded-width);
+  margin: 0;
+  text-decoration: none;
 }
 
-// Heading rows: auto height based on label text
 .toc-heading {
+  min-height: 1.35rem;
   cursor: pointer;
-  // Vertical padding creates spacing between heading rows
-  padding: 0px 0;
-  min-height: 16px;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  transition: min-height 0.18s ease;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+  }
+
+  &:hover .toc-lbl,
+  &:focus-visible .toc-lbl {
+    color: var(--dark);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--toc-line);
+    outline-offset: -2px;
+  }
 }
 
-// Body rows: compressed, line only
 .toc-body {
   height: var(--body-rh, 6px);
-  cursor: default;
-  padding: 0;
 }
 
-// ── Line segment ───────────────────────────────────────────────────
-.toc-seg {
+.toc-rail {
+  position: relative;
   display: block;
-  height: 1.5px;
-  border-radius: 1px;
-  background: var(--toc-line-default);
-  flex-shrink: 0;
+  width: calc(var(--toc-rail-x) * 2);
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--toc-rail-x);
+    width: 1px;
+    background: var(--toc-line);
+  }
+}
+
+.toc-marker {
+  position: absolute;
+  top: 0.08rem;
+  bottom: 0.08rem;
+  left: calc(var(--toc-rail-x) - 1px);
+  width: 2px;
+  min-height: 1.2rem;
+  border-radius: 999px;
+  background: transparent;
+  transform: scaleY(0.45);
+  transform-origin: top center;
   transition:
-    width      0.3s cubic-bezier(0.34, 1.4, 0.64, 1),
-    background 0.2s ease,
-    height     0.2s ease;
+    background 0.18s ease,
+    transform 0.24s ease,
+    width 0.18s ease;
 }
 
-.toc-body .toc-seg {
-  background: var(--toc-line-body);
-  // Body lines must never exceed h5 width (8px) — enforce via CSS
-  max-width: 12px;
+.toc-dot {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--toc-rail-x) - 2px);
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--toc-line-soft);
+  transform: translateY(-50%);
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
 }
 
-// Heading line widths by level
-// h1 longest → h5 shortest; body lines are shorter than all headings
-// Steep curve: h1 clearly dominates, each level visibly shorter
-.toc-h1 .toc-seg { width: 52px; }
-.toc-h2 .toc-seg { width: 34px; }
-.toc-h3 .toc-seg { width: 20px; }
-.toc-h4 .toc-seg { width: 12px; }
-.toc-h5 .toc-seg { width: 7px;  }
-
-// ── Label — inline right of line ───────────────────────────────────
-// No absolute positioning → no overlap possible
 .toc-lbl {
-  flex: 1;
-  white-space: nowrap;
+  display: block;
+  min-width: 0;
+  padding-right: 1rem;
+  color: var(--toc-label-muted);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.15;
+  opacity: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 10.5px;
-  font-weight: 400;
-  letter-spacing: 0em;
-  line-height: 1.3;
-  color: var(--toc-label-dim);           // dim but visible by default
+  transform: translateX(-0.35rem);
   transition:
-    color       0.18s ease,
-    font-size   0.18s ease,
-    font-weight 0.18s ease;
+    color 0.18s ease,
+    opacity 0.18s ease,
+    transform 0.18s ease;
 }
 
-// ── Per-level label sizing — reinforces visual hierarchy ──────────
-.toc-h1 .toc-lbl { font-size: 11px; }
-.toc-h2 .toc-lbl { font-size: 10.5px; }
-.toc-h3 .toc-lbl { font-size: 10px; }
-.toc-h4 .toc-lbl { font-size: 10px; opacity: 0.85; }
-.toc-h5 .toc-lbl { font-size: 10px; opacity: 0.7; }
-
-// ── STATE 1: CONTAINER HOVER → all labels ghost-bright ────────────
-.toc-sidebar:hover {
-
-  .toc-heading:not(.active) .toc-seg {
-    background: var(--toc-line-container-hover);
-  }
-
-  .toc-heading:not(.active) .toc-lbl {
-    color: var(--toc-label-ghost);
-  }
-
-  .toc-body .toc-seg {
-    background: var(--toc-line-body-hover);
-  }
-
-  // ── STATE 2: ITEM HOVER → accent ──────────────────────────────
-  .toc-heading:not(.active):hover {
-    .toc-seg {
-      background: var(--toc-accent) !important;
-      height: 2px;
-    }
-    .toc-lbl {
-      color: var(--toc-accent) !important;
-      font-weight: 500;
-    }
-  }
+.toc-h1 .toc-lbl {
+  font-size: 0.92rem;
 }
 
-// ── STATE 3: ACTIVE (scroll) ───────────────────────────────────────
+.toc-h2 .toc-lbl {
+  padding-left: 0.45rem;
+}
+
+.toc-h3 .toc-lbl,
+.toc-h4 .toc-lbl,
+.toc-h5 .toc-lbl,
+.toc-h6 .toc-lbl {
+  padding-left: 0.9rem;
+  font-size: 0.82rem;
+}
+
 .toc-heading.active {
-  .toc-seg {
-    height: 2px;
-    background: var(--toc-line-active) !important;
+  .toc-marker {
+    width: 3px;
+    background: var(--toc-active);
+    transform: scaleY(1);
   }
+
   .toc-lbl {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--toc-label-active) !important;
+    color: var(--dark);
+    font-weight: 650;
   }
 }
 
-// Active line width expansion
-.toc-h1.active .toc-seg { width: 66px; }
-.toc-h2.active .toc-seg { width: 46px; }
-.toc-h3.active .toc-seg { width: 28px; }
-.toc-h4.active .toc-seg { width: 17px; }
-.toc-h5.active .toc-seg { width: 10px; }
+.toc-heading.near1 .toc-marker {
+  background: color-mix(in srgb, var(--toc-active) 42%, transparent);
+  transform: scaleY(0.75);
+}
 
-// ── PROXIMITY GLOW ─────────────────────────────────────────────────
-.toc-heading.near1 .toc-seg { background: var(--toc-line-near1); }
-.toc-heading.near2 .toc-seg { background: var(--toc-line-near2); }
-.toc-body.bn0 .toc-seg      { background: var(--toc-body-near0); }
-.toc-body.bn1 .toc-seg      { background: var(--toc-body-near1); }
+.toc-heading.near2 .toc-marker {
+  background: color-mix(in srgb, var(--toc-active) 24%, transparent);
+  transform: scaleY(0.6);
+}
 
-// ── DARK MODE ──────────────────────────────────────────────────────
+.toc-body.bn0 .toc-dot {
+  background: color-mix(in srgb, var(--toc-active) 45%, transparent);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.toc-body.bn1 .toc-dot {
+  background: color-mix(in srgb, var(--toc-active) 28%, transparent);
+}
+
 :root[saved-theme="dark"] {
-  --toc-line-default:         rgba(255,255,255,0.14);
-  --toc-line-body:            rgba(255,255,255,0.07);
-  --toc-line-active:          rgba(255,255,255,0.92);
-  --toc-line-near1:           rgba(255,255,255,0.36);
-  --toc-line-near2:           rgba(255,255,255,0.2);
-  --toc-body-near0:           rgba(255,255,255,0.16);
-  --toc-body-near1:           rgba(255,255,255,0.10);
-  --toc-label-active:         rgba(255,255,255,0.92);
-  --toc-label-dim:            rgba(255,255,255,0.20);  // always-on dim
-  --toc-label-ghost:          rgba(255,255,255,0.42);  // container hover
-  --toc-line-container-hover: rgba(255,255,255,0.26);
-  --toc-line-body-hover:      rgba(255,255,255,0.12);
+  .toc-wrapper {
+    --toc-line: color-mix(in srgb, var(--darkgray) 42%, transparent);
+    --toc-line-soft: color-mix(in srgb, var(--darkgray) 24%, transparent);
+  }
 }
 
-// ── LIGHT MODE ─────────────────────────────────────────────────────
-:root:not([saved-theme="dark"]) {
-  --toc-line-default:         rgba(0,0,0,0.14);
-  --toc-line-body:            rgba(0,0,0,0.07);
-  --toc-line-active:          var(--dark);
-  --toc-line-near1:           rgba(0,0,0,0.32);
-  --toc-line-near2:           rgba(0,0,0,0.16);
-  --toc-body-near0:           rgba(0,0,0,0.14);
-  --toc-body-near1:           rgba(0,0,0,0.09);
-  --toc-label-active:         var(--dark);
-  --toc-label-dim:            rgba(0,0,0,0.25);
-  --toc-label-ghost:          rgba(0,0,0,0.45);
-  --toc-line-container-hover: rgba(0,0,0,0.26);
-  --toc-line-body-hover:      rgba(0,0,0,0.11);
+@media all and ($tablet) {
+  .toc-wrapper {
+    --toc-expanded-width: 230px;
+  }
 }
 
-// ── Textured reading progress bar ────────────────────────────────
-.toc-progress-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 14px;
-  margin-bottom: 10px;
-}
-
-.toc-progress-bar {
-  flex: 1;
-  height: 8px;
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-// Dotted texture — the unfilled track
-.toc-progress-track {
-  position: absolute;
-  inset: 0;
-  border-radius: 2px;
-  background-image: radial-gradient(
-    circle,
-    var(--lightgray) 1px,
-    transparent 1px
-  );
-  background-size: 4px 4px;
-  opacity: 0.5;
-}
-
-// Solid fill — advances as page scrolls
-.toc-progress-fill {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  border-radius: 2px;
-  background: var(--dark);
-  z-index: 1;
-  width: 0%;
-  transition: width 0.25s ease;
-}
-
-.toc-progress-pct {
-  font-size: 10px;
-  color: var(--gray);
-  min-width: 28px;
-  text-align: right;
-  flex-shrink: 0;
-  font-variant-numeric: tabular-nums;
+@media all and ($mobile) {
+  .toc-wrapper {
+    display: none;
+  }
 }

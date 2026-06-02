@@ -41,7 +41,7 @@ publish: true
 典型技术栈：
 |**层**|**技术**|
 |---|---|
-|Batch|Hive / Spark|
+|Batch|[[Hive]] / [[Spark]]|
 |Speed|[[Storm]] / [[Flink]]|
 |Serving|[[HBase]] / [[Elasticsearch]]|
 
@@ -86,4 +86,4 @@ OLAP 查询引擎
 BI / Dashboard
 ```
 
-查询层通常使用 [Trino](chatgpt://generic-entity?number=8) 用于实现，实时查询、OLAP 分析、BI 报表
+查询层通常使用 [Trino](chatgpt://generic-entity?number=8) 用于实现，实时查询、[[OLAP]] 分析、BI 报表

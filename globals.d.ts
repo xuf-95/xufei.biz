@@ -15,3 +15,8 @@ export declare global {
     addCleanup(fn: (...args: any[]) => void)
   }
 }
+
+declare module "*.inline" {
+  const source: string
+  export default source
+}

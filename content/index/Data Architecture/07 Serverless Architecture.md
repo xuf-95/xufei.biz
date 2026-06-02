@@ -39,13 +39,14 @@ You write functions or services, deploy them, and only pay for the compute time 
 
 ### Popular Providers
 
-| Provider         | Service                         |
-| ---------------- | ------------------------------- |
-| AWS              | [[02 Lambda Architecture\|Lambda]] |
-| Google Cloud     | Cloud Functions / Cloud Run     |
-| Microsoft Azure  | Azure Functions                 |
-| Vercel / Netlify | Edge Functions                  |
-| Cloudflare       | Workers                         |
+| Provider                           | Service                                                                                                                                                               |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [[Aliyun Cloud Ecosystem\|Aliyun]] | [Serverless资源组优势-DataWorks-阿里云](https://help.aliyun.com/zh/dataworks/user-guide/resource-group-management/?spm=a2c4g.11186623.help-menu-72772.d_0_1_2.706e63911gHtVp) |
+| AWS                                | [[02 Lambda Architecture\|Lambda]]                                                                                                                                    |
+| Google Cloud                       | Cloud Functions / Cloud Run                                                                                                                                           |
+| Microsoft Azure                    | Azure Functions                                                                                                                                                       |
+| Vercel / Netlify                   | Edge Functions                                                                                                                                                        |
+| Cloudflare                         | Workers                                                                                                                                                               |
 
 ### Pros & Cons
 

@@ -15,7 +15,7 @@ publish: true
   </div>
 </div> %%
 
-I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
+I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[Data Management Capability Maturity Assessment Model (DCMM)]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
 
 ***
 

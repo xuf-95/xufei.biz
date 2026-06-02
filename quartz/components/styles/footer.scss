@@ -1,16 +1,105 @@
+@use "../../styles/variables.scss" as *;
+
 footer {
+  --footer-border: color-mix(in srgb, var(--darkgray) 62%, transparent);
+  --footer-muted: color-mix(in srgb, var(--darkgray) 68%, transparent);
+
   text-align: left;
-  margin-bottom: 4rem;
-  opacity: 0.7;
+  margin: 4rem 0;
+  color: var(--darkgray);
+
+  &.site-footer {
+    font-family: var(--bodyFont);
+  }
+
+  & a {
+    color: var(--darkgray);
+    background: transparent;
+    border-radius: 0;
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
 
   & ul {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  & .footer-directory {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-top: 1px dashed var(--footer-border);
+    border-left: 1px dashed var(--footer-border);
+  }
+
+  & .footer-directory-column {
+    min-height: 15rem;
+    padding: 1.6rem 1.25rem 1.25rem;
+    border-right: 1px dashed var(--footer-border);
+    border-bottom: 1px dashed var(--footer-border);
+  }
+
+  & h2 {
+    display: inline-block;
+    margin: 0 0 1.35rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: var(--dark);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25rem;
+  }
+
+  & .footer-directory-column ul {
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    margin-top: -1rem;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  & .footer-directory-column a {
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--footer-muted);
+  }
+
+  & .footer-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.35rem 1.25rem;
+    border-right: 1px dashed var(--footer-border);
+    border-bottom: 1px dashed var(--footer-border);
+    border-left: 1px dashed var(--footer-border);
+  }
+
+  & .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    margin-bottom: 0.45rem;
+  }
+
+  & .footer-links li:not(:last-child)::after {
+    content: "|";
+    margin-left: 0.75rem;
+    color: var(--footer-muted);
+  }
+
+  & .footer-meta p {
+    margin: 0;
+    color: var(--footer-muted);
+  }
+
+  & .footer-powered {
+    text-align: right;
+    white-space: nowrap;
   }
 
   & .badges {
@@ -18,5 +107,42 @@ footer {
     align-items: center;
     gap: 0.75rem;
     margin-top: 0.75rem;
+  }
+}
+
+@media all and ($tablet) {
+  footer {
+    & .footer-directory {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    & .footer-directory-column {
+      min-height: 13rem;
+    }
+  }
+}
+
+@media all and ($mobile) {
+  footer {
+    margin: 3rem 0;
+
+    & .footer-directory {
+      grid-template-columns: 1fr;
+    }
+
+    & .footer-directory-column {
+      min-height: auto;
+      padding: 1.2rem 1rem;
+    }
+
+    & .footer-meta {
+      flex-direction: column;
+      padding: 1.2rem 1rem;
+    }
+
+    & .footer-powered {
+      text-align: left;
+      white-space: normal;
+    }
   }
 }

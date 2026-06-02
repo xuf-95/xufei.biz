@@ -228,6 +228,12 @@ Use this reusable card view on any page by copying the HTML block and changing e
   </div>
 </div>
 
+iframe 
+<iframe 
+src="/static/parquet-col-explain.html" 
+width="100%" 
+height="720" 
+style="border:0;"></iframe>
 ## Callout
 
 > [!box]
