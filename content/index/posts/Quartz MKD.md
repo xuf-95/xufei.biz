@@ -276,3 +276,107 @@ style="border:0;"></iframe>
 
 > [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md
 
+---
+
+## Image Size and Layout Tests
+
+This section records image size aliases and in-article layout formats for Quartz Markdown rendering.
+
+### Wikilink Size Aliases
+
+| Format | Test |
+| --- | --- |
+| Original | ![[Crossbell IPFS.png]] |
+| `wmicro` | ![[Crossbell IPFS.png\|wmicro]] |
+| `wtiny` | ![[Crossbell IPFS.png\|wtiny]] |
+| `wsmall` | ![[Crossbell IPFS.png\|wsmall]] |
+| `wmed` | ![[Crossbell IPFS.png\|wmed]] |
+| Fixed dimensions | ![[Crossbell IPFS.png\|100x145]] |
+
+### Inline Text Flow
+
+<figure class="image-layout-aside">
+  <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Right floated layout test" />
+  <figcaption>Right floated figure</figcaption>
+</figure>
+
+The right-floated image should sit beside this paragraph while text wraps naturally around it. This checks the most common wiki-style article layout where an image supports the surrounding explanation instead of occupying a full row.
+
+The paragraph continues long enough to verify wrapping, spacing, and the return to normal document flow after the figure. On narrow screens, the figure should become full width and sit between paragraphs.
+
+<div class="image-layout-clear"></div>
+
+<figure class="image-layout-aside is-left">
+  <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Left floated layout test" />
+  <figcaption>Left floated figure</figcaption>
+</figure>
+
+The left-floated image mirrors the previous layout. It is useful for checking whether margins, captions, and text flow remain balanced when the image moves to the opposite side of the article.
+
+<div class="image-layout-clear"></div>
+
+### Grid, Feature, and Mosaic
+
+<div class="image-layout-test">
+  <p class="image-layout-note">These blocks use <code>quartz/styles/images-layouts.scss</code>.</p>
+
+  <div class="image-layout-row">
+    <figure class="image-layout-card">
+      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Default card image layout" />
+      <figcaption>Default card</figcaption>
+    </figure>
+    <figure class="image-layout-card is-square">
+      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Square cropped image layout" />
+      <figcaption>Square crop</figcaption>
+    </figure>
+    <figure class="image-layout-card is-wide">
+      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Wide cropped image layout" />
+      <figcaption>16:9 crop</figcaption>
+    </figure>
+  </div>
+
+  <figure class="image-layout-feature">
+    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Full width feature image layout" />
+    <figcaption>Full-width feature image</figcaption>
+  </figure>
+
+  <figure class="image-layout-feature is-contained">
+    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Contained feature image layout" />
+    <figcaption>Contained feature image</figcaption>
+  </figure>
+
+  <figure class="image-layout-bleed">
+    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Viewport wide image layout" />
+    <figcaption>Viewport-wide image, ignoring Quartz sidebars and body width</figcaption>
+  </figure>
+
+  <figure class="image-layout-bleed" style="--image-layout-width: 82%; --image-layout-height: 18rem;">
+    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Scaled viewport wide image layout" />
+    <figcaption>Viewport-wide container with image width set to 82%</figcaption>
+  </figure>
+
+  <figure class="image-layout-scale" style="--image-layout-width: 65%;">
+    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Percentage scaled image layout" />
+    <figcaption>Image scaled to 65% inside the article body</figcaption>
+  </figure>
+
+  <figure class="image-layout-fixed" style="--image-layout-width: 520px; --image-layout-height: 180px; --image-layout-fit: cover;">
+    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Custom fixed size image layout" />
+    <figcaption>Custom width and height using CSS variables</figcaption>
+  </figure>
+
+  <div class="image-layout-mosaic">
+    <figure>
+      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Large mosaic image layout" />
+      <figcaption>Large tile</figcaption>
+    </figure>
+    <figure>
+      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Small mosaic image layout one" />
+      <figcaption>Small tile</figcaption>
+    </figure>
+    <figure>
+      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Small mosaic image layout two" />
+      <figcaption>Small tile</figcaption>
+    </figure>
+  </div>
+</div>

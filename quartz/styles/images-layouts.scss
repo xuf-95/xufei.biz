@@ -1,0 +1,208 @@
+@use "./variables.scss" as *;
+
+/*
+Edit record:
+- 2026-06-03: Add Markdown image size and in-article layout test styles for Quartz MKD.
+- 2026-06-03: Add viewport-wide, percentage-scale, and custom-size image layout tests.
+*/
+
+.image-layout-test {
+  margin: 2rem 0;
+  clear: both;
+}
+
+.image-layout-test h3 {
+  margin-top: 2rem;
+}
+
+.image-layout-note {
+  color: var(--gray);
+  font-size: 0.92rem;
+}
+
+.image-layout-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.9rem;
+  align-items: start;
+  margin: 1rem 0 1.4rem;
+}
+
+.image-layout-card {
+  margin: 0;
+  padding: 0.65rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--light);
+}
+
+.image-layout-card img,
+.image-layout-feature img,
+.image-layout-aside img,
+.image-layout-mosaic img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.image-layout-card figcaption,
+.image-layout-feature figcaption,
+.image-layout-aside figcaption,
+.image-layout-mosaic figcaption {
+  margin-top: 0.45rem;
+  color: var(--gray);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.image-layout-card.is-square img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.image-layout-card.is-wide img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.image-layout-feature {
+  margin: 1.2rem 0;
+}
+
+.image-layout-feature img {
+  max-height: 26rem;
+  object-fit: cover;
+}
+
+.image-layout-feature.is-contained img {
+  object-fit: contain;
+  background: var(--lightgray);
+}
+
+.image-layout-bleed {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 1.5rem 0 1.8rem;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.image-layout-bleed img {
+  display: block;
+  width: var(--image-layout-width, 100%);
+  max-width: 100%;
+  height: var(--image-layout-height, clamp(14rem, 42vw, 32rem));
+  max-height: var(--image-layout-max-height, 34rem);
+  margin-inline: auto;
+  object-fit: var(--image-layout-fit, cover);
+}
+
+.image-layout-bleed figcaption {
+  width: min(100% - 2rem, 56rem);
+  margin: 0.55rem auto 0;
+  color: var(--gray);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.image-layout-scale,
+.image-layout-fixed {
+  margin: 1.2rem auto;
+}
+
+.image-layout-scale img,
+.image-layout-fixed img {
+  display: block;
+  width: var(--image-layout-width, 100%);
+  max-width: 100%;
+  height: var(--image-layout-height, auto);
+  aspect-ratio: var(--image-layout-ratio, 16 / 9);
+  margin-inline: auto;
+  object-fit: var(--image-layout-fit, contain);
+  border-radius: 6px;
+}
+
+.image-layout-fixed img {
+  max-height: var(--image-layout-max-height, none);
+}
+
+.image-layout-scale figcaption,
+.image-layout-fixed figcaption {
+  margin-top: 0.45rem;
+  color: var(--gray);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.image-layout-aside {
+  float: right;
+  width: min(42%, 18rem);
+  margin: 0.2rem 0 1rem 1.25rem;
+}
+
+.image-layout-aside.is-left {
+  float: left;
+  margin: 0.2rem 1.25rem 1rem 0;
+}
+
+.image-layout-mosaic {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 0.8rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.image-layout-mosaic figure {
+  margin: 0;
+}
+
+.image-layout-mosaic figure:first-child {
+  grid-row: span 2;
+}
+
+.image-layout-mosaic figure:first-child img {
+  height: 100%;
+  min-height: 18rem;
+  object-fit: cover;
+}
+
+.image-layout-clear {
+  clear: both;
+}
+
+@media (max-width: 700px) {
+  .image-layout-aside,
+  .image-layout-aside.is-left {
+    float: none;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .image-layout-mosaic {
+    grid-template-columns: 1fr;
+  }
+
+  .image-layout-mosaic figure:first-child {
+    grid-row: auto;
+  }
+
+  .image-layout-mosaic figure:first-child img {
+    min-height: 0;
+  }
+
+  .image-layout-bleed {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .image-layout-bleed figcaption {
+    width: 100%;
+  }
+}
