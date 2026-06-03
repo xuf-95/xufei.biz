@@ -1,5 +1,5 @@
 ---
-title: "DataWorks"
+title: DataWorks
 aliases:
   - Dataworks
   - DW
@@ -12,10 +12,8 @@ tags:
 description: 阿里云一站式智能大数据开发治理平台
 date: 2023-01-31
 draft: true
-publish:
+publish: true
 publishDate:
-
-
 ---
 
 # DataWorks - 阿里云大数据开发治理平台

@@ -7,14 +7,14 @@ const recentNotes = [
     title: "Recent Posts",
     limit: 3,
     filter: (f) =>
-      f.slug!.startsWith("posts/") && f.slug! !== "posts/index" && !f.frontmatter?.noindex,
-    linkToMore: "posts/" as SimpleSlug,
+      f.slug!.startsWith("index/") && f.slug! !== "index/index" && !f.frontmatter?.noindex,
+    linkToMore: "index/" as SimpleSlug,
   }),
   Component.RecentNotes({
     title: "Recent BigData",
     limit: 2,
-    filter: (f) => f.slug!.startsWith("bigdata/"),
-    linkToMore: "bigdata/" as SimpleSlug,
+    filter: (f) => f.slug!.startsWith("/content/index/"),
+    linkToMore: "/content/index/" as SimpleSlug,
   }),
 ]
 

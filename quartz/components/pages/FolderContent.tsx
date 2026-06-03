@@ -156,7 +156,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         <a href={baseDir} class="internal">
           {i18n(cfg.locale).pages.error.home}
         </a>
-        <hr />
+        {/* <hr /> */}
       </div>
     )
   }
