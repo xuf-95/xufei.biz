@@ -1,9 +1,11 @@
 ---
-title: Data Model
+title: "index"
 date: 2023-06-20
 tags:
   - index
 publish: false
+
+
 ---
 
 ## Data Models

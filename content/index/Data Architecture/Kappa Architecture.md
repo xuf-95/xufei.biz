@@ -1,12 +1,15 @@
 ---
-title: What is Kappa Architecture?
+title: what is Kappa Architecture?
 aliases:
 tags:
-  - architecture
+  - data-architecture
+description:
 date: 2023-09-04
+draft: true
 publish: true
+publishDate:
 ---
-*Kappa architecture is a big data processing pattern that has historically diverged from [[02 Lambda Architecture|Lambda]]. Its foundation is to treat all arriving data as a stream, therefore it contains no batch layer by design, relying solely on a [[Stream Data Processing|stream processing]] layer ("speed layer").* 
+*Kappa architecture is a big data processing pattern that has historically diverged from [[Lambda Architecture|Lambda]]. Its foundation is to treat all arriving data as a stream, therefore it contains no batch layer by design, relying solely on a [[Stream Data Processing|stream processing]] layer ("speed layer").* 
 
 ```mermaid
 %%{init: { "flowchart": { "useMaxWidth": true } } }%%
@@ -55,7 +58,7 @@ C --> E
 
 ![[kappa-architecture.png]]
 
-### [[02 Lambda Architecture|Lamdba]]VS Kappa 
+### [[Lambda Architecture|Lamdba]]VS Kappa 
 
 | Content    | Lambda                                                                              | Kappa                                          |     |
 | ---------- | ----------------------------------------------------------------------------------- | ---------------------------------------------- | --- |
@@ -63,7 +66,7 @@ C --> E
 | 计算开销       | 计算开销大                                                                               | 必要时进行全量计算                                      |     |
 | 实时性        | 满足实时性                                                                               | 计算开销相对较小                                       |     |
 | 历史数据处理能力   | 批式全量处理，吞吐量大<br/>历史数据处理能力强<br/>批视图与实时视图存在冲突可能                                        | 满足实时性<br/>流式全量处理，吞吐量相对较低<br/>历史数据处理能力相对较弱      |     |
-| 业务需求与技术要求  | 依赖 [[01 Apache Hadoop Overview]]、 [[What is Apache Spark?\|Spark]]、[[What is Apache Storm?\|Storm]] 技术 | 依赖 [[Apache Flink Homepage\|flink]] 计算引擎，偏流式计算 |     |
+| 业务需求与技术要求  | 依赖 [[Apache Hadoop]]、 [[Apache Spark\|Spark]]、[[Apache Storm\|Storm]] 技术 | 依赖 [[Apache Flink Homepage\|flink]] 计算引擎，偏流式计算 |     |
 | 复杂度        | 实时处理和离线处理结果可能不一致                                                                    | 频繁修改算法模型参数                                     |     |
 | 开发维护成本     | 成本预算充足                                                                              | 成本预算有限                                         |     |
 | 历史数据处理能力   | 频繁使用海量历史数据                                                                          | 仅使用小规模数据集                                      |     |

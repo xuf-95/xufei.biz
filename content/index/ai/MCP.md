@@ -1,6 +1,8 @@
 ---
+title: MCP
 date: 2024-01-09
 aliases:
+  - MCP
 tags:
   - ai
   - mcp

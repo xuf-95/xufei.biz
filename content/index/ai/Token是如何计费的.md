@@ -1,18 +1,18 @@
 ---
-title: Token是如何计费的
+title: "Token是如何计费的"
 aliases:
   - Token计费
   - AI计费机制
   - 令牌计费
 description: 深入了解人工智能服务中的Token计费机制，包括工作原理、计算方法、不同模型的成本差异以及优化策略
 tags:
-  - index
-  - AI
-  - Token
+  - ai
 date: 2024-01-09
 publishDate: 2026-05-21T10:53
 draft: false
 publish: true
+
+
 ---
 
 # Token是如何计费的

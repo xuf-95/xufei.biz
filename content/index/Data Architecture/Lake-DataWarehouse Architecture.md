@@ -1,9 +1,13 @@
 ---
 title: Lake-DataWarehouse Architecture
 date: 2024-10-02
-draft: false
+draft: true
 publish: true
-tags: [data-architecture, data-lake, data-warehouse, modern-data-stack]
+tags:
+  - data-lake
+  - modern-data-stack
+  - data-architecture
+  - data-warehouse
 ---
 # Lake-DataWarehouse Architecture 湖仓一体架构
 

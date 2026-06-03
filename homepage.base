@@ -1,0 +1,33 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - '!file.name.contains(".")'
+        - file.folder.startsWith("content")
+    order:
+      - file.folder
+      - file.name
+      - title
+      - aliases
+      - file.backlinks
+      - tags
+      - file.ctime
+      - file.mtime
+    sort:
+      - property: formula.Untitled
+        direction: ASC
+      - property: tags
+        direction: ASC
+      - property: title
+        direction: ASC
+      - property: file.backlinks
+        direction: DESC
+      - property: file.tags
+        direction: DESC
+      - property: file.ext
+        direction: ASC
+    columnSize:
+      file.name: 439
+      note.title: 451
+      note.aliases: 632

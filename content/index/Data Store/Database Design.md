@@ -1,10 +1,12 @@
 ---
+title: "Database Design"
 aliases:
-  - 数据库设计
 tags:
   - database
 date: 2022-06-11
 draft: false
+
+
 ---
 ## 数据库管理系统
 

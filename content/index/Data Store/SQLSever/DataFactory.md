@@ -6,6 +6,8 @@ tags:
   - cloud
 date: 2025-06-06
 draft: true
+aliases:
+  - DataFactory
 ---
 
 Azure Data Factory is improved on an ongoing basis. To stay up to date with the most recent developments, this article provides you with information about:

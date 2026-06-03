@@ -1,12 +1,13 @@
 ---
 title: What is Apache Storm?
+aliases:
 tags:
-  - compute
+  - data-compute
   - hadoop
   - streaming
-  - distribute
   - Real-time
-draft: false
+description:
+draft: true
 date: 2024-07-24
 publish: true
 ---

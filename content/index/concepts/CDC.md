@@ -1,11 +1,11 @@
 ---
-title: CDC（Change Data Capture）
+title: "CDC"
 aliases:
   - CDC
   - Change Data Capture
   - 数据捕获
 tags:
-  - integration
+  - data-integration
   - concepts
 date: 2023-02-05
 publish: true
@@ -63,6 +63,7 @@ A few situations where you might use change data capture:
 
 ### Popular Change Data Capture Tools
 
+- [[Flink CDC]]
 - [[Debezium]]
 - Confluent
 - [[Amazon DMS]]
@@ -76,3 +77,5 @@ A few situations where you might use change data capture:
 
 - [Change Data Capture (CDC): What it is and How it Works - Striim](https://www.striim.com/blog/change-data-capture-cdc-what-it-is-and-how-it-works/)
 - [How To Implement Change Data Capture With Apache Kafka  | Estuary](https://estuary.dev/change-data-capture-kafka/)
+
+

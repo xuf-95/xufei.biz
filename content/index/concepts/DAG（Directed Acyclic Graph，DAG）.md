@@ -1,12 +1,13 @@
 ---
-aliases: 
+title: DAG（Directed Acyclic Graph，DAG）
+aliases:
 tags:
   - concepts
   - system
   - todo
 date: 2022-03-12
 draft: true
-publish: true
+publish: false
 ---
 
 ## 概述

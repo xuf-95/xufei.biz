@@ -1,5 +1,5 @@
 ---
-title: DataWorks
+title: "DataWorks"
 aliases:
   - Dataworks
   - DW
@@ -14,13 +14,15 @@ date: 2023-01-31
 draft: true
 publish:
 publishDate:
+
+
 ---
 
 # DataWorks - 阿里云大数据开发治理平台
 
 ## 简介
 
-**DataWorks** 是阿里云推出的企业级大数据开发治理平台，基于[[What is MaxCompute?]]、[[Hologres]]、EMR、AnalyticDB、CDP等大数据引擎，为数据仓库、数据湖、湖仓一体等解决方案提供统一的全链路大数据开发治理平台。
+**DataWorks** 是阿里云推出的企业级大数据开发治理平台，基于[[MaxCompute]]、[[Hologres]]、EMR、AnalyticDB、CDP等大数据引擎，为数据仓库、数据湖、湖仓一体等解决方案提供统一的全链路大数据开发治理平台。
 
 ### 产品能力
 

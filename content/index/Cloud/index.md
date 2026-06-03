@@ -1,10 +1,12 @@
 ---
-title: Cloud Data
+title: "index"
 description: 云原生一体化
 date: 2023-06-20
 tags:
   - index
 publish: false
+
+
 ---
 
 ## Cloud Data Platforms
@@ -16,7 +18,7 @@ publish: false
 
 ### Products
 
-- [[What is MaxCompute?]]
+- [[MaxCompute]]
 - [[DataWorks]]
 - [[Hologres]]
 - [[Quick BI]]
@@ -24,4 +26,4 @@ publish: false
 ### Topics
 
 - [[MaxComput 数据开发性能优化]]
-- [[什么是MaxCompute MaxFrame]]
+- [[MaxCompute MaxFrame]]

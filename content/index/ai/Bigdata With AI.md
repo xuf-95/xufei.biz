@@ -5,6 +5,8 @@ tags:
   - ai
 date: 2025-04-17
 publish: true
+aliases:
+  - Bigdata With AI
 ---
 
 Databases with AI capabilities combine traditional storage and querying functions with integrated machine learning, artificial intelligence algorithms, or smart analytics. Below are some types of databases and platforms with AI functionalities:

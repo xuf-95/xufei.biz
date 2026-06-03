@@ -1,12 +1,13 @@
 ---
-title:
+title: Lakehouse
 date: 2024-01-09
 aliases:
+  - Lakehouse
 tags:
   - bigdata
-  - warehouse
+  - data-warehouse
   - data-lake
-  - architecture
+  - data-architecture
 description:
 draft:
 publishDate: 2026-03-26T15:06

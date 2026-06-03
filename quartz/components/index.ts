@@ -25,6 +25,7 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import TopNav from "./TopNav"
+import VersionSwitcher from "./VersionSwitcher"
 
 export {
   ArticleDescription,
@@ -54,4 +55,5 @@ export {
   Flex,
   ConditionalRender,
   TopNav,
+  VersionSwitcher,
 }

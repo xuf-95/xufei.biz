@@ -1,11 +1,13 @@
 ---
-title: Read Book List
+title: "2025 read book list"
 tags:
   - note
 date: 2025-06-14
 draft: true
 publish: false
 description: Yet Another Resource Negotiator
+
+
 ---
 ## Book List 
 - 心流

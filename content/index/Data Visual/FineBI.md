@@ -1,5 +1,5 @@
 ---
-title: FineBI
+title: "FineBI"
 aliases:
   - 帆软
 tags:
@@ -7,13 +7,15 @@ tags:
 date: 2024-03-04
 publish: false
 draft: true
+
+
 ---
 
 ## 产品版本及功能
 
 ## 使用方式及场景
 
-下钻、上卷、旋转、切片、联动等OLAP多维分析功能
+下钻、上卷、旋转、切片、联动等[[OLAP]]多维分析功能
 
 ## 数据可视化分析流程
 

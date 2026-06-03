@@ -1,6 +1,8 @@
 ---
+title: RAG
 date: 2024-01-09
 aliases:
+  - RAG
 tags:
   - ai
 description:

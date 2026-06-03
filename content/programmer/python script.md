@@ -1,10 +1,12 @@
 ---
-title: python script
+title: "python script"
 tags:
   - script
 date: 2022-08-01
 draft: false
 publish: true
+
+
 ---
 ### Install JDK
 

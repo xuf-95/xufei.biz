@@ -1,14 +1,17 @@
 ---
+title: "Armstrong 公理系统"
 tags:
   - database
   - rule
   - theory
 date: 2023-02-05
 draft: false
+
+
 ---
 ### 定义
 
-Armstrong 公理系统是用于推导[[函数依赖(Functional Dependency)|函数依赖]]的一组基本规则，在数据库理论中非常重要。该公理系统由美国计算机科学家 William W. Armstrong 提出，旨在用以推导给定函数依赖集合中所有隐含的函数依赖。通过这些规则，数据库设计者可以推导出所有有效的依赖关系，确保数据库设计的规范化和一致性。
+Armstrong 公理系统是用于推导[[函数依赖（Functional Dependency）|函数依赖]]的一组基本规则，在数据库理论中非常重要。该公理系统由美国计算机科学家 William W. Armstrong 提出，旨在用以推导给定函数依赖集合中所有隐含的函数依赖。通过这些规则，数据库设计者可以推导出所有有效的依赖关系，确保数据库设计的规范化和一致性。
 
 ### 具备的特性
 

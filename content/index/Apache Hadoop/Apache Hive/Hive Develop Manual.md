@@ -1,11 +1,13 @@
 ---
-title: Apache Hive Develop Manual
+title: "Hive Develop Manual"
 tags:
-  - warehouse
+  - data-warehouse
   - hive
 date: 2022-01-15
 draft: false
 publish: true
+
+
 ---
 ## DDL Defined
 

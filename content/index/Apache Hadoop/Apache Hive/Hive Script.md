@@ -1,4 +1,5 @@
 ---
+title: "Hive Script"
 date: 2022-01-09
 aliases:
 tags:
@@ -8,6 +9,8 @@ tags:
 description:
 draft: false
 publishDate: 2026-03-03T10:55
+
+
 ---
 ```shell
 #!/bin/bash

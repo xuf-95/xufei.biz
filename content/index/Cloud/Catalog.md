@@ -1,6 +1,7 @@
 ---
-title:
+title: Catalog
 aliases:
+  - Catalog
 description:
 tags:
   - aliyun

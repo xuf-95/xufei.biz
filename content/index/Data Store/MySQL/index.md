@@ -1,7 +1,9 @@
 ---
-title: MySQL
+title: "index"
 date: 2021-10-14
 publish: true
+
+
 ---
 
 ## Topics

@@ -1,10 +1,12 @@
 ---
-title: My Use
+title: "my use"
 tags:
   - note
 date: 2025-06-14
 draft: true
 publish: false
+
+
 ---
 
 ## Macbook Pro 14' M2 32g 512g

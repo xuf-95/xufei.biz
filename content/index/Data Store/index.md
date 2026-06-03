@@ -1,46 +1,12 @@
 ---
-title: Data Store
+title: "index"
 date: 2023-06-20
 tags:
   - index
 draft: false
+
+
 ---
-<!--
->[!column]
->
->> [!tabler] [[Relational Database]]
->> - [[MySQL]]
->> - [[PostgreSQL]]
->> - Oracle
->> - [[ClickHouse]]
->
->> [!obsidian] [[Non-relational Database]]
->> - [[Key-Value Database]] -> [[Redis]]
->> - [[Document Database]] -> [[MongoDB]]
->> - [[MMP（Massively Parallel Processing）|MMP]] -> [[StarRocks]] [[Apache Doris]]
->> - [[Graph Database]] -> Neo4j
->> - [[Timeseries Database]] ->
->> - [[Search-Engine Database]] ->
->> - [[Column-oriented Database]] -> [[Apache HBase]]
->> - Vector Database
->
->> [!voc] [[Data Warehouse]]
->> - [[Apache Hive]]
->> - [[Apache Paimon]]
->
->> [!ex] [[Data Lake]]
->> - Iceberge
->> - Apache Hudi
->> - Aliyun Hologres
->
->> [!ex] [[Cloud Database]]
->> - Aliyun
->> - AWS
->> - JD
--->
-
-***
-
 ## MySQL
 
 - [[Meta Data SQL DDL]]
@@ -59,8 +25,8 @@ draft: false
 ## Concepts
 
 - [[Column-oriented Storage]]
-- [[DDBS(Distributed DataBase System)]]
-- [[DFD(Data Flow Diagrams)]]
+- [[DDBS（Distributed DataBase System）]]
+- [[DFD（Data Flow Diagrams）]]
 - [[InnoDB]]
 - [[OLTP]]
 - [[SequenceFile]]

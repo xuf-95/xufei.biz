@@ -1,11 +1,13 @@
 ---
-title: Meta Data SQL DDL
+title: "Meta Data SQL DDL"
 tags:
   - mysql
   - snippets
 date: 2023-06-03
 draft: false
 publish: true
+
+
 ---
 
 ### 元数据血缘明细表

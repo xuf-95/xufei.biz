@@ -1,4 +1,5 @@
 ---
+title: "Horizontal Scaling"
 aliases:
   - scaling out
 tags:
@@ -6,6 +7,8 @@ tags:
   - to-trans
 publish: true
 date: 2023-02-23
+
+
 ---
 
 A horizontally scalable system is one that can increase capacity by adding more computers to the system.

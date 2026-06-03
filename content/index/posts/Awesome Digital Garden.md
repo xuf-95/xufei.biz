@@ -1,5 +1,5 @@
 ---
-title: Awesome Digital Garden
+title: "Awesome Digital Garden"
 aliases:
   - wiki
   - garden
@@ -8,6 +8,8 @@ tags:
   - garden
   - blogroll
 publish: true
+
+
 ---
 
 > [!column|2 flex clean]

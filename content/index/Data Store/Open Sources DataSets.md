@@ -1,12 +1,14 @@
 ---
-title: Open Sources DataSets
+title: "Open Sources DataSets"
 description: 大数据数据集
 tags:
   - datasets
-  - resource
+  - resources
 date: 2024-07-05
 draft: false
 publish: true
+
+
 ---
 > [BigData Guide Website](https://hao.199it.com/) All type of data tools
 ### Open Dataset

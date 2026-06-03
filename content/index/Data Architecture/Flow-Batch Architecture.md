@@ -1,8 +1,8 @@
 ---
 title: Flow-Batch Architecture
 tags:
-  - architecture
-  - warehouse
+  - data-architecture
+  - data-warehouse
   - streaming
   - batch
 date: 2024-12-21
@@ -30,7 +30,7 @@ publish: true
 - [Apache Spark](chatgpt://generic-entity?number=1)
 ## **背景：传统大数据架构的问题**
 
-在早期的大数据平台中，企业通常采用 **[[02 Lambda Architecture]] 架构**
+在早期的大数据平台中，企业通常采用 **[[Lambda Architecture]] 架构**
 
 其核心结构包含三个层：
 
@@ -41,8 +41,8 @@ publish: true
 典型技术栈：
 |**层**|**技术**|
 |---|---|
-|Batch|[[Hive]] / [[Spark]]|
-|Speed|[[Storm]] / [[Flink]]|
+|Batch|[[Hive]] / [[Apache Spark]]|
+|Speed|[[Apache Storm]] / [[Flink]]|
 |Serving|[[HBase]] / [[Elasticsearch]]|
 
 这种架构存在明显问题：

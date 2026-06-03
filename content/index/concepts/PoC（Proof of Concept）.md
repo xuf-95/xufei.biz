@@ -1,4 +1,5 @@
 ---
+title: "PoC（Proof of Concept）"
 aliases:
   - PoC
   - Proof of Concept
@@ -8,6 +9,8 @@ tags:
 date: 2022-09-05
 draft: false
 publish: true
+
+
 ---
 
 > [!obsidian]

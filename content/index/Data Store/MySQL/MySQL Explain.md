@@ -1,10 +1,12 @@
 ---
-title: MySQL Explain
+title: "MySQL Explain"
 tags:
   - mysql
 date: 2022-01-23
 draft: false
 publish: true
+
+
 ---
 
 > 使用EXPLAIN关键字可以模拟优化器执行SQL查询语句，从而知道SQL语句在MySQl中是如何被处理的。可以分析查询语句的性能瓶颈。

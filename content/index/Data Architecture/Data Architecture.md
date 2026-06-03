@@ -1,5 +1,5 @@
 ---
-title: Data Architecture
+title: Data Architecture HomePage
 date: 2025-04-01
 tags:
   - index
@@ -15,7 +15,7 @@ publish: true
 [[DAMA]] 的数据架构主要包括企业 **数据模型** 和 **数据流的设计**（也称数据价值链的设计）
 #### DCMM观点
 
-[[Data Management Capability Maturity Assessment Model (DCMM)]] 的数据架构包括
+[[DCMM]] 的数据架构包括
 
 - 数据模型 
 - 数据架构（[[Data Architecture]]）
@@ -53,20 +53,20 @@ publish: true
 
 大数据具有体量大、时效性强的特点，并非构造单调，而是类型多样；处理大数据时，传统数据处理系统因数据过载，来源复杂，类型多样等诸多原因性能低下，需要采用以新式计算架构和智能算法为代表的新技术；大数据的应用重在发掘数据间的相关性，而非传统逻辑上的因果关系；因此，大数据的目的和价值就在于发现新的知识，洞悉并进行科学决策。现代大数据处理技术，主要分为以下几种： 
 
-- 基于分布式文件系统 [[01 Apache Hadoop Overview|Hadoop]] 
-- 使用 map 或 [[What is Apache Spark?|Spark]] 数据处理技术
+- 基于分布式文件系统 [[Apache Hadoop|Hadoop]] 
+- 使用 map 或 [[Apache Spark|Spark]] 数据处理技术
 - 使用 [[Apache Kafka|Kafka]] 数据传输消息队列及二进制格式
 - **Batch-only frameworks:** 基于分布式文件系统
-    - [[01 Apache Hadoop Overview]]
+    - [[Apache Hadoop]]
 - **Stream-only frameworks:**
-    - [[What is Apache Storm?]]
+    - [[Apache Storm]]
     - [Apache Samza](https://samza.apache.org) 
 - **Hybrid frameworks:**
-    - [[What is Apache Spark?]]
+    - [[Apache Spark]]
     - [[What is Apache Flink?]]
 ## 典型的大数据架构 
 
-### [[02 Lambda Architecture]]
+### [[Lambda Architecture]]
 
 
 ```mermaid
@@ -93,17 +93,17 @@ B --> D
 C --> D
 
 ```
-### [[03 what is Kappa Architecture?]]
+### [[Kappa Architecture]]
 
 ![[kappa-architecture.png]]
 
-### [[08 Flow-Batch Architecture]] 
+### [[Flow-Batch Architecture]] 
 
-### [[04 Lake-DataWarehouse Architecture]]
+### [[Lake-DataWarehouse Architecture]]
 
 ### [[Data Lake]]
 
-### [[01 Data Store Homepage|Data Store]]
+### [[Data Store|Data Store]]
 
 ### 数据架构的评估
 

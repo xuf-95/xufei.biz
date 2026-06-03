@@ -1,5 +1,5 @@
 ---
-title: 每周工作四小时
+title: Every Weekdays works for 4 hours？
 aliases:
 description:
 tags:
@@ -7,12 +7,6 @@ tags:
 date: 2024-01-09
 publishDate: 2026-05-23T10:48
 draft: true
-publish: true
+publish: false
 language: EN
 ---
-adad
-a
-da
-
-a
-da

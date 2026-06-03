@@ -1,10 +1,10 @@
 ---
-title: Yarn
+title: Hadoop Yarn
 description: Yet Another Resource Negotiator
 tags:
   - hadoop
-  - architecture
-  - resource
+  - data-architecture
+  - resources
 date: 2022-01-25
 draft: false
 publish: true
@@ -22,7 +22,7 @@ language: CN
 
 
 > Yarn是hadoop2.x当中新出来的架构模块
-> hadop2.x当中，将我们[[03 MapReduce]]的模块取代了，变成了yarn的资源调度; mr模块还是保留，运行在yarn上面。由yarn集群来统一的管理分配资源
+> hadop2.x当中，将我们[[MapReduce]]的模块取代了，变成了yarn的资源调度; mr模块还是保留，运行在yarn上面。由yarn集群来统一的管理分配资源
 
 资源调度器是Yarn中最核心的组件之一，他是ResourceManager中的一个可插拔的服务组件，负责整个集群的管理和分配。目前Yarn中的作业类型:
 
@@ -39,7 +39,7 @@ language: CN
 - appMaster：每一个任务都要启动一个对应的appMaster进程。全权负责管理任务的执行，包括资源的申请，container划分，任务执行情况的汇报（给resourceManager汇报），资源的回收等等
 - container：资源划分的容器，所有的资源的分配都是以container为单位的。便于我们资源的管理
 - jobHistoryServer：查看所有完成任务的历史的日志
-- TimeLineServer：查看正在执行的任务的情况，[[01 Apache Hadoop Overview|Hadoop]]2.4.0以后的新特性。没什么用。实际工作当中一个mr的任务可能跑好几个小时
+- TimeLineServer：查看正在执行的任务的情况，[[Apache Hadoop|Hadoop]]2.4.0以后的新特性。没什么用。实际工作当中一个mr的任务可能跑好几个小时
 
 ## Yarn Schudler
 >[!question] 调度器主要研究的是任务的执行流程。先提交一个任务，还没执行完成，再提交一个任务怎么办。研究并行的任务如何执行的

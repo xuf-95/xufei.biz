@@ -1,11 +1,13 @@
 ---
-title: Flink CDC
+title: "Flink CDC"
 tags:
   - flink
   - cdc
 date: 2024-09-18
 draft: false
 publish: true
+
+
 ---
 > [!info] Stable Version
 > [v3.6.0-Apache Flink CDC](https://nightlies.apache.org/flink/flink-cdc-docs-stable/)

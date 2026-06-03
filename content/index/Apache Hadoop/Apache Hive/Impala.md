@@ -1,5 +1,5 @@
 ---
-title: Impala
+title: "Impala"
 tags:
   - hadoop
   - hive
@@ -7,6 +7,8 @@ tags:
 date: 2022-02-27
 draft: true
 publish: false
+
+
 ---
 > [!info] **即席查询**
 impala 是 cloudera 提供的一款高效率的 sql 查询工具，基于 hive 并使用**内存**进行计算，没有使用 MapReduce 进行并行计算。提供**实时的查询** 效果，官方测试性能比 hive 快 10 到 100 倍。

@@ -5,6 +5,8 @@ tags:
 date: 2023-08-04
 draft: true
 publish: false
+aliases:
+  - Grafana
 ---
 ![[Grafana.png]]_from Grafana_
 

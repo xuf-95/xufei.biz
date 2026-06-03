@@ -1,5 +1,5 @@
 ---
-title: Data Integration
+title: "Data Integration"
 aliases:
   - 数据集成
   - 数据同步
@@ -7,7 +7,7 @@ aliases:
   - Data Integration Homepage
 tags:
   - homepage
-  - integration
+  - data-integration
 date: 2022-01-21
 draft: true
 publish: false

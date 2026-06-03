@@ -1,27 +1,17 @@
 ---
-title: Apache Flink
+title: Apache Flink HomaPage
 tags:
   - bigdata
   - flink
   - Real-time
 date: 2022-01-25
-draft: false
-publish: false
+draft: true
+publish: true
+aliases:
+  - Apache Flink HomaPage
 ---
-
-<!-- ## Topics
-
+- [[What is Apache Flink?]]
 - [[Flink State Management]]
+- [[Flink CDC]]
 - [[Flink Table API and SQL]]
-- [[Streaming Processing]]
-- [[flink-temp]] -->
 
-```mermaid
-mindmap
-  root((Apache Flink))
-    Flink CDC
-    Table API and SQL
-    Flink CEP
-    Streaming Processing
-    Build System and Development
-```

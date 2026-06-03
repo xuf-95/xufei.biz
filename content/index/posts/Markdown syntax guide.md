@@ -8,6 +8,8 @@ tags:
 date: 2023-08-06
 draft: true
 publish: true
+aliases:
+  - Markdown syntax guide
 ---
 # Markdown syntax guide
 

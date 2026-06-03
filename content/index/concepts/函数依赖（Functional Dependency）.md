@@ -1,5 +1,5 @@
 ---
-title: FD(Functional Dependency)
+title: "函数依赖(Functional Dependency)"
 aliases:
   - Functional Dependency
   - 函数依赖
@@ -7,6 +7,8 @@ tags:
   - concepts
 date: 2022-02-19
 draft: true
+
+
 ---
 
 ### 定义

@@ -1,11 +1,13 @@
 ---
-title: Redis
+title: "Redis"
 tags:
   - database
   - kv
 date: 2024-10-18
 draft: true
 publish:
+
+
 ---
 
 ## 架构演变

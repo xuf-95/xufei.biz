@@ -1,5 +1,5 @@
 ---
-title: UML（Unified Modeling Language）
+title: "UML"
 aliases:
   - 统一建模语言
   - Unified Modeling Language
@@ -12,6 +12,8 @@ tags:
 date: 2023-04-15
 draft: true
 publish: false
+
+
 ---
 ### 定义
 

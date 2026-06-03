@@ -1,6 +1,7 @@
 ---
 title: Superset
 aliases:
+  - Superset
 tags:
   - bi
 date: 2024-03-04

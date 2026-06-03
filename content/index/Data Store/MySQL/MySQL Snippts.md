@@ -1,11 +1,13 @@
 ---
-title: MySQL Snippts
+title: "MySQL Snippts"
 tags:
   - mysql
   - snippets
 date: 2022-03-01
 draft: false
 publish: true
+
+
 ---
 
 ## 创建、删除、查看索引

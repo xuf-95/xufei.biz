@@ -1,8 +1,10 @@
 ---
-title: SQL Server Commad
+title: "SQL Server Commad"
 date: 2024-03-04
 publish: false
 draft: true
+
+
 ---
 ##  DQL
 

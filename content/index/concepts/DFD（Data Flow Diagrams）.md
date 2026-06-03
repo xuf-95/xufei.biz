@@ -1,5 +1,5 @@
 ---
-title: Data Flow Diagrams
+title: "DFD(Data Flow Diagrams)"
 aliases:
   - DFD
   - Data Flow Diagrams
@@ -11,6 +11,8 @@ tags:
   - draw
 date: 2021-06-18
 draft: true
+
+
 ---
 ### What's DFD?
 

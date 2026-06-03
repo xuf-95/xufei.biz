@@ -1,4 +1,5 @@
 ---
+title: "B+TREE"
 date: 0022-02-12
 aliases:
 tags:
@@ -11,6 +12,8 @@ tags:
 description:
 draft: false
 publishDate: 2025-09-26T15:38
+
+
 ---
 
 # B+TREE

@@ -1,5 +1,5 @@
 ---
-title: Pandas
+title: "Pandas"
 aliases:
 date: 2023-11-14
 tags:
@@ -7,6 +7,8 @@ tags:
   - package
 publish: false
 draft: true
+
+
 ---
 
 > Pandas is a powerful Python library that can be used to manipulate and analyze data. [Pandas has many methods](https://initialcommit.com/blog/python-pandas-head) to view and manipulate data, one example of which is the dataframe.sort_index() function.

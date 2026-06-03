@@ -1,9 +1,11 @@
 ---
-aliases: 
+title: Architectural English
+aliases:
 tags:
-  - architecture
+  - data-architecture
 date: 2021-09-04
-publish: true
+publish: false
+draft: true
 ---
 ### Architectural Style
 

@@ -21,7 +21,7 @@ const recentNotes = [
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [Component.TopNav(),Component.Search(),Component.Darkmode(),Component.ReaderMode()],
+  header: [Component.TopNav(), Component.Search(), Component.Darkmode(), Component.ReaderMode()],
   afterBody: [
     // ...recentNotes.map((c) => Component.DesktopOnly(c)),
     Component.DesktopOnly(
@@ -35,9 +35,8 @@ export const sharedPageComponents: SharedLayout = {
       }),
     ),
   ],
-  
+
   footer: Component.Footer({
-    
     links: {
       Home: "https://xufei.biz",
       Tags: "https://xuf-95.github.io/xufei.biz/tags/",
@@ -52,14 +51,13 @@ export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.TagList(),
     Component.ArticleTitle(),
+    Component.VersionSwitcher(),
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
-    Component.Backlinks()
+    Component.Backlinks(),
   ],
-  left: [
-    Component.DesktopOnly(Component.TableOfContents()),
-  ],
+  left: [Component.DesktopOnly(Component.TableOfContents())],
   right: [
     // Component.Flex({
     //   direction: "column",

@@ -1,5 +1,5 @@
 ---
-title: welcome my wiki
+title: XuFei Wiki Garden
 draft: true
 publish: true
 ---
@@ -15,7 +15,7 @@ publish: true
   </div>
 </div> %%
 
-I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[Data Management Capability Maturity Assessment Model (DCMM)]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
+I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
 
 ***
 
@@ -24,9 +24,9 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <h3 class="home-col-title">Data Architecture</h3>
 <ul>
 
-- [[02 Lambda Architecture|What is Lambda Architecture]]
-- [[03 what is Kappa Architecture?|What is Kappa Architecture?]]
-- [[06 Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
+- [[Lambda Architecture|What is Lambda Architecture]]
+- [[Kappa Architecture|What is Kappa Architecture?]]
+- [[Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
 - [[MPP|Massively Parallel Processing（MPP）]]
 
 </ul>
@@ -36,10 +36,10 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <h3 class="home-col-title">Cloud Native</h3>
 <ul>
 
-- [[07 Serverless Architecture|Serverless Architecture]]
+- [[Serverless Architecture|Serverless Architecture]]
 - [[Aliyun Cloud Ecosystem]] 
 - [[Cloud Vendors Homepage]]
-- [[What is MaxCompute?]]
+- [[MaxCompute]]
 
 </ul>
 </div>
@@ -74,7 +74,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <ul>
 
 - [[Bigdata With AI]]
-- [[How Agent Work]]
+- [[Agent]]
 - [[Prompt Engineering]]
 - [[Token是如何计费的]]
 

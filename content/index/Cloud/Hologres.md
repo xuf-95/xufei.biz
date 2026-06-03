@@ -1,4 +1,5 @@
 ---
+title: "Hologres"
 aliases:
 tags:
   - cloud
@@ -8,6 +9,8 @@ date: 2023-12-31
 publishDate: 2025-09-25T21:47
 draft: true
 publish:
+
+
 ---
 ## 架构设计
 
@@ -34,7 +37,7 @@ publish:
 
 支持的数据源
 
-- [[What is MaxCompute?|MaxCompute]]
+- [[MaxCompute|MaxCompute]]
 - [[Apache Hive|Apache Hive]]
 - [[Apache Paimon]]
 - [[What is Apache Flink?|Flink]]

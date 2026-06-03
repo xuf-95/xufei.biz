@@ -1,5 +1,5 @@
 ---
-title: Link Icon Test
+title: "Link Icon Test"
 date: 2026-04-28
 tags:
   - quartz
@@ -8,6 +8,8 @@ tags:
 publish: false
 description: A manual test page for automatic external favicon resolution, protocol handling, file links, and internal-link controls.
 draft: true
+
+
 ---
 
 This page is used to manually verify the automatic external favicon system.

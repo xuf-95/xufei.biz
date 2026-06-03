@@ -1,15 +1,17 @@
 ---
-title: What is ZooKeeper
+title: "ZooKeeper"
 aliases:
   - zk
   - zookeeper
 tags:
-  - architecture
+  - data-architecture
   - distribute
   - data-server
 date: 2023-09-24
 draft: true
 publish: true
+
+
 ---
 > [!caption|left]
 > 
@@ -125,9 +127,9 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 
 ## 大数据生态中的ZooKeeper应用
 
-### [[01 Apache Hadoop Overview]]生态系统
+### [[Apache Hadoop]]生态系统
 
-**[[02 HDFS]] (Hadoop Distributed File System)**
+**[[HDFS]] (Hadoop Distributed File System)**
 - 使用ZooKeeper进行NameNode HA (高可用)配置
 - 管理Active/Standby NameNode的状态切换
 - 集群元数据同步和协调
@@ -147,7 +149,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 集群资源分配和调度协调
 - NodeManager状态管理
 
-**[[Spark]]**
+**[[Apache Spark]]**
 - Spark Master的高可用配置
 - 集群任务调度和协调
 - 应用程序状态管理
@@ -206,7 +208,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 集群配置管理
 
 **阿里云大数据平台**
-- [[What is MaxCompute?]]组件协调
+- [[MaxCompute]]组件协调
 - [[E-MapReduce]]集群管理
 - 大数据服务集成
 

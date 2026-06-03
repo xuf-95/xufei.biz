@@ -154,6 +154,11 @@ declare module "vfile" {
         socialImage: string
         comments: boolean | string
         language: "EN" | "CN" | string
+        versions: Array<{
+          label: string
+          path: string
+          current?: boolean
+        }>
       }>
   }
 }

@@ -1,5 +1,5 @@
 ---
-title: 
+title: "Python MySQL"
 aliases: 
 tags:
   - Python
@@ -7,6 +7,9 @@ tags:
   - snippets
 date: 2023-07-12
 draft: false
+
+
+
 ---
 
 ![[py-mysql.png]]

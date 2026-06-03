@@ -1,5 +1,5 @@
 ---
-title: MySQL Glossary
+title: "MySQL Glossary"
 tags:
   - mysql
   - glossary
@@ -9,4 +9,6 @@ draft: true
 aliases:
 description:
 publishDate: 2026-05-14T22:49
+
+
 ---

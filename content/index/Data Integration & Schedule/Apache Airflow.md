@@ -1,7 +1,7 @@
 ---
-title: Apache Airflow
+title: "Apache Airflow"
 tags:
-  - integration
+  - data-integration
   - pipeline
   - etl
 date: 2023-07-06

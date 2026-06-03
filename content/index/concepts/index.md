@@ -1,9 +1,11 @@
 ---
-title: Big Data Concepts
+title: "index"
 date: 2023-06-20
 tags:
   - index
 publish: true
+
+
 ---
 <!-- 
 ## Core Concepts

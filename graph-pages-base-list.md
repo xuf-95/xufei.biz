@@ -2,7 +2,7 @@
 title: Graph Pages Base List
 tags:
   - graph
-  - visualization
+  - bi
   - diagrams
 date: 2025-04-14
 draft: true

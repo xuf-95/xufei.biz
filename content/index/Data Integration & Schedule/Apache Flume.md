@@ -1,10 +1,10 @@
 ---
-title: Apache Flume
+title: "Apache Flume"
 aliases:
   - Flume
   - flume
 tags:
-  - integration
+  - data-integration
   - flume
 date: 2023-09-15
 draft: false

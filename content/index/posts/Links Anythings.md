@@ -1,8 +1,10 @@
 ---
-title: Links Anythings
+title: "Links Anythings"
 date: 2025-06-14
 draft: true
 publish: false
+
+
 ---
 
 - [How to AI (Almost) Anything \| Media Arts and Sciences \| MIT OpenCourseWare](https://ocw.mit.edu/courses/mas-s60-how-to-ai-almost-anything-spring-2025/)

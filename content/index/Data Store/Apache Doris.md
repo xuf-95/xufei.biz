@@ -1,20 +1,22 @@
 ---
-title: Apache Doris Overview
+title: "Apache Doris"
 aliases:
   - doris
 tags:
-  - warehouse
+  - data-warehouse
   - data-lake
   - mmp
 date: 2024-02-13
 draft: true
 publish: true
 language: CN
+
+
 ---
 ## What's Apache Doris
 
 > [!quote] from doris official definition
-> Apache Doris is an MPP-based real-time data warehouse known for its high query speed. For queries on large datasets, it returns results in sub-seconds. It supports both high-concurrent point queries and high-throughput complex analysis. It can be used for report analysis, ad-hoc queries, unified data warehouse, and data lake query acceleration. Based on Apache Doris, users can build applications for user behavior analysis, A/B testing platform, log analysis, user profile analysis, and e-commerce order analysis.
+> Apache Doris is an MPP-based real-time data warehouse known for its high query speed. For queries on large datasets, it returns results in sub-seconds. It supports both high-concurrent point queries and high-throughput complex analysis. It can be used for report analysis, ad-hoc queries, unified data warehouse, and [[data lake]] query acceleration. Based on Apache Doris, users can build applications for user behavior analysis, A/B testing platform, log analysis, user profile analysis, and e-commerce order analysis.
 
 [Apache Doris](https://doris.apache.org/) 是一个基于 [[MPP]] 支持多种数据源（数据仓库和数据湖）的可高并发快速查询、复杂分析、报表分析、即席查询、用户行为分析、A/B测试的实时数据库。too Fast，too like
 

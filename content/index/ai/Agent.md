@@ -1,13 +1,16 @@
 ---
+title: "How Agent Work"
 aliases:
   - Agent
   - 智能体
 tags:
   - ai
-  - Agent
+  - agent
 date: 2025-04-10
-draft: false
+draft: true
 publish: true
+
+
 ---
 ### Agent 执行流程
 

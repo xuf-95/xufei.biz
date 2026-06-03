@@ -1,6 +1,7 @@
 ---
 title: Quick BI
 aliases:
+  - Quick BI
 tags:
   - aliyun
   - bi

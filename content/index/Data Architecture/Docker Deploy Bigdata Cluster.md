@@ -1,5 +1,5 @@
 ---
-title: Docker Deploy Bigdata Cluster
+title: "Docker Deploy Bigdata Cluster"
 tags:
   - bigdata
   - hadoop
@@ -7,6 +7,8 @@ tags:
 date: 2025-01-25
 draft: true
 publish: true
+
+
 ---
 ## Basic Environment Plan
 

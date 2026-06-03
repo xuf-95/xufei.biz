@@ -1,14 +1,17 @@
 ---
+title: "ClickHouse"
 aliases:
   - clickhouse
 tags:
-  - warehouse
+  - data-warehouse
   - database
   - olap
   - store
   - col-storage
 date: 2022-03-11
 draft:
+
+
 ---
 ![[ClickHouse-1.png]]
 ## What‘s ClickHouse?

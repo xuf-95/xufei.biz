@@ -1,13 +1,16 @@
 ---
+title: "MaxComput 数据开发性能优化"
 aliases:
 tags:
   - cloud
-  - mc
+  - odps
 date: 2023-12-31
 publishDate: 2025-09-25T21:47
 description:
 draft: true
 publish:
+
+
 ---
 ## 优化场景
 

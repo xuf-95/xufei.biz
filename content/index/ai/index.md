@@ -1,7 +1,9 @@
 ---
-title: AI Homepage
+title: "index"
 date: 2024-01-09
 publish: true
+
+
 ---
 
 ## AI + Data
@@ -9,7 +11,7 @@ publish: true
 ### Topics
 
 - [[Bigdata With AI]]
-- [[How Agent Work]]
+- [[Agent]]
 - [[Local File Report Agent]]
 - [[Knowledge Distillation（知识蒸馏）]]
 - [[LLMOPS]]

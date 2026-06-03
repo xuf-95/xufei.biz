@@ -1,7 +1,7 @@
 ---
-title: Apache Nifi
+title: "Apache Nifi"
 tags:
-  - integration
+  - data-integration
   - dataflow
   - middleware
   - etl

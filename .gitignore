@@ -13,3 +13,4 @@ replit.nix
 examples/local_report_agent/out/
 .claudian/
 .claude/
+.base

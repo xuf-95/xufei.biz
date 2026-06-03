@@ -1,7 +1,11 @@
 ---
-title: Homepage
+title: SQL SERVER
+aliases:
+description:
 date: 2024-03-04
 draft: true
+tags:
+publish:
 ---
 ## Version
 

@@ -1,8 +1,10 @@
 ---
-title: Big Data Home
+title: "index"
 date: 2022-03-04
 draft: false
 tags: [bigdata, index]
+
+
 ---
 <!-- 
 **Bigdata Contents**

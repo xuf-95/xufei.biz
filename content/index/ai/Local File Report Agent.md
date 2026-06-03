@@ -1,14 +1,17 @@
 ---
+title: "Local File Report Agent"
 aliases:
   - File Report Agent
   - 本地文件报告 Agent
 tags:
   - ai
-  - Agent
+  - agent
   - Project
 date: 2026-05-19
 draft: false
 publish: true
+
+
 ---
 
 ## 项目目标

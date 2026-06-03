@@ -1,5 +1,5 @@
 ---
-title: Flink Overview
+title: "What is Apache Flink?"
 aliases:
   - flink
   - Flink
@@ -8,6 +8,8 @@ tags:
 date: 2023-06-07
 draft: true
 publish: true
+
+
 ---
 ## Overview
 
@@ -72,7 +74,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 
 	![olap](olap.png)
 
-- [[02 Lambda Architecture]] :  用两套系统，同时保证低延迟和结果准确
+- [[Lambda Architecture]] :  用两套系统，同时保证低延迟和结果准确
 
 - 有状态的流式处理流程
 	![checkpoint](flink-checkpoint.png)

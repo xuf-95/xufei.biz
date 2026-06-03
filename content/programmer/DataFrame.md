@@ -1,13 +1,16 @@
 ---
+title: "DataFrame"
 tags:
   - format
   - python-lib
 date: 2023-11-12
 draft: false
+
+
 ---
 # DataFrame 底层原理及系统架构
 
-**DataFrame** 是大数据处理中常用的编程抽象，在处理结构化和半结构化数据时表现出色。其底层原理和系统架构依具体实现有所差异。以下对 [[Pandas]] 和 [[What is Apache Spark?]] 中的 DataFrame 进行深入剖析
+**DataFrame** 是大数据处理中常用的编程抽象，在处理结构化和半结构化数据时表现出色。其底层原理和系统架构依具体实现有所差异。以下对 [[Pandas]] 和 [[Apache Spark]] 中的 DataFrame 进行深入剖析
 
 ##  Pandas DataFrame 底层原理
 

@@ -1,7 +1,9 @@
 ---
-title: Bigdata Wiki 图谱设计方案
+title: "TEMPLATES"
 description: 基于 DCMM 和 DAMA 框架的知识图谱设计
 publish: false
+
+
 ---
 
 # Bigdata Wiki 图谱设计方案
@@ -51,11 +53,11 @@ bigdata/
 ### 02-Architecture (数据架构)
 
 #### 架构模式
-- [[02 Lambda Architecture]]
-- [[03 what is Kappa Architecture?]]
-- [[08 Flow-Batch Architecture]]
-- [[04 Lake-DataWarehouse Architecture]]
-- [[07 Serverless Architecture]]
+- [[Lambda Architecture]]
+- [[Kappa Architecture]]
+- [[Flow-Batch Architecture]]
+- [[Lake-DataWarehouse Architecture]]
+- [[Serverless Architecture]]
 
 #### 逻辑架构
 - 数据建模
@@ -65,7 +67,7 @@ bigdata/
 #### 物理架构
 - [[Data Warehouse]]
 - [[Data Lake]]
-- [[05 Lakehouse]]
+- [[Lakehouse]]
 
 ### 03-Standards (数据标准)
 - 业务术语
@@ -102,10 +104,10 @@ bigdata/
 ### 08-Infrastructure (技术基础设施)
 
 #### 计算引擎
-- [[01 Apache Hadoop Overview]]
+- [[Apache Hadoop]]
 - [[Apache Spark Overview]]
 - [[Apache Flink]]
-- [[What is Apache Storm?]]
+- [[Apache Storm]]
 
 #### 存储系统
 - [[Data Store]]

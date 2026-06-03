@@ -1,5 +1,5 @@
 ---
-title: Dinky
+title: "Dinky"
 aliases:
   - dinky-platform
   - apache-dinky
@@ -15,6 +15,8 @@ date: 2024-01-09
 publishDate: 2026-05-18T16:45
 draft: false
 publish: true
+
+
 ---
 
 # Dinky - Apache Flink 实时计算平台
