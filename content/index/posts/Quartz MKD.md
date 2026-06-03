@@ -350,9 +350,9 @@ The left-floated image mirrors the previous layout. It is useful for checking wh
     <figcaption>Viewport-wide image, ignoring Quartz sidebars and body width</figcaption>
   </figure>
 
-  <figure class="image-layout-bleed" style="--image-layout-width: 82%; --image-layout-height: 18rem;">
+  <figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
     <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Scaled viewport wide image layout" />
-    <figcaption>Viewport-wide container with image width set to 82%</figcaption>
+    <figcaption>Viewport-wide container with image width set to 72%</figcaption>
   </figure>
 
   <figure class="image-layout-scale" style="--image-layout-width: 65%;">
