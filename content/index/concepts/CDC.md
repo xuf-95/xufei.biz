@@ -49,7 +49,7 @@ WHERE name =   ${DD_NAME};
 
 ### Case
 
-- 在 [[Apache Kafka]] 中的项目案例 [How To Implement Change Data Capture With Apache Kafka  | Estuary](https://estuary.dev/change-data-capture-kafka/)
+- 在 [[Kafka]] 中的项目案例 [How To Implement Change Data Capture With Apache Kafka  | Estuary](https://estuary.dev/change-data-capture-kafka/)
 ### When to use change data capture
 
 Change data capture is typically used to replicate data that is overwritten to another database. For example, replicating data from an operational database to a data warehouse. While the operational database may not need to store historical changes, it might be useful for analysis.

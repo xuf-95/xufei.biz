@@ -1,7 +1,9 @@
 ---
-title: "Apache Hive"
+title: Apache Hive
 aliases:
   - Apache Hive
+  - hive
+  - Hive
 tags:
   - hadoop
   - hive
@@ -9,10 +11,8 @@ tags:
 date: 2022-01-14
 publishDate: 2023-03-02
 draft: true
-publish: false
+publish: true
 language: CN
-
-
 ---
 
 ```mermaid

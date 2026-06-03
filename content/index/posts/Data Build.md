@@ -1,13 +1,11 @@
 ---
-title: "Data Build"
+title: Data Build
 tags:
   - bigdata
   - resources
 date: 2025-03-04
-publish: false
+publish: true
 draft: true
-
-
 ---
 ![[Data Build Datalog.png|800]]
 ## Platform

@@ -13,28 +13,28 @@ publish: true
 ---
 
 > [!column|2 flex clean]
-> ![[content/index/Posts/images/worrydream.png]]
+> ![[worrydream.png]]
 > **[Bret Victor](https://worrydream.com/)**
 > 
-> ![[content/index/Posts/images/jzhao.xyz.png]]
+> ![[jzhao.xyz.png]]
 > **[Quartz 4](https://quartz.jzhao.xyz)**
 > 
-> ![[content/index/Posts/images/mwalton.png]]
+> ![[mwalton.png]]
 > **[The Pond](https://turntrout.com/welcome)**
 > 
-> ![[content/index/Posts/images/Gwern.png]]
+> ![[Gwern.png]]
 > **[RimWorld](https://gwern.net/index)**
 > [!cards|4]
-> ![[content/index/Posts/images/Eilleens.png]]
+> ![[Eilleens.png]]
 > **[Eilleens](https://quartz.eilleeenz.com/)**
 > 
-> ![[content/index/Posts/images/u.s.png]]
+> ![[u.s.png]]
 > **[U.S Graphics Com.](https://usgraphics.com/)**
 > 
 > ![[the pond.png]]
 > **[The Pond](https://turntrout.com/welcome)**
 > 
-> ![[content/index/Posts/images/Rimwrld.png]]
+> ![[Rimwrld.png]]
 > **[RimWorld](https://rimworldwiki.com/wiki/Main_Page)**
 
 ### Wiki Theme

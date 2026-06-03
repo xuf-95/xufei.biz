@@ -21,7 +21,7 @@ language: CN
 
 
 > Yarn是hadoop2.x当中新出来的架构模块
-> hadop2.x当中，将我们[[MapReduce]]的模块取代了，变成了yarn的资源调度; mr模块还是保留，运行在yarn上面。由yarn集群来统一的管理分配资源
+> hadop2.x当中，将我们[[MapReduce]]的模块取代了，变成了yarn的资源调度; MapReduce模块还是保留，运行在yarn上面。由yarn集群来统一的管理分配资源
 
 资源调度器是Yarn中最核心的组件之一，他是ResourceManager中的一个可插拔的服务组件，负责整个集群的管理和分配。目前Yarn中的作业类型:
 

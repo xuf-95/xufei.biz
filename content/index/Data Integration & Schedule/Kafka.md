@@ -274,7 +274,7 @@ esac
 ![[EMAK.png]]_***EMAK***_
 
 
-![[public/bigdata/images/kafka-logo-readme-dark.svg]]
+![[kafka-logo-readme-dark.svg]]
 
 
 ### Question
