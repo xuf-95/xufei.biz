@@ -41,7 +41,7 @@ publish: true
 典型技术栈：
 |**层**|**技术**|
 |---|---|
-|Batch|[[Hive]] / [[Apache Spark]]|
+|Batch|[[Hive]] / [[Spark]]|
 |Speed|[[Apache Storm]] / [[Flink]]|
 |Serving|[[HBase]] / [[Elasticsearch]]|
 

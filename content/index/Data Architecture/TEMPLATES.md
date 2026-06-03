@@ -114,7 +114,7 @@ bigdata/
 - [[Apache Paimon]]
 
 #### 数据集成
-- [[What is Apache Kafka?]]
+- [[Kafka]]
 - [[Apache Pulsar]]
 - [[Apache Flume]]
 - [[Apache Nifi]]

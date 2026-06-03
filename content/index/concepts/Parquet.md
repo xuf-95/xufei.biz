@@ -13,9 +13,9 @@ draft: true
 ---
 Apache Parquet是Hadoop生态圈中一种新型列式存储格式，它可以兼容Hadoop生态圈中大多数计算框架(Hadoop、Spark等)，被多种查询引擎支持(Hive、Impala、Drill等)，并且它是语言和平台无关的。Parquet最初是由Twitter和Cloudera(由于Impala的缘故)合作开发完成并开源，2015年5月从Apache的孵化器里毕业成为Apache顶级项目，能够与Parquet配合的组件有： 
 
-- 查询引擎: [[Apache Hive]], Impala, Pig, Presto, Drill, Tajo, HAWQ, IBM Big SQL
+- 查询引擎: [[Hive]], Impala, Pig, Presto, Drill, Tajo, HAWQ, IBM Big SQL
 
-- 计算框架: [[MapReduce]], [[Apache Spark]], Cascading, Crunch, Scalding, Kite
+- 计算框架: [[MapReduce]], [[Spark]], Cascading, Crunch, Scalding, Kite
 
 - 数据模型: Avro, Thrift, Protocol Buffers, POJOs
 

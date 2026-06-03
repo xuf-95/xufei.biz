@@ -1,12 +1,10 @@
 ---
-title: "Big Data Infrastructure"
+title: Big Data Infrastructure
 description: 技术基础设施 - 大数据组件总览
 tags:
   - infrastructure
   - bigdata
 publish: false
-
-
 ---
 
 ## 技术基础设施概述
@@ -16,12 +14,12 @@ publish: false
 ## 技术分类
 
 ### 计算引擎
-| 引擎 | 类型 | 特点 | 延迟 | 吞吐 |
-|------|------|------|------|------|
-| [[Apache Hadoop]] | 批处理 | 成熟稳定 | 高 | 高 |
-| [[Apache Spark Overview]] | 批流一体 | 生态丰富 | 中 | 高 |
-| [[Apache Flink]] | 流计算 | 状态管理 | 低 | 高 |
-| [[Apache Storm]] | 流计算 | 低延迟 | 极低 | 中 |
+| 引擎                | 类型   | 特点   | 延迟  | 吞吐  |
+| ----------------- | ---- | ---- | --- | --- |
+| [[Apache Hadoop]] | 批处理  | 成熟稳定 | 高   | 高   |
+| [[Spark]]         | 批流一体 | 生态丰富 | 中   | 高   |
+| [[Flink]]         | 流计算  | 状态管理 | 低   | 高   |
+| [[Apache Storm]]  | 流计算  | 低延迟  | 极低  | 中   |
 
 ### 存储系统
 - [[../../Data Store/]] - 数据存储总览

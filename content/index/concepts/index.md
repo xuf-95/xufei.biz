@@ -1,13 +1,11 @@
 ---
-title: "index"
+title: Concepts HomePage
 date: 2023-06-20
 tags:
   - index
 publish: true
-
-
+draft: true
 ---
-<!-- 
 ## Core Concepts
 
 - [[CDC.md|CDC]]
@@ -16,9 +14,8 @@ publish: true
 - [[ETL & ELK.md|ETL & ELK]]
 - [[HSAP.md|HSAP]]
 - [[Latency.md|Latency]]
-- [[MMP.md|MMP]]
-- [[PoC（Proof of Concept）.md|PoC]]
-- [[函数依赖(Functional Dependency).md|函数依赖]]
+- [[MMP|MMP]]
+- [[PoC|PoC]]
 - [[数据发布&订阅.md|数据发布&订阅]]
 
 ## Architecture & Scaling
@@ -29,4 +26,4 @@ publish: true
 ## Networking
 
 - [[NAT Gatway.md|NAT Gatway]]
-- [[VPC.md|VPC]] -->
+- [[VPC.md|VPC]] 

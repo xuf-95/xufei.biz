@@ -9,7 +9,6 @@ date: 2022-01-25
 draft: false
 publish: true
 aliases:
-  - yarn
   - YARN
   - Yarn
 language: CN

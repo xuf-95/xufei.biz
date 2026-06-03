@@ -60,7 +60,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 <h3 class="home-col-title">Scheduler & Integration</h3>
 <ul>
 
--  [[What is Apache Kafka?]]
+-  [[Kafka]]
 - [[Flink CDC|Flink CDC v3.6.0 Overview]]
 - [[Apache Pulsar]]
 - [[Apache Airflow ]]
