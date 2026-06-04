@@ -554,6 +554,77 @@ kbd:active kbd {
 
 /* ========== =========== */
 
+body[data-slug="index/Posts/Icon-Test"] {
+  .icon-test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0 2rem;
+  }
+
+  .icon-test-card {
+    display: grid;
+    place-items: center;
+    gap: 0.7rem;
+    min-height: 130px;
+    margin: 0;
+    padding: 1rem;
+    color: var(--dark);
+    background: var(--light);
+    border: 1px solid var(--lightgray);
+    border-radius: 10px;
+  }
+
+  .icon-test-card svg,
+  .icon-test-sizes svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .icon-test-card figcaption,
+  .icon-test-sizes > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon-test-card figcaption {
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+
+  .icon-test-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem 0 2rem;
+    padding: 1rem;
+    border: 1px solid var(--lightgray);
+    border-radius: 10px;
+  }
+
+  .icon-test-sizes .icon-test-small {
+    width: 16px;
+    height: 16px;
+  }
+
+  .icon-test-sizes .icon-test-large {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon-test-accent {
+    color: var(--tertiary);
+  }
+}
+
 // 首页 Knowledge Map 卡片入场动画
 // 只对首页生效，用 body[data-slug="index"] 限定
 body[data-slug="index"] {
