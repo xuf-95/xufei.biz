@@ -50,16 +50,16 @@ const config: QuartzConfig = {
           // tertiary: "#F3F3F3",
           // highlight: "#1F1F1F",
           // textHighlight: "rgba(64, 249, 7, 0.97)",
-          light: "#121212",          /* 背景色：Udara 风格的深灰黑 */
-          lightgray: "#2a2a2a",      /* 边框和次要背景：稍浅的灰色 */
-          gray: "#888888",           /* 次要文本：如日期、分类标签 */
-          darkgray: "#d1d1d1",       /* 正文颜色：柔和的白色，不刺眼 */
-          dark: "#ffffff",           /* 标题颜色：纯白，突出层级 */
-          secondary: "#ffffff",      /* 链接颜色：Udara 使用白色链接加下划线 */
-          tertiary: "#a0a0a0",       /* 鼠标悬停时的链接颜色 */
+          light: "#121212" /* 背景色：Udara 风格的深灰黑 */,
+          lightgray: "#2a2a2a" /* 边框和次要背景：稍浅的灰色 */,
+          gray: "#888888" /* 次要文本：如日期、分类标签 */,
+          darkgray: "#d1d1d1" /* 正文颜色：柔和的白色，不刺眼 */,
+          dark: "#ffffff" /* 标题颜色：纯白，突出层级 */,
+          secondary: "#ffffff" /* 链接颜色：Udara 使用白色链接加下划线 */,
+          tertiary: "#a0a0a0" /* 鼠标悬停时的链接颜色 */,
           highlight: "#1F1F1F",
-          textHighlight: "rgba(248, 133, 10, 0.97)"
-        }
+          textHighlight: "rgba(248, 133, 10, 0.97)",
+        },
       },
     },
   },
@@ -67,7 +67,6 @@ const config: QuartzConfig = {
     transformers: [
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
-
         priority: ["frontmatter", "git", "filesystem"],
       }),
       Plugin.SyntaxHighlighting({
@@ -86,7 +85,6 @@ const config: QuartzConfig = {
       }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
-
     ],
     filters: [Plugin.ExplicitPublish()],
     emitters: [
@@ -95,6 +93,7 @@ const config: QuartzConfig = {
       Plugin.ContentPage(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
+      Plugin.MapPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,

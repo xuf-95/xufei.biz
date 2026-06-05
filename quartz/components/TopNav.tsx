@@ -21,6 +21,7 @@ function absSitePath(cfg: GlobalConfiguration | undefined, path: string): string
 const links = [
   { label: "INDEX", path: "/index/" },
   { label: "TAGS", path: "/tags/" },
+  { label: "MAP", path: "/map/" },
   { label: "GOODS", path: "/hobby/goods/" },
 ]
 

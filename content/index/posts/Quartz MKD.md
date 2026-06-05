@@ -7,10 +7,7 @@ description:
 publishDate: 2026-03-19
 publish: true
 draft: true
-
-
 ---
-
 
 ## Wikilinks
 
@@ -20,19 +17,18 @@ draft: true
 - `![[Link Icon Test.md#anchor|Anchor]]`: transclude everything under the header `Anchor`
 - `![[Link Icon Test.md#^b15695|^b15695]]`: transclude block with ID `^b15695`
 
-
 > [!column|flex 3]
-> 
+>
 > > [!warning] Use Nested Callouts
-> > 
+> >
 > > `[column]` is designed to have callouts nested within it.
-> > 
+> >
 > > To remove styling from nested callouts, add `clean no-title` to the metadata
-> 
+>
 > > [!NOTE|clean no-t]
-> > 
+> >
 > > This callout has `clean no-title` metadata.
-> > 
+> >
 > > ```markdown title="syntax:"
 > > > [!column]
 > > >
@@ -44,32 +40,31 @@ draft: true
 > > > >
 > > > > content
 > > ```
-> 
+>
 > > [!caption]
-> > 
+> >
 > > ![[Crossbell IPFS.png|wsmall]]
-> > 
+> >
 > > A caption callout nested in the grid.
 
 ### Captions
 
 > [!caption|right]
-> 
+>
 > ![[Crossbell IPFS.png|wsmall]]
-> 
+>
 > `[!caption|right]` callout
 
-A borderless callout for adding captions to images. 
+A borderless callout for adding captions to images.
 
 Use [[custom-formatting-features#Callout Positioning|Callout Positioning]] metadata to float these left or right for wiki-style article image captions
 
 ```markdown title="syntax"
 > [!caption]
-> 
+>
 > ![[Crossbell IPFS.png]]
-> 
+>
 > Image caption.
-
 ```
 
 <br>
@@ -79,32 +74,33 @@ Use [[custom-formatting-features#Callout Positioning|Callout Positioning]] metad
 A wiki-style infobox displayed in the top right of an article to summarize data from the article, such as requirements for a tutorial article.
 
 > [!infobox]
-> 
+>
 > ## Infobox
-> 
+>
 > ![[Crossbell IPFS.png]]
-> 
+>
 > ### Table
-> 
+>
 > | Type | Name |
-> | --- | --- |
-> | Row | Row |
-> | Row | Row |
+> | ---- | ---- |
+> | Row  | Row  |
+> | Row  | Row  |
 
 **Type:**
+
 - `[!infobox]`
 
 **Syntax:**
 
 ```
 > [!infobox]
-> 
+>
 > ## Article Title
-> 
+>
 > ![[image]]
-> 
+>
 > ### Table Heading
-> 
+>
 > | Type | Name |
 > | --- | --- |
 > | Row | Row |
@@ -134,23 +130,27 @@ Adjustments for Obsidian [embedded files](https://help.obsidian.md/Linking+notes
 You can hide the borders of embedded notes and blocks by adding '`|clean]]`' to the wikilink's alias.
 ^4beb5b
 
-This allows the embed to appear seamlessly as a part of the page it is embedded in. 
+This allows the embed to appear seamlessly as a part of the page it is embedded in.
 
 > [!column|2 flex clean]
+>
 > > [!example] This is a standard transclusion:
+> >
 > > - ews
 > > - ss
 >
 > > [!example] This is a 'clean' transclusion:
+> >
 > > - we
 > > - ses
 
 > [!warning] Embedding block links which float left or right
 > You must add a `left` or `right` attribute to embeds if the embedded content itself already floats left or right.
-> 
+>
 > **Example:**
+>
 > - The [[custom-formatting-features#Infobox|infobox callout]] already floats right. To embed it in another page, add `|right` to the embed wikilink's alias.
-> 
+>
 > This prevents the embed from taking up 100% of the page-width, instead of wrapping around other content
 
 ### Float Embed Left or Right
@@ -170,7 +170,7 @@ Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy
 ```
 
 > [!example]
-> 
+>
 > **Regular Text**: "Morrowind"
 > **Daedric Text**: "<span class="daedric">"Morrowind"</span>"
 
@@ -196,6 +196,51 @@ Use this reusable card view on any page by copying the HTML block and changing e
     <span class="gallery-card-subtitle">Design + code = superpower</span>
   </a>
 </nav>
+
+## Process Steps Layout
+
+Use this reusable process view on any page by copying the HTML block and changing each step title and description.
+
+<section class="process-steps-panel" aria-labelledby="process-steps-title">
+  <h2 id="process-steps-title">How it works</h2>
+  <ol class="process-steps">
+    <li class="process-step">
+      <span class="process-step-marker">1</span>
+      <div class="process-step-body">
+        <h3>Create an agent</h3>
+        <p>Define the model, system prompt, tools, MCP servers, and skills. Create the agent once and reference it by ID across sessions.</p>
+      </div>
+    </li>
+    <li class="process-step">
+      <span class="process-step-marker">2</span>
+      <div class="process-step-body">
+        <h3>Create an environment</h3>
+        <p>Configure where the agent runs: a cloud sandbox, or a <a class="internal" href="/index/Posts/Quartz%20MKD">self-hosted sandbox</a> on your own infrastructure.</p>
+      </div>
+    </li>
+    <li class="process-step">
+      <span class="process-step-marker">3</span>
+      <div class="process-step-body">
+        <h3>Start a session</h3>
+        <p>Launch a session that references your agent and environment configuration.</p>
+      </div>
+    </li>
+    <li class="process-step">
+      <span class="process-step-marker">4</span>
+      <div class="process-step-body">
+        <h3>Send events and stream responses</h3>
+        <p>Send user messages as events. The agent autonomously executes tools and streams back results through server-sent events. Event history is persisted server-side and can be fetched in full.</p>
+      </div>
+    </li>
+    <li class="process-step">
+      <span class="process-step-marker">5</span>
+      <div class="process-step-body">
+        <h3>Steer or interrupt</h3>
+        <p>Send additional user events to guide the agent mid-execution, or interrupt it to change direction.</p>
+      </div>
+    </li>
+  </ol>
+</section>
 
 <div class="qt-wrap">
   <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-cursor" checked />
@@ -231,7 +276,8 @@ Use this reusable card view on any page by copying the HTML block and changing e
   </div>
 </div>
 
-iframe 
+iframe
+
 <iframe 
 src="/static/parquet-col-explain.html" 
 width="100%" 
@@ -245,10 +291,10 @@ style="border:0;"></iframe>
 
 > [!info] Default title
 
-> [!question]+ Can callouts be _nested_?
-> 
+> [!question]+ Can callouts be *nested*?
+>
 > > [!todo]- Yes!, they can. And collapsed!
-> > 
+> >
 > > > [!example] You can even use multiple layers of nesting.
 
 > [!abstract] Aliases: "abstract", "summary", "tldr"
@@ -276,7 +322,6 @@ style="border:0;"></iframe>
 > [!blur]
 > This content is hidden until hovered. Works as a spoiler box or redaction block.
 
-
 > [Fetching Title#6kdx](https://github.com/jackyzha0/quartz/blob/v4/docs/features/callouts.md
 
 ---
@@ -287,13 +332,13 @@ This section records image size aliases and in-article layout formats for Quartz
 
 ### Wikilink Size Aliases
 
-| Format | Test |
-| --- | --- |
-| Original | ![[Crossbell IPFS.png]] |
-| `wmicro` | ![[Crossbell IPFS.png\|wmicro]] |
-| `wtiny` | ![[Crossbell IPFS.png\|wtiny]] |
-| `wsmall` | ![[Crossbell IPFS.png\|wsmall]] |
-| `wmed` | ![[Crossbell IPFS.png\|wmed]] |
+| Format           | Test                             |
+| ---------------- | -------------------------------- |
+| Original         | ![[Crossbell IPFS.png]]          |
+| `wmicro`         | ![[Crossbell IPFS.png\|wmicro]]  |
+| `wtiny`          | ![[Crossbell IPFS.png\|wtiny]]   |
+| `wsmall`         | ![[Crossbell IPFS.png\|wsmall]]  |
+| `wmed`           | ![[Crossbell IPFS.png\|wmed]]    |
 | Fixed dimensions | ![[Crossbell IPFS.png\|100x145]] |
 
 ### Inline Text Flow
@@ -383,3 +428,12 @@ The left-floated image mirrors the previous layout. It is useful for checking wh
     </figure>
   </div>
 </div>
+
+
+
+
+<iframe 
+src="/static/kafka_sasl_ssl_deep_dive.html" 
+width="100%" 
+height="720" 
+style="border:0;"></iframe>

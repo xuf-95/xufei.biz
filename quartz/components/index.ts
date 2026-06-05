@@ -26,6 +26,7 @@ import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import TopNav from "./TopNav"
 import VersionSwitcher from "./VersionSwitcher"
+import KnowledgeMap from "./KnowledgeMap"
 export { Icon } from "./Icon"
 export type { IconName } from "./Icon"
 
@@ -58,4 +59,5 @@ export {
   ConditionalRender,
   TopNav,
   VersionSwitcher,
+  KnowledgeMap,
 }

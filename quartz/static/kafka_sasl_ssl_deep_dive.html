@@ -1,0 +1,178 @@
+<h2 class="sr-only">Kafka SASL/SSL authentication configuration — interactive reference</h2>
+<style>
+.kf { font-family: var(--font-sans); padding: 1rem 0; }
+.kf-tabs { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+.kf-tab { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); cursor: pointer; color: var(--color-text-secondary); background: transparent; transition: all .15s; }
+.kf-tab.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+.kf-section { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+.kf-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 6px; letter-spacing: .04em; }
+.kf-code { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px 14px; color: var(--color-text-secondary); white-space: pre; overflow-x: auto; margin: 0 0 12px; line-height: 1.6; }
+.kf-code .key { color: var(--color-text-info); }
+.kf-code .val { color: var(--color-text-success); }
+.kf-code .comment { color: var(--color-text-tertiary); }
+.kf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kf-note { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
+.kf-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; margin-right: 4px; }
+.kf-badge.sasl { background: var(--color-background-warning); color: var(--color-text-warning); }
+.kf-badge.tls { background: var(--color-background-info); color: var(--color-text-info); }
+.kf-badge.acl { background: var(--color-background-success); color: var(--color-text-success); }
+.kf-badge.danger { background: var(--color-background-danger); color: var(--color-text-danger); }
+.kf-row { display: flex; gap: 8px; align-items: flex-start; padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.kf-row:last-child { border-bottom: none; }
+.kf-mech { font-size: 13px; font-weight: 500; color: var(--color-text-primary); min-width: 100px; }
+.kf-desc { font-size: 12px; color: var(--color-text-secondary); }
+</style>
+
+<div class="kf">
+  <div class="kf-tabs">
+    <button class="kf-tab active" onclick="show('mechanisms')">Auth mechanisms</button>
+    <button class="kf-tab" onclick="show('broker')">Broker config</button>
+    <button class="kf-tab" onclick="show('client')">Client config</button>
+    <button class="kf-tab" onclick="show('acls')">Topic ACLs</button>
+  </div>
+
+  <div id="sec-mechanisms">
+    <div class="kf-section">
+      <p class="kf-label">SASL mechanism comparison</p>
+      <div class="kf-row">
+        <div class="kf-mech"><span class="kf-badge sasl">PLAIN</span></div>
+        <div class="kf-desc">Username + password sent in cleartext (must pair with TLS). Simple but credentials are static — rotation requires restart. Only use for dev or internal trusted networks.</div>
+      </div>
+      <div class="kf-row">
+        <div class="kf-mech"><span class="kf-badge sasl">SCRAM-256</span></div>
+        <div class="kf-desc">Challenge-response — password never sent over wire. Credentials stored as salted hashes in ZooKeeper/KRaft. Supports online credential rotation. Recommended for most on-prem clusters.</div>
+      </div>
+      <div class="kf-row">
+        <div class="kf-mech"><span class="kf-badge sasl">GSSAPI</span></div>
+        <div class="kf-desc">Kerberos integration. Uses Kerberos service tickets — no passwords stored in Kafka at all. Best for enterprise Hadoop environments with existing KDC. High ops complexity.</div>
+      </div>
+      <div class="kf-row">
+        <div class="kf-mech"><span class="kf-badge sasl">OAUTHBEARER</span></div>
+        <div class="kf-desc">JWT tokens from an OAuth2 / OIDC provider (Keycloak, Okta, AWS Cognito). Token TTL typically 1h — automatic short-lived credentials. Best for cloud-native and microservice producers.</div>
+      </div>
+    </div>
+    <div class="kf-section">
+      <p class="kf-label">Listener architecture — separate ports per security level</p>
+      <div class="kf-code"><span class="key">listeners</span>=<span class="val">PLAINTEXT://0.0.0.0:9092,SASL_SSL://0.0.0.0:9093,INTERNAL://0.0.0.0:9094</span>
+<span class="comment"># 9092 = internal cluster comms (broker-broker), PLAINTEXT ok inside VPC</span>
+<span class="comment"># 9093 = external clients — SASL + TLS mandatory</span>
+<span class="comment"># 9094 = admin/monitoring tools — separate ACL set</span>
+
+<span class="key">listener.security.protocol.map</span>=<span class="val">PLAINTEXT:PLAINTEXT,SASL_SSL:SASL_SSL,INTERNAL:PLAINTEXT</span>
+<span class="key">inter.broker.listener.name</span>=<span class="val">INTERNAL</span></div>
+      <p class="kf-note">Key insight: broker-to-broker traffic can stay on PLAINTEXT inside the VPC. All external producer/consumer traffic hits the SASL_SSL listener only.</p>
+    </div>
+  </div>
+
+  <div id="sec-broker" style="display:none">
+    <div class="kf-section">
+      <p class="kf-label">server.properties — SASL_SCRAM + TLS broker config</p>
+      <div class="kf-code"><span class="comment"># TLS keystore (broker's own cert)</span>
+<span class="key">ssl.keystore.location</span>=<span class="val">/etc/kafka/ssl/kafka.server.keystore.jks</span>
+<span class="key">ssl.keystore.password</span>=<span class="val">${KEYSTORE_PASS}</span>  <span class="comment"># inject from vault, never hardcode</span>
+<span class="key">ssl.key.password</span>=<span class="val">${KEY_PASS}</span>
+<span class="key">ssl.truststore.location</span>=<span class="val">/etc/kafka/ssl/kafka.server.truststore.jks</span>
+<span class="key">ssl.truststore.password</span>=<span class="val">${TRUSTSTORE_PASS}</span>
+<span class="key">ssl.client.auth</span>=<span class="val">required</span>  <span class="comment"># mTLS — clients must present cert too</span>
+<span class="key">ssl.endpoint.identification.algorithm</span>=<span class="val">https</span>  <span class="comment"># validate hostname</span>
+
+<span class="comment"># SASL mechanism</span>
+<span class="key">sasl.enabled.mechanisms</span>=<span class="val">SCRAM-SHA-256</span>
+<span class="key">sasl.mechanism.inter.broker.protocol</span>=<span class="val">PLAIN</span>  <span class="comment"># broker-broker uses PLAIN on INTERNAL</span>
+
+<span class="comment"># JAAS config (inline or via -Djava.security.auth.login.config)</span>
+<span class="key">listener.name.sasl_ssl.scram-sha-256.sasl.jaas.config</span>=<span class="val">\
+  org.apache.kafka.common.security.scram.ScramLoginModule required;</span>
+
+<span class="comment"># Authorization</span>
+<span class="key">authorizer.class.name</span>=<span class="val">kafka.security.authorizer.AclAuthorizer</span>
+<span class="key">super.users</span>=<span class="val">User:kafka_admin;User:monitoring_svc</span></div>
+    </div>
+    <div class="kf-section">
+      <p class="kf-label">Adding SCRAM credentials (stored in ZooKeeper/KRaft)</p>
+      <div class="kf-code"><span class="comment"># Create user credential — salt+hash stored, not plaintext</span>
+kafka-configs.sh --bootstrap-server broker:9093 \
+  --command-config admin.properties \
+  --alter --add-config <span class="val">'SCRAM-SHA-256=[iterations=8192,password=s3cur3pass]'</span> \
+  --entity-type users --entity-name spark_etl_svc
+
+<span class="comment"># Rotate password (zero-downtime — old hash stays valid during TTL)</span>
+kafka-configs.sh ... --add-config <span class="val">'SCRAM-SHA-256=[password=new_s3cur3pass]'</span> \
+  --entity-name spark_etl_svc</div>
+    </div>
+  </div>
+
+  <div id="sec-client" style="display:none">
+    <div class="kf-section">
+      <p class="kf-label">Producer / consumer client config (Java properties)</p>
+      <div class="kf-code"><span class="key">security.protocol</span>=<span class="val">SASL_SSL</span>
+<span class="key">sasl.mechanism</span>=<span class="val">SCRAM-SHA-256</span>
+<span class="key">ssl.truststore.location</span>=<span class="val">/etc/kafka/ssl/client.truststore.jks</span>
+<span class="key">ssl.truststore.password</span>=<span class="val">${TRUSTSTORE_PASS}</span>
+
+<span class="comment"># JAAS credentials — pull from vault at startup, not config file</span>
+<span class="key">sasl.jaas.config</span>=<span class="val">org.apache.kafka.common.security.scram.ScramLoginModule required \
+  username="spark_etl_svc" \
+  password="${KAFKA_PASSWORD}";</span>
+
+<span class="comment"># For OAuthBearer (cloud-native alternative)</span>
+<span class="comment"># sasl.mechanism=OAUTHBEARER</span>
+<span class="comment"># sasl.oauthbearer.token.endpoint.url=https://keycloak/realms/data/token</span>
+<span class="comment"># sasl.login.callback.handler.class=org.apache.kafka.common.security.oauthbearer...</span></div>
+    </div>
+    <div class="kf-section">
+      <p class="kf-label">Spark Structured Streaming Kafka source config</p>
+      <div class="kf-code">spark.readStream
+  .format(<span class="val">"kafka"</span>)
+  .option(<span class="val">"kafka.bootstrap.servers"</span>, <span class="val">"broker:9093"</span>)
+  .option(<span class="val">"kafka.security.protocol"</span>, <span class="val">"SASL_SSL"</span>)
+  .option(<span class="val">"kafka.sasl.mechanism"</span>, <span class="val">"SCRAM-SHA-256"</span>)
+  .option(<span class="val">"kafka.sasl.jaas.config"</span>,
+    <span class="val">s"...ScramLoginModule required username='${secret}' password='${pass}';"</span>)
+  .option(<span class="val">"subscribe"</span>, <span class="val">"orders.raw"</span>)
+  .load()</div>
+    </div>
+  </div>
+
+  <div id="sec-acls" style="display:none">
+    <div class="kf-section">
+      <p class="kf-label">Topic ACL patterns with kafka-acls.sh</p>
+      <div class="kf-code"><span class="comment"># Producer: write to specific topic only</span>
+kafka-acls.sh --bootstrap-server broker:9093 \
+  --command-config admin.properties --add \
+  --allow-principal <span class="val">User:spark_etl_svc</span> \
+  --operation <span class="val">Write</span> --operation <span class="val">Describe</span> \
+  --topic <span class="val">orders.raw</span>
+
+<span class="comment"># Consumer group: read + consumer group offset commits</span>
+kafka-acls.sh ... --add \
+  --allow-principal <span class="val">User:ml_pipeline_svc</span> \
+  --operation <span class="val">Read</span> --operation <span class="val">Describe</span> \
+  --topic <span class="val">orders.enriched</span>
+kafka-acls.sh ... --add \
+  --allow-principal <span class="val">User:ml_pipeline_svc</span> \
+  --operation <span class="val">Read</span> \
+  --group <span class="val">ml-consumer-group</span>
+
+<span class="comment"># Deny a specific IP range (geo-restriction)</span>
+kafka-acls.sh ... --add --deny-principal <span class="val">User:*</span> \
+  --deny-host <span class="val">10.99.0.0/16</span> \
+  --operation <span class="val">All</span> --topic <span class="val">pii.events</span></div>
+    </div>
+    <div class="kf-section">
+      <p class="kf-label">Ranger for Kafka (replaces native ACLs at scale)</p>
+      <div class="kf-note">At 50+ topics and 20+ teams, native kafka-acls.sh becomes unmaintainable. Apache Ranger's Kafka plugin gives you: centralized policy UI, audit logs per-operation, group-based policies (not per-user), and deny overrides. Set <code>authorizer.class.name=org.apache.ranger.authorization.kafka.authorizer.RangerKafkaAuthorizer</code> in server.properties — it replaces AclAuthorizer completely.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  ['mechanisms','broker','client','acls'].forEach(s => {
+    document.getElementById('sec-'+s).style.display = s===id ? '' : 'none';
+  });
+  document.querySelectorAll('.kf-tab').forEach((t,i) => {
+    t.classList.toggle('active', ['mechanisms','broker','client','acls'][i] === id);
+  });
+}
+</script>

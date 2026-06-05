@@ -1,0 +1,166 @@
+/* Reusable process step layout.
+   Usage:
+   <section class="process-steps-panel" aria-labelledby="process-steps-title">
+     <h2 id="process-steps-title">How it works</h2>
+     <ol class="process-steps">
+       <li class="process-step">
+         <span class="process-step-marker">1</span>
+         <div class="process-step-body">
+           <h3>Step title</h3>
+           <p>Step description.</p>
+         </div>
+       </li>
+     </ol>
+   </section>
+*/
+
+.process-steps-panel {
+  --process-panel-bg: var(--light);
+  --process-panel-title: var(--dark);
+  --process-panel-text: var(--darkgray);
+  --process-panel-line: var(--lightgray);
+  --process-marker-bg: var(--lightgray);
+  --process-marker-text: var(--dark);
+  --process-panel-radius: 8px;
+
+  max-width: 42rem;
+  margin: 2rem auto;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  border: 1px solid var(--lightgray);
+  border-radius: var(--process-panel-radius);
+  background: var(--process-panel-bg);
+  color: var(--process-panel-text);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.process-steps-panel h2 {
+  margin: 0 0 1.45rem;
+  color: var(--process-panel-title);
+  font-family: var(--headerFont);
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.process-steps-panel a[role="anchor"] {
+  display: none;
+}
+
+.process-steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  column-gap: 0.9rem;
+  min-height: 4.2rem;
+  padding: 0 0 1.2rem;
+}
+
+.process-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 2.55rem;
+  bottom: 0.55rem;
+  left: 1.25rem;
+  width: 1px;
+  background: var(--process-panel-line);
+}
+
+.process-step-marker {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--process-marker-bg);
+  color: var(--process-marker-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.process-step-body {
+  min-width: 0;
+  padding-top: 0.08rem;
+}
+
+.process-step-body h3 {
+  margin: 0 0 0.45rem;
+  color: var(--process-panel-title);
+  font-family: var(--bodyFont);
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.process-step-body p {
+  margin: 0;
+  color: var(--process-panel-text);
+  font-size: clamp(0.9rem, 1.25vw, 1rem);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+article .process-step-body a,
+.content .process-step-body a {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  line-height: inherit;
+  text-decoration-color: var(--gray);
+}
+
+article .process-step-body a:hover,
+.content .process-step-body a:hover {
+  color: var(--process-panel-title);
+  text-decoration-color: var(--process-panel-title);
+}
+
+:root[saved-theme="dark"] {
+  .process-steps-panel {
+    --process-panel-bg: var(--light);
+    --process-panel-title: #fff;
+    --process-panel-text: rgba(236, 233, 223, 0.62);
+    --process-panel-line: rgba(255, 255, 255, 0.12);
+    --process-marker-bg: rgba(255, 255, 255, 0.14);
+    --process-marker-text: #fff;
+  }
+}
+
+@media (max-width: 720px) {
+  .process-steps-panel {
+    padding: 1rem;
+  }
+
+  .process-step {
+    grid-template-columns: 2.35rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    min-height: 4rem;
+  }
+
+  .process-step:not(:last-child)::before {
+    top: 2.35rem;
+    bottom: 0.55rem;
+    left: 1.16rem;
+  }
+
+  .process-step-marker {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 0.85rem;
+  }
+}
