@@ -65,6 +65,26 @@ const KnowledgeMap: QuartzComponent = ({ displayClass }: QuartzComponentProps) =
             ))}
           </div>
 
+          <div class="km-quality">
+            <div class="km-quality-head">
+              <h2>Data quality</h2>
+              <button class="km-quality-clear" type="button" data-quality-clear hidden>
+                Clear
+              </button>
+            </div>
+            <div class="km-quality-actions" aria-label="Knowledge map data quality filters">
+              <button class="km-quality-card" type="button" data-quality="dead">
+                <span>Dead links</span>
+                <strong data-quality-stat="dead">0</strong>
+              </button>
+              <button class="km-quality-card" type="button" data-quality="independent">
+                <span>Independent chains</span>
+                <strong data-quality-stat="independent">0</strong>
+              </button>
+            </div>
+            <ul class="km-quality-list" data-quality-list></ul>
+          </div>
+
           <dl class="km-stats">
             <div>
               <dt>Nodes</dt>
@@ -132,9 +152,28 @@ const KnowledgeMap: QuartzComponent = ({ displayClass }: QuartzComponentProps) =
 
         <aside class="km-detail" aria-live="polite">
           <div class="km-sheet-handle"></div>
+          <div class="km-inspect-head">
+            <span>Inspect</span>
+            <button class="km-inspect-close" type="button" aria-label="Close inspect panel">
+              ×
+            </button>
+          </div>
+
           <p class="km-detail-eyebrow">Current note</p>
-          <h2 data-detail="title">Knowledge Map</h2>
-          <p class="km-detail-slug" data-detail="slug"></p>
+          <h2>
+            <a data-detail="title-link" href="/index/" target="_blank" rel="noopener">
+              <span data-detail="title">Knowledge Map</span>
+              <span class="km-title-open" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          </h2>
+
+          <div class="km-detail-path">
+            <h3>Path</h3>
+            <p data-detail="path"></p>
+          </div>
+
           <p class="km-detail-summary" data-detail="summary"></p>
 
           <div class="km-detail-section">
@@ -142,13 +181,32 @@ const KnowledgeMap: QuartzComponent = ({ displayClass }: QuartzComponentProps) =
             <div class="km-tags" data-detail="tags"></div>
           </div>
 
+          <div class="km-link-metrics" aria-label="Note link counts">
+            <div>
+              <span>Inbound</span>
+              <strong data-detail="inbound">0</strong>
+              <i aria-hidden="true">↓</i>
+            </div>
+            <div>
+              <span>Outbound</span>
+              <strong data-detail="outbound">0</strong>
+              <i aria-hidden="true">↑</i>
+            </div>
+          </div>
+
           <div class="km-detail-section">
-            <h3>Related notes</h3>
+            <div class="km-related-head">
+              <h3>
+                Related notes (<span data-detail="related-count">0</span>)
+              </h3>
+              <button type="button">View all</button>
+            </div>
             <ul class="km-related" data-detail="related"></ul>
           </div>
 
           <a class="km-open-link" data-detail="open" href="/index/" target="_blank" rel="noopener">
-            Open in new tab ↗
+            <span>Open this note</span>
+            <span aria-hidden="true">↗</span>
           </a>
         </aside>
       </section>

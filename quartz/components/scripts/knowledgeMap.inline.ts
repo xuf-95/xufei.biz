@@ -18,6 +18,7 @@ const mapSlug = "map/index" as FullSlug
 type NodeKind = "note" | "tag"
 type FilterMode = "all" | "notes" | "tags" | "visited"
 type FocusKey = "current" | "related" | "visited" | "tags" | "context"
+type QualityMode = "none" | "dead" | "independent"
 
 type MapNode = {
   id: SimpleSlug
@@ -41,9 +42,16 @@ type MapLink = {
 type MapState = {
   selected: SimpleSlug
   filter: FilterMode
+  quality: QualityMode
   query: string
   focus: Record<FocusKey, boolean>
   visited: Set<SimpleSlug>
+}
+
+type DeadLink = {
+  source: SimpleSlug
+  sourceTitle: string
+  target: SimpleSlug
 }
 
 let cleanupMap: (() => void) | undefined
@@ -67,6 +75,16 @@ function nodeId(nodeOrId: MapNode | SimpleSlug): SimpleSlug {
 function excerpt(details?: ContentDetails): string {
   const text = details?.description ?? details?.content ?? ""
   return text.replace(/\s+/g, " ").trim().slice(0, 220)
+}
+
+function formatPath(id: SimpleSlug): string {
+  const parts = id
+    .split("/")
+    .filter(Boolean)
+    .map((part) => part.replace(/-/g, " "))
+
+  if (parts.length === 0) return "Index"
+  return parts.join(" › ")
 }
 
 function buildMapData(index: Record<FullSlug, ContentDetails>) {
@@ -144,6 +162,7 @@ function renderKnowledgeMap(root: HTMLElement) {
     const state: MapState = {
       selected: initial,
       filter: "all",
+      quality: "none",
       query: "",
       focus: { current: true, related: true, visited: true, tags: true, context: true },
       visited: getVisited(),
@@ -162,6 +181,60 @@ function renderKnowledgeMap(root: HTMLElement) {
       }
       return related
     }
+
+    const inboundFor = (id: SimpleSlug) =>
+      nodes.filter(
+        (node) =>
+          node.kind === "note" && node.id !== id && (node.details?.links ?? []).includes(id),
+      ).length
+
+    const outboundFor = (node: MapNode) =>
+      node.kind === "note"
+        ? (node.details?.links ?? []).filter((link) => {
+            const target = nodeById.get(link)
+            return target?.kind === "note"
+          }).length
+        : 0
+
+    const deadLinks = nodes.flatMap((node): DeadLink[] => {
+      if (node.kind !== "note") return []
+      return (node.details?.links ?? [])
+        .filter((link) => !nodeById.has(link) && !link.startsWith("tags/"))
+        .map((target) => ({
+          source: node.id,
+          sourceTitle: node.title,
+          target,
+        }))
+    })
+    const deadLinkSources = new Set(deadLinks.map((link) => link.source))
+
+    const noteAdjacency = new Map<SimpleSlug, Set<SimpleSlug>>()
+    nodes.forEach((node) => {
+      if (node.kind === "note") noteAdjacency.set(node.id, new Set())
+    })
+    links.forEach((link) => {
+      if (link.kind !== "note") return
+      const source = nodeId(link.source)
+      const target = nodeId(link.target)
+      noteAdjacency.get(source)?.add(target)
+      noteAdjacency.get(target)?.add(source)
+    })
+
+    const mainComponent = new Set<SimpleSlug>()
+    const queue: SimpleSlug[] = [initial]
+    while (queue.length > 0) {
+      const current = queue.shift()!
+      if (mainComponent.has(current)) continue
+      mainComponent.add(current)
+      noteAdjacency.get(current)?.forEach((neighbor) => {
+        if (!mainComponent.has(neighbor)) queue.push(neighbor)
+      })
+    }
+
+    const independentNotes = nodes
+      .filter((node) => node.kind === "note" && !mainComponent.has(node.id))
+      .sort((left, right) => left.title.localeCompare(right.title))
+    const independentNoteIds = new Set(independentNotes.map((node) => node.id))
 
     const svg = select(svgEl)
     svg.selectAll("*").remove()
@@ -259,6 +332,13 @@ function renderKnowledgeMap(root: HTMLElement) {
       return true
     }
 
+    function matchesQuality(node: MapNode) {
+      if (state.quality === "none") return true
+      if (node.kind !== "note") return false
+      if (state.quality === "dead") return deadLinkSources.has(node.id)
+      return independentNoteIds.has(node.id)
+    }
+
     function updateStats() {
       root.querySelector<HTMLElement>('[data-stat="nodes"]')!.textContent = String(nodes.length)
       root.querySelector<HTMLElement>('[data-stat="edges"]')!.textContent = String(links.length)
@@ -269,26 +349,109 @@ function renderKnowledgeMap(root: HTMLElement) {
       root.querySelectorAll<HTMLButtonElement>(".km-filter").forEach((button) => {
         button.classList.toggle("is-active", button.dataset.filter === state.filter)
       })
+      root.querySelectorAll<HTMLButtonElement>("[data-quality]").forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.quality === state.quality)
+      })
+      root
+        .querySelector<HTMLButtonElement>("[data-quality-clear]")
+        ?.toggleAttribute("hidden", state.quality === "none")
     }
 
     function applyVisibility() {
       const related = relatedFor(state.selected)
       nodeSel
-        .attr("class", (node) => `km-node is-${visibleRole(node, related)} is-${node.kind}`)
+        .attr("class", (node) => {
+          const focusClass =
+            node.id === state.selected
+              ? "is-selected-focus"
+              : related.has(node.id)
+                ? "is-linked-focus"
+                : "is-muted-focus"
+          return `km-node is-${visibleRole(node, related)} is-${node.kind} ${focusClass}`
+        })
         .style("display", (node) => {
           const role = visibleRole(node, related)
-          node.visible = state.focus[role] && matchesFilter(node)
+          node.visible = state.focus[role] && matchesFilter(node) && matchesQuality(node)
           return node.visible ? null : "none"
         })
 
-      linkSel.style("display", (link) => {
-        const source = nodeById.get(nodeId(link.source))
-        const target = nodeById.get(nodeId(link.target))
-        return source?.visible && target?.visible ? null : "none"
-      })
+      linkSel
+        .attr("class", (link) => {
+          const source = nodeId(link.source)
+          const target = nodeId(link.target)
+          const focusClass =
+            source === state.selected || target === state.selected
+              ? "is-linked-focus"
+              : "is-muted-focus"
+          return `km-link km-link-${link.kind} ${focusClass}`
+        })
+        .style("display", (link) => {
+          const source = nodeById.get(nodeId(link.source))
+          const target = nodeById.get(nodeId(link.target))
+          return source?.visible && target?.visible ? null : "none"
+        })
 
       updateFilters()
       updateStats()
+    }
+
+    function updateQualityPanel() {
+      root.querySelector<HTMLElement>('[data-quality-stat="dead"]')!.textContent = String(
+        deadLinks.length,
+      )
+      root.querySelector<HTMLElement>('[data-quality-stat="independent"]')!.textContent = String(
+        independentNotes.length,
+      )
+
+      const list = root.querySelector<HTMLElement>("[data-quality-list]")!
+      const items =
+        state.quality === "dead"
+          ? deadLinks.slice(0, 8).map((deadLink) => ({
+              id: deadLink.source,
+              title: deadLink.sourceTitle,
+              detail: deadLink.target,
+            }))
+          : state.quality === "independent"
+            ? independentNotes.slice(0, 8).map((node) => ({
+                id: node.id,
+                title: node.title,
+                detail: formatPath(node.id),
+              }))
+            : []
+
+      list.replaceChildren(
+        ...(items.length > 0
+          ? items.map((item) => {
+              const li = document.createElement("li")
+              const button = document.createElement("button")
+              button.type = "button"
+              button.dataset.node = item.id
+              const title = document.createElement("strong")
+              title.textContent = item.title
+              const detail = document.createElement("span")
+              detail.textContent = item.detail
+              button.append(title, detail)
+              li.append(button)
+              return li
+            })
+          : state.quality === "none"
+            ? [
+                (() => {
+                  const li = document.createElement("li")
+                  li.className = "km-quality-empty"
+                  li.textContent = "Select a quality check."
+                  return li
+                })(),
+              ]
+            : [
+                (() => {
+                  const li = document.createElement("li")
+                  li.className = "km-quality-empty"
+                  li.textContent = "No issues found."
+                  return li
+                })(),
+              ]),
+      )
     }
 
     function updateDetails(id: SimpleSlug) {
@@ -296,9 +459,15 @@ function renderKnowledgeMap(root: HTMLElement) {
       if (!node) return
 
       root.querySelector<HTMLElement>('[data-detail="title"]')!.textContent = node.title
-      root.querySelector<HTMLElement>('[data-detail="slug"]')!.textContent = node.id
+      root.querySelector<HTMLElement>('[data-detail="path"]')!.textContent = formatPath(node.id)
       root.querySelector<HTMLElement>('[data-detail="summary"]')!.textContent =
         node.kind === "tag" ? `Notes tagged ${node.title}.` : excerpt(node.details)
+      root.querySelector<HTMLElement>('[data-detail="inbound"]')!.textContent = String(
+        inboundFor(node.id),
+      )
+      root.querySelector<HTMLElement>('[data-detail="outbound"]')!.textContent = String(
+        outboundFor(node),
+      )
 
       const tags = root.querySelector<HTMLElement>('[data-detail="tags"]')!
       tags.replaceChildren(
@@ -311,10 +480,14 @@ function renderKnowledgeMap(root: HTMLElement) {
           : [document.createTextNode(node.kind === "tag" ? node.title : "No tags")]),
       )
 
-      const relatedNotes = [...relatedFor(id)]
+      const allRelatedNotes = [...relatedFor(id)]
         .map((relatedId) => nodeById.get(relatedId))
         .filter((related): related is MapNode => related !== undefined && related.kind === "note")
-        .slice(0, 6)
+      const relatedNotes = allRelatedNotes.slice(0, 6)
+
+      root.querySelector<HTMLElement>('[data-detail="related-count"]')!.textContent = String(
+        allRelatedNotes.length,
+      )
 
       const list = root.querySelector<HTMLElement>('[data-detail="related"]')!
       list.replaceChildren(
@@ -323,10 +496,19 @@ function renderKnowledgeMap(root: HTMLElement) {
               const item = document.createElement("li")
               const link = document.createElement("a")
               link.href = resolveRelative(mapSlug, related.id)
-              link.textContent = related.title
+              const dot = document.createElement("i")
+              dot.setAttribute("aria-hidden", "true")
+              const text = document.createElement("span")
+              const title = document.createElement("strong")
+              title.textContent = related.title
               const summary = document.createElement("span")
               summary.textContent = excerpt(related.details)
-              item.append(link, summary)
+              text.append(title, summary)
+              const arrow = document.createElement("b")
+              arrow.setAttribute("aria-hidden", "true")
+              arrow.textContent = "›"
+              link.append(dot, text, arrow)
+              item.append(link)
               return item
             })
           : [document.createTextNode("No directly related notes.")]),
@@ -335,6 +517,9 @@ function renderKnowledgeMap(root: HTMLElement) {
       const open = root.querySelector<HTMLAnchorElement>('[data-detail="open"]')!
       open.href = resolveRelative(mapSlug, node.id)
       open.toggleAttribute("hidden", node.kind !== "note")
+      const titleLink = root.querySelector<HTMLAnchorElement>('[data-detail="title-link"]')!
+      titleLink.href = resolveRelative(mapSlug, node.id)
+      titleLink.toggleAttribute("hidden", node.kind !== "note")
     }
 
     function selectNode(id: SimpleSlug) {
@@ -394,6 +579,26 @@ function renderKnowledgeMap(root: HTMLElement) {
       })
     })
 
+    root.querySelectorAll<HTMLButtonElement>("[data-quality]").forEach((button) => {
+      listen(button, "click", () => {
+        const next = button.dataset.quality as QualityMode
+        state.quality = state.quality === next ? "none" : next
+        updateQualityPanel()
+        applyVisibility()
+      })
+    })
+
+    listen(root.querySelector("[data-quality-clear]")!, "click", () => {
+      state.quality = "none"
+      updateQualityPanel()
+      applyVisibility()
+    })
+
+    listen(root.querySelector("[data-quality-list]")!, "click", (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-node]")
+      if (button?.dataset.node) selectNode(button.dataset.node as SimpleSlug)
+    })
+
     root.querySelectorAll<HTMLInputElement>(".km-search-input").forEach((input) => {
       listen(input, "input", () => {
         state.query = input.value.trim().toLowerCase()
@@ -413,6 +618,7 @@ function renderKnowledgeMap(root: HTMLElement) {
     listen(window, "resize", resize)
 
     resize()
+    updateQualityPanel()
     selectNode(initial)
   })
 
