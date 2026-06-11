@@ -15,6 +15,7 @@
 @use "./custom/quote-tabs.scss";
 @use "./custom/gallery-card-view.scss";
 @use "./custom/process-steps.scss";
+@use "./custom/diagram-components.scss";
 @use "./images-layouts.scss";
 
 :root {
@@ -316,6 +317,11 @@ sup {
   border: 1px solid var(--lightgray);
   border-top: 1px solid var(--lightgray);
   align-items: start;
+}
+
+/* hide the empty footer box when afterBody has no components */
+#quartz-body .center .page-footer:empty {
+  display: none;
 }
 
 #quartz-body .center .page-footer .graph {

@@ -9,7 +9,7 @@
     letter-spacing: 0.04em;
     color: var(--dark);
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--lightgray);
+    // border-bottom: 1px solid var(--lightgray);
     margin-bottom: 0.6rem;
     font-family: var(--titleFont);
   }
@@ -22,7 +22,7 @@
     & > li {
       margin: 0.8rem 0;
       padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--lightgray);
+      // border-bottom: 1px solid var(--lightgray);
 
       &:last-of-type {
         border-bottom: none;

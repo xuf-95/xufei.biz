@@ -12,6 +12,9 @@ draft: true
 ### Tools & Tutorials
 
 - [[Quartz MKD]]
+- [[Quartz Style Guide]]
+- [[Quartz Diagram Style Guide]]
+- [[UI Evolution Monitor]]
 - [[Astro Paper]]
 
 ### Collections
@@ -21,4 +24,3 @@ draft: true
 - [[Bloger List]]
 - [[Collections Photography]]
 - [[Data Build]]
-

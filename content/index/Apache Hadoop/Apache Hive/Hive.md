@@ -226,7 +226,7 @@ Hive on Spark supports [Spark on YARN](http://spark.apache.org/docs/latest/runn
 
 ### Hive vs SparkSQL
 
-![[HivevsSparkSQL.png]]
+![[content/index/Apache Hadoop/Apache Hive/images/HivevsSparkSQL.png]]
 
 [hivevssparksql](https://hivevssparksql.wordpress.com/)
 ## Reference

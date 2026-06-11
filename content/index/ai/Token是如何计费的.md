@@ -17,6 +17,12 @@ publish: true
 
 # Token是如何计费的
 
+> **交互式可视化体验**：[🎮 在线体验 PD 分离 & KV Cache 可视化](token-billing-visualization.html)
+
+![Token计费可视化演示](token-billing-visualization.html)
+
+> 💡 **提示**：点击上方链接打开交互式可视化界面，通过实时动画和操作演示，直观理解 PD 分离和 KV Cache 的工作原理。
+
 ## 什么是Token？
 
 Token是AI服务中的基本计费单位，可以理解为AI处理文本的"原子"。无论是输入还是输出，AI模型都会将文本转换为Token进行计算。

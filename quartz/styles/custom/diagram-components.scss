@@ -1,0 +1,313 @@
+/* Reusable diagram components for Quartz Markdown.
+   Use these when Mermaid is too plain, but keep the diagram as maintainable HTML.
+   Naming convention: all public classes start with wiki-diagram-.
+*/
+
+.wiki-diagram {
+  --wiki-diagram-bg: var(--light);
+  --wiki-diagram-card: color-mix(in srgb, var(--light) 94%, var(--dark) 6%);
+  --wiki-diagram-card-strong: color-mix(in srgb, var(--light) 88%, var(--dark) 12%);
+  --wiki-diagram-border: color-mix(in srgb, var(--dark) 18%, transparent);
+  --wiki-diagram-border-strong: color-mix(in srgb, var(--dark) 34%, transparent);
+  --wiki-diagram-muted: color-mix(in srgb, var(--darkgray) 78%, transparent);
+  --wiki-diagram-subtle: color-mix(in srgb, var(--dark) 5%, transparent);
+  --wiki-diagram-panel: color-mix(in srgb, var(--light) 90%, var(--dark) 10%);
+  --wiki-diagram-accent: var(--secondary);
+  --wiki-diagram-radius: 8px;
+  --wiki-diagram-gap: clamp(0.62rem, 1.6vw, 0.9rem);
+
+  width: min(100%, 58rem);
+  margin: 1.75rem auto 2rem;
+  color: var(--darkgray);
+  box-sizing: border-box;
+  container-type: inline-size;
+}
+
+.wiki-diagram,
+.wiki-diagram * {
+  box-sizing: border-box;
+}
+
+.wiki-diagram .wiki-diagram-title {
+  margin: 0 0 0.45rem;
+  color: var(--dark);
+  font-family: var(--headerFont);
+  font-size: clamp(1.12rem, 1.8vw, 1.38rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.wiki-diagram .wiki-diagram-title a[role="anchor"] {
+  background: transparent;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.wiki-diagram-caption {
+  margin: 0.75rem auto 0;
+  max-width: 44rem;
+  color: var(--wiki-diagram-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.wiki-diagram-kicker {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 0.55rem;
+  padding: 0.16rem 0.48rem;
+  border: 1px solid var(--wiki-diagram-border);
+  border-radius: 999px;
+  color: var(--wiki-diagram-muted);
+  font-family: var(--codeFont);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wiki-diagram-node {
+  display: flex;
+  min-height: 4.6rem;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.82rem 0.92rem;
+  border: 1px solid var(--wiki-diagram-border-strong);
+  border-radius: var(--wiki-diagram-radius);
+  background: var(--wiki-diagram-card);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--light) 72%, transparent),
+    0 10px 24px color-mix(in srgb, var(--dark) 7%, transparent);
+}
+
+.wiki-diagram-node-title {
+  display: block;
+  color: var(--dark);
+  font-family: var(--headerFont);
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.wiki-diagram-node-text {
+  display: block;
+  margin-top: 0.38rem;
+  color: var(--wiki-diagram-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.wiki-diagram-node.is-accent {
+  border-color: var(--wiki-diagram-border-strong);
+  background: var(--wiki-diagram-card-strong);
+}
+
+.wiki-diagram-node.is-muted {
+  opacity: 0.78;
+}
+
+.wiki-diagram-arrow {
+  color: var(--wiki-diagram-muted);
+  font-family: var(--codeFont);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Architecture layers: stack business, service, compute, storage, source, governance. */
+.wiki-diagram-architecture {
+  padding: clamp(1rem, 2.4vw, 1.35rem);
+  border: 1px solid var(--wiki-diagram-border);
+  border-radius: var(--wiki-diagram-radius);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--light) 94%, transparent), transparent 58%),
+    var(--wiki-diagram-bg);
+}
+
+.wiki-diagram-architecture .wiki-diagram-layers {
+  display: grid;
+  gap: var(--wiki-diagram-gap);
+  margin-top: 1rem;
+}
+
+.wiki-diagram-layer {
+  display: grid;
+  grid-template-columns: minmax(7.4rem, 0.36fr) minmax(0, 1fr);
+  gap: var(--wiki-diagram-gap);
+  align-items: stretch;
+  position: relative;
+}
+
+.wiki-diagram-layer-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border: 1px solid var(--wiki-diagram-border-strong);
+  border-radius: var(--wiki-diagram-radius);
+  color: var(--dark);
+  background: var(--wiki-diagram-panel);
+  font-family: var(--headerFont);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.wiki-diagram-layer-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.62rem;
+}
+
+.wiki-diagram-layer-items .wiki-diagram-node {
+  min-height: 4.2rem;
+}
+
+/* Data flow: left-to-right pipeline with arrow cells. */
+.wiki-diagram-flow {
+  padding: clamp(1rem, 2.6vw, 1.5rem);
+  border: 1px solid var(--wiki-diagram-border);
+  border-radius: var(--wiki-diagram-radius);
+  background: var(--wiki-diagram-bg);
+  overflow-x: auto;
+}
+
+.wiki-diagram-flow-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(8.8rem, 1fr);
+  gap: 0.62rem;
+  align-items: center;
+  min-width: min(54rem, 100%);
+  margin-top: 1rem;
+}
+
+.wiki-diagram-flow-track .wiki-diagram-arrow {
+  min-width: 1.6rem;
+}
+
+.wiki-diagram-flow-track .wiki-diagram-node {
+  min-height: 5rem;
+}
+
+/* Capability map: a center hub surrounded by capability nodes. */
+.wiki-diagram-capability {
+  padding: clamp(1rem, 2.6vw, 1.5rem);
+  border: 1px solid var(--wiki-diagram-border);
+  border-radius: var(--wiki-diagram-radius);
+  background: var(--wiki-diagram-bg);
+}
+
+.wiki-diagram-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.wiki-diagram-hub {
+  display: flex;
+  min-height: 8.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--wiki-diagram-border-strong);
+  border-radius: var(--wiki-diagram-radius);
+  background: var(--wiki-diagram-panel);
+  text-align: center;
+}
+
+.wiki-diagram-hub .wiki-diagram-node-title {
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+}
+
+.wiki-diagram-hub .wiki-diagram-node-text {
+  max-width: 14rem;
+  margin-inline: auto;
+}
+
+/* Decision matrix: compact comparison for design choices. */
+.wiki-diagram-decision {
+  padding: clamp(1rem, 2.4vw, 1.35rem);
+  border: 1px solid var(--wiki-diagram-border);
+  border-radius: var(--wiki-diagram-radius);
+  background: var(--wiki-diagram-bg);
+}
+
+.wiki-diagram-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.wiki-diagram-decision .wiki-diagram-node {
+  min-height: 7rem;
+}
+
+.wiki-diagram-node-list {
+  margin: 0.55rem 0 0;
+  padding-left: 1rem;
+  color: var(--wiki-diagram-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.wiki-diagram-node-list li + li {
+  margin-top: 0.28rem;
+}
+
+:root[saved-theme="dark"] {
+  .wiki-diagram {
+    --wiki-diagram-border: rgba(255, 255, 255, 0.12);
+    --wiki-diagram-border-strong: rgba(255, 255, 255, 0.22);
+    --wiki-diagram-muted: rgba(236, 233, 223, 0.6);
+    --wiki-diagram-subtle: rgba(255, 255, 255, 0.055);
+    --wiki-diagram-panel: rgba(255, 255, 255, 0.075);
+    --wiki-diagram-card: rgba(255, 255, 255, 0.045);
+    --wiki-diagram-card-strong: rgba(255, 255, 255, 0.085);
+  }
+}
+
+@media (max-width: 760px) {
+  .wiki-diagram-layer {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-diagram-layer-label {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .wiki-diagram-layer-items {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-diagram-flow-track {
+    grid-auto-flow: row;
+    grid-auto-columns: unset;
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .wiki-diagram-flow-track .wiki-diagram-arrow {
+    transform: rotate(90deg);
+  }
+
+  .wiki-diagram-capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-diagram-hub {
+    min-height: 6.5rem;
+    order: -1;
+  }
+}

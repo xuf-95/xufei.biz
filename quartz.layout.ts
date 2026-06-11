@@ -2,21 +2,21 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import { SimpleSlug } from "./quartz/util/path"
 
-const recentNotes = [
-  Component.RecentNotes({
-    title: "Recent Posts",
-    limit: 3,
-    filter: (f) =>
-      f.slug!.startsWith("index/") && f.slug! !== "index/index" && !f.frontmatter?.noindex,
-    linkToMore: "index/" as SimpleSlug,
-  }),
-  Component.RecentNotes({
-    title: "Recent BigData",
-    limit: 2,
-    filter: (f) => f.slug!.startsWith("/content/index/"),
-    linkToMore: "/content/index/" as SimpleSlug,
-  }),
-]
+// const recentNotes = [
+//   Component.RecentNotes({
+//     title: "Recent Posts",
+//     limit: 3,
+//     filter: (f) =>
+//       f.slug!.startsWith("index/") && f.slug! !== "index/index" && !f.frontmatter?.noindex,
+//     linkToMore: "index/" as SimpleSlug,
+//   }),
+//   Component.RecentNotes({
+//     title: "Recent BigData",
+//     limit: 2,
+//     filter: (f) => f.slug!.startsWith("/content/index/"),
+//     linkToMore: "/content/index/" as SimpleSlug,
+//   }),
+// ]
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -59,12 +59,6 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],
   right: [
-    // Component.Flex({
-    //   direction: "column",
-    //   components: [
-    //     { Component: Component.Backlinks() },
-    //   ],
-    // }),
   ],
 }
 

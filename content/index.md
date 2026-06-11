@@ -18,9 +18,22 @@ publish: true
 I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. The wiki is managed in modules according to the evaluation criteria of [[DCMM]] and based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. I have engaged in cloud data overseas project delivery, the cloud data management, data platform asset management, etc., you can see through my blog website <a href = "https://xufei.site/"> xufei.site </a> related I did it. You can explore the various topics that interest me, learn from the content I’ve gathered, and see how everything is connected. 
 
 ***
-
 <div class="home-two-col-section">
 <div class="home-col-left">
+<h3 class="home-col-title">Bigdata Wiki OS</h3>
+<ul>
+
+- [[Bigdata Wiki OS]]
+- [[MOC-大数据全栈工程师能力地图]]
+- [[MOC-数据架构师能力地图]]
+- [[MOC-DCMM-DAMA 数据治理地图]]
+- [[MOC-DATA+AI Agent 地图]]
+
+
+</ul>
+</div>
+
+<div class="home-col-right">
 <h3 class="home-col-title">Data Architecture</h3>
 <ul>
 
@@ -31,8 +44,9 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 </ul>
 </div>
-
-<div class="home-col-right">
+</div>
+<div class="home-two-col-section">
+<div class="home-col-left">
 <h3 class="home-col-title">Cloud Native</h3>
 <ul>
 
@@ -43,9 +57,8 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 </ul>
 </div>
-</div>
-<div class="home-two-col-section">
-<div class="home-col-left">
+
+<div class="home-col-right">
 <h3 class="home-col-title">Warehouse & DataLake</h3>
 <ul>
 
@@ -53,17 +66,6 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 - [[常见的的数据压缩算法]]
 - [[MySQL]]
 - [[Database Design]]
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">Scheduler & Integration</h3>
-<ul>
-
--  [[Kafka]]
-- [[Flink CDC|Flink CDC v3.6.0 Overview]]
-- [[Apache Pulsar]]
-- [[Apache Airflow ]]
 
 </ul>
 </div>
@@ -89,37 +91,16 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 - [[Collections Photography]]
 - [[Bigdata Product & Tools]]
 - [[Bloger List]]
-
-</ul>
-</div>
-</div>
-<div class="home-two-col-section">
-<div class="home-col-left">
-<h3 class="home-col-title">DevOps & IaC</h3>
-<ul>
-
-- [[Docker]]
-- [[Kubernetes]]
-- [[Terraform]]
-- [[CI/CD]]
-
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">Engineering</h3>
-<ul>
-
-- [[Java]]
-- [[Go]]
-- [[Shell Scripting]]
-- [[Data Quality]]
+- [[Quartz Style Guide]]
+- [[Quartz Diagram Style Guide]]
+- [[UI Evolution Monitor]]
 
 </ul>
 </div>
 </div>
 
-**Commits Time Distribution of my wiki**
+
+%% **Commits Time Distribution of my wiki**
 
 <a href="https://next.ossinsight.io/widgets/official/compose-activity-trends?repo_id=1001533954" target="_blank" style="display: block" align="center">
   <picture>
@@ -128,4 +109,4 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
   </picture>
 </a>
 
-<!-- Made with [OSS Insight](https://ossinsight.io/) -->  
+<!-- Made with [OSS Insight](https://ossinsight.io/) -->   %%

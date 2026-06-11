@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token 计费可视化 | PD分离 & KV Cache</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 技术未来主义配色方案 */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+
+            /* 霓虹色系 */
+            --color-pd: #00f5ff;      /* 青色 - PD分离 */
+            --color-cache: #00ff88;   /* 绿色 - 缓存命中 */
+            --color-api: #ff6b35;     /* 橙红 - API调用 */
+            --color-input: #a855f7;   /* 紫色 - 用户输入 */
+            --color-saved: #4ade80;   /* 亮绿 - 节省 */
+
+            /* 文字颜色 */
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+
+            /* 边框和分隔线 */
+            --border-color: #2d2d3d;
+            --divider: #3d3d4d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 动态网格背景 */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* 标题部分 */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-pd), var(--color-cache));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 导航标签 */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-tab:hover {
+            border-color: var(--color-pd);
+            color: var(--color-pd);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 245, 255, 0.2);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(0, 255, 136, 0.1));
+            border-color: var(--color-pd);
+            color: var(--color-pd);
+        }
+
+        /* 内容区域 */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--color-pd);
+            box-shadow: 0 4px 20px rgba(0, 245, 255, 0.1);
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-pd);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* PD分离可视化 */
+        .pd-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .pd-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mode-display {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .mode-display.traditional {
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .mode-display.pd-mode {
+            border-color: rgba(0, 245, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
+        }
+
+        .mode-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .mode-display.traditional .mode-title {
+            color: var(--color-api);
+        }
+
+        .mode-display.pd-mode .mode-title {
+            color: var(--color-pd);
+        }
+
+        /* Token流动画 */
+        .token-flow {
+            position: relative;
+            height: 150px;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .token-layer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .token-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            min-width: 120px;
+        }
+
+        .token-bar {
+            flex: 1;
+            height: 30px;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .token-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: width 0.5s ease;
+        }
+
+        .system-prompt {
+            background: linear-gradient(90deg, var(--color-input), var(--color-input));
+        }
+
+        .user-input {
+            background: linear-gradient(90deg, var(--color-pd), var(--color-pd));
+        }
+
+        .api-call {
+            background: linear-gradient(90deg, var(--color-api), var(--color-api));
+        }
+
+        /* 成本显示 */
+        .cost-display {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .cost-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-saved);
+        }
+
+        .cost-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* KV Cache可视化 */
+        .cache-visualization {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .cache-visualization {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cache-display {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .cache-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .cache-item {
+            aspect-ratio: 1;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cache-item:hover {
+            transform: scale(1.05);
+            border-color: var(--color-cache);
+        }
+
+        .cache-item.active {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.1));
+            border-color: var(--color-cache);
+            color: var(--color-cache);
+            animation: cacheHit 0.5s ease;
+        }
+
+        .cache-item.evicted {
+            opacity: 0.3;
+            border-style: dashed;
+        }
+
+        @keyframes cacheHit {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .cache-stats {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .stat-value.highlight {
+            color: var(--color-cache);
+        }
+
+        /* 控制面板 */
+        .control-panel {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--color-pd);
+            box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-pd), var(--color-cache));
+            border: none;
+            border-radius: 6px;
+            color: var(--bg-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* 组合优化可视化 */
+        .optimization-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        .flow-step {
+            text-align: center;
+            min-width: 150px;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.5rem;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover .step-icon {
+            transform: scale(1.1);
+            border-color: var(--color-pd);
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-status {
+            font-size: 0.75rem;
+            color: var(--color-cache);
+        }
+
+        /* 成本计算器 */
+        .cost-calculator {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .calc-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .calc-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .calc-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .savings-highlight {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(0, 255, 136, 0.05));
+            border-color: var(--color-saved);
+        }
+
+        .savings-highlight .calc-value {
+            color: var(--color-saved);
+            font-size: 2.5rem;
+        }
+
+        /* 动画指示器 */
+        .processing-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .processing-indicator.active {
+            background: var(--color-cache);
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .processing-indicator.waiting {
+            background: var(--text-muted);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* 请求日志 */
+        .request-log {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .log-entry {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-time {
+            color: var(--text-muted);
+        }
+
+        .log-action {
+            color: var(--text-primary);
+        }
+
+        .log-result {
+            color: var(--color-cache);
+        }
+
+        .log-result.miss {
+            color: var(--color-api);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .nav-tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .optimization-flow {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .flow-step:not(:last-child)::after {
+                content: '↓';
+                right: auto;
+                bottom: -20px;
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-pd);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>AI Token 计费可视化</h1>
+            <p>探索 PD 分离和 KV Cache 如何优化 AI 服务成本</p>
+        </header>
+
+        <!-- 导航标签 -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="pd-separation">PD 分离</button>
+            <button class="nav-tab" data-tab="kv-cache">KV Cache</button>
+            <button class="nav-tab" data-tab="combined-optimization">组合优化</button>
+        </nav>
+
+        <!-- PD 分离部分 -->
+        <section id="pd-separation" class="content-section active">
+            <div class="card">
+                <h2 class="card-title">🔄 PD 分离原理对比</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    PD 分离将系统提示和用户输入分离，系统提示不计入 Token 费用，显著降低成本。
+                </p>
+
+                <div class="pd-comparison">
+                    <!-- 传统模式 -->
+                    <div class="mode-display traditional">
+                        <h3 class="mode-title">传统模式</h3>
+                        <div class="token-flow">
+                            <div class="token-layer">
+                                <span class="token-label">系统提示</span>
+                                <div class="token-bar">
+                                    <div class="token-fill system-prompt" style="width: 80%">80 tokens</div>
+                                </div>
+                            </div>
+                            <div class="token-layer">
+                                <span class="token-label">用户输入</span>
+                                <div class="token-bar">
+                                    <div class="token-fill user-input" style="width: 20%">20 tokens</div>
+                                </div>
+                            </div>
+                            <div class="token-layer">
+                                <span class="token-label">API 输出</span>
+                                <div class="token-bar">
+                                    <div class="token-fill api-call" style="width: 50%">50 tokens</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cost-display">
+                            <div class="cost-value">$0.00375</div>
+                            <div class="cost-label">总成本 (150 tokens)</div>
+                        </div>
+                    </div>
+
+                    <!-- PD分离模式 -->
+                    <div class="mode-display pd-mode">
+                        <h3 class="mode-title">PD 分离模式</h3>
+                        <div class="token-flow">
+                            <div class="token-layer">
+                                <span class="token-label">系统提示</span>
+                                <div class="token-bar">
+                                    <div class="token-fill system-prompt" style="width: 80%; opacity: 0.3">80 tokens 免费</div>
+                                </div>
+                            </div>
+                            <div class="token-layer">
+                                <span class="token-label">用户输入</span>
+                                <div class="token-bar">
+                                    <div class="token-fill user-input" style="width: 20%">20 tokens</div>
+                                </div>
+                            </div>
+                            <div class="token-layer">
+                                <span class="token-label">API 输出</span>
+                                <div class="token-bar">
+                                    <div class="token-fill api-call" style="width: 50%">50 tokens</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cost-display">
+                            <div class="cost-value" style="color: var(--color-saved)">$0.00105</div>
+                            <div class="cost-label">总成本 (70 tokens) - 节省 72%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 交互式 PD 分离 -->
+            <div class="card">
+                <h2 class="card-title">🎮 交互式 PD 分离演示</h2>
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label class="control-label">系统提示长度 (tokens)</label>
+                        <input type="range" id="systemPromptLength" class="input-field" min="20" max="200" value="80">
+                        <span id="systemPromptValue">80 tokens</span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">用户输入长度 (tokens)</label>
+                        <input type="range" id="userInputLength" class="input-field" min="5" max="100" value="20">
+                        <span id="userInputValue">20 tokens</span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">输出长度 (tokens)</label>
+                        <input type="range" id="outputLength" class="input-field" min="10" max="200" value="50">
+                        <span id="outputValue">50 tokens</span>
+                    </div>
+                </div>
+
+                <div class="pd-comparison">
+                    <div class="mode-display traditional">
+                        <h3 class="mode-title">传统模式</h3>
+                        <div class="cost-display">
+                            <div class="cost-value" id="traditionalCost">$0.00375</div>
+                            <div class="cost-label" id="traditionalTokens">150 tokens</div>
+                        </div>
+                    </div>
+                    <div class="mode-display pd-mode">
+                        <h3 class="mode-title">PD 分离模式</h3>
+                        <div class="cost-display">
+                            <div class="cost-value" id="pdCost">$0.00105</div>
+                            <div class="cost-label" id="pdTokens">70 tokens</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KV Cache 部分 -->
+        <section id="kv-cache" class="content-section">
+            <div class="card">
+                <h2 class="card-title">💾 KV Cache 机制</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    KV Cache 通过缓存计算结果避免重复处理，显著降低 Token 使用量和响应时间。
+                </p>
+
+                <div class="cache-visualization">
+                    <div class="cache-display">
+                        <h3 style="color: var(--color-cache); margin-bottom: 1rem;">缓存状态</h3>
+                        <div class="cache-container" id="cacheContainer">
+                            <!-- 缓存项将通过 JS 动态生成 -->
+                        </div>
+                        <div style="margin-top: 1rem; text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+                            <span style="color: var(--color-cache);">●</span> 缓存命中
+                            <span style="color: var(--color-api); margin-left: 1rem;">●</span> 缓存未命中
+                            <span style="color: var(--text-muted); margin-left: 1rem;">●</span> 空闲
+                        </div>
+                    </div>
+
+                    <div class="cache-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">缓存命中率</span>
+                            <span class="stat-value highlight" id="cacheHitRate">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">总请求数</span>
+                            <span class="stat-value" id="totalRequests">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">缓存命中</span>
+                            <span class="stat-value" id="cacheHits">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">节省的 tokens</span>
+                            <span class="stat-value highlight" id="savedTokens">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KV Cache 控制面板 -->
+            <div class="card">
+                <h2 class="card-title">🎮 KV Cache 模拟器</h2>
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label class="control-label">输入查询内容</label>
+                        <input type="text" id="cacheQuery" class="input-field" placeholder="输入要查询的内容...">
+                    </div>
+                    <div class="control-group">
+                        <button class="btn" id="sendCacheQuery">发送查询</button>
+                        <button class="btn" id="clearCache" style="margin-left: 1rem; background: var(--bg-tertiary);">清空缓存</button>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">缓存策略</label>
+                        <select id="cacheStrategy" class="input-field">
+                            <option value="lru">LRU (最近最少使用)</option>
+                            <option value="ttl">TTL (时间过期)</option>
+                            <option value="hybrid">混合策略</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="request-log" id="requestLog">
+                    <div style="text-align: center; color: var(--text-muted); padding: 1rem;">
+                        等待查询...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 组合优化部分 -->
+        <section id="combined-optimization" class="content-section">
+            <div class="card">
+                <h2 class="card-title">🚀 组合优化架构</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    结合 PD 分离和 KV Cache 实现多层优化，最大化成本节省。
+                </p>
+
+                <div class="optimization-flow">
+                    <div class="flow-step">
+                        <div class="step-icon" id="step1-icon">📝</div>
+                        <div class="step-title">用户输入</div>
+                        <div class="step-status" id="step1-status">等待中</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-icon" id="step2-icon">🔄</div>
+                        <div class="step-title">PD 分离检查</div>
+                        <div class="step-status" id="step2-status">等待中</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-icon" id="step3-icon">💾</div>
+                        <div class="step-title">KV Cache 查询</div>
+                        <div class="step-status" id="step3-status">等待中</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-icon" id="step4-icon">🌐</div>
+                        <div class="step-title">API 调用</div>
+                        <div class="step-status" id="step4-status">等待中</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-icon" id="step5-icon">✅</div>
+                        <div class="step-title">返回结果</div>
+                        <div class="step-status" id="step5-status">等待中</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成本计算器 -->
+            <div class="card">
+                <h2 class="card-title">💰 成本节省计算器</h2>
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label class="control-label">每日请求数</label>
+                        <input type="number" id="dailyRequests" class="input-field" value="1000" min="1">
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">平均每请求 tokens</label>
+                        <input type="number" id="avgTokens" class="input-field" value="100" min="1">
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">缓存命中率 (%)</label>
+                        <input type="number" id="hitRate" class="input-field" value="50" min="0" max="100">
+                    </div>
+                    <div class="control-group">
+                        <button class="btn" id="calculateSavings">计算节省</button>
+                    </div>
+                </div>
+
+                <div class="cost-calculator">
+                    <h3 style="color: var(--color-pd); margin-bottom: 1rem;">成本分析</h3>
+                    <div class="calculator-grid">
+                        <div class="calc-card">
+                            <div class="calc-icon">📊</div>
+                            <div class="calc-label">传统模式成本</div>
+                            <div class="calc-value" id="traditionalCost">$15.00</div>
+                            <div class="calc-label">每月</div>
+                        </div>
+                        <div class="calc-card savings-highlight">
+                            <div class="calc-icon">✨</div>
+                            <div class="calc-label">优化后成本</div>
+                            <div class="calc-value" id="optimizedCost">$5.25</div>
+                            <div class="calc-label">每月</div>
+                        </div>
+                        <div class="calc-card">
+                            <div class="calc-icon">💵</div>
+                            <div class="calc-label">节省金额</div>
+                            <div class="calc-value" style="color: var(--color-saved);" id="savingsAmount">$9.75</div>
+                            <div class="calc-label">每月</div>
+                        </div>
+                        <div class="calc-card">
+                            <div class="calc-icon">📈</div>
+                            <div class="calc-label">节省比例</div>
+                            <div class="calc-value" style="color: var(--color-pd);" id="savingsPercent">65%</div>
+                            <div class="calc-label">成本降低</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 组合优化模拟器 -->
+            <div class="card">
+                <h2 class="card-title">🎮 组合优化模拟器</h2>
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label class="control-label">输入内容</label>
+                        <input type="text" id="combinedQuery" class="input-field" placeholder="输入要处理的内容...">
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">内容类型</label>
+                        <select id="contentType" class="input-field">
+                            <option value="tech">技术支持</option>
+                            <option value="code">代码审查</option>
+                            <option value="creative">创意写作</option>
+                            <option value="general">通用问题</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <button class="btn" id="sendCombinedQuery">发送请求</button>
+                        <button class="btn" id="resetSimulation" style="margin-left: 1rem; background: var(--bg-tertiary);">重置模拟</button>
+                    </div>
+                </div>
+
+                <div class="request-log" id="combinedLog">
+                    <div style="text-align: center; color: var(--text-muted); padding: 1rem;">
+                        等待请求...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // ==================== 全局状态 ====================
+        const state = {
+            // PD 分离状态
+            pd: {
+                systemPrompt: 80,
+                userInput: 20,
+                output: 50
+            },
+            // KV Cache 状态
+            cache: {
+                data: new Map(),
+                hits: 0,
+                misses: 0,
+                maxSize: 16,
+                strategy: 'lru'
+            },
+            // 组合优化状态
+            combined: {
+                requests: [],
+                totalProcessed: 0
+            }
+        };
+
+        // ==================== 工具函数 ====================
+        function calculateTokens(type, ...args) {
+            const inputPrice = 0.0015; // GPT-3.5 input price per 1K tokens
+            const outputPrice = 0.002; // GPT-3.5 output price per 1K tokens
+
+            switch(type) {
+                case 'traditional':
+                    const totalTraditional = args.reduce((sum, val) => sum + val, 0);
+                    const inputCost = (args[0] + args[1]) * inputPrice / 1000;
+                    const outputCost = args[2] * outputPrice / 1000;
+                    return { tokens: totalTraditional, cost: inputCost + outputCost };
+
+                case 'pd':
+                    const pdTokens = args[1] + args[2]; // 只计算用户输入和输出
+                    const pdInputCost = args[1] * inputPrice / 1000;
+                    const pdOutputCost = args[2] * outputPrice / 1000;
+                    return { tokens: pdTokens, cost: pdInputCost + pdOutputCost };
+
+                default:
+                    return { tokens: 0, cost: 0 };
+            }
+        }
+
+        function formatCurrency(value) {
+            return '$' + value.toFixed(5);
+        }
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // ==================== 标签导航 ====================
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有活动状态
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+
+                // 添加活动状态
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ==================== PD 分离功能 ====================
+        function updatePDCalculations() {
+            const systemPrompt = parseInt(document.getElementById('systemPromptLength').value);
+            const userInput = parseInt(document.getElementById('userInputLength').value);
+            const output = parseInt(document.getElementById('outputLength').value);
+
+            // 更新显示值
+            document.getElementById('systemPromptValue').textContent = systemPrompt + ' tokens';
+            document.getElementById('userInputValue').textContent = userInput + ' tokens';
+            document.getElementById('outputValue').textContent = output + ' tokens';
+
+            // 计算成本
+            const traditional = calculateTokens('traditional', systemPrompt, userInput, output);
+            const pd = calculateTokens('pd', systemPrompt, userInput, output);
+
+            // 更新显示
+            document.getElementById('traditionalCost').textContent = formatCurrency(traditional.cost);
+            document.getElementById('traditionalTokens').textContent = traditional.tokens + ' tokens';
+            document.getElementById('pdCost').textContent = formatCurrency(pd.cost);
+            document.getElementById('pdTokens').textContent = pd.tokens + ' tokens';
+        }
+
+        // PD 分离滑块事件
+        document.getElementById('systemPromptLength').addEventListener('input', updatePDCalculations);
+        document.getElementById('userInputLength').addEventListener('input', updatePDCalculations);
+        document.getElementById('outputLength').addEventListener('input', updatePDCalculations);
+
+        // ==================== KV Cache 功能 ====================
+        function initCacheVisualization() {
+            const container = document.getElementById('cacheContainer');
+            container.innerHTML = '';
+
+            for (let i = 0; i < state.cache.maxSize; i++) {
+                const item = document.createElement('div');
+                item.className = 'cache-item';
+                item.id = `cache-${i}`;
+                item.textContent = '-';
+                container.appendChild(item);
+            }
+        }
+
+        function updateCacheStats() {
+            const total = state.cache.hits + state.cache.misses;
+            const hitRate = total > 0 ? ((state.cache.hits / total) * 100).toFixed(1) : 0;
+            const savedTokens = state.cache.hits * 100; // 假设每次命中节省 100 tokens
+
+            document.getElementById('cacheHitRate').textContent = hitRate + '%';
+            document.getElementById('totalRequests').textContent = formatNumber(total);
+            document.getElementById('cacheHits').textContent = formatNumber(state.cache.hits);
+            document.getElementById('savedTokens').textContent = formatNumber(savedTokens);
+        }
+
+        function addLogEntry(query, hit) {
+            const log = document.getElementById('requestLog');
+            const timestamp = new Date().toLocaleTimeString();
+
+            // 清空初始消息
+            if (log.querySelector('div[style*="text-align: center"]')) {
+                log.innerHTML = '';
+            }
+
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `
+                <span class="log-time">${timestamp}</span>
+                <span class="log-action">${query}</span>
+                <span class="log-result ${hit ? '' : 'miss'}">${hit ? '✓ 命中' : '✗ 未命中'}</span>
+            `;
+
+            log.insertBefore(entry, log.firstChild);
+
+            // 保持最多 10 条记录
+            if (log.children.length > 10) {
+                log.removeChild(log.lastChild);
+            }
+        }
+
+        function simulateCacheQuery(query) {
+            const cacheKey = query.toLowerCase().trim();
+            const cached = state.cache.data.get(cacheKey);
+
+            if (cached) {
+                // 缓存命中
+                state.cache.hits++;
+                highlightCacheItem(cached.index, true);
+                addLogEntry(query, true);
+            } else {
+                // 缓存未命中
+                state.cache.misses++;
+
+                // 找到空闲位置或淘汰位置
+                let index = -1;
+                for (let i = 0; i < state.cache.maxSize; i++) {
+                    const item = document.getElementById(`cache-${i}`);
+                    if (!item.classList.contains('active')) {
+                        index = i;
+                        break;
+                    }
+                }
+
+                if (index === -1) {
+                    // 淘汰最旧的
+                    index = Math.floor(Math.random() * state.cache.maxSize);
+                    const oldItem = document.getElementById(`cache-${index}`);
+                    oldItem.classList.remove('active');
+                    oldItem.classList.add('evicted');
+                    setTimeout(() => {
+                        oldItem.classList.remove('evicted');
+                    }, 1000);
+                }
+
+                // 添加新缓存
+                state.cache.data.set(cacheKey, { index, query });
+                highlightCacheItem(index, false);
+                addLogEntry(query, false);
+            }
+
+            updateCacheStats();
+        }
+
+        function highlightCacheItem(index, hit) {
+            const item = document.getElementById(`cache-${index}`);
+            item.classList.add('active');
+            item.textContent = hit ? 'HIT' : 'NEW';
+
+            setTimeout(() => {
+                if (item.textContent === 'HIT') {
+                    item.textContent = 'CACHED';
+                }
+            }, 1000);
+        }
+
+        function clearCache() {
+            state.cache.data.clear();
+            state.cache.hits = 0;
+            state.cache.misses = 0;
+            initCacheVisualization();
+            updateCacheStats();
+
+            const log = document.getElementById('requestLog');
+            log.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 1rem;">等待查询...</div>';
+        }
+
+        // KV Cache 事件监听
+        document.getElementById('sendCacheQuery').addEventListener('click', () => {
+            const query = document.getElementById('cacheQuery').value.trim();
+            if (query) {
+                simulateCacheQuery(query);
+                document.getElementById('cacheQuery').value = '';
+            }
+        });
+
+        document.getElementById('cacheQuery').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('sendCacheQuery').click();
+            }
+        });
+
+        document.getElementById('clearCache').addEventListener('click', clearCache);
+
+        // ==================== 组合优化功能 ====================
+        function updateOptimizationFlow(step, status) {
+            const icon = document.getElementById(`step${step}-icon`);
+            const statusEl = document.getElementById(`step${step}-status`);
+
+            // 重置所有步骤
+            for (let i = 1; i <= 5; i++) {
+                const stepIcon = document.getElementById(`step${i}-icon`);
+                const stepStatus = document.getElementById(`step${i}-status`);
+                stepIcon.style.borderColor = 'var(--border-color)';
+                stepStatus.textContent = '等待中';
+                stepStatus.style.color = 'var(--text-muted)';
+            }
+
+            // 高亮当前步骤
+            icon.style.borderColor = status === 'processing' ? 'var(--color-api)' : 'var(--color-cache)';
+            statusEl.textContent = status === 'processing' ? '处理中...' : '完成';
+            statusEl.style.color = status === 'processing' ? 'var(--color-api)' : 'var(--color-cache)';
+        }
+
+        function addCombinedLog(query, result, savings) {
+            const log = document.getElementById('combinedLog');
+            const timestamp = new Date().toLocaleTimeString();
+
+            if (log.querySelector('div[style*="text-align: center"]')) {
+                log.innerHTML = '';
+            }
+
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `
+                <span class="log-time">${timestamp}</span>
+                <span class="log-action">${query}</span>
+                <span class="log-result">${result} ${savings > 0 ? '(节省 ' + savings + '%)' : ''}</span>
+            `;
+
+            log.insertBefore(entry, log.firstChild);
+
+            if (log.children.length > 10) {
+                log.removeChild(log.lastChild);
+            }
+        }
+
+        function simulateCombinedRequest(query, type) {
+            const steps = [1, 2, 3, 4, 5];
+            let currentStep = 0;
+
+            function processStep() {
+                if (currentStep >= steps.length) {
+                    // 处理完成
+                    const savings = Math.floor(Math.random() * 40) + 25; // 25-65% 节省
+                    addCombinedLog(query, '完成', savings);
+                    return;
+                }
+
+                const step = steps[currentStep];
+                updateOptimizationFlow(step, 'processing');
+
+                setTimeout(() => {
+                    updateOptimizationFlow(step, 'completed');
+                    currentStep++;
+
+                    // 根据步骤调整延迟
+                    const delay = step === 3 ? 500 : 800; // KV Cache 检查更快
+                    setTimeout(processStep, delay);
+                }, 600);
+            }
+
+            processStep();
+        }
+
+        function resetSimulation() {
+            for (let i = 1; i <= 5; i++) {
+                const icon = document.getElementById(`step${i}-icon`);
+                const status = document.getElementById(`step${i}-status`);
+                icon.style.borderColor = 'var(--border-color)';
+                status.textContent = '等待中';
+                status.style.color = 'var(--text-muted)';
+            }
+
+            const log = document.getElementById('combinedLog');
+            log.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 1rem;">等待请求...</div>';
+        }
+
+        function calculateSavings() {
+            const dailyRequests = parseInt(document.getElementById('dailyRequests').value);
+            const avgTokens = parseInt(document.getElementById('avgTokens').value);
+            const hitRate = parseInt(document.getElementById('hitRate').value);
+
+            // 传统模式成本
+            const traditionalMonthlyCost = (dailyRequests * avgTokens * 0.0015 / 1000) * 30;
+
+            // 优化后成本（考虑缓存命中率和 PD 分离）
+            const effectiveHitRate = hitRate / 100;
+            const optimizedMonthlyCost = traditionalMonthlyCost * (1 - effectiveHitRate * 0.65);
+
+            const savings = traditionalMonthlyCost - optimizedMonthlyCost;
+            const savingsPercent = ((savings / traditionalMonthlyCost) * 100).toFixed(0);
+
+            // 更新显示
+            document.getElementById('traditionalCost').textContent = '$' + traditionalMonthlyCost.toFixed(2);
+            document.getElementById('optimizedCost').textContent = '$' + optimizedMonthlyCost.toFixed(2);
+            document.getElementById('savingsAmount').textContent = '$' + savings.toFixed(2);
+            document.getElementById('savingsPercent').textContent = savingsPercent + '%';
+        }
+
+        // 组合优化事件监听
+        document.getElementById('sendCombinedQuery').addEventListener('click', () => {
+            const query = document.getElementById('combinedQuery').value.trim();
+            const type = document.getElementById('contentType').value;
+
+            if (query) {
+                simulateCombinedRequest(query, type);
+                document.getElementById('combinedQuery').value = '';
+            }
+        });
+
+        document.getElementById('combinedQuery').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('sendCombinedQuery').click();
+            }
+        });
+
+        document.getElementById('resetSimulation').addEventListener('click', resetSimulation);
+
+        document.getElementById('calculateSavings').addEventListener('click', calculateSavings);
+
+        // ==================== 初始化 ====================
+        function init() {
+            // 初始化 PD 分离计算
+            updatePDCalculations();
+
+            // 初始化 KV Cache 可视化
+            initCacheVisualization();
+
+            // 初始化成本计算器
+            calculateSavings();
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

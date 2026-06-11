@@ -8,7 +8,9 @@ publish: true
 
 ### Topics
 
+- [[MOC-DATA+AI Agent 地图]]
 - [[Bigdata With AI]]
+- [[Data Agent Architecture]]
 - [[Agent]]
 - [[Local File Report Agent]]
 - [[Knowledge Distillation（知识蒸馏）]]
@@ -16,5 +18,7 @@ publish: true
 - [[MCP]]
 - [[Prompt Engineering]]
 - [[RAG]]
+- [[Semantic Layer]]
+- [[Indicator System]]
 - [[db9.ai?]]
 - [[大模型微调]]

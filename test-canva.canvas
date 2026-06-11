@@ -1,0 +1,33 @@
+{
+	"nodes":[
+		{"id":"group","type":"group","x":50,"y":50,"width":1200,"height":700,"color":"1","label":"Markdown 文件"},
+		{"id":"images_group","type":"group","x":150,"y":500,"width":1000,"height":220,"color":"3","label":"🖼️ images/"},
+		{"id":"root","type":"text","text":"# 📁 Cloud 目录","x":400,"y":-50,"width":400,"height":80,"color":"4"},
+		{"id":"node1","type":"file","file":"content/index/Cloud/Aliyun Cloud Ecosystem.md","x":100,"y":100,"width":280,"height":60,"color":"5"},
+		{"id":"node4","type":"file","file":"content/index/Cloud/Data Lake Formation（DLF）.md","x":100,"y":200,"width":280,"height":60,"color":"5"},
+		{"id":"node7","type":"file","file":"content/index/Cloud/MaxCompute.md","x":100,"y":300,"width":280,"height":60,"color":"5"},
+		{"id":"node2","type":"file","file":"content/index/Cloud/Catalog.md","x":420,"y":100,"width":280,"height":60,"color":"5"},
+		{"id":"node5","type":"file","file":"content/index/Cloud/DataWorks.md","x":420,"y":200,"width":280,"height":60,"color":"5"},
+		{"id":"node10","type":"file","file":"content/index/Cloud/Quick BI.md","x":100,"y":400,"width":280,"height":60,"color":"5"},
+		{"id":"stats","type":"text","text":"📊 **统计**: 11 个 Markdown 文件 + 9 张图片 = 20 个文件\n🏢 **主题**: 阿里云大数据产品生态系统","x":50,"y":780,"width":1200,"height":80,"color":"2"},
+		{"id":"node3","type":"file","file":"content/index/Cloud/Cloud Vendors Homepage.md","x":740,"y":100,"width":280,"height":60,"color":"5"},
+		{"id":"node8","type":"file","file":"content/index/Cloud/MaxCompute MaxFrame.md","x":420,"y":300,"width":280,"height":60,"color":"5"},
+		{"id":"node11","type":"file","file":"content/index/Cloud/index.md","x":420,"y":400,"width":280,"height":60,"color":"5"},
+		{"id":"node6","type":"file","file":"content/index/Cloud/Hologres.md","x":740,"y":200,"width":280,"height":60,"color":"5"},
+		{"id":"img1","type":"file","file":"content/index/Cloud/images/aliyun-maxCompute-compute-architecture.png","x":180,"y":550,"width":79,"height":50,"color":"6"},
+		{"id":"img2","type":"file","file":"content/index/Cloud/images/aliyun-maxCompute-architecture.png","x":380,"y":550,"width":60,"height":50,"color":"6"},
+		{"id":"img6","type":"file","file":"content/index/Cloud/images/dw.png","x":180,"y":620,"width":95,"height":50,"color":"6"},
+		{"id":"img7","type":"file","file":"content/index/Cloud/images/DLF.png","x":380,"y":620,"width":80,"height":50,"color":"6"},
+		{"id":"img8","type":"file","file":"content/index/Cloud/images/hsap.png","x":580,"y":620,"width":98,"height":50,"color":"6"},
+		{"id":"img9","type":"file","file":"content/index/Cloud/images/MaxFrame-case.png","x":780,"y":620,"width":64,"height":50,"color":"6"},
+		{"id":"node9","type":"file","file":"content/index/Cloud/MaxComput 数据开发性能优化.md","x":740,"y":300,"width":280,"height":60,"color":"5"},
+		{"id":"img3","type":"file","file":"content/index/Cloud/images/aliyun-maxCompute.png","x":580,"y":550,"width":81,"height":50,"color":"6"},
+		{"id":"img4","type":"file","file":"content/index/Cloud/images/dw-产品能力.png","x":780,"y":550,"width":84,"height":50,"color":"6"},
+		{"id":"img5","type":"file","file":"content/index/Cloud/images/dw-离线与实时一体化的企业级智能云数仓.png","x":980,"y":550,"width":74,"height":50,"color":"6"}
+	],
+	"edges":[
+		{"id":"edge1","fromNode":"root","fromSide":"bottom","toNode":"group","toSide":"top"},
+		{"id":"edge2","fromNode":"group","fromSide":"bottom","toNode":"images_group","toSide":"top"},
+		{"id":"edge3","fromNode":"images_group","fromSide":"bottom","toNode":"stats","toSide":"top"}
+	]
+}
