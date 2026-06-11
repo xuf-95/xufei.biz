@@ -4,14 +4,12 @@ const tocInit = () => {
   const sidebarEl: HTMLElement = sidebar
   const wrapper = sidebarEl.closest<HTMLElement>(".toc-wrapper")
 
-  const expand = () => wrapper?.classList.add("is-expanded")
+  const expand  = () => wrapper?.classList.add("is-expanded")
   const collapse = () => wrapper?.classList.remove("is-expanded")
-
   wrapper?.addEventListener("mouseenter", expand)
   wrapper?.addEventListener("mouseleave", collapse)
 
   const headingRows = Array.from(sidebarEl.querySelectorAll<HTMLElement>(".toc-heading"))
-  const bodyRows = Array.from(sidebarEl.querySelectorAll<HTMLElement>(".toc-body"))
   if (headingRows.length === 0) return
 
   const articleHeadings = Array.from(
@@ -20,6 +18,7 @@ const tocInit = () => {
     ),
   )
 
+  // Map each TOC row to the corresponding article heading element
   const sections: HTMLElement[] = headingRows.map((row) => {
     const targetId = row.dataset.target
     if (targetId) {
@@ -28,14 +27,23 @@ const tocInit = () => {
     }
     const labelText =
       row.querySelector<HTMLElement>(".toc-lbl")?.textContent?.trim().toLowerCase() ?? ""
-    const matched = articleHeadings.find((h) => h.textContent?.trim().toLowerCase() === labelText)
+    const matched = articleHeadings.find(
+      (h) => h.textContent?.trim().toLowerCase() === labelText,
+    )
     return matched ?? document.createElement("div")
   })
 
   let currentActive = -1
   let rafId: number | null = null
+  let stepTimers: ReturnType<typeof setTimeout>[] = []
 
-  function activate(idx: number) {
+  function clearStepTimers() {
+    stepTimers.forEach(clearTimeout)
+    stepTimers = []
+  }
+
+  /** Applies active / near classes immediately — no animation queuing. */
+  function applyActive(idx: number) {
     if (idx === currentActive) return
     currentActive = idx
 
@@ -46,30 +54,59 @@ const tocInit = () => {
       if (d === 0) {
         row.classList.add("active")
         row.setAttribute("aria-current", "location")
-      } else if (d === 1) row.classList.add("near1")
-      else if (d === 2) row.classList.add("near2")
+      } else if (d === 1) {
+        row.classList.add("near1")
+      } else if (d === 2) {
+        row.classList.add("near2")
+      }
     })
 
-    bodyRows.forEach((row) => {
-      row.classList.remove("bn0", "bn1")
-      const hi = parseInt(row.dataset.hi ?? "-1", 10)
-      const d = Math.abs(hi - idx)
-      if (d === 0) row.classList.add("bn0")
-      else if (d === 1) row.classList.add("bn1")
-    })
-
+    // Keep the active item visible inside the scrolling sidebar
     const activeEl = headingRows[idx]
     if (activeEl) {
       const target = activeEl.offsetTop - sidebarEl.clientHeight * 0.38
-      easeScroll(sidebarEl, Math.max(0, target), 340)
+      easeScroll(sidebarEl, Math.max(0, target), 320)
     }
+  }
+
+  /**
+   * Animate the active indicator from currentActive → target by stepping
+   * through each intermediate heading:
+   *   dist 1      → direct (CSS handles visual)
+   *   dist 2–6    → visit every intermediate, 48 ms apart
+   *   dist > 6    → compress to last 2 steps (fast scroll / page jump)
+   */
+  function activate(target: number) {
+    if (target === currentActive) return
+    clearStepTimers()
+
+    const dir  = target > currentActive ? 1 : -1
+    const dist = Math.abs(target - currentActive)
+
+    if (dist <= 1) {
+      applyActive(target)
+      return
+    }
+
+    const steps: number[] = []
+    if (dist <= 6) {
+      for (let i = currentActive + dir; i !== target + dir; i += dir) steps.push(i)
+    } else {
+      steps.push(target - dir * 2, target - dir, target)
+    }
+
+    const STEP_MS = 48
+    steps.forEach((idx, i) => {
+      const t = setTimeout(() => applyActive(idx), i * STEP_MS)
+      stepTimers.push(t)
+    })
   }
 
   function onScroll() {
     if (rafId) cancelAnimationFrame(rafId)
     rafId = requestAnimationFrame(() => {
       const scrollTop = window.scrollY
-      const offset = 100
+      const offset    = 100
       let best = 0
       sections.forEach((el, i) => {
         if (el && el.offsetTop > 0 && el.offsetTop <= scrollTop + offset) best = i
@@ -78,6 +115,7 @@ const tocInit = () => {
     })
   }
 
+  // Clicking a TOC link: smooth-scroll the page and animate the indicator
   headingRows.forEach((row, i) => {
     row.addEventListener("click", (event) => {
       event.preventDefault()
@@ -86,12 +124,13 @@ const tocInit = () => {
         const top = el.getBoundingClientRect().top + window.scrollY - 80
         window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
         history.replaceState(null, "", `#${row.dataset.target}`)
+        activate(i)
       }
     })
   })
 
   function easeScroll(el: HTMLElement, to: number, ms: number) {
-    const from = el.scrollTop
+    const from  = el.scrollTop
     const delta = to - from
     if (Math.abs(delta) < 1) return
     let t0: number | null = null
@@ -104,7 +143,7 @@ const tocInit = () => {
     requestAnimationFrame(step)
   }
 
-  activate(0)
+  applyActive(0)
   onScroll()
   window.addEventListener("scroll", onScroll, { passive: true })
   window.addCleanup(() => {
@@ -112,6 +151,7 @@ const tocInit = () => {
     wrapper?.removeEventListener("mouseenter", expand)
     wrapper?.removeEventListener("mouseleave", collapse)
     if (rafId) cancelAnimationFrame(rafId)
+    clearStepTimers()
   })
 }
 
