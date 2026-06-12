@@ -83,13 +83,16 @@
   display: flex;
   align-items: center;
   min-width: var(--toc-expanded-width);
-  height: 22px;
+  /* compact in collapsed view */
+  height: 13px;
   gap: 10px;
   padding: 0 8px 0 8px;
   text-decoration: none;
   background: transparent !important;
   box-shadow: none !important;
   cursor: pointer;
+  /* height transitions in sync with the wrapper's width */
+  transition: height 0.22s ease;
 
   &:hover .toc-lbl    { color: var(--toc-lbl-active); }
   &:hover .toc-dash   { background: var(--toc-dash-hover); }
@@ -100,7 +103,20 @@
   }
 }
 
-.toc-h1 { height: 26px; }
+/* h1 slightly taller even when compact */
+.toc-h1 { height: 15px; }
+
+/* ── expanded: restore full spacing ── */
+.toc-wrapper.is-expanded .toc-heading,
+.toc-wrapper:hover       .toc-heading,
+.toc-wrapper:focus-within .toc-heading {
+  height: 22px;
+}
+.toc-wrapper.is-expanded .toc-h1,
+.toc-wrapper:hover       .toc-h1,
+.toc-wrapper:focus-within .toc-h1 {
+  height: 26px;
+}
 
 /* ─── the dash ─────────────────────────────────── */
 .toc-dash {
