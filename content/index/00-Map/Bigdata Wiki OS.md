@@ -95,48 +95,6 @@ publish: true
   </div>
   <p class="wiki-diagram-caption">组件版用于正式页面展示；下方 Mermaid 保留为可快速编辑的结构草图。</p>
 </section>
-
-```mermaid
-flowchart TB
-  subgraph S["Source Layer 原始输入"]
-    S1["项目经验/复盘"]
-    S2["官方文档/标准"]
-    S3["论文/书籍/课程"]
-    S4["面试题/演讲稿"]
-    S5["代码/SQL/配置"]
-    S6["AI 对话记录"]
-  end
-
-  subgraph C["Compile Layer AI 编译层"]
-    C1["摘要与术语抽取"]
-    C2["DCMM/DAMA 分类"]
-    C3["双链推荐"]
-    C4["图表生成"]
-    C5["质量审查"]
-  end
-
-  subgraph W["Wiki Layer Obsidian/Quartz"]
-    W1["MOC 主题地图"]
-    W2["Concept 概念卡"]
-    W3["Pattern 架构模式"]
-    W4["Playbook 落地手册"]
-    W5["Case 项目案例"]
-    W6["Interview 面试资产"]
-  end
-
-  subgraph O["Output Layer 输出"]
-    O1["工作方案"]
-    O2["架构评审"]
-    O3["演讲教程"]
-    O4["面试回答"]
-    O5["个人网站"]
-    O6["Agent 工具上下文"]
-  end
-
-  S --> C --> W --> O
-  O --> S
-```
-
 ## 顶层知识域
 
 建议把知识库组织为 12 个顶层域。现有仓库已经有 [[Data Architecture]]、[[Data Model]]、[[Data Store]]、[[Apache Hadoop]]、[[Apache Flink]]、[[Data Visual]]、[[AI]] 等目录，可以在现有结构上渐进扩展。

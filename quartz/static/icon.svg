@@ -1,66 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Minimal Yunnan wa mao favicon">
-  <path
-    d="M73 331c-22-22-36-51-42-87 36 14 70 20 102 17-10-49-5-102 16-159l66 76c13-4 27-7 41-7s28 3 41 7l66-76c21 57 26 110 16 159 32 3 66-3 102-17-6 36-20 65-42 87 18 0 33-3 46-8-22 43-63 70-124 83-29 46-64 69-105 69s-76-23-105-69c-61-13-102-40-124-83 13 5 28 8 46 8Z"
-    fill="#111"
-  />
-  <path
-    d="M171 92 98 207c-11 18 13 37 29 22l77-70-33-67Zm170 0 73 115c11 18-13 37-29 22l-77-70 33-67Z"
-    fill="#111"
-    stroke="#f7f7f7"
-    stroke-linejoin="round"
-    stroke-width="20"
-  />
-  <path
-    d="M174 121 131 210l67-59-24-30Zm164 0 43 89-67-59 24-30Z"
-    fill="#6f6f6f"
-  />
-  <path
-    d="M128 241c17-39 56-64 98-61h60c42-3 81 22 98 61"
-    fill="none"
-    stroke="#f7f7f7"
-    stroke-linecap="round"
-    stroke-width="18"
-  />
-  <circle cx="171" cy="246" r="48" fill="#f7f7f7" />
-  <circle cx="341" cy="246" r="48" fill="#f7f7f7" />
-  <circle cx="171" cy="246" r="20" fill="#111" />
-  <circle cx="341" cy="246" r="20" fill="#111" />
-  <circle cx="162" cy="236" r="8" fill="#8c8c8c" />
-  <circle cx="332" cy="236" r="8" fill="#8c8c8c" />
-  <path
-    d="M256 216c25 0 45 20 45 45 0 15-20 29-45 29s-45-14-45-29c0-25 20-45 45-45Z"
-    fill="#545454"
-    stroke="#f7f7f7"
-    stroke-width="12"
-  />
-  <path
-    d="M123 322c30 18 61 25 94 20m172-20c-30 18-61 25-94 20"
-    fill="none"
-    stroke="#b8b8b8"
-    stroke-linecap="round"
-    stroke-width="20"
-  />
-  <path
-    d="M144 326c25 50 63 75 112 75s87-25 112-75"
-    fill="none"
-    stroke="#f7f7f7"
-    stroke-linecap="round"
-    stroke-width="38"
-  />
-  <path
-    d="M144 326c25 50 63 75 112 75s87-25 112-75"
-    fill="none"
-    stroke="#111"
-    stroke-linecap="round"
-    stroke-width="18"
-  />
-  <path d="M192 336 211 389 230 336Z" fill="#f7f7f7" />
-  <path d="M282 336 301 389 320 336Z" fill="#f7f7f7" />
-  <path
-    d="M219 424c16 19 28 29 37 29s21-10 37-29"
-    fill="none"
-    stroke="#6f6f6f"
-    stroke-linecap="round"
-    stroke-width="22"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+    <rect width="500" height="500" fill="#000000"/>
+    <g fill="#FFFFFF">
+        <!-- Left-to-Right Descending Bar -->
+        <path d="M 95 175 L 148 175 L 305 330 L 270 330 Z"/>
+        <!-- Bottom-Left Ascending Bar -->
+        <path d="M 123 330 L 158 330 L 230 258 L 195 258 Z"/>
+        <!-- Top F-Arm -->
+        <path d="M 221 247 L 293 175 L 413 175 L 413 198 L 302 198 L 244 256 Z"/>
+        <!-- Middle F-Arm -->
+        <path d="M 255 287 L 309 233 L 375 233 L 375 255 L 321 255 L 289 287 Z"/>
+    </g>
 </svg>
