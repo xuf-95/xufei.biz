@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!--
+    XF favicon — square crop, logo scaled to 90% and centred vertically.
+    Traced from original icon.png — no hand-drawn geometry.
+  -->
+  <style>
+    .bg { fill: #121212 }
+    .xf { fill: #ffffff }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff }
+      .xf { fill: #0d0d0d }
+    }
+  </style>
+
+  <!-- rounded-square background (matches iOS/macOS icon mask) -->
+  <rect class="bg" width="500" height="500" rx="60"/>
+
+  <!-- logo: centred vertically, full width (matching original proportions) -->
+  <g class="xf" transform="translate(0,128)">
+    <polygon points="0,1 38,38 69,39 162,129 44,244 98,243 189,156 277,243 330,244 279,191 348,125 405,124 440,88 330,90 251,164 88,4"/>
+    <polygon points="500,0 318,1 307,4 294,12 200,104 226,130 323,39 461,38"/>
+  </g>
+</svg>

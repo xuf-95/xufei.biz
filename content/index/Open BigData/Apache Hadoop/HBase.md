@@ -334,7 +334,7 @@ DML // put 、delete 、get 、scan
 4、使用JavaAPI创建预分区
 ```
 
-![[apache-hbase-logo.png]]
+![[content/index/Open BigData/Apache Hadoop/images/apache-hbase-logo.png]]
 
 ## Summary
 

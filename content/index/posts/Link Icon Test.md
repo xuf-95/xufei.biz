@@ -104,4 +104,4 @@ Expected behavior:
 ## Internal Control
 
 - [[content/index/Posts/index|Internal link should not show any external suffix]]
-- [[bigdata/index|Another internal link without external icon]]
+- [[content/index/Open BigData/index|Another internal link without external icon]]

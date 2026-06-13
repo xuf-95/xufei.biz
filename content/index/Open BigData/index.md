@@ -1,5 +1,5 @@
 ---
-title: Open Big Data
+title: Open BigData
 tags:
   - bigdata
 date: 2022-01-25

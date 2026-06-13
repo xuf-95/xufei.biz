@@ -68,38 +68,38 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 ## 数据架构演变
 
 - **事务处理 OLTP**
-	![flink-oltp](flink-oltp.png)
+	![flink-oltp](public/index/OpenBigData/images/flink-oltp.png)
 
 - 分析处理 OLAP ： 将数据从业务数据库复制到数仓，再进行分析和查
 
-	![olap](olap.png)
+	![olap](public/index/OpenBigData/images/olap.png)
 
 - [[Lambda Architecture]] :  用两套系统，同时保证低延迟和结果准确
 
 - 有状态的流式处理流程
-	![checkpoint](flink-checkpoint.png)
+	![checkpoint](public/index/OpenBigData/images/flink-checkpoint.png)
 - 本质 : 事件驱动（Event-driven）
 
-	![driven](flink-event-driven.png)
+	![driven](public/index/OpenBigData/images/flink-event-driven.png)
 
 - 基于流的世界观 : 一切都是由流组成的，离线数据是有界的流；实时数据是一个没有界限的流：这就是所谓的有界流和无界流
 
-	![](flink-bound-stream.png)
+	![](public/index/OpenBigData/images/flink-bound-stream.png)
 
 - Flink 分层API
 
-	![](flink-layer-api.png)
+	![](public/index/OpenBigData/images/flink-layer-api.png)
 
 - 有状态 与 无状态
 
-	![](flink-status-unstatus.png)
+	![](public/index/OpenBigData/images/flink-status-unstatus.png)
 
 ## Flink 组件栈
 
 ### Deploy
 
 - Local: Single JVM
-- Cluster: [[YARN]], Standalone
+- Cluster: [[Yarn]], Standalone
 - Cloud: CE2, GE
 
 ### Core
@@ -120,7 +120,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 
 ### Flink 运行时的组件
 
-![](flink-architecture.png)
+![](public/index/OpenBigData/images/flink-architecture.png)
 
 1. 作业管理器 JobManager
 2. 资源管理器 ResourceManager
@@ -141,25 +141,25 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 
 ### 典型的Master-Slave 架构
 #### 任务提交流程
-![任务提交流程](flink-job.png)
+![任务提交流程](public/index/OpenBigData/images/flink-job.png)
 
 #### 任务管理器和插槽
 
-![](flink-card-poll.png)
+![](public/index/OpenBigData/images/flink-card-poll.png)
 
 #### 并行子任务分配
 
-![](flink-taskmanager-jobgraph.png)
+![](public/index/OpenBigData/images/flink-taskmanager-jobgraph.png)
 
 #### 数据流
 
-![](flink-dataflow.png)
+![](public/index/OpenBigData/images/flink-dataflow.png)
 
-![](flink-physics-dataflow.png)
+![](public/index/OpenBigData/images/flink-physics-dataflow.png)
 
 #### 任务链
 
-![](flink-dataflow-2.png)
+![](public/index/OpenBigData/images/flink-dataflow-2.png)
 
 ### 任务执行配置
 
@@ -179,7 +179,7 @@ env.setRuntimeMode(RuntimeMode.BATCH);
 
 - 流处理 API
 
-	![](flink-datastream-api.png)
+	![](public/index/OpenBigData/images/flink-datastream-api.png)
 
 Flink中的算子是将'一个或多个DataStream'转换为'新的DataStream'，可以将多个转换组合成复杂的数据流拓扑。
 
@@ -268,7 +268,7 @@ class flatMap_rich extends RichFlatMapFunction<In,Out>{
 
 - DataStream
 	
-	![](flink-datastream-suanzi.png)
+	![](public/index/OpenBigData/images/flink-datastream-suanzi.png)
 
 
 ## Window API
@@ -280,20 +280,20 @@ class flatMap_rich extends RichFlatMapFunction<In,Out>{
     1. 将数据依据固定的窗口长度对数据进行切分
     2. 时间对齐，窗口长度固定，没有重叠
     
-	    ![](flink-windows-tumbling.png)
+	    ![](public/index/OpenBigData/images/flink-windows-tumbling.png)
     
 2. 滑动窗口 Sliding Windows
     1. 滑动窗口是固定窗口的更广义的一种形式，滑动窗口由固定的窗口长度和滑动间隔组成
     2. 窗口长度固定，可以有重叠
     
-		![](flink-windows-sliding.png)
+		![](public/index/OpenBigData/images/flink-windows-sliding.png)
     
 4. 会话窗口 Session Windows
     1. 由一系列事件组合一个指定时间长度的timeout 间隙组成，也就是一段时间没有接收到新数据就会生成新的窗口
     2. 时间无对齐
     3. 只有Flink 支持会话窗口
     
-		![](flink-windows-session.png)
+		![](public/index/OpenBigData/images/flink-windows-session.png)
 
 ## Wartermark
 

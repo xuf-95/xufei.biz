@@ -1,23 +1,22 @@
 ---
-title: "StarRocks"
+title: What's StarRocks
 aliases:
   - SR
 tags:
   - bigdata
   - olap
   - store
+  - mpp
 date: 2024-09-12
 draft: false
-publish:
-
-
+publish: true
 ---
 
-## What's StarRocks
+## StarRocks Overview
 
 > StarRocks is a **next-gen**, high-performance analytical data warehouse that enables real-time, multi-dimensional, and highly concurrent data analysis. StarRocks has an MPP architecture and is equipped with a fully vectorized execution engine, a columnar storage engine that supports real-time updates, and is powered by a rich set of features including a fully-customized cost-based optimizer (CBO), intelligent materialized view and more. StarRocks supports real-time and batch data ingestion from a variety of data sources. It also allows you to directly analyze data stored in data lakes with zero data migration.
 
-  StarRocks 是 **新一代极速全场景 [[MMP（Massively Parallel Processing）]] 数据库**，兼容 MySQL 协议。采用了全面向量化引擎架构，并配备全新设计的 CBO (Cost Based Optimizer) 优化器、支持智能化物化视图
+  StarRocks 是 **新一代极速全场景 [[MMP（Massively Parallel Processing）]] 数据库**，兼容 [[MySQL]] 协议。采用了全面向量化引擎架构，并配备全新设计的 CBO (Cost Based Optimizer) 优化器、支持智能化物化视图
 
   
 ## StarRocks Architecture

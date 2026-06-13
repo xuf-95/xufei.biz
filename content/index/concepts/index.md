@@ -14,7 +14,7 @@ draft: true
 - [[ETL & ELK.md|ETL & ELK]]
 - [[HSAP.md|HSAP]]
 - [[Latency.md|Latency]]
-- [[MMP|MMP]]
+- [[MMP (Massively Parallel Processing)|MMP]]
 - [[PoC|PoC]]
 - [[数据发布&订阅.md|数据发布&订阅]]
 

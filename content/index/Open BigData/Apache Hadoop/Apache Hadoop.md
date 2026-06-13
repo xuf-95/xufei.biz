@@ -48,7 +48,7 @@ Hadoop is composed of four primary modules that work together as a unified platf
 | ----------------- | --------------------------------------------------------------------------- |
 | **[[HDFS]]**      | Distributed file system — splits files into blocks, replicates across nodes |
 | **[[MapReduce]]** | Programming model — parallel batch processing of large datasets             |
-| **[[YARN]]**      | Resource manager — allocates CPU/memory, schedules jobs on the cluster      |
+| **[[Yarn]]**      | Resource manager — allocates CPU/memory, schedules jobs on the cluster      |
 | **Hadoop Common** | Shared utilities, RPC, serialisation (Writable), configuration APIs         |
 
 ---

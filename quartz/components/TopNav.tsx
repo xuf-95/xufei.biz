@@ -37,7 +37,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "Map",        desc: "Map of Content",   path: "/index/00-Map/",  abbr: "MP" },
       { label: "AI",           desc: "AI tools & agents",   path: "/index/ai/",            abbr: "AI" },
-      { label: "OpenBigData",      desc: "Data engineering",    path: "/index/openbigdata/",       abbr: "BD" },
+      { label: "OpenBigData",      desc: "Data engineering",    path: "/index/OpenBigData/",       abbr: "BD" },
       { label: "Posts",        desc: "Notes & writings",    path: "/index/posts/",         abbr: "P"  },
     ],
   },

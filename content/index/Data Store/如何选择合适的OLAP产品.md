@@ -9,7 +9,7 @@ publish: true
 
 
 ---
-### [[ClickHouse]] VS [[StarRocks]]
+### [[ClickHouse]] VS [[What's StarRocks]]
 
 
 | 特性      | ClickHouse                     | StarRocks                          |

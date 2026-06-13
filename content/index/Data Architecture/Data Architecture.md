@@ -59,7 +59,7 @@ publish: true
 - **Batch-only frameworks:** 基于分布式文件系统
     - [[Apache Hadoop]]
 - **Stream-only frameworks:**
-    - [[Apache Storm]]
+    - [[What is Apache Storm?]]
     - [Apache Samza](https://samza.apache.org) 
 - **Hybrid frameworks:**
     - [[Spark]]

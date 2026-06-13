@@ -46,7 +46,7 @@ flowchart LR
 - Ingestion: [[Kafka]], [[Kafka Connect]], [[CDC]], [[Apache Flume]], [[Apache Nifi]]
 - Batch: [[Spark]], [[MapReduce]], [[Apache Hive]]
 - Streaming: [[Apache Flink]], [[Streaming Processing]], [[Flink CDC]]
-- Storage: [[HDFS]], [[Data Lake]], [[Lakehouse]], [[ClickHouse]], [[StarRocks]], [[Apache Doris]]
+- Storage: [[HDFS]], [[Data Lake]], [[Lakehouse]], [[ClickHouse]], [[What's StarRocks]], [[Apache Doris]]
 - Scheduling: [[Apache Airflow]], [[Apache DolphinScheduler]]
 - Modeling: [[Dimensional Modeling]], [[Indicator System]], [[Semantic Layer]]
 - AI Enablement: [[Data Agent Architecture]], [[Text2SQL]], [[RAG]], [[Agent]]

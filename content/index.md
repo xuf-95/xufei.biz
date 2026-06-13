@@ -40,7 +40,7 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 - [[Lambda Architecture|What is Lambda Architecture]]
 - [[Kappa Architecture|What is Kappa Architecture?]]
 - [[Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
-- [[MPP|Massively Parallel Processing（MPP）]]
+- [[MMP (Massively Parallel Processing)]]
 
 </ul>
 </div>
@@ -64,8 +64,9 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 - [[如何选择合适的OLAP产品]]
 - [[常见的的数据压缩算法]]
+- [[What's StarRocks]]
 - [[MySQL]]
-- [[Database Design]]
+
 
 </ul>
 </div>
