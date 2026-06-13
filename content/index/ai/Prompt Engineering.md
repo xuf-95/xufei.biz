@@ -1,5 +1,5 @@
 ---
-title: "Prompt Engineering"
+title: Prompt Engineering
 aliases:
   - 提示词工程
   - prompt-engineering
@@ -10,8 +10,8 @@ tags:
   - llm
   - prompting
 date: 2025-04-10
-
-
+status:
+publish: true
 ---
 
 # 提示词工程详解
