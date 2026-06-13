@@ -21,6 +21,8 @@ Apache Storm has many use cases: realtime analytics, online machine learning, co
 
 Apache Storm integrates with the queueing and database technologies you already use. An Apache Storm topology consumes streams of data and processes those streams in arbitrarily complex ways, repartitioning the streams between each stage of the computation however needed. Read more in the tutorial.
 
+![[storm-architecture.excalidraw]]
+
 #### Stream groupings
 
 A stream grouping tells a topology how to send tuples between two components. Remember, spouts and bolts execute in parallel as many tasks across the cluster. If you look at how a topology is executing at the task level, it looks something like this

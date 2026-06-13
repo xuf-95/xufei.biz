@@ -38,8 +38,6 @@ export const sharedPageComponents: SharedLayout = {
 
   footer: Component.Footer({
     links: {
-      Home: "https://xufei.biz",
-      Tags: "https://xuf-95.github.io/xufei.biz/tags/",
       GitHub: "https://github.com/xuf-95",
       "xufei.site": "https://xufei.site",
       "Bento.me": "https://bento.me/xfei",
