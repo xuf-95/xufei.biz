@@ -24,10 +24,15 @@ const criticalPages = [
   },
   {
     name: "Bigdata Wiki OS",
-    file: "index/Data-Architecture/Bigdata-Wiki-OS.html",
-    required: ["MOC-大数据全栈工程师能力地图", "MOC-DATA+AI Agent 地图"],
+    file: "index/00-Map/Bigdata-Wiki-OS.html",
+    required: ["MOC-大数据全栈工程师能力地图", "MOC-DATA+AI Agent 地图", "Phase Roadmap"],
     requiredHtml: ["<section class=\"wiki-diagram wiki-diagram-architecture\""],
     minDiagramComponents: 1,
+  },
+  {
+    name: "00-Map",
+    file: "index/00-Map/index.html",
+    required: ["Bigdata Wiki OS", "Core Maps", "Text2SQL", "MOC-职业资产地图"],
   },
   {
     name: "Data Agent Architecture",
@@ -35,6 +40,26 @@ const criticalPages = [
     required: ["Data Agent Architecture", "Semantic Layer", "Metadata Management"],
     requiredHtml: ["<section class=\"wiki-diagram wiki-diagram-flow\""],
     minDiagramComponents: 1,
+  },
+  {
+    name: "Text2SQL",
+    file: "index/AI/Text2SQL.html",
+    required: ["Text2SQL", "Semantic Layer", "Agent Governance"],
+  },
+  {
+    name: "Data Architecture Blueprint",
+    file: "index/Data-Architecture/Data-Architecture-Blueprint.html",
+    required: ["Data Architecture Blueprint", "Data Architecture", "CDO"],
+  },
+  {
+    name: "Career Assets Map",
+    file: "index/Career-Assets/MOC-职业资产地图.html",
+    required: ["Bigdata Interview Question Bank", "Bigdata Project Case Library", "Bigdata Presentation Playbook"],
+  },
+  {
+    name: "Interview Bank",
+    file: "index/Career-Assets/Bigdata-Interview-Question-Bank.html",
+    required: ["Data Architecture", "Text2SQL", "Agent Governance"],
   },
 ]
 

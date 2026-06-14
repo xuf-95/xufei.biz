@@ -23,6 +23,8 @@ publish: true
 - [[RAG]]
 - [[LLMOPS]]
 - [[MCP]]
+- [[Text2SQL]]
+- [[Agent Governance]]
 - [[Semantic Layer]]
 - [[Indicator System]]
 - [[Metadata Management]]
@@ -51,6 +53,15 @@ flowchart TB
 - DataOps Agent：定位任务失败、SLA 风险和依赖链路。
 - BI Insight Agent：解释指标波动并生成分析报告。
 
+## Phase 2 Capability Cards
+
+| 类型 | 笔记 | 用途 |
+| --- | --- | --- |
+| AI 能力卡 | [[Text2SQL]] | 定义自然语言到 SQL 的语义、权限和校验边界 |
+| 治理边界卡 | [[Agent Governance]] | 定义 Agent 的上下文、工具、权限、审计和人工确认 |
+| 语义支撑卡 | [[Metrics Governance]] | 让 Agent 复用一致指标口径 |
+| 工程支撑卡 | [[Data Observability]] | 支撑 DataOps Agent 做异常诊断和证据引用 |
+
 ## Practices
 
 - 先治理语义和元数据，再让 Agent 写 SQL。
@@ -71,6 +82,9 @@ flowchart TB
 - Text2SQL 上线检查清单
 - Agent Prompt 和工具边界说明
 - DATA+AI 演讲和面试题库
+- Agent 治理和风险控制清单
+- [[Bigdata Interview Question Bank]]
+- [[Bigdata Presentation Playbook]]
 
 ## Links
 
@@ -78,3 +92,4 @@ flowchart TB
 - depends-on:: [[Semantic Layer]]
 - depends-on:: [[Metadata Management]]
 - governed-by:: [[Data Quality]]
+- supports:: [[MOC-职业资产地图]]

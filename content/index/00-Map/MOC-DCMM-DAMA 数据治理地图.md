@@ -23,8 +23,11 @@ publish: true
 - [[DAMA-DMBOK]]
 - [[CDO]]
 - [[Metadata Management]]
+- [[Data Lineage]]
 - [[Data Standard]]
 - [[Data Quality]]
+- [[Data Security]]
+- [[Data Governance Operating Model]]
 - [[Indicator System]]
 - [[Semantic Layer]]
 
@@ -62,6 +65,16 @@ flowchart LR
 - Data Warehousing and BI
 - Data Security
 
+## Phase 2 Capability Cards
+
+| 类型 | 笔记 | DCMM / DAMA 视角 |
+| --- | --- | --- |
+| 治理机制卡 | [[Data Governance Operating Model]] | 数据治理组织、制度、流程、平台和度量 |
+| 元数据能力卡 | [[Data Lineage]] | 元数据管理、影响分析、质量追踪和审计 |
+| 安全控制卡 | [[Data Security]] | 数据分类分级、权限、脱敏和审计 |
+| 指标治理卡 | [[Metrics Governance]] | 数据标准、指标口径、变更和质量规则 |
+| 工程可靠性卡 | [[Data Observability]] | 数据质量监控、异常发现和问题闭环 |
+
 ## Practices
 
 - 将每个治理主题沉淀为“制度 + 流程 + 平台能力 + 项目证据”。
@@ -82,9 +95,12 @@ flowchart LR
 - DCMM 差距分析表
 - DAMA 知识域学习路线
 - 数据标准和质量规则模板
+- 治理运行机制和责任矩阵
+- [[Data Architecture Review Playbook]]
 
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
 - related:: [[MOC-数据架构师能力地图]]
 - supports:: [[CDO]]
+- supports:: [[MOC-职业资产地图]]

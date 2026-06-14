@@ -20,6 +20,8 @@ publish: true
 - [[Bigdata Wiki OS]]
 - [[Data Architecture]]
 - [[Data Integration]]
+- [[Data Pipeline SLA]]
+- [[Data Observability]]
 - [[Data Store]]
 - [[Data Model]]
 - [[Data Visual]]
@@ -48,8 +50,18 @@ flowchart LR
 - Streaming: [[Apache Flink]], [[Streaming Processing]], [[Flink CDC]]
 - Storage: [[HDFS]], [[Data Lake]], [[Lakehouse]], [[ClickHouse]], [[What's StarRocks]], [[Apache Doris]]
 - Scheduling: [[Apache Airflow]], [[Apache DolphinScheduler]]
+- Reliability: [[Data Pipeline SLA]], [[Data Observability]], [[Data Lineage]], [[Data Quality]]
 - Modeling: [[Dimensional Modeling]], [[Indicator System]], [[Semantic Layer]]
 - AI Enablement: [[Data Agent Architecture]], [[Text2SQL]], [[RAG]], [[Agent]]
+
+## Phase 2 Capability Cards
+
+| 类型 | 笔记 | 用途 |
+| --- | --- | --- |
+| 工程实践卡 | [[Data Pipeline SLA]] | 定义链路时效、质量、恢复和通知承诺 |
+| 工程能力卡 | [[Data Observability]] | 监控新鲜度、质量、Schema、血缘和调度风险 |
+| 治理支撑卡 | [[Data Lineage]] | 支撑影响分析、质量追踪和问题定位 |
+| AI 能力卡 | [[Text2SQL]] | 把工程链路和语义层暴露给受控查询助手 |
 
 ## Practices
 
@@ -70,10 +82,14 @@ flowchart LR
 - 大数据工程能力雷达
 - 实时数仓架构图
 - Pipeline SLA 和质量规则清单
+- 数据可观测性和故障复盘清单
 - 面试项目案例集
+- [[Bigdata Interview Question Bank]]
+- [[Bigdata Project Case Library]]
 
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
 - related:: [[MOC-数据架构师能力地图]]
 - related:: [[MOC-DATA+AI Agent 地图]]
+- supports:: [[MOC-职业资产地图]]

@@ -105,6 +105,22 @@ publish: true
 - [[MOC-数据架构师能力地图]] - 架构、建模、治理、数据产品和 CDO/CDAO 视角导航
 - [[MOC-DCMM-DAMA 数据治理地图]] - DCMM、DAMA、元数据、标准、质量和成熟度证据导航
 - [[MOC-DATA+AI Agent 地图]] - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航
+- [[MOC-职业资产地图]] - 面试、案例、架构评审、演讲教程和作品集导航
+
+## Phase Roadmap
+
+| Phase | 目标 | 当前状态 | 关键产物 |
+| --- | --- | --- | --- |
+| Phase 1 | 建立可导航的知识骨架 | 已完成 | [[00-Map]]、4 个 MOC、8 个核心骨架笔记、统一模板 |
+| Phase 2 | 扩展核心能力图谱 | 进行中 | 数据架构、治理、建模、工程、DATA+AI 的概念卡、模式卡和面试题 |
+| Phase 3 | 沉淀项目交付资产 | 已预置骨架 | 架构方案、ADR、项目案例、故障复盘、演讲教程 |
+| Phase 4 | Agent 化维护和生成 | 待开始 | Link Review Agent、Knowledge Compile Agent、Text2SQL / DataOps / Quality Agent |
+
+Phase 1 的完成标准不是“文章很多”，而是让每个核心主题都能通过 MOC 找到入口，并且每篇核心笔记都能回答 Definition、Business Value、Architecture、Commercial Practice、Interview Answer 和 Links。
+
+Phase 2 的第一批能力卡已经覆盖 [[Data Architecture Blueprint]]、[[Data Governance Operating Model]]、[[Data Domain]]、[[Data Product]]、[[Data Contract]]、[[Metrics Governance]]、[[Data Pipeline SLA]]、[[Data Observability]]、[[Text2SQL]] 和 [[Agent Governance]]，后续应继续扩展为项目案例、面试题和演讲素材。
+
+Phase 2 的第二批资产层已经预置 [[MOC-职业资产地图]]、[[Bigdata Interview Question Bank]]、[[Bigdata Project Case Library]]、[[Data Architecture Review Playbook]] 和 [[Bigdata Presentation Playbook]]，用于把能力卡转化为工作交付、面试表达和演讲教程。
 
 | 知识域 | 核心问题 | 代表笔记 | 主要输出 |
 | --- | --- | --- | --- |
