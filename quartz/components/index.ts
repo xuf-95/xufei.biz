@@ -3,6 +3,7 @@ import TagContent from "./pages/TagContent"
 import FolderContent from "./pages/FolderContent"
 import NotFound from "./pages/404"
 import ArticleDescription from "./ArticleDescription"
+import ArticleSummary from "./ArticleSummary"
 import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
 import ReaderMode from "./ReaderMode"
@@ -32,6 +33,7 @@ export type { IconName } from "./Icon"
 
 export {
   ArticleDescription,
+  ArticleSummary,
   ArticleTitle,
   Content,
   TagContent,

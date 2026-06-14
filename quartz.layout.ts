@@ -53,6 +53,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
+    Component.ArticleSummary(),
     Component.Backlinks(),
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],

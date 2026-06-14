@@ -1,0 +1,92 @@
+@use "../../styles/variables.scss" as *;
+
+/* ─── container ────────────────────────────────── */
+.article-summary {
+  margin: 0.75rem 0 1.5rem;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--gray) 60%, transparent);
+  border-left: 3px solid var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 5%, var(--light));
+  overflow: hidden;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  /* chevron flips when open */
+  &[open] .article-summary-chevron {
+    transform: rotate(180deg);
+  }
+}
+
+/* ─── header row (<summary>) ───────────────────── */
+.article-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--secondary);
+  font-size: 0.78rem;
+  font-weight: 640;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  user-select: none;
+  transition: background 0.15s ease;
+
+  /* remove default disclosure triangle */
+  &::-webkit-details-marker { display: none; }
+  &::marker             { display: none; }
+
+  &:hover {
+    background: color-mix(in srgb, var(--secondary) 9%, var(--light));
+  }
+}
+
+.article-summary-icon {
+  flex-shrink: 0;
+  opacity: 0.8;
+  margin-top: 1px; /* optical alignment */
+}
+
+.article-summary-label {
+  /* inherit from header */
+}
+
+.article-summary-chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+/* ─── body ─────────────────────────────────────── */
+.article-summary-body {
+  padding: 0.6rem 1rem 0.75rem 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--gray) 40%, transparent);
+
+  p {
+    margin: 0;
+    color: var(--darkgray);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    hyphens: auto;
+  }
+}
+
+/* ─── dark mode ─────────────────────────────────── */
+:root[saved-theme="dark"] .article-summary {
+  background: color-mix(in srgb, var(--secondary) 8%, var(--light));
+  border-color: color-mix(in srgb, var(--gray) 40%, transparent);
+  border-left-color: var(--secondary);
+}
+
+/* ─── responsive ────────────────────────────────── */
+@media all and ($mobile) {
+  .article-summary {
+    margin: 0.5rem 0 1.2rem;
+    border-radius: 6px;
+  }
+
+  .article-summary-body p {
+    font-size: 0.88rem;
+  }
+}
