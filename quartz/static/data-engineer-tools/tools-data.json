@@ -1,0 +1,370 @@
+{
+  "source": {
+    "label": "awesome-open-source-data-engineering",
+    "url": "https://github.com/pracdata/awesome-open-source-data-engineering"
+  },
+  "categories": [
+    {
+      "id": "storage-lakehouse",
+      "title": "Storage & Lakehouse",
+      "tools": [
+        {
+          "name": "PostgreSQL",
+          "url": "https://www.postgresql.org/",
+          "note": "Relational database baseline for analytics and operational data."
+        },
+        {
+          "name": "ClickHouse",
+          "url": "https://clickhouse.com/",
+          "note": "Real-time columnar OLAP database for high-throughput analytics."
+        },
+        {
+          "name": "Apache Doris",
+          "url": "https://doris.apache.org/",
+          "note": "MPP analytical database for fast reporting and lakehouse queries."
+        },
+        {
+          "name": "StarRocks",
+          "url": "https://www.starrocks.io/",
+          "note": "Low-latency OLAP engine for multi-dimensional analytics."
+        },
+        {
+          "name": "DuckDB",
+          "url": "https://duckdb.org/",
+          "note": "In-process OLAP engine for local SQL and embedded analytics."
+        },
+        {
+          "name": "Apache Iceberg",
+          "url": "https://iceberg.apache.org/",
+          "note": "Open table format for large analytic tables."
+        },
+        {
+          "name": "Delta Lake",
+          "url": "https://delta.io/",
+          "note": "Lakehouse storage layer with ACID transactions."
+        },
+        {
+          "name": "Apache Hudi",
+          "url": "https://hudi.apache.org/",
+          "note": "Lakehouse table format optimized for incremental ingestion."
+        },
+        {
+          "name": "Apache Paimon",
+          "url": "https://paimon.apache.org/",
+          "note": "Streaming lakehouse storage for high-speed updates."
+        },
+        {
+          "name": "MinIO",
+          "url": "https://min.io/",
+          "note": "S3-compatible object storage for data lake deployments."
+        },
+        {
+          "name": "Apache Parquet",
+          "url": "https://parquet.apache.org/",
+          "note": "Columnar storage format for analytical workloads."
+        },
+        {
+          "name": "Apache Arrow",
+          "url": "https://arrow.apache.org/",
+          "note": "Columnar memory format for cross-language data systems."
+        }
+      ]
+    },
+    {
+      "id": "ingestion-cdc",
+      "title": "Ingestion & CDC",
+      "tools": [
+        {
+          "name": "Airbyte",
+          "url": "https://airbyte.com/",
+          "note": "Connector-heavy ELT platform for moving data into warehouses."
+        },
+        {
+          "name": "Apache NiFi",
+          "url": "https://nifi.apache.org/",
+          "note": "Flow-based integration platform for routed data movement."
+        },
+        {
+          "name": "Apache SeaTunnel",
+          "url": "https://seatunnel.apache.org/",
+          "note": "Distributed batch and streaming data integration engine."
+        },
+        {
+          "name": "Debezium",
+          "url": "https://debezium.io/",
+          "note": "Change data capture platform for database logs."
+        },
+        {
+          "name": "Kafka Connect",
+          "url": "https://kafka.apache.org/documentation/#connect",
+          "note": "Kafka-native connector runtime for sources and sinks."
+        },
+        {
+          "name": "Flink CDC",
+          "url": "https://flink.apache.org/what-is-flink/flink-cdc/",
+          "note": "CDC connectors designed for Apache Flink pipelines."
+        },
+        {
+          "name": "dlt",
+          "url": "https://dlthub.com/",
+          "note": "Python-first library for lightweight data loading."
+        },
+        {
+          "name": "Meltano",
+          "url": "https://meltano.com/",
+          "note": "Code-first ELT platform around Singer taps and targets."
+        }
+      ]
+    },
+    {
+      "id": "processing-query",
+      "title": "Processing & Query",
+      "tools": [
+        {
+          "name": "Apache Spark",
+          "url": "https://spark.apache.org/",
+          "note": "Distributed engine for large-scale batch and SQL workloads."
+        },
+        {
+          "name": "Apache Flink",
+          "url": "https://flink.apache.org/",
+          "note": "Stream processing engine for stateful real-time computation."
+        },
+        {
+          "name": "Trino",
+          "url": "https://trino.io/",
+          "note": "Distributed SQL query engine across lake and warehouse systems."
+        },
+        {
+          "name": "Presto",
+          "url": "https://prestodb.io/",
+          "note": "Distributed SQL engine for interactive analytics."
+        },
+        {
+          "name": "Apache DataFusion",
+          "url": "https://datafusion.apache.org/",
+          "note": "Extensible Rust query engine with SQL and DataFrame APIs."
+        },
+        {
+          "name": "Polars",
+          "url": "https://pola.rs/",
+          "note": "Fast dataframe engine built on Apache Arrow."
+        },
+        {
+          "name": "Dask",
+          "url": "https://www.dask.org/",
+          "note": "Parallel computing framework for scaling Python workloads."
+        },
+        {
+          "name": "Ray",
+          "url": "https://www.ray.io/",
+          "note": "Distributed runtime for Python, data, and AI workloads."
+        },
+        {
+          "name": "SQLGlot",
+          "url": "https://sqlglot.com/",
+          "note": "SQL parser and transpiler for multi-engine platforms."
+        }
+      ]
+    },
+    {
+      "id": "orchestration-dataops",
+      "title": "Orchestration & DataOps",
+      "tools": [
+        {
+          "name": "Apache Airflow",
+          "url": "https://airflow.apache.org/",
+          "note": "DAG scheduler for batch workflows and platform automation."
+        },
+        {
+          "name": "Dagster",
+          "url": "https://dagster.io/",
+          "note": "Asset-oriented orchestration for data platforms."
+        },
+        {
+          "name": "Prefect",
+          "url": "https://www.prefect.io/",
+          "note": "Python workflow orchestration with flexible deployment modes."
+        },
+        {
+          "name": "dbt",
+          "url": "https://www.getdbt.com/",
+          "note": "SQL transformation and analytics engineering workflow."
+        },
+        {
+          "name": "SQLMesh",
+          "url": "https://sqlmesh.com/",
+          "note": "Data transformation framework with virtual environments."
+        },
+        {
+          "name": "Great Expectations",
+          "url": "https://greatexpectations.io/",
+          "note": "Data validation and profiling for pipeline quality."
+        },
+        {
+          "name": "Soda",
+          "url": "https://www.soda.io/",
+          "note": "Data quality checks for warehouses and pipelines."
+        },
+        {
+          "name": "lakeFS",
+          "url": "https://lakefs.io/",
+          "note": "Git-like version control for object-store data lakes."
+        },
+        {
+          "name": "Project Nessie",
+          "url": "https://projectnessie.org/",
+          "note": "Transactional catalog with Git-like semantics for data lakes."
+        }
+      ]
+    },
+    {
+      "id": "metadata-governance",
+      "title": "Metadata & Governance",
+      "tools": [
+        {
+          "name": "DataHub",
+          "url": "https://datahubproject.io/",
+          "note": "Metadata platform for discovery, ownership, and lineage."
+        },
+        {
+          "name": "OpenMetadata",
+          "url": "https://open-metadata.org/",
+          "note": "Unified data discovery, governance, and observability platform."
+        },
+        {
+          "name": "Apache Atlas",
+          "url": "https://atlas.apache.org/",
+          "note": "Metadata and governance platform for Hadoop ecosystems."
+        },
+        {
+          "name": "OpenLineage",
+          "url": "https://openlineage.io/",
+          "note": "Open standard for lineage event collection."
+        },
+        {
+          "name": "Hive Metastore",
+          "url": "https://hive.apache.org/",
+          "note": "Schema and table metadata service for Hive-compatible stacks."
+        },
+        {
+          "name": "Apache Polaris",
+          "url": "https://polaris.apache.org/",
+          "note": "Open catalog for Apache Iceberg."
+        },
+        {
+          "name": "Unity Catalog",
+          "url": "https://www.unitycatalog.io/",
+          "note": "Open catalog for data and AI assets."
+        },
+        {
+          "name": "Apache Ranger",
+          "url": "https://ranger.apache.org/",
+          "note": "Security administration and policy management for data platforms."
+        }
+      ]
+    },
+    {
+      "id": "observability-bi",
+      "title": "Observability & BI",
+      "tools": [
+        {
+          "name": "Prometheus",
+          "url": "https://prometheus.io/",
+          "note": "Metrics collection and alerting for infrastructure and services."
+        },
+        {
+          "name": "Grafana",
+          "url": "https://grafana.com/",
+          "note": "Composable dashboards for metrics, logs, and traces."
+        },
+        {
+          "name": "OpenTelemetry",
+          "url": "https://opentelemetry.io/",
+          "note": "Vendor-neutral telemetry APIs, SDKs, and collectors."
+        },
+        {
+          "name": "Vector",
+          "url": "https://vector.dev/",
+          "note": "High-performance observability data pipeline."
+        },
+        {
+          "name": "Apache Superset",
+          "url": "https://superset.apache.org/",
+          "note": "Open source data exploration and visualization platform."
+        },
+        {
+          "name": "Metabase",
+          "url": "https://www.metabase.com/",
+          "note": "Simple BI and dashboarding for teams."
+        },
+        {
+          "name": "Evidence",
+          "url": "https://evidence.dev/",
+          "note": "Business intelligence as SQL and markdown."
+        },
+        {
+          "name": "Streamlit",
+          "url": "https://streamlit.io/",
+          "note": "Python framework for internal data apps."
+        }
+      ]
+    },
+    {
+      "id": "ai-vector",
+      "title": "AI & Vector",
+      "tools": [
+        {
+          "name": "Milvus",
+          "url": "https://milvus.io/",
+          "note": "Vector database for large-scale AI retrieval."
+        },
+        {
+          "name": "Qdrant",
+          "url": "https://qdrant.tech/",
+          "note": "Vector search engine with filtering and payload support."
+        },
+        {
+          "name": "Chroma",
+          "url": "https://www.trychroma.com/",
+          "note": "Embedding database for LLM applications."
+        },
+        {
+          "name": "LanceDB",
+          "url": "https://lancedb.com/",
+          "note": "Vector database built on the Lance columnar format."
+        },
+        {
+          "name": "pgvector",
+          "url": "https://github.com/pgvector/pgvector",
+          "note": "Vector similarity search extension for PostgreSQL."
+        },
+        {
+          "name": "MLflow",
+          "url": "https://mlflow.org/",
+          "note": "Experiment tracking and model lifecycle platform."
+        },
+        {
+          "name": "Kubeflow",
+          "url": "https://www.kubeflow.org/",
+          "note": "Cloud-native ML platform on Kubernetes."
+        },
+        {
+          "name": "vLLM",
+          "url": "https://www.vllm.ai/",
+          "note": "High-throughput LLM inference and serving engine."
+        },
+        {
+          "name": "Dify",
+          "url": "https://dify.ai/",
+          "note": "LLM app platform for workflows and RAG pipelines."
+        },
+        {
+          "name": "Haystack",
+          "url": "https://haystack.deepset.ai/",
+          "note": "AI orchestration framework for production RAG systems."
+        }
+      ]
+    }
+  ]
+}

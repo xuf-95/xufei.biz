@@ -44,6 +44,7 @@ const navItems: NavItem[] = [
   { label: "Tags",  path: "/tags/"         },
   // { label: "Map",   path: "/map/"          },
   { label: "Goods", path: "/hobby/goods/"  },
+  { label: "Data Engineer Tools", path: "/tools/data-engineer-tools/" },
 ]
 
 const ChevronDown = () => (
@@ -203,6 +204,7 @@ header {
   align-items: center;
   gap: 2px;
   height: 100%;
+  min-width: 0;
 }
 
 /* ── Shared item style ── */
@@ -351,6 +353,11 @@ html[saved-theme="dark"] .nav-mega {
 /* ── Mobile ── */
 @media (max-width: 600px) {
   .nav-brand-name { display: none; }
+  .nav-links {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
   .nav-item { padding: 5px 9px; font-size: 0.76rem; }
   .nav-mega { width: 320px; }
   .mega-grid { grid-template-columns: 1fr; }

@@ -245,6 +245,40 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       document.addEventListener("nav", bootGoodsGallery);
     })();
   `)
+
+  componentResources.afterDOMLoaded.push(`
+    (function () {
+      var TOOLS_CSS = "/static/data-engineer-tools/tools.css";
+      var TOOLS_JS = "/static/data-engineer-tools/tools.js";
+      function ensureToolsCss() {
+        if (document.getElementById("data-engineer-tools-styles")) return;
+        var link = document.createElement("link");
+        link.id = "data-engineer-tools-styles";
+        link.rel = "stylesheet";
+        link.href = TOOLS_CSS;
+        document.head.appendChild(link);
+      }
+      function bootDataEngineerTools() {
+        if (!document.getElementById("data-engineer-tools-root")) return;
+        ensureToolsCss();
+        var existing = document.querySelector('script[data-data-engineer-tools-boot="1"]');
+        if (existing) {
+          if (typeof window.__dataEngineerToolsMount === "function") window.__dataEngineerToolsMount();
+          return;
+        }
+        var s = document.createElement("script");
+        s.src = TOOLS_JS;
+        s.async = true;
+        s.dataset.dataEngineerToolsBoot = "1";
+        s.onload = function () {
+          if (typeof window.__dataEngineerToolsMount === "function") window.__dataEngineerToolsMount();
+        };
+        document.body.appendChild(s);
+      }
+      bootDataEngineerTools();
+      document.addEventListener("nav", bootDataEngineerTools);
+    })();
+  `)
 }
 
 // This emitter should not update the `resources` parameter. If it does, partial
