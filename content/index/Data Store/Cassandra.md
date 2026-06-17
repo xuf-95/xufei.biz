@@ -5,14 +5,12 @@ aliases:
 tags:
   - store
   - nosql
-  - distributed-database
+  - database
   - bigdata
 description:
 date: 2023-04-21
 publish: true
 draft: true
-
-
 ---
 
 # Apache Cassandra 详解

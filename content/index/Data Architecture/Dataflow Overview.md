@@ -1,17 +1,14 @@
 ---
-title: "Dataflow Overview"
+title: Dataflow Overview
 aliases:
   - dataflow
 tags:
   - flink
-  - stream-processing
   - distributed-systems
   - data-parallelism
 date: 2024-09-18
 draft: true
 publish: true
-
-
 ---
 
 ## Dataflow

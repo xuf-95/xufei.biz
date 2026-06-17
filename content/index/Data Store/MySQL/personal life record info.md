@@ -1,13 +1,10 @@
 ---
-title: "personal life record info"
+title: personal life record info
 tags:
   - pkm
-  - note
 date: 2025-06-14
 draft: true
 publish: false
-
-
 ---
 
 ![[content/posts/images/pr-er.png]]

@@ -2,10 +2,10 @@
 title: "Apache Nifi"
 tags:
   - data-integration
-  - dataflow
+  - pipeline
   - middleware
   - etl
-  - data-pipeline
+  - pipeline
 draft: true
 date: 2022-07-24
 updated: 2026-05-20

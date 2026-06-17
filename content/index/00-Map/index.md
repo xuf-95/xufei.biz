@@ -77,6 +77,8 @@ publish: true
 
 ## Maintenance
 
+- [[Obsidian Naming Governance]] - tags、filename、title、aliases 和双链的命名治理规则。
+- [[Obsidian Tag Monitor]] - 使用 Dataview 监控 tag 分布、孤立 tag、命名异常和清理候选。
 - 每次新增核心笔记，至少挂到一个 MOC。
 - 每次新增项目案例，补充 `part-of::`、`used-in::` 或 `asked-in::` 关系。
 - 每次新增 DATA+AI 相关内容，同步检查 [[MOC-DATA+AI Agent 地图]] 和 [[AI]] 首页入口。

@@ -1,14 +1,12 @@
 ---
-title: "Streaming Processing"
+title: Streaming Processing
 tags:
   - flink
-  - stream
+  - real-time
 date: 2022-01-25
 draft: false
 publish: true
 language: EN
-
-
 ---
 
 including the `StreamTask` execution model, task lifecycle management, checkpointing integration, and input/output processing mechanisms. This is the foundational layer that executes streaming operators and manages their state and fault tolerance.

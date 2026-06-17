@@ -1,15 +1,13 @@
 ---
-title: "Awesome Digital Garden"
+title: Awesome Digital Garden
 aliases:
   - wiki
-  - garden
+  - quartz
 date: 2024-01-09
 tags:
   - garden
   - blogroll
 publish: true
-
-
 ---
 
 > [!column|2 flex clean]

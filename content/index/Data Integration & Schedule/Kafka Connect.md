@@ -1,16 +1,13 @@
 ---
-title: "Kafka Connect"
+title: Kafka Connect
 tags:
   - kafka
-  - dataflow
-  - connect
+  - pipeline
   - etl
   - mq
 date: 2024-01-29
 draft: true
 publish: false
-
-
 ---
 ##  概述
 

@@ -6,7 +6,7 @@ aliases:
   - Streaming Data Lake Storage
 description: Apache Paimon 是面向统一批流、实时更新、湖仓存储和多引擎计算的数据湖表格式与存储系统概览。
 tags:
-  - data-store
+  - store
   - data-lake
   - lakehouse
   - apache

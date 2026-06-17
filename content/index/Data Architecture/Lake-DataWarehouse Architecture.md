@@ -5,7 +5,6 @@ draft: true
 publish: true
 tags:
   - data-lake
-  - modern-data-stack
   - data-architecture
   - data-warehouse
 ---

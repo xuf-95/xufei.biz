@@ -2,15 +2,18 @@
 
 .popover { display: none !important; }
 
+// Keep the right-side preview below the fixed top navigation.
+$popoverHeaderOffset: 68px;
+
 // ═══════════════════════════════════════════════════
 // SIDEBAR MODE（长内容）
 // ═══════════════════════════════════════════════════
 .popover-sidebar-panel {
   display: none;
   position: sticky;
-  top: 44px;
+  top: $popoverHeaderOffset;
   width: 100%;
-  max-height: calc(100vh - 60px);
+  max-height: calc(100vh - #{$popoverHeaderOffset} - 12px);
   overflow: hidden;
   background-color: var(--light);
   border: 1px solid var(--lightgray);

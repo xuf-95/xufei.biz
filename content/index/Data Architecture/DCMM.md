@@ -6,7 +6,7 @@ aliases:
   - 数据管理能力成熟度评估模型
 tags:
   - data-architecture
-  - data-goverance
+  - data-governance
   - data-integration
   - data-compute
   - bi

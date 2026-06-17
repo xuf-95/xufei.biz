@@ -6,8 +6,6 @@ aliases:
   - UI Evolution
 tags:
   - quartz
-  - ui
-  - monitoring
   - style-guide
 description: 记录本站 UI 样式、布局和页面视觉质量的自动监视方式，支撑后续 Quartz 页面持续演进。
 date: 2026-06-11

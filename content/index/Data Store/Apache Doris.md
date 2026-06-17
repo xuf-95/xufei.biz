@@ -1,17 +1,15 @@
 ---
-title: "Apache Doris"
+title: Apache Doris
 aliases:
   - doris
 tags:
   - data-warehouse
   - data-lake
-  - mmp
+  - mpp
 date: 2024-02-13
 draft: true
 publish: true
 language: CN
-
-
 ---
 ## What's Apache Doris
 

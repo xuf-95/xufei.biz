@@ -5,8 +5,8 @@ aliases:
   - Agent 治理
 tags:
   - ai-agent
-  - governance
   - data-ai
+  - data-governance
 description: Agent Governance 定义 AI Agent 的权限、工具、审计、质量、安全和人工确认边界。
 date: 2026-06-14
 publish: true

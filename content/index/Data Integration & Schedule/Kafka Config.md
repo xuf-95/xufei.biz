@@ -1,15 +1,12 @@
 ---
-title: "Kafka Config"
+title: Kafka Config
 tags:
   - kafka
-  - config
-  - dataflow
+  - pipeline
   - mq
 date: 2024-01-22
 draft: true
 publish: false
-
-
 ---
 
 ## Broker
