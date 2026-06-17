@@ -5,7 +5,7 @@ tags:
   - quartz
   - test
   - icons
-publish: true
+publish: false
 description: Manual visual regression page for the shared Quartz Icon component.
 ---
 

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flink Word Count — 横向逐词追踪</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f4f0;
+    --bg-tertiary: #eeede8;
+    --text-primary: #1a1a18;
+    --text-secondary: #6b6a64;
+    --text-tertiary: #9c9a92;
+    --border-light: rgba(0,0,0,0.1);
+    --border-mid: rgba(0,0,0,0.18);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --font-sans: 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'Cascadia Code', 'Fira Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c;
+      --bg-secondary: #262624;
+      --bg-tertiary: #2e2e2b;
+      --text-primary: #e8e6dc;
+      --text-secondary: #a0998e;
+      --text-tertiary: #6b6660;
+      --border-light: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+
+  .page { max-width: 920px; margin: 0 auto; }
+
+  h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border-mid);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color .2s;
+    font-family: var(--font-sans);
+  }
+  input[type="text"]:focus { border-color: #378ADD; box-shadow: 0 0 0 2px rgba(55,138,221,.15); }
+
+  button {
+    padding: 8px 16px;
+    font-size: 13px;
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border-mid);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: var(--font-sans);
+    transition: background .15s, transform .1s;
+  }
+  button:hover { background: var(--bg-tertiary); }
+  button:active { transform: scale(.97); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  button.primary { background: #E6F1FB; color: #0C447C; border-color: #B5D4F4; }
+  button.primary:hover { background: #cce4f7; }
+
+  .step-bar {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border-light);
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    min-height: 34px;
+    font-size: 12px;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .op-box {
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border-light);
+    overflow: hidden;
+    background: var(--bg-primary);
+    transition: box-shadow .2s;
+  }
+  .op-box.active { box-shadow: 0 0 0 2px #378ADD; }
+
+  .op-header {
+    padding: 8px 10px 6px;
+    border-bottom: 0.5px solid var(--border-light);
+  }
+  .op-title { font-size: 11px; font-weight: 500; letter-spacing: .04em; }
+  .op-desc  { font-size: 10px; margin-top: 1px; }
+
+  .src-preview { padding: 8px 10px; border-bottom: 0.5px solid var(--border-light); }
+  .src-tokens-label { font-size: 10px; color: var(--text-secondary); margin-bottom: 4px; padding: 0 10px; padding-top: 6px; }
+  .op-body { padding: 8px 10px; min-height: 60px; display: flex; flex-direction: column; gap: 4px; }
+  .src-tokens { padding: 0 10px 8px; display: flex; flex-wrap: wrap; gap: 3px; min-height: 26px; }
+
+  .state-panel {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border-light);
+    overflow: hidden;
+  }
+  .state-header {
+    padding: 7px 12px;
+    border-bottom: 0.5px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .state-title { font-size: 11px; font-weight: 500; color: var(--text-secondary); letter-spacing: .04em; flex: 1; }
+  .state-count { font-size: 11px; color: var(--text-tertiary); }
+  .state-area  { padding: 9px 12px; display: flex; flex-wrap: wrap; gap: 6px; min-height: 42px; }
+
+  .empty-hint { font-size: 12px; color: var(--text-tertiary); font-style: italic; }
+
+  @keyframes slideRight { from{transform:translateX(-12px);opacity:0} to{transform:translateX(0);opacity:1} }
+  @keyframes popIn      { from{transform:scale(.82);opacity:0} to{transform:scale(1);opacity:1} }
+  .slide-in { animation: slideRight .3s cubic-bezier(.22,1,.36,1) both; }
+  .pop-in   { animation: popIn .26s cubic-bezier(.22,1,.36,1) both; }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--bg-secondary);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Flink Word Count — 横向逐词追踪</h1>
+  <p class="subtitle">每个词从 Source → FlatMap → KeyBy → Reduce 的完整计算路径动画</p>
+
+  <div class="controls">
+    <input id="inp" type="text" value="hello flink hello world flink flink" placeholder="输入句子..."/>
+    <button class="primary" id="btnPlay" onclick="startTrace()">▶ 开始追踪</button>
+    <button onclick="resetAll()">重置</button>
+  </div>
+
+  <div id="step-bar" class="step-bar">输入句子后点击"开始追踪" →</div>
+
+  <div class="pipeline">
+
+    <div id="box-source" class="op-box">
+      <div class="op-header" style="background:#E6F1FB;">
+        <div class="op-title" style="color:#0C447C;">SOURCE</div>
+        <div class="op-desc"  style="color:#185FA5;">接收 &amp; 预览原始数据</div>
+      </div>
+      <div id="src-preview" class="src-preview">
+        <div class="empty-hint">等待输入...</div>
+      </div>
+      <div class="src-tokens-label">逐词输出：</div>
+      <div id="src-words" class="src-tokens"></div>
+    </div>
+
+    <div id="box-flatmap" class="op-box">
+      <div class="op-header" style="background:#E1F5EE;">
+        <div class="op-title" style="color:#085041;">FLATMAP</div>
+        <div class="op-desc"  style="color:#0F6E56;">分词 → (word, 1)</div>
+      </div>
+      <div id="fm-rows" class="op-body"></div>
+    </div>
+
+    <div id="box-keyby" class="op-box">
+      <div class="op-header" style="background:#FAEEDA;">
+        <div class="op-title" style="color:#633806;">KEYBY</div>
+        <div class="op-desc"  style="color:#854F0B;">按词路由到分区</div>
+      </div>
+      <div id="kb-rows" class="op-body"></div>
+    </div>
+
+    <div id="box-reduce" class="op-box">
+      <div class="op-header" style="background:#FAECE7;">
+        <div class="op-title" style="color:#712B13;">REDUCE</div>
+        <div class="op-desc"  style="color:#993C1D;">旧值 + 1 = 新值</div>
+      </div>
+      <div id="rd-rows" class="op-body"></div>
+    </div>
+
+  </div>
+
+  <div class="state-panel">
+    <div class="state-header">
+      <span class="state-title">KEYED STATE（实时状态快照）</span>
+      <span id="total-lbl" class="state-count">共 0 词</span>
+    </div>
+    <div id="state-area" class="state-area">
+      <span class="empty-hint">状态为空</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const palette=[['#B5D4F4','#0C447C'],['#9FE1CB','#085041'],['#FAC775','#633806'],['#F5C4B3','#712B13'],['#CECBF6','#3C3489'],['#C0DD97','#27500A'],['#F4C0D1','#72243E'],['#D3D1C7','#6b6a64']];
+let palIdx=0, wordColors={}, state={}, running=false;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function wc(w){if(!wordColors[w]){wordColors[w]=palette[palIdx%palette.length];palIdx++;}return wordColors[w];}
+
+function pill(w,extra='',cls='slide-in'){
+  const[bg,fg]=wc(w);
+  return `<span class="${cls}" style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;background:${bg};border:0.5px solid ${fg}40;font-size:11px;font-weight:500;color:${fg};white-space:nowrap;">${w}${extra}</span>`;
+}
+function addTo(id,html){const d=document.getElementById(id);const w=document.createElement('div');w.style.display='flex';w.style.flexWrap='wrap';w.style.gap='3px';w.innerHTML=html;d.appendChild(w);}
+function setMsg(h){document.getElementById('step-bar').innerHTML=h;}
+function highlight(id){
+  ['box-source','box-flatmap','box-keyby','box-reduce'].forEach(x=>document.getElementById(x).classList.remove('active'));
+  if(id)document.getElementById(id).classList.add('active');
+}
+
+function renderState(){
+  const entries=Object.entries(state).sort((a,b)=>b[1]-a[1]);
+  const area=document.getElementById('state-area');
+  if(!entries.length){area.innerHTML='<span class="empty-hint">状态为空</span>';return;}
+  area.innerHTML=entries.map(([w,c])=>{
+    const[bg,fg]=wc(w);
+    return `<div class="pop-in" style="display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;background:${bg};border:0.5px solid ${fg}40;">
+      <span style="font-size:12px;font-weight:500;color:${fg};">${w}</span>
+      <span style="font-size:13px;font-weight:500;color:${fg};">${c}</span>
+    </div>`;
+  }).join('');
+  const total=Object.values(state).reduce((a,b)=>a+b,0);
+  document.getElementById('total-lbl').textContent=`共 ${total} 词`;
+}
+
+function buildPreview(sentence, words){
+  return `<div class="slide-in" style="font-size:12px;line-height:1.6;margin-bottom:4px;">
+    <span style="font-size:10px;color:var(--text-secondary);">原始文本：</span><br>
+    <code>"${sentence}"</code>
+  </div>
+  <div style="font-size:10px;color:var(--text-secondary);margin-top:3px;">词数：${words.length} 个 &nbsp;|&nbsp; 去重：${[...new Set(words)].length} 种</div>`;
+}
+
+async function startTrace(){
+  if(running)return;
+  running=true;
+  document.getElementById('btnPlay').disabled=true;
+  const sentence=document.getElementById('inp').value.trim();
+  if(!sentence){running=false;document.getElementById('btnPlay').disabled=false;return;}
+
+  ['fm-rows','kb-rows','rd-rows','src-words'].forEach(id=>{document.getElementById(id).innerHTML='';});
+  Object.keys(state).forEach(k=>delete state[k]);
+  Object.keys(wordColors).forEach(k=>delete wordColors[k]);
+  palIdx=0; renderState();
+  document.getElementById('total-lbl').textContent='共 0 词';
+
+  const words=sentence.toLowerCase().replace(/[^a-z\s]/g,'').split(/\s+/).filter(Boolean);
+
+  highlight('box-source');
+  setMsg(`<span style="color:#185FA5;font-weight:500;">SOURCE</span> 接收原始事件，共 <b>${words.length}</b> 个词元`);
+  document.getElementById('src-preview').innerHTML = buildPreview(sentence, words);
+  await sleep(700);
+
+  for(let i=0;i<words.length;i++){
+    const w=words[i];
+    const[bg,fg]=wc(w);
+
+    highlight('box-source');
+    setMsg(`<span style="color:#185FA5;font-weight:500;">SOURCE</span> [${i+1}/${words.length}] 输出词元 ${pill(w)}`);
+    addTo('src-words', pill(w,'','slide-in'));
+    await sleep(280);
+
+    highlight('box-flatmap');
+    setMsg(`<span style="color:#085041;font-weight:500;">FLATMAP</span> 生成键值对 ${pill(w)} → <code>(${w}, 1)</code>`);
+    addTo('fm-rows', pill(w,'')+'<span style="font-size:11px;color:var(--text-secondary);align-self:center;margin-left:4px;">→ ('+w+', 1)</span>');
+    await sleep(300);
+
+    highlight('box-keyby');
+    setMsg(`<span style="color:#854F0B;font-weight:500;">KEYBY</span> 路由 key="${w}"，分发至对应 Task Slot`);
+    addTo('kb-rows', `<span class="slide-in" style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;background:${bg};border:0.5px solid ${fg}40;font-size:11px;color:${fg};">key: ${w}</span>`);
+    await sleep(300);
+
+    const prev=state[w]||0;
+    state[w]=prev+1;
+    highlight('box-reduce');
+    setMsg(`<span style="color:#993C1D;font-weight:500;">REDUCE</span> 更新 "${w}": state ${prev} + 1 = <b style="color:${fg};">${state[w]}</b>`);
+    addTo('rd-rows', `<span class="slide-in" style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;background:${bg};border:0.5px solid ${fg}40;font-size:11px;color:${fg};">${w}: ${prev}+1=<b>${state[w]}</b></span>`);
+    renderState();
+    await sleep(350);
+  }
+
+  highlight(null);
+  setMsg(`全部 <b>${words.length}</b> 个词元处理完毕 — keyed state 更新完成`);
+  running=false;
+  document.getElementById('btnPlay').disabled=false;
+}
+
+function resetAll(){
+  if(running)return;
+  ['fm-rows','kb-rows','rd-rows','src-words'].forEach(id=>{document.getElementById(id).innerHTML='';});
+  document.getElementById('src-preview').innerHTML='<div class="empty-hint">等待输入...</div>';
+  Object.keys(state).forEach(k=>delete state[k]);
+  Object.keys(wordColors).forEach(k=>delete wordColors[k]);
+  palIdx=0; renderState();
+  document.getElementById('total-lbl').textContent='共 0 词';
+  setMsg('输入句子后点击"开始追踪" →');
+  highlight(null);
+  document.getElementById('btnPlay').disabled=false;
+}
+
+document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter')startTrace();});
+
+(function initPreview(){
+  const s=document.getElementById('inp').value.trim();
+  if(!s)return;
+  const ws=s.toLowerCase().replace(/[^a-z\s]/g,'').split(/\s+/).filter(Boolean);
+  document.getElementById('src-preview').innerHTML=buildPreview(s,ws);
+})();
+</script>
+</body>
+</html>

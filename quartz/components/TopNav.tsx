@@ -43,7 +43,7 @@ const navItems: NavItem[] = [
   },
   { label: "Tags",  path: "/tags/"         },
   // { label: "Map",   path: "/map/"          },
-  { label: "Goods", path: "/hobby/goods/"  },
+  // { label: "Goods", path: "/hobby/goods/"  },
   { label: "Data Engineer Tools", path: "/tools/data-engineer-tools/" },
 ]
 

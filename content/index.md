@@ -34,13 +34,13 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">Data Architecture</h3>
+<h3 class="home-col-title">AI Area</h3>
 <ul>
 
-- [[Lambda Architecture|What is Lambda Architecture]]
-- [[Kappa Architecture|What is Kappa Architecture?]]
-- [[Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
-- [[MMP (Massively Parallel Processing)]]
+- [[Bigdata With AI]]
+- [[Agent]]
+- [[Prompt Engineering]]
+- [[Token是如何计费的]]
 
 </ul>
 </div>
@@ -73,13 +73,13 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 </div>
 <div class="home-two-col-section">
 <div class="home-col-left">
-<h3 class="home-col-title">AI Area</h3>
+<h3 class="home-col-title">Data Architecture</h3>
 <ul>
 
-- [[Bigdata With AI]]
-- [[Agent]]
-- [[Prompt Engineering]]
-- [[Token是如何计费的]]
+- [[Lambda Architecture|What is Lambda Architecture]]
+- [[Kappa Architecture|What is Kappa Architecture?]]
+- [[Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
+- [[MMP (Massively Parallel Processing)]]
 
 </ul>
 </div>
@@ -90,11 +90,8 @@ I'm xufei, a data engineer, this is my wiki knowledge & digital garden, which ma
 
 - [[Awesome Digital Garden]]
 - [[Collections Photography]]
-- [[Bigdata Product & Tools]]
-- [[Bloger List]]
 - [[Quartz Style Guide]]
 - [[Quartz Diagram Style Guide]]
-- [[UI Evolution Monitor]]
 
 </ul>
 </div>
