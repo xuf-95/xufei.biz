@@ -44,7 +44,7 @@ $tabletGrid: (
     '"grid-sidebar-left grid-header"\
       "grid-sidebar-left grid-center"\
       "grid-sidebar-left grid-sidebar-right"\
-      "grid-sidebar-left grid-footer"',
+      "grid-footer grid-footer"',
 );
 $desktopGrid: (
   templateRows: "auto auto auto",
@@ -54,5 +54,5 @@ $desktopGrid: (
   templateAreas:
     '"grid-sidebar-left grid-header grid-sidebar-right"\
       "grid-sidebar-left grid-center grid-sidebar-right"\
-      "grid-sidebar-left grid-footer grid-sidebar-right"',
+      "grid-footer grid-footer grid-footer"',
 );

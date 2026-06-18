@@ -21,7 +21,7 @@ import { SimpleSlug } from "./quartz/util/path"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [Component.TopNav(), Component.Search(), Component.Darkmode(), Component.ReaderMode()],
+  header: [Component.TopNav(), Component.Search(), Component.Darkmode()],
   afterBody: [
     // ...recentNotes.map((c) => Component.DesktopOnly(c)),
     // Component.DesktopOnly(
