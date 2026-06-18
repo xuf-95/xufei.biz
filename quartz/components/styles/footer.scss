@@ -5,14 +5,26 @@ footer {
     --footer-rule: color-mix(in srgb, var(--darkgray) 15%, transparent);
     --footer-muted: color-mix(in srgb, var(--darkgray) 62%, transparent);
     --footer-soft: color-mix(in srgb, var(--darkgray) 8%, var(--light));
+    --footer-directory-shift: clamp(3rem, 9vw, 12rem);
 
+    position: relative;
     box-sizing: border-box;
     width: 100%;
     margin: clamp(4.5rem, 8vw, 7rem) 0 0;
-    padding: 0 clamp(1.25rem, 6vw, 5.5rem) clamp(2rem, 5vw, 4rem);
+    padding: 0 0 clamp(2rem, 5vw, 4rem);
     color: var(--darkgray);
     background: var(--light);
     font-family: var(--bodyFont);
+  }
+
+  &.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: var(--footer-rule);
   }
 
   &.site-footer a {
@@ -38,10 +50,12 @@ footer {
     display: grid;
     grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 2.1fr);
     gap: clamp(2rem, 6vw, 6rem);
-    max-width: 96rem;
-    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--site-shell-max);
+    margin-inline: auto;
+    padding-inline: var(--site-shell-pad);
     padding-top: clamp(2rem, 4vw, 3.25rem);
-    border-top: 1px solid var(--footer-rule);
   }
 
   & .footer-brand-panel {
@@ -61,9 +75,9 @@ footer {
 
   & .footer-logo {
     display: block;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 0.45rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 0.38rem;
     object-fit: contain;
   }
 
@@ -119,6 +133,7 @@ footer {
     grid-template-columns: repeat(4, minmax(8rem, 1fr));
     gap: clamp(1.25rem, 3vw, 2.75rem);
     min-width: 0;
+    transform: translateX(var(--footer-directory-shift));
   }
 
   & .footer-group h2 {
@@ -170,6 +185,10 @@ footer {
 
 @media all and ($tablet) {
   footer {
+    &.site-footer {
+      --footer-directory-shift: 0rem;
+    }
+
     & .footer-shell {
       grid-template-columns: 1fr;
     }
@@ -187,8 +206,9 @@ footer {
 @media all and ($mobile) {
   footer {
     &.site-footer {
+      --footer-directory-shift: 0rem;
       margin-top: 3.5rem;
-      padding: 0 1.25rem 2.25rem;
+      padding: 0 0 2.25rem;
     }
 
     & .footer-shell {

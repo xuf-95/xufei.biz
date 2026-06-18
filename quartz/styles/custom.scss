@@ -19,6 +19,8 @@
 @use "./images-layouts.scss";
 
 :root {
+  --site-shell-max: 96rem;
+  --site-shell-pad: clamp(1.25rem, 6vw, 5.5rem);
   --external-link-icon-width: 0.98em;
   --external-link-icon-height: 0.98em;
 }
@@ -92,10 +94,7 @@ hr {
 }
 
 header {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  padding-left: clamp(1rem, 2vw, 2rem) !important;
-  padding-right: clamp(1rem, 2vw, 2rem) !important;
+  padding: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   max-width: 100vw !important;
@@ -114,24 +113,24 @@ header {
   background-color: var(--light) !important; /* 滚动时不透明，防止内容穿透 */
 }
 
-header > .search {
+.site-header-shell > .search {
   margin-left: auto;
 }
 
 /* Search 输入框紧凑化 */
-header > .search .search-bar {
+.site-header-shell > .search .search-bar {
   padding: 4px 10px !important;
   height: 30px !important;
 }
 
 /* Darkmode 和 ReaderMode 图标间距缩短 */
-header > .darkmode,
-header > .readermode {
+.site-header-shell > .darkmode,
+.site-header-shell > .readermode {
   margin-left: 3px !important; /* 原来可能是 1rem，改为 6px */
 }
 
 /* Search 和 Darkmode 之间加一点间隔 */
-header > .search {
+.site-header-shell > .search {
   margin-right: 3px;
 }
 

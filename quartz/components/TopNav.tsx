@@ -35,13 +35,13 @@ const navItems: NavItem[] = [
     label: "Index",
     path: "/index/",
     children: [
-      { label: "Map",        desc: "Map of Content",   path: "/index/00-Map/",  abbr: "MP" },
-      { label: "AI",           desc: "AI tools & agents",   path: "/index/ai/",            abbr: "AI" },
-      { label: "OpenBigData",      desc: "Data engineering",    path: "/index/Open-BigData/",       abbr: "BD" },
-      { label: "Posts",        desc: "Notes & writings",    path: "/index/posts/",         abbr: "P"  },
+      { label: "Map", desc: "Map of Content", path: "/index/00-Map/", abbr: "MP" },
+      { label: "AI", desc: "AI tools & agents", path: "/index/ai/", abbr: "AI" },
+      { label: "OpenBigData", desc: "Data engineering", path: "/index/Open-BigData/", abbr: "BD" },
+      { label: "Posts", desc: "Notes & writings", path: "/index/posts/", abbr: "P" },
     ],
   },
-  { label: "Tags",  path: "/tags/"         },
+  { label: "Tags", path: "/tags/" },
   // { label: "Map",   path: "/map/"          },
   // { label: "Goods", path: "/hobby/goods/"  },
   { label: "Data Engineer Tools", path: "/tools/data-engineer-tools/" },
@@ -143,10 +143,7 @@ header {
   left: 0 !important;
   z-index: 200 !important;
   display: flex !important;
-  flex-direction: row !important;
   align-items: center !important;
-  justify-content: space-between !important;
-  gap: clamp(0.45rem, 1.4vw, 1rem) !important;
   margin: 0 !important;
   width: 100vw !important;
   max-width: 100vw !important;
@@ -160,8 +157,7 @@ header {
   will-change: transform;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  padding-left: clamp(1rem, 2vw, 2rem) !important;
-  padding-right: clamp(1rem, 2vw, 2rem) !important;
+  padding: 0 !important;
 }
 
 header.header-hidden {
@@ -173,24 +169,24 @@ header.header-hidden:focus-within {
   transform: translateY(0) !important;
 }
 
-header > .search,
-header > .darkmode,
-header > .readermode {
+.site-header-shell > .search,
+.site-header-shell > .darkmode,
+.site-header-shell > .readermode {
   flex: 0 0 auto !important;
 }
 
-header > .search {
+.site-header-shell > .search {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
 
-header > .search .search-button {
+.site-header-shell > .search .search-button {
   height: 34px !important;
   border-radius: 6px !important;
 }
 
-header > .darkmode,
-header > .readermode {
+.site-header-shell > .darkmode,
+.site-header-shell > .readermode {
   margin-left: 0 !important;
 }
 

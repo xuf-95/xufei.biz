@@ -1,21 +1,30 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
 const Header: QuartzComponent = ({ children }: QuartzComponentProps) => {
-  return children.length > 0 ? <header>{children}</header> : null
+  return children.length > 0 ? (
+    <header>
+      <div class="site-header-shell">{children}</div>
+    </header>
+  ) : null
 }
 
 Header.css = `
 header {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  margin: 5rem 0;
-  gap: 1.5rem;
+  margin: 0;
 }
 
-header h1 {
-  margin: 0;
-  flex: auto;
+.site-header-shell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.45rem, 1.4vw, 1rem);
+  width: 100%;
+  max-width: var(--site-shell-max);
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: var(--site-shell-pad);
 }
 `
 
