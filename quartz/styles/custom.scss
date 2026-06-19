@@ -97,8 +97,8 @@ header {
   padding: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  max-width: 100vw !important;
-  width: 100vw !important;
+  max-width: 100% !important;
+  width: 100% !important;
   box-sizing: border-box !important;
   grid-column: 1 / -1 !important;
   display: flex !important;
@@ -672,8 +672,7 @@ body[data-slug="index"] {
 
 /* ========== =========== */
 // Goods 页面全宽布局
-// 全局 html 为 width: 90vw + overflow-x:hidden（base.scss），gallery 使用 100vw 会被左右裁切；
-// 本页将 html 恢复为整屏宽度，并用 margin 负边距做 viewport 对齐（避免 transform 与多层裁剪叠加）。
+// gallery 使用 100vw，并用 margin 负边距做 viewport 对齐（避免 transform 与多层裁剪叠加）。
 html:has(body[data-slug="hobby/goods"]) {
   width: 100%;
   overflow-x: clip;

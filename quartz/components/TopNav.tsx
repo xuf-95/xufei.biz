@@ -145,8 +145,8 @@ header {
   display: flex !important;
   align-items: center !important;
   margin: 0 !important;
-  width: 100vw !important;
-  max-width: 100vw !important;
+  width: 100% !important;
+  max-width: 100% !important;
   box-sizing: border-box !important;
   height: 56px !important;
   min-height: 56px !important;

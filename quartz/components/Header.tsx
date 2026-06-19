@@ -26,6 +26,12 @@ header {
   margin-inline: auto;
   padding-inline: var(--site-shell-pad);
 }
+
+@media all and (max-width: 1200px) {
+  .site-header-shell {
+    width: calc(100% - 2rem);
+  }
+}
 `
 
 export default (() => Header) satisfies QuartzComponentConstructor

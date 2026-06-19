@@ -5,7 +5,6 @@ footer {
     --footer-rule: color-mix(in srgb, var(--darkgray) 15%, transparent);
     --footer-muted: color-mix(in srgb, var(--darkgray) 62%, transparent);
     --footer-soft: color-mix(in srgb, var(--darkgray) 8%, var(--light));
-    --footer-directory-shift: clamp(3rem, 9vw, 12rem);
 
     position: relative;
     box-sizing: border-box;
@@ -133,7 +132,6 @@ footer {
     grid-template-columns: repeat(4, minmax(8rem, 1fr));
     gap: clamp(1.25rem, 3vw, 2.75rem);
     min-width: 0;
-    transform: translateX(var(--footer-directory-shift));
   }
 
   & .footer-group h2 {
@@ -185,10 +183,6 @@ footer {
 
 @media all and ($tablet) {
   footer {
-    &.site-footer {
-      --footer-directory-shift: 0rem;
-    }
-
     & .footer-shell {
       grid-template-columns: 1fr;
     }
@@ -206,7 +200,6 @@ footer {
 @media all and ($mobile) {
   footer {
     &.site-footer {
-      --footer-directory-shift: 0rem;
       margin-top: 3.5rem;
       padding: 0 0 2.25rem;
     }
