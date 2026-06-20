@@ -69,6 +69,9 @@ Use [[custom-formatting-features#Callout Positioning|Callout Positioning]] metad
 ```
 
 <br>
+Zettelkasten[^1]
+
+[^1]: 这里是右侧标注内容。
 
 ### Infobox
 
