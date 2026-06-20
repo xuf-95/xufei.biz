@@ -337,7 +337,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
           <article class={classes}>{content}</article>
           <div class="page-listing">
             <p>{i18n(cfg.locale).pages.tagContent.itemsUnderTag({ count: pages.length })}</p>
-            <div>
+            <div class="tag-page-list">
               <PageList {...listProps} sort={options?.sort} />
             </div>
           </div>
@@ -435,6 +435,49 @@ export default ((opts?: Partial<TagContentOptions>) => {
 
 .tag-section-right .tags {
   display: none;
+}
+
+.tag-page-list {
+  --tag-list-rule: color-mix(in srgb, var(--darkgray) 15%, transparent);
+
+  margin-top: 0.35rem;
+}
+
+.tag-page-list ul.section-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-page-list:has(li.section-li:hover) li.section-li,
+.tag-page-list:has(li.section-li:focus-within) li.section-li {
+  opacity: 0.46;
+}
+
+.tag-page-list:has(li.section-li:hover) li.section-li:hover,
+.tag-page-list:has(li.section-li:focus-within) li.section-li:focus-within {
+  opacity: 1;
+}
+
+.tag-page-list li.section-li {
+  margin: 0;
+  border-top: 1px solid var(--tag-list-rule);
+  transition: opacity 0.18s ease;
+}
+
+.tag-page-list li.section-li:last-child {
+  border-bottom: 1px solid var(--tag-list-rule);
+}
+
+.tag-page-list .section {
+  align-items: baseline;
+  padding: 0.95rem 0;
+}
+
+.tag-page-list .section > .desc > h3 > a {
+  transition:
+    color 0.18s ease,
+    opacity 0.18s ease;
 }
 `
 
