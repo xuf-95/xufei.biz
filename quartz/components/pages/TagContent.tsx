@@ -18,12 +18,25 @@ const defaultOptions: TagContentOptions = {
   numPages: 10,
 }
 
-interface Rect { x: number; y: number; w: number; h: number }
-interface TItem { tag: string; count: number; area: number; rect?: Rect }
+interface Rect {
+  x: number
+  y: number
+  w: number
+  h: number
+}
+interface TItem {
+  tag: string
+  count: number
+  area: number
+  rect?: Rect
+}
 
 function layoutRow(
   items: Array<TItem & { sa: number }>,
-  x: number, y: number, w: number, h: number,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
   result: TItem[],
 ) {
   if (items.length === 0) return
@@ -54,9 +67,7 @@ function layoutRow(
   let pos = horiz ? y : x
   for (const it of row) {
     const dim = it.sa / rowLen
-    const rect: Rect = horiz
-      ? { x, y: pos, w: rowLen, h: dim }
-      : { x: pos, y, w: dim, h: rowLen }
+    const rect: Rect = horiz ? { x, y: pos, w: rowLen, h: dim } : { x: pos, y, w: dim, h: rowLen }
     result.push({ ...it, rect })
     pos += dim
   }
@@ -124,6 +135,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
       const GAP = 3
 
       const totalCount = tags.reduce((s, t) => s + tagItemMap.get(t)!.length, 0)
+      void totalCount
 
       const mainItems: TItem[] = []
       const otherTags: string[] = []
@@ -142,7 +154,10 @@ export default ((opts?: Partial<TagContentOptions>) => {
       // "other" block: fixed area proportional to its article count
       const otherArticleCount = otherTags.reduce((s, t) => s + tagItemMap.get(t)!.length, 0)
       // Give "other" a minimum visible area
-      const otherArea = Math.max(otherArticleCount, mainItems.length > 0 ? mainItems[0].area * 0.3 : 10)
+      const otherArea = Math.max(
+        otherArticleCount,
+        mainItems.length > 0 ? mainItems[0].area * 0.3 : 10,
+      )
 
       // Add "other" as a real treemap item so it's placed inside the grid
       const allItems: TItem[] =
@@ -191,7 +206,10 @@ export default ((opts?: Partial<TagContentOptions>) => {
                   return (
                     <g>
                       <rect
-                        x={rx} y={ry} width={rw} height={rh}
+                        x={rx}
+                        y={ry}
+                        width={rw}
+                        height={rh}
                         rx="0"
                         class="treemap-rect treemap-rect--other"
                       />
@@ -227,11 +245,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
 
                 return (
                   <a href={href} class="treemap-cell-link">
-                    <rect
-                      x={rx} y={ry} width={rw} height={rh}
-                      rx="0"
-                      class="treemap-rect"
-                    />
+                    <rect x={rx} y={ry} width={rw} height={rh} rx="0" class="treemap-rect" />
                     <text
                       x={rx + rw / 2}
                       y={ry + (showCount ? rh * 0.42 : rh / 2)}

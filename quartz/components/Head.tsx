@@ -25,10 +25,9 @@ export default (() => {
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
-    const iconPath    = joinSegments(baseDir, "static/icon.png")
-    const faviconSvg  = joinSegments(baseDir, "static/favicon.svg")
-    const favicon32   = joinSegments(baseDir, "static/favicon-32x32.png")
-    const faviconIco  = joinSegments(baseDir, "static/favicon.ico")
+    const faviconSvg = joinSegments(baseDir, "static/favicon.svg")
+    const favicon32 = joinSegments(baseDir, "static/favicon-32x32.png")
+    const faviconIco = joinSegments(baseDir, "static/favicon.ico")
     const appleTouchIcon = joinSegments(baseDir, "static/apple-touch-icon.png")
 
     // Url of current page

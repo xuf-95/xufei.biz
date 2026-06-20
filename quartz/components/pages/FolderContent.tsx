@@ -162,7 +162,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
   }
 
   FolderContent.css = concatenateResources(style, PageList.css, folderFilterCss)
-  FolderContent.afterDOMLoaded = folderScript
+  FolderContent.afterDOMLoaded = folderScript as unknown as string
   return FolderContent
 }) satisfies QuartzComponentConstructor
 
@@ -214,6 +214,31 @@ const folderFilterCss = `
   display: none !important;
 }
 
+#folder-page-list {
+  --folder-list-rule: color-mix(in srgb, var(--darkgray) 15%, transparent);
+
+  margin-top: 0.35rem;
+}
+
+#folder-page-list:has(.folder-item-wrap:hover) .folder-item-wrap,
+#folder-page-list:has(.folder-item-wrap:focus-within) .folder-item-wrap {
+  opacity: 0.46;
+}
+
+#folder-page-list:has(.folder-item-wrap:hover) .folder-item-wrap:hover,
+#folder-page-list:has(.folder-item-wrap:focus-within) .folder-item-wrap:focus-within {
+  opacity: 1;
+}
+
+.folder-item-wrap {
+  border-top: 1px solid var(--folder-list-rule);
+  transition: opacity 0.18s ease;
+}
+
+.folder-item-wrap:last-child {
+  border-bottom: 1px solid var(--folder-list-rule);
+}
+
 .folder-item-wrap .page-listing {
   display: contents;
 }
@@ -222,5 +247,20 @@ const folderFilterCss = `
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.folder-item-wrap li.section-li {
+  margin: 0;
+}
+
+.folder-item-wrap .section {
+  align-items: baseline;
+  padding: 0.95rem 0;
+}
+
+.folder-item-wrap .section > .desc > h3 > a {
+  transition:
+    color 0.18s ease,
+    opacity 0.18s ease;
 }
 `

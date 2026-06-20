@@ -55,4 +55,4 @@ const folderFilterInit = () => {
 
 document.addEventListener("nav", folderFilterInit)
 
-export {}
+export default folderFilterInit

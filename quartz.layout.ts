@@ -1,6 +1,5 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
-import { SimpleSlug } from "./quartz/util/path"
 
 // const recentNotes = [
 //   Component.RecentNotes({
@@ -55,11 +54,9 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ContentMeta(),
     Component.Backlinks(),
     Component.ArticleSummary(),
-
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],
-  right: [
-  ],
+  right: [],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
