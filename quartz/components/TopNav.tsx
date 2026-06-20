@@ -254,7 +254,7 @@ header.header-hidden:focus-within {
   color: var(--gray);
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition: color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
   background: none;
   border: none;
   cursor: pointer;
@@ -265,6 +265,21 @@ header.header-hidden:focus-within {
 .nav-group.open > .nav-item  { color: var(--dark); background: var(--highlight); }
 .nav-item.active,
 .nav-group.active > .nav-item { color: var(--dark); font-weight: 600; }
+
+.nav-links:has(.nav-item:hover) .nav-item,
+.nav-links:has(.nav-item:focus-visible) .nav-item {
+  color: var(--gray);
+  opacity: 0.68;
+  background: transparent;
+}
+
+.nav-links:has(.nav-item:hover) .nav-item:hover,
+.nav-links:has(.nav-item:focus-visible) .nav-item:focus-visible,
+.nav-links:has(.nav-group.open) .nav-group.open > .nav-item {
+  color: var(--dark);
+  opacity: 1;
+  background: var(--highlight);
+}
 
 /* ── Chevron ── */
 .nav-chevron {

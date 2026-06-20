@@ -154,6 +154,21 @@ footer {
     font-size: 0.9rem;
     font-weight: 600;
     line-height: 1.25;
+    transition:
+      color 0.18s ease,
+      opacity 0.18s ease;
+  }
+
+  & .footer-group:has(a:hover) a,
+  & .footer-group:has(a:focus-visible) a {
+    color: var(--footer-muted);
+    opacity: 0.68;
+  }
+
+  & .footer-group a:hover,
+  & .footer-group a:focus-visible {
+    color: var(--dark);
+    opacity: 1;
   }
 
   & .footer-bottom {
