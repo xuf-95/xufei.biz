@@ -16,7 +16,7 @@ language: CN
 > [!quote] from doris official definition
 > Apache Doris is an MPP-based real-time data warehouse known for its high query speed. For queries on large datasets, it returns results in sub-seconds. It supports both high-concurrent point queries and high-throughput complex analysis. It can be used for report analysis, ad-hoc queries, unified data warehouse, and [[data lake]] query acceleration. Based on Apache Doris, users can build applications for user behavior analysis, A/B testing platform, log analysis, user profile analysis, and e-commerce order analysis.
 
-[Apache Doris](https://doris.apache.org/) 是一个基于 [[MPP]] 支持多种数据源（数据仓库和数据湖）的可高并发快速查询、复杂分析、报表分析、即席查询、用户行为分析、A/B测试的实时数据库。too Fast，too like
+[Apache Doris](https://doris.apache.org/) 是一个基于 [[MMP (Massively Parallel Processing)|MMP]] 支持多种数据源（数据仓库和数据湖）的可高并发快速查询、复杂分析、报表分析、即席查询、用户行为分析、A/B测试的实时数据库。too Fast，too like
 
 ![[Apache Doris.png]]
 
@@ -42,3 +42,4 @@ Apache Doris采用[[MySQL]]协议，支持标准SQL，与MySQL语法高度兼容
 ## Reference
 
 - [Apache Doris - Blog | Latest news and events - Apache Doris](https://doris.apache.org/blog?currentPage=1&currentCategory=All#blog)
+- [NetEase Games: From Elasticsearch, HBase, and ClickHouse to a Unified Apache Doris Lakehouse](https://www.velodb.io/blog/netease-games-from-elasticsearch-and-clickhouse-to-a-unified-apache-doris-lakehouse)

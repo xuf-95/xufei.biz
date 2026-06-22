@@ -5,6 +5,62 @@
   },
   "categories": [
     {
+      "id": "ingestion-cdc",
+      "title": "Ingestion & CDC",
+      "tools": [
+        {
+          "name": "Kafka Connect",
+          "url": "https://kafka.apache.org/documentation/#connect",
+          "note": "Kafka-native connector runtime for sources and sinks."
+        },
+        {
+          "name": "Flink CDC",
+          "url": "https://flink.apache.org/what-is-flink/flink-cdc/",
+          "note": "CDC connectors designed for Apache Flink pipelines."
+        },
+        {
+          "name": "Apache Pulsar",
+          "url": "https://pulsar.apache.org/",
+          "note": "Cloud-native messaging and streaming platform."
+        },
+        {
+          "name": "Apache SeaTunnel",
+          "url": "https://seatunnel.apache.org/",
+          "note": "Distributed batch and streaming data integration engine."
+        },
+        {
+          "name": "Debezium",
+          "url": "https://debezium.io/",
+          "note": "Change data capture platform for database logs."
+        },
+        {
+          "name": "DolphinScheduler",
+          "url": "https://dolphinscheduler.apache.org/",
+          "note": "Distributed and extensible workflow scheduler platform with powerful DAG."
+        },
+        {
+          "name": "Airbyte",
+          "url": "https://airbyte.com/",
+          "note": "Connector-heavy ELT platform for moving data into warehouses."
+        },
+        {
+          "name": "Apache NiFi",
+          "url": "https://nifi.apache.org/",
+          "note": "Flow-based integration platform for routed data movement."
+        },
+        {
+          "name": "dlt",
+          "url": "https://dlthub.com/",
+          "note": "Python-first library for lightweight data loading."
+        },
+        {
+          "name": "Meltano",
+          "url": "https://meltano.com/",
+          "note": "Code-first ELT platform around Singer taps and targets."
+        }
+      ]
+    },
+    {
       "id": "storage-lakehouse",
       "title": "Storage & Lakehouse",
       "tools": [
@@ -12,6 +68,11 @@
           "name": "PostgreSQL",
           "url": "https://www.postgresql.org/",
           "note": "Relational database baseline for analytics and operational data."
+        },
+        {
+          "name": "Apache Paimon",
+          "url": "https://paimon.apache.org/",
+          "note": "Streaming lakehouse storage for high-speed updates."
         },
         {
           "name": "ClickHouse",
@@ -49,11 +110,6 @@
           "note": "Lakehouse table format optimized for incremental ingestion."
         },
         {
-          "name": "Apache Paimon",
-          "url": "https://paimon.apache.org/",
-          "note": "Streaming lakehouse storage for high-speed updates."
-        },
-        {
           "name": "MinIO",
           "url": "https://min.io/",
           "note": "S3-compatible object storage for data lake deployments."
@@ -70,52 +126,7 @@
         }
       ]
     },
-    {
-      "id": "ingestion-cdc",
-      "title": "Ingestion & CDC",
-      "tools": [
-        {
-          "name": "Airbyte",
-          "url": "https://airbyte.com/",
-          "note": "Connector-heavy ELT platform for moving data into warehouses."
-        },
-        {
-          "name": "Apache NiFi",
-          "url": "https://nifi.apache.org/",
-          "note": "Flow-based integration platform for routed data movement."
-        },
-        {
-          "name": "Apache SeaTunnel",
-          "url": "https://seatunnel.apache.org/",
-          "note": "Distributed batch and streaming data integration engine."
-        },
-        {
-          "name": "Debezium",
-          "url": "https://debezium.io/",
-          "note": "Change data capture platform for database logs."
-        },
-        {
-          "name": "Kafka Connect",
-          "url": "https://kafka.apache.org/documentation/#connect",
-          "note": "Kafka-native connector runtime for sources and sinks."
-        },
-        {
-          "name": "Flink CDC",
-          "url": "https://flink.apache.org/what-is-flink/flink-cdc/",
-          "note": "CDC connectors designed for Apache Flink pipelines."
-        },
-        {
-          "name": "dlt",
-          "url": "https://dlthub.com/",
-          "note": "Python-first library for lightweight data loading."
-        },
-        {
-          "name": "Meltano",
-          "url": "https://meltano.com/",
-          "note": "Code-first ELT platform around Singer taps and targets."
-        }
-      ]
-    },
+
     {
       "id": "processing-query",
       "title": "Processing & Query",
@@ -363,6 +374,22 @@
           "name": "Haystack",
           "url": "https://haystack.deepset.ai/",
           "note": "AI orchestration framework for production RAG systems."
+        }
+      ]
+    },
+    {
+      "id": "API",
+      "title": "data-API",
+      "tools": [
+        {
+          "name": "DBAPI",
+          "url": "https://www.51dbapi.com/v4.0.0/",
+          "note": "SQL生成API，低代码开发API"
+        },
+        {
+          "name": "FastAPI",
+          "url": "https://fastapi.tiangolo.com/",
+          "note": "FastAPI是一个现代的、快速的（高性能）Python web框架，用于构建API。"
         }
       ]
     }

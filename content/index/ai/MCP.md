@@ -22,4 +22,4 @@ publishDate: 2025-09-26T11:38
 ###  AnyQuery
 
 [GitHub - julien040/anyquery: ](https://github.com/julien040/anyquery) Query anything (GitHub, Notion, +40 more) with SQL and let LLMs (ChatGPT, Claude) connect to using MCP
-![[content/ai/image/anyquery.png]]
+![[anyquery.png]]

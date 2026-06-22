@@ -17,11 +17,6 @@ publish: true
 
 # Token是如何计费的
 
-> **交互式可视化体验**：[🎮 在线体验 PD 分离 & KV Cache 可视化](token-billing-visualization.html)
-
-![Token计费可视化演示](token-billing-visualization.html)
-
-> 💡 **提示**：点击上方链接打开交互式可视化界面，通过实时动画和操作演示，直观理解 PD 分离和 KV Cache 的工作原理。
 
 ## 什么是Token？
 
@@ -800,6 +795,16 @@ Token计费是AI服务的基础，理解其机制对控制成本至关重要：
 
 通过组合使用PD分离和KV Cache等技术，可以在保证服务质量的同时，将AI服务成本降到最低，实现最佳的投入产出比。
 
+## 交互式分析
+
+<iframe 
+src="/static/token-billing-visualization.html" 
+width="100%" 
+height="100%" 
+style="border:0;"></iframe>
+
+
+> 💡 **提示**：点击上方链接打开交互式可视化界面，通过实时动画和操作演示，直观理解 PD 分离和 KV Cache 的工作原理。
 
 ## Reference
 

@@ -1,12 +1,10 @@
 ---
-title: "Interesting Website"
+title: Interesting Website
 tags:
   - demo
 date: 2025-02-14
-draft: true
+draft: false
 publish: false
-
-
 ---
 
 ![[content/index/Posts/images/english++.png]]_**English++ Project**_
