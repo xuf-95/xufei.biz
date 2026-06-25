@@ -54,7 +54,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-数据架构师能力地图]]
+- part-of:: [[MOC-Data Architecture Map]]
 - supports:: [[Data Architecture Blueprint]]
 - supports:: [[Dimensional Modeling]]
 - related:: [[Data Mesh]]

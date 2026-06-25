@@ -6,8 +6,8 @@ tags:
   - hadoop
   - streaming
   - Real-time
-description:
-summary: Apache Storm 是一个开源分布式实时计算系统，提供对无界数据流的可靠处理能力。核心概念包括 Topology（计算图）、Spout（数据源）、Bolt（处理单元）和 Stream（元组序列），支持实时分析、在线机器学习、持续计算等场景，单节点处理速度超过百万元组/秒。
+description: Apache Storm 是一个开源分布式实时计算系统，提供对无界数据流的可靠处理能力。核心概念包括 Topology（计算图）、Spout（数据源）、Bolt（处理单元）和 Stream（元组序列），支持实时分析、在线机器学习、持续计算等场景，单节点处理速度超过百万元组/秒。
+summary:
 draft: true
 date: 2024-07-24
 publish: true

@@ -44,6 +44,6 @@ status: seed
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
-- supports:: [[MOC-大数据全栈工程师能力地图]]
-- supports:: [[MOC-数据架构师能力地图]]
+- supports:: [[MOC-BigData Map]]
+- supports:: [[MOC-Data Architecture Map]]
 

@@ -54,7 +54,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - supports:: [[CDO]]
 - depends-on:: [[DAMA-DMBOK]]
 - connects:: [[Data Quality]]

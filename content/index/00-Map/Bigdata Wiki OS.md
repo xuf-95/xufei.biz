@@ -101,10 +101,10 @@ publish: true
 
 ## Phase 1 导航入口
 
-- [[MOC-大数据全栈工程师能力地图]] - 工程能力、技术栈、Pipeline、平台和交付物导航
-- [[MOC-数据架构师能力地图]] - 架构、建模、治理、数据产品和 CDO/CDAO 视角导航
-- [[MOC-DCMM-DAMA 数据治理地图]] - DCMM、DAMA、元数据、标准、质量和成熟度证据导航
-- [[MOC-DATA+AI Agent 地图]] - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航
+- [[MOC-BigData Map]] - 工程能力、技术栈、Pipeline、平台和交付物导航
+- [[MOC-Data Architecture Map]] - 架构、建模、治理、数据产品和 CDO/CDAO 视角导航
+- [[MOC-DCMM-DAMA Map]] - DCMM、DAMA、元数据、标准、质量和成熟度证据导航
+- [[MOC-DATA+AI Agent Map]] - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航
 - [[MOC-职业资产地图]] - 面试、案例、架构评审、演讲教程和作品集导航
 
 ## Phase Roadmap
@@ -124,7 +124,7 @@ Phase 2 的第二批资产层已经预置 [[MOC-职业资产地图]]、[[Bigdata
 
 | 知识域 | 核心问题 | 代表笔记 | 主要输出 |
 | --- | --- | --- | --- |
-| 00-Map | 我的知识库如何导航 | [[MOC-大数据全栈工程师能力地图]]、[[MOC-数据架构师能力地图]] | 首页、MOC、图谱 |
+| 00-Map | 我的知识库如何导航 | [[MOC-BigData Map]]、[[MOC-Data Architecture Map]] | 首页、MOC、图谱 |
 | 01-Data Strategy | 数据如何服务业务战略 | 数据战略、数据资产化、[[CDO]] | 数据战略方案 |
 | 02-Data Governance | 数据如何被管理和治理 | [[DCMM]]、[[DAMA-DMBOK]]、[[Metadata Management]]、[[Data Quality]] | 治理体系、评估表 |
 | 03-Data Architecture | 数据系统如何分层与演进 | [[Data Architecture]]、[[Lakehouse]]、[[Data Warehouse]] | 架构蓝图、技术路线 |

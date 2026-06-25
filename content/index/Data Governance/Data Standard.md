@@ -49,7 +49,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - governs:: [[Indicator System]]
 - governs:: [[Semantic Layer]]
 - supports:: [[Data Quality]]

@@ -1,7 +1,7 @@
 ---
 title: Time Travel
 aliases:
-description:
+description: Time Travel = 给一张表加上「版本」，让你能查询任意历史时刻的数据快照——本质上就是对数据做 git checkout。
 tags:
   - index
   - lakehouse
@@ -11,7 +11,7 @@ publishDate: 2026-06-14T11:13
 language: EN
 draft: true
 publish: true
-summary: Time Travel = 给一张表加上「版本」，让你能查询任意历史时刻的数据快照——本质上就是对数据做 git checkout。
+summary:
 ---
 ## 它解决什么问题
 

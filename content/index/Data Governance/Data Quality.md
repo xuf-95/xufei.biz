@@ -48,7 +48,7 @@ flowchart TB
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - depends-on:: [[Metadata Management]]
 - governed-by:: [[Data Standard]]
 - supports:: [[Indicator System]]

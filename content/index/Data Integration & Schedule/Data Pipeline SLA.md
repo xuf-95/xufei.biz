@@ -53,7 +53,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-大数据全栈工程师能力地图]]
+- part-of:: [[MOC-BigData Map]]
 - depends-on:: [[Data Lineage]]
 - supports:: [[Data Quality]]
 - related:: [[Apache DolphinScheduler]]

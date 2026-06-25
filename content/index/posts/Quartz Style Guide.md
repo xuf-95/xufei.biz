@@ -443,4 +443,4 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 - related:: [[Quartz Diagram Style Guide]]
 - related:: [[UI Evolution Monitor]]
 - supports:: [[Bigdata Wiki OS]]
-- supports:: [[MOC-大数据全栈工程师能力地图]]
+- supports:: [[MOC-BigData Map]]

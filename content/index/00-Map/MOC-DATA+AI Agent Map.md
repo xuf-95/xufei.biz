@@ -1,5 +1,5 @@
 ---
-title: MOC-DATA+AI Agent 地图
+title: MOC-DATA+AI Agent Map
 aliases:
   - DATA AI Agent Map
   - Data Agent Capability Map

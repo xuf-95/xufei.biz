@@ -53,7 +53,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - depends-on:: [[Metadata Management]]
 - supports:: [[Data Quality]]
 - supports:: [[Data Observability]]

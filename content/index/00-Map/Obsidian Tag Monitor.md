@@ -9,7 +9,7 @@ tags:
   - status/review
 description: 使用 Obsidian Dataview 监控 tag 分布、孤立 tag、命名异常和缺失 frontmatter。
 date: 2026-06-17
-publish: true
+publish: false
 ---
 
 ## Purpose

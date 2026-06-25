@@ -87,7 +87,7 @@ flowchart TB
 
 ## Links
 
-- part-of:: [[MOC-DATA+AI Agent 地图]]
+- part-of:: [[MOC-DATA+AI Agent Map]]
 - depends-on:: [[Semantic Layer]]
 - depends-on:: [[Metadata Management]]
 - depends-on:: [[Data Quality]]

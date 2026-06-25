@@ -49,7 +49,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DATA+AI Agent 地图]]
+- part-of:: [[MOC-DATA+AI Agent Map]]
 - depends-on:: [[Indicator System]]
 - depends-on:: [[Metadata Management]]
 - governed-by:: [[Data Standard]]

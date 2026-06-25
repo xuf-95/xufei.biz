@@ -48,7 +48,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - supports:: [[Data Quality]]
 - supports:: [[Semantic Layer]]
 - supports:: [[Data Agent Architecture]]

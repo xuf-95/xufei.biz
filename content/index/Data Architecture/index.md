@@ -52,8 +52,8 @@ publish: false
 ## 相关内容
 
 - [[Bigdata Wiki OS]] - 面向大数据全栈工程师、数据架构师与未来 CDO/CDAO 的个人知识图谱系统规划
-- [[MOC-数据架构师能力地图]] - 数据架构师能力地图
-- [[MOC-DCMM-DAMA 数据治理地图]] - DCMM、DAMA 与治理能力地图
+- [[MOC-Data Architecture Map]] - 数据架构师能力地图
+- [[MOC-DCMM-DAMA Map]] - DCMM、DAMA 与治理能力地图
 - [[CDO]] - CDO/CDAO 视角下的数据战略和商业价值
 - [[Metadata Management]] - 元数据、血缘、目录和治理上下文
 - [[Semantic Layer]] - 指标、维度、权限和 Agent 查询语义层

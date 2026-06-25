@@ -14,6 +14,8 @@ views:
       - tags
       - file.ctime
       - file.mtime
+      - description
+      - summary
     sort:
       - property: file.folder
         direction: ASC

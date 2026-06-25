@@ -30,15 +30,24 @@ const config: QuartzConfig = {
       colors: {
         // Apple-like light: white surface, black/gray type, no blue in UI tokens
         lightMode: {
-          light: "#ffffff",
-          lightgray: "#d2d2d7",
-          gray: "#86868b",
-          darkgray: "#6e6e73",
-          dark: "#000000",
-          secondary: "#2c2c2c",
-          tertiary: "#000000",
-          highlight: "rgba(0, 0, 0, 0.06)",
-          textHighlight: "rgba(0, 0, 0, 0.14)",
+          // light: "#ffffff",
+          // lightgray: "#d2d2d7",
+          // gray: "#86868b",
+          // darkgray: "#6e6e73",
+          // dark: "#000000",
+          // secondary: "#2c2c2c",
+          // tertiary: "#000000",
+          // highlight: "rgba(0, 0, 0, 0.06)",
+          // textHighlight: "rgba(0, 0, 0, 0.14)",
+          light: "#f5eedd", // warm letterpress paper
+          lightgray: "#e3d9c0", // aged paper borders / code bg
+          gray: "#9a8e76", // muted warm gray (dates, line numbers)
+          darkgray: "#2d4673", // navy ink body text (reads clearly blue, not black)
+          dark: "#16294e", // deep navy headings
+          secondary: "#284d78", // navy links / title / primary accent
+          tertiary: "#c8482b", // bright orange-red (hover, active, graph)
+          highlight: "rgba(200, 72, 43, 0.1)", // faint vermilion ink wash
+          textHighlight: "#f4c84b88", // warm yellow marker
         },
         darkMode: {
           light: "#121212" /* 背景色：Udara 风格的深灰黑 */,

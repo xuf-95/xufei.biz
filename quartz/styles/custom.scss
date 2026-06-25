@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "./base.scss";
 
 // put your custom CSS here!
@@ -21,8 +22,26 @@
 :root {
   --site-shell-max: 96rem;
   --site-shell-pad: clamp(1.25rem, 6vw, 5.5rem);
+  --site-shell-left: max(0px, calc((100vw - var(--site-shell-max)) / 2));
+  --page-layout-max: calc(#{map.get($breakpoints, desktop)} + 300px);
+  --page-layout-left: max(0px, calc((100vw - var(--page-layout-max)) / 2));
+  --content-column-left: calc(var(--page-layout-left) + #{$sidePanelWidth} + 5px);
+  --toc-heading-pad-left: 8px;
+  --toc-rail-left: calc(
+    var(--site-shell-left) + var(--site-shell-pad) - var(--toc-heading-pad-left)
+  );
+  --toc-inline-offset: max(
+    0px,
+    calc(var(--toc-rail-left) - var(--page-layout-left) - 32px)
+  );
   --external-link-icon-width: 0.98em;
   --external-link-icon-height: 0.98em;
+}
+
+@media all and (max-width: 1200px) {
+  :root {
+    --site-shell-left: 1rem;
+  }
 }
 
 %external-link-icon-base {
@@ -429,15 +448,27 @@ article .footnotes.sidenotes-source {
   padding-top: 0 !important;
 }
 
-// Left TOC: keep the LessWrong-style rail close to the viewport edge.
+.page #quartz-body .sidebar.left {
+  height: auto;
+  position: relative;
+}
+
+// Left TOC: align the dash rail with the site logo while keeping expanded labels out of the article.
 .page #quartz-body .sidebar.left .toc {
-  position: fixed;
-  left: clamp(1.5rem, 1.8vw, 2rem);
+  --toc-expanded-width: min(
+    260px,
+    max(
+      var(--toc-collapsed-width),
+      calc(var(--content-column-left) - var(--toc-rail-left) - 1rem)
+    )
+  );
+  position: sticky;
+  left: auto;
   top: clamp(5.5rem, 12vh, 8rem);
   align-self: flex-start;
   width: var(--toc-collapsed-width);
   max-width: 100%;
-  margin: 0;
+  margin: 0 0 0 var(--toc-inline-offset);
 }
 
 .page #quartz-body .sidebar.left .toc:hover,

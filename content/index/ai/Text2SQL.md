@@ -56,7 +56,7 @@ Text2SQL 的难点不在 SQL 语法，而在业务语义。真实落地必须依
 
 ## Links
 
-- part-of:: [[MOC-DATA+AI Agent 地图]]
+- part-of:: [[MOC-DATA+AI Agent Map]]
 - depends-on:: [[Semantic Layer]]
 - depends-on:: [[Metrics Governance]]
 - depends-on:: [[Metadata Management]]

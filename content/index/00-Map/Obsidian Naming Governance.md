@@ -9,7 +9,7 @@ tags:
   - status/evergreen
 description: 规定 Bigdata Wiki OS 中 tags、filename、title、aliases 和双链的命名边界。
 date: 2026-06-17
-publish: true
+publish: false
 ---
 
 ## Purpose

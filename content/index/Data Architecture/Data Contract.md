@@ -56,7 +56,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-数据架构师能力地图]]
+- part-of:: [[MOC-Data Architecture Map]]
 - depends-on:: [[Data Standard]]
 - depends-on:: [[Data Quality]]
 - supports:: [[Data Pipeline SLA]]

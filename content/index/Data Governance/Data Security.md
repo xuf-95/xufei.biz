@@ -52,7 +52,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - governed-by:: [[Data Governance Operating Model]]
 - supports:: [[Agent Governance]]
 - depends-on:: [[Metadata Management]]

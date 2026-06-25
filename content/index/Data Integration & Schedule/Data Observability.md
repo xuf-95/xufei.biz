@@ -55,7 +55,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-大数据全栈工程师能力地图]]
+- part-of:: [[MOC-BigData Map]]
 - depends-on:: [[Metadata Management]]
 - depends-on:: [[Data Lineage]]
 - supports:: [[Data Pipeline SLA]]

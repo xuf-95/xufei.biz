@@ -1,5 +1,5 @@
 ---
-title: MOC-DCMM-DAMA 数据治理地图
+title: MOC-DCMM-DAMA Map
 aliases:
   - DCMM DAMA Data Governance Map
   - 数据治理能力地图
@@ -101,6 +101,6 @@ flowchart LR
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
-- related:: [[MOC-数据架构师能力地图]]
+- related:: [[MOC-Data Architecture Map]]
 - supports:: [[CDO]]
 - supports:: [[MOC-职业资产地图]]

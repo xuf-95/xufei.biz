@@ -90,6 +90,6 @@ flowchart LR
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
-- related:: [[MOC-数据架构师能力地图]]
-- related:: [[MOC-DATA+AI Agent 地图]]
+- related:: [[MOC-Data Architecture Map]]
+- related:: [[MOC-DATA+AI Agent Map]]
 - supports:: [[MOC-职业资产地图]]

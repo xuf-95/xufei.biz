@@ -1,5 +1,5 @@
 ---
-title: MOC-数据架构师能力地图
+title: MOC-Data Architecture Map
 aliases:
   - Data Architect Capability Map
 tags:
@@ -94,6 +94,6 @@ flowchart TB
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
-- related:: [[MOC-DCMM-DAMA 数据治理地图]]
-- related:: [[MOC-DATA+AI Agent 地图]]
+- related:: [[MOC-DCMM-DAMA Map]]
+- related:: [[MOC-DATA+AI Agent Map]]
 - supports:: [[MOC-职业资产地图]]

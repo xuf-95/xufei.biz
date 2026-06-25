@@ -61,7 +61,7 @@ DAMA-DMBOK 是偏国际通用的数据管理知识框架，强调数据管理有
 
 ## Links
 
-- part-of:: [[MOC-DCMM-DAMA 数据治理地图]]
+- part-of:: [[MOC-DCMM-DAMA Map]]
 - compares-with:: [[DCMM]]
 - supports:: [[CDO]]
 - related:: [[Metadata Management]]

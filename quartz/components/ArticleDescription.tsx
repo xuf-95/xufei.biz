@@ -8,7 +8,11 @@ const ArticleDescription: QuartzComponent = ({ fileData, displayClass }: QuartzC
     return null
   }
 
-  return <p class={classNames(displayClass, "article-description")}>{description}</p>
+  return (
+    <p class={classNames(displayClass, "article-description")}>
+      <span class="article-description-text">{description}</span>
+    </p>
+  )
 }
 
 ArticleDescription.css = `
@@ -21,6 +25,13 @@ ArticleDescription.css = `
   font-size: 1.2rem;
   line-height: 1.7;
   opacity: 0.92;
+}
+
+.article-description-text {
+  display: inline-block;
+  font-style: oblique 10deg;
+  transform: skewX(-8deg);
+  transform-origin: center;
 }
 `
 
