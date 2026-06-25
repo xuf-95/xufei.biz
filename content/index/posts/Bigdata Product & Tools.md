@@ -6,9 +6,10 @@ tags:
   - product
   - Introduction
 date: 2023-08-06
-publish: false
 aliases:
   - Bigdata Product & Tools
+publish: false
+draft:
 ---
 ### Big Data  Product & Tools
 

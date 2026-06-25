@@ -10,8 +10,8 @@ tags:
   - diagram
 description: 记录本站架构图、流程图、能力地图和设计图的 HTML 组件写法，作为 Mermaid 之外的可维护视觉方案。
 date: 2026-06-11
-publish: true
-draft: false
+publish: false
+draft: true
 ---
 
 ## Purpose

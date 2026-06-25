@@ -1,12 +1,10 @@
 ---
-title: "Bloger List"
+title: Bloger List
 tags:
   - resources
 date: 2025-02-14
 draft: true
-publish: true
-
-
+publish: false
 ---
 
 ### Famous Bloger

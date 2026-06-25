@@ -7,7 +7,7 @@ tags:
   - Introduction
 date: 2023-08-06
 draft: true
-publish: true
+publish: false
 aliases:
   - Markdown syntax guide
 ---

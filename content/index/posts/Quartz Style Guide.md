@@ -10,8 +10,8 @@ tags:
   - digital-garden
 description: 记录本站 Quartz 官方样式和自定义样式的使用方式、适用场景、示例代码与维护变更。
 date: 2026-06-11
-publish: true
-draft: false
+publish: false
+draft: true
 ---
 
 ## Purpose

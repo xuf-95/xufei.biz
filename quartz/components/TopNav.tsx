@@ -32,19 +32,19 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    label: "Index",
+    label: "Moc",
     path: "/index/",
-    children: [
-      { label: "Map", desc: "Map of Content", path: "/index/00-Map/", abbr: "MP" },
-      { label: "AI", desc: "AI tools & agents", path: "/index/ai/", abbr: "AI" },
-      { label: "OpenBigData", desc: "Data engineering", path: "/index/Open-BigData/", abbr: "BD" },
-      { label: "Posts", desc: "Notes & writings", path: "/index/posts/", abbr: "P" },
-    ],
+    // children: [
+    //   { label: "Map", desc: "Map of Content", path: "/index/00-Map/", abbr: "MP" },
+    //   { label: "AI", desc: "AI tools & agents", path: "/index/ai/", abbr: "AI" },
+    //   { label: "OpenBigData", desc: "Data engineering", path: "/index/Open-BigData/", abbr: "BD" },
+    //   { label: "Posts", desc: "Notes & writings", path: "/index/posts/", abbr: "P" },
+    // ],
   },
   { label: "Tags", path: "/tags/" },
   // { label: "Map",   path: "/map/"          },
   // { label: "Goods", path: "/hobby/goods/"  },
-  { label: "Data Engineer Tools", path: "/tools/data-engineer-tools/" },
+  { label: "Tools", path: "/tools/data-engineer-tools/" },
 ]
 
 const ChevronDown = () => (
