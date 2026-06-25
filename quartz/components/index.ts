@@ -6,6 +6,7 @@ import ArticleDescription from "./ArticleDescription"
 import ArticleSummary from "./ArticleSummary"
 import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
+import GitHubLink from "./GitHubLink"
 import ReaderMode from "./ReaderMode"
 import Head from "./Head"
 import PageTitle from "./PageTitle"
@@ -39,6 +40,7 @@ export {
   TagContent,
   FolderContent,
   Darkmode,
+  GitHubLink,
   ReaderMode,
   Head,
   PageTitle,

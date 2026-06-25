@@ -126,7 +126,7 @@ header {
 /* Darkmode 和 ReaderMode 图标间距缩短 */
 .site-header-shell > .darkmode,
 .site-header-shell > .readermode {
-  margin-left: 3px !important; /* 原来可能是 1rem，改为 6px */
+  margin-left: 0 !important;
 }
 
 /* Search 和 Darkmode 之间加一点间隔 */
@@ -159,6 +159,16 @@ header {
   .page-header .search-button:hover {
     background-color: var(--highlight);
     border-radius: 6px;
+  }
+
+  header .darkmode:hover,
+  header .darkmode:focus-visible,
+  header .github-link:hover,
+  header .github-link:focus-visible,
+  header .search-button:hover,
+  header .search-button:focus-visible {
+    background-color: transparent !important;
+    box-shadow: none !important;
   }
 }
 

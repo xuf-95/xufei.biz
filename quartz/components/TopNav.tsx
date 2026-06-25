@@ -32,7 +32,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    label: "Moc",
+    label: "Blog",
     path: "/index/",
     // children: [
     //   { label: "Map", desc: "Map of Content", path: "/index/00-Map/", abbr: "MP" },
@@ -170,6 +170,7 @@ header.header-hidden:focus-within {
 }
 
 .site-header-shell > .search,
+.site-header-shell > .github-link,
 .site-header-shell > .darkmode,
 .site-header-shell > .readermode {
   flex: 0 0 auto !important;
@@ -181,8 +182,10 @@ header.header-hidden:focus-within {
 }
 
 .site-header-shell > .search .search-button {
-  height: 34px !important;
+  height: 2rem !important;
+  width: 2rem !important;
   border-radius: 6px !important;
+  background: transparent !important;
 }
 
 .site-header-shell > .darkmode,

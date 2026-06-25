@@ -18,10 +18,10 @@ export default ((userOpts?: Partial<SearchOptions>) => {
   const Search: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const opts = { ...defaultOptions, ...userOpts }
     const searchPlaceholder = i18n(cfg.locale).components.search.searchBarPlaceholder
+    const searchTitle = i18n(cfg.locale).components.search.title
     return (
       <div class={classNames(displayClass, "search")}>
-        <button class="search-button">
-          <p>{i18n(cfg.locale).components.search.title}</p>
+        <button class="search-button" aria-label={searchTitle} title={searchTitle}>
           <Icon name="search" />
         </button>
         <div class="search-container">

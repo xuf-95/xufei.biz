@@ -20,7 +20,7 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [Component.TopNav(), Component.Darkmode(), Component.Search(), ],
+  header: [Component.TopNav(), Component.GitHubLink(), Component.Darkmode(), Component.Search()],
   afterBody: [
     // ...recentNotes.map((c) => Component.DesktopOnly(c)),
     // Component.DesktopOnly(

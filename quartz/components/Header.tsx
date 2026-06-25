@@ -19,7 +19,7 @@ header {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: clamp(0.45rem, 1.4vw, 1rem);
+  gap: 0.55rem;
   width: 100%;
   max-width: var(--site-shell-max);
   height: 100%;
