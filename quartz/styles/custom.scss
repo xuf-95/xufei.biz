@@ -798,6 +798,45 @@ body[data-slug="index/Posts/Icon-Test"] {
 // 首页 Knowledge Map 卡片入场动画
 // 只对首页生效，用 body[data-slug="index"] 限定
 body[data-slug="index"] {
+  --home-dots-color: color-mix(in srgb, var(--dark) 18%, transparent);
+  --home-dots-soft-color: color-mix(in srgb, var(--dark) 8%, transparent);
+
+  &::before {
+    content: "";
+    position: fixed;
+    inset: -6vmax;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle, var(--home-dots-color) 0 1px, transparent 1.35px),
+      radial-gradient(circle, var(--home-dots-soft-color) 0 1px, transparent 1.45px);
+    background-position:
+      0 0,
+      9px 9px;
+    background-size:
+      18px 18px,
+      54px 54px;
+    opacity: 0.3;
+    transform: scale(1);
+    transform-origin: center;
+    filter: brightness(0.88);
+    animation: home-dots-breathe 7.5s ease-in-out infinite;
+  }
+
+  #quartz-root {
+    position: relative;
+    z-index: 1;
+  }
+
+  .center > .page-header {
+    padding-top: 56px !important;
+
+    > .popover-hint {
+      display: none !important;
+      margin: 0 !important;
+    }
+  }
+
   .callout[data-callout="column"] > .callout-content > .callout {
     opacity: 0;
     animation: home-card-fadein 0.4s ease forwards;
@@ -815,6 +854,49 @@ body[data-slug="index"] {
     &:nth-child(4) {
       animation-delay: 0.26s;
     }
+  }
+}
+
+@keyframes home-dots-breathe {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+    filter: brightness(0.78);
+  }
+
+  45% {
+    opacity: 0.42;
+    transform: scale(1.018);
+    filter: brightness(1.08);
+  }
+
+  70% {
+    opacity: 0.26;
+    transform: scale(1.008);
+    filter: brightness(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-slug="index"]::before {
+    animation: home-dots-breathe-reduced 12s ease-in-out infinite;
+    opacity: 0.2;
+    transform: none;
+    filter: brightness(0.9);
+  }
+}
+
+@keyframes home-dots-breathe-reduced {
+  0%,
+  100% {
+    opacity: 0.16;
+    filter: brightness(0.82);
+  }
+
+  50% {
+    opacity: 0.32;
+    filter: brightness(1.02);
   }
 }
 
