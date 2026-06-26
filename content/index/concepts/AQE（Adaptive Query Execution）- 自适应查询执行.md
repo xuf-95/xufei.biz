@@ -1,5 +1,5 @@
 ---
-title: AQE（Adaptive Query Execution，自适应查询执行）
+title: AQE（Adaptive Query Execution）- 自适应查询执行
 aliases:
 description:
 tags:

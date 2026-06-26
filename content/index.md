@@ -3,10 +3,14 @@ title: I'm xufei
 draft: true
 publish: true
 ---
+<br />
+<br />
 
 ## Sherlock XuFei
+<br />
+Hey! I’m XuFei, a fanatical open sourceror and data engineer.
 
-Hey! I’m XuFei, This is my little digital garden on the Internet — a place for notes, maps, and working references around data engineering, architecture and AI. based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management.
+This is my little digital garden on the Internet — a place for notes, maps, and working references around data engineering, architecture and AI. based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management.
 
 Currently, I’m exploring how modern data systems can become more understandable, governable, and useful: from big data infrastructure and cloud-native platforms, to data architecture, governance, semantic layers, and AI-assisted workflows.
 
