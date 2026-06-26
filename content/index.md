@@ -3,12 +3,10 @@ title: I'm xufei
 draft: true
 publish: true
 ---
-<figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
-  <img src="/images/hand.png"/>
-</figure>
-Welcome!
 
-I’m xufei. This is my little digital garden on the Internet — a place for notes, maps, and working references around data engineering, architecture and AI. based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management. 
+## Sherlock XuFei
+
+Hey! I’m XuFei, This is my little digital garden on the Internet — a place for notes, maps, and working references around data engineering, architecture and AI. based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management.
 
 Currently, I’m exploring how modern data systems can become more understandable, governable, and useful: from big data infrastructure and cloud-native platforms, to data architecture, governance, semantic layers, and AI-assisted workflows.
 
@@ -17,16 +15,18 @@ On a broader level, I care about building knowledge systems that help data pract
 As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit:
 
 - [[Bigdata Wiki OS]]: the operating map for this knowledge garden;
-- [[MOC-BigData Map]]: a capability map for full-stack data engineering;
-- [[MOC-Data Architecture Map]]: notes on data architecture, modeling, platforms, and tradeoffs;
-- [[MOC-DCMM-DAMA Map]]: a governance-oriented path through DCMM, DAMA, and CDO topics;
 - [[MOC-DATA+AI Agent Map]]: experiments and references around data, AI, and agents.
+- [[MOC-BigData Map]]: a capability map for full-stack data engineering;
+- [[MOC-DCMM-DAMA Map]]: a governance-oriented path through DCMM, DAMA, and CDO topics;
 
 Outside of programming, I enjoy coffee, cycling, and tennis.
 
+<figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
+  <img src="/images/hand.png"/>
+</figure>
 
+%%
 
-%% 
 <div class="home-two-col-section">
 <div class="home-col-left">
 <h3 class="home-col-title">Bigdata Wiki OS</h3>
@@ -115,8 +115,8 @@ Outside of programming, I enjoy coffee, cycling, and tennis.
 
 <!-- Made with [OSS Insight](https://ossinsight.io/) -->   %%
 
+%%
 
-%% 
 <div class="home-banner">
 
   <div class="home-banner-left">
