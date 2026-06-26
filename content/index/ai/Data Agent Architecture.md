@@ -9,7 +9,7 @@ tags:
   - data-architecture
 description: 数据 Agent 架构描述 LLM 如何结合知识库、元数据、语义层、工具和治理规则完成数据工作。
 date: 2026-06-11
-publish: true
+publish: false
 type: architecture
 dcmm_domain: 数据应用流通
 dama_area:

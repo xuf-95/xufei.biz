@@ -9,7 +9,7 @@ tags:
   - career
 description: 用统一结构沉淀大数据工程、架构、治理和 DATA+AI 项目案例，服务工作复盘、面试和演讲。
 date: 2026-06-14
-publish: true
+publish: false
 type: case-library
 status: seed
 ---

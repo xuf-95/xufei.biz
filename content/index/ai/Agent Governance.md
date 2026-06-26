@@ -9,7 +9,7 @@ tags:
   - data-governance
 description: Agent Governance 定义 AI Agent 的权限、工具、审计、质量、安全和人工确认边界。
 date: 2026-06-14
-publish: true
+publish: false
 type: playbook
 dcmm_domain: 数据治理
 dama_area:

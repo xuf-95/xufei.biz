@@ -9,7 +9,7 @@ tags:
   - bigdata
 description: 用于把大数据架构、治理、工程和 DATA+AI 经验组织成演讲、教程和分享材料。
 date: 2026-06-14
-publish: true
+publish: false
 type: playbook
 status: seed
 ---
