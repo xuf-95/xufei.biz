@@ -25,9 +25,9 @@ As far as “about” pages go, I hope this acts as an open invitation into the 
 
 Outside of programming, I enjoy coffee, cycling, and tennis.
 
-<figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
+<!-- <figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
   <img src="/images/hand.png"/>
-</figure>
+</figure> -->
 
 %%
 

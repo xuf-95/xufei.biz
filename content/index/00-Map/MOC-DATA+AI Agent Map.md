@@ -9,7 +9,7 @@ tags:
   - moc
 description: 组织 DATA+AI Agent、Text2SQL、语义层、RAG、数据治理与数据工作自动化的知识地图。
 date: 2026-06-11
-publish: true
+publish: false
 ---
 
 ## Scope
@@ -30,7 +30,7 @@ publish: true
 - [[Metadata Management]]
 - [[Data Quality]]
 
-## Agent Architecture
+## [[Agent]] Architecture
 
 ```mermaid
 flowchart TB
@@ -48,7 +48,7 @@ flowchart TB
 - Knowledge Compile Agent：把资料、项目经验、AI 对话编译为 Markdown Wiki。
 - Link Review Agent：识别孤岛笔记、重复概念和缺失双链。
 - Text2SQL Agent：依赖 [[Semantic Layer]]、[[Indicator System]]、权限和审计。
-- Data Quality Agent：生成质量规则、异常解释和修复建议。
+- Data Quality [[Agent]]：生成质量规则、异常解释和修复建议。
 - Data Catalog Agent：补全表、字段、血缘和业务术语。
 - DataOps Agent：定位任务失败、SLA 风险和依赖链路。
 - BI Insight Agent：解释指标波动并生成分析报告。
