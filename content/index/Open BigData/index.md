@@ -1,10 +1,12 @@
 ---
-title: Open BigData
+title: Apache Hadoop HomaPage
+date: 2022-06-20
 tags:
   - bigdata
-date: 2022-01-25
-draft: true
-publish: true
+  - data-compute
+publish: false
 aliases:
-  - Open BigData HomaPage
+  - Apache Hadoop HomaPage
 ---
+
+
