@@ -3,8 +3,9 @@ const tocInit = () => {
   if (!sidebar) return
   const sidebarEl: HTMLElement = sidebar
   const wrapper = sidebarEl.closest<HTMLElement>(".toc-wrapper")
+  const siteFooter = document.querySelector<HTMLElement>("footer.site-footer")
 
-  const expand  = () => wrapper?.classList.add("is-expanded")
+  const expand = () => wrapper?.classList.add("is-expanded")
   const collapse = () => wrapper?.classList.remove("is-expanded")
   wrapper?.addEventListener("mouseenter", expand)
   wrapper?.addEventListener("mouseleave", collapse)
@@ -27,15 +28,22 @@ const tocInit = () => {
     }
     const labelText =
       row.querySelector<HTMLElement>(".toc-lbl")?.textContent?.trim().toLowerCase() ?? ""
-    const matched = articleHeadings.find(
-      (h) => h.textContent?.trim().toLowerCase() === labelText,
-    )
+    const matched = articleHeadings.find((h) => h.textContent?.trim().toLowerCase() === labelText)
     return matched ?? document.createElement("div")
   })
 
   let currentActive = -1
   let rafId: number | null = null
   let stepTimers: ReturnType<typeof setTimeout>[] = []
+
+  function updateFooterOverlap() {
+    if (!wrapper || !siteFooter) return
+
+    const tocRect = wrapper.getBoundingClientRect()
+    const footerRect = siteFooter.getBoundingClientRect()
+    const isOverFooter = footerRect.top < tocRect.bottom && footerRect.bottom > tocRect.top
+    wrapper.classList.toggle("is-over-footer", isOverFooter)
+  }
 
   function clearStepTimers() {
     stepTimers.forEach(clearTimeout)
@@ -64,7 +72,7 @@ const tocInit = () => {
     // Keep the active item visible inside the scrolling sidebar
     const activeEl = headingRows[idx]
     if (activeEl) {
-      const target = activeEl.offsetTop - sidebarEl.clientHeight * 0.38
+      const target = activeEl.offsetTop - (sidebarEl.clientHeight - activeEl.offsetHeight) / 2
       easeScroll(sidebarEl, Math.max(0, target), 320)
     }
   }
@@ -80,7 +88,7 @@ const tocInit = () => {
     if (target === currentActive) return
     clearStepTimers()
 
-    const dir  = target > currentActive ? 1 : -1
+    const dir = target > currentActive ? 1 : -1
     const dist = Math.abs(target - currentActive)
 
     if (dist <= 1) {
@@ -106,12 +114,13 @@ const tocInit = () => {
     if (rafId) cancelAnimationFrame(rafId)
     rafId = requestAnimationFrame(() => {
       const scrollTop = window.scrollY
-      const offset    = 100
+      const offset = 100
       let best = 0
       sections.forEach((el, i) => {
         if (el && el.offsetTop > 0 && el.offsetTop <= scrollTop + offset) best = i
       })
       activate(best)
+      updateFooterOverlap()
     })
   }
 
@@ -130,7 +139,7 @@ const tocInit = () => {
   })
 
   function easeScroll(el: HTMLElement, to: number, ms: number) {
-    const from  = el.scrollTop
+    const from = el.scrollTop
     const delta = to - from
     if (Math.abs(delta) < 1) return
     let t0: number | null = null
@@ -144,10 +153,13 @@ const tocInit = () => {
   }
 
   applyActive(0)
+  updateFooterOverlap()
   onScroll()
   window.addEventListener("scroll", onScroll, { passive: true })
+  window.addEventListener("resize", updateFooterOverlap, { passive: true })
   window.addCleanup(() => {
     window.removeEventListener("scroll", onScroll)
+    window.removeEventListener("resize", updateFooterOverlap)
     wrapper?.removeEventListener("mouseenter", expand)
     wrapper?.removeEventListener("mouseleave", collapse)
     if (rafId) cancelAnimationFrame(rafId)

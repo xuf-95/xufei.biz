@@ -6,30 +6,45 @@
   --toc-expanded-width: 260px;
 
   /* dash colours */
-  --toc-dash-base:  color-mix(in srgb, var(--darkgray) 28%, transparent);
+  --toc-dash-base: color-mix(in srgb, var(--darkgray) 28%, transparent);
   --toc-dash-near1: color-mix(in srgb, var(--darkgray) 48%, transparent);
   --toc-dash-near2: color-mix(in srgb, var(--darkgray) 36%, transparent);
   --toc-dash-hover: color-mix(in srgb, var(--darkgray) 54%, transparent);
   --toc-dash-active: var(--dark);
 
   /* label colours */
-  --toc-lbl-muted:  color-mix(in srgb, var(--darkgray) 58%, transparent);
-  --toc-lbl-near:   color-mix(in srgb, var(--darkgray) 76%, transparent);
+  --toc-lbl-muted: color-mix(in srgb, var(--darkgray) 58%, transparent);
+  --toc-lbl-near: color-mix(in srgb, var(--darkgray) 76%, transparent);
   --toc-lbl-active: var(--dark);
 
   /* dash widths per level: base / near1 / near2 / active */
-  /* h1 */ --dw1b: 18px; --dw1n1: 20px; --dw1n2: 19px; --dw1a: 24px;
-  /* h2 */ --dw2b: 14px; --dw2n1: 16px; --dw2n2: 15px; --dw2a: 20px;
-  /* h3 */ --dw3b: 10px; --dw3n1: 12px; --dw3n2: 11px; --dw3a: 16px;
+  /* h1 */
+  --dw1b: 18px;
+  --dw1n1: 20px;
+  --dw1n2: 19px;
+  --dw1a: 24px;
+  /* h2 */
+  --dw2b: 14px;
+  --dw2n1: 16px;
+  --dw2n2: 15px;
+  --dw2a: 20px;
+  /* h3 */
+  --dw3b: 10px;
+  --dw3n1: 12px;
+  --dw3n2: 11px;
+  --dw3a: 16px;
 
   /* ── layout ── */
   position: relative;
   display: block;
   width: var(--toc-collapsed-width);
   max-width: min(var(--toc-expanded-width), calc(100vw - 2rem));
-  min-height: calc(100vh - 8rem);
+  height: fit-content;
+  max-height: calc(100vh - 4rem);
   overflow: hidden;
-  transition: width 0.22s ease;
+  transition:
+    width 0.22s ease,
+    opacity 0.16s ease;
   z-index: 3;
 
   &.is-expanded,
@@ -43,39 +58,49 @@
       pointer-events: auto;
     }
   }
+
+  &.is-over-footer {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
-.toc-wrapper.desktop-only { display: block; }
+.toc-wrapper.desktop-only {
+  display: block;
+}
 
 /* ─── card / scroll container ─────────────────── */
 .toc-card {
-  position: sticky;
-  top: 2rem;
+  position: relative;
   width: 100%;
-  max-height: calc(100vh - 4rem);
+  max-height: inherit;
   overflow: hidden;
   background: transparent;
   border: none;
 }
 
 .toc-sidebar {
-  max-height: calc(100vh - 4rem);
+  max-height: inherit;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.5rem 0 1.5rem;
+  padding: 0.5rem 0;
   scrollbar-width: none;
   overscroll-behavior: contain;
 
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .toc-wrapper.is-expanded .toc-sidebar,
-.toc-wrapper:hover       .toc-sidebar,
+.toc-wrapper:hover .toc-sidebar,
 .toc-wrapper:focus-within .toc-sidebar {
-  max-height: calc(100vh - 11rem);
+  max-height: inherit;
   scrollbar-width: none;
 
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ─── heading row ──────────────────────────────── */
@@ -94,8 +119,12 @@
   /* height transitions in sync with the wrapper's width */
   transition: height 0.22s ease;
 
-  &:hover .toc-lbl    { color: var(--toc-lbl-active); }
-  &:hover .toc-dash   { background: var(--toc-dash-hover); }
+  &:hover .toc-lbl {
+    color: var(--toc-lbl-active);
+  }
+  &:hover .toc-dash {
+    background: var(--toc-dash-hover);
+  }
 
   &:focus-visible {
     outline: 1px dashed var(--toc-dash-base);
@@ -104,16 +133,18 @@
 }
 
 /* h1 slightly taller even when compact */
-.toc-h1 { height: 15px; }
+.toc-h1 {
+  height: 15px;
+}
 
 /* ── expanded: restore full spacing ── */
 .toc-wrapper.is-expanded .toc-heading,
-.toc-wrapper:hover       .toc-heading,
+.toc-wrapper:hover .toc-heading,
 .toc-wrapper:focus-within .toc-heading {
   height: 22px;
 }
 .toc-wrapper.is-expanded .toc-h1,
-.toc-wrapper:hover       .toc-h1,
+.toc-wrapper:hover .toc-h1,
 .toc-wrapper:focus-within .toc-h1 {
   height: 26px;
 }
@@ -125,17 +156,23 @@
   border-radius: 1px;
   background: var(--toc-dash-base);
   transition:
-    width  0.24s cubic-bezier(0.34, 1.56, 0.64, 1),
+    width 0.24s cubic-bezier(0.34, 1.56, 0.64, 1),
     background 0.2s ease;
 }
 
 /* base widths */
-.toc-h1 .toc-dash { width: var(--dw1b); }
-.toc-h2 .toc-dash { width: var(--dw2b); }
+.toc-h1 .toc-dash {
+  width: var(--dw1b);
+}
+.toc-h2 .toc-dash {
+  width: var(--dw2b);
+}
 .toc-h3 .toc-dash,
 .toc-h4 .toc-dash,
 .toc-h5 .toc-dash,
-.toc-h6 .toc-dash { width: var(--dw3b); }
+.toc-h6 .toc-dash {
+  width: var(--dw3b);
+}
 
 /* ─── label ────────────────────────────────────── */
 .toc-lbl {
@@ -152,48 +189,82 @@
   opacity: 0;
   transform: translateX(-0.3rem);
   transition:
-    color     0.18s ease,
-    opacity   0.18s ease,
+    color 0.18s ease,
+    opacity 0.18s ease,
     transform 0.18s ease;
 }
 
-.toc-h2 .toc-lbl { font-size: 0.82rem; }
+.toc-h2 .toc-lbl {
+  font-size: 0.82rem;
+}
 .toc-h3 .toc-lbl,
 .toc-h4 .toc-lbl,
 .toc-h5 .toc-lbl,
-.toc-h6 .toc-lbl { font-size: 0.78rem; padding-left: 0.4rem; }
+.toc-h6 .toc-lbl {
+  font-size: 0.78rem;
+  padding-left: 0.4rem;
+}
 
 /* ─── active state ─────────────────────────────── */
 .toc-heading.active {
-  .toc-lbl  { color: var(--toc-lbl-active); font-weight: 640; }
-  .toc-dash { background: var(--toc-dash-active); }
+  .toc-lbl {
+    color: var(--toc-lbl-active);
+    font-weight: 640;
+  }
+  .toc-dash {
+    background: var(--toc-dash-active);
+  }
 }
-.toc-h1.active .toc-dash { width: var(--dw1a); }
-.toc-h2.active .toc-dash { width: var(--dw2a); }
+.toc-h1.active .toc-dash {
+  width: var(--dw1a);
+}
+.toc-h2.active .toc-dash {
+  width: var(--dw2a);
+}
 .toc-h3.active .toc-dash,
 .toc-h4.active .toc-dash,
 .toc-h5.active .toc-dash,
-.toc-h6.active .toc-dash { width: var(--dw3a); }
+.toc-h6.active .toc-dash {
+  width: var(--dw3a);
+}
 
 /* ─── near-active halos ────────────────────────── */
 .toc-heading.near1 {
-  .toc-lbl  { color: var(--toc-lbl-near); }
-  .toc-dash { background: var(--toc-dash-near1); }
+  .toc-lbl {
+    color: var(--toc-lbl-near);
+  }
+  .toc-dash {
+    background: var(--toc-dash-near1);
+  }
 }
-.toc-h1.near1 .toc-dash { width: var(--dw1n1); }
-.toc-h2.near1 .toc-dash { width: var(--dw2n1); }
+.toc-h1.near1 .toc-dash {
+  width: var(--dw1n1);
+}
+.toc-h2.near1 .toc-dash {
+  width: var(--dw2n1);
+}
 .toc-h3.near1 .toc-dash,
-.toc-h4.near1 .toc-dash { width: var(--dw3n1); }
+.toc-h4.near1 .toc-dash {
+  width: var(--dw3n1);
+}
 
-.toc-heading.near2 .toc-dash { background: var(--toc-dash-near2); }
-.toc-h1.near2 .toc-dash { width: var(--dw1n2); }
-.toc-h2.near2 .toc-dash { width: var(--dw2n2); }
+.toc-heading.near2 .toc-dash {
+  background: var(--toc-dash-near2);
+}
+.toc-h1.near2 .toc-dash {
+  width: var(--dw1n2);
+}
+.toc-h2.near2 .toc-dash {
+  width: var(--dw2n2);
+}
 .toc-h3.near2 .toc-dash,
-.toc-h4.near2 .toc-dash { width: var(--dw3n2); }
+.toc-h4.near2 .toc-dash {
+  width: var(--dw3n2);
+}
 
 /* ─── dark mode tweaks ─────────────────────────── */
 :root[saved-theme="dark"] .toc-wrapper {
-  --toc-dash-base:  color-mix(in srgb, var(--darkgray) 36%, transparent);
+  --toc-dash-base: color-mix(in srgb, var(--darkgray) 36%, transparent);
   --toc-dash-near1: color-mix(in srgb, var(--darkgray) 58%, transparent);
   --toc-dash-near2: color-mix(in srgb, var(--darkgray) 44%, transparent);
   --toc-dash-hover: color-mix(in srgb, var(--darkgray) 65%, transparent);
@@ -201,9 +272,13 @@
 
 /* ─── responsive ───────────────────────────────── */
 @media all and ($tablet) {
-  .toc-wrapper { --toc-expanded-width: 230px; }
+  .toc-wrapper {
+    --toc-expanded-width: 230px;
+  }
 }
 
 @media all and ($mobile) {
-  .toc-wrapper { display: none; }
+  .toc-wrapper {
+    display: none;
+  }
 }

@@ -30,10 +30,7 @@
   --toc-rail-left: calc(
     var(--site-shell-left) + var(--site-shell-pad) - var(--toc-heading-pad-left)
   );
-  --toc-inline-offset: max(
-    0px,
-    calc(var(--toc-rail-left) - var(--page-layout-left) - 32px)
-  );
+  --toc-inline-offset: max(0px, calc(var(--toc-rail-left) - var(--page-layout-left) - 32px));
   --external-link-icon-width: 0.98em;
   --external-link-icon-height: 0.98em;
 }
@@ -449,26 +446,30 @@ article .footnotes.sidenotes-source {
 }
 
 .page #quartz-body .sidebar.left {
-  height: auto;
-  position: relative;
+  padding-bottom: 0 !important;
+}
+
+.page #quartz-body .sidebar.left {
+  height: 100vh;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: visible;
 }
 
 // Left TOC: align the dash rail with the site logo while keeping expanded labels out of the article.
 .page #quartz-body .sidebar.left .toc {
   --toc-expanded-width: min(
     260px,
-    max(
-      var(--toc-collapsed-width),
-      calc(var(--content-column-left) - var(--toc-rail-left) - 1rem)
-    )
+    max(var(--toc-collapsed-width), calc(var(--content-column-left) - var(--toc-rail-left) - 1rem))
   );
-  position: sticky;
+  position: relative;
   left: auto;
-  top: clamp(5.5rem, 12vh, 8rem);
+  top: auto;
   align-self: flex-start;
   width: var(--toc-collapsed-width);
   max-width: 100%;
-  margin: 0 0 0 var(--toc-inline-offset);
+  margin: auto 0 auto var(--toc-inline-offset);
 }
 
 .page #quartz-body .sidebar.left .toc:hover,
