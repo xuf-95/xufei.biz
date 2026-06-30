@@ -434,7 +434,7 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
                 }
 
                 if (isExternal && opts.externalLinkIcon) {
-                  node.children.push({
+                  node.children.unshift({
                     type: "element",
                     tagName: "svg",
                     properties: {
