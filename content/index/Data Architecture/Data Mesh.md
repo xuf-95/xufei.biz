@@ -15,6 +15,7 @@ dama_area:
   - Data Governance
 cdo_value: 让业务域对数据资产质量和价值负责，缓解中心化数据团队交付瓶颈。
 status: seed
+socialImage:
 ---
 
 ## Definition

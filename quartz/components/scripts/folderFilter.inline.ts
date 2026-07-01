@@ -3,6 +3,8 @@ const folderFilterInit = () => {
   const languageBar = document.getElementById("language-filter-bar")
   const listEl = document.getElementById("folder-page-list")
   if (!listEl) return
+  if (listEl.dataset.folderFilterBound === "true") return
+  listEl.dataset.folderFilterBound = "true"
 
   // Items are .folder-item-wrap with data-subfolder attribute
   const items = Array.from(listEl.querySelectorAll<HTMLElement>(".folder-item-wrap"))
@@ -54,5 +56,6 @@ const folderFilterInit = () => {
 }
 
 document.addEventListener("nav", folderFilterInit)
+folderFilterInit()
 
 export default folderFilterInit

@@ -1,5 +1,5 @@
 ---
-title: "Apache Airflow"
+title: Apache Airflow
 tags:
   - data-integration
   - pipeline
@@ -7,6 +7,7 @@ tags:
 date: 2023-07-06
 draft: false
 publish: true
+socialImage: airflow-ui
 ---
 
 ##  Airflow 概述
