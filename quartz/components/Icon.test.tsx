@@ -11,6 +11,7 @@ const gardenIcons: IconName[] = [
   "movies",
   "files",
   "folder",
+  "rss",
   "sport",
   "bike",
   "dumbbell",

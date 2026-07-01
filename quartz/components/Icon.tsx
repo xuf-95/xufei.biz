@@ -13,6 +13,7 @@ export type IconName =
   | "moon"
   | "movies"
   | "note"
+  | "rss"
   | "search"
   | "sport"
   | "sun"
@@ -86,6 +87,14 @@ const paths: Record<IconName, JSX.Element> = {
     <>
       <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
       <path d="M13 2v7h7M8 13h8M8 17h5" />
+    </>
+  ),
+  rss: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M7 12a5 5 0 0 1 5 5" />
+      <path d="M7 8a9 9 0 0 1 9 9" />
+      <circle cx="8" cy="17" r="1" fill="currentColor" stroke="none" />
     </>
   ),
   search: (

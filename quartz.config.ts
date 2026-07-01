@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "https://xufei.biz",
+    baseUrl: "xufei.biz",
     ignorePatterns: ["private", "templates", ".obsidian", "drafts/*"],
     defaultDateType: "modified",
     theme: {

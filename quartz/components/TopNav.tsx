@@ -171,6 +171,7 @@ header.header-hidden:focus-within {
 
 .site-header-shell > .search,
 .site-header-shell > .github-link,
+.site-header-shell > .rss-link,
 .site-header-shell > .darkmode,
 .site-header-shell > .readermode {
   flex: 0 0 auto !important;
