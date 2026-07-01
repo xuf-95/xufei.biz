@@ -31,8 +31,8 @@
     var(--site-shell-left) + var(--site-shell-pad) - var(--toc-heading-pad-left)
   );
   --toc-inline-offset: max(0px, calc(var(--toc-rail-left) - var(--page-layout-left) - 32px));
-  --external-link-icon-width: 0.98em;
-  --external-link-icon-height: 0.98em;
+  --external-link-icon-width: 1.16em;
+  --external-link-icon-height: 1.16em;
 }
 
 @media all and (max-width: 1200px) {
@@ -47,7 +47,7 @@
   height: var(--external-link-icon-height);
   display: inline-block;
   vertical-align: text-top;
-  margin-right: 0.26em;
+  margin-right: 0.16em;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -60,9 +60,9 @@ a.external > .external-icon {
 a.external[data-link-icon]::before {
   content: attr(data-link-icon);
   display: inline-block;
-  margin-right: 0.26em;
+  margin-right: 0.16em;
   font-family: var(--codeFont);
-  font-size: 0.68em;
+  font-size: 0.76em;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.04em;
