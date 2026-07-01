@@ -28,6 +28,15 @@ export const sharedPageComponents: SharedLayout = {
     Component.Search(),
   ],
   afterBody: [
+    Component.ConditionalRender({
+      component: Component.TagTreemap({
+        variant: "home",
+        title: "Tag Map",
+        showHeader: true,
+        showTotal: true,
+      }),
+      condition: ({ fileData }) => fileData.slug === "index",
+    }),
     // ...recentNotes.map((c) => Component.DesktopOnly(c)),
     // Component.DesktopOnly(
     //   Component.Graph({

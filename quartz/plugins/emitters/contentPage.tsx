@@ -102,11 +102,20 @@ export const ContentPage: QuartzEmitterPlugin<Partial<FullPageLayout>> = (userOp
 
       // find all slugs that changed or were added
       const changedSlugs = new Set<string>()
+      let homeNeedsRefresh = false
       for (const changeEvent of changeEvents) {
+        if (changeEvent.path.endsWith(".md")) {
+          homeNeedsRefresh = true
+        }
+
         if (!changeEvent.file) continue
         if (changeEvent.type === "add" || changeEvent.type === "change") {
           changedSlugs.add(changeEvent.file.data.slug!)
         }
+      }
+
+      if (homeNeedsRefresh) {
+        changedSlugs.add("index")
       }
 
       for (const [tree, file] of content) {

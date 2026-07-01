@@ -30,6 +30,7 @@ import ConditionalRender from "./ConditionalRender"
 import TopNav from "./TopNav"
 import VersionSwitcher from "./VersionSwitcher"
 import KnowledgeMap from "./KnowledgeMap"
+import TagTreemap from "./TagTreemap"
 export { Icon } from "./Icon"
 export type { IconName } from "./Icon"
 
@@ -66,4 +67,5 @@ export {
   TopNav,
   VersionSwitcher,
   KnowledgeMap,
+  TagTreemap,
 }
