@@ -68,7 +68,6 @@ export default {
     error: {
       title: "無法找到",
       notFound: "私人筆記或筆記不存在。",
-      home: "返回首頁",
     },
     folderContent: {
       folder: "資料夾",

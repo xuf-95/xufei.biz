@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Nicht gefunden",
       notFound: "Diese Seite ist entweder nicht öffentlich oder existiert nicht.",
-      home: "Return to Homepage",
     },
     folderContent: {
       folder: "Ordner",

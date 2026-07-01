@@ -68,7 +68,6 @@ export default {
     error: {
       title: "No s'ha trobat.",
       notFound: "Aquesta pàgina és privada o no existeix.",
-      home: "Torna a la pàgina principal",
     },
     folderContent: {
       folder: "Carpeta",

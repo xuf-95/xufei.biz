@@ -68,7 +68,6 @@ export default {
     error: {
       title: "ไม่มีหน้านี้",
       notFound: "หน้านี้อาจตั้งค่าเป็นส่วนตัวหรือยังไม่ถูกสร้าง",
-      home: "กลับหน้าหลัก",
     },
     folderContent: {
       folder: "โฟลเดอร์",

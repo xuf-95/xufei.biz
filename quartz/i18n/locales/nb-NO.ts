@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Ikke funnet",
       notFound: "Enten er denne siden privat eller så finnes den ikke.",
-      home: "Returner til hovedsiden",
     },
     folderContent: {
       folder: "Mappe",

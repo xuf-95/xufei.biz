@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Nenalezeno",
       notFound: "Tato stránka je buď soukromá, nebo neexistuje.",
-      home: "Návrat na domovskou stránku",
     },
     folderContent: {
       folder: "Složka",

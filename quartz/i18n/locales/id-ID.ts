@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Tidak Ditemukan",
       notFound: "Halaman ini bersifat privat atau tidak ada.",
-      home: "Kembali ke Beranda",
     },
     folderContent: {
       folder: "Folder",

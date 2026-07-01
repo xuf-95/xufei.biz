@@ -83,9 +83,6 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         : htmlToJsx(fileData.filePath!, tree)
     ) as ComponentChildren
 
-    const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
-    const baseDir = url.pathname
-
     // Attach subfolder info to each page as a custom field for rendering
     // We embed data-subfolder in a wrapper div via a custom list
     const annotatedPages = pagesInFolder.map((page) => {
@@ -96,9 +93,6 @@ export default ((opts?: Partial<FolderContentOptions>) => {
       const language = normalizeLanguage(page.frontmatter?.language)
       return { page, sub, language }
     })
-
-    const isIndexListing = currentSlug === "" || currentSlug === "index"
-    const showLanguageFilter = isIndexListing && annotatedPages.length > 0
 
     return (
       <div class="popover-hint">
@@ -111,41 +105,26 @@ export default ((opts?: Partial<FolderContentOptions>) => {
               })}
             </p>
           )}
-
-          {showLanguageFilter && (
-            <div class="language-filter-bar" id="language-filter-bar" aria-label="Language filter">
-              <button class="language-filter-pill active" data-language-filter="__all__">
-                All
-              </button>
-              <button class="language-filter-pill" data-language-filter="EN">
-                EN
-              </button>
-              <button class="language-filter-pill" data-language-filter="CN">
-                CN
-              </button>
-            </div>
-          )}
-
-          {/* Filter pills — only show if there are subfolders */}
-          {subfolders.length > 0 && (
-            <div class="folder-filter-bar" id="folder-filter-bar">
-              <button class="folder-filter-pill active" data-filter="__all__">
-                All
-              </button>
-              {hasRootFiles && (
-                <button class="folder-filter-pill" data-filter="__root__">
-                  {currentSlug.split("/").pop() || "root"}
+          <div class="folder-list-toolbar">
+            {subfolders.length > 0 && (
+              <div class="folder-filter-bar" id="folder-filter-bar" aria-label="Folder filter">
+                <button class="folder-filter-pill active" data-filter="__all__">
+                  All
                 </button>
-              )}
-              {subfolders.map((sub) => (
-                <button class="folder-filter-pill" data-filter={sub}>
-                  {sub.replace(/-/g, " ")}
-                </button>
-              ))}
-            </div>
-          )}
-
-          <PageListViewControls />
+                {hasRootFiles && (
+                  <button class="folder-filter-pill" data-filter="__root__">
+                    {currentSlug.split("/").pop() || "root"}
+                  </button>
+                )}
+                {subfolders.map((sub) => (
+                  <button class="folder-filter-pill" data-filter={sub}>
+                    {sub.replace(/-/g, " ")}
+                  </button>
+                ))}
+              </div>
+            )}
+            <PageListViewControls />
+          </div>
 
           {/* Page list — each item wrapped with data-subfolder */}
           <div id="folder-page-list" data-page-list-view data-view="list">
@@ -156,9 +135,6 @@ export default ((opts?: Partial<FolderContentOptions>) => {
             ))}
           </div>
         </div>
-        <a href={baseDir} class="internal">
-          {i18n(cfg.locale).pages.error.home}
-        </a>
         {/* <hr /> */}
       </div>
     )
@@ -173,47 +149,77 @@ export default ((opts?: Partial<FolderContentOptions>) => {
 }) satisfies QuartzComponentConstructor
 
 const folderFilterCss = `
-.language-filter-bar,
+.folder-list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin: 0.75rem 0 1.2rem;
+  padding-bottom: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--darkgray) 16%, transparent);
+}
+
 .folder-filter-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: clamp(0.55rem, 1.7vw, 1.6rem);
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 0.1rem 0 0.55rem;
+  scrollbar-width: none;
 }
 
-.language-filter-bar {
-  margin-bottom: 0.7rem;
+.folder-filter-bar::-webkit-scrollbar {
+  display: none;
 }
 
-.folder-filter-bar {
-  margin-bottom: 1.2rem;
+.folder-list-toolbar .page-view-toolbar {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
 }
 
-.language-filter-pill,
 .folder-filter-pill {
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid var(--lightgray);
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.42rem 0.62rem;
+  border: 0;
+  border-radius: 6px;
   background: transparent;
   color: var(--gray);
+  cursor: pointer;
   font-family: var(--bodyFont);
-  letter-spacing: 0.02em;
-  transition: all 0.15s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.15;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
-.language-filter-pill:hover,
 .folder-filter-pill:hover {
-  border-color: var(--darkgray);
+  color: var(--dark);
+  background: color-mix(in srgb, var(--lightgray) 38%, transparent);
+}
+
+.folder-filter-pill.active {
+  background: color-mix(in srgb, var(--lightgray) 55%, transparent);
   color: var(--dark);
 }
 
-.language-filter-pill.active,
-.folder-filter-pill.active {
+.folder-filter-pill.active::after {
+  content: "";
+  position: absolute;
+  left: 0.08rem;
+  right: 0.08rem;
+  bottom: calc(-0.55rem + 1px);
+  height: 2px;
+  border-radius: 999px;
   background: var(--dark);
-  color: var(--light);
-  border-color: var(--dark);
 }
 
 .folder-item-wrap[data-hidden="true"] {

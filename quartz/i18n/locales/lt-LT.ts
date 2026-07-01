@@ -74,7 +74,6 @@ export default {
       title: "Nerasta",
       notFound:
         "Arba šis puslapis yra pasiekiamas tik tam tikriems vartotojams, arba tokio puslapio nėra.",
-      home: "Grįžti į pagrindinį puslapį",
     },
     folderContent: {
       folder: "Aplankas",

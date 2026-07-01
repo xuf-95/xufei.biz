@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Ei löytynyt",
       notFound: "Tämä sivu on joko yksityinen tai sitä ei ole olemassa.",
-      home: "Palaa etusivulle",
     },
     folderContent: {
       folder: "Kansio",

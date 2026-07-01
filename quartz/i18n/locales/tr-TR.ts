@@ -68,7 +68,6 @@ export default {
     error: {
       title: "Bulunamadı",
       notFound: "Bu sayfa ya özel ya da mevcut değil.",
-      home: "Anasayfaya geri dön",
     },
     folderContent: {
       folder: "Klasör",
