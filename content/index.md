@@ -18,7 +18,6 @@ On a broader level, I care about building knowledge systems that help data pract
 
 As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit:
 
-- [[Bigdata Wiki OS]]: the operating map for this knowledge garden;
 - [[MOC-DATA+AI Agent Map]]: experiments and references around data, AI, and agents.
 - [[MOC-BigData Map]]: a capability map for full-stack data engineering;
 - [[MOC-DCMM-DAMA Map]]: a governance-oriented path through DCMM, DAMA, and CDO topics;

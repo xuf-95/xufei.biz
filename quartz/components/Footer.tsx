@@ -22,7 +22,7 @@ const footerGroups: FooterGroup[] = [
   {
     title: "Index",
     items: [
-      { label: "Map", href: "/index/00-Map/" },
+      { label: "Map", href: "/index/Map/" },
       { label: "AI", href: "/index/AI/" },
       { label: "Open BigData", href: "/index/Open-BigData/" },
       { label: "Data Architecture", href: "/index/Data-Architecture/" },
@@ -53,11 +53,12 @@ const footerGroups: FooterGroup[] = [
   {
     title: "Data Store",
     items: [
-      { label: "Cassandra", href: "/index/Data-Store/Cassandra/" },
-      { label: "ClickHouse", href: "/index/Data-Store/ClickHouse/" },
       { label: "Apache Doris", href: "/index/Data-Store/Apache-Doris/" },
-      { label: "Redis", href: "/index/Data-Store/Redis/" },
-      { label: "Database Design", href: "/index/Data-Store/Database-Design/" },
+      { label: "Apache Paimon", href: "/index/Data-Store/Apache-Paimon/" },
+      { label: "StarRocks", href: "/index/Data-Store/StarRocks/" },
+      { label: "ClickHouse", href: "/index/Data-Store/ClickHouse/" },
+      { label: "Cassandra", href: "/index/Data-Store/Cassandra/" },
+      
     ],
   },
 ]
