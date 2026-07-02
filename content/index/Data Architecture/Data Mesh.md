@@ -3,7 +3,7 @@ title: Data Mesh
 aliases:
   - 数据网格
 tags:
-  - data-architecture
+  - architecture
   - data-product
 description: Data Mesh 是以数据域、数据产品、联邦治理和自助平台为核心的分布式数据架构思想。
 date: 2026-06-14

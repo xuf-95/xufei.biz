@@ -4,7 +4,7 @@ aliases:
   - 数据治理运行机制
   - 数据治理运营模型
 tags:
-  - data-governance
+  - governance
   - operating-model
 description: 数据治理运行机制定义组织、制度、流程、平台和度量如何协同，保证治理可以持续落地。
 date: 2026-06-14

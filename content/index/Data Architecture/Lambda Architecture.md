@@ -3,7 +3,7 @@ title: Lambda Architecture
 aliases:
 date: 2023-09-08
 tags:
-  - data-architecture
+  - architecture
 publish: true
 ---
 

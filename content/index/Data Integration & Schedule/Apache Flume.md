@@ -4,7 +4,7 @@ aliases:
   - Flume
   - flume
 tags:
-  - data-integration
+  - integration
   - flume
 date: 2023-09-15
 draft: false

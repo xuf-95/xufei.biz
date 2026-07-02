@@ -5,7 +5,7 @@ aliases:
   - MMP
   - 大规模并行处理架构
 tags:
-  - data-architecture
+  - architecture
   - distribute
   - compute-engine
   - concepts

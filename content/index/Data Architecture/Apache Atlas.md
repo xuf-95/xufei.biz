@@ -2,7 +2,7 @@
 title: Apache Atlas
 date: 2023-08-04
 tags:
-  - data-governance
+  - governance
   - ide
 draft: false
 publish: true

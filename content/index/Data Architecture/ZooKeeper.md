@@ -4,14 +4,12 @@ aliases:
   - zk
   - zookeeper
 tags:
-  - data-architecture
+  - architecture
   - distribute
   - data-server
 date: 2023-09-24
 draft: true
 publish: true
-
-
 ---
 > [!caption|left]
 > 

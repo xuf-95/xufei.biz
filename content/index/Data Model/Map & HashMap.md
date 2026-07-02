@@ -5,7 +5,7 @@ aliases:
   - Map & HashMap
 tags:
   - bigdata
-  - data-compute
+  - compute
   - data-structure
 description:
 draft: true

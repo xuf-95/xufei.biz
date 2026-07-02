@@ -4,7 +4,7 @@ date: 2025-01-09
 aliases:
 description:
 tags:
-  - data-architecture
+  - architecture
   - cloud
   - data-server
 draft: true

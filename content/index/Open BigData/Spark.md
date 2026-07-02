@@ -4,15 +4,13 @@ aliases:
   - Spark
   - spark
 tags:
-  - data-compute
+  - compute
   - compute-engine
   - micro-batch
 date: 2023-02-24
 draft: true
 publish: false
 language: EN
-
-
 ---
 ## Overview
 

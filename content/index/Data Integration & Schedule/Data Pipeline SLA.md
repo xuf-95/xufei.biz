@@ -4,7 +4,7 @@ aliases:
   - 数据链路 SLA
   - Pipeline SLA
 tags:
-  - data-engineering
+  - engineering
   - dataops
 description: 数据链路 SLA 定义数据任务在时效、质量、可用性和恢复方面的服务承诺。
 date: 2026-06-14

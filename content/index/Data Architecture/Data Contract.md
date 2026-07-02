@@ -3,8 +3,8 @@ title: Data Contract
 aliases:
   - 数据契约
 tags:
-  - data-architecture
-  - data-governance
+  - architecture
+  - governance
 description: 数据契约定义生产方和消费方之间对 schema、语义、质量、SLA 和变更的约定。
 date: 2026-06-14
 publish: true

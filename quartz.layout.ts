@@ -38,16 +38,16 @@ export const sharedPageComponents: SharedLayout = {
       condition: ({ fileData }) => fileData.slug === "index",
     }),
     // ...recentNotes.map((c) => Component.DesktopOnly(c)),
-    // Component.DesktopOnly(
-    //   Component.Graph({
-    //     localGraph: {
-    //       showTags: true,
-    //     },
-    //     globalGraph: {
-    //       showTags: false,
-    //     },
-    //   }),
-    // ),
+    Component.DesktopOnly(
+      Component.Graph({
+        localGraph: {
+          showTags: true,
+        },
+        // globalGraph: {
+        //   showTags: false,
+        // },
+      }),
+    ),
   ],
 
   footer: Component.Footer({

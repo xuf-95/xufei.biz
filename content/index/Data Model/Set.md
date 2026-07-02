@@ -5,7 +5,7 @@ aliases:
   - Set
 tags:
   - bigdata
-  - data-compute
+  - compute
   - data-structure
 description:
 draft: true

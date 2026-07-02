@@ -5,9 +5,9 @@ aliases:
   - Lakehouse
 tags:
   - bigdata
-  - data-warehouse
+  - warehouse
   - data-lake
-  - data-architecture
+  - architecture
 description:
 draft:
 publishDate: 2026-03-26T15:06

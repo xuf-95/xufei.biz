@@ -3,7 +3,7 @@ title: Hadoop Yarn
 description: Yet Another Resource Negotiator
 tags:
   - hadoop
-  - data-architecture
+  - architecture
   - resources
 date: 2022-01-25
 draft: false

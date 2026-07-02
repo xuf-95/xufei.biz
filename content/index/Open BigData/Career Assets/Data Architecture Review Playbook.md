@@ -5,7 +5,7 @@ aliases:
   - Architecture Review Playbook
 tags:
   - architecture-review
-  - data-architecture
+  - architecture
   - playbook
 description: 数据架构评审手册用于检查架构方案是否覆盖业务目标、数据流、治理、安全、可靠性和演进路线。
 date: 2026-06-14

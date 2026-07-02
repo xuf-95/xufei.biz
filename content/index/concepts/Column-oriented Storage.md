@@ -5,12 +5,10 @@ aliases:
   - col-storage
 tags:
   - olap
-  - data-warehouse
+  - warehouse
   - concepts
 date: 2024-05-19
 draft: true
-
-
 ---
 ## Background 
 

@@ -3,7 +3,7 @@ title: Data Lineage
 aliases:
   - 数据血缘
 tags:
-  - data-governance
+  - governance
   - metadata
 description: 数据血缘描述数据从源系统到模型、指标、报表和应用的加工链路，是影响分析和可信解释的基础。
 date: 2026-06-14

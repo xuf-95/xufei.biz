@@ -5,7 +5,7 @@ aliases:
   - Data Standards
 tags:
   - data-standard
-  - data-governance
+  - governance
 description: 数据标准通过统一业务术语、数据元、参考数据、主数据和指标口径，降低组织内的数据歧义。
 date: 2026-06-11
 publish: true

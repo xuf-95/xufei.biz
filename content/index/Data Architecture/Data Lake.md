@@ -2,12 +2,10 @@
 title: "Data Lake"
 tags:
   - datalake
-  - store
+  - databases
 date: 2020-12-18
 draft: false
 publish: true
-
-
 ---
 
 > [AWS, What is a data lake?](https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/)

@@ -5,7 +5,7 @@ aliases:
   - Data Quality Management
 tags:
   - data-quality
-  - data-governance
+  - governance
 description: 数据质量用于保证数据满足业务使用要求，覆盖完整性、准确性、一致性、及时性、唯一性和有效性。
 date: 2026-06-11
 publish: true

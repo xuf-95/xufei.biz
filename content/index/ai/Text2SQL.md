@@ -4,7 +4,7 @@ aliases:
   - Text to SQL
   - 自然语言转 SQL
 tags:
-  - ai-agent
+  - agentic
   - data-ai
   - semantic-layer
 description: Text2SQL 让用户用自然语言生成 SQL，但必须依赖语义层、指标口径、权限和质量约束才能可靠落地。

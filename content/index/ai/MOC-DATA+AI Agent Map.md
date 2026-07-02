@@ -4,7 +4,7 @@ aliases:
   - DATA AI Agent Map
   - Data Agent Capability Map
 tags:
-  - ai-agent
+  - agentic
   - data-ai
   - moc
 description: 组织 DATA+AI Agent、Text2SQL、语义层、RAG、数据治理与数据工作自动化的知识地图。

@@ -7,7 +7,7 @@ aliases:
   - 首席数据官
 tags:
   - cdo
-  - data-governance
+  - governance
   - data-strategy
 description: CDO/CDAO 是负责数据战略、治理、资产化、分析与 AI 价值转化的管理角色。
 date: 2026-06-11

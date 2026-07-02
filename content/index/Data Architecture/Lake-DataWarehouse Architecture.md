@@ -5,8 +5,8 @@ draft: true
 publish: true
 tags:
   - data-lake
-  - data-architecture
-  - data-warehouse
+  - architecture
+  - warehouse
 ---
 # Lake-DataWarehouse Architecture 湖仓一体架构
 

@@ -3,10 +3,10 @@ title: "ClickHouse"
 aliases:
   - clickhouse
 tags:
-  - data-warehouse
+  - warehouse
   - database
   - olap
-  - store
+  - databases
   - col-storage
 date: 2022-03-11
 draft:

@@ -4,14 +4,12 @@ date: 2024-01-09
 aliases:
 tags:
   - bigdata
-  - store
-  - data-architecture
-  - data-model
+  - databases
+  - architecture
+  - model
 description:
 draft: true
 publishDate: 2025-09-26T15:33
-
-
 ---
 数据库逻辑存储架构，常见关系型数据库逻辑架构单元从小到大是：块(block，MySQL称为page 页) > 区(extent) > 段(segment) > 表空间(tablespace)。
 

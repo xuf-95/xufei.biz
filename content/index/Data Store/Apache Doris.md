@@ -3,7 +3,7 @@ title: Apache Doris
 aliases:
   - doris
 tags:
-  - data-warehouse
+  - warehouse
   - data-lake
   - mpp
 date: 2024-02-13

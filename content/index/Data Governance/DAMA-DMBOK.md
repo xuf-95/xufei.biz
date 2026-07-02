@@ -5,7 +5,7 @@ aliases:
   - Data Management Body of Knowledge
   - DAMA 数据管理知识体系
 tags:
-  - data-governance
+  - governance
   - dama
   - data-management
 description: DAMA-DMBOK 是国际数据管理知识体系，用于组织数据治理、架构、建模、质量、元数据、安全和 BI 等能力。

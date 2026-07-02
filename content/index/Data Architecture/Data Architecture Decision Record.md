@@ -4,7 +4,7 @@ aliases:
   - Data ADR
   - 数据架构决策记录
 tags:
-  - data-architecture
+  - architecture
 description: 数据架构决策记录用于沉淀技术选型、架构取舍、约束条件和未来维护提醒。
 date: 2026-06-14
 publish: true

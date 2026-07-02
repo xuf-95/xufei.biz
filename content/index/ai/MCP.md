@@ -6,7 +6,7 @@ aliases:
 tags:
   - ai
   - mcp
-  - store
+  - databases
 description:
 draft:
 publishDate: 2025-09-26T11:38

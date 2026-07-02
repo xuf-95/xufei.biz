@@ -3,7 +3,7 @@ title: Data Product
 aliases:
   - 数据产品
 tags:
-  - data-architecture
+  - architecture
   - data-product
 description: 数据产品把数据资产封装为有 owner、SLA、文档、质量承诺和消费体验的可复用服务。
 date: 2026-06-14

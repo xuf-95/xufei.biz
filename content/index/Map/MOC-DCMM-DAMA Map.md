@@ -4,7 +4,7 @@ aliases:
   - DCMM DAMA Data Governance Map
   - 数据治理能力地图
 tags:
-  - data-governance
+  - governance
   - dcmm
   - dama
   - moc

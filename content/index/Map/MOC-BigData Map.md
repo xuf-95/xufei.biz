@@ -5,7 +5,7 @@ aliases:
 tags:
   - bigdata
   - moc
-  - data-engineering
+  - engineering
 description: 面向大数据全栈工程师的知识地图，连接数据采集、存储、计算、治理、服务、AI 增强与职业资产。
 date: 2026-06-11
 publish: true

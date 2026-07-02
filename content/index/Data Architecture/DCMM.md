@@ -5,10 +5,10 @@ aliases:
   - Data management capability maturity assessment model
   - 数据管理能力成熟度评估模型
 tags:
-  - data-architecture
-  - data-governance
-  - data-integration
-  - data-compute
+  - architecture
+  - governance
+  - integration
+  - compute
   - bi
   - data-lifecycle
   - data-strategy

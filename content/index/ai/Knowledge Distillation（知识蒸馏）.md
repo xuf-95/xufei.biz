@@ -4,11 +4,9 @@ aliases:
   - 知识蒸馏
 tags:
   - ai
-  - data-model
+  - model
 date: 2025-01-11
 publish: true
-
-
 ---
 
 > Knowledage Distillation (知识蒸馏)：KD

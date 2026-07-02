@@ -1,7 +1,7 @@
 ---
 title: "Apache Nifi"
 tags:
-  - data-integration
+  - integration
   - pipeline
   - middleware
   - etl

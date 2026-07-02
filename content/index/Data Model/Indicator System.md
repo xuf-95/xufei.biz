@@ -5,7 +5,7 @@ aliases:
   - Metrics System
   - 指标口径
 tags:
-  - data-model
+  - model
   - metrics
   - bi
 description: 指标体系用于定义业务指标、维度、口径、层级和责任人，是 BI、经营分析、数据产品和 AI Agent 的共同语言。

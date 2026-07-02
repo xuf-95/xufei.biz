@@ -2,7 +2,7 @@
 title: Architectural English
 aliases:
 tags:
-  - data-architecture
+  - architecture
 date: 2021-09-04
 publish: false
 draft: true

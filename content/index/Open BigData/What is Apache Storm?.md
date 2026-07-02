@@ -2,7 +2,7 @@
 title: What is Apache Storm?
 aliases:
 tags:
-  - data-compute
+  - compute
   - hadoop
   - streaming
   - Real-time

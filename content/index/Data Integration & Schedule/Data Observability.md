@@ -3,7 +3,7 @@ title: Data Observability
 aliases:
   - 数据可观测性
 tags:
-  - data-engineering
+  - engineering
   - dataops
   - data-quality
 description: 数据可观测性通过元数据、质量、血缘、任务和使用行为监控，持续发现数据链路风险。

@@ -3,7 +3,7 @@ title: Data Architecture Blueprint
 aliases:
   - 数据架构蓝图
 tags:
-  - data-architecture
+  - architecture
   - blueprint
 description: 数据架构蓝图用于把业务目标、数据域、平台能力、治理规则和交付路线组织成可评审的总体设计。
 date: 2026-06-14

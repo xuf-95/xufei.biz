@@ -2,7 +2,7 @@
 title: what is Kappa Architecture?
 aliases:
 tags:
-  - data-architecture
+  - architecture
 description:
 date: 2023-09-04
 draft: true

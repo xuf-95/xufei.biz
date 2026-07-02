@@ -3,7 +3,7 @@ title: MOC-Data Architecture Map
 aliases:
   - Data Architect Capability Map
 tags:
-  - data-architecture
+  - architecture
   - moc
   - cdo
 description: 面向数据架构师的能力地图，连接战略、架构、建模、治理、平台、数据产品和商业价值。

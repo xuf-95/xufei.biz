@@ -3,7 +3,7 @@ title: "Apache Cassandra"
 aliases:
   - cassandra
 tags:
-  - store
+  - databases
   - nosql
   - database
   - bigdata

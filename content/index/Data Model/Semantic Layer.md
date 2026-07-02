@@ -4,10 +4,10 @@ aliases:
   - 语义层
   - Metrics Semantic Layer
 tags:
-  - data-model
+  - model
   - semantic-layer
   - bi
-  - ai-agent
+  - agentic
 description: 语义层把底层数据模型封装为业务可理解、指标一致、权限可控的语义接口。
 date: 2026-06-11
 publish: true

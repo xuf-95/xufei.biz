@@ -1,8 +1,8 @@
 ---
 title: Flow-Batch Architecture
 tags:
-  - data-architecture
-  - data-warehouse
+  - architecture
+  - warehouse
   - streaming
 date: 2024-12-21
 draft: true

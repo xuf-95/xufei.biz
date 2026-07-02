@@ -4,8 +4,8 @@ aliases:
   - 数据域
   - 主题域
 tags:
-  - data-model
-  - data-architecture
+  - model
+  - architecture
 description: 数据域用于按照业务能力和管理边界组织数据资产，是数据架构、建模和治理协同的基本单元。
 date: 2026-06-14
 publish: true

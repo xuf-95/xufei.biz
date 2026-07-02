@@ -4,7 +4,7 @@ date: 2022-02-12
 aliases:
 tags:
   - bigdata
-  - store
+  - databases
   - storage-structure
   - oltp
   - mysql

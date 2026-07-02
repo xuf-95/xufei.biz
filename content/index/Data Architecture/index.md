@@ -2,7 +2,7 @@
 title: Data Architecture HomePage
 description: 数据架构 - DCMM 能力域之一
 tags:
-  - data-architecture
+  - architecture
   - dcmm
   - design
 publish: false
