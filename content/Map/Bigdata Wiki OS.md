@@ -229,10 +229,10 @@ Bigdata Wiki OS 的图谱节点不只是一篇篇文章，而是不同类型的�
 
 ## 推荐目录结构
 
-当前仓库可以保持 `content/index/*` 作为 Quartz 发布目录，同时在 Obsidian 中使用以下逻辑分层。
+当前仓库可以保持 `content/*` 作为 Quartz 发布目录，同时在 Obsidian 中使用以下逻辑分层。
 
 ```text
-content/index/
+content/
   00-Map/
     Bigdata Wiki OS.md
     Bigdata Capability Radar.md

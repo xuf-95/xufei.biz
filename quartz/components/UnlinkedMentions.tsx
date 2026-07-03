@@ -19,7 +19,6 @@ export default ((opts?: Partial<UnlinkedMentionsOptions>) => {
     fileData,
     allFiles,
     displayClass,
-    cfg,
   }: QuartzComponentProps) => {
     const slug = simplifySlug(fileData.slug!)
     const title = fileData.frontmatter?.title

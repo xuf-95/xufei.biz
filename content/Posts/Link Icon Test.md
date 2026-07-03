@@ -18,7 +18,7 @@ Expected behavior:
 - icons should render as the original favicon, without custom background, border, or shadow
 - file links like PDF, ZIP, JSON, CSV, image, audio, and video should still use the site's favicon
 - non-web protocols should keep the text fallback and should not attempt to load `/favicon.ico`
-- internal links such as [[content/index/Posts/index]] should not show any external-link suffix
+- internal links such as [[content/Posts/index]] should not show any external-link suffix
 
 ## Resolver Reliability Cases
 
@@ -101,5 +101,5 @@ Expected behavior:
 
 ## Internal Control
 
-- [[content/index/Posts/index|Internal link should not show any external suffix]]
-- [[content/index/Open BigData/index|Another internal link without external icon]]
+- [[content/Posts/index|Internal link should not show any external suffix]]
+- [[content/Open BigData/index|Another internal link without external icon]]

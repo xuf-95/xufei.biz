@@ -5,7 +5,7 @@ tags:
   - quartz
   - md
 description:
-cardImage: /content/index/Posts/images/antfu.png
+cardImage: /content/Posts/images/antfu.png
 publishDate: 2026-03-19
 publish: true
 draft: true
@@ -184,19 +184,19 @@ Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy
 Use this reusable card view on any page by copying the HTML block and changing each card link, title, and subtitle.
 
 <nav class="gallery-card-view" aria-label="Featured page gallery">
-  <a class="gallery-card internal" href="/index/Posts/Markdown%20syntax%20guide">
+  <a class="gallery-card internal" href="/Posts/Markdown%20syntax%20guide">
     <span class="gallery-card-title">Learning English</span>
     <span class="gallery-card-subtitle">Self-taught, total immersion</span>
   </a>
-  <a class="gallery-card internal" href="/index/Posts/Awesome%20Digital%20Garden">
+  <a class="gallery-card internal" href="/Posts/Awesome%20Digital%20Garden">
     <span class="gallery-card-title">Building in Public</span>
     <span class="gallery-card-subtitle">Ship, share, get noticed</span>
   </a>
-  <a class="gallery-card internal" href="/index/Posts/Links%20Anythings">
+  <a class="gallery-card internal" href="/Posts/Links%20Anythings">
     <span class="gallery-card-title">Remote Careers</span>
     <span class="gallery-card-subtitle">Visibility over CVs</span>
   </a>
-  <a class="gallery-card internal" href="/index/Posts/Interesting%20Website">
+  <a class="gallery-card internal" href="/Posts/Interesting%20Website">
     <span class="gallery-card-title">Design Engineering</span>
     <span class="gallery-card-subtitle">Design + code = superpower</span>
   </a>
@@ -220,7 +220,7 @@ Use this reusable process view on any page by copying the HTML block and changin
       <span class="process-step-marker">2</span>
       <div class="process-step-body">
         <h3>Create an environment</h3>
-        <p>Configure where the agent runs: a cloud sandbox, or a <a class="internal" href="/index/Posts/Quartz%20MKD">self-hosted sandbox</a> on your own infrastructure.</p>
+        <p>Configure where the agent runs: a cloud sandbox, or a <a class="internal" href="/Posts/Quartz%20MKD">self-hosted sandbox</a> on your own infrastructure.</p>
       </div>
     </li>
     <li class="process-step">
@@ -349,7 +349,7 @@ This section records image size aliases and in-article layout formats for Quartz
 ### Inline Text Flow
 
 <figure class="image-layout-aside">
-  <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Right floated layout test" />
+  <img src="/Posts/images/Crossbell%20IPFS.png" alt="Right floated layout test" />
   <figcaption>Right floated figure</figcaption>
 </figure>
 
@@ -360,7 +360,7 @@ The paragraph continues long enough to verify wrapping, spacing, and the return 
 <div class="image-layout-clear"></div>
 
 <figure class="image-layout-aside is-left">
-  <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Left floated layout test" />
+  <img src="/Posts/images/Crossbell%20IPFS.png" alt="Left floated layout test" />
   <figcaption>Left floated figure</figcaption>
 </figure>
 
@@ -375,60 +375,60 @@ The left-floated image mirrors the previous layout. It is useful for checking wh
 
   <div class="image-layout-row">
     <figure class="image-layout-card">
-      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Default card image layout" />
+      <img src="/Posts/images/Crossbell%20IPFS.png" alt="Default card image layout" />
       <figcaption>Default card</figcaption>
     </figure>
     <figure class="image-layout-card is-square">
-      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Square cropped image layout" />
+      <img src="/Posts/images/Crossbell%20IPFS.png" alt="Square cropped image layout" />
       <figcaption>Square crop</figcaption>
     </figure>
     <figure class="image-layout-card is-wide">
-      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Wide cropped image layout" />
+      <img src="/Posts/images/Crossbell%20IPFS.png" alt="Wide cropped image layout" />
       <figcaption>16:9 crop</figcaption>
     </figure>
   </div>
 
   <figure class="image-layout-feature">
-    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Full width feature image layout" />
+    <img src="/Posts/images/Crossbell%20IPFS.png" alt="Full width feature image layout" />
     <figcaption>Full-width feature image</figcaption>
   </figure>
 
   <figure class="image-layout-feature is-contained">
-    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Contained feature image layout" />
+    <img src="/Posts/images/Crossbell%20IPFS.png" alt="Contained feature image layout" />
     <figcaption>Contained feature image</figcaption>
   </figure>
 
   <figure class="image-layout-bleed">
-    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Viewport wide image layout" />
+    <img src="/Posts/images/Crossbell%20IPFS.png" alt="Viewport wide image layout" />
     <figcaption>Viewport-wide image, ignoring Quartz sidebars and body width</figcaption>
   </figure>
 
   <figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
-    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Scaled viewport wide image layout" />
+    <img src="/Posts/images/Crossbell%20IPFS.png" alt="Scaled viewport wide image layout" />
     <figcaption>Viewport-wide container with image width set to 72%</figcaption>
   </figure>
 
   <figure class="image-layout-scale" style="--image-layout-width: 65%;">
-    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Percentage scaled image layout" />
+    <img src="/Posts/images/Crossbell%20IPFS.png" alt="Percentage scaled image layout" />
     <figcaption>Image scaled to 65% inside the article body</figcaption>
   </figure>
 
   <figure class="image-layout-fixed" style="--image-layout-width: 520px; --image-layout-height: 180px; --image-layout-fit: cover;">
-    <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Custom fixed size image layout" />
+    <img src="/Posts/images/Crossbell%20IPFS.png" alt="Custom fixed size image layout" />
     <figcaption>Custom width and height using CSS variables</figcaption>
   </figure>
 
   <div class="image-layout-mosaic">
     <figure>
-      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Large mosaic image layout" />
+      <img src="/Posts/images/Crossbell%20IPFS.png" alt="Large mosaic image layout" />
       <figcaption>Large tile</figcaption>
     </figure>
     <figure>
-      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Small mosaic image layout one" />
+      <img src="/Posts/images/Crossbell%20IPFS.png" alt="Small mosaic image layout one" />
       <figcaption>Small tile</figcaption>
     </figure>
     <figure>
-      <img src="/index/Posts/images/Crossbell%20IPFS.png" alt="Small mosaic image layout two" />
+      <img src="/Posts/images/Crossbell%20IPFS.png" alt="Small mosaic image layout two" />
       <figcaption>Small tile</figcaption>
     </figure>
   </div>

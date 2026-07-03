@@ -27,13 +27,13 @@ MaxCompute（原名ODPS，Open Data Processing Service）是阿里云提供的�
 
 ### 架构
 
-![[content/index/Open BigData/Cloud/images/aliyun-maxCompute-architecture.png]]
+![[content/Open BigData/Cloud/images/aliyun-maxCompute-architecture.png]]
 
 #### 分布式计算
 
-![[content/index/Open BigData/Cloud/images/aliyun-maxCompute-compute-architecture.png]]
+![[content/Open BigData/Cloud/images/aliyun-maxCompute-compute-architecture.png]]
 
 ### 原理 & 功能
 
-![[content/index/Open BigData/Cloud/images/aliyun-maxCompute.png]]
+![[content/Open BigData/Cloud/images/aliyun-maxCompute.png]]
 

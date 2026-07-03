@@ -12,17 +12,17 @@ export const sharedPageComponents: SharedLayout = {
     Component.Search(),
   ],
   afterBody: [
-    Component.ConditionalRender({
-      component: Component.TagTreemap({
-        variant: "home",
-        title: "Tag Map",
-        showHeader: true,
-        showTotal: true,
-      }),
-      condition: ({ fileData }) => fileData.slug === "index",
-    }),
-    Component.Backlinks(),
-    Component.UnlinkedMentions(),
+    // Component.ConditionalRender({
+    //   component: Component.TagTreemap({
+    //     variant: "home",
+    //     title: "Tag Map",
+    //     showHeader: true,
+    //     showTotal: true,
+    //   }),
+    //   condition: ({ fileData }) => fileData.slug === "index",
+    // }),
+    
+    // Component.UnlinkedMentions(),
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
@@ -49,6 +49,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
+    Component.Backlinks(),
     // Component.ArticleSummary(),
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],

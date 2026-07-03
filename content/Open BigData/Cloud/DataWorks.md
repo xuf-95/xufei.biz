@@ -24,7 +24,7 @@ publishDate:
 
 ### 产品能力
 
-![[content/index/Open BigData/Cloud/images/dw-产品能力.png]]
+![[content/Open BigData/Cloud/images/dw-产品能力.png]]
 
 六大核心能力模块[智能数据建模](https://help.aliyun.com/zh/dataworks/user-guide/dataworks-data-modeling/)、[全域数据集成](https://help.aliyun.com/zh/dataworks/user-guide/overview-of-data-integration/)、[高效数据生产](https://help.aliyun.com/zh/dataworks/user-guide/overview-new-data-studio/)、[主动数据治理](https://help.aliyun.com/zh/dataworks/user-guide/data-asset-governance/)、[全面数据安全](https://help.aliyun.com/zh/dataworks/user-guide/security-center-1/)、数据分析服务六大全链路数据治理的能力
 
@@ -55,7 +55,7 @@ DataWorks定位为**一站式数据开发治理平台**，覆盖从数据采集�
 
 离线与实时一体化的企业级智能云数仓（一套存储、一套开发、多套引擎）
 
-![[content/index/Open BigData/Cloud/images/dw-离线与实时一体化的企业级智能云数仓.png]]
+![[content/Open BigData/Cloud/images/dw-离线与实时一体化的企业级智能云数仓.png]]
 
 ## 生态体系中涉及的计算引擎和数据源
 

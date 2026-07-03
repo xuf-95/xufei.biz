@@ -78,7 +78,7 @@ hive强大之处不要求数据转换成特定的格式，而是利用hadoop本�
 
 ## Hive Architecture
 
-![[public/index/OpenBigData/Apache-Hadoop/images/hive-architecture.png]]
+![[public/OpenBigData/Apache-Hadoop/images/hive-architecture.png]]
 
 - 用户接口：Client
 	- CLI（command-line interface）、JDBC/ODBC(jdbc访问hive)、WEBUI（浏览器访问hive）
@@ -226,7 +226,7 @@ Hive on Spark supports [Spark on YARN](http://spark.apache.org/docs/latest/runn
 
 ### Hive vs SparkSQL
 
-![[content/index/Apache Hadoop/Apache Hive/images/HivevsSparkSQL.png]]
+![[content/Apache Hadoop/Apache Hive/images/HivevsSparkSQL.png]]
 
 [hivevssparksql](https://hivevssparksql.wordpress.com/)
 ## Reference

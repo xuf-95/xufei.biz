@@ -17,7 +17,7 @@ const KnowledgeMap: QuartzComponent = ({ displayClass }: QuartzComponentProps) =
   return (
     <main class={classNames(displayClass, "knowledge-map-shell")}>
       <div class="km-mobile-bar">
-        <a class="km-mobile-close" href="/index/" aria-label="Close knowledge map">
+        <a class="km-mobile-close" href="/" aria-label="Close knowledge map">
           ×
         </a>
         <strong>Knowledge Map</strong>
@@ -161,7 +161,7 @@ const KnowledgeMap: QuartzComponent = ({ displayClass }: QuartzComponentProps) =
 
           <p class="km-detail-eyebrow">Current note</p>
           <h2>
-            <a data-detail="title-link" href="/index/" target="_blank" rel="noopener">
+            <a data-detail="title-link" href="/" target="_blank" rel="noopener">
               <span data-detail="title">Knowledge Map</span>
               <span class="km-title-open" aria-hidden="true">
                 ↗
@@ -204,7 +204,7 @@ const KnowledgeMap: QuartzComponent = ({ displayClass }: QuartzComponentProps) =
             <ul class="km-related" data-detail="related"></ul>
           </div>
 
-          <a class="km-open-link" data-detail="open" href="/index/" target="_blank" rel="noopener">
+          <a class="km-open-link" data-detail="open" href="/" target="_blank" rel="noopener">
             <span>Open this note</span>
             <span aria-hidden="true">↗</span>
           </a>

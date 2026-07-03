@@ -257,7 +257,7 @@ The component must be responsive and work in dark mode.
 | Date | Change | Files | Notes |
 | --- | --- | --- | --- |
 | 2026-06-11 | Add reusable diagram components | `quartz/styles/custom/diagram-components.scss` | Architecture, flow, capability, decision layouts |
-| 2026-06-11 | Add diagram style guide | `content/index/Posts/Quartz Diagram Style Guide.md` | Demo page for future diagrams |
+| 2026-06-11 | Add diagram style guide | `content/Posts/Quartz Diagram Style Guide.md` | Demo page for future diagrams |
 
 ## Links
 

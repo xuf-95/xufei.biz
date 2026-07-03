@@ -59,15 +59,15 @@ graph LR
 ### 基于Flink CDC 的ETL 分析
 
 
-![[content/index/Apache Flink/images/flinkcdc-etl.png]]
+![[content/Apache Flink/images/flinkcdc-etl.png]]
 
 ### 基于Flink CDC 的数据打宽
 
-![[content/index/Apache Flink/images/flink-etl-sql.png]]
+![[content/Apache Flink/images/flink-etl-sql.png]]
 
 ### 基于Flink CDC 的聚合分析
 
-![[content/index/Apache Flink/images/flink-cdc.png]]
+![[content/Apache Flink/images/flink-cdc.png]]
 
 ### CDC设计实现
 
@@ -77,7 +77,7 @@ graph LR
 - Chunk汇报
 - Chunk分配
 
-![[content/index/Apache Flink/images/flink-reader-binlog.png]]
+![[content/Apache Flink/images/flink-reader-binlog.png]]
 
 ### flink 开启CDC功能
 ```shell

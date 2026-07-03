@@ -8,9 +8,9 @@ publish: false
 description: Test page for the article version switcher.
 versions:
   - label: v1.0
-    path: index/Posts/Version-Switch-Test-v1
+    path: Posts/Version-Switch-Test-v1
   - label: v2.0
-    path: index/Posts/Version-Switch-Test-v2
+    path: Posts/Version-Switch-Test-v2
     current: true
 ---
 

@@ -33,16 +33,16 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: "Blog",
-    path: "/index/",
+    path: "/browse/",
     // children: [
-    //   { label: "Map", desc: "Map of Content", path: "/index/00-Map/", abbr: "MP" },
-    //   { label: "AI", desc: "AI tools & agents", path: "/index/ai/", abbr: "AI" },
-    //   { label: "OpenBigData", desc: "Data engineering", path: "/index/Open-BigData/", abbr: "BD" },
-    //   { label: "Posts", desc: "Notes & writings", path: "/index/posts/", abbr: "P" },
+    //   { label: "Map", desc: "Map of Content", path: "/Map/", abbr: "MP" },
+    //   { label: "AI", desc: "AI tools & agents", path: "/ai/", abbr: "AI" },
+    //   { label: "OpenBigData", desc: "Data engineering", path: "/Open-BigData/", abbr: "BD" },
+    //   { label: "Posts", desc: "Notes & writings", path: "/posts/", abbr: "P" },
     // ],
   },
   { label: "Tags", path: "/tags/" },
-  { label: "Map",   path: "/map/"          },
+  // { label: "Map",   path: "/map/"          },
   { label: "Goods", path: "/hobby/goods/"  },
   { label: "Tools", path: "/tools/data-engineer-tools/" },
 ]
@@ -80,7 +80,7 @@ const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponen
       {/* ── Brand ── */}
       <a href={absSitePath(cfg, "/")} class="nav-brand">
         <img src={iconPath} alt={cfg?.pageTitle ?? "home"} class="nav-brand-logo" />
-        <span class="nav-brand-name">{cfg?.pageTitle ?? "xufei.biz"}</span>
+        {/* <span class="nav-brand-name">{cfg?.pageTitle ?? "xufei.biz"}</span> */}
       </a>
 
       {/* ── Links ── */}
@@ -218,8 +218,8 @@ header.header-hidden:focus-within {
 .nav-brand:hover { opacity: 0.75; }
 
 .nav-brand-logo {
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   border-radius: 5px;
   object-fit: contain;
   display: block;
@@ -253,9 +253,9 @@ header.header-hidden:focus-within {
   padding: 5px clamp(8px, 1vw, 12px);
   border-radius: 6px;
   font-family: var(--titleFont);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  color: var(--gray);
+  color: var(--dark);
   text-decoration: none;
   white-space: nowrap;
   transition: color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
@@ -272,8 +272,8 @@ header.header-hidden:focus-within {
 
 .nav-links:has(.nav-item:hover) .nav-item,
 .nav-links:has(.nav-item:focus-visible) .nav-item {
-  color: var(--gray);
-  opacity: 0.68;
+  color: var(--dark);
+  opacity: 0.35;
   background: transparent;
 }
 

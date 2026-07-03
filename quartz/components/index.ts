@@ -1,6 +1,7 @@
 import Content from "./pages/Content"
 import TagContent from "./pages/TagContent"
 import FolderContent from "./pages/FolderContent"
+import BrowseAllContent from "./pages/BrowseAllContent"
 import NotFound from "./pages/404"
 import ArticleDescription from "./ArticleDescription"
 import ArticleSummary from "./ArticleSummary"
@@ -42,6 +43,7 @@ export {
   Content,
   TagContent,
   FolderContent,
+  BrowseAllContent,
   Darkmode,
   GitHubLink,
   RSSLink,

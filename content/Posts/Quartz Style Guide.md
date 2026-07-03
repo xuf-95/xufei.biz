@@ -223,19 +223,19 @@ Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para]
 用于专题页或长文开头的导航卡片。卡片有 hover 状态和右侧箭头，适合引导读者跳转。
 
 <nav class="gallery-card-view" aria-label="Style guide demos">
-  <a class="gallery-card internal" href="/index/Data%20Architecture/Bigdata%20Wiki%20OS">
+  <a class="gallery-card internal" href="/Data%20Architecture/Bigdata%20Wiki%20OS">
     <span class="gallery-card-title">Bigdata Wiki OS</span>
     <span class="gallery-card-subtitle">Knowledge graph and wiki operating system</span>
   </a>
-  <a class="gallery-card internal" href="/index/00-Map/MOC-DATA%2BAI%20Agent%20%E5%9C%B0%E5%9B%BE">
+  <a class="gallery-card internal" href="/00-Map/MOC-DATA%2BAI%20Agent%20%E5%9C%B0%E5%9B%BE">
     <span class="gallery-card-title">DATA+AI Agent</span>
     <span class="gallery-card-subtitle">Agent architecture and governance map</span>
   </a>
-  <a class="gallery-card internal" href="/index/Data%20Model/Semantic%20Layer">
+  <a class="gallery-card internal" href="/Data%20Model/Semantic%20Layer">
     <span class="gallery-card-title">Semantic Layer</span>
     <span class="gallery-card-subtitle">Metrics, dimensions and Text2SQL context</span>
   </a>
-  <a class="gallery-card internal" href="/index/Data%20Governance/DAMA-DMBOK">
+  <a class="gallery-card internal" href="/Data%20Governance/DAMA-DMBOK">
     <span class="gallery-card-title">DAMA-DMBOK</span>
     <span class="gallery-card-subtitle">International data management framework</span>
   </a>
@@ -243,7 +243,7 @@ Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para]
 
 ```html
 <nav class="gallery-card-view" aria-label="Featured links">
-  <a class="gallery-card internal" href="/index/Data%20Architecture/Bigdata%20Wiki%20OS">
+  <a class="gallery-card internal" href="/Data%20Architecture/Bigdata%20Wiki%20OS">
     <span class="gallery-card-title">Bigdata Wiki OS</span>
     <span class="gallery-card-subtitle">Knowledge graph and wiki operating system</span>
   </a>
@@ -411,15 +411,15 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 
 | Date | Change | Files | Notes |
 | --- | --- | --- | --- |
-| 2026-06-11 | Add style guide | `content/index/Posts/Quartz Style Guide.md` | Demo and usage rules |
+| 2026-06-11 | Add style guide | `content/Posts/Quartz Style Guide.md` | Demo and usage rules |
 ```
 
 ## Style Changelog
 
 | Date | Change | Files | Impact |
 | --- | --- | --- | --- |
-| 2026-06-20 | 新增 Sidenotes 右侧标注说明 | `content/index/Posts/Quartz Style Guide.md` | 记录脚注转右侧标注的写法和交互规则 |
-| 2026-06-11 | 新增样式使用指南和 Demo 页面 | `content/index/Posts/Quartz Style Guide.md` | 为后续文章提供统一样式参考 |
+| 2026-06-20 | 新增 Sidenotes 右侧标注说明 | `content/Posts/Quartz Style Guide.md` | 记录脚注转右侧标注的写法和交互规则 |
+| 2026-06-11 | 新增样式使用指南和 Demo 页面 | `content/Posts/Quartz Style Guide.md` | 为后续文章提供统一样式参考 |
 | 2026-06-11 | 新增 Diagram Components 规范 | [[Quartz Diagram Style Guide]] | 为架构图、流程图和能力地图提供 HTML 组件方案 |
 | 2026-06-11 | 新增 UI 自动监视入口 | [[UI Evolution Monitor]] | 用 `npm run ui:audit` 检查关键页面和样式组件 |
 | 2026-06-11 | 记录已有样式模块清单 | `quartz/styles/custom.scss` | 明确当前可复用模块 |
