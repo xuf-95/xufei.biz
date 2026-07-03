@@ -25,10 +25,15 @@ export default ((opts?: Partial<BrowseAllContentOptions>) => {
   const BrowseAllContent: QuartzComponent = (props: QuartzComponentProps) => {
     const { tree, fileData, allFiles, cfg } = props
 
-    // Include ALL real pages (skip index files)
+    // Folders to exclude from the browse listing
+    const excludedFolders = ["hobby", "tools", "programmer", "good"]
+
+    // Include ALL real pages (skip index files and excluded folders)
     const allPages: QuartzPluginData[] = allFiles.filter((f) => {
       const slug = f.slug ?? ""
       if (slug === "index" || slug.endsWith("/index")) return false
+      const topFolder = slug.split("/")[0]
+      if (excludedFolders.includes(topFolder)) return false
       return true
     })
 
