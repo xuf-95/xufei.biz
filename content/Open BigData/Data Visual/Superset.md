@@ -24,7 +24,7 @@ Superset provides:
 - An **API** for programmatic customization
 - A **cloud-native architecture** designed from the ground up for scale
 
-![[superset-gallery.png]]
+![[content/Open BigData/Data Visual/images/superset-gallery.png]]
 ## Architecture
 
 

@@ -17,4 +17,4 @@ publish: false
 
 ## 概念
 
-- [[Data Visual.md|Data Visual]]
+- [[Data Visual|Data Visual]]

@@ -8,7 +8,7 @@ publish: true
 
 ## Topics
 
-- [[MySQL.md|MySQL]]
+- [[MySQL|MySQL]]
 
 ```mermaid
 mindmap

@@ -8,7 +8,7 @@ publish: false
 aliases:
   - Grafana
 ---
-![[Grafana.png]]_from Grafana_
+![[content/Open BigData/Data Visual/images/Grafana.png]]_from Grafana_
 
 ## 概述
 

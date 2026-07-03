@@ -9,7 +9,7 @@ publish: true
 ---
 
 ## 架构
-![[mysql.png]]
+![[public/Data-Store/image/mysql.png]]
 ### MySQL运行机制
 
 - 建立连接

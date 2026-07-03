@@ -60,16 +60,16 @@ For smaller datasets (thousands/millions of rows), a traditional RDBMS might be 
 - 高并发（多核）：由于目前大部分使用Hbase的架构，都是采用的廉价PC，因此单个IO的延迟其实并不小，一般在几十到上百ms之间。这里说的高并发，主要是在并发的情况下，Hbase的单个IO延迟下降并不多。能获得高并发、低延迟的服务
 
 ### Hbase的内部原理
-![[hbase的内部原理.png]]
+![[public/Data-Store/image/hbase的内部原理.png]]
 
 ### Hbase的寻址机制
-![[hbase的寻址机制.png]]
+![[public/Data-Store/image/hbase的寻址机制.png]]
 
 ### HBase架构
 
 ![[hbase2 1.png]]
 
-Hbase是由Client、[[Zookeeper]]、Master、HRegionServer、[[HDFS]]等几个组件组成，几个组件的相关功能：  
+Hbase是由Client、[[ZooKeeper]]、Master、HRegionServer、[[HDFS]]等几个组件组成，几个组件的相关功能：  
 - Client
 	- Client包含了访问Hbase的接口，另外Client还维护了对应的cache来加速Hbase的访问，比如cache的.META.元数据的信息。  
 - Zookeeper  
@@ -79,7 +79,7 @@ Hbase是由Client、[[Zookeeper]]、Master、HRegionServer、[[HDFS]]等几个�
 - HDFS：为Hbase提供最终的底层数据存储服务，同时为HBase提供高可用（Hlog存储在HDFS）的支持，具体功能概括如下：提供元数据和表数据的底层分布式存储服务、数据多副本，保证的高可靠和高可用性。 
 - 其他组件
 
-![[hbase-wal.png]]
+![[public/Data-Store/image/hbase-wal.png]]
 
 	- Write-Ahead logs: HBase的修改记录，当对HBase读写数据的时候，数据不是直接写进磁盘，它会在内存中保留一段时间（时间以及数据量阈值可以设定）。但把数据保存在内存中可能有更高的概率引起数据丢失，为了解决这个问题，数据会先写在一个叫做Write-Ahead logfile的文件中，然后再写入内存中。所以在系统出现故障的时候，数据可以通过这个日志文件重建
     - Region：Hbase表的分片，HBase表会根据RowKey值被切分成不同的region存储在RegionServer中，在一个RegionServer中可以有多个不同的region。  
@@ -89,7 +89,7 @@ Hbase是由Client、[[Zookeeper]]、Master、HRegionServer、[[HDFS]]等几个�
 
 # HBase原理
 
-![[hbase-handle.png]]
+![[public/Data-Store/image/hbase-handle.png]]
 
 ### HBase读流程
 

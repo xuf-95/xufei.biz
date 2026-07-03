@@ -16,7 +16,7 @@ publish: true
 
 捕获追踪数据库中数据的变化（CRUD操作），一般是分析数据库日志中的数据
 
- ![[CDC.png]]_[Image Source](https://www.striim.com/blog/change-data-capture-cdc-what-it-is-and-how-it-works/)_
+ ![[content/Open BigData/Data Integration & Schedule/images/CDC.png]]_[Image Source](https://www.striim.com/blog/change-data-capture-cdc-what-it-is-and-how-it-works/)_
 
 ### Azure Start Up CDC
 

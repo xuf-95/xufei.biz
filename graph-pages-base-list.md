@@ -15,8 +15,8 @@ draft: true
 ## 📊 Mermaid图表页面
 
 ### 数据模型相关
-- [[content/Data Model/UML.md]] - 包含类图、状态图、组件图等多种UML图表示例
-- [[content/Data Model/E-R Model.md]] - 实体关系模型示例（包含完整的ER图）
+- [[UML]] - 包含类图、状态图、组件图等多种UML图表示例
+- [[E-R Model]] - 实体关系模型示例（包含完整的ER图）
 
 ### 大数据架构
 - [[content/bigdata/Lambda Architecture.md]] - Lambda架构三层系统示意图
@@ -25,10 +25,10 @@ draft: true
 - [[content/bigdata/ClickHouse.md]] - ClickHouse架构图
 
 ### 数据集成与调度
-- [[content/Data Integration & Schedule/Data Integration.md]] - 数据集成流程图
+- [[Data Integration]] - 数据集成流程图
 - [[content/bigData/Apache Pulsar.md]] - Pulsar架构图
-- [[content/Data Integration & Schedule/Apache Flume.md]] - Flume数据流图
-- [[content/Data Integration & Schedule/Apache Airflow.md]] - Airflow DAG图
+- [[Apache Flume]] - Flume数据流图
+- [[Apache Airflow]] - Airflow DAG图
 
 ### Apache Hadoop生态
 - [[content/Apache Hadoop/index.md]] - Hadoop生态架构图
@@ -41,8 +41,8 @@ draft: true
 - [[content/Apache Flink/Flink CDC.md]] - CDC数据流图
 
 ### 数据库相关
-- [[content/Data Store/MySQL/index.md]] - MySQL架构图
-- [[content/Data Store/Database Design.md]] - 数据库设计流程图
+- [[content/Open BigData/Data Store/MySQL/index]] - MySQL架构图
+- [[Database Design]] - 数据库设计流程图
 
 ### Python相关
 - [[content/Python/NumPy.md]] - NumPy数组结构图
@@ -76,19 +76,19 @@ draft: true
 - [[content/bigdata/Apache Nifi.md]] - Nifi数据流图
 
 ### 数据存储
-- [[content/Data Store/Redis.md]] - Redis数据结构图
-- [[content/Data Store/MySQL/MySQL.md]] - MySQL架构图
-- [[content/Data Store/MySQL/personal life record info.md]] - 个人数据记录ER图
+- [[Redis]] - Redis数据结构图
+- [[MySQL]] - MySQL架构图
+- [[personal life record info]] - 个人数据记录ER图
 - [[content/Data Store/Concepts/InnoDB.md]] - InnoDB存储引擎图
 - [[content/Data Store/Doirs/Apache Doris.md]] - Doris架构图
 - [[content/Data Store/StarRocks/StarRocks.md]] - StarRocks架构图
-- [[content/Data Store/Open Sources DataSets.md]] - 开源数据集分类图
-- [[content/Data Store/Database Design.md]] - 数据库设计示意图
+- [[Open Sources DataSets]] - 开源数据集分类图
+- [[Database Design]] - 数据库设计示意图
 
 ### 数据可视化
-- [[content/Data Visual/Superset.md]] - Superset仪表板示例
-- [[content/Data Visual/Grafana.md]] - Grafana仪表板示例
-- [[content/Data Visual/Data Visual.md]] - 数据可视化工具对比图
+- [[Superset]] - Superset仪表板示例
+- [[Grafana]] - Grafana仪表板示例
+- [[Data Visual]] - 数据可视化工具对比图
 
 ### 网络与基础设施
 - [[content/bigdata/concepts/NAT Gatway.md]] - NAT网关工作原理图

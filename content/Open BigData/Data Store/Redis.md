@@ -16,7 +16,7 @@ publish:
 
 ### 哨兵模式
 
-![[redis_哨兵模式.png]]
+![[content/Open BigData/Data Store/image/redis_哨兵模式.png]]
 
 
 ## 
