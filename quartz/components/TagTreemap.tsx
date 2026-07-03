@@ -176,7 +176,6 @@ export const tagTreemapCss = `
   grid-column: 1 / -1;
   margin: 2.5rem 0 0;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--lightgray);
 }
 
 .home-tag-map__header {

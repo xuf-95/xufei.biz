@@ -1,22 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-// const recentNotes = [
-//   Component.RecentNotes({
-//     title: "Recent Posts",
-//     limit: 3,
-//     filter: (f) =>
-//       f.slug!.startsWith("index/") && f.slug! !== "index/index" && !f.frontmatter?.noindex,
-//     linkToMore: "index/" as SimpleSlug,
-//   }),
-//   Component.RecentNotes({
-//     title: "Recent BigData",
-//     limit: 2,
-//     filter: (f) => f.slug!.startsWith("/content/index/"),
-//     linkToMore: "/content/index/" as SimpleSlug,
-//   }),
-// ]
-
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -37,24 +21,22 @@ export const sharedPageComponents: SharedLayout = {
       }),
       condition: ({ fileData }) => fileData.slug === "index",
     }),
-    // ...recentNotes.map((c) => Component.DesktopOnly(c)),
+    Component.Backlinks(),
+    Component.UnlinkedMentions(),
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
           showTags: true,
         },
-        // globalGraph: {
-        //   showTags: false,
-        // },
       }),
     ),
+
   ],
 
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/xuf-95",
       "xufei.site": "https://xufei.site",
-      // "Bento.me": "https://bento.me/xfei",
     },
   }),
 }
@@ -67,7 +49,6 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
-    Component.Backlinks(),
     // Component.ArticleSummary(),
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],

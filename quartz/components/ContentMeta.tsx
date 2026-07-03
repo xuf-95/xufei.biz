@@ -12,7 +12,7 @@ interface ContentMetaOptions {
 }
 
 const defaultOptions: ContentMetaOptions = {
-  showReadingTime: false,
+  showReadingTime: true,
   showComma: true,
 }
 
