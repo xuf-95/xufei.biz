@@ -45,7 +45,7 @@ export const BrowsePage: QuartzEmitterPlugin<Options> = (userOpts) => {
       const [tree, vfile] = defaultProcessedContent({
         slug,
         text: "",
-        description: "Browse all content",
+        // description: "Browse all content",
         frontmatter: { title: "Browse All", tags: [] },
       })
 
