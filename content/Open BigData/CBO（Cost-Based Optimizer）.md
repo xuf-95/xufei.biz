@@ -4,7 +4,9 @@ aliases:
   - CBO
 description:
 tags:
-  - index
+  - concepts
+  - optimization
+  - sql
 date: 2026-06-01
 publishDate: 2026-06-24T23:21
 language: EN

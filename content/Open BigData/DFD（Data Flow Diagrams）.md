@@ -1,18 +1,14 @@
 ---
-title: "DFD(Data Flow Diagrams)"
+title: DFD(Data Flow Diagrams)
 aliases:
   - DFD
   - Data Flow Diagrams
   - 数据流图
 tags:
   - concepts
-  - system
   - bigdata
-  - draw
 date: 2021-06-18
 draft: true
-
-
 ---
 ### What's DFD?
 

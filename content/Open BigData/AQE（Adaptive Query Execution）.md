@@ -4,8 +4,9 @@ aliases:
   - 自适应查询执行
 description: "**AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。**"
 tags:
-  - index
+  - concepts
   - sql
+  - optimization
 date: 2026-06-01
 publishDate: 2026-06-24T23:33
 language: EN
@@ -16,8 +17,8 @@ AQE（Adaptive Query Execution，自适应查询执行）是大数据 SQL 引擎
 
 它的核心思想是：
 
-传统 SQL 优化器在任务真正执行前，基于统计信息生成一个执行计划；  
-AQE 则会在任务执行过程中，根据真实运行时数据量、Shuffle 结果、分区大小等信息，动态调整执行计划。简单说，AQE 是让 SQL 引擎“边跑边优化”。
+> [!info] AQE 是让 SQL 引擎“边跑边优化”
+> 传统 SQL 优化器在任务真正执行前，基于统计信息生成一个执行计划;AQE 则会在任务执行过程中，根据真实运行时数据量、Shuffle 结果、分区大小等信息，动态调整执行计划。
 
 ---
 
@@ -51,10 +52,7 @@ Shuffle 分区数是多少？
 Shuffle 后分区大小差异很大
 ```
 
-所以，执行前生成的计划可能不是最优的。
-
-AQE 就是为了解决这个问题：  
-**等一部分任务执行完，拿到真实数据，再动态调整后续执行计划。**
+所以，执行前生成的计划可能不是最优的。 AQE 就是为了解决这个问题：  **等一部分任务执行完，拿到真实数据，再动态调整后续执行计划。**
 
 ---
 
@@ -115,8 +113,6 @@ Broadcast Hash Join  ← users 被广播
 
 这样可以减少 Shuffle，提高执行效率。
 
-  
-
 对比：
 
 ```text
@@ -141,8 +137,7 @@ AQE 后：
 spark.sql.shuffle.partitions = 200
 ```
 
-但真实数据量可能只有几百 MB。  
-如果仍然生成 200 个分区，就会产生大量小任务：
+但真实数据量可能只有几百 MB。如果仍然生成 200 个分区，就会产生大量小任务：
 
 ```text
 Partition 1   1MB
@@ -249,13 +244,13 @@ Partition 3-3 = 1GB
 在 [[Spark]] SQL 中，AQE 是非常典型的优化能力。开启参数一般是：
 
 ```properties
-[[spark]].sql.adaptive.enabled=true
+spark.sql.adaptive.enabled=true
 ```
 
 常见相关参数有：
 
 ```properties
-[[spark]].sql.adaptive.coalescePartitions.enabled=true
+spark.sql.adaptive.coalescePartitions.enabled=true
 spark.sql.adaptive.skewJoin.enabled=true
 spark.sql.autoBroadcastJoinThreshold=10MB
 spark.sql.adaptive.autoBroadcastJoinThreshold=...
@@ -351,7 +346,7 @@ fact_order 不需要再和 dim_user 双边 Shuffle
 可以这样理解：
 
 ```text
-[[[[[[CBO（Cost-Based Optimizer）|CBO]]（Cost-Based Optimizer）|[[CBO（Cost-Based Optimizer）|CBO]]]]（Cost-Based Optimizer）|CBO]]：考试前根据模拟成绩制定策略
+CBO：考试前根据模拟成绩制定策略
 AQE：考试过程中根据真实题目难度调整答题策略
 ```
 

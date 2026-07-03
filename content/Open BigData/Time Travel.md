@@ -3,9 +3,9 @@ title: Time Travel
 aliases:
 description: Time Travel = 给一张表加上「版本」，让你能查询任意历史时刻的数据快照——本质上就是对数据做 git checkout。
 tags:
-  - index
   - lakehouse
   - warehouse
+  - concepts
 date: 2026-06-01
 publishDate: 2026-06-14T11:13
 language: EN

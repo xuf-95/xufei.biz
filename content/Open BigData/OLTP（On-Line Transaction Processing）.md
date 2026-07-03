@@ -6,6 +6,7 @@ aliases:
 tags:
   - concepts
   - system
+  - database
 date: 2023-03-15
 draft: false
 ---

@@ -1,11 +1,12 @@
 ---
-title: "Parquet"
+title: Parquet
 aliases:
   - Parquet 列示存储
 tags:
   - databases
   - storage-format
   - col-storage
+  - concepts
 date: 2023-06-12
 draft: true
 ---

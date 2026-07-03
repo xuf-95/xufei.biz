@@ -3,7 +3,10 @@ title: Shared-nothing vs Shared-data
 aliases:
 description:
 tags:
-  - index
+  - concepts
+  - optimization
+  - resources
+  - database
 date: 2026-06-01
 publishDate: 2026-06-24T23:51
 language: EN

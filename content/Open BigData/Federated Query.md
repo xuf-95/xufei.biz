@@ -5,6 +5,7 @@ aliases:
 description: Federated Query（联邦查询）是一种让你在不搬迁、不复制数据**的情况下，直接跨多个数据源执行 SQL 查询的能力。
 tags:
   - concepts
+  - sql
 date: 2026-06-01
 publishDate: 2026-06-20T22:54
 language: EN
