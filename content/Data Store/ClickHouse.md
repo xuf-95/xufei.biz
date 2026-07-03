@@ -18,7 +18,7 @@ draft:
 
 > ClickHouse® is a `high-performance`, `column-oriented` SQL database management system (DBMS) for online analytical processing (OLAP). It is available as both an [open-source software](https://github.com/ClickHouse/ClickHouse) and a [cloud offering](https://clickhouse.com/cloud).
 
-[[ClickHouse]]是一个高性能，面向列的SQL数据库管理系统（[[DBMS]]），用于在线分析处理[[OLAP]]
+[[ClickHouse]]是一个高性能，面向列的SQL数据库管理系统（[[DBMS]]），用于在线分析处理[[OLAP（Online Analytical Processing）]]
 
 ### Key Characteristics
 

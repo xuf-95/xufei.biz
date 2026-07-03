@@ -28,7 +28,7 @@ draft: false
 - [[DDBS（Distributed DataBase System）]]
 - [[DFD（Data Flow Diagrams）]]
 - [[InnoDB]]
-- [[OLTP]]
+- [[OLTP（On-Line Transaction Processing）]]
 - [[SequenceFile]]
 - [[Textfile]]
 

@@ -1,5 +1,5 @@
 ---
-title: "NAT Gatway"
+title: NAT Gatway
 aliases:
   - NAT
 tags:
@@ -7,9 +7,7 @@ tags:
   - network
   - jdc
 date: 2025-05-12
-publish: true
-
-
+publish: false
 ---
 NAT网关(NAT Gateway)是一款托管的VPC公网网关，作为VPC环境下公网流量出口
 

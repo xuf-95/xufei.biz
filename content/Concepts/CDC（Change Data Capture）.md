@@ -1,5 +1,5 @@
 ---
-title: "CDC"
+title: CDC（Change Data Capture）
 aliases:
   - CDC
   - Change Data Capture

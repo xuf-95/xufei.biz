@@ -45,7 +45,7 @@ flowchart LR
 
 ## Technology Map
 
-- Ingestion: [[Kafka]], [[Kafka Connect]], [[CDC]], [[Apache Flume]], [[Apache Nifi]]
+- Ingestion: [[Kafka]], [[Kafka Connect]], [[CDC（Change Data Capture）]], [[Apache Flume]], [[Apache Nifi]]
 - Batch: [[Spark]], [[MapReduce]], [[Apache Hive]]
 - Streaming: [[Apache Flink]], [[Streaming Processing]], [[Flink CDC]]
 - Storage: [[HDFS]], [[Data Lake]], [[Lakehouse]], [[ClickHouse]], [[What's StarRocks]], [[Apache Doris]]

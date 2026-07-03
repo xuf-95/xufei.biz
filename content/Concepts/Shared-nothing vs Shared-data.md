@@ -37,7 +37,7 @@ Node 3: CPU + Memory + Disk + Data Part C
 
 | **系统**                                     | **说明**                   |
 | ------------------------------------------ | ------------------------ |
-| Greenplum                                  | 典型 MPP 数据库               |
+| Greenplum                                  | 典型 [[MPP]] 数据库           |
 | [[ClickHouse]]                             | 分布式表场景下接近 Shared-nothing |
 | [[StarRocks]]                              | MPP 查询引擎                 |
 | [[Apache Doris]]                           | MPP 架构                   |

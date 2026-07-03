@@ -15,7 +15,7 @@ draft: true
 
 ## 使用方式及场景
 
-下钻、上卷、旋转、切片、联动等[[OLAP]]多维分析功能
+下钻、上卷、旋转、切片、联动等[[OLAP（Online Analytical Processing）]]多维分析功能
 
 ## 数据可视化分析流程
 

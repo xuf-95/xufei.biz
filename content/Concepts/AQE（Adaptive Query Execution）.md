@@ -1,7 +1,8 @@
 ---
-title: AQE（Adaptive Query Execution）- 自适应查询执行
+title: AQE（Adaptive Query Execution）
 aliases:
-description:
+  - 自适应查询执行
+description: "**AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。**"
 tags:
   - index
   - sql
@@ -16,9 +17,7 @@ AQE（Adaptive Query Execution，自适应查询执行）是大数据 SQL 引擎
 它的核心思想是：
 
 传统 SQL 优化器在任务真正执行前，基于统计信息生成一个执行计划；  
-AQE 则会在任务执行过程中，根据真实运行时数据量、Shuffle 结果、分区大小等信息，动态调整执行计划。
-
-简单说，AQE 是让 SQL 引擎“边跑边优化”。
+AQE 则会在任务执行过程中，根据真实运行时数据量、Shuffle 结果、分区大小等信息，动态调整执行计划。简单说，AQE 是让 SQL 引擎“边跑边优化”。
 
 ---
 
@@ -42,11 +41,7 @@ Shuffle 分区数是多少？
 哪些分区很小，可以合并？
 ```
 
-问题是：**执行前的统计信息经常不准。**
-
-  
-
-例如：
+问题是：**执行前的统计信息经常不准。** 例如：
 
 ```text
 表的统计信息过期
@@ -68,37 +63,13 @@ AQE 就是为了解决这个问题：
 传统执行方式类似：
 
 ```text
-SQL
- ↓
-解析
- ↓
-逻辑计划
- ↓
-优化逻辑计划
- ↓
-物理计划
- ↓
-直接执行
+SQL -> 解析 -> 逻辑计划 -> 优化逻辑计划 -> 物理计划 -> 直接执行
 ```
 
 AQE 的执行方式类似：
 
 ```text
-SQL
- ↓
-解析
- ↓
-逻辑计划
- ↓
-初始物理计划
- ↓
-执行一部分 Stage
- ↓
-收集运行时统计信息
- ↓
-重新优化后续物理计划
- ↓
-继续执行
+SQL -> 解析 -> 逻辑计划 -> 初始物理计划  -> 执行一部分 Stage -> 收集运行时统计信息 -> 重新优化后续物理计划 -> 继续执行
 ```
 
 也就是说，AQE 会在执行过程中利用真实信息，例如：
@@ -138,7 +109,7 @@ users 过滤后只有 20MB
 
 ```text
 orders
-   ↓
+    -> 
 Broadcast Hash Join  ← users 被广播
 ```
 
@@ -162,9 +133,9 @@ AQE 后：
 
 ### **3.2 动态合并 Shuffle 小分区**
 
-Spark、Flink、Hive 等引擎中，经常会设置并行度或 Shuffle 分区数。
+[[Spark]]、[[Flink]]、[[Hive]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
 
-比如 Spark 默认可能是：
+比如 [[Spark]] 默认可能是：
 
 ```text
 spark.sql.shuffle.partitions = 200
@@ -210,9 +181,7 @@ AQE 可以根据 Shuffle 结果，把小分区合并：
 
 ### **3.3 动态处理数据倾斜 Join**
 
-数据倾斜是大数据 SQL 中非常常见的问题。
-
-例如：
+数据倾斜是大数据 SQL 中非常常见的问题。例如：
 
 ```sql
 SELECT *
@@ -275,27 +244,25 @@ Partition 3-3 = 1GB
 
 ---
 
-## **5. AQE 在 Spark SQL 中的理解**
+## **5. AQE 在 [[Spark]] SQL 中的理解**
 
-在 Spark SQL 中，AQE 是非常典型的优化能力。
-
-开启参数一般是：
+在 [[Spark]] SQL 中，AQE 是非常典型的优化能力。开启参数一般是：
 
 ```properties
-spark.sql.adaptive.enabled=true
+[[spark]].sql.adaptive.enabled=true
 ```
 
 常见相关参数有：
 
 ```properties
-spark.sql.adaptive.coalescePartitions.enabled=true
+[[spark]].sql.adaptive.coalescePartitions.enabled=true
 spark.sql.adaptive.skewJoin.enabled=true
 spark.sql.autoBroadcastJoinThreshold=10MB
 spark.sql.adaptive.autoBroadcastJoinThreshold=...
 spark.sql.shuffle.partitions=200
 ```
 
-Spark AQE 的核心依赖是：
+[[Spark]] AQE 的核心依赖是：
 
 ```text
 Shuffle 阶段边界
@@ -370,9 +337,7 @@ fact_order 不需要再和 dim_user 双边 Shuffle
 
 ---
 
-## **7. AQE 和 CBO 的区别**
-
-你前面问过 CBO，这里可以顺便对比一下。
+## **7. AQE 和 [[CBO（Cost-Based Optimizer）|CBO]] 的区别**
 
 |**对比项**|**CBO**|**AQE**|
 |---|---|---|
@@ -386,21 +351,11 @@ fact_order 不需要再和 dim_user 双边 Shuffle
 可以这样理解：
 
 ```text
-CBO：考试前根据模拟成绩制定策略
+[[[[[[CBO（Cost-Based Optimizer）|CBO]]（Cost-Based Optimizer）|[[CBO（Cost-Based Optimizer）|CBO]]]]（Cost-Based Optimizer）|CBO]]：考试前根据模拟成绩制定策略
 AQE：考试过程中根据真实题目难度调整答题策略
 ```
 
-在现代 SQL 引擎中，比较理想的是：
-
-```text
-RBO + CBO + AQE
-```
-
-也就是：
-
-```text
-规则优化 + 成本优化 + 运行时自适应优化
-```
+在现代 SQL 引擎中，比较理想的是：**RBO + [[CBO（Cost-Based Optimizer）|CBO]] + AQE** 也就是：**规则优化 + 成本优化 + 运行时自适应优化**
 
 ---
 
@@ -432,9 +387,7 @@ AQE 对这种不确定性非常有价值。
 
 ## **9. AQE 的局限性**
 
-AQE 不是万能的。
-
-它也有一些限制：
+AQE 不是万能的,它也有一些限制：
 
 ```text
 不是所有优化都能在运行时动态修改
@@ -450,8 +403,7 @@ AQE 不是万能的。
 某个 key 占全表 80%
 ```
 
-AQE 可以缓解，但不一定彻底解决。  
-这时可能还要结合：
+AQE 可以缓解，但不一定彻底解决。  这时可能还要结合：
 
 ```text
 热点 key 单独处理
@@ -464,18 +416,6 @@ Broadcast 小表
 
 ---
 
-## **10. 面试表达方式**
+## **10. Summary**
 
-如果面试官问：
-
-你了解 AQE 吗？
-
-可以这样回答：
-
-AQE 是 Adaptive Query Execution，自适应查询执行。它是在 SQL 执行过程中，根据运行时收集到的真实统计信息，对后续物理执行计划进行动态调整的一种优化机制。传统 CBO 主要依赖执行前的表统计信息，但这些统计信息可能不准确，所以 AQE 会在 Shuffle Stage 执行完成后，根据真实的分区大小、数据量、Join 两边大小等信息，重新优化执行计划。典型优化包括动态将 Sort Merge Join 转换为 Broadcast Hash Join、合并小的 Shuffle 分区、拆分倾斜分区来缓解数据倾斜。它可以减少 Shuffle、降低长尾任务、提升 SQL 执行稳定性，但它不能完全替代合理的数据建模、分区设计和倾斜治理。
-
----
-
-## **11. 一句话总结**
-
-**AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。**
+> [!blur] AQE 是 Adaptive Query Execution，自适应查询执行。它是在 SQL 执行过程中，根据运行时收集到的真实统计信息，对后续物理执行计划进行动态调整的一种优化机制。传统 CBO 主要依赖执行前的表统计信息，但这些统计信息可能不准确，所以 AQE 会在 Shuffle Stage 执行完成后，根据真实的分区大小、数据量、Join 两边大小等信息，重新优化执行计划。典型优化包括动态将 Sort Merge Join 转换为 Broadcast Hash Join、合并小的 Shuffle 分区、拆分倾斜分区来缓解数据倾斜。它可以减少 Shuffle、降低长尾任务、提升 SQL 执行稳定性，但它不能完全替代合理的数据建模、分区设计和倾斜治理。

@@ -1,5 +1,5 @@
 ---
-title: OLAP
+title: OLAP（Online Analytical Processing）
 aliases:
   - On-Line Analytical Processing
   - OLAP

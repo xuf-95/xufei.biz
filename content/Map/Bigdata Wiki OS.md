@@ -129,7 +129,7 @@ Phase 2 的第二批资产层已经预置 [[MOC-职业资产地图]]、[[Bigdata
 | 02-Data Governance | 数据如何被管理和治理 | [[DCMM]]、[[DAMA-DMBOK]]、[[Metadata Management]]、[[Data Quality]] | 治理体系、评估表 |
 | 03-Data Architecture | 数据系统如何分层与演进 | [[Data Architecture]]、[[Lakehouse]]、[[Data Warehouse]] | 架构蓝图、技术路线 |
 | 04-Data Modeling | 如何把业务转成数据模型 | [[Dimensional Modeling]]、[[E-R Model]]、[[Indicator System]]、[[Semantic Layer]] | 模型设计、指标口径 |
-| 05-Data Engineering | 数据如何采集、同步、调度、计算 | [[Kafka]]、[[Apache Flink]]、[[Spark]]、[[CDC]] | Pipeline、SLA、排障手册 |
+| 05-Data Engineering | 数据如何采集、同步、调度、计算 | [[Kafka]]、[[Apache Flink]]、[[Spark]]、[[CDC（Change Data Capture）]] | Pipeline、SLA、排障手册 |
 | 06-Data Platform | 平台如何支撑规模化交付 | 数据中台、湖仓平台、元数据平台 | 平台规划、产品方案 |
 | 07-Data Quality & Security | 如何保证可信、合规、安全 | [[Data Quality]]、数据安全、权限、审计 | 质量规则、安全方案 |
 | 08-Analytics & BI | 如何把数据变成洞察 | [[Data Visual]]、指标分析、经营分析 | Dashboard、分析报告 |
@@ -187,7 +187,7 @@ Bigdata Wiki OS 的图谱节点不只是一篇篇文章，而是不同类型的�
 
 | 节点类型 | 用途 | 示例 |
 | --- | --- | --- |
-| `Concept` | 基础概念 | [[CDC]]、[[OLAP]]、[[Metadata Management]] |
+| `Concept` | 基础概念 | [[CDC（Change Data Capture）]]、[[OLAP（Online Analytical Processing）]]、[[Metadata Management]] |
 | `Technology` | 技术组件 | [[Apache Flink]]、[[Kafka]]、[[ClickHouse]] |
 | `Architecture` | 架构模式 | [[Lambda Architecture]]、[[Lakehouse]] |
 | `Capability` | 组织能力 | 数据标准、数据质量、数据资产运营 |
