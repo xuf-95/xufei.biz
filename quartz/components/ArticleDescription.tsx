@@ -16,11 +16,19 @@ const ArticleDescription: QuartzComponent = ({ fileData, displayClass }: QuartzC
 }
 
 ArticleDescription.css = `
+@font-face {
+  font-family: 'Exposure';
+  src: url('/static/exposure.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .article-description {
   margin: 0.75rem auto 0;
   max-width: min(100%, 56rem);
   text-align: center;
-  font-family: var(--titleFont);
+  font-family: 'Exposure', var(--titleFont);
   font-style: italic;
   font-size: 1.2rem;
   line-height: 1.7;

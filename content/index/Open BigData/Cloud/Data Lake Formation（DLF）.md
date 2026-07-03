@@ -19,4 +19,4 @@ publish: true
 
 DLF 基于 Lakehouse 湖仓一体架构，以 Paimon 为核心 Lakehouse Format，兼容 Iceberg，构建统一多模态湖表存储服务，支持结构化、半结构化、非结构化等多模态数据存储、管理、优化
 
-![[DLF.png]]
+![[content/index/Open BigData/Cloud/images/DLF.png]]

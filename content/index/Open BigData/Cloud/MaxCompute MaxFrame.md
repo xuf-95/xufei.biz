@@ -27,4 +27,4 @@ MaxCompute MaxFrame（简称“MaxFrame”）是阿里云自研分布式计算�
 - **大规模数据预处理 (ETL)**
 - **AI与机器学习**
 
-![[MaxFrame-case.png]]
+![[content/index/Open BigData/Cloud/images/MaxFrame-case.png]]

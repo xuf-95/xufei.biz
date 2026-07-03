@@ -1,5 +1,6 @@
-import { Root as HTMLRoot } from "hast"
+import { Root as HTMLRoot, Element } from "hast"
 import { toString } from "hast-util-to-string"
+import { visit } from "unist-util-visit"
 import { QuartzTransformerPlugin } from "../types"
 import { escapeHTML } from "../../util/escape"
 
@@ -28,6 +29,22 @@ export const Description: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
       return [
         () => {
           return async (tree: HTMLRoot, file) => {
+            // Extract the first image src from page content
+            if (!file.data.firstImage) {
+              visit(tree, "element", (node: Element) => {
+                if (
+                  file.data.firstImage ||
+                  node.tagName !== "img" ||
+                  typeof node.properties?.src !== "string"
+                )
+                  return
+                const src = (node.properties.src as string).trim()
+                if (src.length > 0) {
+                  file.data.firstImage = src
+                }
+              })
+            }
+
             let frontMatterDescription = file.data.frontmatter?.description
             let text = escapeHTML(toString(tree))
 
@@ -86,5 +103,6 @@ declare module "vfile" {
   interface DataMap {
     description: string
     text: string
+    firstImage: string
   }
 }

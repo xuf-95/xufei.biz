@@ -35,15 +35,15 @@ Node 3: CPU + Memory + Disk + Data Part C
 
 很多大数据和 MPP 系统都是 Shared-nothing 架构，例如：
 
-|**系统**|**说明**|
-|---|---|
-|Greenplum|典型 MPP 数据库|
-|ClickHouse|分布式表场景下接近 Shared-nothing|
-|StarRocks|MPP 查询引擎|
-|Apache Doris|MPP 架构|
-|Teradata|经典 MPP 数据库|
-|Spark|计算层是 Shared-nothing 思路|
-|Hadoop HDFS + MapReduce|数据和计算都分布式|
+| **系统**                                     | **说明**                   |
+| ------------------------------------------ | ------------------------ |
+| Greenplum                                  | 典型 MPP 数据库               |
+| [[ClickHouse]]                             | 分布式表场景下接近 Shared-nothing |
+| [[StarRocks]]                              | MPP 查询引擎                 |
+| [[Apache Doris]]                           | MPP 架构                   |
+| Teradata                                   | 经典 MPP 数据库               |
+| [[Spark]]                                  | 计算层是 Shared-nothing 思路   |
+| [[Apache Hadoop]] [[HDFS]] + [[MapReduce]] | 数据和计算都分布式                |
 
 ---
 
@@ -160,16 +160,16 @@ Shared Storage / Object Storage / Data Lake
 
 ## **6. Shared-data 的典型代表**
 
-|**系统**|**说明**|
-|---|---|
-|Snowflake|典型计算存储分离架构|
-|BigQuery|Serverless 数仓，计算存储分离|
-|Databricks Lakehouse|基于对象存储 + 计算集群|
-|Trino / Presto|多计算节点读取共享数据源|
-|Spark on S3 / OSS / HDFS|计算和数据可以分离|
-|Hive on HDFS / OSS|多计算引擎共享同一份表数据|
-|MaxCompute|云数仓，计算存储解耦|
-|Delta Lake / Iceberg / Hudi|Lakehouse 表格式，支持多引擎共享数据|
+| **系统**                      | **说明**                  |
+| --------------------------- | ----------------------- |
+| Snowflake                   | 典型计算存储分离架构              |
+| BigQuery                    | Serverless 数仓，计算存储分离    |
+| Databricks Lakehouse        | 基于对象存储 + 计算集群           |
+| Trino / Presto              | 多计算节点读取共享数据源            |
+| Spark on S3 / OSS / HDFS    | 计算和数据可以分离               |
+| Hive on HDFS / OSS          | 多计算引擎共享同一份表数据           |
+| [[MaxCompute]]              | 云数仓，计算存储解耦              |
+| Delta Lake / Iceberg / Hudi | Lakehouse 表格式，支持多引擎共享数据 |
 
 ---
 

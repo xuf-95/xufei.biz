@@ -161,6 +161,15 @@ function getCardImageInfo(
       fit: "cover",
     }
   }
+
+  // Fallback: first image found in page content
+  const firstImage = page.firstImage
+  if (typeof firstImage === "string" && firstImage.length > 0) {
+    return {
+      src: getContentImageSrc(currentSlug, firstImage),
+      fit: "cover",
+    }
+  }
 }
 
 export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort }: Props) => {

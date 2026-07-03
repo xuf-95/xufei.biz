@@ -54,7 +54,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       GitHub: "https://github.com/xuf-95",
       "xufei.site": "https://xufei.site",
-      "Bento.me": "https://bento.me/xfei",
+      // "Bento.me": "https://bento.me/xfei",
     },
   }),
 }
@@ -65,9 +65,9 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.VersionSwitcher(),
     Component.MobileOnly(Component.Spacer()),
-    // Component.ArticleDescription(),
+    Component.ArticleDescription(),
     Component.ContentMeta(),
-    // Component.Backlinks(),
+    Component.Backlinks(),
     // Component.ArticleSummary(),
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],
