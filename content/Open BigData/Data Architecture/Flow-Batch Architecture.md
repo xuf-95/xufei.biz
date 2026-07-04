@@ -40,9 +40,9 @@ publish: true
 典型技术栈：
 |**层**|**技术**|
 |---|---|
-|Batch|[[Hive]] / [[Spark]]|
-|Speed|[[What is Apache Storm?]] / [[Flink]]|
-|Serving|[[HBase]] / [[Elasticsearch]]|
+|Batch|[[Hive]] / [[Apache Spark]]|
+|Speed|[[What is Apache Storm?]] / [[What is Apache Flink?]]|
+|Serving|[[Apache HBase OVerview]] / Elasticsearch|
 
 这种架构存在明显问题：
 
@@ -85,4 +85,4 @@ OLAP 查询引擎
 BI / Dashboard
 ```
 
-查询层通常使用 [Trino](chatgpt://generic-entity?number=8) 用于实现，实时查询、[[OLAP（Online Analytical Processing）]] 分析、BI 报表
+查询层通常使用 [Trino](chatgpt://generic-entity?number=8) 用于实现，实时查询、OLAP（Online Analytical Processing） 分析、BI 报表

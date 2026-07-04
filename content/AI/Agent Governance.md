@@ -9,7 +9,6 @@ tags:
   - governance
 description: Agent Governance 定义 AI Agent 的权限、工具、审计、质量、安全和人工确认边界。
 date: 2026-06-14
-publish: false
 type: playbook
 dcmm_domain: 数据治理
 dama_area:
@@ -17,6 +16,7 @@ dama_area:
   - Data Security
 cdo_value: 让 AI Agent 提效的同时保持可控、可解释、可审计。
 status: seed
+publish: false
 ---
 
 ## Definition
@@ -56,9 +56,7 @@ Agent 治理的核心是把 AI 的能力放进受控边界：上下文可信、�
 
 ## Links
 
-- part-of:: [[MOC-DATA+AI Agent Map]]
 - governs:: [[Text2SQL]]
-- governs:: [[Data Agent Architecture]]
 - depends-on:: [[Data Security]]
 - depends-on:: [[Data Quality]]
 

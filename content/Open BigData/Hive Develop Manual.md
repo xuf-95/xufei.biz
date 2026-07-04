@@ -1,11 +1,11 @@
 ---
-title: "Hive Develop Manual"
+title: Hive Develop Manual
 tags:
   - warehouse
   - hive
 date: 2022-01-15
-draft: false
-publish: true
+draft: true
+publish: false
 ---
 ## DDL Defined
 

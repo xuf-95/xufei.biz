@@ -53,7 +53,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-BigData Map]]
+- part-of:: [[BigData Map]]
 - depends-on:: [[Data Lineage]]
 - supports:: [[Data Quality]]
 - related:: [[Apache DolphinScheduler]]

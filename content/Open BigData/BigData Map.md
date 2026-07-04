@@ -1,5 +1,5 @@
 ---
-title: MOC-大数据全栈工程师能力地图
+title: BigData Map
 aliases:
   - Bigdata Full Stack Engineer Capability Map
 tags:
@@ -19,12 +19,12 @@ publish: true
 
 - [[Bigdata Wiki OS]]
 - [[Data Architecture]]
-- [[Data Integration]]
+- Data Integration
 - [[Data Pipeline SLA]]
 - [[Data Observability]]
 - [[Data Store]]
 - [[Data Model]]
-- [[Data Visual]]
+- Data Visual
 - [[Bigdata With AI]]
 
 ## Engineering Backbone
@@ -45,14 +45,14 @@ flowchart LR
 
 ## Technology Map
 
-- Ingestion: [[Kafka]], [[Kafka Connect]], [[CDC（Change Data Capture）]], [[Apache Flume]], [[Apache Nifi]]
-- Batch: [[Spark]], [[MapReduce]], [[Apache Hive]]
-- Streaming: [[Apache Flink]], [[Streaming Processing]], [[Flink CDC]]
-- Storage: [[HDFS]], [[Data Lake]], [[Lakehouse]], [[ClickHouse]], [[What's StarRocks]], [[Apache Doris]]
+- Ingestion: [[Kafka]], Kafka Connect, [[CDC（Change Data Capture）]], [[Apache Flume]], Apache Nifi
+- Batch: [[Apache Spark]], [[MapReduce]], Apache Hive
+- Streaming: Apache Flink, [[Streaming Processing]], [[Flink CDC]]
+- Storage: [[HDFS]], [[Data Lake]], Lakehouse, ClickHouse, [[What's StarRocks]], [[Apache Doris]]
 - Scheduling: [[Apache Airflow]], [[Apache DolphinScheduler]]
 - Reliability: [[Data Pipeline SLA]], [[Data Observability]], [[Data Lineage]], [[Data Quality]]
-- Modeling: [[Dimensional Modeling]], [[Indicator System]], [[Semantic Layer]]
-- AI Enablement: [[Data Agent Architecture]], [[Text2SQL]], [[RAG]], [[Agent]]
+- Modeling: Dimensional Modeling, [[Indicator System]], [[Semantic Layer]]
+- AI Enablement: Data Agent Architecture, [[Text2SQL]], RAG, [[How Agentic Work]]
 
 ## Phase 2 Capability Cards
 
@@ -84,12 +84,12 @@ flowchart LR
 - Pipeline SLA 和质量规则清单
 - 数据可观测性和故障复盘清单
 - 面试项目案例集
-- [[Bigdata Interview Question Bank]]
-- [[Bigdata Project Case Library]]
+- Bigdata Interview Question Bank
+- Bigdata Project Case Library
 
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
 - related:: [[MOC-Data Architecture Map]]
-- related:: [[MOC-DATA+AI Agent Map]]
-- supports:: [[MOC-职业资产地图]]
+- related:: DATA Agent Map
+- supports:: MOC-职业资产地图

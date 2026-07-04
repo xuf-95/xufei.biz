@@ -26,7 +26,7 @@ status: seed
 
 - 在业务发现异常前识别数据延迟、空值突增、口径漂移和链路失败。
 - 缩短数据事故定位和恢复时间。
-- 为 [[Data Agent Architecture]] 提供诊断上下文和证据。
+- 为 Data Agent Architecture 提供诊断上下文和证据。
 
 ## Architecture / Flow
 
@@ -55,7 +55,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-BigData Map]]
+- part-of:: [[BigData Map]]
 - depends-on:: [[Metadata Management]]
 - depends-on:: [[Data Lineage]]
 - supports:: [[Data Pipeline SLA]]

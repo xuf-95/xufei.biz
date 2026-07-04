@@ -1,5 +1,5 @@
 ---
-title: "Hive Deploy Manual"
+title: Hive Deploy Manual
 tags:
   - hadoop
   - database
@@ -7,9 +7,7 @@ tags:
   - hive
 date: 2022-01-22
 draft: true
-publish: true
-
-
+publish: false
 ---
 ##  Hive Install
 

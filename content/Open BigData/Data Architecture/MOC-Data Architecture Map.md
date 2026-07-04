@@ -27,10 +27,10 @@ publish: true
 - [[DCMM]]
 - [[DAMA-DMBOK]]
 - [[CDO]]
-- [[Data Warehouse]]
+- Data Warehouse
 - [[Data Lake]]
-- [[Lakehouse]]
-- [[Data Agent Architecture]]
+- Lakehouse
+- Data Agent Architecture
 
 ## Architecture View
 
@@ -50,10 +50,10 @@ flowchart TB
 
 - Strategy: [[CDO]]、数据战略、数据资产化、业务价值指标。
 - Blueprint: [[Data Architecture Blueprint]]、[[Data Architecture Decision Record]]、当前态/目标态/迁移路线。
-- Architecture: [[Data Warehouse]]、[[Data Lake]]、[[Lakehouse]]、[[Lambda Architecture]]、[[Kappa Architecture]]、[[Data Mesh]]。
-- Modeling: [[Data Domain]]、[[Dimensional Modeling]]、[[E-R Model]]、[[Indicator System]]、[[Semantic Layer]]、[[Metrics Governance]]。
+- Architecture: Data Warehouse、[[Data Lake]]、Lakehouse、[[Lambda Architecture]]、[[Kappa Architecture]]、[[Data Mesh]]。
+- Modeling: [[Data Domain]]、Dimensional Modeling、E-R Model、[[Indicator System]]、[[Semantic Layer]]、[[Metrics Governance]]。
 - Governance: [[DAMA-DMBOK]]、[[DCMM]]、[[Metadata Management]]、[[Data Standard]]、[[Data Quality]]、[[Data Security]]。
-- AI: [[Data Agent Architecture]]、[[Text2SQL]]、[[RAG]]、[[Agent Governance]]。
+- AI: Data Agent Architecture、[[Text2SQL]]、RAG、Agent Governance。
 
 ## Phase 2 Capability Cards
 
@@ -88,12 +88,12 @@ flowchart TB
 - 数据治理能力评估表
 - 指标体系和语义层方案
 - CDO/CDAO 视角演讲稿
-- [[Data Architecture Review Playbook]]
-- [[Bigdata Presentation Playbook]]
+- Data Architecture Review Playbook
+- Bigdata Presentation Playbook
 
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
 - related:: [[MOC-DCMM-DAMA Map]]
-- related:: [[MOC-DATA+AI Agent Map]]
-- supports:: [[MOC-职业资产地图]]
+- related:: DATA Agent Map
+- supports:: MOC-职业资产地图

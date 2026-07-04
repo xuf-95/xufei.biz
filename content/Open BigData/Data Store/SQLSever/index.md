@@ -10,6 +10,6 @@ publish: true
 
 ## SQL Server
 
-- [[DataFactory|DataFactory]]
-- [[Homepage|Homepage]]
-- [[SQL Server Commad|SQL Server Commad]]
+- DataFactory
+- Homepage
+- SQL Server Commad

@@ -341,14 +341,14 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
     <h3 class="home-col-title">Architecture</h3>
     <ul>
       <li>[[Data Architecture]]</li>
-      <li>[[Lakehouse]]</li>
+      <li>Lakehouse</li>
     </ul>
   </div>
   <div class="home-col-right">
     <h3 class="home-col-title">AI</h3>
     <ul>
-      <li>[[Data Agent Architecture]]</li>
-      <li>[[RAG]]</li>
+      <li>Data Agent Architecture</li>
+      <li>RAG</li>
     </ul>
   </div>
 </div>
@@ -356,7 +356,7 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 
 ## Diagram Components
 
-当 Mermaid 不够美观，优先使用 [[Quartz Diagram Style Guide]] 中的 `wiki-diagram-*` 组件。它们适合正式方案、教程和演讲页面，样式统一沉淀在 `quartz/styles/custom/diagram-components.scss`。
+当 Mermaid 不够美观，优先使用 Quartz Diagram Style Guide 中的 `wiki-diagram-*` 组件。它们适合正式方案、教程和演讲页面，样式统一沉淀在 `quartz/styles/custom/diagram-components.scss`。
 
 推荐边界：
 
@@ -420,7 +420,7 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 | --- | --- | --- | --- |
 | 2026-06-20 | 新增 Sidenotes 右侧标注说明 | `content/Posts/Quartz Style Guide.md` | 记录脚注转右侧标注的写法和交互规则 |
 | 2026-06-11 | 新增样式使用指南和 Demo 页面 | `content/Posts/Quartz Style Guide.md` | 为后续文章提供统一样式参考 |
-| 2026-06-11 | 新增 Diagram Components 规范 | [[Quartz Diagram Style Guide]] | 为架构图、流程图和能力地图提供 HTML 组件方案 |
+| 2026-06-11 | 新增 Diagram Components 规范 | Quartz Diagram Style Guide | 为架构图、流程图和能力地图提供 HTML 组件方案 |
 | 2026-06-11 | 新增 UI 自动监视入口 | [[UI Evolution Monitor]] | 用 `npm run ui:audit` 检查关键页面和样式组件 |
 | 2026-06-11 | 记录已有样式模块清单 | `quartz/styles/custom.scss` | 明确当前可复用模块 |
 | 2026-06-03 | 新增图片布局测试样式 | `quartz/styles/images-layouts.scss` | 支持宽图、卡片、拼贴和浮动图片 |
@@ -441,7 +441,7 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 ## Links
 
 - related:: [[Quartz MKD]]
-- related:: [[Quartz Diagram Style Guide]]
+- related:: Quartz Diagram Style Guide
 - related:: [[UI Evolution Monitor]]
 - supports:: [[Bigdata Wiki OS]]
-- supports:: [[MOC-BigData Map]]
+- supports:: [[BigData Map]]

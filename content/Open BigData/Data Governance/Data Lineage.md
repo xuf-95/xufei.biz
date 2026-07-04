@@ -24,7 +24,7 @@ status: seed
 
 - 变更前做影响分析，避免上游字段调整破坏下游报表。
 - 质量异常时快速定位来源、加工任务和责任人。
-- 为 [[Data Agent Architecture]] 提供可解释证据链。
+- 为 Data Agent Architecture 提供可解释证据链。
 
 ## Architecture / Flow
 

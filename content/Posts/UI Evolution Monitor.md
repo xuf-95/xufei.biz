@@ -35,13 +35,13 @@ npm run ui:audit
 
 `scripts/ui-audit.mjs` 当前覆盖这些关键页面：
 
-| Page | Coverage |
-| --- | --- |
-| Home | Bigdata Wiki OS、Style Guide、Diagram Style Guide 入口 |
-| Quartz Style Guide | 样式系统地图、Callout、Changelog |
-| Quartz Diagram Style Guide | `wiki-diagram-*` 图形组件 |
-| Bigdata Wiki OS | MOC 和 DATA+AI 入口 |
-| Data Agent Architecture | Agent、语义层、元数据入口 |
+| Page                       | Coverage                                           |
+| -------------------------- | -------------------------------------------------- |
+| Home                       | Bigdata Wiki OS、Style Guide、Diagram Style Guide 入口 |
+| Quartz Style Guide         | 样式系统地图、Callout、Changelog                           |
+| Quartz Diagram Style Guide | `wiki-diagram-*` 图形组件                              |
+| Bigdata Wiki OS            | MOC 和 DATA+AI 入口                                   |
+| Data Agent Architecture    | Agent、语义层、元数据入口                                    |
 
 ## What It Catches
 
@@ -51,7 +51,7 @@ npm run ui:audit
 - `wiki-diagram-*` 样式组件缺失。
 - 页面中出现明显渲染异常 token：`undefined`、`NaN`、`[object Object]`。
 - 页面出现空 `href`。
-- HTML 里残留未解析的 `[[wikilink]]`。
+- HTML 里残留未解析的 `wikilink`。
 - 单页 inline style 数量异常偏多。
 
 ## What It Does Not Catch Yet
@@ -87,7 +87,7 @@ npm run ui:audit
 
 ### Phase 4: Design Review Loop
 
-- 每次新增样式后更新 [[Quartz Style Guide]] 和 [[Quartz Diagram Style Guide]]。
+- 每次新增样式后更新 [[Quartz Style Guide]] 和 Quartz Diagram Style Guide。
 - 每次视觉问题修复后在本页记录 Changelog。
 - 对高频模式沉淀为 `quartz/styles/custom/*.scss`。
 
@@ -102,5 +102,5 @@ npm run ui:audit
 ## Links
 
 - related:: [[Quartz Style Guide]]
-- related:: [[Quartz Diagram Style Guide]]
+- related:: Quartz Diagram Style Guide
 - supports:: [[Bigdata Wiki OS]]

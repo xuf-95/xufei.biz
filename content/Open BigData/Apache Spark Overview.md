@@ -15,7 +15,7 @@ language: EN
 ---
 ## Introduction
 
-Apache Spark is a unified analytics engine for large-scale data processing. It provides high-level APIs in [[Java]], [[Scala]], [[Python]], and R, and an optimized engine that supports general execution graphs. Spark powers a stack of libraries including SQL and [[DataFrames]], MLlib for machine learning, GraphX for graph processing, and Structured Streaming for stream processing.
+Apache Spark is a unified analytics engine for large-scale data processing. It provides high-level APIs in Java, Scala, Python, and R, and an optimized engine that supports general execution graphs. Spark powers a stack of libraries including SQL and DataFrames, MLlib for machine learning, GraphX for graph processing, and Structured Streaming for stream processing.
 
 ## Architecture Overview
 

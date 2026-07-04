@@ -56,21 +56,21 @@ Change data capture is typically used to replicate data that is overwritten to a
 
 A few situations where you might use change data capture:
 
-- Replicate changes into a [[content/Concepts/bigdata/Data Warehouse|data warehouse]] or [[content/Concepts/bigdata/Data Lake|data lake]]
-- Replicate changes into [[Apache Kafka|Kafka]] (or other streaming tool) in a microservices architecture
+- Replicate changes into a data warehouse or [[content/Concepts/bigdata/Data Lake|data lake]]
+- Replicate changes into Kafka (or other streaming tool) in a microservices architecture
 - Upgrade a database to a higher version with minimal downtime
 - Migrate data from database X to database Y with minimal downtime
 
 ### Popular Change Data Capture Tools
 
 - [[Flink CDC]]
-- [[Debezium]]
+- Debezium
+- Amazon DMS
+- [Estuary | Real-Time Data Integration, CDC & ETL Platform](https://estuary.dev/)
 - Confluent
-- [[Amazon DMS]]
 - Qlik
 - Striim
 - Matillion Data Loader
-- [Estuary | Real-Time Data Integration, CDC & ETL Platform](https://estuary.dev/)
 
 
 ### Resource

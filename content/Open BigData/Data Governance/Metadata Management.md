@@ -25,7 +25,7 @@ status: seed
 
 - 让用户知道数据在哪里、是什么、由谁负责、是否可信。
 - 支撑血缘分析、影响分析、质量追踪和权限审计。
-- 为 [[Semantic Layer]]、[[Indicator System]] 和 [[Data Agent Architecture]] 提供上下文。
+- 为 [[Semantic Layer]]、[[Indicator System]] 和 Data Agent Architecture 提供上下文。
 
 ## Architecture
 
@@ -51,5 +51,5 @@ flowchart LR
 - part-of:: [[MOC-DCMM-DAMA Map]]
 - supports:: [[Data Quality]]
 - supports:: [[Semantic Layer]]
-- supports:: [[Data Agent Architecture]]
+- supports:: Data Agent Architecture
 - related:: [[Apache Atlas]]

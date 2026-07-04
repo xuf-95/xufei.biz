@@ -66,4 +66,4 @@ CDO/CDAO 的核心价值是把数据能力和业务结果连接起来。数据�
 - governs:: [[Data Standard]]
 - governs:: [[Data Quality]]
 - depends-on:: [[Metadata Management]]
-- enables:: [[Data Agent Architecture]]
+- enables:: Data Agent Architecture

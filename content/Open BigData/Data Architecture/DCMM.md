@@ -39,7 +39,7 @@ publish: true
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | **数据战略** (Data Strategy)         | - 数据战略规划 (Data Strategic Planning)<br>- 数据战略实施 (Data Strategy Implementation<br>- 数据战略评估 (Data Strategy Evaluation)<br>                         |
 | **数据治理** (Data Governance)       | - 数据治理组织 (Data Governance Organization)<br>- 数据制度建设 (Data Policy Development)<br>- 数据治理沟通 (Data Governance Communication)                       |
-| **数据架构** ([[Data Architecture]]) | - 数据模型 ([[Data Model]])<br>- 数据分布 (Data Distribution)<br>- 数据集成与共享 (Data Integration and Sharing)<br>- 元数据管理 (Metadata Management)              |
+| **数据架构** ([[Data Architecture]]) | - 数据模型 (Data Model)<br>- 数据分布 (Data Distribution)<br>- 数据集成与共享 (Data Integration and Sharing)<br>- 元数据管理 (Metadata Management)              |
 | **数据应用** (Data Application)      | - 数据分析 (Data Analysis)<br>- 数据开放共享 (Data Open Sharing)<br>- 数据服务 (Data Service)                                                                 |
 | **数据安全** (Data Security)         | - 数据安全策略 (Data Security Strategy)<br>- 数据安全管理 (Data Security Management)<br>- 数据安全审计 (Data Security Audit)                                      |
 | **数据质量** (Data Quality)          | - 数据质量需求 (Data Quality Requirement)<br>- 数据质量检查 (Data Quality Check)<br>- 数据质量分析 (Data Quality Analysis)<br>- 数据质量提升 (Data Quality Improvement) |
@@ -50,8 +50,8 @@ publish: true
 ## Related Concepts
 
 - [[DAMA-DMBOK]] - International data management framework
-- [[Data Governance]] - Organizational data management practices
-- [[Data Maturity Model]] - General maturity assessment approaches
+- Data Governance - Organizational data management practices
+- Data Maturity Model - General maturity assessment approaches
 
 ---
 

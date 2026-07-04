@@ -64,4 +64,4 @@ Data Mesh 适合解决中心化数据团队无法支撑复杂业务规模的问�
 - depends-on:: [[Data Product]]
 - depends-on:: [[Data Contract]]
 - supports:: [[Data Architecture Blueprint]]
-- compares-with:: [[Lakehouse]]
+- compares-with:: Lakehouse

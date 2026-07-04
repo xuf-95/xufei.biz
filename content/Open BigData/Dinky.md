@@ -307,8 +307,8 @@ public class CdcSourceFunction extends RichSourceFunction<ChangeEvent> {
 
 ## 相关主题
 
-- [[Apache Flink]] - Flink 核心概念和架构
-- [[Flink SQL]] - Flink SQL 使用和优化
+- Apache Flink - Flink 核心概念和架构
+- Flink SQL - Flink SQL 使用和优化
 - [[Flink CDC]] - Flink CDC 数据同步
-- [[实时计算]] - 实时计算技术栈
-- [[数据湖]] - 数据湖架构和治理
+- 实时计算 - 实时计算技术栈
+- 数据湖 - 数据湖架构和治理

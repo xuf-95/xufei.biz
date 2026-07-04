@@ -52,4 +52,4 @@ flowchart TB
 - depends-on:: [[Metadata Management]]
 - governed-by:: [[Data Standard]]
 - supports:: [[Indicator System]]
-- supports:: [[Data Agent Architecture]]
+- supports:: Data Agent Architecture

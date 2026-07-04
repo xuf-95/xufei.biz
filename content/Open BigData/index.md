@@ -19,11 +19,11 @@ publish: true
 
 ## Core Maps
 
-- [[MOC-BigData Map]] - 工程能力、数据链路、平台交付和职业资产导航。
+- [[BigData Map]] - 工程能力、数据链路、平台交付和职业资产导航。
 - [[MOC-Data Architecture Map]] - 架构、建模、治理、平台、数据产品和 CDO/CDAO 视角导航。
 - [[MOC-DCMM-DAMA Map]] - DCMM、DAMA、元数据、标准、质量和治理证据导航。
-- [[MOC-DATA+AI Agent Map]] - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航。
-- [[MOC-职业资产地图]] - 面试题、项目案例、架构评审、演讲教程和作品集导航。
+- DATA Agent Map - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航。
+- MOC-职业资产地图 - 面试题、项目案例、架构评审、演讲教程和作品集导航。
 
 ## Core Notes
 
@@ -60,29 +60,29 @@ publish: true
 
 ### DATA+AI
 
-- [[Data Agent Architecture]]
+- Data Agent Architecture
 - [[Text2SQL]]
-- [[Agent Governance]]
-- [[Agent]]
-- [[RAG]]
-- [[MCP]]
+- Agent Governance
+- [[How Agentic Work]]
+- RAG
+- MCP
 
 ### Career Assets
 
-- [[MOC-职业资产地图]]
-- [[Bigdata Interview Question Bank]]
-- [[Bigdata Project Case Library]]
-- [[Data Architecture Review Playbook]]
-- [[Bigdata Presentation Playbook]]
+- MOC-职业资产地图
+- Bigdata Interview Question Bank
+- Bigdata Project Case Library
+- Data Architecture Review Playbook
+- Bigdata Presentation Playbook
 
 ## Maintenance
 
-- [[Obsidian Naming Governance]] - tags、filename、title、aliases 和双链的命名治理规则。
-- [[Obsidian Tag Monitor]] - 使用 Dataview 监控 tag 分布、孤立 tag、命名异常和清理候选。
+- Obsidian Naming Governance - tags、filename、title、aliases 和双链的命名治理规则。
+- Obsidian Tag Monitor - 使用 Dataview 监控 tag 分布、孤立 tag、命名异常和清理候选。
 - 每次新增核心笔记，至少挂到一个 MOC。
 - 每次新增项目案例，补充 `part-of::`、`used-in::` 或 `asked-in::` 关系。
-- 每次新增 DATA+AI 相关内容，同步检查 [[MOC-DATA+AI Agent Map]] 和 [[AI]] 首页入口。
-- 每次新增面试、案例、评审或演讲内容，同步检查 [[MOC-职业资产地图]]。
+- 每次新增 DATA+AI 相关内容，同步检查 DATA Agent Map 和 [[AI]] 首页入口。
+- 每次新增面试、案例、评审或演讲内容，同步检查 MOC-职业资产地图。
 
 ## Links
 

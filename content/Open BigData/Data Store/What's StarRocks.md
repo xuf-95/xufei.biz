@@ -16,7 +16,7 @@ publish: true
 
 > StarRocks is a **next-gen**, high-performance analytical data warehouse that enables real-time, multi-dimensional, and highly concurrent data analysis. StarRocks has an MPP architecture and is equipped with a fully vectorized execution engine, a columnar storage engine that supports real-time updates, and is powered by a rich set of features including a fully-customized cost-based optimizer (CBO), intelligent materialized view and more. StarRocks supports real-time and batch data ingestion from a variety of data sources. It also allows you to directly analyze data stored in data lakes with zero data migration.
 
-  StarRocks 是 **新一代极速全场景 [[MMP（Massively Parallel Processing）]] 数据库**，兼容 [[MySQL]] 协议。采用了全面向量化引擎架构，并配备全新设计的 CBO (Cost Based Optimizer) 优化器、支持智能化物化视图
+  StarRocks 是 **新一代极速全场景 MMP（Massively Parallel Processing） 数据库**，兼容 [[MySQL]] 协议。采用了全面向量化引擎架构，并配备全新设计的 CBO (Cost Based Optimizer) 优化器、支持智能化物化视图
 
   
 ## StarRocks Architecture
@@ -36,7 +36,7 @@ publish: true
 
 ## StarRocks 特性
 
-- SR 采用 [[MMP（Massively Parallel Processing）]] 分布式执行框架。在 MPP 执行框架中，一条查询请求会被拆分成多个物理计算单元，在多机并行执行。每个执行节点拥有独享的资源（CPU、内存）。MPP 执行框架能够使得单个查询请求可以充分利用所有执行节点的资源，所以单个查询的性能可以随着集群的水平扩展而不断提升。
+- SR 采用 MMP（Massively Parallel Processing） 分布式执行框架。在 MPP 执行框架中，一条查询请求会被拆分成多个物理计算单元，在多机并行执行。每个执行节点拥有独享的资源（CPU、内存）。MPP 执行框架能够使得单个查询请求可以充分利用所有执行节点的资源，所以单个查询的性能可以随着集群的水平扩展而不断提升。
 
 ![StarRocks MPP](<StarRocks MPP.png>)
 
@@ -63,7 +63,7 @@ publish: true
 
 ## 应用场景
 
-- [[Online Analytical Processing|OLAP]] 多维数据分析：用户行为分析、用户画像、跨主题业务分析、系统监控分析
+- OLAP 多维数据分析：用户行为分析、用户画像、跨主题业务分析、系统监控分析
 - 针对数据仓库、数据湖分析进行实时数据分析：电商大促分析、直播质量分析、广告投放、智能驾驶舱
 - Ad-hoc 高并发查询：广告主报表分析、零售行业渠道分析、Dashboard 多页面分析
 

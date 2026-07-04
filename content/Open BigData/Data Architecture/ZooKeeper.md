@@ -125,7 +125,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 
 ## 大数据生态中的ZooKeeper应用
 
-### [[Apache Hadoop]]生态系统
+### [[Apache Hadoop Overview]]生态系统
 
 **[[HDFS]] (Hadoop Distributed File System)**
 - 使用ZooKeeper进行NameNode HA (高可用)配置
@@ -137,7 +137,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 表结构和元数据管理
 - 分布式查询协调
 
-**[[HBase]]**
+**[[Apache HBase OVerview]]**
 - RegionServer管理
 - 集群状态监控
 - Master选举和故障恢复
@@ -147,12 +147,12 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 集群资源分配和调度协调
 - NodeManager状态管理
 
-**[[Spark]]**
+**[[Apache Spark]]**
 - Spark Master的高可用配置
 - 集群任务调度和协调
 - 应用程序状态管理
 
-**[[Flink]]**
+**[[What is Apache Flink?]]**
 - JobManager的高可用
 - TaskManager状态协调
 - 检查点(Checkpoint)协调
@@ -207,7 +207,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 
 **阿里云大数据平台**
 - [[MaxCompute]]组件协调
-- [[E-MapReduce]]集群管理
+- E-MapReduce集群管理
 - 大数据服务集成
 
 **腾讯云大数据平台**

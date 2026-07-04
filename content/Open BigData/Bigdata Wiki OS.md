@@ -97,44 +97,44 @@ publish: true
 </section>
 ## 顶层知识域
 
-建议把知识库组织为 12 个顶层域。现有仓库已经有 [[Data Architecture]]、[[Data Model]]、[[Data Store]]、[[Apache Hadoop]]、[[Apache Flink]]、[[Data Visual]]、[[AI]] 等目录，可以在现有结构上渐进扩展。
+建议把知识库组织为 12 个顶层域。现有仓库已经有 [[Data Architecture]]、[[Data Model]]、[[Data Store]]、[[Apache Hadoop Overview]]、Apache Flink、Data Visual、[[AI]] 等目录，可以在现有结构上渐进扩展。
 
 ## Phase 1 导航入口
 
-- [[MOC-BigData Map]] - 工程能力、技术栈、Pipeline、平台和交付物导航
+- [[BigData Map]] - 工程能力、技术栈、Pipeline、平台和交付物导航
 - [[MOC-Data Architecture Map]] - 架构、建模、治理、数据产品和 CDO/CDAO 视角导航
 - [[MOC-DCMM-DAMA Map]] - DCMM、DAMA、元数据、标准、质量和成熟度证据导航
-- [[MOC-DATA+AI Agent Map]] - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航
-- [[MOC-职业资产地图]] - 面试、案例、架构评审、演讲教程和作品集导航
+- DATA Agent Map - Data Agent、语义层、指标体系、RAG、工具调用和治理边界导航
+- MOC-职业资产地图 - 面试、案例、架构评审、演讲教程和作品集导航
 
 ## Phase Roadmap
 
 | Phase | 目标 | 当前状态 | 关键产物 |
 | --- | --- | --- | --- |
-| Phase 1 | 建立可导航的知识骨架 | 已完成 | [[00-Map]]、4 个 MOC、8 个核心骨架笔记、统一模板 |
+| Phase 1 | 建立可导航的知识骨架 | 已完成 | 00-Map、4 个 MOC、8 个核心骨架笔记、统一模板 |
 | Phase 2 | 扩展核心能力图谱 | 进行中 | 数据架构、治理、建模、工程、DATA+AI 的概念卡、模式卡和面试题 |
 | Phase 3 | 沉淀项目交付资产 | 已预置骨架 | 架构方案、ADR、项目案例、故障复盘、演讲教程 |
 | Phase 4 | Agent 化维护和生成 | 待开始 | Link Review Agent、Knowledge Compile Agent、Text2SQL / DataOps / Quality Agent |
 
 Phase 1 的完成标准不是“文章很多”，而是让每个核心主题都能通过 MOC 找到入口，并且每篇核心笔记都能回答 Definition、Business Value、Architecture、Commercial Practice、Interview Answer 和 Links。
 
-Phase 2 的第一批能力卡已经覆盖 [[Data Architecture Blueprint]]、[[Data Governance Operating Model]]、[[Data Domain]]、[[Data Product]]、[[Data Contract]]、[[Metrics Governance]]、[[Data Pipeline SLA]]、[[Data Observability]]、[[Text2SQL]] 和 [[Agent Governance]]，后续应继续扩展为项目案例、面试题和演讲素材。
+Phase 2 的第一批能力卡已经覆盖 [[Data Architecture Blueprint]]、[[Data Governance Operating Model]]、[[Data Domain]]、[[Data Product]]、[[Data Contract]]、[[Metrics Governance]]、[[Data Pipeline SLA]]、[[Data Observability]]、[[Text2SQL]] 和 Agent Governance，后续应继续扩展为项目案例、面试题和演讲素材。
 
-Phase 2 的第二批资产层已经预置 [[MOC-职业资产地图]]、[[Bigdata Interview Question Bank]]、[[Bigdata Project Case Library]]、[[Data Architecture Review Playbook]] 和 [[Bigdata Presentation Playbook]]，用于把能力卡转化为工作交付、面试表达和演讲教程。
+Phase 2 的第二批资产层已经预置 MOC-职业资产地图、Bigdata Interview Question Bank、Bigdata Project Case Library、Data Architecture Review Playbook 和 Bigdata Presentation Playbook，用于把能力卡转化为工作交付、面试表达和演讲教程。
 
 | 知识域 | 核心问题 | 代表笔记 | 主要输出 |
 | --- | --- | --- | --- |
-| 00-Map | 我的知识库如何导航 | [[MOC-BigData Map]]、[[MOC-Data Architecture Map]] | 首页、MOC、图谱 |
+| 00-Map | 我的知识库如何导航 | [[BigData Map]]、[[MOC-Data Architecture Map]] | 首页、MOC、图谱 |
 | 01-Data Strategy | 数据如何服务业务战略 | 数据战略、数据资产化、[[CDO]] | 数据战略方案 |
 | 02-Data Governance | 数据如何被管理和治理 | [[DCMM]]、[[DAMA-DMBOK]]、[[Metadata Management]]、[[Data Quality]] | 治理体系、评估表 |
-| 03-Data Architecture | 数据系统如何分层与演进 | [[Data Architecture]]、[[Lakehouse]]、[[Data Warehouse]] | 架构蓝图、技术路线 |
-| 04-Data Modeling | 如何把业务转成数据模型 | [[Dimensional Modeling]]、[[E-R Model]]、[[Indicator System]]、[[Semantic Layer]] | 模型设计、指标口径 |
-| 05-Data Engineering | 数据如何采集、同步、调度、计算 | [[Kafka]]、[[Apache Flink]]、[[Spark]]、[[CDC（Change Data Capture）]] | Pipeline、SLA、排障手册 |
+| 03-Data Architecture | 数据系统如何分层与演进 | [[Data Architecture]]、Lakehouse、Data Warehouse | 架构蓝图、技术路线 |
+| 04-Data Modeling | 如何把业务转成数据模型 | Dimensional Modeling、E-R Model、[[Indicator System]]、[[Semantic Layer]] | 模型设计、指标口径 |
+| 05-Data Engineering | 数据如何采集、同步、调度、计算 | [[Kafka]]、Apache Flink、[[Apache Spark]]、[[CDC（Change Data Capture）]] | Pipeline、SLA、排障手册 |
 | 06-Data Platform | 平台如何支撑规模化交付 | 数据中台、湖仓平台、元数据平台 | 平台规划、产品方案 |
 | 07-Data Quality & Security | 如何保证可信、合规、安全 | [[Data Quality]]、数据安全、权限、审计 | 质量规则、安全方案 |
-| 08-Analytics & BI | 如何把数据变成洞察 | [[Data Visual]]、指标分析、经营分析 | Dashboard、分析报告 |
+| 08-Analytics & BI | 如何把数据变成洞察 | Data Visual、指标分析、经营分析 | Dashboard、分析报告 |
 | 09-Data Product | 如何把数据做成产品 | 数据服务、API、标签、画像、推荐 | 数据产品 PRD |
-| 10-DATA+AI Agent | AI 如何增强数据工作 | [[Data Agent Architecture]]、[[Agent]]、[[RAG]]、Text2SQL、LLMOps | Agent 方案、自动化流程 |
+| 10-DATA+AI Agent | AI 如何增强数据工作 | Data Agent Architecture、[[How Agentic Work]]、RAG、Text2SQL、LLMOps | Agent 方案、自动化流程 |
 | 11-Career Assets | 如何服务职业发展 | 面试题、演讲、案例集、英文表达 | 简历、面试库、课程 |
 
 ## DCMM / DAMA / CDO 三轴映射
@@ -187,9 +187,9 @@ Bigdata Wiki OS 的图谱节点不只是一篇篇文章，而是不同类型的�
 
 | 节点类型 | 用途 | 示例 |
 | --- | --- | --- |
-| `Concept` | 基础概念 | [[CDC（Change Data Capture）]]、[[OLAP（Online Analytical Processing）]]、[[Metadata Management]] |
-| `Technology` | 技术组件 | [[Apache Flink]]、[[Kafka]]、[[ClickHouse]] |
-| `Architecture` | 架构模式 | [[Lambda Architecture]]、[[Lakehouse]] |
+| `Concept` | 基础概念 | [[CDC（Change Data Capture）]]、OLAP（Online Analytical Processing）、[[Metadata Management]] |
+| `Technology` | 技术组件 | Apache Flink、[[Kafka]]、ClickHouse |
+| `Architecture` | 架构模式 | [[Lambda Architecture]]、Lakehouse |
 | `Capability` | 组织能力 | 数据标准、数据质量、数据资产运营 |
 | `Process` | 工作流程 | 数据需求、模型评审、上线发布 |
 | `Artifact` | 交付物 | 数据架构方案、指标字典、数据质量报告 |
@@ -221,10 +221,10 @@ Bigdata Wiki OS 的图谱节点不只是一篇篇文章，而是不同类型的�
 ## Links
 
 - is-a:: [[Streaming Processing]]
-- part-of:: [[Data Engineering]]
+- part-of:: Data Engineering
 - depends-on:: [[Kafka]]
-- used-in:: [[实时数仓]]
-- asked-in:: [[数据架构师面试题]]
+- used-in:: 实时数仓
+- asked-in:: 数据架构师面试题
 ```
 
 ## 推荐目录结构
@@ -618,16 +618,16 @@ sequenceDiagram
 - [[Metadata Management]]
 - [[Data Quality]]
 - [[Data Standard]]
-- [[Data Asset]]
+- Data Asset
 - [[Semantic Layer]]
 - [[Indicator System]]
-- [[Real-time Data Warehouse]]
+- Real-time Data Warehouse
 - [[Data Mesh]]
-- [[Data Agent Architecture]]
+- Data Agent Architecture
 - [[Text2SQL]]
-- [[Agent Governance]]
-- [[数据架构师面试题]]
-- [[大数据项目案例集]]
+- Agent Governance
+- 数据架构师面试题
+- 大数据项目案例集
 
 ## References
 

@@ -26,7 +26,7 @@ status: seed
 
 - 让 BI、报表、Ad-hoc、API 和 ChatBI 使用同一套指标口径。
 - 降低业务用户理解底层表结构的成本。
-- 为 Text2SQL 和 [[Data Agent Architecture]] 提供可靠上下文。
+- 为 Text2SQL 和 Data Agent Architecture 提供可靠上下文。
 
 ## Architecture
 
@@ -49,8 +49,8 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[MOC-DATA+AI Agent Map]]
+- part-of:: DATA Agent Map
 - depends-on:: [[Indicator System]]
 - depends-on:: [[Metadata Management]]
 - governed-by:: [[Data Standard]]
-- enables:: [[Data Agent Architecture]]
+- enables:: Data Agent Architecture

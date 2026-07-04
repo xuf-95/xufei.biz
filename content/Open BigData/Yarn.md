@@ -38,7 +38,7 @@ language: CN
 - appMaster：每一个任务都要启动一个对应的appMaster进程。全权负责管理任务的执行，包括资源的申请，container划分，任务执行情况的汇报（给resourceManager汇报），资源的回收等等
 - container：资源划分的容器，所有的资源的分配都是以container为单位的。便于我们资源的管理
 - jobHistoryServer：查看所有完成任务的历史的日志
-- TimeLineServer：查看正在执行的任务的情况，[[Apache Hadoop|Hadoop]]2.4.0以后的新特性。没什么用。实际工作当中一个mr的任务可能跑好几个小时
+- TimeLineServer：查看正在执行的任务的情况，[[Apache Hadoop Overview|Hadoop]]2.4.0以后的新特性。没什么用。实际工作当中一个mr的任务可能跑好几个小时
 
 ## Yarn Schudler
 >[!question] 调度器主要研究的是任务的执行流程。先提交一个任务，还没执行完成，再提交一个任务怎么办。研究并行的任务如何执行的

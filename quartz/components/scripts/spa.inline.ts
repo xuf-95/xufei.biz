@@ -101,7 +101,9 @@ async function _navigate(url: URL, isBack: boolean = false) {
   announcer.dataset.persist = ""
   html.body.appendChild(announcer)
 
-  // morph body
+  // morph body — disable smooth scroll so the page doesn't visibly
+  // animate from the old scroll position to the top after the DOM swap
+  document.documentElement.style.scrollBehavior = "auto"
   micromorph(document.body, html.body)
 
   // scroll into place and add history
@@ -113,6 +115,9 @@ async function _navigate(url: URL, isBack: boolean = false) {
       window.scrollTo({ top: 0 })
     }
   }
+
+  // restore smooth scroll for in-page interactions
+  document.documentElement.style.scrollBehavior = ""
 
   // now, patch head, re-executing scripts
   const elementsToRemove = document.head.querySelectorAll(":not([spa-preserve])")

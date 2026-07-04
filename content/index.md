@@ -18,8 +18,8 @@ On a broader level, I care about building knowledge systems that help data pract
 
 As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit:
 
-- [[MOC-DATA+AI Agent Map]]: experiments and references around data, AI, and agents.
-- [[MOC-BigData Map]]: a capability map for full-stack data engineering;
+- DATA Agent Map: experiments and references around data, AI, and agents.
+- [[BigData Map]]: a capability map for full-stack data engineering;
 - [[MOC-DCMM-DAMA Map]]: a governance-oriented path through DCMM, DAMA, and CDO topics;
 
 Outside of programming, I enjoy coffee, cycling, and tennis.
@@ -36,10 +36,10 @@ Outside of programming, I enjoy coffee, cycling, and tennis.
 <ul>
 
 - [[Bigdata Wiki OS]]
-- [[MOC-BigData Map]]
+- [[BigData Map]]
 - [[MOC-Data Architecture Map]]
 - [[MOC-DCMM-DAMA Map]]
-- [[MOC-DATA+AI Agent Map]]
+- DATA Agent Map
 
 </ul>
 </div>
@@ -49,7 +49,7 @@ Outside of programming, I enjoy coffee, cycling, and tennis.
 <ul>
 
 - [[Bigdata With AI]]
-- [[Agent]]
+- [[How Agentic Work]]
 - [[Prompt Engineering]]
 - [[Token是如何计费的]]
 
@@ -62,7 +62,7 @@ Outside of programming, I enjoy coffee, cycling, and tennis.
 <ul>
 
 - [[Serverless Architecture|Serverless Architecture]]
-- [[Aliyun Cloud Ecosystem]]
+- Aliyun Cloud Ecosystem
 - [[Cloud Vendors Homepage]]
 - [[MaxCompute]]
 
@@ -98,10 +98,10 @@ Outside of programming, I enjoy coffee, cycling, and tennis.
 <h3 class="home-col-title">Recent Posts</h3>
 <ul>
 
-- [[Awesome Digital Garden]]
+- Awesome Digital Garden
 - [[Collections Photography]]
 - [[Quartz Style Guide]]
-- [[Quartz Diagram Style Guide]]
+- Quartz Diagram Style Guide
 
 </ul>
 </div>

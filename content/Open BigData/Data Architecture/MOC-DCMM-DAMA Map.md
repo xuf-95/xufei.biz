@@ -96,11 +96,11 @@ flowchart LR
 - DAMA 知识域学习路线
 - 数据标准和质量规则模板
 - 治理运行机制和责任矩阵
-- [[Data Architecture Review Playbook]]
+- Data Architecture Review Playbook
 
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
 - related:: [[MOC-Data Architecture Map]]
 - supports:: [[CDO]]
-- supports:: [[MOC-职业资产地图]]
+- supports:: MOC-职业资产地图

@@ -2,7 +2,7 @@
 title: AQE（Adaptive Query Execution）
 aliases:
   - 自适应查询执行
-description: "**AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。**"
+description: AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。
 tags:
   - concepts
   - sql
@@ -129,9 +129,9 @@ AQE 后：
 
 ### **3.2 动态合并 Shuffle 小分区**
 
-[[Spark]]、[[Flink]]、[[Hive]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
+[[Apache Spark]]、[[What is Apache Flink?]]、[[Hive]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
 
-比如 [[Spark]] 默认可能是：
+比如 [[Apache Spark]] 默认可能是：
 
 ```text
 spark.sql.shuffle.partitions = 200
@@ -239,9 +239,9 @@ Partition 3-3 = 1GB
 
 ---
 
-## **5. AQE 在 [[Spark]] SQL 中的理解**
+## **5. AQE 在 [[Apache Spark]] SQL 中的理解**
 
-在 [[Spark]] SQL 中，AQE 是非常典型的优化能力。开启参数一般是：
+在 [[Apache Spark]] SQL 中，AQE 是非常典型的优化能力。开启参数一般是：
 
 ```properties
 spark.sql.adaptive.enabled=true
@@ -257,7 +257,7 @@ spark.sql.adaptive.autoBroadcastJoinThreshold=...
 spark.sql.shuffle.partitions=200
 ```
 
-[[Spark]] AQE 的核心依赖是：
+[[Apache Spark]] AQE 的核心依赖是：
 
 ```text
 Shuffle 阶段边界

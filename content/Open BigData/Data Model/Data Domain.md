@@ -56,6 +56,6 @@ flowchart LR
 
 - part-of:: [[MOC-Data Architecture Map]]
 - supports:: [[Data Architecture Blueprint]]
-- supports:: [[Dimensional Modeling]]
+- supports:: Dimensional Modeling
 - related:: [[Data Mesh]]
 

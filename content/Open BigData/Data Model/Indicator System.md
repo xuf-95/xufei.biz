@@ -51,7 +51,7 @@ flowchart TB
 ## Links
 
 - part-of:: [[MOC-Data Architecture Map]]
-- depends-on:: [[Dimensional Modeling]]
+- depends-on:: Dimensional Modeling
 - governed-by:: [[Data Standard]]
 - supports:: [[Semantic Layer]]
 - supports:: [[Data Quality]]

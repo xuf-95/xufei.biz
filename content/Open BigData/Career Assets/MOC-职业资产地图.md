@@ -27,13 +27,13 @@ status: seed
 
 ## Capability To Asset
 
-| 能力主题 | 面试资产 | 项目资产 | 演讲资产 |
+| 能力主题 | 面试资产                                                                   | 项目资产 | 演讲资产 |
 | --- | --- | --- | --- |
-| 数据架构 | [[Data Architecture Blueprint]]、[[Data Architecture Decision Record]] | 架构蓝图、ADR、迁移路线 | 架构演进故事 |
+| 数据架构 | [[Data Architecture Blueprint]]、[[Data Architecture Decision Record]]  | 架构蓝图、ADR、迁移路线 | 架构演进故事 |
 | 数据治理 | [[Data Governance Operating Model]]、[[Data Lineage]]、[[Data Security]] | 治理机制、质量规则、责任矩阵 | 治理价值闭环 |
-| 建模语义 | [[Data Domain]]、[[Metrics Governance]]、[[Semantic Layer]] | 指标体系、语义层方案 | 指标一致性案例 |
-| 工程可靠性 | [[Data Pipeline SLA]]、[[Data Observability]] | SLA、监控、故障复盘 | 数据可靠性体系 |
-| DATA+AI | [[Text2SQL]]、[[Agent Governance]]、[[Data Agent Architecture]] | Agent 方案、工具边界、上线检查 | DATA+AI 转型路线 |
+| 建模语义 | [[Data Domain]]、[[Metrics Governance]]、[[Semantic Layer]]              | 指标体系、语义层方案 | 指标一致性案例 |
+| 工程可靠性 | [[Data Pipeline SLA]]、[[Data Observability]]                           | SLA、监控、故障复盘 | 数据可靠性体系 |
+| DATA+AI | [[Text2SQL]]、[[Agent Governance]]、Data Agent Architecture              | Agent 方案、工具边界、上线检查 | DATA+AI 转型路线 |
 
 ## Maintenance Rules
 
@@ -44,6 +44,6 @@ status: seed
 ## Links
 
 - part-of:: [[Bigdata Wiki OS]]
-- supports:: [[MOC-BigData Map]]
+- supports:: [[BigData Map]]
 - supports:: [[MOC-Data Architecture Map]]
 

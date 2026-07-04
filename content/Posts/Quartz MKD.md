@@ -59,7 +59,7 @@ draft: true
 
 A borderless callout for adding captions to images.
 
-Use [[custom-formatting-features#Callout Positioning|Callout Positioning]] metadata to float these left or right for wiki-style article image captions
+Use Callout Positioning metadata to float these left or right for wiki-style article image captions
 
 ```markdown title="syntax"
 > [!caption]
@@ -154,7 +154,7 @@ This allows the embed to appear seamlessly as a part of the page it is embedded 
 >
 > **Example:**
 >
-> - The [[custom-formatting-features#Infobox|infobox callout]] already floats right. To embed it in another page, add `|right` to the embed wikilink's alias.
+> - The infobox callout already floats right. To embed it in another page, add `|right` to the embed wikilink's alias.
 >
 > This prevents the embed from taking up 100% of the page-width, instead of wrapping around other content
 

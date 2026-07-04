@@ -2,7 +2,7 @@
 title: CBO（Cost-Based Optimizer）
 aliases:
   - CBO
-description:
+description: CBO = Cost-Based Optimizer，基于代价的优化器
 tags:
   - concepts
   - optimization
@@ -108,7 +108,7 @@ CBO 的效果高度依赖统计信息。常见统计信息包括：
 |文件大小 / 文件数量|估算扫描与调度成本|
 |分桶 / 排序信息|判断是否可以减少 Shuffle|
 
-在 [[Spark]]、Hive、Trino 等系统里，通常要通过类似下面的命令收集统计信息：
+在 [[Apache Spark]]、Hive、Trino 等系统里，通常要通过类似下面的命令收集统计信息：
 
 ```sql
 ANALYZE TABLE table_name COMPUTE STATISTICS;
@@ -407,7 +407,7 @@ Apache Kylin
 
 ### **5.6 [[Apache Doris]]**
 
-Apache Doris 是 MPP 架构的实时数仓 / [[OLAP（Online Analytical Processing）|OLAP]] 数据库。
+Apache Doris 是 MPP 架构的实时数仓 / OLAP 数据库。
 
 Doris 新优化器中也有 CBO 思想，主要用于：
 
@@ -467,7 +467,7 @@ StarRocks 面向高并发、低延迟分析查询，所以 CBO 的价值很大�
 
 ---
 
-### **5.8 [[ClickHouse]]**
+### **5.8 ClickHouse**
 
 ClickHouse 传统上更偏向极致列式存储、向量化执行、稀疏索引、分区裁剪和数据跳过索引，早期并不是典型“强 CBO”路线。
 
@@ -550,15 +550,15 @@ Join Key 分布
 |---|---|---|---|
 |Hive|是|Calcite CBO|Join 重排、谓词下推、聚合优化|
 |Spark SQL|是|Catalyst + CBO + AQE|Join Reorder、Broadcast 判断、运行时自适应|
-|[[Flink]] SQL|是|Calcite|流批 SQL 优化、Join、聚合、状态优化|
+|[[What is Apache Flink?]] SQL|是|Calcite|流批 SQL 优化、Join、聚合、状态优化|
 |Trino / Presto|是|自研优化器|Join 顺序、Join 分布、Pushdown|
 |Calcite|是|优化器框架|关系代数、规则优化、代价优化|
 |Impala|是|自研优化器|Join 策略、Runtime Filter|
 |[[Apache Doris\|Doris]]|是|新优化器 CBO|MPP Join、物化视图、Runtime Filter|
 |StarRocks|是|CBO 优化器|Join Reorder、MV 改写、Colocate Join|
-|[[ClickHouse]]|部分具备|Query Analyzer / Planner|分区裁剪、索引跳过、Join 算法|
+|ClickHouse|部分具备|Query Analyzer / Planner|分区裁剪、索引跳过、Join 算法|
 |[[MaxCompute]]|是|云数仓优化器|分区裁剪、Join 优化、执行计划优化|
-|[[Hologres]]|是|PostgreSQL 系 + MPP 优化|Join、索引、分布式执行|
+|Hologres|是|PostgreSQL 系 + MPP 优化|Join、索引、分布式执行|
 |BigQuery / Snowflake / Redshift|是|云数仓 CBO|Join、Scan、MV、资源调度|
 
 ---

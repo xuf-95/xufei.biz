@@ -24,7 +24,7 @@ status: seed
 
 - 让业务方、架构师、工程师和治理团队对建设范围形成同一张图。
 - 支撑 CDO/CDAO 判断平台投入、治理优先级和业务价值闭环。
-- 将 [[DCMM]]、[[DAMA-DMBOK]]、[[Data Architecture]] 和 [[Data Agent Architecture]] 连接成可执行路线。
+- 将 [[DCMM]]、[[DAMA-DMBOK]]、[[Data Architecture]] 和 Data Agent Architecture 连接成可执行路线。
 
 ## Architecture / Flow
 
@@ -59,5 +59,5 @@ flowchart LR
 - part-of:: [[MOC-Data Architecture Map]]
 - depends-on:: [[Data Architecture]]
 - supports:: [[CDO]]
-- supports:: [[Data Agent Architecture]]
+- supports:: Data Agent Architecture
 

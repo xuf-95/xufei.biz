@@ -1,5 +1,5 @@
 ---
-title: "What is Apache Spark?"
+title: Apache Spark
 aliases:
   - Spark
   - spark
@@ -9,12 +9,12 @@ tags:
   - micro-batch
 date: 2023-02-24
 draft: true
-publish: false
+publish: true
 language: EN
 ---
 ## Overview
 
-Apache Spark is a powerful unified analytics engine for large-scale distributed data processing. It provides high-level APIs in Java, Scala, Python, and R, and includes libraries for SQL, streaming, [[machine learning]], and graph processing. [[Spark]] can run on [[Apache Hadoop]], standalone, or in the [[cloud]], and can access diverse data sources.
+Apache Spark is a powerful unified analytics engine for large-scale distributed data processing. It provides high-level APIs in Java, Scala, Python, and R, and includes libraries for SQL, streaming, machine learning, and graph processing. [[Apache Spark]] can run on [[Apache Hadoop Overview]], standalone, or in the cloud, and can access diverse data sources.
 ### Key features include
 
 - Fast in-memory computation

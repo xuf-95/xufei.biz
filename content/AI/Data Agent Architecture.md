@@ -87,9 +87,9 @@ flowchart TB
 
 ## Links
 
-- part-of:: [[MOC-DATA+AI Agent Map]]
+- part-of:: [[DATA Agent Map]]
 - depends-on:: [[Semantic Layer]]
 - depends-on:: [[Metadata Management]]
 - depends-on:: [[Data Quality]]
-- related:: [[Agent]]
+- related:: [[How Agentic Work]]
 - related:: [[RAG]]

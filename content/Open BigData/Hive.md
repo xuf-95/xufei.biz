@@ -30,14 +30,14 @@ mindmap
 
 > [!info] Hive本质：将HQL转化成 [[MapReduce]] 程序
 
-Hive由Facebook开源，是基于[[Apache Hadoop]]的一个数据仓库工具，可以将结构化的数据文件映射为一张表，并提供类`SQL`查询功能，能将SQL语句转变成MapReduce任务来执行。Hive的优点是学习成本低，可以通过类似SQL语句实现快速[[MapReduce]]统计，使MapReduce变得更加简单，而不必开发专门的MapReduce应用程序。
+Hive由Facebook开源，是基于[[Apache Hadoop Overview]]的一个数据仓库工具，可以将结构化的数据文件映射为一张表，并提供类`SQL`查询功能，能将SQL语句转变成MapReduce任务来执行。Hive的优点是学习成本低，可以通过类似SQL语句实现快速[[MapReduce]]统计，使MapReduce变得更加简单，而不必开发专门的MapReduce应用程序。
 
 hive强大之处不要求数据转换成特定的格式，而是利用hadoop本身`InputFormat API`来从不同的数据源读取数据，同样地使用`OutputFormat API`将数据写成不同的格式。所以对于不同的数据源，或者写出不同的格式就需要不同的对应的`InputFormat`和`OutputFormat`类的实现。以`stored as textFile`为例，其在底层java API中表现是输入`InputFormat`格式：`TextInputFormat`以及输出`OutputFormat`格式：`HiveIgnoreKeyTextOutputFormat`。这里`InputFormat`中定义了如何对数据源文本进行读取划分，以及如何将切片分割成记录存入表中。而`OutputFormat`定义了如何将这些切片写回到文件里或者直接在控制台输出。
-## Hive 与 [[Apache Hadoop]]
+## Hive 与 [[Apache Hadoop Overview]]
 
 ### Hive 产生的背景
 
-- [[MR]] 的问题
+- MR 的问题
 	- 学习使用成本高，编程模型复杂
 	- 不容易实现复杂查询
 - 数仓建设需要，可作为数仓的工具
@@ -60,7 +60,7 @@ hive强大之处不要求数据转换成特定的格式，而是利用hadoop本�
 | 分桶   | 文件   |
 | 视图   | -    |
 |      |      |
-### Hive与 [[HBase|Hbase]] 的区别
+### Hive与 [[Apache HBase OVerview|Hbase]] 的区别
 
 `HBase`是一个面向列式存储、分布式、可伸缩的数据库，它可以提供数据的实时访问功能，而`Hive`只能处理静态数据，主要是`BI`报表数据。就设计初衷而言，在`Hadoop`上设计`Hive`，是为了减少复杂`MapReduce`应用程序的编写工作，在`Hadoop`上设计`HBase`是为了实现对数据的实时访问。所以，`HBase`与`Hive`的功能是互补的，它实现了`Hive`不能提供的功能。
 
@@ -95,7 +95,7 @@ hive强大之处不要求数据转换成特定的格式，而是利用hadoop本�
 
 ## Hive Develop 
 
-- [[Hive Deploy Manual]]
+- Hive Deploy Manual
 
 ## Hive 的元数据管理
 

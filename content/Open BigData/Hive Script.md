@@ -1,5 +1,5 @@
 ---
-title: "Hive Script"
+title: Hive Script
 date: 2022-01-09
 aliases:
 tags:
@@ -7,10 +7,8 @@ tags:
   - hive
   - script
 description:
-draft: false
+draft: true
 publishDate: 2026-03-03T10:55
-
-
 ---
 ```shell
 #!/bin/bash

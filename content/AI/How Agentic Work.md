@@ -1,5 +1,5 @@
 ---
-title: "How Agent Work"
+title: How Agentic Work
 aliases:
   - Agent
   - 智能体
@@ -9,8 +9,6 @@ tags:
 date: 2025-04-10
 draft: true
 publish: true
-
-
 ---
 ### Agent 执行流程
 

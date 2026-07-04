@@ -54,6 +54,6 @@ flowchart LR
 
 - part-of:: [[MOC-DCMM-DAMA Map]]
 - governed-by:: [[Data Governance Operating Model]]
-- supports:: [[Agent Governance]]
+- supports:: Agent Governance
 - depends-on:: [[Metadata Management]]
 

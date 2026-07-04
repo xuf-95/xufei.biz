@@ -184,7 +184,7 @@ KafkaApis.handleFetch
 - 发布-订阅模式(多对多) : 多个生产者+多个消费者+多个topic/相互独立，不会删除数据  
 ## 消息队列对比表
 
-| 特性维度  | Kafka                        | [[Pulsar]]                  | RabbitMQ              | ActiveMQ            | Redis Streams   |
+| 特性维度  | Kafka                        | Pulsar                  | RabbitMQ              | ActiveMQ            | Redis Streams   |
 | ----- | ---------------------------- | --------------------------- | --------------------- | ------------------- | --------------- |
 | 架构模型  | 分布式日志，Broker 负责存储和消费         | 存储（BookKeeper）与计算（Broker）分离 | 基于 AMQP，Exchange 路由消息 | 基于 JMS，传统 Broker 模型 | 基于 Redis 内部数据结构 |
 | 消息存储  | 持久化日志，分区存储                   | BookKeeper 持久化日志            | 队列存储，支持持久化            | 队列存储，支持持久化          | Redis AOF / RDB |

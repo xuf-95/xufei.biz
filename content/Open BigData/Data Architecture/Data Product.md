@@ -25,7 +25,7 @@ status: seed
 
 - 让数据从一次性项目交付变成长期运营资产。
 - 明确 owner、SLA、质量、文档和用户反馈闭环。
-- 支撑 [[Data Mesh]]、[[Semantic Layer]] 和 [[Data Agent Architecture]] 的规模化消费。
+- 支撑 [[Data Mesh]]、[[Semantic Layer]] 和 Data Agent Architecture 的规模化消费。
 
 ## Architecture / Flow
 
