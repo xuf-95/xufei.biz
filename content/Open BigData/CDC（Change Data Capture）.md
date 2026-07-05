@@ -56,7 +56,7 @@ Change data capture is typically used to replicate data that is overwritten to a
 
 A few situations where you might use change data capture:
 
-- Replicate changes into a data warehouse or [[content/Concepts/bigdata/Data Lake|data lake]]
+- Replicate changes into a data warehouse or data lake
 - Replicate changes into Kafka (or other streaming tool) in a microservices architecture
 - Upgrade a database to a higher version with minimal downtime
 - Migrate data from database X to database Y with minimal downtime

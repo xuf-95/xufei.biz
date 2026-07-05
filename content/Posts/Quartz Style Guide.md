@@ -52,7 +52,7 @@ cardImage: "![Amazon](Amazon.png)"
 
 - 一级标题用于页面主题，正文内从 `##` 开始组织。
 - 段落保持短句和短段，技术文章每段只表达一个判断。
-- 链接优先使用 Obsidian 双链，例如 [[Bigdata Wiki OS]]、[[Data Architecture]]。
+- 链接优先使用 Obsidian 双链，例如 Bigdata Wiki OS、[[Data Architecture]]。
 - 行内代码用于字段、命令、文件名、参数，例如 `dcmm_domain`、`npm run quartz build`。
 
 ### Links

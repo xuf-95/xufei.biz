@@ -97,7 +97,7 @@ publish: true
 </section>
 ## 顶层知识域
 
-建议把知识库组织为 12 个顶层域。现有仓库已经有 [[Data Architecture]]、[[Data Model]]、[[Data Store]]、[[Apache Hadoop Overview]]、Apache Flink、Data Visual、[[AI]] 等目录，可以在现有结构上渐进扩展。
+建议把知识库组织为 12 个顶层域。现有仓库已经有 [[Data Architecture]]、Data Model、[[Data Store]]、[[Apache Hadoop Overview]]、Apache Flink、Data Visual、[[AI]] 等目录，可以在现有结构上渐进扩展。
 
 ## Phase 1 导航入口
 

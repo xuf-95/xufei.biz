@@ -23,7 +23,7 @@ publish: true
 - [[Data Pipeline SLA]]
 - [[Data Observability]]
 - [[Data Store]]
-- [[Data Model]]
+- Data Model
 - Data Visual
 - [[Bigdata With AI]]
 
