@@ -1,0 +1,6 @@
+[     120ms] [WARNING] Ignoring Event: localhost @ https://plausible.io/js/script.manual.js:0
+[   15868ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8080/![Amazon](Amazon.png):0
+[  201550ms] [WARNING] Ignoring Event: localhost @ https://plausible.io/js/script.manual.js:0
+[  275169ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8080/![Amazon](Amazon.png):0
+[  279037ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.dinky.org.cn/&size=64:0
+[  279499ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8080/static/exposure.ttf:0

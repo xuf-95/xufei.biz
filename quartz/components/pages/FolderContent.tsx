@@ -1,6 +1,6 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
 import style from "../styles/listPage.scss"
-import { PageList, PageListViewControls, SortFn } from "../PageList"
+import { PageList, SortFn } from "../PageList"
 import { Root } from "hast"
 import { htmlToJsx } from "../../util/jsx"
 import { i18n } from "../../i18n"
@@ -8,7 +8,6 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import folderScript from "../scripts/folderFilter.inline"
-import pageListViewScript from "../scripts/pageListView.inline"
 
 interface FolderContentOptions {
   showFolderCount: boolean
@@ -105,8 +104,8 @@ export default ((opts?: Partial<FolderContentOptions>) => {
               })}
             </p>
           )}
-          <div class="folder-list-toolbar">
-            {subfolders.length > 0 && (
+          {subfolders.length > 0 && (
+            <div class="folder-list-toolbar">
               <div class="folder-filter-bar" id="folder-filter-bar" aria-label="Folder filter">
                 <button class="folder-filter-pill active" data-filter="__all__">
                   All
@@ -122,12 +121,10 @@ export default ((opts?: Partial<FolderContentOptions>) => {
                   </button>
                 ))}
               </div>
-            )}
-            <PageListViewControls />
-          </div>
+            </div>
+          )}
 
-          {/* Page list — each item wrapped with data-subfolder */}
-          <div id="folder-page-list" data-page-list-view data-view="list">
+          <div id="folder-page-list">
             {annotatedPages.map(({ page, sub, language }) => (
               <div class="folder-item-wrap" data-subfolder={sub} data-language={language}>
                 <PageList {...props} sort={options.sort} allFiles={[page]} />
@@ -141,10 +138,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
   }
 
   FolderContent.css = concatenateResources(style, PageList.css, folderFilterCss)
-  FolderContent.afterDOMLoaded = concatenateResources(
-    folderScript as unknown as string,
-    pageListViewScript as unknown as string,
-  )
+  FolderContent.afterDOMLoaded = folderScript as unknown as string
   return FolderContent
 }) satisfies QuartzComponentConstructor
 
@@ -152,8 +146,6 @@ const folderFilterCss = `
 .folder-list-toolbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   width: 100%;
   margin: 0.75rem 0 1.2rem;
   padding-bottom: 0;
@@ -175,11 +167,6 @@ const folderFilterCss = `
 
 .folder-filter-bar::-webkit-scrollbar {
   display: none;
-}
-
-.folder-list-toolbar .page-view-toolbar {
-  flex: 0 0 auto;
-  margin: 0 0 0 auto;
 }
 
 .folder-filter-pill {
@@ -228,14 +215,7 @@ const folderFilterCss = `
 
 #folder-page-list {
   --folder-list-rule: color-mix(in srgb, var(--darkgray) 15%, transparent);
-
   margin-top: 0.35rem;
-}
-
-#folder-page-list[data-view="card"] {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: 1.2rem 1rem;
 }
 
 #folder-page-list:has(.folder-item-wrap:hover) .folder-item-wrap,
@@ -257,18 +237,6 @@ const folderFilterCss = `
   border-bottom: 1px solid var(--folder-list-rule);
 }
 
-#folder-page-list[data-view="card"] .folder-item-wrap,
-#folder-page-list[data-view="card"] .folder-item-wrap:last-child {
-  border: 0;
-}
-
-#folder-page-list[data-view="card"] .folder-item-wrap,
-#folder-page-list[data-view="card"] .folder-item-wrap ul.section-ul,
-#folder-page-list[data-view="card"] .folder-item-wrap li.section-li {
-  min-width: 0;
-  height: 100%;
-}
-
 .folder-item-wrap .page-listing {
   display: contents;
 }
@@ -283,17 +251,7 @@ const folderFilterCss = `
   margin: 0;
 }
 
-.folder-item-wrap .section {
-  align-items: baseline;
-  padding: 0.95rem 0;
-}
-
-#folder-page-list[data-view="card"] .folder-item-wrap .section {
-  align-items: stretch;
-  padding: 0;
-}
-
-.folder-item-wrap .section > .desc > h3 > a {
+.folder-item-wrap .section > .section-body > h3 > a {
   transition:
     color 0.18s ease,
     opacity 0.18s ease;

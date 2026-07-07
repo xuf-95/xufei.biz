@@ -1,0 +1,998 @@
+- generic [ref=f1e3]:
+  - generic [ref=f1e5]:
+    - generic [ref=f1e6]:
+      - banner [ref=f1e7]:
+        - generic [ref=f1e8]:
+          - navigation "Primary" [ref=f1e9]:
+            - link "xufei.biz" [ref=f1e10] [cursor=pointer]:
+              - /url: /
+              - img "xufei.biz" [ref=f1e11]
+            - generic [ref=f1e12]:
+              - link "Blog" [ref=f1e13] [cursor=pointer]:
+                - /url: /browse/
+              - link "Tags" [ref=f1e14] [cursor=pointer]:
+                - /url: /tags/
+              - link "Goods" [ref=f1e15] [cursor=pointer]:
+                - /url: /hobby/goods/
+              - link "Tools" [ref=f1e16] [cursor=pointer]:
+                - /url: /tools/data-engineer-tools/
+          - link "GitHub" [ref=f1e17] [cursor=pointer]:
+            - /url: https://github.com/xuf-95
+            - img [ref=f1e18]
+          - link "RSS Feed" [ref=f1e20] [cursor=pointer]:
+            - /url: /index.xml
+            - img [ref=f1e21]
+          - button "Dark mode" [ref=f1e26] [cursor=pointer]:
+            - img [ref=f1e27]
+          - button "Search" [ref=f1e31] [cursor=pointer]:
+            - img [ref=f1e32]
+      - heading "Browse All" [level=2] [ref=f1e36]
+    - generic [ref=f1e37]:
+      - article
+      - generic [ref=f1e38]:
+        - paragraph [ref=f1e39]: 98 items under this folder.
+        - generic "Folder filter" [ref=f1e41]:
+          - button "All" [ref=f1e42] [cursor=pointer]
+          - button "AI" [ref=f1e43] [cursor=pointer]
+          - button "Open BigData" [ref=f1e44] [cursor=pointer]
+          - button "Posts" [ref=f1e45] [cursor=pointer]
+        - generic [ref=f1e46]:
+          - list [ref=f1e48]:
+            - listitem [ref=f1e49]:
+              - generic [ref=f1e50]:
+                - paragraph [ref=f1e51]:
+                  - time [ref=f1e52]: 2025.04.17
+                - heading "Bigdata With AI" [level=3] [ref=f1e54]:
+                  - link "Bigdata With AI" [ref=f1e55] [cursor=pointer]:
+                    - /url: ../AI/Bigdata-With-AI
+          - list [ref=f1e57]:
+            - listitem [ref=f1e58]:
+              - generic [ref=f1e59]:
+                - paragraph [ref=f1e60]:
+                  - time [ref=f1e61]: 2025.04.10
+                - heading "How Agentic Work" [level=3] [ref=f1e63]:
+                  - link "How Agentic Work" [ref=f1e64] [cursor=pointer]:
+                    - /url: ../AI/How-Agentic-Work
+          - list [ref=f1e66]:
+            - listitem [ref=f1e67]:
+              - generic [ref=f1e68]:
+                - paragraph [ref=f1e69]:
+                  - time [ref=f1e70]: 2025.01.11
+                - heading "Knowledge Distillation（知识蒸馏）" [level=3] [ref=f1e72]:
+                  - link "Knowledge Distillation（知识蒸馏）" [ref=f1e73] [cursor=pointer]:
+                    - /url: ../AI/Knowledge-Distillation（知识蒸馏）
+          - list [ref=f1e75]:
+            - listitem [ref=f1e76]:
+              - generic [ref=f1e77]:
+                - paragraph [ref=f1e78]:
+                  - time [ref=f1e79]: 2025.04.10
+                - heading "Prompt Engineering" [level=3] [ref=f1e81]:
+                  - link "Prompt Engineering" [ref=f1e82] [cursor=pointer]:
+                    - /url: ../AI/Prompt-Engineering
+          - list [ref=f1e84]:
+            - listitem [ref=f1e85]:
+              - generic [ref=f1e86]:
+                - paragraph [ref=f1e87]:
+                  - time [ref=f1e88]: 2026.06.14
+                - generic [ref=f1e89]:
+                  - heading "Text2SQL" [level=3] [ref=f1e90]:
+                    - link "Text2SQL" [ref=f1e91] [cursor=pointer]:
+                      - /url: ../AI/Text2SQL
+                  - paragraph [ref=f1e92]: Text2SQL 让用户用自然语言生成 SQL，但必须依赖语义层、指标口径、权限和质量约束才能可靠落地。
+          - list [ref=f1e94]:
+            - listitem [ref=f1e95]:
+              - generic [ref=f1e96]:
+                - paragraph [ref=f1e97]:
+                  - time [ref=f1e98]: 2024.01.09
+                - generic [ref=f1e99]:
+                  - heading "Token是如何计费的" [level=3] [ref=f1e100]:
+                    - link "Token是如何计费的" [ref=f1e101] [cursor=pointer]:
+                      - /url: ../AI/Token是如何计费的
+                  - paragraph [ref=f1e102]: 深入了解人工智能服务中的Token计费机制，包括工作原理、计算方法、不同模型的成本差异以及优化策略
+          - list [ref=f1e104]:
+            - listitem [ref=f1e105]:
+              - generic [ref=f1e106]:
+                - paragraph [ref=f1e107]:
+                  - time [ref=f1e108]: 2026.07.07
+                - generic [ref=f1e109]:
+                  - heading "What's RAG?" [level=3] [ref=f1e110]:
+                    - link "What's RAG?" [ref=f1e111] [cursor=pointer]:
+                      - /url: ../AI/What's-RAG
+                  - paragraph [ref=f1e112]: RAG（检索增强生成）通过在生成前检索外部知识，让 LLM 回答更准确、可溯源，是企业落地大模型的核心架构模式。
+          - list [ref=f1e114]:
+            - listitem [ref=f1e115]:
+              - generic [ref=f1e116]:
+                - paragraph [ref=f1e117]:
+                  - time [ref=f1e118]: 2026.06.01
+                - generic [ref=f1e119]:
+                  - heading "AQE（Adaptive Query Execution）" [level=3] [ref=f1e120]:
+                    - link "AQE（Adaptive Query Execution）" [ref=f1e121] [cursor=pointer]:
+                      - /url: ../Open-BigData/AQE（Adaptive-Query-Execution）
+                  - paragraph [ref=f1e122]: AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。
+          - list [ref=f1e124]:
+            - listitem [ref=f1e125]:
+              - generic [ref=f1e126]:
+                - paragraph [ref=f1e127]:
+                  - time [ref=f1e128]: 2023.06.08
+                - heading "Apache HBase OVerview" [level=3] [ref=f1e130]:
+                  - link "Apache HBase OVerview" [ref=f1e131] [cursor=pointer]:
+                    - /url: ../Open-BigData/Apache-HBase-OVerview
+          - list [ref=f1e133]:
+            - listitem [ref=f1e134]:
+              - generic [ref=f1e135]:
+                - paragraph [ref=f1e136]:
+                  - time [ref=f1e137]: 2022.01.24
+                - heading "Apache Hadoop Overview" [level=3] [ref=f1e139]:
+                  - link "Apache Hadoop Overview" [ref=f1e140] [cursor=pointer]:
+                    - /url: ../Open-BigData/Apache-Hadoop-Overview
+          - list [ref=f1e142]:
+            - listitem [ref=f1e143]:
+              - generic [ref=f1e144]:
+                - paragraph [ref=f1e145]:
+                  - time [ref=f1e146]: 2025.01.21
+                - heading "Apache Paimon" [level=3] [ref=f1e148]:
+                  - link "Apache Paimon" [ref=f1e149] [cursor=pointer]:
+                    - /url: ../Open-BigData/Apache-Paimon
+          - list [ref=f1e151]:
+            - listitem [ref=f1e152]:
+              - generic [ref=f1e153]:
+                - paragraph [ref=f1e154]:
+                  - time [ref=f1e155]: 2022.01.12
+                - generic [ref=f1e156]:
+                  - heading "Apache Spark Overview" [level=3] [ref=f1e157]:
+                    - link "Apache Spark Overview" [ref=f1e158] [cursor=pointer]:
+                      - /url: ../Open-BigData/Apache-Spark-Overview
+                  - paragraph [ref=f1e159]: Micro-batch
+          - list [ref=f1e161]:
+            - listitem [ref=f1e162]:
+              - generic [ref=f1e163]:
+                - paragraph [ref=f1e164]:
+                  - time [ref=f1e165]: 2023.02.24
+                - heading "Apache Spark" [level=3] [ref=f1e167]:
+                  - link "Apache Spark" [ref=f1e168] [cursor=pointer]:
+                    - /url: ../Open-BigData/Apache-Spark
+          - list [ref=f1e170]:
+            - listitem [ref=f1e171]:
+              - generic [ref=f1e172]:
+                - paragraph [ref=f1e173]:
+                  - time [ref=f1e174]: 2026.06.11
+                - generic [ref=f1e175]:
+                  - heading "BigData Map" [level=3] [ref=f1e176]:
+                    - link "BigData Map" [ref=f1e177] [cursor=pointer]:
+                      - /url: ../Open-BigData/BigData-Map
+                  - paragraph [ref=f1e178]: 面向大数据全栈工程师的知识地图，连接数据采集、存储、计算、治理、服务、AI 增强与职业资产。
+          - list [ref=f1e180]:
+            - listitem [ref=f1e181]:
+              - generic [ref=f1e182]:
+                - paragraph [ref=f1e183]:
+                  - time [ref=f1e184]: 2026.06.08
+                - generic [ref=f1e185]:
+                  - heading "Bigdata Wiki OS" [level=3] [ref=f1e186]:
+                    - link "Bigdata Wiki OS" [ref=f1e187] [cursor=pointer]:
+                      - /url: ../Open-BigData/Bigdata-Wiki-OS
+                  - paragraph [ref=f1e188]: 面向大数据全栈工程师、数据架构师与未来 CDO/CDAO 角色的个人知识图谱系统规划。
+          - list [ref=f1e190]:
+            - listitem [ref=f1e191]:
+              - generic [ref=f1e192]:
+                - paragraph [ref=f1e193]:
+                  - time [ref=f1e194]: 2026.06.01
+                - generic [ref=f1e195]:
+                  - heading "CBO（Cost-Based Optimizer）" [level=3] [ref=f1e196]:
+                    - link "CBO（Cost-Based Optimizer）" [ref=f1e197] [cursor=pointer]:
+                      - /url: ../Open-BigData/CBO（Cost-Based-Optimizer）
+                  - paragraph [ref=f1e198]: CBO = Cost-Based Optimizer，基于代价的优化器
+          - list [ref=f1e200]:
+            - listitem [ref=f1e201]:
+              - generic [ref=f1e202]:
+                - paragraph [ref=f1e203]:
+                  - time [ref=f1e204]: 2023.02.05
+                - heading "CDC（Change Data Capture）" [level=3] [ref=f1e206]:
+                  - link "CDC（Change Data Capture）" [ref=f1e207] [cursor=pointer]:
+                    - /url: ../Open-BigData/CDC（Change-Data-Capture）
+          - list [ref=f1e209]:
+            - listitem [ref=f1e210]:
+              - generic [ref=f1e211]:
+                - paragraph [ref=f1e212]:
+                  - time [ref=f1e213]: 2024.12.28
+                - heading "Cloud Vendors Homepage" [level=3] [ref=f1e215]:
+                  - link "Cloud Vendors Homepage" [ref=f1e216] [cursor=pointer]:
+                    - /url: ../Open-BigData/Cloud/Cloud-Vendors-Homepage
+          - list [ref=f1e218]:
+            - listitem [ref=f1e219]:
+              - generic [ref=f1e220]:
+                - paragraph [ref=f1e221]:
+                  - time [ref=f1e222]: 2024.01.09
+                - heading "Data Lake Formation（DLF）" [level=3] [ref=f1e224]:
+                  - link "Data Lake Formation（DLF）" [ref=f1e225] [cursor=pointer]:
+                    - /url: ../Open-BigData/Cloud/Data-Lake-Formation（DLF）
+          - list [ref=f1e227]:
+            - listitem [ref=f1e228]:
+              - generic [ref=f1e229]:
+                - paragraph [ref=f1e230]:
+                  - time [ref=f1e231]: 2023.01.31
+                - generic [ref=f1e232]:
+                  - heading "DataWorks" [level=3] [ref=f1e233]:
+                    - link "DataWorks" [ref=f1e234] [cursor=pointer]:
+                      - /url: ../Open-BigData/Cloud/DataWorks
+                  - paragraph [ref=f1e235]: 阿里云一站式智能大数据开发治理平台
+          - list [ref=f1e237]:
+            - listitem [ref=f1e238]:
+              - generic [ref=f1e239]:
+                - paragraph [ref=f1e240]:
+                  - time [ref=f1e241]: 2023.03.11
+                - heading "What is MaxCompute?" [level=3] [ref=f1e243]:
+                  - link "What is MaxCompute?" [ref=f1e244] [cursor=pointer]:
+                    - /url: ../Open-BigData/Cloud/MaxCompute
+          - list [ref=f1e246]:
+            - listitem [ref=f1e247]:
+              - generic [ref=f1e248]:
+                - paragraph [ref=f1e249]:
+                  - time [ref=f1e250]: 2023.08.04
+                - heading "Apache Atlas" [level=3] [ref=f1e252]:
+                  - link "Apache Atlas" [ref=f1e253] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Apache-Atlas
+          - list [ref=f1e255]:
+            - listitem [ref=f1e256]:
+              - generic [ref=f1e257]:
+                - paragraph [ref=f1e258]:
+                  - time [ref=f1e259]: 2024.12.01
+                - heading "Data Management Capability Maturity Assessment Model (DCMM)" [level=3] [ref=f1e261]:
+                  - link "Data Management Capability Maturity Assessment Model (DCMM)" [ref=f1e262] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/DCMM
+          - list [ref=f1e264]:
+            - listitem [ref=f1e265]:
+              - generic [ref=f1e266]:
+                - paragraph [ref=f1e267]:
+                  - time [ref=f1e268]: 2026.06.14
+                - generic [ref=f1e269]:
+                  - heading "Data Architecture Blueprint" [level=3] [ref=f1e270]:
+                    - link "Data Architecture Blueprint" [ref=f1e271] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/Data-Architecture-Blueprint
+                  - paragraph [ref=f1e272]: 数据架构蓝图用于把业务目标、数据域、平台能力、治理规则和交付路线组织成可评审的总体设计。
+          - list [ref=f1e274]:
+            - listitem [ref=f1e275]:
+              - generic [ref=f1e276]:
+                - paragraph [ref=f1e277]:
+                  - time [ref=f1e278]: 2026.06.14
+                - generic [ref=f1e279]:
+                  - heading "Data Architecture Decision Record" [level=3] [ref=f1e280]:
+                    - link "Data Architecture Decision Record" [ref=f1e281] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/Data-Architecture-Decision-Record
+                  - paragraph [ref=f1e282]: 数据架构决策记录用于沉淀技术选型、架构取舍、约束条件和未来维护提醒。
+          - list [ref=f1e284]:
+            - listitem [ref=f1e285]:
+              - generic [ref=f1e286]:
+                - paragraph [ref=f1e287]:
+                  - time [ref=f1e288]: 2025.04.01
+                - heading "Data Architecture HomePage" [level=3] [ref=f1e290]:
+                  - link "Data Architecture HomePage" [ref=f1e291] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Data-Architecture
+          - list [ref=f1e293]:
+            - listitem [ref=f1e294]:
+              - generic [ref=f1e295]:
+                - paragraph [ref=f1e296]:
+                  - time [ref=f1e297]: 2026.06.14
+                - generic [ref=f1e298]:
+                  - heading "Data Contract" [level=3] [ref=f1e299]:
+                    - link "Data Contract" [ref=f1e300] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/Data-Contract
+                  - paragraph [ref=f1e301]: 数据契约定义生产方和消费方之间对 schema、语义、质量、SLA 和变更的约定。
+          - list [ref=f1e303]:
+            - listitem [ref=f1e304]:
+              - generic [ref=f1e305]:
+                - paragraph [ref=f1e306]:
+                  - time [ref=f1e307]: 2020.12.18
+                - heading "Data Lake" [level=3] [ref=f1e309]:
+                  - link "Data Lake" [ref=f1e310] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Data-Lake
+          - list [ref=f1e312]:
+            - listitem [ref=f1e313]:
+              - generic [ref=f1e314]:
+                - paragraph [ref=f1e315]:
+                  - time [ref=f1e316]: 2026.06.14
+                - generic [ref=f1e317]:
+                  - heading "Data Mesh" [level=3] [ref=f1e318]:
+                    - link "Data Mesh" [ref=f1e319] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/Data-Mesh
+                  - paragraph [ref=f1e320]: Data Mesh 是以数据域、数据产品、联邦治理和自助平台为核心的分布式数据架构思想。
+          - list [ref=f1e322]:
+            - listitem [ref=f1e323]:
+              - generic [ref=f1e324]:
+                - paragraph [ref=f1e325]:
+                  - time [ref=f1e326]: 2026.06.14
+                - generic [ref=f1e327]:
+                  - heading "Data Product" [level=3] [ref=f1e328]:
+                    - link "Data Product" [ref=f1e329] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/Data-Product
+                  - paragraph [ref=f1e330]: 数据产品把数据资产封装为有 owner、SLA、文档、质量承诺和消费体验的可复用服务。
+          - list [ref=f1e332]:
+            - listitem [ref=f1e333]:
+              - generic [ref=f1e334]:
+                - paragraph [ref=f1e335]:
+                  - time [ref=f1e336]: 2024.09.18
+                - heading "Dataflow Overview" [level=3] [ref=f1e338]:
+                  - link "Dataflow Overview" [ref=f1e339] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Dataflow-Overview
+          - list [ref=f1e341]:
+            - listitem [ref=f1e342]:
+              - generic [ref=f1e343]:
+                - paragraph [ref=f1e344]:
+                  - time [ref=f1e345]: 2024.12.21
+                - heading "Flow-Batch Architecture" [level=3] [ref=f1e347]:
+                  - link "Flow-Batch Architecture" [ref=f1e348] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Flow-Batch-Architecture
+          - list [ref=f1e350]:
+            - listitem [ref=f1e351]:
+              - generic [ref=f1e352]:
+                - paragraph [ref=f1e353]:
+                  - time [ref=f1e354]: 2023.09.04
+                - heading "what is Kappa Architecture?" [level=3] [ref=f1e356]:
+                  - link "what is Kappa Architecture?" [ref=f1e357] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Kappa-Architecture
+          - list [ref=f1e359]:
+            - listitem [ref=f1e360]:
+              - generic [ref=f1e361]:
+                - paragraph [ref=f1e362]:
+                  - time [ref=f1e363]: 2024.10.02
+                - heading "Lake-DataWarehouse Architecture" [level=3] [ref=f1e365]:
+                  - link "Lake-DataWarehouse Architecture" [ref=f1e366] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Lake-DataWarehouse-Architecture
+          - list [ref=f1e368]:
+            - listitem [ref=f1e369]:
+              - generic [ref=f1e370]:
+                - paragraph [ref=f1e371]:
+                  - time [ref=f1e372]: 2023.09.08
+                - heading "Lambda Architecture" [level=3] [ref=f1e374]:
+                  - link "Lambda Architecture" [ref=f1e375] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Lambda-Architecture
+          - list [ref=f1e377]:
+            - listitem [ref=f1e378]:
+              - generic [ref=f1e379]:
+                - paragraph [ref=f1e380]:
+                  - time [ref=f1e381]: 2024.01.09
+                - generic [ref=f1e382]:
+                  - heading "Log-Structured Merge Tree (LSM) Architecture" [level=3] [ref=f1e383]:
+                    - link "Log-Structured Merge Tree (LSM) Architecture" [ref=f1e384] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/Log-Structured-Merge-Tree-(LSM)-Architecture
+                  - paragraph [ref=f1e385]: LSM，全称 **Log-Structured Merge Tree，日志结构合并树**，是一种常见的存储引擎架构
+          - list [ref=f1e387]:
+            - listitem [ref=f1e388]:
+              - generic [ref=f1e389]:
+                - paragraph [ref=f1e390]:
+                  - time [ref=f1e391]: 2026.06.11
+                - generic [ref=f1e392]:
+                  - heading "MOC-DCMM-DAMA Map" [level=3] [ref=f1e393]:
+                    - link "MOC-DCMM-DAMA Map" [ref=f1e394] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/MOC-DCMM-DAMA-Map
+                  - paragraph [ref=f1e395]: 用 DCMM 和 DAMA 组织数据治理、数据管理成熟度和落地证据的知识地图。
+          - list [ref=f1e397]:
+            - listitem [ref=f1e398]:
+              - generic [ref=f1e399]:
+                - paragraph [ref=f1e400]:
+                  - time [ref=f1e401]: 2026.06.11
+                - generic [ref=f1e402]:
+                  - heading "MOC-Data Architecture Map" [level=3] [ref=f1e403]:
+                    - link "MOC-Data Architecture Map" [ref=f1e404] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/MOC-Data-Architecture-Map
+                  - paragraph [ref=f1e405]: 面向数据架构师的能力地图，连接战略、架构、建模、治理、平台、数据产品和商业价值。
+          - list [ref=f1e407]:
+            - listitem [ref=f1e408]:
+              - generic [ref=f1e409]:
+                - paragraph [ref=f1e410]:
+                  - time [ref=f1e411]: 2025.01.09
+                - heading "Serverless Architecture" [level=3] [ref=f1e413]:
+                  - link "Serverless Architecture" [ref=f1e414] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/Serverless-Architecture
+          - list [ref=f1e416]:
+            - listitem [ref=f1e417]:
+              - generic [ref=f1e418]:
+                - paragraph [ref=f1e419]:
+                  - time [ref=f1e420]: 2023.09.24
+                - heading "ZooKeeper" [level=3] [ref=f1e422]:
+                  - link "ZooKeeper" [ref=f1e423] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/ZooKeeper
+          - list [ref=f1e425]:
+            - listitem [ref=f1e426]:
+              - generic [ref=f1e427]:
+                - paragraph [ref=f1e428]:
+                  - time [ref=f1e429]: 2024.01.09
+                - heading "如何更好的设计数据底座" [level=3] [ref=f1e431]:
+                  - link "如何更好的设计数据底座" [ref=f1e432] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Architecture/如何更好的设计数据底座
+          - list [ref=f1e434]:
+            - listitem [ref=f1e435]:
+              - generic [ref=f1e436]:
+                - paragraph [ref=f1e437]:
+                  - time [ref=f1e438]: 2026.05.17
+                - generic [ref=f1e439]:
+                  - heading "电商数据中台业务知识手册" [level=3] [ref=f1e440]:
+                    - link "电商数据中台业务知识手册" [ref=f1e441] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Architecture/电商数据中台业务知识手册
+                  - paragraph [ref=f1e442]: 面向数据架构、数据中台、指标体系和数据建模的电商业务知识沉淀。
+          - list [ref=f1e444]:
+            - listitem [ref=f1e445]:
+              - generic [ref=f1e446]:
+                - paragraph [ref=f1e447]:
+                  - time [ref=f1e448]: 2026.06.11
+                - generic [ref=f1e449]:
+                  - heading "CDO" [level=3] [ref=f1e450]:
+                    - link "CDO" [ref=f1e451] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/CDO
+                  - paragraph [ref=f1e452]: CDO/CDAO 是负责数据战略、治理、资产化、分析与 AI 价值转化的管理角色。
+          - list [ref=f1e454]:
+            - listitem [ref=f1e455]:
+              - generic [ref=f1e456]:
+                - paragraph [ref=f1e457]:
+                  - time [ref=f1e458]: 2026.06.11
+                - generic [ref=f1e459]:
+                  - heading "DAMA-DMBOK" [level=3] [ref=f1e460]:
+                    - link "DAMA-DMBOK" [ref=f1e461] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/DAMA-DMBOK
+                  - paragraph [ref=f1e462]: DAMA-DMBOK 是国际数据管理知识体系，用于组织数据治理、架构、建模、质量、元数据、安全和 BI 等能力。
+          - list [ref=f1e464]:
+            - listitem [ref=f1e465]:
+              - generic [ref=f1e466]:
+                - paragraph [ref=f1e467]:
+                  - time [ref=f1e468]: 2026.06.14
+                - generic [ref=f1e469]:
+                  - heading "Data Governance Operating Model" [level=3] [ref=f1e470]:
+                    - link "Data Governance Operating Model" [ref=f1e471] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/Data-Governance-Operating-Model
+                  - paragraph [ref=f1e472]: 数据治理运行机制定义组织、制度、流程、平台和度量如何协同，保证治理可以持续落地。
+          - list [ref=f1e474]:
+            - listitem [ref=f1e475]:
+              - generic [ref=f1e476]:
+                - paragraph [ref=f1e477]:
+                  - time [ref=f1e478]: 2026.06.14
+                - generic [ref=f1e479]:
+                  - heading "Data Lineage" [level=3] [ref=f1e480]:
+                    - link "Data Lineage" [ref=f1e481] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/Data-Lineage
+                  - paragraph [ref=f1e482]: 数据血缘描述数据从源系统到模型、指标、报表和应用的加工链路，是影响分析和可信解释的基础。
+          - list [ref=f1e484]:
+            - listitem [ref=f1e485]:
+              - generic [ref=f1e486]:
+                - paragraph [ref=f1e487]:
+                  - time [ref=f1e488]: 2026.06.11
+                - generic [ref=f1e489]:
+                  - heading "Data Quality" [level=3] [ref=f1e490]:
+                    - link "Data Quality" [ref=f1e491] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/Data-Quality
+                  - paragraph [ref=f1e492]: 数据质量用于保证数据满足业务使用要求，覆盖完整性、准确性、一致性、及时性、唯一性和有效性。
+          - list [ref=f1e494]:
+            - listitem [ref=f1e495]:
+              - generic [ref=f1e496]:
+                - paragraph [ref=f1e497]:
+                  - time [ref=f1e498]: 2026.06.14
+                - generic [ref=f1e499]:
+                  - heading "Data Security" [level=3] [ref=f1e500]:
+                    - link "Data Security" [ref=f1e501] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/Data-Security
+                  - paragraph [ref=f1e502]: 数据安全通过分类分级、权限、脱敏、审计和合规控制，保护数据资产在全生命周期中的安全使用。
+          - list [ref=f1e504]:
+            - listitem [ref=f1e505]:
+              - generic [ref=f1e506]:
+                - paragraph [ref=f1e507]:
+                  - time [ref=f1e508]: 2026.06.11
+                - generic [ref=f1e509]:
+                  - heading "Data Standard" [level=3] [ref=f1e510]:
+                    - link "Data Standard" [ref=f1e511] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/Data-Standard
+                  - paragraph [ref=f1e512]: 数据标准通过统一业务术语、数据元、参考数据、主数据和指标口径，降低组织内的数据歧义。
+          - list [ref=f1e514]:
+            - listitem [ref=f1e515]:
+              - generic [ref=f1e516]:
+                - paragraph [ref=f1e517]:
+                  - time [ref=f1e518]: 2026.06.11
+                - generic [ref=f1e519]:
+                  - heading "Metadata Management" [level=3] [ref=f1e520]:
+                    - link "Metadata Management" [ref=f1e521] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Governance/Metadata-Management
+                  - paragraph [ref=f1e522]: 元数据管理用于描述、连接和治理数据资产，是数据目录、血缘、质量、权限、语义层和 AI Agent 的基础。
+          - list [ref=f1e524]:
+            - listitem [ref=f1e525]:
+              - generic [ref=f1e526]:
+                - paragraph [ref=f1e527]:
+                  - time [ref=f1e528]: 2026.05.17
+                - heading "分析型数仓模型治理评价" [level=3] [ref=f1e530]:
+                  - link "分析型数仓模型治理评价" [ref=f1e531] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Governance/分析型数仓模型治理评价
+          - list [ref=f1e533]:
+            - listitem [ref=f1e534]:
+              - generic [ref=f1e535]:
+                - paragraph [ref=f1e536]:
+                  - time [ref=f1e537]: 2023.07.06
+                - heading "Apache Airflow" [level=3] [ref=f1e539]:
+                  - link "Apache Airflow" [ref=f1e540] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Integration--and--Schedule/Apache-Airflow
+          - list [ref=f1e542]:
+            - listitem [ref=f1e543]:
+              - generic [ref=f1e544]:
+                - paragraph [ref=f1e545]:
+                  - time [ref=f1e546]: 2023.11.18
+                - heading "Apache DolphinScheduler" [level=3] [ref=f1e548]:
+                  - link "Apache DolphinScheduler" [ref=f1e549] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Integration--and--Schedule/Apache-DolphinScheduler
+          - list [ref=f1e551]:
+            - listitem [ref=f1e552]:
+              - generic [ref=f1e553]:
+                - paragraph [ref=f1e554]:
+                  - time [ref=f1e555]: 2023.09.15
+                - heading "Apache Flume" [level=3] [ref=f1e557]:
+                  - link "Apache Flume" [ref=f1e558] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Integration--and--Schedule/Apache-Flume
+          - list [ref=f1e560]:
+            - listitem [ref=f1e561]:
+              - generic [ref=f1e562]:
+                - paragraph [ref=f1e563]:
+                  - time [ref=f1e564]: 2024.08.16
+                - heading "Apache Pulsar" [level=3] [ref=f1e566]:
+                  - link "Apache Pulsar" [ref=f1e567] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Integration--and--Schedule/Apache-Pulsar
+          - list [ref=f1e569]:
+            - listitem [ref=f1e570]:
+              - generic [ref=f1e571]:
+                - paragraph [ref=f1e572]:
+                  - time [ref=f1e573]: 2026.06.14
+                - generic [ref=f1e574]:
+                  - heading "Data Observability" [level=3] [ref=f1e575]:
+                    - link "Data Observability" [ref=f1e576] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Integration--and--Schedule/Data-Observability
+                  - paragraph [ref=f1e577]: 数据可观测性通过元数据、质量、血缘、任务和使用行为监控，持续发现数据链路风险。
+          - list [ref=f1e579]:
+            - listitem [ref=f1e580]:
+              - generic [ref=f1e581]:
+                - paragraph [ref=f1e582]:
+                  - time [ref=f1e583]: 2026.06.14
+                - generic [ref=f1e584]:
+                  - heading "Data Pipeline SLA" [level=3] [ref=f1e585]:
+                    - link "Data Pipeline SLA" [ref=f1e586] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Integration--and--Schedule/Data-Pipeline-SLA
+                  - paragraph [ref=f1e587]: 数据链路 SLA 定义数据任务在时效、质量、可用性和恢复方面的服务承诺。
+          - list [ref=f1e589]:
+            - listitem [ref=f1e590]:
+              - generic [ref=f1e591]:
+                - paragraph [ref=f1e592]:
+                  - time [ref=f1e593]: 2023.10.04
+                - heading "What is Apache Kafka?" [level=3] [ref=f1e595]:
+                  - link "What is Apache Kafka?" [ref=f1e596] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Integration--and--Schedule/Kafka
+          - list [ref=f1e598]:
+            - listitem [ref=f1e599]:
+              - generic [ref=f1e600]:
+                - paragraph [ref=f1e601]:
+                  - time [ref=f1e602]: 2026.06.14
+                - generic [ref=f1e603]:
+                  - heading "Data Domain" [level=3] [ref=f1e604]:
+                    - link "Data Domain" [ref=f1e605] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Model/Data-Domain
+                  - paragraph [ref=f1e606]: 数据域用于按照业务能力和管理边界组织数据资产，是数据架构、建模和治理协同的基本单元。
+          - list [ref=f1e608]:
+            - listitem [ref=f1e609]:
+              - generic [ref=f1e610]:
+                - paragraph [ref=f1e611]:
+                  - time [ref=f1e612]: 2026.06.11
+                - generic [ref=f1e613]:
+                  - heading "Indicator System" [level=3] [ref=f1e614]:
+                    - link "Indicator System" [ref=f1e615] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Model/Indicator-System
+                  - paragraph [ref=f1e616]: 指标体系用于定义业务指标、维度、口径、层级和责任人，是 BI、经营分析、数据产品和 AI Agent 的共同语言。
+          - list [ref=f1e618]:
+            - listitem [ref=f1e619]:
+              - generic [ref=f1e620]:
+                - paragraph [ref=f1e621]:
+                  - time [ref=f1e622]: 2026.06.14
+                - generic [ref=f1e623]:
+                  - heading "Metrics Governance" [level=3] [ref=f1e624]:
+                    - link "Metrics Governance" [ref=f1e625] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Model/Metrics-Governance
+                  - paragraph [ref=f1e626]: 指标治理通过口径、维度、责任、变更和质量控制，保证企业核心指标一致可信。
+          - list [ref=f1e628]:
+            - listitem [ref=f1e629]:
+              - generic [ref=f1e630]:
+                - paragraph [ref=f1e631]:
+                  - time [ref=f1e632]: 2026.06.11
+                - generic [ref=f1e633]:
+                  - heading "Semantic Layer" [level=3] [ref=f1e634]:
+                    - link "Semantic Layer" [ref=f1e635] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Model/Semantic-Layer
+                  - paragraph [ref=f1e636]: 语义层把底层数据模型封装为业务可理解、指标一致、权限可控的语义接口。
+          - list [ref=f1e638]:
+            - listitem [ref=f1e639]:
+              - generic [ref=f1e640]:
+                - paragraph [ref=f1e641]:
+                  - time [ref=f1e642]: 2024.02.13
+                - heading "Apache Doris" [level=3] [ref=f1e644]:
+                  - link "Apache Doris" [ref=f1e645] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/Apache-Doris
+          - list [ref=f1e647]:
+            - listitem [ref=f1e648]:
+              - generic [ref=f1e649]:
+                - paragraph [ref=f1e650]:
+                  - time [ref=f1e651]: 2023.04.21
+                - heading "Apache Cassandra" [level=3] [ref=f1e653]:
+                  - link "Apache Cassandra" [ref=f1e654] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/Cassandra
+          - list [ref=f1e656]:
+            - listitem [ref=f1e657]:
+              - generic [ref=f1e658]:
+                - paragraph [ref=f1e659]:
+                  - time [ref=f1e660]: 2022.12.02
+                - heading "Data Store Homepage" [level=3] [ref=f1e662]:
+                  - link "Data Store Homepage" [ref=f1e663] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/Data-Store
+          - list [ref=f1e665]:
+            - listitem [ref=f1e666]:
+              - generic [ref=f1e667]:
+                - paragraph [ref=f1e668]:
+                  - time [ref=f1e669]: 2023.06.03
+                - heading "Meta Data SQL DDL" [level=3] [ref=f1e671]:
+                  - link "Meta Data SQL DDL" [ref=f1e672] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/MySQL/Meta-Data-SQL-DDL
+          - list [ref=f1e674]:
+            - listitem [ref=f1e675]:
+              - generic [ref=f1e676]:
+                - paragraph [ref=f1e677]:
+                  - time [ref=f1e678]: 2023.10.14
+                - heading "MySQL Binlog" [level=3] [ref=f1e680]:
+                  - link "MySQL Binlog" [ref=f1e681] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/MySQL/MySQL-Binlog
+          - list [ref=f1e683]:
+            - listitem [ref=f1e684]:
+              - generic [ref=f1e685]:
+                - paragraph [ref=f1e686]:
+                  - time [ref=f1e687]: 2022.01.23
+                - heading "MySQL Explain" [level=3] [ref=f1e689]:
+                  - link "MySQL Explain" [ref=f1e690] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/MySQL/MySQL-Explain
+          - list [ref=f1e692]:
+            - listitem [ref=f1e693]:
+              - generic [ref=f1e694]:
+                - paragraph [ref=f1e695]:
+                  - time [ref=f1e696]: 2022.03.01
+                - heading "MySQL Snippts" [level=3] [ref=f1e698]:
+                  - link "MySQL Snippts" [ref=f1e699] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/MySQL/MySQL-Snippts
+          - list [ref=f1e701]:
+            - listitem [ref=f1e702]:
+              - generic [ref=f1e703]:
+                - paragraph [ref=f1e704]:
+                  - time [ref=f1e705]: 2023.03.03
+                - heading "MySQL" [level=3] [ref=f1e707]:
+                  - link "MySQL" [ref=f1e708] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/MySQL/MySQL
+          - list [ref=f1e710]:
+            - listitem [ref=f1e711]:
+              - generic [ref=f1e712]:
+                - paragraph [ref=f1e713]:
+                  - time [ref=f1e714]: 2024.07.05
+                - generic [ref=f1e715]:
+                  - heading "Open Sources DataSets" [level=3] [ref=f1e716]:
+                    - link "Open Sources DataSets" [ref=f1e717] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Store/Open-Sources-DataSets
+                  - paragraph [ref=f1e718]: 大数据数据集
+          - list [ref=f1e720]:
+            - listitem [ref=f1e721]:
+              - generic [ref=f1e722]:
+                - paragraph [ref=f1e723]:
+                  - time [ref=f1e724]: 2024.09.12
+                - heading "What's StarRocks" [level=3] [ref=f1e726]:
+                  - link "What's StarRocks" [ref=f1e727] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/What's-StarRocks
+          - list [ref=f1e729]:
+            - listitem [ref=f1e730]:
+              - generic [ref=f1e731]:
+                - paragraph [ref=f1e732]:
+                  - time [ref=f1e733]: 2026.06.14
+                - generic [ref=f1e734]:
+                  - heading "What's Apache Paimon?" [level=3] [ref=f1e735]:
+                    - link "What's Apache Paimon?" [ref=f1e736] [cursor=pointer]:
+                      - /url: ../Open-BigData/Data-Store/what‘s-apache-paimon
+                  - paragraph [ref=f1e737]: Apache Paimon 是面向统一批流、实时更新、湖仓存储和多引擎计算的数据湖表格式与存储系统概览。
+          - list [ref=f1e739]:
+            - listitem [ref=f1e740]:
+              - generic [ref=f1e741]:
+                - paragraph [ref=f1e742]:
+                  - time [ref=f1e743]: 2024.01.25
+                - heading "如何选择合适的OLAP产品" [level=3] [ref=f1e745]:
+                  - link "如何选择合适的OLAP产品" [ref=f1e746] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/如何选择合适的OLAP产品
+          - list [ref=f1e748]:
+            - listitem [ref=f1e749]:
+              - generic [ref=f1e750]:
+                - paragraph [ref=f1e751]:
+                  - time [ref=f1e752]: 2023.01.24
+                - heading "常见的的数据压缩算法" [level=3] [ref=f1e754]:
+                  - link "常见的的数据压缩算法" [ref=f1e755] [cursor=pointer]:
+                    - /url: ../Open-BigData/Data-Store/常见的的数据压缩算法
+          - list [ref=f1e757]:
+            - listitem [ref=f1e758]:
+              - generic [ref=f1e759]:
+                - paragraph [ref=f1e760]:
+                  - time [ref=f1e761]: 2024.01.09
+                - generic [ref=f1e762]:
+                  - heading "Dinky" [level=3] [ref=f1e763]:
+                    - link "Dinky" [ref=f1e764] [cursor=pointer]:
+                      - /url: ../Open-BigData/Dinky
+                  - paragraph [ref=f1e765]: Apache Dinky - 开源实时计算平台，基于Apache Flink构建的一站式实时数据开发、部署和运维平台
+          - list [ref=f1e767]:
+            - listitem [ref=f1e768]:
+              - generic [ref=f1e769]:
+                - paragraph [ref=f1e770]:
+                  - time [ref=f1e771]: 2026.06.01
+                - generic [ref=f1e772]:
+                  - heading "Federated Query" [level=3] [ref=f1e773]:
+                    - link "Federated Query" [ref=f1e774] [cursor=pointer]:
+                      - /url: ../Open-BigData/Federated-Query
+                  - paragraph [ref=f1e775]: Federated Query（联邦查询）是一种让你在不搬迁、不复制数据**的情况下，直接跨多个数据源执行 SQL 查询的能力。
+          - list [ref=f1e777]:
+            - listitem [ref=f1e778]:
+              - generic [ref=f1e779]:
+                - paragraph [ref=f1e780]:
+                  - time [ref=f1e781]: 2024.09.18
+                - heading "Flink CDC" [level=3] [ref=f1e783]:
+                  - link "Flink CDC" [ref=f1e784] [cursor=pointer]:
+                    - /url: ../Open-BigData/Flink-CDC
+          - list [ref=f1e786]:
+            - listitem [ref=f1e787]:
+              - generic [ref=f1e788]:
+                - paragraph [ref=f1e789]:
+                  - time [ref=f1e790]: 2026.07.03
+                - generic [ref=f1e791]:
+                  - heading "Flink Codebase Architecture" [level=3] [ref=f1e792]:
+                    - link "Flink Codebase Architecture" [ref=f1e793] [cursor=pointer]:
+                      - /url: ../Open-BigData/Flink-Codebase-Architecture
+                  - paragraph [ref=f1e794]: 基于 DeepWiki 对 Apache Flink 源码的分析，从架构、运行时、状态管理、SQL、连接器和部署六个维度总结 Flink 的内部实现。
+          - list [ref=f1e796]:
+            - listitem [ref=f1e797]:
+              - generic [ref=f1e798]:
+                - paragraph [ref=f1e799]:
+                  - time [ref=f1e800]: 2024.02.11
+                - heading "Flink Table API and SQL" [level=3] [ref=f1e802]:
+                  - link "Flink Table API and SQL" [ref=f1e803] [cursor=pointer]:
+                    - /url: ../Open-BigData/Flink-Table-API-and-SQL
+          - list [ref=f1e805]:
+            - listitem [ref=f1e806]:
+              - generic [ref=f1e807]:
+                - paragraph [ref=f1e808]:
+                  - time [ref=f1e809]: 2026.07.04
+                - generic [ref=f1e810]:
+                  - heading "HDFS Architecture" [level=3] [ref=f1e811]:
+                    - link "HDFS Architecture" [ref=f1e812] [cursor=pointer]:
+                      - /url: ../Open-BigData/HDFS-Architecture
+                  - paragraph [ref=f1e813]: HDFS 分布式文件系统架构全景：NameNode 元数据管理、BlockManager 副本调度、DataNode 存储体系、数据读写管道、Federation 联邦扩展与高可用机制
+          - list [ref=f1e815]:
+            - listitem [ref=f1e816]:
+              - generic [ref=f1e817]:
+                - paragraph [ref=f1e818]:
+                  - time [ref=f1e819]: 2022.01.14
+                - heading "Apache Hive" [level=3] [ref=f1e821]:
+                  - link "Apache Hive" [ref=f1e822] [cursor=pointer]:
+                    - /url: ../Open-BigData/Hive
+          - list [ref=f1e824]:
+            - listitem [ref=f1e825]:
+              - generic [ref=f1e826]:
+                - paragraph [ref=f1e827]:
+                  - time [ref=f1e828]: 2023.06.12
+                - heading "MMP (Massively Parallel Processing)" [level=3] [ref=f1e830]:
+                  - link "MMP (Massively Parallel Processing)" [ref=f1e831] [cursor=pointer]:
+                    - /url: ../Open-BigData/MMP-(Massively-Parallel-Processing)
+          - list [ref=f1e833]:
+            - listitem [ref=f1e834]:
+              - generic [ref=f1e835]:
+                - paragraph [ref=f1e836]:
+                  - time [ref=f1e837]: 2022.01.26
+                - heading "MapReduce" [level=3] [ref=f1e839]:
+                  - link "MapReduce" [ref=f1e840] [cursor=pointer]:
+                    - /url: ../Open-BigData/MapReduce
+          - list [ref=f1e842]:
+            - listitem [ref=f1e843]:
+              - generic [ref=f1e844]:
+                - paragraph [ref=f1e845]:
+                  - time [ref=f1e846]: 2022.09.05
+                - heading "PoC（Proof of Concept）" [level=3] [ref=f1e848]:
+                  - link "PoC（Proof of Concept）" [ref=f1e849] [cursor=pointer]:
+                    - /url: ../Open-BigData/PoC（Proof-of-Concept）
+          - list [ref=f1e851]:
+            - listitem [ref=f1e852]:
+              - generic [ref=f1e853]:
+                - paragraph [ref=f1e854]:
+                  - time [ref=f1e855]: 2026.06.01
+                - heading "Shared-nothing vs Shared-data" [level=3] [ref=f1e857]:
+                  - link "Shared-nothing vs Shared-data" [ref=f1e858] [cursor=pointer]:
+                    - /url: ../Open-BigData/Shared-nothing-vs-Shared-data
+          - list [ref=f1e860]:
+            - listitem [ref=f1e861]:
+              - generic [ref=f1e862]:
+                - paragraph [ref=f1e863]:
+                  - time [ref=f1e864]: 2022.01.25
+                - heading "Streaming Processing" [level=3] [ref=f1e866]:
+                  - link "Streaming Processing" [ref=f1e867] [cursor=pointer]:
+                    - /url: ../Open-BigData/Streaming-Processing
+          - list [ref=f1e869]:
+            - listitem [ref=f1e870]:
+              - generic [ref=f1e871]:
+                - paragraph [ref=f1e872]:
+                  - time [ref=f1e873]: 2026.06.01
+                - generic [ref=f1e874]:
+                  - heading "Time Travel" [level=3] [ref=f1e875]:
+                    - link "Time Travel" [ref=f1e876] [cursor=pointer]:
+                      - /url: ../Open-BigData/Time-Travel
+                  - paragraph [ref=f1e877]: Time Travel = 给一张表加上「版本」，让你能查询任意历史时刻的数据快照——本质上就是对数据做 git checkout。
+          - list [ref=f1e879]:
+            - listitem [ref=f1e880]:
+              - generic [ref=f1e881]:
+                - paragraph [ref=f1e882]:
+                  - time [ref=f1e883]: 2024.04.08
+                - heading "VPC（Virtual Private Cloud）" [level=3] [ref=f1e885]:
+                  - link "VPC（Virtual Private Cloud）" [ref=f1e886] [cursor=pointer]:
+                    - /url: ../Open-BigData/VPC（Virtual-Private-Cloud）
+          - list [ref=f1e888]:
+            - listitem [ref=f1e889]:
+              - generic [ref=f1e890]:
+                - paragraph [ref=f1e891]:
+                  - time [ref=f1e892]: 2023.06.07
+                - heading "What is Apache Flink?" [level=3] [ref=f1e894]:
+                  - link "What is Apache Flink?" [ref=f1e895] [cursor=pointer]:
+                    - /url: ../Open-BigData/What-is-Apache-Flink
+          - list [ref=f1e897]:
+            - listitem [ref=f1e898]:
+              - generic [ref=f1e899]:
+                - paragraph [ref=f1e900]:
+                  - time [ref=f1e901]: 2026.07.04
+                - generic [ref=f1e902]:
+                  - heading "What is Apache Spark？" [level=3] [ref=f1e903]:
+                    - link "What is Apache Spark？" [ref=f1e904] [cursor=pointer]:
+                      - /url: ../Open-BigData/What-is-Apache-Spark？
+                  - paragraph [ref=f1e905]: Apache Spark 统一分析引擎的架构全景：Core Engine、SQL Catalyst/Tungsten、Spark Connect、Structured Streaming、MLlib、GraphX 与 Declarative Pipelines
+          - list [ref=f1e907]:
+            - listitem [ref=f1e908]:
+              - generic [ref=f1e909]:
+                - paragraph [ref=f1e910]:
+                  - time [ref=f1e911]: 2024.07.24
+                - generic [ref=f1e912]:
+                  - heading "What is Apache Storm?" [level=3] [ref=f1e913]:
+                    - link "What is Apache Storm?" [ref=f1e914] [cursor=pointer]:
+                      - /url: ../Open-BigData/What-is-Apache-Storm
+                  - paragraph [ref=f1e915]: Apache Storm 是一个开源分布式实时计算系统，提供对无界数据流的可靠处理能力。核心概念包括 Topology（计算图）、Spout（数据源）、Bolt（处理单元）和 Stream（元组序列），支持实时分析、在线机器学习、持续计算等场景，单节点处理速度超过百万元组/秒。
+          - list [ref=f1e917]:
+            - listitem [ref=f1e918]:
+              - generic [ref=f1e919]:
+                - paragraph [ref=f1e920]:
+                  - time [ref=f1e921]: 2022.01.25
+                - generic [ref=f1e922]:
+                  - heading "Hadoop Yarn" [level=3] [ref=f1e923]:
+                    - link "Hadoop Yarn" [ref=f1e924] [cursor=pointer]:
+                      - /url: ../Open-BigData/Yarn
+                  - paragraph [ref=f1e925]: Yet Another Resource Negotiator
+          - list [ref=f1e927]:
+            - listitem [ref=f1e928]:
+              - generic [ref=f1e929]:
+                - paragraph [ref=f1e930]:
+                  - time [ref=f1e931]: 2025.06.14
+                - heading "Collections Photography" [level=3] [ref=f1e933]:
+                  - link "Collections Photography" [ref=f1e934] [cursor=pointer]:
+                    - /url: ../Posts/Collections-Photography
+          - list [ref=f1e936]:
+            - listitem [ref=f1e937]:
+              - generic [ref=f1e938]:
+                - paragraph [ref=f1e939]:
+                  - time [ref=f1e940]: 2025.03.04
+                - heading "Data Build" [level=3] [ref=f1e942]:
+                  - link "Data Build" [ref=f1e943] [cursor=pointer]:
+                    - /url: ../Posts/Data-Build
+          - list [ref=f1e945]:
+            - listitem [ref=f1e946]:
+              - generic [ref=f1e947]:
+                - paragraph [ref=f1e948]:
+                  - time [ref=f1e949]: 2026.05.26
+                - heading "Quartz MKD" [level=3] [ref=f1e951]:
+                  - link "Quartz MKD" [ref=f1e952] [cursor=pointer]:
+                    - /url: ../Posts/Quartz-MKD
+                - link [ref=f1e953] [cursor=pointer]:
+                  - /url: ../Posts/Quartz-MKD
+          - list [ref=f1e955]:
+            - listitem [ref=f1e956]:
+              - generic [ref=f1e957]:
+                - paragraph [ref=f1e958]:
+                  - time [ref=f1e959]: 2026.06.11
+                - generic [ref=f1e960]:
+                  - heading "Quartz Style Guide" [level=3] [ref=f1e961]:
+                    - link "Quartz Style Guide" [ref=f1e962] [cursor=pointer]:
+                      - /url: ../Posts/Quartz-Style-Guide
+                  - paragraph [ref=f1e963]: 记录本站 Quartz 官方样式和自定义样式的使用方式、适用场景、示例代码与维护变更。
+                - link [ref=f1e964] [cursor=pointer]:
+                  - /url: ../Posts/Quartz-Style-Guide
+          - list [ref=f1e966]:
+            - listitem [ref=f1e967]:
+              - generic [ref=f1e968]:
+                - paragraph [ref=f1e969]:
+                  - time [ref=f1e970]: 2026.06.11
+                - generic [ref=f1e971]:
+                  - heading "UI Evolution Monitor" [level=3] [ref=f1e972]:
+                    - link "UI Evolution Monitor" [ref=f1e973] [cursor=pointer]:
+                      - /url: ../Posts/UI-Evolution-Monitor
+                  - paragraph [ref=f1e974]: 记录本站 UI 样式、布局和页面视觉质量的自动监视方式，支撑后续 Quartz 页面持续演进。
+    - separator: "* * *"
+    - generic [ref=f1e976]:
+      - heading [level=4]
+      - button "Global Graph" [ref=f1e980] [cursor=pointer]:
+        - img [ref=f1e981]
+  - contentinfo [ref=f1e984]:
+    - generic [ref=f1e985]:
+      - region "Site" [ref=f1e986]:
+        - link "xufei.biz" [ref=f1e987] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f1e988]: xufei.biz
+        - paragraph [ref=f1e989]: Data engineering notes, architecture maps, and working references.
+        - list [ref=f1e990]:
+          - listitem [ref=f1e991]:
+            - link "GitHub" [ref=f1e992] [cursor=pointer]:
+              - /url: https://github.com/xuf-95
+          - listitem [ref=f1e993]:
+            - link "xufei.site" [ref=f1e994] [cursor=pointer]:
+              - /url: https://xufei.site
+      - navigation "Index footer" [ref=f1e995]:
+        - generic [ref=f1e996]:
+          - heading "Index" [level=2] [ref=f1e997]
+          - list [ref=f1e998]:
+            - listitem [ref=f1e999]:
+              - link "Map" [ref=f1e1000] [cursor=pointer]:
+                - /url: /Map/
+            - listitem [ref=f1e1001]:
+              - link "AI" [ref=f1e1002] [cursor=pointer]:
+                - /url: /AI/
+            - listitem [ref=f1e1003]:
+              - link "Open BigData" [ref=f1e1004] [cursor=pointer]:
+                - /url: /Open-BigData/
+            - listitem [ref=f1e1005]:
+              - link "Data Architecture" [ref=f1e1006] [cursor=pointer]:
+                - /url: /Data-Architecture/
+            - listitem [ref=f1e1007]:
+              - link "Data Store" [ref=f1e1008] [cursor=pointer]:
+                - /url: /Data-Store/
+            - listitem [ref=f1e1009]:
+              - link "Posts" [ref=f1e1010] [cursor=pointer]:
+                - /url: /Posts/
+        - generic [ref=f1e1011]:
+          - heading "Open BigData" [level=2] [ref=f1e1012]
+          - list [ref=f1e1013]:
+            - listitem [ref=f1e1014]:
+              - link "Apache Spark" [ref=f1e1015] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Spark/
+            - listitem [ref=f1e1016]:
+              - link "Apache Hadoop" [ref=f1e1017] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hadoop/
+            - listitem [ref=f1e1018]:
+              - link "Apache Flink" [ref=f1e1019] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Flink/
+            - listitem [ref=f1e1020]:
+              - link "Apache Hive" [ref=f1e1021] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hive/
+            - listitem [ref=f1e1022]:
+              - link "Apache Paimon" [ref=f1e1023] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Paimon/
+        - generic [ref=f1e1024]:
+          - heading "Data Architecture" [level=2] [ref=f1e1025]
+          - list [ref=f1e1026]:
+            - listitem [ref=f1e1027]:
+              - link "DCMM" [ref=f1e1028] [cursor=pointer]:
+                - /url: /Data-Architecture/DCMM/
+            - listitem [ref=f1e1029]:
+              - link "Data Mesh" [ref=f1e1030] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Mesh/
+            - listitem [ref=f1e1031]:
+              - link "Data Lake" [ref=f1e1032] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Lake/
+            - listitem [ref=f1e1033]:
+              - link "Lakehouse" [ref=f1e1034] [cursor=pointer]:
+                - /url: /Data-Architecture/Lakehouse/
+            - listitem [ref=f1e1035]:
+              - link "Lambda Architecture" [ref=f1e1036] [cursor=pointer]:
+                - /url: /Data-Architecture/Lambda-Architecture/
+      - generic [ref=f1e1037]:
+        - paragraph [ref=f1e1038]: © 2026 xufei.biz. All rights reserved.
+        - paragraph [ref=f1e1039]:
+          - text: Created with
+          - link "Quartz v4.5.1" [ref=f1e1040] [cursor=pointer]:
+            - /url: https://quartz.jzhao.xyz/

@@ -1,0 +1,184 @@
+- generic [ref=f3e3]:
+  - generic [ref=f3e5]:
+    - generic [ref=f3e6]:
+      - banner [ref=f3e7]:
+        - generic [ref=f3e8]:
+          - navigation "Primary" [ref=f3e9]:
+            - link "xufei.biz" [ref=f3e10] [cursor=pointer]:
+              - /url: /
+              - img "xufei.biz" [ref=f3e11]
+            - generic [ref=f3e12]:
+              - link "Blog" [ref=f3e13] [cursor=pointer]:
+                - /url: /browse/
+              - link "Tags" [ref=f3e14] [cursor=pointer]:
+                - /url: /tags/
+              - link "Goods" [ref=f3e15] [cursor=pointer]:
+                - /url: /hobby/goods/
+              - link "Tools" [ref=f3e16] [cursor=pointer]:
+                - /url: /tools/data-engineer-tools/
+          - link "GitHub" [ref=f3e17] [cursor=pointer]:
+            - /url: https://github.com/xuf-95
+            - img [ref=f3e18]
+          - link "RSS Feed" [ref=f3e20] [cursor=pointer]:
+            - /url: /index.xml
+            - img [ref=f3e21]
+          - button "Dark mode" [ref=f3e26] [cursor=pointer]:
+            - img [ref=f3e27]
+          - button "Search" [ref=f3e31] [cursor=pointer]:
+            - img [ref=f3e32]
+      - heading "Browse All" [level=2] [ref=f3e36]
+    - generic [ref=f3e37]:
+      - article
+      - generic [ref=f3e38]:
+        - paragraph [ref=f3e39]: 98 items under this folder.
+        - generic "Folder filter" [ref=f3e41]:
+          - button "All" [ref=f3e42] [cursor=pointer]
+          - button "AI" [active] [ref=f3e43] [cursor=pointer]
+          - button "Open BigData" [ref=f3e44] [cursor=pointer]
+          - button "Posts" [ref=f3e45] [cursor=pointer]
+        - generic [ref=f3e46]:
+          - list [ref=f3e48]:
+            - listitem [ref=f3e49]:
+              - generic [ref=f3e50]:
+                - paragraph [ref=f3e51]:
+                  - time [ref=f3e52]: 2025.04.17
+                - heading "Bigdata With AI" [level=3] [ref=f3e54]:
+                  - link "Bigdata With AI" [ref=f3e55] [cursor=pointer]:
+                    - /url: ../AI/Bigdata-With-AI
+          - list [ref=f3e57]:
+            - listitem [ref=f3e58]:
+              - generic [ref=f3e59]:
+                - paragraph [ref=f3e60]:
+                  - time [ref=f3e61]: 2025.04.10
+                - heading "How Agentic Work" [level=3] [ref=f3e63]:
+                  - link "How Agentic Work" [ref=f3e64] [cursor=pointer]:
+                    - /url: ../AI/How-Agentic-Work
+          - list [ref=f3e66]:
+            - listitem [ref=f3e67]:
+              - generic [ref=f3e68]:
+                - paragraph [ref=f3e69]:
+                  - time [ref=f3e70]: 2025.01.11
+                - heading "Knowledge Distillation（知识蒸馏）" [level=3] [ref=f3e72]:
+                  - link "Knowledge Distillation（知识蒸馏）" [ref=f3e73] [cursor=pointer]:
+                    - /url: ../AI/Knowledge-Distillation（知识蒸馏）
+          - list [ref=f3e75]:
+            - listitem [ref=f3e76]:
+              - generic [ref=f3e77]:
+                - paragraph [ref=f3e78]:
+                  - time [ref=f3e79]: 2025.04.10
+                - heading "Prompt Engineering" [level=3] [ref=f3e81]:
+                  - link "Prompt Engineering" [ref=f3e82] [cursor=pointer]:
+                    - /url: ../AI/Prompt-Engineering
+          - list [ref=f3e84]:
+            - listitem [ref=f3e85]:
+              - generic [ref=f3e86]:
+                - paragraph [ref=f3e87]:
+                  - time [ref=f3e88]: 2026.06.14
+                - generic [ref=f3e89]:
+                  - heading "Text2SQL" [level=3] [ref=f3e90]:
+                    - link "Text2SQL" [ref=f3e91] [cursor=pointer]:
+                      - /url: ../AI/Text2SQL
+                  - paragraph [ref=f3e92]: Text2SQL 让用户用自然语言生成 SQL，但必须依赖语义层、指标口径、权限和质量约束才能可靠落地。
+          - list [ref=f3e94]:
+            - listitem [ref=f3e95]:
+              - generic [ref=f3e96]:
+                - paragraph [ref=f3e97]:
+                  - time [ref=f3e98]: 2024.01.09
+                - generic [ref=f3e99]:
+                  - heading "Token是如何计费的" [level=3] [ref=f3e100]:
+                    - link "Token是如何计费的" [ref=f3e101] [cursor=pointer]:
+                      - /url: ../AI/Token是如何计费的
+                  - paragraph [ref=f3e102]: 深入了解人工智能服务中的Token计费机制，包括工作原理、计算方法、不同模型的成本差异以及优化策略
+          - list [ref=f3e104]:
+            - listitem [ref=f3e105]:
+              - generic [ref=f3e106]:
+                - paragraph [ref=f3e107]:
+                  - time [ref=f3e108]: 2026.07.07
+                - generic [ref=f3e109]:
+                  - heading "What's RAG?" [level=3] [ref=f3e110]:
+                    - link "What's RAG?" [ref=f3e111] [cursor=pointer]:
+                      - /url: ../AI/What's-RAG
+                  - paragraph [ref=f3e112]: RAG（检索增强生成）通过在生成前检索外部知识，让 LLM 回答更准确、可溯源，是企业落地大模型的核心架构模式。
+    - separator: "* * *"
+    - generic [ref=f3e976]:
+      - heading [level=4]
+      - button "Global Graph" [ref=f3e980] [cursor=pointer]:
+        - img [ref=f3e981]
+  - contentinfo [ref=f3e984]:
+    - generic [ref=f3e985]:
+      - region "Site" [ref=f3e986]:
+        - link "xufei.biz" [ref=f3e987] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f3e988]: xufei.biz
+        - paragraph [ref=f3e989]: Data engineering notes, architecture maps, and working references.
+        - list [ref=f3e990]:
+          - listitem [ref=f3e991]:
+            - link "GitHub" [ref=f3e992] [cursor=pointer]:
+              - /url: https://github.com/xuf-95
+          - listitem [ref=f3e993]:
+            - link "xufei.site" [ref=f3e994] [cursor=pointer]:
+              - /url: https://xufei.site
+      - navigation "Index footer" [ref=f3e995]:
+        - generic [ref=f3e996]:
+          - heading "Index" [level=2] [ref=f3e997]
+          - list [ref=f3e998]:
+            - listitem [ref=f3e999]:
+              - link "Map" [ref=f3e1000] [cursor=pointer]:
+                - /url: /Map/
+            - listitem [ref=f3e1001]:
+              - link "AI" [ref=f3e1002] [cursor=pointer]:
+                - /url: /AI/
+            - listitem [ref=f3e1003]:
+              - link "Open BigData" [ref=f3e1004] [cursor=pointer]:
+                - /url: /Open-BigData/
+            - listitem [ref=f3e1005]:
+              - link "Data Architecture" [ref=f3e1006] [cursor=pointer]:
+                - /url: /Data-Architecture/
+            - listitem [ref=f3e1007]:
+              - link "Data Store" [ref=f3e1008] [cursor=pointer]:
+                - /url: /Data-Store/
+            - listitem [ref=f3e1009]:
+              - link "Posts" [ref=f3e1010] [cursor=pointer]:
+                - /url: /Posts/
+        - generic [ref=f3e1011]:
+          - heading "Open BigData" [level=2] [ref=f3e1012]
+          - list [ref=f3e1013]:
+            - listitem [ref=f3e1014]:
+              - link "Apache Spark" [ref=f3e1015] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Spark/
+            - listitem [ref=f3e1016]:
+              - link "Apache Hadoop" [ref=f3e1017] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hadoop/
+            - listitem [ref=f3e1018]:
+              - link "Apache Flink" [ref=f3e1019] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Flink/
+            - listitem [ref=f3e1020]:
+              - link "Apache Hive" [ref=f3e1021] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hive/
+            - listitem [ref=f3e1022]:
+              - link "Apache Paimon" [ref=f3e1023] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Paimon/
+        - generic [ref=f3e1024]:
+          - heading "Data Architecture" [level=2] [ref=f3e1025]
+          - list [ref=f3e1026]:
+            - listitem [ref=f3e1027]:
+              - link "DCMM" [ref=f3e1028] [cursor=pointer]:
+                - /url: /Data-Architecture/DCMM/
+            - listitem [ref=f3e1029]:
+              - link "Data Mesh" [ref=f3e1030] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Mesh/
+            - listitem [ref=f3e1031]:
+              - link "Data Lake" [ref=f3e1032] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Lake/
+            - listitem [ref=f3e1033]:
+              - link "Lakehouse" [ref=f3e1034] [cursor=pointer]:
+                - /url: /Data-Architecture/Lakehouse/
+            - listitem [ref=f3e1035]:
+              - link "Lambda Architecture" [ref=f3e1036] [cursor=pointer]:
+                - /url: /Data-Architecture/Lambda-Architecture/
+      - generic [ref=f3e1037]:
+        - paragraph [ref=f3e1038]: © 2026 xufei.biz. All rights reserved.
+        - paragraph [ref=f3e1039]:
+          - text: Created with
+          - link "Quartz v4.5.1" [ref=f3e1040] [cursor=pointer]:
+            - /url: https://quartz.jzhao.xyz/

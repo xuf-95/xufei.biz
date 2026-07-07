@@ -1,0 +1,141 @@
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - banner [ref=e7]:
+        - generic [ref=e8]:
+          - navigation "Primary" [ref=e9]:
+            - link "xufei.biz" [ref=e10] [cursor=pointer]:
+              - /url: /
+              - img "xufei.biz" [ref=e11]
+            - generic [ref=e12]:
+              - link "Blog" [ref=e13] [cursor=pointer]:
+                - /url: /browse/
+              - link "Tags" [ref=e14] [cursor=pointer]:
+                - /url: /tags/
+              - link "Goods" [ref=e15] [cursor=pointer]:
+                - /url: /hobby/goods/
+              - link "Tools" [ref=e16] [cursor=pointer]:
+                - /url: /tools/data-engineer-tools/
+          - link "GitHub" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/xuf-95
+            - img [ref=e18]
+          - link "RSS Feed" [ref=e20] [cursor=pointer]:
+            - /url: /index.xml
+            - img [ref=e21]
+          - button "Dark mode" [ref=e26] [cursor=pointer]:
+            - img [ref=e27]
+          - button "Search" [ref=e31] [cursor=pointer]:
+            - img [ref=e32]
+      - text: ","
+    - article [ref=e35]:
+      - heading "Sherlock XuFei" [level=2] [ref=e36]:
+        - text: Sherlock XuFei
+        - link [ref=e37] [cursor=pointer]:
+          - /url: "#sherlock-xufei"
+          - img [ref=e38]
+      - text: Hey! I’m XuFei, a fanatical open sourceror and data engineer.
+      - paragraph [ref=e41]:
+        - text: This is my little digital garden on the Internet — a place for notes, maps, and working references around data engineering, architecture and AI. based on the
+        - link "Quartz" [ref=e42] [cursor=pointer]:
+          - /url: https://quartz.jzhao.xyz/
+        - text: build, by
+        - link "obsidian" [ref=e43] [cursor=pointer]:
+          - /url: https://obsidian.md/
+        - text: for document management.
+      - paragraph [ref=e44]: "Currently, I’m exploring how modern data systems can become more understandable, governable, and useful: from big data infrastructure and cloud-native platforms, to data architecture, governance, semantic layers, and AI-assisted workflows."
+      - paragraph [ref=e45]: "On a broader level, I care about building knowledge systems that help data practitioners see the shape of a problem more clearly: how concepts connect, how tools fit together, and how architectural decisions compound over time."
+      - paragraph [ref=e46]: "As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit:"
+      - list [ref=e47]:
+        - listitem [ref=e48]: "DATA Agent Map: experiments and references around data, AI, and agents."
+        - listitem [ref=e49]:
+          - link "BigData Map" [ref=e50] [cursor=pointer]:
+            - /url: ./Open-BigData/BigData-Map
+          - text: ": a capability map for full-stack data engineering;"
+        - listitem [ref=e51]:
+          - link "MOC-DCMM-DAMA Map" [ref=e52] [cursor=pointer]:
+            - /url: ./Open-BigData/Data-Architecture/MOC-DCMM-DAMA-Map
+          - text: ": a governance-oriented path through DCMM, DAMA, and CDO topics;"
+      - paragraph [ref=e53]: Outside of programming, I enjoy coffee, cycling, and tennis.
+    - separator: "* * *"
+    - generic [ref=e55]:
+      - heading [level=4]
+      - button "Global Graph" [ref=e59] [cursor=pointer]:
+        - img [ref=e60]
+  - contentinfo [ref=e63]:
+    - generic [ref=e64]:
+      - region "Site" [ref=e65]:
+        - link "xufei.biz" [ref=e66] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e67]: xufei.biz
+        - paragraph [ref=e68]: Data engineering notes, architecture maps, and working references.
+        - list [ref=e69]:
+          - listitem [ref=e70]:
+            - link "GitHub" [ref=e71] [cursor=pointer]:
+              - /url: https://github.com/xuf-95
+          - listitem [ref=e72]:
+            - link "xufei.site" [ref=e73] [cursor=pointer]:
+              - /url: https://xufei.site
+      - navigation "Index footer" [ref=e74]:
+        - generic [ref=e75]:
+          - heading "Index" [level=2] [ref=e76]
+          - list [ref=e77]:
+            - listitem [ref=e78]:
+              - link "Map" [ref=e79] [cursor=pointer]:
+                - /url: /Map/
+            - listitem [ref=e80]:
+              - link "AI" [ref=e81] [cursor=pointer]:
+                - /url: /AI/
+            - listitem [ref=e82]:
+              - link "Open BigData" [ref=e83] [cursor=pointer]:
+                - /url: /Open-BigData/
+            - listitem [ref=e84]:
+              - link "Data Architecture" [ref=e85] [cursor=pointer]:
+                - /url: /Data-Architecture/
+            - listitem [ref=e86]:
+              - link "Data Store" [ref=e87] [cursor=pointer]:
+                - /url: /Data-Store/
+            - listitem [ref=e88]:
+              - link "Posts" [ref=e89] [cursor=pointer]:
+                - /url: /Posts/
+        - generic [ref=e90]:
+          - heading "Open BigData" [level=2] [ref=e91]
+          - list [ref=e92]:
+            - listitem [ref=e93]:
+              - link "Apache Spark" [ref=e94] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Spark/
+            - listitem [ref=e95]:
+              - link "Apache Hadoop" [ref=e96] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hadoop/
+            - listitem [ref=e97]:
+              - link "Apache Flink" [ref=e98] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Flink/
+            - listitem [ref=e99]:
+              - link "Apache Hive" [ref=e100] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hive/
+            - listitem [ref=e101]:
+              - link "Apache Paimon" [ref=e102] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Paimon/
+        - generic [ref=e103]:
+          - heading "Data Architecture" [level=2] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "DCMM" [ref=e107] [cursor=pointer]:
+                - /url: /Data-Architecture/DCMM/
+            - listitem [ref=e108]:
+              - link "Data Mesh" [ref=e109] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Mesh/
+            - listitem [ref=e110]:
+              - link "Data Lake" [ref=e111] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Lake/
+            - listitem [ref=e112]:
+              - link "Lakehouse" [ref=e113] [cursor=pointer]:
+                - /url: /Data-Architecture/Lakehouse/
+            - listitem [ref=e114]:
+              - link "Lambda Architecture" [ref=e115] [cursor=pointer]:
+                - /url: /Data-Architecture/Lambda-Architecture/
+      - generic [ref=e116]:
+        - paragraph [ref=e117]: © 2026 xufei.biz. All rights reserved.
+        - paragraph [ref=e118]:
+          - text: Created with
+          - link "Quartz v4.5.1" [ref=e119] [cursor=pointer]:
+            - /url: https://quartz.jzhao.xyz/

@@ -1,0 +1,170 @@
+- generic [ref=f1e3]:
+  - generic [ref=f1e5]:
+    - generic [ref=f1e6]:
+      - banner [ref=f1e7]:
+        - generic [ref=f1e8]:
+          - navigation "Primary" [ref=f1e9]:
+            - link "xufei.biz" [ref=f1e10] [cursor=pointer]:
+              - /url: /
+              - img "xufei.biz" [ref=f1e11]
+            - generic [ref=f1e12]:
+              - link "Blog" [ref=f1e13] [cursor=pointer]:
+                - /url: /browse/
+              - link "Tags" [ref=f1e14] [cursor=pointer]:
+                - /url: /tags/
+              - link "Goods" [ref=f1e15] [cursor=pointer]:
+                - /url: /hobby/goods/
+              - link "Tools" [ref=f1e16] [cursor=pointer]:
+                - /url: /tools/data-engineer-tools/
+          - link "GitHub" [ref=f1e17] [cursor=pointer]:
+            - /url: https://github.com/xuf-95
+            - img [ref=f1e18]
+          - link "RSS Feed" [ref=f1e20] [cursor=pointer]:
+            - /url: /index.xml
+            - img [ref=f1e21]
+          - button "Dark mode" [ref=f1e26] [cursor=pointer]:
+            - img [ref=f1e27]
+          - button "Search" [ref=f1e31] [cursor=pointer]:
+            - img [ref=f1e32]
+      - heading "Browse All" [level=2] [ref=f1e36]
+    - generic [ref=f1e37]:
+      - article
+      - generic [ref=f1e38]:
+        - paragraph [ref=f1e39]: 98 items under this folder.
+        - generic "Folder filter" [ref=f1e41]:
+          - button "All" [ref=f1e42] [cursor=pointer]
+          - button "AI" [ref=f1e43] [cursor=pointer]
+          - button "Open BigData" [ref=f1e44] [cursor=pointer]
+          - button "Posts" [active] [ref=f1e45] [cursor=pointer]
+        - generic [ref=f1e46]:
+          - list [ref=f1e927]:
+            - listitem [ref=f1e928]:
+              - generic [ref=f1e929]:
+                - paragraph [ref=f1e930]:
+                  - time [ref=f1e931]: 2025.06.14
+                - heading "Collections Photography" [level=3] [ref=f1e933]:
+                  - link "Collections Photography" [ref=f1e934] [cursor=pointer]:
+                    - /url: ../Posts/Collections-Photography
+          - list [ref=f1e936]:
+            - listitem [ref=f1e937]:
+              - generic [ref=f1e938]:
+                - paragraph [ref=f1e939]:
+                  - time [ref=f1e940]: 2025.03.04
+                - heading "Data Build" [level=3] [ref=f1e942]:
+                  - link "Data Build" [ref=f1e943] [cursor=pointer]:
+                    - /url: ../Posts/Data-Build
+          - list [ref=f1e945]:
+            - listitem [ref=f1e946]:
+              - generic [ref=f1e947]:
+                - paragraph [ref=f1e948]:
+                  - time [ref=f1e949]: 2026.05.26
+                - heading "Quartz MKD" [level=3] [ref=f1e951]:
+                  - link "Quartz MKD" [ref=f1e952] [cursor=pointer]:
+                    - /url: ../Posts/Quartz-MKD
+                - link [ref=f1e953] [cursor=pointer]:
+                  - /url: ../Posts/Quartz-MKD
+          - list [ref=f1e955]:
+            - listitem [ref=f1e956]:
+              - generic [ref=f1e957]:
+                - paragraph [ref=f1e958]:
+                  - time [ref=f1e959]: 2026.06.11
+                - generic [ref=f1e960]:
+                  - heading "Quartz Style Guide" [level=3] [ref=f1e961]:
+                    - link "Quartz Style Guide" [ref=f1e962] [cursor=pointer]:
+                      - /url: ../Posts/Quartz-Style-Guide
+                  - paragraph [ref=f1e963]: 记录本站 Quartz 官方样式和自定义样式的使用方式、适用场景、示例代码与维护变更。
+                - link [ref=f1e964] [cursor=pointer]:
+                  - /url: ../Posts/Quartz-Style-Guide
+          - list [ref=f1e966]:
+            - listitem [ref=f1e967]:
+              - generic [ref=f1e968]:
+                - paragraph [ref=f1e969]:
+                  - time [ref=f1e970]: 2026.06.11
+                - generic [ref=f1e971]:
+                  - heading "UI Evolution Monitor" [level=3] [ref=f1e972]:
+                    - link "UI Evolution Monitor" [ref=f1e973] [cursor=pointer]:
+                      - /url: ../Posts/UI-Evolution-Monitor
+                  - paragraph [ref=f1e974]: 记录本站 UI 样式、布局和页面视觉质量的自动监视方式，支撑后续 Quartz 页面持续演进。
+    - separator: "* * *"
+    - generic [ref=f1e976]:
+      - heading [level=4]
+      - button "Global Graph" [ref=f1e980] [cursor=pointer]:
+        - img [ref=f1e981]
+  - contentinfo [ref=f1e984]:
+    - generic [ref=f1e985]:
+      - region "Site" [ref=f1e986]:
+        - link "xufei.biz" [ref=f1e987] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f1e988]: xufei.biz
+        - paragraph [ref=f1e989]: Data engineering notes, architecture maps, and working references.
+        - list [ref=f1e990]:
+          - listitem [ref=f1e991]:
+            - link "GitHub" [ref=f1e992] [cursor=pointer]:
+              - /url: https://github.com/xuf-95
+          - listitem [ref=f1e993]:
+            - link "xufei.site" [ref=f1e994] [cursor=pointer]:
+              - /url: https://xufei.site
+      - navigation "Index footer" [ref=f1e995]:
+        - generic [ref=f1e996]:
+          - heading "Index" [level=2] [ref=f1e997]
+          - list [ref=f1e998]:
+            - listitem [ref=f1e999]:
+              - link "Map" [ref=f1e1000] [cursor=pointer]:
+                - /url: /Map/
+            - listitem [ref=f1e1001]:
+              - link "AI" [ref=f1e1002] [cursor=pointer]:
+                - /url: /AI/
+            - listitem [ref=f1e1003]:
+              - link "Open BigData" [ref=f1e1004] [cursor=pointer]:
+                - /url: /Open-BigData/
+            - listitem [ref=f1e1005]:
+              - link "Data Architecture" [ref=f1e1006] [cursor=pointer]:
+                - /url: /Data-Architecture/
+            - listitem [ref=f1e1007]:
+              - link "Data Store" [ref=f1e1008] [cursor=pointer]:
+                - /url: /Data-Store/
+            - listitem [ref=f1e1009]:
+              - link "Posts" [ref=f1e1010] [cursor=pointer]:
+                - /url: /Posts/
+        - generic [ref=f1e1011]:
+          - heading "Open BigData" [level=2] [ref=f1e1012]
+          - list [ref=f1e1013]:
+            - listitem [ref=f1e1014]:
+              - link "Apache Spark" [ref=f1e1015] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Spark/
+            - listitem [ref=f1e1016]:
+              - link "Apache Hadoop" [ref=f1e1017] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hadoop/
+            - listitem [ref=f1e1018]:
+              - link "Apache Flink" [ref=f1e1019] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Flink/
+            - listitem [ref=f1e1020]:
+              - link "Apache Hive" [ref=f1e1021] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Hive/
+            - listitem [ref=f1e1022]:
+              - link "Apache Paimon" [ref=f1e1023] [cursor=pointer]:
+                - /url: /Open-BigData/Apache-Paimon/
+        - generic [ref=f1e1024]:
+          - heading "Data Architecture" [level=2] [ref=f1e1025]
+          - list [ref=f1e1026]:
+            - listitem [ref=f1e1027]:
+              - link "DCMM" [ref=f1e1028] [cursor=pointer]:
+                - /url: /Data-Architecture/DCMM/
+            - listitem [ref=f1e1029]:
+              - link "Data Mesh" [ref=f1e1030] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Mesh/
+            - listitem [ref=f1e1031]:
+              - link "Data Lake" [ref=f1e1032] [cursor=pointer]:
+                - /url: /Data-Architecture/Data-Lake/
+            - listitem [ref=f1e1033]:
+              - link "Lakehouse" [ref=f1e1034] [cursor=pointer]:
+                - /url: /Data-Architecture/Lakehouse/
+            - listitem [ref=f1e1035]:
+              - link "Lambda Architecture" [ref=f1e1036] [cursor=pointer]:
+                - /url: /Data-Architecture/Lambda-Architecture/
+      - generic [ref=f1e1037]:
+        - paragraph [ref=f1e1038]: © 2026 xufei.biz. All rights reserved.
+        - paragraph [ref=f1e1039]:
+          - text: Created with
+          - link "Quartz v4.5.1" [ref=f1e1040] [cursor=pointer]:
+            - /url: https://quartz.jzhao.xyz/

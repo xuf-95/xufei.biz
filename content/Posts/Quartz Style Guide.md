@@ -12,7 +12,7 @@ description: 记录本站 Quartz 官方样式和自定义样式的使用方式�
 date: 2026-06-11
 publish: true
 draft: true
-cardImage: "![Amazon](Amazon.png)"
+cardImage: /content/Posts/images/hand.png
 ---
 
 ## Purpose

@@ -1,6 +1,6 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
 import style from "../styles/listPage.scss"
-import { PageList, PageListViewControls, SortFn } from "../PageList"
+import { PageList, SortFn } from "../PageList"
 import { FullSlug, resolveRelative, simplifySlug } from "../../util/path"
 import { Root } from "hast"
 import { htmlToJsx } from "../../util/jsx"
@@ -8,7 +8,6 @@ import { i18n } from "../../i18n"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import TagTreemap, { getTagGroups, tagTreemapCss } from "../TagTreemap"
-import pageListViewScript from "../scripts/pageListView.inline"
 
 interface TagContentOptions {
   sort?: SortFn
@@ -118,8 +117,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
           <article class={classes}>{content}</article>
           <div class="page-listing" data-page-listing>
             <p>{i18n(cfg.locale).pages.tagContent.itemsUnderTag({ count: pages.length })}</p>
-            <PageListViewControls />
-            <div class="tag-page-list" data-page-list-view data-view="list">
+            <div class="tag-page-list">
               <PageList {...listProps} sort={options?.sort} />
             </div>
           </div>
@@ -177,7 +175,6 @@ export default ((opts?: Partial<TagContentOptions>) => {
 
 .tag-page-list {
   --tag-list-rule: color-mix(in srgb, var(--darkgray) 15%, transparent);
-
   margin-top: 0.35rem;
 }
 
@@ -185,12 +182,6 @@ export default ((opts?: Partial<TagContentOptions>) => {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.tag-page-list[data-view="card"] ul.section-ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: 1.2rem 1rem;
 }
 
 .tag-page-list:has(li.section-li:hover) li.section-li,
@@ -213,23 +204,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
   border-bottom: 1px solid var(--tag-list-rule);
 }
 
-.tag-page-list[data-view="card"] li.section-li,
-.tag-page-list[data-view="card"] li.section-li:last-child {
-  min-width: 0;
-  border: 0;
-}
-
-.tag-page-list .section {
-  align-items: baseline;
-  padding: 0.95rem 0;
-}
-
-.tag-page-list[data-view="card"] .section {
-  align-items: stretch;
-  padding: 0;
-}
-
-.tag-page-list .section > .desc > h3 > a {
+.tag-page-list .section > .section-body > h3 > a {
   transition:
     color 0.18s ease,
     opacity 0.18s ease;
@@ -237,6 +212,5 @@ export default ((opts?: Partial<TagContentOptions>) => {
 `
 
   TagContent.css = concatenateResources(style, PageList.css, tagTreemapCss, tagIndexCss)
-  TagContent.afterDOMLoaded = pageListViewScript as unknown as string
   return TagContent
 }) satisfies QuartzComponentConstructor
