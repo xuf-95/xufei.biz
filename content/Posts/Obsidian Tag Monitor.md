@@ -123,4 +123,3 @@ SORT file.folder ASC, file.name ASC
 
 - part-of:: [[Bigdata Wiki OS]]
 - governed-by:: [[Obsidian Naming Governance]]
-- related:: [[00-Map]]

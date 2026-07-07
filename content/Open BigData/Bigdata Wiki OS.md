@@ -109,11 +109,11 @@ publish: true
 
 ## Phase Roadmap
 
-| Phase | 目标 | 当前状态 | 关键产物 |
+| Phase | 目标 | 当前状态 | 关键产物                                                                         |
 | --- | --- | --- | --- |
-| Phase 1 | 建立可导航的知识骨架 | 已完成 | 00-Map、4 个 MOC、8 个核心骨架笔记、统一模板 |
-| Phase 2 | 扩展核心能力图谱 | 进行中 | 数据架构、治理、建模、工程、DATA+AI 的概念卡、模式卡和面试题 |
-| Phase 3 | 沉淀项目交付资产 | 已预置骨架 | 架构方案、ADR、项目案例、故障复盘、演讲教程 |
+| Phase 1 | 建立可导航的知识骨架 | 已完成 | Map、4 个 MOC、8 个核心骨架笔记、统一模板                                                   |
+| Phase 2 | 扩展核心能力图谱 | 进行中 | 数据架构、治理、建模、工程、DATA+AI 的概念卡、模式卡和面试题                                           |
+| Phase 3 | 沉淀项目交付资产 | 已预置骨架 | 架构方案、ADR、项目案例、故障复盘、演讲教程                                                      |
 | Phase 4 | Agent 化维护和生成 | 待开始 | Link Review Agent、Knowledge Compile Agent、Text2SQL / DataOps / Quality Agent |
 
 Phase 1 的完成标准不是“文章很多”，而是让每个核心主题都能通过 MOC 找到入口，并且每篇核心笔记都能回答 Definition、Business Value、Architecture、Commercial Practice、Interview Answer 和 Links。

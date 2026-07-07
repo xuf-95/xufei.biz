@@ -162,4 +162,3 @@ Concept Catalog.md
 
 - part-of:: [[Bigdata Wiki OS]]
 - used-by:: [[Obsidian Tag Monitor]]
-- related:: [[00-Map]]

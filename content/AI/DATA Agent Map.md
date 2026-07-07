@@ -21,7 +21,7 @@ publish: false
 - [[Data Agent Architecture]]
 - [[How Agentic Work]]
 - [[RAG]]
-- [[LLMOPS]]
+- LLMOPS
 - [[MCP]]
 - [[Text2SQL]]
 - [[Agent Governance]]

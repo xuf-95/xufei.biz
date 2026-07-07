@@ -227,7 +227,7 @@ Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para]
     <span class="gallery-card-title">Bigdata Wiki OS</span>
     <span class="gallery-card-subtitle">Knowledge graph and wiki operating system</span>
   </a>
-  <a class="gallery-card internal" href="/00-Map/MOC-DATA%2BAI%20Agent%20%E5%9C%B0%E5%9B%BE">
+  <a class="gallery-card internal" href="/Map/MOC-DATA%2BAI%20Agent%20%E5%9C%B0%E5%9B%BE">
     <span class="gallery-card-title">DATA+AI Agent</span>
     <span class="gallery-card-subtitle">Agent architecture and governance map</span>
   </a>
