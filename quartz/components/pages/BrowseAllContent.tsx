@@ -209,6 +209,11 @@ const folderFilterCss = `
   transition: opacity 0.18s ease;
 }
 
+.folder-item-wrap:first-child,
+.folder-item-wrap[data-hidden="true"] + .folder-item-wrap:not([data-hidden="true"]) {
+  border-top: none;
+}
+
 .folder-item-wrap:last-child {
   border-bottom: 1px solid var(--folder-list-rule);
 }
