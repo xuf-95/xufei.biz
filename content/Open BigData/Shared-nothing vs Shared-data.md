@@ -38,15 +38,15 @@ Node 3: CPU + Memory + Disk + Data Part C
 
 很多大数据和 MPP 系统都是 Shared-nothing 架构，例如：
 
-| **系统**                                     | **说明**                   |
-| ------------------------------------------ | ------------------------ |
-| Greenplum                                  | 典型 MPP 数据库           |
-| ClickHouse                             | 分布式表场景下接近 Shared-nothing |
-| StarRocks                              | MPP 查询引擎                 |
-| [[Apache Doris]]                           | MPP 架构                   |
-| Teradata                                   | 经典 MPP 数据库               |
-| [[Apache Spark]]                                  | 计算层是 Shared-nothing 思路   |
-| [[Apache Hadoop Overview]] [[HDFS]] + [[MapReduce]] | 数据和计算都分布式                |
+| **系统**                                          | **说明**                   |
+| ----------------------------------------------- | ------------------------ |
+| Greenplum                                       | 典型 MPP 数据库               |
+| ClickHouse                                      | 分布式表场景下接近 Shared-nothing |
+| StarRocks                                       | MPP 查询引擎                 |
+| [[Apache Doris]]                                | MPP 架构                   |
+| Teradata                                        | 经典 MPP 数据库               |
+| [[Apache Spark]]                                | 计算层是 Shared-nothing 思路   |
+| [[Apache Hadoop Overview]] HDFS + [[MapReduce]] | 数据和计算都分布式                |
 
 ---
 

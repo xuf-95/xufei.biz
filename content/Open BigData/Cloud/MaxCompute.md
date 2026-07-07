@@ -21,7 +21,7 @@ MaxCompute（原名ODPS，Open Data Processing Service）是阿里云提供的�
 
 - 集成AI能力：与人工智能平台 PAI无缝集成，提供强大的机器学习处理能力，可使用Spark-ML开展智能分，可以使用Python机器学习三方库
 - 深度集成[[Apache Spark]]引擎：内建Apache Spark引擎，提供完整的Spark功能
-- 湖仓一体：集成对数据湖（OSS或[[HDFS]]）的访问分析，支持通过外部表映射、Spark直接访问方式开展数据湖分析 
+- 湖仓一体：集成对数据湖（OSS或HDFS）的访问分析，支持通过外部表映射、Spark直接访问方式开展数据湖分析 
 - 离线实时一体：与实时数仓Hologres深度融合，支持外部表关联查询，支持存储层直读，查询效率相比其他类型外部表高5倍以上。Hologres针对MaxCompute支持查询加速，数据无需移动，查询加速10倍以上。支持MaxCompute元数据的批量导入，无需手工创建外表
 - 列式存储：存储引擎主要采用列压缩存储格式，通常情况下可达到5倍压缩比
 

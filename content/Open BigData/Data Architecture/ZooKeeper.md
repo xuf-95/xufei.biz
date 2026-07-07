@@ -127,7 +127,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 
 ### [[Apache Hadoop Overview]]生态系统
 
-**[[HDFS]] (Hadoop Distributed File System)**
+**HDFS (Hadoop Distributed File System)**
 - 使用ZooKeeper进行NameNode HA (高可用)配置
 - 管理Active/Standby NameNode的状态切换
 - 集群元数据同步和协调
