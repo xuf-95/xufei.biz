@@ -99,7 +99,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 ### Deploy
 
 - Local: Single JVM
-- Cluster: [[Yarn]], Standalone
+- Cluster: [[Yarn（Yet Another Resource Negotiator）]], Standalone
 - Cloud: CE2, GE
 
 ### Core

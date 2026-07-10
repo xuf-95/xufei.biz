@@ -48,7 +48,7 @@ hive强大之处不要求数据转换成特定的格式，而是利用hadoop本�
 
 - hive处理的数据存在[[HDFS]]
 - hive默认分析计算引擎是[[MapReduce]]、后续版本也使用了 Tez
-- hive执行程序运行在[[Yarn]]
+- hive执行程序运行在[[Yarn（Yet Another Resource Negotiator）]]
 
 ### Hive与[[HDFS]]数据模型的区别
 

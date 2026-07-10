@@ -142,7 +142,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 集群状态监控
 - Master选举和故障恢复
 
-**[[Yarn]] (Yet Another Resource Negotiator)**
+**[[Yarn（Yet Another Resource Negotiator）]] (Yet Another Resource Negotiator)**
 - ResourceManager的高可用配置
 - 集群资源分配和调度协调
 - NodeManager状态管理

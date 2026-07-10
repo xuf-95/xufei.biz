@@ -66,7 +66,7 @@ Spark SQL provides a programming interface for processing structured and semi-st
 	- Spark生态的不断发展，包括了SparkSQL、SparkStreaming、Mlib、GraphX不同的子项目
 	- 一站式解决所有应用场景:  离线 & 实时 & 机器学习算法库 & 图计算
 - **兼容性**
-	- Spark任务可提交到多个计算资源环境中，如：StandAlone；[[Yarn]]；Apache Mesos
+	- Spark任务可提交到多个计算资源环境中，如：StandAlone；[[Yarn（Yet Another Resource Negotiator）]]；Apache Mesos
 
 
 ### Spark RDD

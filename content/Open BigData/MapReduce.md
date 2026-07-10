@@ -5,7 +5,7 @@ tags:
   - compute-engine
 date: 2022-01-26
 draft: false
-publish: true
+publish: false
 aliases:
   - mapreduce
   - MR

@@ -1,6 +1,6 @@
 ---
-title: Hadoop Yarn
-description: Yet Another Resource Negotiator
+title: Yarn（Yet Another Resource Negotiator）
+description: YARN 是 Yet Another Resource Negotiator（另一个资源管理器）的缩写，可充当 Hadoop 堆栈的集群协调组件。
 tags:
   - hadoop
   - architecture
