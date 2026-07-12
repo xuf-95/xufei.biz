@@ -21,9 +21,9 @@ var navItems = [
         label: "Blog",
         path: "/browse/"
     },
-    { label: "AI", path: "/ai/" },
-    { label: "BigData", path: "/open-bigdata/" },
-    { label: "Posts", path: "/posts/" },
+    { label: "AI", path: "/browse/ai/" },
+    { label: "BigData", path: "/browse/open-bigdata/" },
+    { label: "Posts", path: "/browse/posts/" },
     // { label: "Bookmark", path: "/bookmark/" },
     // { label: "Resources", path: "/resources/" },
     { label: "Tags", path: "/tags/" },

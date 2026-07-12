@@ -12,15 +12,15 @@ export const sharedPageComponents: SharedLayout = {
     Component.Search(),
   ],
   afterBody: [
-    // Component.ConditionalRender({
-    //   component: Component.TagTreemap({
-    //     variant: "home",
-    //     title: "Tag Map",
-    //     showHeader: true,
-    //     showTotal: true,
-    //   }),
-    //   condition: ({ fileData }) => fileData.slug === "index",
-    // }),
+    Component.ConditionalRender({
+      component: Component.TagTreemap({
+        variant: "home",
+        title: "Tag Map",
+        showHeader: true,
+        showTotal: true,
+      }),
+      condition: ({ fileData }) => fileData.slug === "index",
+    }),
     
     // Component.UnlinkedMentions(),
     Component.DesktopOnly(
