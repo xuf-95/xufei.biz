@@ -22,7 +22,7 @@ var navItems = [
         path: "/browse/"
     },
     { label: "AI", path: "/AI/" },
-    { label: "BigData", path: "/Open BigData/" },
+    { label: "BigData", path: "/BigData/" },
     { label: "Posts", path: "/Posts/" },
     // { label: "Bookmark", path: "/bookmark/" },
     // { label: "Resources", path: "/resources/" },
