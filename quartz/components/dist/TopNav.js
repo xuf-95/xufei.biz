@@ -21,6 +21,11 @@ var navItems = [
         label: "Blog",
         path: "/browse/"
     },
+    { label: "AI", path: "/ai/" },
+    { label: "BigData", path: "/open-bigdata/" },
+    { label: "Posts", path: "/posts/" },
+    // { label: "Bookmark", path: "/bookmark/" },
+    // { label: "Resources", path: "/resources/" },
     { label: "Tags", path: "/tags/" },
 ];
 var ChevronDown = function () { return (React.createElement("svg", { "class": "nav-chevron", width: "12", height: "12", viewBox: "0 0 12 12", fill: "none", "aria-hidden": "true" },
