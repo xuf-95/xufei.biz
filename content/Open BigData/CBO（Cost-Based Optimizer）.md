@@ -222,7 +222,7 @@ user_id 的基数有多大？
 
 下面是重点。
 
-### **5.1 [[Hive|Apache Hive]]**
+### **5.1 [[Apache Hive Overview|Apache Hive]]**
 
 Hive 是大数据领域最典型的 CBO 使用者之一。
 

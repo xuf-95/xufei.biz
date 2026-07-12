@@ -129,7 +129,7 @@ AQE 后：
 
 ### **3.2 动态合并 Shuffle 小分区**
 
-[[Apache Spark]]、[[What is Apache Flink?]]、[[Hive]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
+[[Apache Spark]]、[[What is Apache Flink?]]、[[Apache Hive Overview]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
 
 比如 [[Apache Spark]] 默认可能是：
 

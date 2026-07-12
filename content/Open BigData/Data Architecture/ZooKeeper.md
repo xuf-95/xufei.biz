@@ -132,7 +132,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 管理Active/Standby NameNode的状态切换
 - 集群元数据同步和协调
 
-**[[Hive]]**
+**[[Apache Hive Overview]]**
 - Hive Metastore服务的高可用配置
 - 表结构和元数据管理
 - 分布式查询协调

@@ -3,9 +3,8 @@ title: Apache HBase Overview
 publish: true
 date: 2026-07-10
 tags:
-  - BigData
-  - HBase
   - NoSQL
+  - bigdata
 ---
 
 Apache HBase is an open-source, distributed, column-oriented NoSQL database built on top of HDFS. It provides random, real-time read/write access to very large datasets — billions of rows × millions of columns — while maintaining strong consistency guarantees.

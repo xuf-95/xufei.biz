@@ -43,8 +43,8 @@ const navItems: NavItem[] = [
   },
   { label: "Tags", path: "/tags/" },
   // { label: "Map",   path: "/map/"          },
-  { label: "Goods", path: "/hobby/goods/"  },
-  { label: "Tools", path: "/tools/data-engineer-tools/" },
+  // { label: "Goods", path: "/hobby/goods/"  },
+  // { label: "Tools", path: "/tools/data-engineer-tools/" },
 ]
 
 const ChevronDown = () => (
