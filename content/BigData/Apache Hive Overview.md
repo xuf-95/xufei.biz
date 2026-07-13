@@ -1,5 +1,5 @@
 ---
-title: Apache Hive Overview
+title: Apache Hive
 aliases:
   - Apache Hive
   - hive

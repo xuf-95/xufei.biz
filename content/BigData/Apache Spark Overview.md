@@ -1,5 +1,5 @@
 ---
-title: "Apache Spark Overview"
+title: "Apache Spark"
 tags:
   - bigdata
   - spark

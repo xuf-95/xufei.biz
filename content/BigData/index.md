@@ -12,7 +12,7 @@ description: Bigdata Wiki OS 的地图入口，汇总角色能力、数据治理
 date: 2026-06-14
 publish: true
 ---
-
+<!-- 
 ## Bigdata Wiki OS
 
 - [[Bigdata Wiki OS]] - 面向大数据全栈工程师、数据架构师与未来 CDO/CDAO 角色的个人知识图谱系统。
@@ -88,4 +88,4 @@ publish: true
 
 - part-of:: [[Bigdata Wiki OS]]
 - related:: [[Quartz Style Guide]]
-- related:: [[UI Evolution Monitor]]
+- related:: [[UI Evolution Monitor]] -->

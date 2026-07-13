@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop Overview
+title: Apache Hadoop
 aliases:
   - Hadoop
 tags:

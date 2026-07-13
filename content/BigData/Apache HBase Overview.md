@@ -1,5 +1,5 @@
 ---
-title: Apache HBase Overview
+title: Apache HBase
 publish: true
 date: 2026-07-10
 tags:

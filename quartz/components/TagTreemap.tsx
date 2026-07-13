@@ -281,7 +281,7 @@ export default ((opts?: Partial<TagTreemapOptions>) => {
 
     for (const group of groups) {
       const count = group.pages.length
-      if (count < 2) {
+      if (count < 4) {
         otherTags.push(group)
       } else {
         mainItems.push({ tag: group.tag, count, area: count })
