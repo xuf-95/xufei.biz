@@ -3,6 +3,7 @@ title: Data Architecture HomePage
 date: 2025-04-01
 tags:
   - index
+  - bigdata
 draft: false
 publish: true
 ---

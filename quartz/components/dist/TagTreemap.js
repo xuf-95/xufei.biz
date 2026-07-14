@@ -18,7 +18,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
     return r;
 };
 exports.__esModule = true;
-exports.tagTreemapCss = exports.getTagGroups = void 0;
+exports.tagTreemapCss = exports.layoutTagTreemap = exports.getTagGroups = void 0;
 var path_1 = require("../util/path");
 var i18n_1 = require("../i18n");
 var lang_1 = require("../util/lang");
@@ -102,6 +102,22 @@ function squarify(items, x, y, w, h) {
     layoutRow(scaled, x, y, w, h, result);
     return result;
 }
+function suffixCountClosestToArea(items, targetArea) {
+    if (items.length < 2)
+        return 0;
+    var suffixArea = 0;
+    var bestCount = 1;
+    var bestDistance = Infinity;
+    for (var count = 1; count < items.length; count++) {
+        suffixArea += items[items.length - count].area;
+        var distance = Math.abs(suffixArea - targetArea);
+        if (distance < bestDistance) {
+            bestCount = count;
+            bestDistance = distance;
+        }
+    }
+    return bestCount;
+}
 function fitLabel(label, width, fontSize) {
     var maxChars = Math.max(3, Math.floor(width / (fontSize * 0.58)));
     if (label.length <= maxChars)
@@ -111,7 +127,32 @@ function fitLabel(label, width, fontSize) {
 var VW = 1000;
 var VH = 500;
 var GAP = 3;
-exports.tagTreemapCss = "\n.tag-treemap-wrap {\n  margin: 1rem 0 2rem 0;\n  width: 100%;\n}\n\n.tag-treemap {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n.treemap-rect {\n  fill: var(--highlight);\n  transition: fill 0.15s ease;\n}\n\n.treemap-rect--other {\n  fill: var(--lightgray);\n  opacity: 0.6;\n}\n\n.treemap-cell-link:hover .treemap-rect,\n.treemap-cell-link:focus-visible .treemap-rect {\n  fill: var(--secondary);\n  opacity: 0.85;\n}\n\n.treemap-label {\n  fill: var(--dark);\n  font-family: var(--bodyFont);\n  font-weight: 600;\n  pointer-events: none;\n}\n\n.treemap-count {\n  fill: var(--gray);\n  font-family: var(--bodyFont);\n  pointer-events: none;\n}\n\n.treemap-cell-link {\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.home-tag-map {\n  grid-column: 1 / -1;\n  margin: 2.5rem 0 0;\n  padding-top: 1.5rem;\n}\n\n.home-tag-map__header {\n  display: flex;\n  align-items: end;\n  justify-content: space-between;\n  gap: 1rem;\n  margin-bottom: 0.8rem;\n}\n\n.home-tag-map__header h2 {\n  margin: 0;\n  font-size: 1.35rem;\n}\n\n.home-tag-map__meta {\n  margin: 0;\n  color: var(--gray);\n  font-size: 0.95rem;\n}\n\n.home-tag-map__all {\n  white-space: nowrap;\n  font-weight: 700;\n}\n\n.home-tag-map .tag-treemap-wrap {\n  margin-bottom: 0;\n}\n\nbody[data-slug=\"index\"] #quartz-body .center .page-footer {\n  box-sizing: border-box;\n  width: min(calc(100vw - 4rem), 1080px);\n  max-width: 100%;\n  margin-left: 50%;\n  transform: translateX(-50%);\n}\n\n@media all and (max-width: 800px) {\n  html:has(body[data-slug=\"index\"]),\n  body[data-slug=\"index\"],\n  body[data-slug=\"index\"] .page {\n    box-sizing: border-box !important;\n    width: 100% !important;\n    max-width: 100vw !important;\n    overflow-x: hidden !important;\n  }\n\n  body[data-slug=\"index\"] #quartz-root,\n  body[data-slug=\"index\"] #quartz-body,\n  body[data-slug=\"index\"] #quartz-body .center,\n  body[data-slug=\"index\"] #quartz-body .center > article {\n    box-sizing: border-box !important;\n    width: 100% !important;\n    max-width: 100vw !important;\n    min-width: 0 !important;\n    overflow-x: hidden !important;\n  }\n\n  body[data-slug=\"index\"] #quartz-body .center > article p,\n  body[data-slug=\"index\"] #quartz-body .center > article li {\n    overflow-wrap: anywhere;\n  }\n\n  body[data-slug=\"index\"] #quartz-body .sidebar.left {\n    height: unset !important;\n    min-height: 0 !important;\n    position: initial !important;\n    padding: 0 !important;\n  }\n\n  body[data-slug=\"index\"] #quartz-body .center .page-footer {\n    width: 100%;\n    margin-left: 0;\n    transform: none;\n  }\n\n  .home-tag-map {\n    margin-top: 2rem;\n    padding-top: 1rem;\n  }\n\n  .home-tag-map__header {\n    align-items: start;\n    flex-direction: column;\n    gap: 0.4rem;\n  }\n}\n";
+var OTHER_RECT = { x: 840, y: 410, w: 160, h: 90 };
+function layoutTagTreemap(items) {
+    var other = items.find(function (item) { return item.tag === "__other__"; });
+    var mainItems = items.filter(function (item) { return item.tag !== "__other__"; }).sort(function (a, b) { return b.area - a.area; });
+    if (!other)
+        return squarify(mainItems, 0, 0, VW, VH);
+    if (mainItems.length === 0)
+        return [__assign(__assign({}, other), { rect: OTHER_RECT })];
+    var leftRect = { x: 0, y: 0, w: OTHER_RECT.x, h: VH };
+    var topRightRect = {
+        x: OTHER_RECT.x,
+        y: 0,
+        w: OTHER_RECT.w,
+        h: OTHER_RECT.y
+    };
+    var availableArea = leftRect.w * leftRect.h + topRightRect.w * topRightRect.h;
+    var totalItemArea = mainItems.reduce(function (sum, item) { return sum + item.area; }, 0);
+    var targetTopRightArea = totalItemArea * ((topRightRect.w * topRightRect.h) / availableArea);
+    var topRightCount = suffixCountClosestToArea(mainItems, targetTopRightArea);
+    var splitAt = mainItems.length - topRightCount;
+    return __spreadArrays(squarify(mainItems.slice(0, splitAt), leftRect.x, leftRect.y, leftRect.w, leftRect.h), squarify(mainItems.slice(splitAt), topRightRect.x, topRightRect.y, topRightRect.w, topRightRect.h), [
+        __assign(__assign({}, other), { rect: OTHER_RECT }),
+    ]);
+}
+exports.layoutTagTreemap = layoutTagTreemap;
+exports.tagTreemapCss = "\n.tag-treemap-wrap {\n  margin: 1rem 0 2rem 0;\n  width: 100%;\n}\n\n.tag-treemap {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n.treemap-rect {\n  fill: var(--highlight);\n  transition: fill 0.15s ease;\n}\n\n.treemap-rect--other {\n  fill: var(--lightgray);\n  opacity: 0.6;\n}\n\n.treemap-cell-link:hover .treemap-rect,\n.treemap-cell-link:focus-visible .treemap-rect {\n  fill: var(--secondary);\n  opacity: 0.85;\n}\n\n.treemap-label {\n  fill: var(--dark);\n  font-family: var(--bodyFont);\n  font-weight: 600;\n  pointer-events: none;\n}\n\n.treemap-count {\n  fill: var(--gray);\n  font-family: var(--bodyFont);\n  pointer-events: none;\n}\n\n.treemap-cell-link {\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.home-tag-map {\n  grid-column: 1 / -1;\n  margin: 2.5rem 0 0;\n  padding-top: 0.2rem;\n}\n\n.home-tag-map__header {\n  display: flex;\n  align-items: end;\n  justify-content: space-between;\n  gap: 1rem;\n  margin-bottom: 0.8rem;\n}\n\n.home-tag-map__header h2 {\n  margin: 0;\n  font-size: 1.35rem;\n}\n\n.home-tag-map__meta {\n  margin: 0;\n  color: var(--gray);\n  font-size: 0.95rem;\n}\n\n.home-tag-map__all {\n  white-space: nowrap;\n  font-weight: 700;\n}\n\n.home-tag-map .tag-treemap-wrap {\n  margin-bottom: 0;\n}\n\nbody[data-slug=\"index\"] #quartz-body .center .page-footer {\n  box-sizing: border-box;\n  width: min(calc(100vw - 4rem), 1080px);\n  max-width: 100%;\n  margin-left: 50%;\n  transform: translateX(-50%);\n}\n\nbody[data-slug=\"index\"] #quartz-body .center .page-footer .home-tag-map + .graph {\n  margin-top: 3rem;\n}\n\n@media all and (max-width: 800px) {\n  html:has(body[data-slug=\"index\"]),\n  body[data-slug=\"index\"],\n  body[data-slug=\"index\"] .page {\n    box-sizing: border-box !important;\n    width: 100% !important;\n    max-width: 100vw !important;\n    overflow-x: hidden !important;\n  }\n\n  body[data-slug=\"index\"] #quartz-root,\n  body[data-slug=\"index\"] #quartz-body,\n  body[data-slug=\"index\"] #quartz-body .center,\n  body[data-slug=\"index\"] #quartz-body .center > article {\n    box-sizing: border-box !important;\n    width: 100% !important;\n    max-width: 100vw !important;\n    min-width: 0 !important;\n    overflow-x: hidden !important;\n  }\n\n  body[data-slug=\"index\"] #quartz-body .center > article p,\n  body[data-slug=\"index\"] #quartz-body .center > article li {\n    overflow-wrap: anywhere;\n  }\n\n  body[data-slug=\"index\"] #quartz-body .sidebar.left {\n    height: unset !important;\n    min-height: 0 !important;\n    position: initial !important;\n    padding: 0 !important;\n  }\n\n  body[data-slug=\"index\"] #quartz-body .center .page-footer {\n    width: 100%;\n    margin-left: 0;\n    transform: none;\n  }\n\n  .home-tag-map {\n    margin-top: 2rem;\n    padding-top: 1rem;\n  }\n\n  .home-tag-map__header {\n    align-items: start;\n    flex-direction: column;\n    gap: 0.4rem;\n  }\n}\n";
 exports["default"] = (function (opts) {
     var options = __assign(__assign({}, defaultOptions), opts);
     var TagTreemap = function (_a) {
@@ -129,17 +170,9 @@ exports["default"] = (function (opts) {
                 mainItems.push({ tag: group.tag, count: count, area: count });
             }
         }
-        var otherArticleCount = otherTags.reduce(function (s, group) { return s + group.pages.length; }, 0);
-        var otherArea = Math.max(otherArticleCount, mainItems.length > 0 ? mainItems[0].area * 0.3 : 10);
         var allItems = otherTags.length > 0
-            ? __spreadArrays(mainItems, [{ tag: "__other__", count: otherTags.length, area: otherArea }]) : mainItems;
-        allItems.sort(function (a, b) { return b.area - a.area; });
-        var otherIdx = allItems.findIndex(function (i) { return i.tag === "__other__"; });
-        if (otherIdx > -1) {
-            var otherItem = allItems.splice(otherIdx, 1)[0];
-            allItems.push(otherItem);
-        }
-        var laid = squarify(allItems, 0, 0, VW, VH);
+            ? __spreadArrays(mainItems, [{ tag: "__other__", count: otherTags.length, area: 1 }]) : mainItems;
+        var laid = layoutTagTreemap(allItems);
         var totalLabel = i18n_1.i18n(cfg.locale).pages.tagContent.totalTags({ count: groups.length });
         var allTagsHref = path_1.resolveRelative(fileData.slug, "/tags/");
         var treemap = (React.createElement("div", { "class": "tag-treemap-wrap" },

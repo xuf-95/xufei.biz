@@ -12,6 +12,10 @@ export const sharedPageComponents: SharedLayout = {
     Component.Search(),
   ],
   afterBody: [
+    // Component.ConditionalRender({
+    //   component: Component.KeepLearning(),
+    //   condition: ({ fileData }) => fileData.slug === "index",
+    // }),
     Component.ConditionalRender({
       component: Component.TagTreemap({
         variant: "home",
@@ -21,7 +25,7 @@ export const sharedPageComponents: SharedLayout = {
       }),
       condition: ({ fileData }) => fileData.slug === "index",
     }),
-    
+
     // Component.UnlinkedMentions(),
     Component.DesktopOnly(
       Component.Graph({
@@ -30,7 +34,6 @@ export const sharedPageComponents: SharedLayout = {
         },
       }),
     ),
-
   ],
 
   footer: Component.Footer({

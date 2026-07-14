@@ -1,6 +1,7 @@
 import { JSX } from "preact"
 
 export type IconName =
+  | "arrow-up-right"
   | "bike"
   | "book-open"
   | "chevron-down"
@@ -27,6 +28,12 @@ type IconProps = JSX.SVGAttributes<SVGSVGElement> & {
 }
 
 const paths: Record<IconName, JSX.Element> = {
+  "arrow-up-right": (
+    <>
+      <path d="M7 17 17 7" />
+      <path d="M7 7h10v10" />
+    </>
+  ),
   bike: (
     <>
       <circle cx="18.5" cy="17.5" r="3.5" />

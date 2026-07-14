@@ -33,6 +33,7 @@ import TopNav from "./TopNav"
 import VersionSwitcher from "./VersionSwitcher"
 import KnowledgeMap from "./KnowledgeMap"
 import TagTreemap from "./TagTreemap"
+import KeepLearning from "./KeepLearning"
 export { Icon } from "./Icon"
 export type { IconName } from "./Icon"
 
@@ -72,4 +73,5 @@ export {
   VersionSwitcher,
   KnowledgeMap,
   TagTreemap,
+  KeepLearning,
 }

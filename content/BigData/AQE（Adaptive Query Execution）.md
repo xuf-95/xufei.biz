@@ -129,9 +129,9 @@ AQE 后：
 
 ### **3.2 动态合并 Shuffle 小分区**
 
-[[Apache Spark]]、[[What is Apache Flink?]]、[[Apache Hive Overview]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
+[[ApacheSpark|Apache Spark]]、[[ApacheFlink|Apache Flink]]、[[ApacheHive|Apache Hive]] 等引擎中，经常会设置并行度或 Shuffle 分区数。
 
-比如 [[Apache Spark]] 默认可能是：
+比如 [[[[ApacheSpark|Apache Spark]] 默认可能是：
 
 ```text
 spark.sql.shuffle.partitions = 200
@@ -257,7 +257,7 @@ spark.sql.adaptive.autoBroadcastJoinThreshold=...
 spark.sql.shuffle.partitions=200
 ```
 
-[[Apache Spark]] AQE 的核心依赖是：
+[[ApacheSpark|Apache Spark]] AQE 的核心依赖是：
 
 ```text
 Shuffle 阶段边界

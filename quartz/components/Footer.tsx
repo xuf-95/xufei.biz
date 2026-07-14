@@ -22,22 +22,24 @@ const footerGroups: FooterGroup[] = [
   {
     title: "Index",
     items: [
-      { label: "Map", href: "/Map/" },
+      // { label: "Map", href: "/Map/" },
       { label: "AI", href: "/AI/" },
-      { label: "Open BigData", href: "/Open-BigData/" },
-      { label: "Data Architecture", href: "/Data-Architecture/" },
-      { label: "Data Store", href: "/Data-Store/" },
+      { label: "BigData", href: "/BigData/" },
+      { label: "Data Architecture", href: "/BigData/Data-Architecture/" },
+      { label: "Data Store", href: "/BigData/Data-Store/" },
+      { label: "Data Cloud", href: "/BigData/Cloud/" },
       { label: "Posts", href: "/Posts/" },
+
     ],
   },
   {
     title: "Open BigData",
     items: [
-      { label: "Apache Spark", href: "/Open-BigData/Apache-Spark/" },
-      { label: "Apache Hadoop", href: "/Open-BigData/Apache-Hadoop/" },
-      { label: "Apache Flink", href: "/Open-BigData/Apache-Flink/" },
-      { label: "Apache Hive", href: "/Open-BigData/Apache-Hive/" },
-      { label: "Apache Paimon", href: "/Open-BigData/Apache-Paimon/" },
+      { label: "Apache Spark", href: "/BigData/ApacheSpark/" },
+      { label: "Apache Hadoop", href: "/BigData/ApacheHadoop/" },
+      { label: "Apache Flink", href: "/BigData/ApacheFlink/" },
+      { label: "Apache Hive", href: "/BigData/ApacheHive/" },
+      { label: "Apache Paimon", href: "/BigData/ApachePaimon/" },
     ],
   },
   {

@@ -228,7 +228,7 @@ export const tagTreemapCss = `
 .home-tag-map {
   grid-column: 1 / -1;
   margin: 2.5rem 0 0;
-  padding-top: 1.5rem;
+  padding-top: 0.2rem;
 }
 
 .home-tag-map__header {
@@ -268,7 +268,7 @@ body[data-slug="index"] #quartz-body .center .page-footer {
 }
 
 body[data-slug="index"] #quartz-body .center .page-footer .home-tag-map + .graph {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 @media all and (max-width: 800px) {
