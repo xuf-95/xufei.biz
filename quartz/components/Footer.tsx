@@ -35,21 +35,21 @@ const footerGroups: FooterGroup[] = [
   {
     title: "Open BigData",
     items: [
-      { label: "Apache Spark", href: "/BigData/ApacheSpark/" },
-      { label: "Apache Hadoop", href: "/BigData/ApacheHadoop/" },
-      { label: "Apache Flink", href: "/BigData/ApacheFlink/" },
-      { label: "Apache Hive", href: "/BigData/ApacheHive/" },
-      { label: "Apache Paimon", href: "/BigData/ApachePaimon/" },
+      { label: "Apache Spark", href: "/BigData/ApacheSpark" },
+      { label: "Apache Hadoop", href: "/BigData/ApacheHadoop" },
+      { label: "Apache Flink", href: "/BigData/ApacheFlink" },
+      { label: "Apache Hive", href: "/BigData/ApacheHive" },
+      { label: "Apache Paimon", href: "/BigData/ApachePaimon" },
     ],
   },
   {
     title: "Data Architecture",
     items: [
-      { label: "DCMM", href: "/Data-Architecture/DCMM/" },
-      { label: "Data Mesh", href: "/Data-Architecture/Data-Mesh/" },
-      { label: "Data Lake", href: "/Data-Architecture/Data-Lake/" },
-      { label: "Lakehouse", href: "/Data-Architecture/Lakehouse/" },
-      { label: "Lambda Architecture", href: "/Data-Architecture/Lambda-Architecture/" },
+      { label: "DCMM", href: "/Data-Architecture/DCMM" },
+      { label: "Data Mesh", href: "/Data-Architecture/Data-Mesh" },
+      { label: "Data Lake", href: "/Data-Architecture/Data-Lake" },
+      { label: "Lakehouse", href: "/Data-Architecture/Lakehouse" },
+      { label: "Lambda Architecture", href: "/Data-Architecture/Lambda-Architecture" },
     ],
   },
   // {
