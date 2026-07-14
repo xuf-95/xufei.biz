@@ -73,7 +73,7 @@ const ChevronDown = () => (
 
 const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponentProps) => {
   const slug = fileData.slug ?? ""
-  const iconPath = absSitePath(cfg, "/static/icon.png")
+  const iconPath = absSitePath(cfg, "/static/icon-transparent.svg")
 
   function isActive(path: string): boolean {
     const key = path.replace(/^\//, "").replace(/\/$/, "")
@@ -228,6 +228,10 @@ header.header-hidden:focus-within {
   border-radius: 5px;
   object-fit: contain;
   display: block;
+}
+
+html[saved-theme="dark"] .nav-brand-logo {
+  filter: brightness(0) invert(1);
 }
 
 .nav-brand-name {

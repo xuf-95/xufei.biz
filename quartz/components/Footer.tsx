@@ -85,7 +85,7 @@ export default ((opts?: Options) => {
   const Footer: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
     const links = opts?.links ?? {}
-    const iconPath = absSitePath(cfg, "/static/icon.png")
+    const iconPath = absSitePath(cfg, "/static/icon-transparent.svg")
 
     return (
       <footer class={`${displayClass ?? ""} site-footer`}>
