@@ -1,0 +1,62 @@
+article img.image-zoomable {
+  cursor: zoom-in;
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 3px;
+  }
+}
+
+.image-lightbox {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgb(0 0 0 / 88%);
+  cursor: zoom-out;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.image-lightbox-preview {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - clamp(2rem, 8vw, 6rem));
+  margin: 0;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 35%);
+  cursor: default;
+  content-visibility: visible;
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: max(0.75rem, env(safe-area-inset-top));
+  right: max(0.75rem, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 999px;
+  color: white;
+  background: rgb(0 0 0 / 45%);
+  font: 400 2rem/1 sans-serif;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: rgb(255 255 255 / 18%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
