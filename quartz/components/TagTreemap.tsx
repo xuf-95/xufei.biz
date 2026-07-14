@@ -116,6 +116,25 @@ function squarify(items: TItem[], x: number, y: number, w: number, h: number): T
   return result
 }
 
+function suffixCountClosestToArea(items: TItem[], targetArea: number): number {
+  if (items.length < 2) return 0
+
+  let suffixArea = 0
+  let bestCount = 1
+  let bestDistance = Infinity
+
+  for (let count = 1; count < items.length; count++) {
+    suffixArea += items[items.length - count].area
+    const distance = Math.abs(suffixArea - targetArea)
+    if (distance < bestDistance) {
+      bestCount = count
+      bestDistance = distance
+    }
+  }
+
+  return bestCount
+}
+
 function fitLabel(label: string, width: number, fontSize: number) {
   const maxChars = Math.max(3, Math.floor(width / (fontSize * 0.58)))
   if (label.length <= maxChars) return label
@@ -125,6 +144,40 @@ function fitLabel(label: string, width: number, fontSize: number) {
 const VW = 1000
 const VH = 500
 const GAP = 3
+const OTHER_RECT: Rect = { x: 840, y: 410, w: 160, h: 90 }
+
+export function layoutTagTreemap(items: TItem[]): TItem[] {
+  const other = items.find((item) => item.tag === "__other__")
+  const mainItems = items.filter((item) => item.tag !== "__other__").sort((a, b) => b.area - a.area)
+
+  if (!other) return squarify(mainItems, 0, 0, VW, VH)
+  if (mainItems.length === 0) return [{ ...other, rect: OTHER_RECT }]
+
+  const leftRect: Rect = { x: 0, y: 0, w: OTHER_RECT.x, h: VH }
+  const topRightRect: Rect = {
+    x: OTHER_RECT.x,
+    y: 0,
+    w: OTHER_RECT.w,
+    h: OTHER_RECT.y,
+  }
+  const availableArea = leftRect.w * leftRect.h + topRightRect.w * topRightRect.h
+  const totalItemArea = mainItems.reduce((sum, item) => sum + item.area, 0)
+  const targetTopRightArea = totalItemArea * ((topRightRect.w * topRightRect.h) / availableArea)
+  const topRightCount = suffixCountClosestToArea(mainItems, targetTopRightArea)
+  const splitAt = mainItems.length - topRightCount
+
+  return [
+    ...squarify(mainItems.slice(0, splitAt), leftRect.x, leftRect.y, leftRect.w, leftRect.h),
+    ...squarify(
+      mainItems.slice(splitAt),
+      topRightRect.x,
+      topRightRect.y,
+      topRightRect.w,
+      topRightRect.h,
+    ),
+    { ...other, rect: OTHER_RECT },
+  ]
+}
 
 export const tagTreemapCss = `
 .tag-treemap-wrap {
@@ -214,6 +267,10 @@ body[data-slug="index"] #quartz-body .center .page-footer {
   transform: translateX(-50%);
 }
 
+body[data-slug="index"] #quartz-body .center .page-footer .home-tag-map + .graph {
+  margin-top: 2rem;
+}
+
 @media all and (max-width: 800px) {
   html:has(body[data-slug="index"]),
   body[data-slug="index"],
@@ -288,25 +345,12 @@ export default ((opts?: Partial<TagTreemapOptions>) => {
       }
     }
 
-    const otherArticleCount = otherTags.reduce((s, group) => s + group.pages.length, 0)
-    const otherArea = Math.max(
-      otherArticleCount,
-      mainItems.length > 0 ? mainItems[0].area * 0.3 : 10,
-    )
-
     const allItems: TItem[] =
       otherTags.length > 0
-        ? [...mainItems, { tag: "__other__", count: otherTags.length, area: otherArea }]
+        ? [...mainItems, { tag: "__other__", count: otherTags.length, area: 1 }]
         : mainItems
 
-    allItems.sort((a, b) => b.area - a.area)
-    const otherIdx = allItems.findIndex((i) => i.tag === "__other__")
-    if (otherIdx > -1) {
-      const [otherItem] = allItems.splice(otherIdx, 1)
-      allItems.push(otherItem)
-    }
-
-    const laid = squarify(allItems, 0, 0, VW, VH)
+    const laid = layoutTagTreemap(allItems)
     const totalLabel = i18n(cfg.locale).pages.tagContent.totalTags({ count: groups.length })
     const allTagsHref = resolveRelative(fileData.slug!, "/tags/" as FullSlug)
     const treemap = (
