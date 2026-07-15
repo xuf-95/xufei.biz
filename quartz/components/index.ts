@@ -34,6 +34,7 @@ import VersionSwitcher from "./VersionSwitcher"
 import KnowledgeMap from "./KnowledgeMap"
 import TagTreemap from "./TagTreemap"
 import KeepLearning from "./KeepLearning"
+import BookmarkContent from "./pages/BookmarkContent"
 export { Icon } from "./Icon"
 export type { IconName } from "./Icon"
 
@@ -74,4 +75,5 @@ export {
   KnowledgeMap,
   TagTreemap,
   KeepLearning,
+  BookmarkContent,
 }

@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Anthropic Claude Documentation",
+    "url": "https://docs.anthropic.com",
+    "type": "article",
+    "category": "AI",
+    "date": "2026-05-10",
+    "description": "Official Claude API documentation and guides"
+  },
+  {
+    "title": "apache/flink",
+    "url": "https://github.com/apache/flink",
+    "type": "github",
+    "category": "OpenSource",
+    "date": "2026-04-22",
+    "description": "Apache Flink - stream and batch processing framework"
+  },
+  {
+    "title": "Designing Data-Intensive Applications",
+    "url": "https://dataintensive.net",
+    "type": "link",
+    "category": "Technology",
+    "date": "2026-03-15",
+    "description": "Martin Kleppmann's book on distributed systems"
+  },
+  {
+    "title": "The Future of Data Engineering",
+    "url": "https://www.youtube.com/watch?v=example1",
+    "type": "video",
+    "category": "Technology",
+    "date": "2026-06-01",
+    "description": "Conference talk on modern data stack evolution"
+  },
+  {
+    "title": "Figma Design System Guide",
+    "url": "https://www.figma.com/blog/design-systems",
+    "type": "design",
+    "category": "Design",
+    "date": "2026-02-18",
+    "description": "Best practices for building design systems in Figma"
+  },
+  {
+    "title": "DuckDB Documentation",
+    "url": "https://duckdb.org/docs/",
+    "type": "article",
+    "category": "Technology",
+    "date": "2026-05-30",
+    "description": "In-process SQL OLAP database management system"
+  },
+  {
+    "title": "Apache Iceberg Spec (PDF)",
+    "url": "https://iceberg.apache.org/spec/",
+    "type": "pdf",
+    "category": "OpenSource",
+    "date": "2026-01-20",
+    "description": "Table format specification for huge analytic datasets"
+  },
+  {
+    "title": "Excalidraw",
+    "url": "https://excalidraw.com",
+    "type": "tools",
+    "category": "Tools",
+    "date": "2026-04-05",
+    "description": "Virtual collaborative whiteboard for sketching diagrams"
+  },
+  {
+    "title": "Data Lakehouse Architecture Diagram",
+    "url": "https://substackcdn.com/image/fetch/example",
+    "type": "image",
+    "category": "Technology",
+    "date": "2026-03-28",
+    "description": "Reference architecture for lakehouse pattern"
+  },
+  {
+    "title": "LangChain",
+    "url": "https://github.com/langchain-ai/langchain",
+    "type": "github",
+    "category": "AI",
+    "date": "2026-06-12",
+    "description": "Framework for building LLM-powered applications"
+  },
+  {
+    "title": "Hacker News",
+    "url": "https://news.ycombinator.com",
+    "type": "link",
+    "category": "Media",
+    "date": "2025-12-01",
+    "description": "Tech news aggregator and community"
+  },
+  {
+    "title": "Quartz Static Site Generator",
+    "url": "https://github.com/jackyzha0/quartz",
+    "type": "github",
+    "category": "Project",
+    "date": "2026-07-01",
+    "description": "Digital garden and knowledge base from Obsidian notes"
+  }
+]
