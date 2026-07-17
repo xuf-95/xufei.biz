@@ -28,17 +28,6 @@ const config: QuartzConfig = {
         code: "SF Mono",
       },
       colors: {
-        lightMode: {
-          light: "#f5eedd", // warm letterpress paper
-          lightgray: "#e3d9c0", // aged paper borders / code bg
-          gray: "#9a8e76", // muted warm gray (dates, line numbers)
-          darkgray: "#2d4673", // navy ink body text (reads clearly blue, not black)
-          dark: "#16294e", // deep navy headings
-          secondary: "#284d78", // navy links / title / primary accent
-          tertiary: "#c8482b", // bright orange-red (hover, active, graph)
-          highlight: "rgba(200, 72, 43, 0.1)", // faint vermilion ink wash
-          textHighlight: "#f4c84b88", // warm yellow marker
-        },
         darkMode: {
           light: "#121212" /* 背景色：Udara 风格的深灰黑 */,
           lightgray: "#2a2a2a" /* 边框和次要背景：稍浅的灰色 */,
@@ -49,6 +38,17 @@ const config: QuartzConfig = {
           tertiary: "#a0a0a0" /* 鼠标悬停时的链接颜色 */,
           highlight: "#1F1F1F",
           textHighlight: "rgba(248, 133, 10, 0.97)",
+        },
+        lightMode: {
+          light: "#f5eedd", // warm letterpress paper
+          lightgray: "#e3d9c0", // aged paper borders / code bg
+          gray: "#9a8e76", // muted warm gray (dates, line numbers)
+          darkgray: "#2d4673", // navy ink body text (reads clearly blue, not black)
+          dark: "#16294e", // deep navy headings
+          secondary: "#284d78", // navy links / title / primary accent
+          tertiary: "#c8482b", // bright orange-red (hover, active, graph)
+          highlight: "rgba(200, 72, 43, 0.1)", // faint vermilion ink wash
+          textHighlight: "#f4c84b88", // warm yellow marker
         },
       },
     },

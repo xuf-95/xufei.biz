@@ -32,6 +32,9 @@ export const sharedPageComponents: SharedLayout = {
         localGraph: {
           showTags: true,
         },
+        globalGraph: {
+          showTags: false,
+        },
       }),
     ),
   ],

@@ -1080,4 +1080,11 @@ body[data-slug="tools/data-engineer-tools"] {
   padding-top: 0;
 }
 
-/* ========== =========== */
+/* ========== display graph global button in the bottom right corner =========== */
+
+.global-graph-icon,
+.global-graph-outer {
+  display: none !important;
+}
+
+/* ==========  =========== */
