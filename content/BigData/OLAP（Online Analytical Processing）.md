@@ -6,7 +6,7 @@ aliases:
   - 联机分析处理
 tags:
   - concepts
-  - database
+  - databases
   - olap
 draft: false
 date: 2023-04-08

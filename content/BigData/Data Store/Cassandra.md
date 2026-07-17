@@ -5,7 +5,7 @@ aliases:
 tags:
   - databases
   - nosql
-  - database
+  - databases
   - bigdata
 description:
 date: 2023-04-21

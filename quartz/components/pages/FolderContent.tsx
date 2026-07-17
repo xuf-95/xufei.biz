@@ -8,6 +8,8 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import folderScript from "../scripts/folderFilter.inline"
+import { Icon } from "../Icon"
+import { FOLDER_PAGE_LIMIT } from "./folderList"
 
 interface FolderContentOptions {
   showFolderCount: boolean
@@ -125,12 +127,28 @@ export default ((opts?: Partial<FolderContentOptions>) => {
           )}
 
           <div id="folder-page-list">
-            {annotatedPages.map(({ page, sub, language }) => (
-              <div class="folder-item-wrap" data-subfolder={sub} data-language={language}>
+            {annotatedPages.map(({ page, sub, language }, index) => (
+              <div
+                class="folder-item-wrap"
+                data-subfolder={sub}
+                data-language={language}
+                data-hidden={index >= FOLDER_PAGE_LIMIT ? "true" : "false"}
+              >
                 <PageList {...props} sort={options.sort} allFiles={[page]} />
               </div>
             ))}
           </div>
+          {annotatedPages.length > FOLDER_PAGE_LIMIT && (
+            <button
+              class="folder-list-more"
+              type="button"
+              aria-controls="folder-page-list"
+              aria-expanded="false"
+            >
+              <span>See more</span>
+              <Icon name="arrow-down" width="18" height="18" />
+            </button>
+          )}
         </div>
         {/* <hr /> */}
       </div>
@@ -211,6 +229,49 @@ const folderFilterCss = `
 
 .folder-item-wrap[data-hidden="true"] {
   display: none !important;
+}
+
+.folder-list-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 3.25rem;
+  margin: 1.15rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 0.55rem;
+  background: var(--light);
+  color: var(--gray);
+  cursor: pointer;
+  font-family: var(--bodyFont);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.folder-list-more:hover {
+  border-color: var(--gray);
+  background: var(--highlight);
+  color: var(--dark);
+}
+
+.folder-list-more:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+.folder-list-more[hidden] {
+  display: none;
+}
+
+.folder-list-more svg {
+  flex: 0 0 auto;
 }
 
 #folder-page-list {

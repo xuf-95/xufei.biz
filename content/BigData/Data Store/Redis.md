@@ -1,7 +1,7 @@
 ---
 title: "Redis"
 tags:
-  - database
+  - databases
   - kv
 date: 2024-10-18
 draft: true

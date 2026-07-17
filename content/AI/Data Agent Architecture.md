@@ -5,8 +5,9 @@ aliases:
   - Data AI Agent Architecture
 tags:
   - agentic
-  - data-ai
   - architecture
+  - bigdata
+  - ai
 description: 数据 Agent 架构描述 LLM 如何结合知识库、元数据、语义层、工具和治理规则完成数据工作。
 date: 2026-06-11
 publish: false

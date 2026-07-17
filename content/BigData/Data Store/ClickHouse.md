@@ -4,7 +4,7 @@ aliases:
   - clickhouse
 tags:
   - warehouse
-  - database
+  - databases
   - olap
   - databases
   - col-storage

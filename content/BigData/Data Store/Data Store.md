@@ -7,7 +7,7 @@ aliases:
   - Data Store
 tags:
   - bigdata
-  - database
+  - databases
   - nosql
 date: 2022-12-02
 draft: true

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict"
 import test, { describe } from "node:test"
-import { layoutTagTreemap } from "./TagTreemap"
+import { getTagGroups, layoutTagTreemap } from "./TagTreemap"
+import { QuartzPluginData } from "../plugins/vfile"
 
 interface Rect {
   x: number
@@ -49,5 +50,21 @@ describe("layoutTagTreemap", () => {
     const totalArea = laidOut.reduce((sum, item) => sum + item.rect!.w * item.rect!.h, 0)
 
     assert.equal(totalArea, 1000 * 500)
+  })
+})
+
+describe("getTagGroups", () => {
+  test("filters the index tag from treemap data", () => {
+    const files = [
+      { frontmatter: { tags: ["index", "ai"] } },
+      { frontmatter: { tags: ["index", "bigdata"] } },
+    ] as QuartzPluginData[]
+
+    const groups = getTagGroups(files)
+
+    assert.deepEqual(
+      groups.map((group) => group.tag),
+      ["ai", "bigdata"],
+    )
   })
 })

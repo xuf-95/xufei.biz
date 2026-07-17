@@ -1,11 +1,9 @@
 ---
 title: "MySQL"
 tags:
-  - database
+  - databases
 date: 2023-03-03
 publish: true
-
-
 ---
 
 ## 架构

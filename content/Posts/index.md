@@ -1,7 +1,7 @@
 ---
 title: Posts
 date: 2022-03-04
-draft: true
+public: true
 ---
 <!-- ### Reading & Resources
 

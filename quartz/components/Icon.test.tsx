@@ -4,6 +4,7 @@ import { render } from "preact-render-to-string"
 import { Icon, IconName } from "./Icon"
 
 const gardenIcons: IconName[] = [
+  "arrow-down",
   "arrow-up-right",
   "search",
   "note",

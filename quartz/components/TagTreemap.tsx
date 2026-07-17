@@ -43,6 +43,8 @@ export function getTagGroups(allFiles: QuartzPluginData[]): TagGroup[] {
   for (const file of allFiles) {
     const tags = [...new Set((file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes))]
     for (const tag of tags) {
+      if (tag === "index") continue
+
       const pages = tagItemMap.get(tag) ?? []
       pages.push(file)
       tagItemMap.set(tag, pages)
