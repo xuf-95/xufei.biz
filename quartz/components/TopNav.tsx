@@ -44,7 +44,7 @@ const navItems: NavItem[] = [
   { label: "AI", path: "/AI/" },
   { label: "BigData", path: "/BigData/" },
   { label: "Posts", path: "/Posts/" },
-  // { label: "Bookmark", path: "/bookmark/" },
+  { label: "Bookmarks", path: "/bookmarks/" },
   // { label: "Resources", path: "/resources/" },
   { label: "Tags", path: "/tags/" },
   // { label: "Map",   path: "/map/"          },
@@ -263,7 +263,7 @@ html[saved-theme="dark"] .nav-brand-logo {
   border-radius: 6px;
   font-family: var(--titleFont);
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--dark);
   text-decoration: none;
   white-space: nowrap;
@@ -277,7 +277,7 @@ html[saved-theme="dark"] .nav-brand-logo {
 .nav-item:hover,
 .nav-group.open > .nav-item  { color: var(--dark); background: var(--highlight); }
 .nav-item.active,
-.nav-group.active > .nav-item { color: var(--dark); font-weight: 600; }
+.nav-group.active > .nav-item { color: var(--dark); }
 
 .nav-links:has(.nav-item:hover) .nav-item,
 .nav-links:has(.nav-item:focus-visible) .nav-item {

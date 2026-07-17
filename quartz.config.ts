@@ -86,6 +86,7 @@ const config: QuartzConfig = {
       Plugin.TagPage(),
       Plugin.MapPage(),
       Plugin.BrowsePage(),
+      Plugin.BookmarkPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
