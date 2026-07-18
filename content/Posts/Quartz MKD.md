@@ -164,21 +164,6 @@ Embeds can be made to float to the left or right of a page by adding `|left` or 
 
 As well as being a stylistic choice to move supplementary content outside of the main flow of the text, it is also necessary when embedding a block which contains an element with a float property already stipulated (e.g., an infobox callout).
 
-## Daedric Font
-
-Daedric style font can be added by wrapping text in HTML `<span>` tags, courtesy of George Duffner's [OMW Ayembedt font](https://github.com/georgd/OpenMW-Fonts) (license: [SIL Open Font License](https://openfontlicense.org/).
-
-**Syntax**:
-
-```markdown
-<span class="daedric">your daedric text here</span>
-```
-
-> [!example]
->
-> **Regular Text**: "Morrowind"
-> **Daedric Text**: "<span class="daedric">"Morrowind"</span>"
-
 ## Gallery Card View
 
 Use this reusable card view on any page by copying the HTML block and changing each card link, title, and subtitle.
@@ -202,7 +187,7 @@ Use this reusable card view on any page by copying the HTML block and changing e
   </a>
 </nav>
 
-## Process Steps Layout
+%% ## Process Steps Layout
 
 Use this reusable process view on any page by copying the HTML block and changing each step title and description.
 
@@ -245,7 +230,7 @@ Use this reusable process view on any page by copying the HTML block and changin
       </div>
     </li>
   </ol>
-</section>
+</section> %%
 
 <div class="qt-wrap">
   <input class="qt-radio" type="radio" name="quote-tab-qmkd" id="qt-cursor" checked />

@@ -29,11 +29,11 @@ var footerGroups = [
     {
         title: "Data Architecture",
         items: [
-            { label: "DCMM", href: "/Data-Architecture/DCMM" },
-            { label: "Data Mesh", href: "/Data-Architecture/Data-Mesh" },
-            { label: "Data Lake", href: "/Data-Architecture/Data-Lake" },
-            { label: "Lakehouse", href: "/Data-Architecture/Lakehouse" },
-            { label: "Lambda Architecture", href: "/Data-Architecture/Lambda-Architecture" },
+            { label: "DCMM", href: "/BigData/Data-Architecture/DCMM" },
+            { label: "Data Mesh", href: "/BigData/Data-Architecture/DataMesh" },
+            { label: "Data Lake", href: "/BigData/Data-Architecture/DataLake" },
+            { label: "Lakehouse", href: "/BigData/Data-Architecture/Lakehouse" },
+            { label: "Lambda Architecture", href: "/Data-Architecture/LambdaArchitecture" },
         ]
     },
 ];
@@ -60,7 +60,7 @@ exports["default"] = (function (opts) {
         var displayClass = _a.displayClass, cfg = _a.cfg;
         var year = new Date().getFullYear();
         var links = (_b = opts === null || opts === void 0 ? void 0 : opts.links) !== null && _b !== void 0 ? _b : {};
-        var iconPath = absSitePath(cfg, "/static/icon.png");
+        var iconPath = absSitePath(cfg, "/static/icon-transparent.svg");
         return (React.createElement("footer", { "class": (displayClass !== null && displayClass !== void 0 ? displayClass : "") + " site-footer" },
             React.createElement("div", { "class": "footer-shell" },
                 React.createElement("section", { "class": "footer-brand-panel", "aria-label": "Site" },

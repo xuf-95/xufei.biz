@@ -52,7 +52,6 @@ On a broader level, I care about building knowledge systems that help data pract
 - [[BigData Map]]
 - [[MOC-Data Architecture Map]]
 - [[MOC-DCMM-DAMA Map]]
-- DATA Agent Map
 
 </ul>
 </div>
@@ -75,7 +74,6 @@ On a broader level, I care about building knowledge systems that help data pract
 <ul>
 
 - [[Serverless Architecture|Serverless Architecture]]
-- Aliyun Cloud Ecosystem
 - [[Cloud Vendors Homepage]]
 - [[MaxCompute]]
 
@@ -111,10 +109,8 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Recent Posts</h3>
 <ul>
 
-- Awesome Digital Garden
-- [[Collections Photography]]
 - [[Quartz Style Guide]]
-- Quartz Diagram Style Guide
+
 
 </ul>
 </div>

@@ -12,7 +12,7 @@ draft: false
 
 ---
 
-![[py-mysql.png]]
+![[examples/content-backup/programmer/images/py-mysql.png]]
 
 ## Install MySQL Driver
 

@@ -7,9 +7,6 @@ tags:
 description: A minimal, responsive and SEO-friendly Astro blog theme.
 draft: true
 publishDate: 2026-05-09T10:05
-publish:
-
-
 ---
 ## AstroPaper 📄
 

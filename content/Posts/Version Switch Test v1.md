@@ -4,6 +4,7 @@ date: 2026-06-03
 tags:
   - quartz
   - test
+draft: true
 publish: false
 description: Test page for the article version switcher.
 versions:

@@ -45,24 +45,13 @@ const footerGroups: FooterGroup[] = [
   {
     title: "Data Architecture",
     items: [
-      { label: "DCMM", href: "/Data-Architecture/DCMM" },
-      { label: "Data Mesh", href: "/Data-Architecture/Data-Mesh" },
-      { label: "Data Lake", href: "/Data-Architecture/Data-Lake" },
-      { label: "Lakehouse", href: "/Data-Architecture/Lakehouse" },
-      { label: "Lambda Architecture", href: "/Data-Architecture/Lambda-Architecture" },
+      { label: "DCMM", href: "/BigData/Data-Architecture/DCMM" },
+      { label: "Data Mesh", href: "/BigData/Data-Architecture/DataMesh" },
+      { label: "Data Lake", href: "/BigData/Data-Architecture/DataLake" },
+      { label: "Lakehouse", href: "/BigData/Data-Architecture/Lakehouse" },
+      { label: "Lambda Architecture", href: "/Data-Architecture/LambdaArchitecture" },
     ],
   },
-  // {
-  //   title: "Data Store",
-  //   items: [
-  //     { label: "Apache Doris", href: "/Data-Store/Apache-Doris/" },
-  //     { label: "Apache Paimon", href: "/Data-Store/Apache-Paimon/" },
-  //     { label: "StarRocks", href: "/Data-Store/StarRocks/" },
-  //     { label: "ClickHouse", href: "/Data-Store/ClickHouse/" },
-  //     { label: "Cassandra", href: "/Data-Store/Cassandra/" },
-      
-  //   ],
-  // },
 ]
 
 function siteRootPrefix(cfg: GlobalConfiguration | undefined): string {

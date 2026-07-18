@@ -51,11 +51,11 @@ export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.TagList(),
     Component.ArticleTitle(),
-    Component.VersionSwitcher(),
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
     Component.Backlinks(),
+    Component.VersionSwitcher(),
     // Component.ArticleSummary(),
   ],
   left: [Component.DesktopOnly(Component.TableOfContents())],

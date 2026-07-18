@@ -102,6 +102,13 @@ Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para]
 
 ### 基础 Callout
 
+> [!box]
+> Normal content displayed inside a grey bordered box.
+> No blur, no hover effect — just a clean styled container.
+
+> [!quote] Aliases: "quote", "cite"
+
+
 > [!info]
 > 用于解释背景、概念补充和上下文说明。本站 Callout 使用左边框和轻背景，适合长文中的信息分层。
 
@@ -250,36 +257,6 @@ Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para]
 </nav>
 ```
 
-## Process Steps
-
-用于展示流程、方法论、实施路线和运维步骤。
-
-<section class="process-steps-panel" aria-labelledby="style-process-title">
-  <h2 id="style-process-title">Article Styling Workflow</h2>
-  <ol class="process-steps">
-    <li class="process-step">
-      <span class="process-step-marker">1</span>
-      <div class="process-step-body">
-        <h3>Choose the article type</h3>
-        <p>先判断文章是概念卡、架构方案、项目案例、教程还是 Changelog。</p>
-      </div>
-    </li>
-    <li class="process-step">
-      <span class="process-step-marker">2</span>
-      <div class="process-step-body">
-        <h3>Apply the structure</h3>
-        <p>用标题、Callout、表格、图和卡片把内容分层，不依赖大段文字硬堆。</p>
-      </div>
-    </li>
-    <li class="process-step">
-      <span class="process-step-marker">3</span>
-      <div class="process-step-body">
-        <h3>Verify in Quartz</h3>
-        <p>运行 <code>npm run quartz build</code>，确认 Markdown、Mermaid 和 HTML 片段能被正确解析。</p>
-      </div>
-    </li>
-  </ol>
-</section>
 
 ## Quote Tabs
 

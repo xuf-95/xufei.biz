@@ -61,7 +61,7 @@ draft: true
 - [[content/Data Structure/B+TREE.md]] - B+Tree索引结构图、MySQL InnoDB B+Tree图
 
 ### AI与智能体
-- [[content/ai/MCP.md]] - AnyQuery架构图
+- [[MCP]] - AnyQuery架构图
 - [[content/ai/How Agent Work.md]] - Agent执行流程图、LLM Agent架构图、开源Agent框架图
 
 ### 大数据组件
@@ -109,10 +109,10 @@ draft: true
 - [[content/Python/NumPy.md]] - NumPy数据结构图
 
 ### 博客与收藏
-- [[content/posts/Awesome Digital Garden.md]] - 数字花园示例图
-- [[content/posts/Collections Photography.md]] - 摄影作品集
+- [[Awesome Digital Garden]] - 数字花园示例图
+- [[Collections Photography]] - 摄影作品集
 - [[content/posts/Interesting Website.md]] - 有趣网站截图
-- [[content/posts/Data Build.md]] - 数据构建流程图
+- [[Data Build]] - 数据构建流程图
 - [[content/posts/Shell Basic.md]] - Shell命令示意图
 - [[content/ai/Bigdata With AI.md]] - 大数据与AI结合图
 
