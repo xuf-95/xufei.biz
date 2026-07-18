@@ -1,0 +1,87 @@
+<svg viewBox="0 0 920 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Agent 四大组件架构图</title>
+  <desc id="d">中心为 LLM 决策中枢，规划指导决策，记忆双向读写，Agent 调用工具，工具执行结果以虚线反馈回决策中枢。</desc>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path class="mk" d="M0,1 L9,5 L0,9 z"/>
+    </marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path class="mk2" d="M0,1 L9,5 L0,9 z"/>
+    </marker>
+  </defs>
+  <style>
+    :root{
+      --dg-ink:#1f2430; --dg-sub:#5a6270; --dg-line:#8b90a0;
+      --dg-accent:#2563eb; --dg-fill:rgba(0,0,0,.03); --dg-row:rgba(0,0,0,.05);
+      --dg-accent-fill:rgba(37,99,235,.06);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --dg-ink:#d8dbe2; --dg-sub:#9aa0aa; --dg-line:#7a7f88;
+        --dg-accent:#6ea8ff; --dg-fill:rgba(255,255,255,.03); --dg-row:rgba(255,255,255,.06);
+        --dg-accent-fill:rgba(110,168,255,.08);
+      }
+    }
+    .card{fill:var(--dg-fill);stroke:var(--dg-line);stroke-width:1.4}
+    .row{fill:var(--dg-row);stroke:var(--dg-line);stroke-opacity:.45;stroke-width:1}
+    .h{font:600 14.5px system-ui,-apple-system,"PingFang SC",sans-serif;fill:var(--dg-ink);text-anchor:middle}
+    .r{font:400 12.5px system-ui,-apple-system,"PingFang SC",sans-serif;fill:var(--dg-sub);text-anchor:middle}
+    .lab{font:400 12px system-ui,-apple-system,"PingFang SC",sans-serif;fill:var(--dg-sub);text-anchor:middle}
+    .flow{stroke:var(--dg-sub);stroke-width:1.6;fill:none;marker-end:url(#ar)}
+    .fb{stroke:var(--dg-accent);stroke-width:1.6;fill:none;stroke-dasharray:6 5;marker-end:url(#ar2)}
+    .mk{fill:var(--dg-sub)} .mk2{fill:var(--dg-accent)}
+    .agent{fill:var(--dg-accent-fill);stroke:var(--dg-accent);stroke-width:1.8}
+    .lab-fb{fill:var(--dg-accent)}
+  </style>
+
+  <!-- 记忆 Memory（上） -->
+  <rect class="card" x="340" y="28" width="240" height="146" rx="10"/>
+  <text class="h" x="460" y="56">记忆 Memory</text>
+  <rect class="row" x="360" y="72" width="200" height="38" rx="7"/>
+  <text class="r" x="460" y="96">短期 · 上下文窗口</text>
+  <rect class="row" x="360" y="120" width="200" height="38" rx="7"/>
+  <text class="r" x="460" y="144">长期 · 向量库 / 笔记</text>
+
+  <!-- 规划 Planning（左） -->
+  <rect class="card" x="40" y="180" width="240" height="146" rx="10"/>
+  <text class="h" x="160" y="208">规划 Planning</text>
+  <rect class="row" x="60" y="224" width="200" height="38" rx="7"/>
+  <text class="r" x="160" y="248">子目标分解</text>
+  <rect class="row" x="60" y="272" width="200" height="38" rx="7"/>
+  <text class="r" x="160" y="296">反思纠错 · Reflexion</text>
+
+  <!-- 工具 Tools（右） -->
+  <rect class="card" x="640" y="180" width="240" height="146" rx="10"/>
+  <text class="h" x="760" y="208">工具 Tools</text>
+  <rect class="row" x="660" y="224" width="200" height="38" rx="7"/>
+  <text class="r" x="760" y="248">搜索 · 代码 · API</text>
+  <rect class="row" x="660" y="272" width="200" height="38" rx="7"/>
+  <text class="r" x="760" y="296">数据库 · 浏览器 · MCP</text>
+
+  <!-- Agent（中心） -->
+  <circle class="agent" cx="460" cy="368" r="76"/>
+  <text class="h" x="460" y="362" style="font-size:16px">Agent</text>
+  <text class="r" x="460" y="384">LLM 决策中枢</text>
+
+  <!-- 记忆 ↔ Agent：双向 -->
+  <line class="flow" x1="460" y1="182" x2="460" y2="284" marker-start="url(#ar)"/>
+  <text class="lab" x="502" y="238">读取 / 写入</text>
+
+  <!-- 规划 → Agent -->
+  <line class="flow" x1="284" y1="318" x2="388" y2="346"/>
+  <text class="lab" x="330" y="316">指导决策</text>
+
+  <!-- Agent → 工具 -->
+  <line class="flow" x1="532" y1="346" x2="636" y2="318"/>
+  <text class="lab" x="592" y="316">调用</text>
+
+  <!-- 工具 -.-> Agent：反馈 -->
+  <path class="fb" d="M 740 330 Q 690 440 542 400"/>
+  <text class="lab lab-fb" x="682" y="418">执行结果反馈（观察）</text>
+
+  <!-- 图例 -->
+  <line class="flow" x1="48" y1="516" x2="88" y2="516"/>
+  <text class="lab" x="98" y="520" style="text-anchor:start">控制 / 调用</text>
+  <line class="fb" x1="228" y1="516" x2="268" y2="516"/>
+  <text class="lab" x="278" y="520" style="text-anchor:start">反馈 / 观察</text>
+</svg>
