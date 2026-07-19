@@ -34,7 +34,8 @@ export function fixBrokenWikilinks(
   )
 
   let downgraded = 0
-  for (const [tree] of content) {
+  for (const [tree, vfile] of content) {
+    let downgradedInFile = 0
     visit(tree as Root, "element", (node, index, parent) => {
       if (
         node.tagName !== "a" ||
@@ -59,8 +60,27 @@ export function fixBrokenWikilinks(
 
       // Broken: swap the anchor for its plain text content.
       parent.children[index] = { type: "text", value: getNodeText(node) }
-      downgraded++
+      downgradedInFile++
     })
+
+    // Recompute this page's outgoing links from the anchors that survived, so
+    // consumers of file.data.links (the BrokenLinks reporter, the graph, and
+    // backlinks) no longer point at pages we just turned into plain text. We
+    // rebuild from surviving anchors rather than deleting the target directly:
+    // a still-present markdown link to the same target keeps it listed, so real
+    // broken links are never hidden.
+    if (downgradedInFile > 0) {
+      const outgoing = new Set<SimpleSlug>()
+      visit(tree as Root, "element", (node) => {
+        if (node.tagName !== "a") return
+        const slug = node.properties?.["data-slug"] as FullSlug | undefined
+        if (slug) {
+          outgoing.add(simplifySlug(slug))
+        }
+      })
+      vfile.data.links = [...outgoing]
+      downgraded += downgradedInFile
+    }
   }
 
   console.log(`Downgraded ${downgraded} broken wikilink(s) to plain text in ${perf.timeSince()}`)
