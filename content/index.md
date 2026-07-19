@@ -73,9 +73,10 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Cloud Native</h3>
 <ul>
 
-- [[Serverless Architecture|Serverless Architecture]]
+- [[ServerlessArchitecture|Serverless Architecture]]
 - [[Cloud Vendors Homepage]]
 - [[MaxCompute]]
+- [[Data Lake Formation（DLF）]]
 
 </ul>
 </div>
@@ -84,10 +85,10 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Warehouse & DataLake</h3>
 <ul>
 
-- [[如何选择合适的OLAP产品]]
-- [[常见的的数据压缩算法]]
+- [[如何更好的设计数据底座|How to better design the data foundation]]
+- [[常见的的数据压缩算法|Common data compression algorithms]]
 - [[What's StarRocks]]
-- [[MySQL]]
+- [[What's Apache Paimon?]]
 
 </ul>
 </div>
@@ -97,9 +98,9 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Data Architecture</h3>
 <ul>
 
-- [[Lambda Architecture|What is Lambda Architecture]]
-- [[Kappa Architecture|What is Kappa Architecture?]]
-- [[Log-Structured Merge Tree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
+- [[LambdaArchitecture|What is Lambda Architecture]]
+- [[KappaArchitecture|What is Kappa Architecture?]]
+- [[Log-StructuredMergeTree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
 - [[MMP (Massively Parallel Processing)]]
 
 </ul>

@@ -1,13 +1,11 @@
 ---
-title: "如何选择合适的OLAP产品"
+title: How to choose the right OLAP product
 tags:
   - bigdata
   - olap
 date: 2024-01-25
 draft: true
-publish: true
-
-
+publish: false
 ---
 ### ClickHouse VS [[What's StarRocks]]
 

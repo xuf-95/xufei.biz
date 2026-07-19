@@ -94,5 +94,13 @@
     "category": "Project",
     "date": "2026-07-01",
     "description": "Digital garden and knowledge base from Obsidian notes"
+  },
+  {
+    "title": "How To AI (Almost) Anything",
+    "url": "https://mit-mi.github.io/how2ai-course/spring2025/",
+    "type": "link",
+    "category": "Course",
+    "date": "2026-07-01",
+    "description": "Artificial Intelligence (AI) holds great promise as a technology to enhance digital productivity, physical interactions, overall well-being, and the human experience. "
   }
 ]
