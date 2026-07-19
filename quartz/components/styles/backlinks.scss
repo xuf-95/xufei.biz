@@ -1,44 +1,45 @@
 @use "../../styles/variables.scss" as *;
 
+/* In the right sidebar, sit above the (tall) sidenotes aside and stick near
+   the top while scrolling — matching original Quartz's right-rail backlinks. */
+.right.sidebar .backlinks {
+  order: -1;
+  align-self: flex-start;
+  position: sticky;
+  top: 13rem; /* aligns the backlinks top with the title's bottom edge */
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+}
+
 .backlinks {
+  display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
 
   & > h3 {
     font-size: 1rem;
     margin: 0 0 0.5rem 0;
-    display: inline;
-    font-style: italic;
     font-family: var(--titleFont);
-
-    &::after {
-      content: ": ";
-    }
+    /* original-Quartz style: plain "Backlinks" heading, no trailing colon */
   }
 
   & > ul.overflow {
-    display: inline;
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: calc(100% - 2rem);
+    max-height: 20rem;
     overscroll-behavior: contain;
 
+    /* each backlink on its own line, wrapping naturally */
     & > li {
-      display: inline;
-      font-style: italic;
-
-      &:not(:last-child)::after {
-        content: ", ";
-        color: var(--gray);
-      }
+      display: block;
 
       & > a {
         background-color: transparent;
         color: var(--secondary);
 
         &:hover {
-          color: var(--dark);
+          color: var(--tertiary);
           text-decoration: underline;
         }
       }

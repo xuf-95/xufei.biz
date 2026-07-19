@@ -13,6 +13,7 @@ import ReaderMode from "./ReaderMode"
 import Head from "./Head"
 import PageTitle from "./PageTitle"
 import ContentMeta from "./ContentMeta"
+import CognitiveStatus from "./CognitiveStatus"
 import Spacer from "./Spacer"
 import TableOfContents from "./TableOfContents"
 import Explorer from "./Explorer"
@@ -53,6 +54,7 @@ export {
   Head,
   PageTitle,
   ContentMeta,
+  CognitiveStatus,
   Spacer,
   TableOfContents,
   Explorer,
