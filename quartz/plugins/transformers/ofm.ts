@@ -295,6 +295,9 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                 return {
                   type: "link",
                   url,
+                  // mark wikilink-generated anchors so a post-filter pass can
+                  // downgrade the ones that point to unpublished/missing pages
+                  data: { hProperties: { "data-wikilink": "true" } },
                   children: [
                     {
                       type: "text",
