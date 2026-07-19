@@ -7,6 +7,7 @@ import { GlobbyFilterFunction, isGitIgnored } from "globby"
 import { styleText } from "util"
 import { parseMarkdown } from "./processors/parse"
 import { filterContent } from "./processors/filter"
+import { fixBrokenWikilinks } from "./processors/fixBrokenWikilinks"
 import { emitContent } from "./processors/emit"
 import cfg from "../quartz.config"
 import { FilePath, joinSegments, slugifyFilePath } from "./util/path"
@@ -83,6 +84,7 @@ async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void) {
 
   const parsedFiles = await parseMarkdown(ctx, filePaths)
   const filteredContent = filterContent(ctx, parsedFiles)
+  fixBrokenWikilinks(ctx, filteredContent)
 
   await emitContent(ctx, filteredContent)
   console.log(
@@ -254,6 +256,7 @@ async function rebuild(changes: ChangeEvent[], clientRefresh: () => void, buildD
   const processedFiles = Array.from(contentMap.values())
     .filter((file) => file.type === "markdown")
     .map((file) => file.content)
+  fixBrokenWikilinks(ctx, processedFiles)
 
   let emittedFiles = 0
   for (const emitter of cfg.plugins.emitters) {
