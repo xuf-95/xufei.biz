@@ -9,6 +9,10 @@ tags:
   - style-guide
   - digital-garden
 description: 记录本站 Quartz 官方样式和自定义样式的使用方式、适用场景、示例代码与维护变更。
+summary: 本页汇总本站所有 Quartz 官方组件与自定义样式的用法、适用场景与示例代码，作为写作时的速查手册，会随样式演进持续更新。
+status: in-progress
+confidence: likely
+importance: 5
 date: 2026-06-11
 publish: true
 draft: true
