@@ -10,6 +10,8 @@ export const sharedPageComponents: SharedLayout = {
     Component.RSSLink(),
     Component.Darkmode(),
     Component.Search(),
+    Component.ReaderMode(),
+
   ],
   afterBody: [
     // Component.ConditionalRender({
@@ -27,6 +29,8 @@ export const sharedPageComponents: SharedLayout = {
     }),
 
     // Component.UnlinkedMentions(),
+    Component.Backlinks(),
+
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
@@ -54,12 +58,11 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.ArticleDescription(),
     Component.ContentMeta(),
-    Component.Backlinks(),
     Component.VersionSwitcher(),
     // Component.ArticleSummary(),
   ],
-  left: [Component.DesktopOnly(Component.TableOfContents())],
-  right: [],
+  left: [Component.DesktopOnly(Component.TableOfContents()),],
+  right: [],//
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
