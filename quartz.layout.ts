@@ -10,13 +10,8 @@ export const sharedPageComponents: SharedLayout = {
     Component.RSSLink(),
     Component.Darkmode(),
     Component.Search(),
-
   ],
   afterBody: [
-    // Component.ConditionalRender({
-    //   component: Component.KeepLearning(),
-    //   condition: ({ fileData }) => fileData.slug === "index",
-    // }),
     Component.ConditionalRender({
       component: Component.TagTreemap({
         variant: "home",
@@ -28,8 +23,6 @@ export const sharedPageComponents: SharedLayout = {
     }),
 
     // Component.UnlinkedMentions(),
-    Component.Backlinks(),
-
     Component.DesktopOnly(
       Component.Graph({
         localGraph: {
@@ -40,6 +33,7 @@ export const sharedPageComponents: SharedLayout = {
         },
       }),
     ),
+    Component.Backlinks(),
   ],
 
   footer: Component.Footer({

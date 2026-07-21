@@ -50,7 +50,8 @@ On a broader level, I care about building knowledge systems that help data pract
 
 - [[BigData Map]]
 - [[MOC-DCMM-DAMA Map]]
-- [[content/BigData/]]
+- [[Data Store|Data Store]]
+- [[MetadataManagement]]
 
 </ul>
 </div>
@@ -62,7 +63,7 @@ On a broader level, I care about building knowledge systems that help data pract
 - [[AIAgentic|AI Agentic]]
 - [[Token是如何计费的]]
 - [[What's RAG?]]
-- [[Bigdata With AI]]
+- [[Bigdata With AI|Bigdata With AI]]
 
 </ul>
 </div>
@@ -73,8 +74,8 @@ On a broader level, I care about building knowledge systems that help data pract
 <ul>
 
 - [[DataLakeFormation（DLF）|DataLake Formation（DLF）]]
-- [[MaxCompute|MaxCompute]]
-- [[Data Center]]
+- [[MaxCompute]]
+- [[DataWorks]]
 - [[Dataphin]]
 
 </ul>

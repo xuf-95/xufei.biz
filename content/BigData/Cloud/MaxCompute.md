@@ -1,5 +1,5 @@
 ---
-title: What is MaxCompute?
+title: MaxCompute
 aliases:
   - ODPS
   - MaxCompute
@@ -9,8 +9,9 @@ tags:
   - odps
 date: 2023-03-11
 draft: true
-publish: false
-publishDate: 2026-05-27
+publish: true
+publishDate: 2026-06-27
+status: seed
 ---
 
 ### 概述
@@ -27,13 +28,13 @@ MaxCompute（原名ODPS，Open Data Processing Service）是阿里云提供的�
 
 ### 架构
 
-![[content/Open BigData/Cloud/images/aliyun-maxCompute-architecture.png]]
+![[aliyun-maxCompute-architecture.png]]
 
 #### 分布式计算
 
-![[content/Open BigData/Cloud/images/aliyun-maxCompute-compute-architecture.png]]
+![[aliyun-maxCompute-compute-architecture.png]]
 
 ### 原理 & 功能
 
-![[content/Open BigData/Cloud/images/aliyun-maxCompute.png]]
+![[aliyun-maxCompute.png]]
 

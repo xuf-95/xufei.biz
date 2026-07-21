@@ -1,11 +1,9 @@
 ---
-title: "index"
+title: index
 tags:
   - index
 date: 2025-03-04
-publish: false
-
-
+publish: true
 ---
 
 ## 可视化工具
