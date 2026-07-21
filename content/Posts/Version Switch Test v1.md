@@ -5,7 +5,7 @@ tags:
   - quartz
   - test
 draft: true
-publish: false
+publish: true
 description: Test page for the article version switcher.
 versions:
   - label: v1.0

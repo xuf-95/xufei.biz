@@ -36,6 +36,16 @@ const tocInit = () => {
   let rafId: number | null = null
   let stepTimers: ReturnType<typeof setTimeout>[] = []
 
+  function getHeaderClearance() {
+    const header = document.querySelector<HTMLElement>("header")
+    if (!header) return 80
+
+    const rect = header.getBoundingClientRect()
+    const visibleBottom = Math.max(0, rect.bottom)
+    const headerBottom = Math.max(visibleBottom, header.offsetHeight)
+    return Math.ceil(headerBottom + 40)
+  }
+
   function updateFooterOverlap() {
     if (!wrapper || !siteFooter) return
 
@@ -114,7 +124,7 @@ const tocInit = () => {
     if (rafId) cancelAnimationFrame(rafId)
     rafId = requestAnimationFrame(() => {
       const scrollTop = window.scrollY
-      const offset = 100
+      const offset = getHeaderClearance() + 2
       let best = 0
       sections.forEach((el, i) => {
         if (el && el.offsetTop > 0 && el.offsetTop <= scrollTop + offset) best = i
@@ -128,9 +138,10 @@ const tocInit = () => {
   headingRows.forEach((row, i) => {
     row.addEventListener("click", (event) => {
       event.preventDefault()
+      event.stopPropagation()
       const el = sections[i]
       if (el && el.offsetTop > 0) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80
+        const top = el.getBoundingClientRect().top + window.scrollY - getHeaderClearance()
         window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
         history.replaceState(null, "", `#${row.dataset.target}`)
         activate(i)

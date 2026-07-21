@@ -14,6 +14,7 @@
 .backlinks {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   text-align: left;
 
   & > h3 {
@@ -24,25 +25,79 @@
   }
 
   & > ul.overflow {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.625rem;
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 20rem;
+    max-height: none;
+    overflow: visible;
     overscroll-behavior: contain;
 
-    /* each backlink on its own line, wrapping naturally */
     & > li {
-      display: block;
+      display: flex;
+      max-width: 100%;
 
       & > a {
         background-color: transparent;
+        border: 1px solid color-mix(in srgb, var(--darkgray) 28%, transparent);
+        border-radius: 6px;
         color: var(--secondary);
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+        padding: 0.45rem 0.75rem;
+        text-decoration: none;
 
         &:hover {
+          border-color: var(--tertiary);
           color: var(--tertiary);
-          text-decoration: underline;
+          text-decoration: none;
         }
       }
+    }
+
+    & > li.overflow-end {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      height: 1px;
+      margin: 0;
+    }
+  }
+}
+
+/* Backlinks lives in afterBody, whose page footer is a two-column grid. Keep
+   the links aligned to the article column while allowing them to use its full width. */
+#quartz-body .center .page-footer > .backlinks {
+  grid-column: 1 / -1;
+}
+
+:root[saved-theme="dark"] #quartz-body .center .page-footer > .backlinks {
+  position: relative;
+  z-index: 4;
+  background: #1f1e1d;
+  box-shadow: 0 0 0 100vmax #1f1e1d;
+  clip-path: inset(0 -100vmax);
+  padding-block: 1.25rem 1.5rem;
+
+  & > h3 {
+    color: var(--dark);
+  }
+
+  & > ul.overflow > li > a {
+    border-color: color-mix(in srgb, var(--darkgray) 34%, transparent);
+    color: var(--darkgray);
+
+    &:hover,
+    &:focus-visible {
+      background: color-mix(in srgb, white 7%, #1f1e1d);
+      border-color: color-mix(in srgb, var(--darkgray) 62%, transparent);
+      box-shadow: none;
+      color: var(--dark);
     }
   }
 }

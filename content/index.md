@@ -48,10 +48,9 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Bigdata Wiki OS</h3>
 <ul>
 
-- [[Bigdata Wiki OS]]
 - [[BigData Map]]
-- [[MOC-Data Architecture Map]]
 - [[MOC-DCMM-DAMA Map]]
+- [[content/BigData/]]
 
 </ul>
 </div>
@@ -60,10 +59,10 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">AI Area</h3>
 <ul>
 
-- [[Bigdata With AI]]
-- [[How Agentic Work]]
-- [[Prompt Engineering]]
+- [[AIAgentic|AI Agentic]]
 - [[Token是如何计费的]]
+- [[What's RAG?]]
+- [[Bigdata With AI]]
 
 </ul>
 </div>
@@ -73,10 +72,10 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Cloud Native</h3>
 <ul>
 
-- [[ServerlessArchitecture|Serverless Architecture]]
-- [[Cloud Vendors Homepage]]
-- [[MaxCompute]]
-- [[Data Lake Formation（DLF）]]
+- [[DataLakeFormation（DLF）|DataLake Formation（DLF）]]
+- [[MaxCompute|MaxCompute]]
+- [[Data Center]]
+- [[Dataphin]]
 
 </ul>
 </div>
@@ -100,7 +99,7 @@ On a broader level, I care about building knowledge systems that help data pract
 
 - [[LambdaArchitecture|What is Lambda Architecture]]
 - [[KappaArchitecture|What is Kappa Architecture?]]
-- [[Log-StructuredMergeTree (LSM) Architecture|Log-Structured Merge Tree (LSM) Architecture]]
+- [[Log-StructuredMergeTree（LSM）Architecture]]
 - [[MMP (Massively Parallel Processing)]]
 
 </ul>
@@ -111,6 +110,8 @@ On a broader level, I care about building knowledge systems that help data pract
 <ul>
 
 - [[Quartz Style Guide]]
+- [[goods|Goods Gallary]]
+- [[data-engineer-tools]]
 
 
 </ul>

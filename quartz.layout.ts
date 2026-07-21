@@ -10,7 +10,6 @@ export const sharedPageComponents: SharedLayout = {
     Component.RSSLink(),
     Component.Darkmode(),
     Component.Search(),
-    Component.ReaderMode(),
 
   ],
   afterBody: [

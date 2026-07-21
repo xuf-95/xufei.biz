@@ -38,6 +38,7 @@ export default ((opts?: Partial<Options>) => {
                 class={"toc-heading toc-h" + entry.depth}
                 data-hi={String(hi)}
                 data-target={entry.slug}
+                data-router-ignore
                 href={"#" + entry.slug}
               >
                 <span class="toc-dash" aria-hidden="true"></span>

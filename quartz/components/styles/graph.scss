@@ -75,3 +75,17 @@
     }
   }
 }
+
+/* Keep the graph aligned to the article column while extending its dark
+   background across the viewport, matching the Backlinks band above it. */
+:root[saved-theme="dark"] #quartz-body .center .page-footer > .graph {
+  position: relative;
+  z-index: 4;
+  background: #1f1e1d;
+  box-shadow: 0 0 0 100vmax #1f1e1d;
+  clip-path: inset(0 -100vmax);
+
+  & > .graph-outer {
+    border-color: color-mix(in srgb, var(--darkgray) 34%, transparent);
+  }
+}

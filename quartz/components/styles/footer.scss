@@ -7,6 +7,7 @@ footer {
     --footer-soft: color-mix(in srgb, var(--darkgray) 8%, var(--light));
 
     position: relative;
+    z-index: 4;
     box-sizing: border-box;
     width: 100%;
     margin: clamp(4.5rem, 8vw, 7rem) 0 0;
@@ -243,5 +244,29 @@ footer {
     & .footer-powered {
       text-align: left;
     }
+  }
+}
+
+@media all and not ($mobile) {
+  /* The space between Graph and the site footer also includes 2.125rem from
+     page-footer padding and grid spacing. Halve the complete transition area,
+     then paint only that area so the footer itself keeps its own background. */
+  :root[saved-theme="dark"] footer.site-footer {
+    --footer-transition-gap: calc(clamp(2.25rem, 4vw, 3.5rem) + 1.0625rem);
+
+    margin-top: calc(var(--footer-transition-gap) - 2.125rem);
+  }
+
+  :root[saved-theme="dark"] footer.site-footer::after {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    right: 50%;
+    bottom: 100%;
+    width: 100vw;
+    height: var(--footer-transition-gap);
+    pointer-events: none;
+    background: #1f1e1d;
+    transform: translateX(50%);
   }
 }
