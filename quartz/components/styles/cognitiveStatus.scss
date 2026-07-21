@@ -1,0 +1,73 @@
+@use "../../styles/variables.scss" as *;
+
+.cognitive-status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.9rem;
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.cog-badge {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gray) 45%, transparent);
+
+  .cog-key {
+    padding: 0.32em 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    background: color-mix(in srgb, var(--gray) 12%, transparent);
+  }
+
+  .cog-val {
+    padding: 0.32em 0.55em;
+    font-weight: 650;
+    color: var(--darkgray);
+  }
+}
+
+/* ── writing status ─────────────────────────────── */
+.cog-status .cog-val {
+  color: var(--secondary);
+}
+.cog-status-notes .cog-val,
+.cog-status-draft .cog-val {
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* ── confidence color ramp (6 confident → 0 doubtful) ── */
+.cog-conf-6 .cog-val {
+  color: color-mix(in srgb, var(--secondary) 90%, var(--darkgray));
+}
+.cog-conf-5 .cog-val {
+  color: color-mix(in srgb, var(--secondary) 65%, var(--darkgray));
+}
+.cog-conf-4 .cog-val {
+  color: color-mix(in srgb, var(--secondary) 40%, var(--darkgray));
+}
+.cog-conf-3 .cog-val {
+  color: var(--darkgray);
+}
+.cog-conf-2 .cog-val {
+  color: color-mix(in srgb, var(--tertiary) 45%, var(--darkgray));
+}
+.cog-conf-1 .cog-val {
+  color: color-mix(in srgb, var(--tertiary) 68%, var(--darkgray));
+}
+.cog-conf-0 .cog-val {
+  color: color-mix(in srgb, var(--tertiary) 90%, var(--darkgray));
+}
+
+/* ── importance ─────────────────────────────────── */
+.cog-importance .cog-val {
+  color: var(--darkgray);
+  font-variant-numeric: tabular-nums;
+}

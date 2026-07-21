@@ -3,10 +3,11 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import style from "./styles/articleSummary.scss"
 
 const ArticleSummary: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
-  // prefer explicit `summary` field; fall back to `description`
-  const summary =
-    fileData.frontmatter?.summary?.toString().trim() ||
-    fileData.frontmatter?.description?.toString().trim()
+  // Only render for an explicit `summary` frontmatter field (a gwern-style
+  // hand-written abstract). We intentionally do NOT fall back to `description`,
+  // because ArticleDescription already renders that as the italic tagline —
+  // falling back here would print the same text twice.
+  const summary = fileData.frontmatter?.summary?.toString().trim()
 
   if (!summary) return null
 
