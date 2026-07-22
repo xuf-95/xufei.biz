@@ -18,7 +18,7 @@ publish: false
 | ----------------- | ---- | ---- | --- | --- |
 | [[Apache Hadoop Overview]] | 批处理  | 成熟稳定 | 高   | 高   |
 | [[Apache Spark]]         | 批流一体 | 生态丰富 | 中   | 高   |
-| [[What is Apache Flink?]]         | 流计算  | 状态管理 | 低   | 高   |
+| [[ApacheFlink|Apache Flink]]         | 流计算  | 状态管理 | 低   | 高   |
 | [[What is Apache Storm?]]  | 流计算  | 低延迟  | 极低  | 中   |
 
 ### 存储系统
@@ -53,7 +53,7 @@ publish: false
 需求：实时计算
 ├─ 超低延迟 (< 1s)
 │  ├─ 简单聚合 → [[Spark Streaming]]
-│  └─ 复杂计算 → [[Apache Flink]]
+│  └─ 复杂计算 → [[ApacheFlink|Apache Flink]]
 ├─ 低延迟 (1-10s)
 │  └─ 批流一体 → [[Apache Spark Overview]]
 └─ 准实时 (> 10s)

@@ -550,7 +550,7 @@ Join Key 分布
 |---|---|---|---|
 |Hive|是|Calcite CBO|Join 重排、谓词下推、聚合优化|
 |Spark SQL|是|Catalyst + CBO + AQE|Join Reorder、Broadcast 判断、运行时自适应|
-|[[What is Apache Flink?]] SQL|是|Calcite|流批 SQL 优化、Join、聚合、状态优化|
+|[[ApacheFlink|Apache Flink]] SQL|是|Calcite|流批 SQL 优化、Join、聚合、状态优化|
 |Trino / Presto|是|自研优化器|Join 顺序、Join 分布、Pushdown|
 |Calcite|是|优化器框架|关系代数、规则优化、代价优化|
 |Impala|是|自研优化器|Join 策略、Runtime Filter|

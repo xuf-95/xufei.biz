@@ -152,7 +152,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - 集群任务调度和协调
 - 应用程序状态管理
 
-**[[What is Apache Flink?]]**
+**[[ApacheFlink|Apache Flink]]**
 - JobManager的高可用
 - TaskManager状态协调
 - 检查点(Checkpoint)协调

@@ -36,7 +36,7 @@ Apache Flink 是一个分布式流处理框架，专为有界和无界数据流�
 想象一个快递分拣中心：**JobManager** 是调度中心，负责规划路线和分配包裹；**TaskManager** 是分拣员，负责实际搬运；**Checkpoint** 则像定期拍照存档，万一出错可以从照片恢复现场。整个 Flink 的架构就是围绕这三个角色展开的。
 
 > [!tip]
-> 本文关注 Flink 源码内部实现，适合需要理解 Flink 运行时行为、调试生产问题或参与社区贡献的工程师。关于 Flink 的使用入门，参见 [[What is Apache Flink?]]。
+> 本文关注 Flink 源码内部实现，适合需要理解 Flink 运行时行为、调试生产问题或参与社区贡献的工程师。关于 Flink 的使用入门，参见 [[ApacheFlink|Apache Flink]]。
 
 <nav class="gallery-card-view" aria-label="Flink architecture sections">
   <a class="gallery-card internal" href="#高层架构">
@@ -322,7 +322,7 @@ Flink 提供完善的 Metrics 系统，通过 `RuntimeContext` 的 `MetricGroup`
 
 ## Links
 
-- related:: [[What is Apache Flink?]]
+- related:: [[ApacheFlink|Apache Flink]]
 - related:: Flink State Management
 - related:: [[Flink Table API and SQL]]
 - related:: [[Flink CDC]]

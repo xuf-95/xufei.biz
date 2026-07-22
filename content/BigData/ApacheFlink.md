@@ -1,362 +1,388 @@
 ---
-title: "What is Apache Flink?"
+title: Apache Flink
 aliases:
-  - flink
+  - What is Apache Flink?
   - Flink
+  - Flink Core Knowledge
+description: Apache Flink 核心知识地图，系统解释流式优先的数据模型、运行时架构、数据流执行、状态与时间、容错语义及生产基础技术栈。
 tags:
   - flink
-date: 2023-06-07
-draft: true
+  - streaming
+  - distributed-systems
+  - data-architecture
+  - bigdata
+date: 2026-07-22
+publishDate: 2026-07-22T00:00
+language: CN
+draft: false
 publish: true
 ---
-## Overview
 
-> [!qu] Apache Flink is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams
+> [!infobox]
+>
+> ## Apache Flink
+>
+> ### Meta
+>
+> | Item     | Value                                  |
+> | -------- | -------------------------------------- |
+> | Type     | Distributed stream-processing engine   |
+> | Core     | Stateful dataflow + time + checkpoints |
+> | Input    | Bounded and unbounded streams          |
+> | APIs     | SQL, Table API, DataStream API         |
+> | Runtime  | JobManager + TaskManager               |
+> | Verified | Flink 2.3.0 docs, 2026-07-22           |
 
+## Definition
 
-## 简介
+Apache Flink 是一个面向**有界与无界数据流上的有状态计算**的分布式处理框架和执行引擎。它采用 streaming-first runtime：实时流持续、增量地处理；批数据则被视为有明确结束位置的有界流，并可选择针对批执行优化过的调度与数据交换方式。[^official-architecture][^execution-mode]
 
-Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用于对`无界和有界数据流`进行`状态计算`
-## Flink 具备的能力
+> [!summary]
+> 一句话心智模型：Flink 把业务逻辑编译成并行数据流图，把状态放在处理它的算子附近，用 watermark 表达事件时间进度，用 checkpoint 将分布式状态与输入位置保存成一致快照。
 
-- 正确性保证：精确一次的状态一致性、事件时间处理、复杂的延迟数据处理
-- 分层 API：流数据和批数据上的 SQL、DataStream API、ProcessFunction（时间与状态）
-- 运维：灵活部署、高可用性设置、保存点
-- 扩展性：横向扩展架构、支持非常大的状态、增量检查点
-- 性能：低延迟、高吞吐量、内存计算
+Flink 适合实时 ETL、流式分析、事件驱动应用、有状态规则计算和有界批任务。它不是消息队列，也不是长期数据仓库；生产系统通常让 Kafka、Pulsar 或文件系统承载输入，让数据库、湖仓或搜索系统承载结果，而 Flink 负责持续计算。
 
-### Flink核心
+<nav class="gallery-card-view" aria-label="Apache Flink knowledge sections">
+  <a class="gallery-card internal" href="#核心知识模型">
+    <span class="gallery-card-title">核心知识</span>
+    <span class="gallery-card-subtitle">Stream · State · Time · Snapshot</span>
+  </a>
+  <a class="gallery-card internal" href="#运行时与数据架构">
+    <span class="gallery-card-title">数据架构</span>
+    <span class="gallery-card-subtitle">Control · Data · State planes</span>
+  </a>
+  <a class="gallery-card internal" href="#数据流模型">
+    <span class="gallery-card-title">数据流模型</span>
+    <span class="gallery-card-subtitle">Graph · Parallelism · Exchange</span>
+  </a>
+  <a class="gallery-card internal" href="#基础技术栈">
+    <span class="gallery-card-title">基础栈</span>
+    <span class="gallery-card-subtitle">API · Runtime · Deploy · Ecosystem</span>
+  </a>
+</nav>
 
-- 状态 + 时间(水位线) + 事件驱动
-	- 有状态 : 输入值 + 初始值 = 输出值
-	- 无状态 : 输入值 = 输出值
+## 核心知识模型
 
-### Flink 主要特点
+理解 Flink 不需要先记算子列表。先掌握五个彼此连接的概念：
 
-- `流数据`更真实地反映了我们的生活方式
-- 低延迟（Spark Streaming 的延迟是秒级，Flink 延迟是毫秒级）
-- 高吞吐（阿里每秒钟使用Flink 处理4.6PB，双十一大屏）
-- 结果的准确性和良好的容错性（exactly-once）
+| 概念        | 核心问题                 | Flink 的答案                                                              |
+| ----------- | ------------------------ | ------------------------------------------------------------------------- |
+| Stream      | 数据是否结束？           | 无界流持续到达；有界流有确定终点，二者都用数据流表达                      |
+| State       | 跨事件的信息放在哪里？   | Keyed State 与 Operator State 由运行时管理，并与并行算子一起分区          |
+| Time        | 乱序事件按什么时间计算？ | Event Time + Watermark 表达业务时间及其进度；Processing Time 使用机器时钟 |
+| Parallelism | 计算如何扩展？           | Operator 被拆成并行 subtask，`keyBy` 等分区规则决定记录路由               |
+| Snapshot    | 故障后如何恢复？         | Checkpoint 保存输入位置、算子状态及必要的在途数据，失败后回放并恢复       |
 
-### Flink 其他特点
+### 有界流与无界流
 
-- 支持事件时间（event-time）和处理时间（processing-time）语义
-- 精确一次（exactly-once）的状态一致性保证
-- 低延迟，每秒处理数百万个事件，毫秒级延迟（实际上就是没有延迟）
-- 与众多常用存储系统的连接（ES，HBase，MySQL，Redis⋯）
-- 高可用（zookeeper），动态扩展，实现7*24 小时全天候运行
+- **Unbounded stream** 有开始但没有预先定义的结束，必须在数据到达时持续处理。
+- **Bounded stream** 有确定边界，可以在输入结束后得到最终结果，也可以使用排序、全局聚合和批式 shuffle 等优化。
+- “批流统一”指统一的数据流抽象和 API 能力，不代表两种执行模式的物理行为完全相同。`STREAMING` 模式使用 pipelined exchange；`BATCH` 模式可使用 blocking 或 hybrid shuffle。[^execution-mode][^batch-shuffle]
 
-### 使用场景
+### Stateful computation
 
-- 事件驱动型应用程序
-- 流式与批量分析
-- 数据管道与 ETL（提取、转换、加载）
-## Flink vs Spark Streaming区别
+无状态算子只依赖当前记录；有状态算子还依赖过去事件留下的信息，例如窗口中的部分聚合、规则匹配进度、去重集合或模型参数。Flink 将状态分为两类：
 
-#### 数据模型
+- **Keyed State**：只能在 keyed stream 上访问；状态与 key 一起分区，使同一 key 的记录和状态被路由到同一个并行实例。
+- **Operator State**：绑定到算子的并行实例，常用于 source offsets、缓存或需要在扩缩容时重新分配的局部状态。
 
-- Spark 采用'RDD'模型，Spark Streaming 的DStream 实际上是一组组小批数据RDD的集合
-- Flink '基本数据模型'是数据流，以及事件（Event）序列（Integer. String. Long. POJO Class）
+Keyed State 的最小重分配单位是 key group。这样 Flink 在改变并行度时可以重新分配状态，而不需要改变业务代码。[^stateful-processing]
 
-#### 运行时架构
+### Time, watermark, window
 
-- Spark 是'批计算'，将DAG 划分为不同的Stage，一个Stage完成后才可以计算下一个Stage
-- Flink 是'流计算'，一个事件在一个节点处理完后可以直接发往下一个节点进行处理
+| 时间语义        | 含义                               | 典型用途                                        |
+| --------------- | ---------------------------------- | ----------------------------------------------- |
+| Event Time      | 事件实际发生时间，通常来自记录字段 | 需要可重放、能解释乱序的业务统计                |
+| Processing Time | 算子处理记录时的机器时间           | 更简单、低延迟，但结果受调度和重放时机影响      |
+| Watermark       | 对 event-time 进度的估计           | 触发窗口或 timer，并划分 on-time 与 late events |
 
-## 数据架构演变
+Watermark 不是“已经收齐所有数据”的证明。它表达的是：系统认为时间戳早于某个位置的事件不应再正常到达；更晚到达的记录需要按允许迟到、更新结果、侧输出或丢弃策略处理。并行输入通常由最慢的活跃输入约束下游 watermark，因此空闲分区和分区间进度差需要显式治理。[^timely-processing][^watermarks]
 
-- **事务处理 OLTP**
-	![flink-oltp](flink-oltp.png)
+窗口把无界流切成可计算的有限范围：tumbling window 不重叠，sliding window 可以重叠，session window 由不活跃间隔分隔。Window 会持有状态，因此窗口数量、允许迟到时间和清理策略都会影响状态规模。
 
-- 分析处理 OLAP ： 将数据从业务数据库复制到数仓，再进行分析和查
+## 运行时与数据架构
 
-	![olap](olap.png)
+![Apache Flink runtime architecture](images/flink-runtime-architecture.svg)
 
-- [[Lambda Architecture]] :  用两套系统，同时保证低延迟和结果准确
+Flink 集群由一个 JobManager 进程和一个或多个 TaskManager 进程组成。Client 负责准备并提交数据流，但不属于运行时本身。[^runtime-architecture]
 
-- 有状态的流式处理流程
-	![checkpoint](flink-checkpoint.png)
-- 本质 : 事件驱动（Event-driven）
+### Control plane
 
-	![driven](flink-event-driven.png)
+| 组件                  | 职责                                            | 关键边界                                     |
+| --------------------- | ----------------------------------------------- | -------------------------------------------- |
+| Client                | 将应用转换为可提交的数据流图并提交              | 可以 detached，不负责长期执行                |
+| Dispatcher            | REST 提交入口、Web UI，为每个作业启动 JobMaster | 位于 JobManager 进程内                       |
+| ResourceManager       | 申请、回收并分配 task slots                     | 对接 Standalone、YARN、Kubernetes 等资源环境 |
+| JobMaster             | 管理单个 JobGraph 的调度、执行与恢复            | 每个运行中的 job 有自己的 JobMaster          |
+| CheckpointCoordinator | 触发 checkpoint、收集确认并管理完成快照         | 属于单个 job 的协调逻辑                      |
 
-- 基于流的世界观 : 一切都是由流组成的，离线数据是有界的流；实时数据是一个没有界限的流：这就是所谓的有界流和无界流
+### Data plane
 
-	![](flink-bound-stream.png)
+TaskManager 是执行 worker。Operator 的并行实例称为 subtask；可链化的相邻 operators 会合并为一个 task，通常由一个线程执行，以减少线程切换、序列化与缓冲开销。Task slot 是资源调度单位：它隔离一部分 managed memory，但**不提供 CPU 隔离**；同一个 job 的不同 task 默认还可以共享 slot。[^runtime-architecture]
 
-- Flink 分层API
+TaskManager 之间通过网络交换数据。下游来不及消费时，缓冲区逐渐占满，压力会反向传播到上游，这就是 backpressure。它是流式管道的流量控制机制，也是定位瓶颈的核心信号。
 
-	![](flink-layer-api.png)
+### State plane
 
-- 有状态 与 无状态
+需要明确区分 working state、state backend 与 checkpoint storage：
 
-	![](flink-status-unstatus.png)
+| 层次               | 保存什么                        | 常见实现                                                            |
+| ------------------ | ------------------------------- | ------------------------------------------------------------------- |
+| Working state      | 作业运行中可读写的当前状态      | TaskManager heap、embedded RocksDB、本地缓存 + remote state         |
+| State backend      | 状态的内存/磁盘表示以及快照方式 | HashMapStateBackend、EmbeddedRocksDBStateBackend、ForStStateBackend |
+| Checkpoint storage | 已完成快照的持久化位置          | JobManager heap（开发/小状态）、分布式文件系统或对象存储            |
 
-## Flink 组件栈
+Flink 2.3 文档将 HashMap、EmbeddedRocksDB 和 ForSt 列为 state backend；ForSt 面向解耦状态，将 SST 文件放在远程文件系统，但当前仍标注为 experimental。生产选型不能只看吞吐，还要同时评估状态规模、访问延迟、checkpoint、恢复时间和扩缩容成本。[^state-backends]
 
-### Deploy
+## 数据流模型
 
-- Local: Single JVM
-- Cluster: [[Yarn（Yet Another Resource Negotiator）]], Standalone
-- Cloud: CE2, GE
+Flink application 最终被表示为一个有向数据流图：一个或多个 source 产生记录，transformation 形成 operators，结果进入一个或多个 sink。程序构图是 lazy 的，真正执行由 `execute()` 或 SQL 提交触发。[^learn-overview]
 
-### Core
+```mermaid
+flowchart LR
+  subgraph Input["Replayable input"]
+    S0["Source subtask 0"]
+    S1["Source subtask 1"]
+  end
 
-- Runtime: Distribute Streaming Dataflow
+  subgraph Stateless["Forward / chained operators"]
+    M0["parse → filter 0"]
+    M1["parse → filter 1"]
+  end
 
-### APIS & Libraries
+  subgraph Stateful["keyBy hash shuffle"]
+    K0["keyed aggregate 0"]
+    K1["keyed aggregate 1"]
+  end
 
-- DataStream
-  - CEP(Event Perocessing)
-  - Table(Relational)
-- Dataset 
-  - FlinkML(Flink Machine Learning)
-  - Table(Relational)
-  - Gelly(Graphy Processing)
+  O["Transactional or idempotent sink"]
+  C["Checkpoint coordinator"]
+  P["Durable checkpoint storage"]
 
-## 运行架构
-
-### Flink 运行时的组件
-
-![](flink-architecture.png)
-
-1. 作业管理器 JobManager
-2. 资源管理器 ResourceManager
-3. 任务管理器 TaskManager
-4. 分发器 Dispatcher
-
-### 数据流
-
-1. Source # 负责读取数据源
-2. Transformation # 利用各种算子进行处理加工
-3. Sink # 负责输出
-
-### 网络IO通信底层
-
-1. erlang
-2. akka
-3. netty
-
-### 典型的Master-Slave 架构
-#### 任务提交流程
-![任务提交流程](flink-job.png)
-
-#### 任务管理器和插槽
-
-![](flink-card-poll.png)
-
-#### 并行子任务分配
-
-![](flink-taskmanager-jobgraph.png)
-
-#### 数据流
-
-![](flink-dataflow.png)
-
-![](flink-physics-dataflow.png)
-
-#### 任务链
-
-![](flink-dataflow-2.png)
-
-### 任务执行配置
-
-Flink执行环境包括批处理和流处理两种情况，在1.12版本已经实现了流批的统一，默认执行模式为Streaming，可修改配置为Batch，在提交作业时候，设置的参数为：`execution.runtime-mode`
-
-```shell
-$ bin/flink run -Dexecution.runtime-mode=BATCH examples/streaming/WordCount.jar
+  S0 --> M0
+  S1 --> M1
+  M0 -->|"key group routing"| K0
+  M0 -->|"key group routing"| K1
+  M1 -->|"key group routing"| K0
+  M1 -->|"key group routing"| K1
+  K0 --> O
+  K1 --> O
+  C -. "inject barriers" .-> S0
+  C -. "inject barriers" .-> S1
+  K0 -. "snapshot state" .-> P
+  K1 -. "snapshot state" .-> P
 ```
 
-代码中实现的方式
+### 从逻辑算子到并行执行
 
-```java
-StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-env.setRuntimeMode(RuntimeMode.BATCH);
-```
-## DataSteam API
+1. **Program / SQL** 定义 source、transformation、sink 以及并行度、时间和状态语义。
+2. **Logical graph** 描述算子及其依赖，Table/SQL 还会经过优化器。
+3. **JobGraph** 是提交给 runtime 的作业图；可链化的 operators 被组合为 tasks。
+4. **Parallel subtasks** 在 TaskManager slots 中执行；parallelism 决定一个 operator 的实例数。
+5. **Exchange** 决定记录如何到达下游：forward 保持分区对应关系，`keyBy` 按 key hash 重分区，rebalance 均衡重分区，broadcast 发送到所有下游实例。
 
-- 流处理 API
+`keyBy` 的意义不只是 shuffle：它把记录路由与 keyed state 分区对齐，使同一 key 的事件总能访问同一份逻辑状态。重新分区之后，只保证单个发送 subtask 到单个接收 subtask 之间的顺序，不保证不同通道之间的全局顺序。[^learn-overview]
 
-	![](flink-datastream-api.png)
+### 数据流中的三类信号
 
-Flink中的算子是将'一个或多个DataStream'转换为'新的DataStream'，可以将多个转换组合成复杂的数据流拓扑。
+| 信号               | 作用            | 典型处理                                                             |
+| ------------------ | --------------- | -------------------------------------------------------------------- |
+| Data record        | 业务数据        | map、filter、join、aggregate、process                                |
+| Watermark          | event-time 进度 | 触发 event-time timer/window，识别迟到数据                           |
+| Checkpoint barrier | 快照边界        | 对齐输入并生成一致状态快照，或在 unaligned checkpoint 中记录在途数据 |
 
-- 源算子 Source # 数据读取，从集合. 文件. kafka. 自定义...
-- 转换算子 Transformation
-- 输出算子 Sink # 数据输出，写入文件. kafka. redis. Elasticsearch. JDBC...
+Aligned checkpoint 会在多输入算子等待同一 checkpoint 的 barriers，使快照对应一致的输入边界。严重 backpressure 会拉长 barrier 传播和对齐时间；unaligned checkpoint 将 in-flight buffers 纳入快照，让 barrier 越过积压，但会增加 checkpoint I/O，不能作为所有背压问题的默认解法。[^fault-tolerance][^checkpoint-backpressure]
 
-Flink 的 Java DataStream API 可以将任何可序列化的对象转化为流。Flink 自带的序列化器有
+### Streaming 与 Batch 的物理差异
 
-基本类型，即 String、Long、Integer、Boolean、Array
-复合类型：Tuples、POJOs
+| 维度          | STREAMING                  | BATCH                                   |
+| ------------- | -------------------------- | --------------------------------------- |
+| 输入          | 通常无界，也可处理有界输入 | 仅有界输入                              |
+| Task 生命周期 | 上下游通常同时运行         | 可以分阶段调度                          |
+| Exchange      | Pipelined                  | 默认 blocking，可选 experimental hybrid |
+| Event time    | Watermark 是进度启发式     | 输入有界，可形成接近“完整”的最终进度    |
+| Recovery      | 周期 checkpoint + replay   | 可利用批任务区域/中间结果重算策略       |
 
-#### 转换算子 Transformation
+## 状态一致性与容错
 
-- map # 理解为映射，对每个元素进行一定的变换后，映射为另一个元素。
+Checkpoint 保存的不只是内存数据，还包括可重放 source 的读取位置以及各个有状态 operator 在同一逻辑边界上的状态。故障发生后，Flink 恢复快照、重置 source 位置并重放后续记录。该机制来自异步 barrier snapshot 思路：barrier 随数据流传播，operator 在不停止整个流水线的情况下生成一致快照。[^abs-paper][^state-paper]
 
-- flatmap # 理解为将元素摊平，每个元素可以变为0个. 1个. 或者多个元素。
+### Exactly-once 的准确边界
 
-- filter # 进行筛选。
+> [!warning]
+> Exactly-once 不等于“每条记录的用户代码物理上只执行一次”。失败恢复时记录可能被重放；Flink 的 exactly-once checkpoint 语义保证每条记录对 **Flink managed state** 的效果与无故障执行一致。
 
-- keyBy # 将Stream根据指定的Key进行分区，是根据key的散列值进行分区的。
+端到端 exactly-once 还要求：
 
-- 滚动聚合算子（ Rolling Aggregation ) : sum() min() max() minBy() maxBy()
+1. source 可重放，并将读取位置纳入 checkpoint；
+2. sink 参与 checkpoint，或提供事务/幂等写入；
+3. 用户与外部系统的副作用也遵守同一提交协议。
 
-- reduce # 归并操作，它可以将KeyedStream 转变为 DataStream。
+只满足内部状态一致性时，不应宣称整个 Kafka → Flink → database 链路已经 exactly-once。官方 connector guarantee 表也需要按具体 connector 和版本逐项核对。[^fault-tolerance][^connector-guarantees]
 
-- split 和 select # 将一个流拆分为多个流
+### Checkpoint 与 savepoint
 
-- connect 和 CoMap # 将两个流纵向地连接起来，数据类型可不同
+| 项目           | Checkpoint           | Savepoint                        |
+| -------------- | -------------------- | -------------------------------- |
+| 主要目的       | 自动故障恢复         | 有计划的升级、迁移、回滚或扩缩容 |
+| 生命周期       | 通常由 Flink 管理    | 由用户触发和管理                 |
+| 优化目标       | 频繁、轻量、快速恢复 | 操作灵活性与可移植性             |
+| 是否应长期归档 | 通常不应当作备份     | 可作为运维变更的明确恢复点       |
 
-- union # 多个流合并到一个流中，以便对合并的流进行统一处理。是对多个流的水平拼接。参与合并的流必须是同一种类型。
+概念上，checkpoint 更像数据库 recovery log，savepoint 更像人为管理的 backup。[^checkpoint-savepoint]
 
-- fold # 给定一个初始值，将各个元素逐个归并计算。它将KeyedStream转变为DataStream。
+## 基础技术栈
 
-- join # 指定的Key将两个流进行关联。
+```mermaid
+flowchart TB
+  A["SQL · Table API · DataStream API"]
+  B["Planner · optimizer · dataflow graph"]
+  C["Runtime: scheduling · network · checkpoints · timers"]
+  D["State: HashMap · RocksDB · ForSt experimental"]
+  E["Deployment: Standalone · YARN · Kubernetes"]
+  F["Sources: Kafka · Pulsar · Kinesis · Files · CDC"]
+  G["Sinks: Kafka · Files/Lakehouse · JDBC · Search"]
+  H["Operations: Web UI · REST · metrics · logs · traces"]
 
-#### map 和 flatMap 区别:
-
-map：map方法返回的是一个object，map将流中的当前元素替换为此返回值；
-
-flatMap：flatMap方法返回的是一个stream，flatMap将流中的当前元素替换为此返回流拆解的流元素；
-
-##### 例子 : 有二箱鸡蛋，每箱5个，现在要把鸡蛋加工成煎蛋，然后分给学生。
-
-map做的事情：把二箱鸡蛋分别加工成煎蛋，还是放成原来的两箱，分给2组学生；
-
-flatMap做的事情：把二箱鸡蛋分别加工成煎蛋，然后放到一起【10个煎蛋】，分给10个学生
-
-**基础数据类型**
-
-- 支持所有的 Java 和 Scala 基础数据类型， Int, Double, Long, String, …
-
-- Java 和 Scala 元组（ Tuples ）
-
-- Scala样例类（ case classes ）
-
-- Java简单对象（ POJOs ）
-
-- 其它（ Arrays, Lists, Maps , Enums, 等等）
-
-**实现 UDF 函数 更细粒度的控制流**
-
-- **函数类**（ Function Classes ）
-
-- **匿名函数**（ Lambda Functions ）
-
-- **富函数**（ Rich Functions ） # 可以获取运行环境的上下文，并拥有一些生命周期方法，所以可以实现更复杂的功能。
-
-- open()
-
-- getRuntimeContext().getState();
-
-- close()
-
-```scala
-Flink RichFunction & state
-class flatMap_rich extends RichFlatMapFunction<In,Out>{
-  override def open(configuration:Confuration) : kic  Unit = {} 
-  //创建初始话函数，例如创建和外部系统的连接
-  override def flatMap(in : In,out:Collector<Out>)() :Unit = {} 
-  //做一些操作
-  override def close : Unit = {} 
-  //做一些清理工作，例如关闭和外部系统的连接
-}
+  A --> B --> C --> D
+  F --> C --> G
+  E -. "provides resources" .-> C
+  H -. "observes and controls" .-> C
 ```
 
-- DataStream
-	
-	![](flink-datastream-suanzi.png)
+### API layer
 
+| API             | 适合场景                                   | 选择原则                           |
+| --------------- | ------------------------------------------ | ---------------------------------- |
+| Flink SQL       | 标准关系计算、实时数仓、动态表与 changelog | 优先用于能清晰写成 SQL 的逻辑      |
+| Table API       | 在 Java、Scala、Python 中组合关系操作      | 需要类型安全和程序化生成查询       |
+| DataStream API  | 自定义事件逻辑、复杂状态、timer、低层控制  | 只有 SQL/Table 难以表达时再下沉    |
+| ProcessFunction | 最细粒度的 keyed state、timer 与多流协同   | 能力最强，也最需要控制状态生命周期 |
 
-## Window API
+Table API 和 SQL 共享底层引擎，可以与 DataStream 互相转换。Flink 2.3 中 DataStream API V2 仍是 experimental，尚未完全适合生产；没有明确验证前，生产代码应继续使用稳定 API。[^table-api][^datastream-v2]
 
-窗口（Window）: `[  ) 左闭右开`  : 将无限流切割为有限流的一种方式，它会将流数据分发到有限大小的桶（bucket）中进行分析
-#### 窗口分类
+### Connectors and formats
 
-1. 滚动窗口 Tumbling Windows
-    1. 将数据依据固定的窗口长度对数据进行切分
-    2. 时间对齐，窗口长度固定，没有重叠
-    
-	    ![](flink-windows-tumbling.png)
-    
-2. 滑动窗口 Sliding Windows
-    1. 滑动窗口是固定窗口的更广义的一种形式，滑动窗口由固定的窗口长度和滑动间隔组成
-    2. 窗口长度固定，可以有重叠
-    
-		![](flink-windows-sliding.png)
-    
-4. 会话窗口 Session Windows
-    1. 由一系列事件组合一个指定时间长度的timeout 间隙组成，也就是一段时间没有接收到新数据就会生成新的窗口
-    2. 时间无对齐
-    3. 只有Flink 支持会话窗口
-    
-		![](flink-windows-session.png)
+Connector 负责与外部系统交换数据，format 负责序列化与反序列化。Flink 社区将大量 connectors 外置到独立仓库，connector 版本和 Flink core 版本不一定同步；依赖加入集群前必须检查兼容矩阵、delivery guarantee 和 shaded dependency。[^connectors][^github]
 
-## Wartermark
+基础组合通常包括：
 
-在Flink中，水位线（watermark）是一种'衡量Event Time进展'的机制，用来'处理实时数据中的乱序'问题的，通常是'水位线'和'窗口'结合使用来实现
+- **消息与日志**：Kafka、Pulsar、Kinesis 等可重放 source/sink。
+- **文件与湖仓**：FileSystem connector + Parquet/Avro/ORC；需要更新表与 changelog 时结合 [[What's Apache Paimon?|Apache Paimon]] 等湖仓存储。
+- **数据库变更**：[[Flink CDC]] 是独立 Apache 项目，适合数据库 snapshot + change log 的流式集成，不等同于 Flink core 内置能力。
+- **服务系统**：JDBC、Elasticsearch/OpenSearch 等；必须核对 append/upsert、幂等和事务语义。
 
-  - 水位线是一种逻辑时钟
-  - 水位线由程序员编程插入到数据流中
-  - 水位线是一种特殊的事件
-  - 在事件时间的世界里，水位线就是时间
-  - 水位线 = 观察到的最大时间戳 - 最大延迟时间 - 1 毫秒
-  - 水位线超过窗口结束时间，窗口闭合，默认情况下，迟到元素被抛弃
-  - Flink 会在流的最开始插入一个时间戳为负无穷大的水位线
-  - Flink 会在流的最末尾插入一个时间戳为正无穷大的水位线
-    
-1. Event Time（事件时间）：事件创建的时间（必须包含在数据源中的元素里面）
-2. Ingestion Time（摄入时间）：数据进入Flink 的source 算子的时间，与机器相关
-3. Processing Time（处理时间）：执行操作算子的本地系统时间，与机器相关
-    
-迟到数据处理的原因 ： 由于网络. 分布式等原因，会导致乱序数据的产生
+### Deployment and operations
 
-	1. 直接抛弃迟到的元素
-	2. 将迟到的元素发送到另一条流中去
-	3. 可以更新窗口已经计算完的结果，并发出计算结果
+Flink 支持 Standalone、YARN 和 Kubernetes 等资源环境，以及两种主要部署模式：
 
+- **Application Mode**：一个 cluster 服务一个 application，隔离更清晰，application 的 `main()` 在集群侧执行。
+- **Session Mode**：预先启动的 cluster 接收多个 applications，启动快、资源共享，但故障和资源竞争影响面更大。
 
-## 状态管理
+生产系统还需要独立设计 HA service、持久 checkpoint storage、日志与 metrics、告警、savepoint 升级流程和 connector secrets。部署方式本身不会自动提供这些能力。[^deployment]
 
-Flink 中的状态 # 类似本地变量
-- 算子状态 Operatior State # 算子状态的作用范围限定为算子任务
-  - 列表状态 List state
-  - 联合列表状态 Union list state
-  - 广播状态 Broadcast state
-	- 键控状态 Keyed State # 根据输入数据流中定义的键（ key ）来维护和 访问
--	值状态（ValueState）：将状态表示为单个的值
-  - 列表状态（List State）：将状态表示为一组数据的列表
-  - 字典状态（MapState）：将状态表示为一组Key-Value 对
-  - 聚合状态：将状态表示为一个用于聚合操作的列表
-	- 状态后端 State Backends # 状态的存储 . 访问以及维护
+## 最小生产参考架构
 
+```mermaid
+flowchart LR
+  DB["OLTP databases"] --> CDC["CDC / Debezium / Flink CDC"]
+  APP["Applications"] --> MQ["Kafka / Pulsar"]
+  CDC --> MQ
+  MQ --> FLINK["Flink Application Cluster"]
+  FLINK --> LAKE["Lakehouse / object storage"]
+  FLINK --> OLAP["OLAP / search / serving DB"]
+  FLINK -. "checkpoints" .-> OBJ["Durable object storage / HDFS"]
+  OPS["Metrics · logs · traces · alerts"] -.-> FLINK
+```
 
-## 容错机制
+这是一个参考边界，不是固定产品清单。落地时至少回答：
 
-- Flink 故障恢复机制的核心 : 应用状态的一致性检查点
-- 应用状态的一致性检查点 : 所有任务的状态，在某个时间点的一份的快照 ( 时间点 ： 是所有任务都恰好处理完一个相同的输入数据的时候)
-- 从检查点恢复状态
-	- 重启应用
-	- 从 checkpoint 中读取状态，将状态重置
-	- 开始消费并处理检查点到发生故障之间的所有数据 # 精确一次
-	
-## 状态一致性
+1. source 能否从 checkpoint 位置重放，保留期是否覆盖最坏恢复时间？
+2. key 是否均匀，最大并行度和未来扩缩容空间是否合理？
+3. state backend 与 checkpoint storage 是否分别按访问延迟和持久性选型？
+4. sink 是 append、upsert、idempotent 还是 transactional，失败恢复会不会重复副作用？
+5. watermark 策略如何处理乱序、idle partition 和迟到数据？
+6. checkpoint duration、alignment、backpressure、state size、restart 和 end-to-end lag 是否有监控与告警？
+7. 升级是否验证 savepoint 兼容性、operator UID、connector 版本与 schema evolution？
 
-状态一致性分类
-- **AT-MOST-ONCE（最多一次）** - 当任务故障时，最简单的做法是什么都不干，既不恢复丢失的状态，也不重播丢失的数据。At-most-once 语义的含义是最多处理一次事件。例如：UDP，不提供任何一致性保障
-- **AT-LEAST-ONCE（至少一次）** - 在大多数的真实应用场景，我们希望不丢失事件。这种类型的保障称为at-least-once，意思是所有的事件都得到了处理，而一些事件还可能被处理多次。
-- **EXACTLY-ONCE（精确一次）** - 恰好处理一次是最严格的保证，也是最难实现的。恰好处理一次语义不仅仅意味着没有事件丢失，还意味着针对每一个数据，内部状态仅仅更新一次。
-    - 内部保证——checkpoint（分布式异步快照算法）
-    - Source 端——可重设数据的读取位置（Kafka，FileSystem）
-    - Sink 端——从故障恢复时，数据不会重复写入外部系统
-        幂等写入:是说一个操作，可以重复执行很多次，但只导致一次结果更改，也就是说，后面再重复执行就不起作用了 
-        事务写入:应用程序中一系列严密的操作，所有操作必须成功完成，否则在每个操作中所作的所有更改都会被撤消（ACID）；具有原子性：一个事务中的一系列的操作要么全部成功，要么一个都不做
+## 常见误区
 
+| 误区                               | 正确认识                                                                        |
+| ---------------------------------- | ------------------------------------------------------------------------------- |
+| Flink 是消息队列                   | Flink 是计算引擎；输入日志通常由 Kafka/Pulsar 等系统持久化                      |
+| Exactly-once 表示代码只运行一次    | 恢复时可能重放；保证首先针对 managed state，端到端还取决于 source/sink          |
+| State backend 就是 checkpoint 目录 | Backend 决定工作状态表示与快照方式；checkpoint storage 决定快照持久化位置       |
+| Watermark 能消除迟到数据           | Watermark 是进度估计，迟到策略仍需业务定义                                      |
+| 一个 slot 等于一个 operator        | 一个 slot 可以承载同一 job 的整段 task pipeline，多个 operators 还可能 chaining |
+| Slot 会隔离 CPU                    | Slot 主要隔离 managed memory，不提供 CPU 隔离                                   |
+| 批流统一意味着物理执行完全一样     | API/模型统一，但调度、shuffle、time 和 recovery 策略可不同                      |
 
+## Source Map
 
-## Reference
+| Source                                                                                                                            | Type                 | Supports                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------ |
+| [Flink Architecture](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/flink-architecture/)                 | Official docs        | JobManager、TaskManager、slots、operator chaining            |
+| [Concepts Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/overview/)                            | Official docs        | API 层级与统一数据流抽象                                     |
+| [Learn Flink Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/learn-flink/overview/)                      | Official docs        | 并行 dataflow、partition、state locality                     |
+| [Stateful Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/stateful-stream-processing/) | Official docs        | Keyed State、key groups、checkpoint/savepoint                |
+| [Timely Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/time/)                         | Official docs        | Event Time、watermark、late data、window                     |
+| [Fault Tolerance](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/learn-flink/fault_tolerance/)                    | Official docs        | Snapshot、barrier、exactly-once 边界                         |
+| [Deployment Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/deployment/overview/)                        | Official docs        | Resource providers 与 deployment modes                       |
+| [apache/flink](https://github.com/apache/flink)                                                                                   | Official GitHub      | 源码模块、runtime、Table、state、deployment、外置 connectors |
+| [Apache Flink: Stream and Batch Processing in a Single Engine](https://dblp.org/rec/journals/debu/CarboneKEMHT15)                 | Research paper, 2015 | 流式优先、pipelined dataflow 与批流统一设计                  |
+| [Lightweight Asynchronous Snapshots for Distributed Dataflows](https://arxiv.org/abs/1506.08603)                                  | Research paper, 2015 | Asynchronous Barrier Snapshot 算法                           |
+| [State Management in Apache Flink](https://www.vldb.org/pvldb/vol10/p1718-carbone.pdf)                                            | PVLDB paper, 2017    | 一致状态、快照、恢复与外部提交                               |
+| [Disaggregated State Management in Apache Flink 2.0](https://www.vldb.org/pvldb/vol18/p4846-mei.pdf)                              | PVLDB paper, 2025    | ForSt、远程状态与异步 state access 的演进                    |
 
-- [Apache Flink Documentation | Apache Flink](https://flink.apache.org/zh/)
-- [Apache Flink Explained: Stream Processing Framework Guide \| Ververica](https://www.ververica.com/what-is-apache-flink)
-- - [本地模式安装|Apache Flink](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/try-flink/local_installation/)
+> [!warning]
+> 论文解释设计动机和机制，官方 2.3 文档定义当前行为。旧论文中的 DataSet、早期 backend 或部署细节不应直接当作当前产品接口；connector 还需要在自己的发布仓库中再次核对版本。
+
+## Related Notes
+
+- [[BigData Map]]：BigData Wiki 的工程能力入口。
+- [[Flink Codebase Architecture]]：源码模块、调度器、runtime 与网络栈。
+- [[Flink State Management]]：状态与 checkpoint 的专题笔记。
+- [[Flink Table API and SQL]]：动态表、SQL planner 与执行。
+- [[Flink CDC]]：数据库变更捕获和数据同步。
+- [[Streaming Processing]]：流处理的通用概念。
+- [[What's Apache Paimon?|Apache Paimon]]：实时湖仓存储与 changelog。
+
+[^official-architecture]: Apache Flink, [What is Apache Flink? — Architecture](https://flink.apache.org/what-is-flink/flink-architecture/).
+
+[^execution-mode]: Apache Flink 2.3, [Execution Mode (Batch/Streaming)](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/dev/datastream/execution_mode/).
+
+[^batch-shuffle]: Apache Flink 2.3, [Batch Shuffle](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/ops/batch/batch_shuffle/).
+
+[^stateful-processing]: Apache Flink 2.3, [Stateful Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/stateful-stream-processing/).
+
+[^timely-processing]: Apache Flink 2.3, [Timely Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/time/).
+
+[^watermarks]: Apache Flink 2.3, [Generating Watermarks](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/dev/datastream/event-time/generating_watermarks/).
+
+[^runtime-architecture]: Apache Flink 2.3, [Flink Architecture](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/concepts/flink-architecture/).
+
+[^state-backends]: Apache Flink 2.3, [State Backends](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/ops/state/state_backends/).
+
+[^learn-overview]: Apache Flink 2.3, [Learn Flink: Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/learn-flink/overview/).
+
+[^fault-tolerance]: Apache Flink 2.3, [Fault Tolerance](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/learn-flink/fault_tolerance/).
+
+[^checkpoint-backpressure]: Apache Flink 2.3, [Checkpointing under backpressure](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/ops/state/checkpointing_under_backpressure/).
+
+[^abs-paper]: Paris Carbone et al., [Lightweight Asynchronous Snapshots for Distributed Dataflows](https://arxiv.org/abs/1506.08603), 2015.
+
+[^state-paper]: Paris Carbone et al., [State Management in Apache Flink: Consistent Stateful Distributed Stream Processing](https://www.vldb.org/pvldb/vol10/p1718-carbone.pdf), PVLDB 10(12), 2017.
+
+[^connector-guarantees]: Apache Flink 2.3, [Fault Tolerance Guarantees of Data Sources and Sinks](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/connectors/datastream/guarantees/).
+
+[^checkpoint-savepoint]: Apache Flink 2.3, [Checkpoints vs. Savepoints](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/ops/state/checkpoints_vs_savepoints/).
+
+[^table-api]: Apache Flink 2.3, [Table API Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/dev/table/overview/).
+
+[^datastream-v2]: Apache Flink 2.3, [DataStream API V2 Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/dev/datastream-v2/overview/).
+
+[^connectors]: Apache Flink 2.3, [DataStream Connectors](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/connectors/datastream/overview/) and [Connectors and Formats](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/dev/configuration/connector/).
+
+[^github]: Apache Software Foundation, [apache/flink](https://github.com/apache/flink). The repository lists core modules and the externalized connector repositories maintained under Apache.
+
+[^deployment]: Apache Flink 2.3, [Deployment Overview](https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/deployment/overview/).

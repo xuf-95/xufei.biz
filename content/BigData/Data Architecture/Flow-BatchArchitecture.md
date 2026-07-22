@@ -41,7 +41,7 @@ publish: true
 |**层**|**技术**|
 |---|---|
 |Batch|[[Apache Hive Overview]] / [[Apache Spark]]|
-|Speed|[[What is Apache Storm?]] / [[What is Apache Flink?]]|
+|Speed|[[What is Apache Storm?]] / [[ApacheFlink|Apache Flink]]|
 |Serving|[[Apache HBase OVerview]] / Elasticsearch|
 
 这种架构存在明显问题：

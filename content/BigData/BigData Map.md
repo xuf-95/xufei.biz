@@ -47,7 +47,7 @@ flowchart LR
 
 - Ingestion: [[Kafka]], Kafka Connect, [[CDC（Change Data Capture）]], [[Apache Flume]], Apache Nifi
 - Batch: [[Apache Spark]], [[MapReduce]], Apache Hive
-- Streaming: Apache Flink, [[Streaming Processing]], [[Flink CDC]]
+- Streaming: [[ApacheFlink|Apache Flink]], [[Streaming Processing]], [[Flink CDC]]
 - Storage: [[HDFS]], [[Data Lake]], Lakehouse, ClickHouse, [[What's StarRocks]], [[Apache Doris]]
 - Scheduling: [[Apache Airflow]], [[Apache DolphinScheduler]]
 - Reliability: [[Data Pipeline SLA]], [[Data Observability]], [[Data Lineage]], [[Data Quality]]
