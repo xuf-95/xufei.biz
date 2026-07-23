@@ -6,25 +6,21 @@ import { Root } from "hast"
 import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
-import { i18n } from "../../i18n"
 import folderScript from "../scripts/folderFilter.inline"
 import { Icon } from "../Icon"
 import { FOLDER_PAGE_LIMIT } from "./folderList"
 
 interface BrowseAllContentOptions {
-  showFolderCount: boolean
   sort?: SortFn
 }
 
-const defaultOptions: BrowseAllContentOptions = {
-  showFolderCount: true,
-}
+const defaultOptions: BrowseAllContentOptions = {}
 
 export default ((opts?: Partial<BrowseAllContentOptions>) => {
   const options: BrowseAllContentOptions = { ...defaultOptions, ...opts }
 
   const BrowseAllContent: QuartzComponent = (props: QuartzComponentProps) => {
-    const { tree, fileData, allFiles, cfg } = props
+    const { tree, fileData, allFiles } = props
 
     // Folders to exclude from the browse listing
     const excludedFolders = ["hobby", "tools", "programmer", "good"]
@@ -49,6 +45,19 @@ export default ((opts?: Partial<BrowseAllContentOptions>) => {
     })
     const subfolders = Array.from(subfolderSet).sort()
 
+    const nestedSubfolders = subfolders
+      .map((parent) => {
+        const children = new Set<string>()
+        allPages.forEach((page) => {
+          const parts = (page.slug ?? "").split("/")
+          if (parts[0] === parent && parts.length >= 3) {
+            children.add(parts[1])
+          }
+        })
+        return { parent, children: Array.from(children).sort() }
+      })
+      .filter(({ children }) => children.length > 0)
+
     // Check if there are root-level files (no subfolder)
     const hasRootFiles = allPages.some((page) => {
       const slug = page.slug ?? ""
@@ -68,21 +77,15 @@ export default ((opts?: Partial<BrowseAllContentOptions>) => {
       const slug = page.slug ?? ""
       const parts = slug.split("/")
       const sub = parts.length >= 2 ? parts[0] : "__root__"
+      const childFolder = parts.length >= 3 ? parts[1] : "__root__"
       const language = page.frontmatter?.language?.toString().toUpperCase() === "CN" ? "CN" : "EN"
-      return { page, sub, language }
+      return { page, sub, childFolder, language }
     })
 
     return (
       <div class="popover-hint">
         <article class={classes}>{content}</article>
         <div class="page-listing" data-page-listing>
-          {options.showFolderCount && (
-            <p class="page-listing-count">
-              {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
-                count: allPages.length,
-              })}
-            </p>
-          )}
           {subfolders.length > 0 && (
             <div class="folder-list-toolbar">
               <div class="folder-filter-bar" id="folder-filter-bar" aria-label="Folder filter">
@@ -103,11 +106,34 @@ export default ((opts?: Partial<BrowseAllContentOptions>) => {
             </div>
           )}
 
+          {nestedSubfolders.length > 0 && (
+            <div class="folder-subfilter-container">
+              {nestedSubfolders.map(({ parent, children }) => (
+                <div
+                  class="folder-subfilter-panel"
+                  data-parent-filter={parent}
+                  aria-label={`${parent.replace(/-/g, " ")} subfolder filter`}
+                  hidden
+                >
+                  <button class="folder-subfilter-pill active" data-subfilter="__all__">
+                    All
+                  </button>
+                  {children.map((child) => (
+                    <button class="folder-subfilter-pill" data-subfilter={child}>
+                      {child.replace(/-/g, " ")}
+                    </button>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+
           <div id="folder-page-list">
-            {annotatedPages.map(({ page, sub, language }, index) => (
+            {annotatedPages.map(({ page, sub, childFolder, language }, index) => (
               <div
                 class="folder-item-wrap"
                 data-subfolder={sub}
+                data-child-folder={childFolder}
                 data-language={language}
                 data-hidden={index >= FOLDER_PAGE_LIMIT ? "true" : "false"}
               >
@@ -201,6 +227,69 @@ const folderFilterCss = `
   height: 2px;
   border-radius: 999px;
   background: var(--dark);
+}
+
+.folder-subfilter-container:not(:has(.folder-subfilter-panel:not([hidden]))) {
+  display: none;
+}
+
+.folder-subfilter-panel {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: -0.55rem 0 1.2rem;
+  overflow-x: auto;
+  padding: 0.2rem 0 0.65rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--darkgray) 12%, transparent);
+  scrollbar-width: none;
+  animation: folder-subfilter-reveal 0.16s ease-out;
+}
+
+.folder-subfilter-panel[hidden],
+.folder-subfilter-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.folder-subfilter-pill {
+  flex: 0 0 auto;
+  padding: 0.32rem 0.58rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gray);
+  cursor: pointer;
+  font-family: var(--bodyFont);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.15;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.folder-subfilter-pill:hover {
+  border-color: color-mix(in srgb, var(--darkgray) 18%, transparent);
+  color: var(--dark);
+}
+
+.folder-subfilter-pill.active {
+  border-color: color-mix(in srgb, var(--darkgray) 22%, transparent);
+  background: color-mix(in srgb, var(--lightgray) 38%, transparent);
+  color: var(--dark);
+}
+
+@keyframes folder-subfilter-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .folder-item-wrap[data-hidden="true"] {

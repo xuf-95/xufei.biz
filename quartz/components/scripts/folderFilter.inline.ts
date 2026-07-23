@@ -2,6 +2,9 @@ import { getFolderItemVisibility, hasFolderListOverflow } from "../pages/folderL
 
 const folderFilterInit = () => {
   const folderBar = document.getElementById("folder-filter-bar")
+  const subfilterPanels = Array.from(
+    document.querySelectorAll<HTMLElement>(".folder-subfilter-panel"),
+  )
   const languageBar = document.getElementById("language-filter-bar")
   const listEl = document.getElementById("folder-page-list")
   if (!listEl) return
@@ -20,20 +23,35 @@ const folderFilterInit = () => {
     : []
   const moreButton = listEl.parentElement?.querySelector<HTMLButtonElement>(".folder-list-more")
   let activeFolderFilter = "__all__"
+  let activeSubfolderFilter = "__all__"
   let activeLanguageFilter = "__all__"
   let expanded = false
+
+  const updateSubfolderPanel = () => {
+    activeSubfolderFilter = "__all__"
+    subfilterPanels.forEach((panel) => {
+      const isActive = panel.dataset.parentFilter === activeFolderFilter
+      panel.hidden = !isActive
+      panel.querySelectorAll<HTMLButtonElement>(".folder-subfilter-pill").forEach((pill) => {
+        pill.classList.toggle("active", pill.dataset.subfilter === "__all__")
+      })
+    })
+  }
 
   const applyFilters = () => {
     const matches = items.map((item) => {
       const sub = item.dataset.subfolder ?? "__root__"
+      const childFolder = item.dataset.childFolder ?? "__root__"
       const language = item.dataset.language ?? "EN"
       const matchesFolder =
         activeFolderFilter === "__all__" ||
         (activeFolderFilter === "__root__" && sub === "__root__") ||
         sub === activeFolderFilter
+      const matchesSubfolder =
+        activeSubfolderFilter === "__all__" || childFolder === activeSubfolderFilter
       const matchesLanguage =
         activeLanguageFilter === "__all__" || language === activeLanguageFilter
-      return matchesFolder && matchesLanguage
+      return matchesFolder && matchesSubfolder && matchesLanguage
     })
     const visibility = getFolderItemVisibility(matches, expanded)
 
@@ -53,7 +71,22 @@ const folderFilterInit = () => {
       pill.classList.add("active")
       activeFolderFilter = pill.dataset.filter ?? "__all__"
       expanded = false
+      updateSubfolderPanel()
       applyFilters()
+    })
+  })
+
+  subfilterPanels.forEach((panel) => {
+    panel.querySelectorAll<HTMLButtonElement>(".folder-subfilter-pill").forEach((pill) => {
+      pill.addEventListener("click", () => {
+        panel
+          .querySelectorAll<HTMLButtonElement>(".folder-subfilter-pill")
+          .forEach((candidate) => candidate.classList.remove("active"))
+        pill.classList.add("active")
+        activeSubfolderFilter = pill.dataset.subfilter ?? "__all__"
+        expanded = false
+        applyFilters()
+      })
     })
   })
 

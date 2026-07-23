@@ -98,11 +98,13 @@ Keyed State 的最小重分配单位是 key group。这样 Flink 在改变并行
 
 Watermark 不是“已经收齐所有数据”的证明。它表达的是：系统认为时间戳早于某个位置的事件不应再正常到达；更晚到达的记录需要按允许迟到、更新结果、侧输出或丢弃策略处理。并行输入通常由最慢的活跃输入约束下游 watermark，因此空闲分区和分区间进度差需要显式治理。[^timely-processing][^watermarks]
 
+![flink window types](flink-window-types.svg)
+
 窗口把无界流切成可计算的有限范围：tumbling window 不重叠，sliding window 可以重叠，session window 由不活跃间隔分隔。Window 会持有状态，因此窗口数量、允许迟到时间和清理策略都会影响状态规模。
 
 ## 运行时与数据架构
 
-![Apache Flink runtime architecture](images/flink-runtime-architecture.svg)
+![Apache Flink runtime architecture](flink-runtime-architecture.svg)
 
 Flink 集群由一个 JobManager 进程和一个或多个 TaskManager 进程组成。Client 负责准备并提交数据流，但不属于运行时本身。[^runtime-architecture]
 

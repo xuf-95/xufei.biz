@@ -13,7 +13,7 @@ publish: true
 ---
 # Apache Hadoop Overview
 
-> [!note] 
+> [!box] 
 > The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. It is designed to scale up from single servers to thousands of machines, each offering local computation and storage. Rather than rely on hardware to deliver high-availability, the library itself is designed to detect and handle failures at the application layer, so delivering a highly-available service on top of a cluster of computers, each of which may be prone to failures.
 
 Apache Hadoop is an open-source framework for **distributed storage and processing of large datasets** across clusters of commodity hardware. Originating from Google's GFS and MapReduce papers (2003–2004), Hadoop became the foundation of the modern big data ecosystem.

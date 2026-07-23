@@ -27,11 +27,11 @@ Flink 本身是批流统一的处理框架，所以Table API 和SQL，就是批�
 
 ## Architecture
 
-![[flink-sql-arch.png]]
+![[content/BigData/images/flink/flink-sql-arch.png]]
 
 ### Flink SQL — Full Parse Pipeline with Concrete SQL
 
-![[flink-sql-arch-process.png]]
+![[content/BigData/images/flink/flink-sql-arch-process.png]]
 
 ## 基本代码程序结构
 

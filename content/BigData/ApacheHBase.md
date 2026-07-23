@@ -13,7 +13,7 @@ HBase is modeled after Google's Bigtable paper and is part of the Apache Hadoop 
 
 ## Architecture
 
-![HBase cluster architecture](hbase-cluster-architecture.svg)
+![HBase cluster architecture](content/BigData/images/hbase/hbase-cluster-architecture.svg)
 
 An HBase cluster consists of three core components:
 
@@ -31,7 +31,7 @@ The client first contacts ZooKeeper to discover where `hbase:meta` lives, reads 
 
 ## Data Model
 
-![HBase data model](hbase-data-model.svg)
+![HBase data model](content/BigData/images/hbase/hbase-data-model.svg)
 
 HBase's data model is a **sparse, distributed, persistent, multi-dimensional sorted map**. The map is indexed by:
 
@@ -53,7 +53,7 @@ The dashed empty cells in the diagram illustrate **sparsity** — rows do not ne
 
 ## Read and Write Path
 
-![HBase read and write path](hbase-read-write-path.svg)
+![HBase read and write path](content/BigData/images/hbase/hbase-read-write-path.svg)
 
 ### Write Path
 

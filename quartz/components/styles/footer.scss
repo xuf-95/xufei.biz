@@ -248,25 +248,39 @@ footer {
 }
 
 @media all and not ($mobile) {
-  /* The space between Graph and the site footer also includes 2.125rem from
-     page-footer padding and grid spacing. Halve the complete transition area,
-     then paint only that area so the footer itself keeps its own background. */
+  /* Keep the compact transition to the site footer in dark mode. The page
+     footer already paints equal padding above Graph and below Backlinks, so
+     extending that background here creates an extra band on folder pages and
+     makes the article-page spacing look uneven. */
   :root[saved-theme="dark"] footer.site-footer {
     --footer-transition-gap: calc(clamp(2.25rem, 4vw, 3.5rem) + 1.0625rem);
 
     margin-top: calc(var(--footer-transition-gap) - 2.125rem);
   }
+}
 
-  :root[saved-theme="dark"] footer.site-footer::after {
-    content: "";
-    position: absolute;
-    z-index: 4;
-    right: 50%;
-    bottom: 100%;
-    width: 100vw;
-    height: var(--footer-transition-gap);
-    pointer-events: none;
-    background: #1f1e1d;
-    transform: translateX(50%);
+/* Graph pages use a full-bleed page-footer band. Pull the site footer across
+   the intervening grid rows so its divider sits directly on that band. */
+@media all and ($desktop) {
+  :root[saved-theme="dark"]
+    #quartz-body:not(:has(.center .page-listing)):has(.center .page-footer > .graph)
+    footer.site-footer {
+    margin-top: -10px;
+  }
+}
+
+@media all and ($tablet) {
+  :root[saved-theme="dark"]
+    #quartz-body:not(:has(.center .page-listing)):has(.center .page-footer > .graph)
+    footer.site-footer {
+    margin-top: -15px;
+  }
+}
+
+@media all and ($mobile) {
+  :root[saved-theme="dark"]
+    #quartz-body:not(:has(.center .page-listing)):has(.center .page-footer > .graph)
+    footer.site-footer {
+    margin-top: -15px;
   }
 }

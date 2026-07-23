@@ -3,6 +3,7 @@ const tocInit = () => {
   if (!sidebar) return
   const sidebarEl: HTMLElement = sidebar
   const wrapper = sidebarEl.closest<HTMLElement>(".toc-wrapper")
+  const pageFooter = document.querySelector<HTMLElement>("#quartz-body .center .page-footer")
   const siteFooter = document.querySelector<HTMLElement>("footer.site-footer")
 
   const expand = () => wrapper?.classList.add("is-expanded")
@@ -47,12 +48,16 @@ const tocInit = () => {
   }
 
   function updateFooterOverlap() {
-    if (!wrapper || !siteFooter) return
+    if (!wrapper) return
 
     const tocRect = wrapper.getBoundingClientRect()
-    const footerRect = siteFooter.getBoundingClientRect()
-    const isOverFooter = footerRect.top < tocRect.bottom && footerRect.bottom > tocRect.top
-    wrapper.classList.toggle("is-over-footer", isOverFooter)
+    const overlapsBottomContent = [pageFooter, siteFooter].some((element) => {
+      if (!element || element.offsetHeight === 0) return false
+
+      const elementRect = element.getBoundingClientRect()
+      return elementRect.top < tocRect.bottom && elementRect.bottom > tocRect.top
+    })
+    wrapper.classList.toggle("is-over-footer", overlapsBottomContent)
   }
 
   function clearStepTimers() {

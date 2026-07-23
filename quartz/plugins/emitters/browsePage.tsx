@@ -17,7 +17,7 @@ export const BrowsePage: QuartzEmitterPlugin<Options> = (userOpts) => {
     ...sharedPageComponents,
     ...defaultListPageLayout,
     ...userOpts,
-    pageBody: BrowseAllContent({ showFolderCount: true }),
+    pageBody: BrowseAllContent(),
   }
   const { head: Head, header, beforeBody, pageBody, afterBody, left, right, footer: Footer } = opts
   const Header = HeaderConstructor()

@@ -1,6 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
 import style from "../styles/bookmarks.scss"
 import script from "../scripts/bookmarks.inline"
+import { formatDate as formatSiteDate } from "../Date"
 import path from "path"
 import fs from "fs"
 
@@ -29,22 +30,7 @@ const typeIcons: Record<string, string> = {
 const externalLinkIcon = `<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`
 
 function formatDate(dateStr: string): string {
-  const d = new Date(dateStr + "T00:00:00")
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ]
-  return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`
+  return formatSiteDate(new Date(dateStr + "T00:00:00"))
 }
 
 function getDateMonth(dateStr: string): string {

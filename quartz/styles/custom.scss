@@ -515,6 +515,18 @@ article .footnotes.sidenotes-source {
   align-items: start;
 }
 
+/* Paint the page-footer padding as part of the Graph/Backlinks band. */
+:root[saved-theme="dark"]
+  #quartz-body:not(:has(.center .page-listing))
+  .center
+  .page-footer:has(> .graph) {
+  position: relative;
+  z-index: 4;
+  background: #1f1e1d;
+  box-shadow: 0 0 0 100vmax #1f1e1d;
+  clip-path: inset(0 -100vmax);
+}
+
 /* hide the empty footer box when afterBody has no components */
 #quartz-body .center .page-footer:empty {
   display: none;

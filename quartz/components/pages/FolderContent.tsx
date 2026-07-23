@@ -3,7 +3,6 @@ import style from "../styles/listPage.scss"
 import { PageList, SortFn } from "../PageList"
 import { Root } from "hast"
 import { htmlToJsx } from "../../util/jsx"
-import { i18n } from "../../i18n"
 import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
@@ -12,7 +11,6 @@ import { Icon } from "../Icon"
 import { FOLDER_PAGE_LIMIT } from "./folderList"
 
 interface FolderContentOptions {
-  showFolderCount: boolean
   showSubfolders: boolean
   sort?: SortFn
 }
@@ -20,7 +18,6 @@ interface FolderContentOptions {
 type ContentLanguage = "EN" | "CN"
 
 const defaultOptions: FolderContentOptions = {
-  showFolderCount: true,
   showSubfolders: true,
 }
 
@@ -32,7 +29,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
   const options: FolderContentOptions = { ...defaultOptions, ...opts }
 
   const FolderContent: QuartzComponent = (props: QuartzComponentProps) => {
-    const { tree, fileData, allFiles, cfg } = props
+    const { tree, fileData, allFiles } = props
 
     // Strip "/index" suffix — Quartz sets slug as "bigdata/index" for folder pages
     const rawSlug = fileData.slug!
@@ -99,20 +96,13 @@ export default ((opts?: Partial<FolderContentOptions>) => {
       <div class="popover-hint">
         <article class={classes}>{content}</article>
         <div class="page-listing" data-page-listing>
-          {options.showFolderCount && (
-            <p class="page-listing-count">
-              {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
-                count: pagesInFolder.length,
-              })}
-            </p>
-          )}
           {subfolders.length > 0 && (
             <div class="folder-list-toolbar">
               <div class="folder-filter-bar" id="folder-filter-bar" aria-label="Folder filter">
                 <button class="folder-filter-pill active" data-filter="__all__">
                   All
                 </button>
-                {hasRootFiles && (
+                {hasRootFiles && currentSlug !== "BigData" && (
                   <button class="folder-filter-pill" data-filter="__root__">
                     {currentSlug.split("/").pop() || "root"}
                   </button>

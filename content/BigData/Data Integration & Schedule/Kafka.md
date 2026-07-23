@@ -39,7 +39,7 @@ Kafka拥有三个非常重要的角色特性
 
 A Kafka broker is a server process that handles client requests, stores and replicates messages, and participates in cluster coordination. Each broker runs a set of core components, each implemented as a class or subsystem in the codebase.
 
-![[kafka-broker-architecture.png]]__***High-Level Broker Component Diagram***__
+![[public/BigData/images/kafka-broker-architecture.png]]__***High-Level Broker Component Diagram***__
 
 ## Case
 
@@ -274,7 +274,7 @@ esac
 ![[content/Open BigData/Data Integration & Schedule/images/EMAK.png]]_***EMAK***_
 
 
-![[kafka-logo-readme-dark.svg]]
+![[public/BigData/images/kafka-logo-readme-dark.svg]]
 
 
 ### Question

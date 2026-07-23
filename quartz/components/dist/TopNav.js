@@ -18,7 +18,7 @@ function absSitePath(cfg, path) {
 }
 var navItems = [
     {
-        label: "Blog",
+        label: "Wiki",
         path: "/browse/"
     },
     // { label: "AI", path: "/AI/" },

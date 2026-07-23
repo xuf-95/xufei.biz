@@ -5,6 +5,14 @@
     display: none;
   }
 
+  & > h4:empty {
+    display: none;
+  }
+
+  & > h4:empty + .graph-outer {
+    margin-top: 0;
+  }
+
   & > h3 {
     font-size: 2rem;
     margin: 0;
