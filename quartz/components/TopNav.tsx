@@ -42,7 +42,7 @@ const navItems: NavItem[] = [
     // ],
   },
   // { label: "AI", path: "/AI/" },
-  { label: "BigData", path: "/BigData/" },
+  // { label: "BigData", path: "/BigData/" },
   // { label: "Posts", path: "/Posts/" },
   { label: "Bookmarks", path: "/bookmarks/" },
   // { label: "Resources", path: "/resources/" },
