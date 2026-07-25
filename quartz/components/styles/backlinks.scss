@@ -79,9 +79,9 @@
 :root[saved-theme="dark"] #quartz-body .center .page-footer > .backlinks {
   position: relative;
   z-index: 4;
-  background: #1f1e1d;
-  box-shadow: 0 0 0 100vmax #1f1e1d;
-  clip-path: inset(0 -100vmax);
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
   padding-block: 1.25rem 1.5rem;
 
   & > h3 {

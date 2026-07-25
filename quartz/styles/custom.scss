@@ -31,6 +31,7 @@
     var(--site-shell-left) + var(--site-shell-pad) - var(--toc-heading-pad-left)
   );
   --toc-inline-offset: max(0px, calc(var(--toc-rail-left) - var(--page-layout-left) - 32px));
+  --footer-band-inset: calc(var(--site-shell-left) + var(--site-shell-pad));
   --external-link-icon-width: 1.16em;
   --external-link-icon-height: 1.16em;
 }
@@ -452,10 +453,11 @@ article .footnotes.sidenotes-source {
 }
 
 .page #quartz-body .sidebar.left {
-  height: 100vh;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
+  align-self: stretch;
+  height: auto;
+  min-height: 0;
+  position: relative;
+  top: auto;
   overflow: visible;
 }
 
@@ -465,13 +467,14 @@ article .footnotes.sidenotes-source {
     260px,
     max(var(--toc-collapsed-width), calc(var(--content-column-left) - var(--toc-rail-left) - 1rem))
   );
-  position: relative;
+  position: sticky;
   left: auto;
-  top: auto;
+  top: var(--toc-sticky-top, 68px);
   align-self: flex-start;
   width: var(--toc-collapsed-width);
   max-width: 100%;
-  margin: auto 0 auto var(--toc-inline-offset);
+  max-height: calc(100vh - var(--toc-sticky-top, 68px) - 1rem);
+  margin: var(--toc-flow-top, 0px) 0 0 var(--toc-inline-offset);
 }
 
 .page #quartz-body .sidebar.left .toc:hover,
@@ -488,6 +491,20 @@ article .footnotes.sidenotes-source {
   border-radius: 0 !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+@media all and ($mobile) {
+  .page #quartz-body .sidebar.left {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page #quartz-body .sidebar.left .toc {
+    display: none !important;
+  }
 }
 
 // 让 backlinks 和 TOC 左边对齐（TOC 的起始位置）
@@ -520,11 +537,26 @@ article .footnotes.sidenotes-source {
   #quartz-body:not(:has(.center .page-listing))
   .center
   .page-footer:has(> .graph) {
+  isolation: isolate;
   position: relative;
   z-index: 4;
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
+}
+
+:root[saved-theme="dark"]
+  #quartz-body:not(:has(.center .page-listing))
+  .center
+  .page-footer:has(> .graph)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  left: calc(var(--footer-band-inset) - var(--content-column-left));
+  width: calc(100vw - var(--footer-band-inset) - var(--footer-band-inset));
   background: #1f1e1d;
-  box-shadow: 0 0 0 100vmax #1f1e1d;
-  clip-path: inset(0 -100vmax);
+  pointer-events: none;
 }
 
 /* hide the empty footer box when afterBody has no components */

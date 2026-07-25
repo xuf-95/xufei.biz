@@ -278,7 +278,8 @@
 }
 
 @media all and ($mobile) {
-  .toc-wrapper {
+  .toc-wrapper,
+  .toc-wrapper.desktop-only {
     display: none;
   }
 }

@@ -3,6 +3,7 @@ const tocInit = () => {
   if (!sidebar) return
   const sidebarEl: HTMLElement = sidebar
   const wrapper = sidebarEl.closest<HTMLElement>(".toc-wrapper")
+  const leftSidebar = wrapper?.closest<HTMLElement>(".sidebar.left")
   const pageFooter = document.querySelector<HTMLElement>("#quartz-body .center .page-footer")
   const siteFooter = document.querySelector<HTMLElement>("footer.site-footer")
 
@@ -35,6 +36,7 @@ const tocInit = () => {
 
   let currentActive = -1
   let rafId: number | null = null
+  let stickySettleTimer: ReturnType<typeof setTimeout> | null = null
   let stepTimers: ReturnType<typeof setTimeout>[] = []
 
   function getHeaderClearance() {
@@ -45,6 +47,55 @@ const tocInit = () => {
     const visibleBottom = Math.max(0, rect.bottom)
     const headerBottom = Math.max(visibleBottom, header.offsetHeight)
     return Math.ceil(headerBottom + 40)
+  }
+
+  function updateTocStickyTop() {
+    if (!wrapper) return
+
+    const header = document.querySelector<HTMLElement>("header")
+    const headerBottom = header ? Math.max(0, header.getBoundingClientRect().bottom) : 56
+    wrapper.style.setProperty("--toc-sticky-top", `${Math.ceil(headerBottom + 12)}px`)
+  }
+
+  function settleTocStickyTop() {
+    if (stickySettleTimer) clearTimeout(stickySettleTimer)
+    stickySettleTimer = setTimeout(() => {
+      updateTocStickyTop()
+      stickySettleTimer = null
+    }, 280)
+  }
+
+  function updateTocFlowTop() {
+    if (!wrapper || !leftSidebar) return
+
+    const firstSection = sections.find((el) => el && document.body.contains(el))
+    const firstDash = headingRows[0]?.querySelector<HTMLElement>(".toc-dash") ?? headingRows[0]
+    if (!firstSection || !firstDash) return
+
+    const sidebarRect = leftSidebar.getBoundingClientRect()
+    const wrapperRect = wrapper.getBoundingClientRect()
+    const dashRect = firstDash.getBoundingClientRect()
+    const sectionRect = firstSection.getBoundingClientRect()
+    const sectionStyle = window.getComputedStyle(firstSection)
+    const sectionLineHeight = Number.parseFloat(sectionStyle.lineHeight)
+    const sectionTextOffset = Number.isFinite(sectionLineHeight)
+      ? Math.min(sectionRect.height, sectionLineHeight) / 2
+      : sectionRect.height / 2
+    const dashCenterOffset = dashRect.top + dashRect.height / 2 - wrapperRect.top
+    const sectionTextCenter = sectionRect.top + window.scrollY + sectionTextOffset
+    const sidebarTop = sidebarRect.top + window.scrollY
+    const flowTop = Math.max(0, Math.round(sectionTextCenter - sidebarTop - dashCenterOffset))
+
+    wrapper.style.setProperty("--toc-flow-top", `${flowTop}px`)
+  }
+
+  function getDocumentTop(el: HTMLElement) {
+    return el.getBoundingClientRect().top + window.scrollY
+  }
+
+  function updateTocLayout() {
+    updateTocStickyTop()
+    updateTocFlowTop()
   }
 
   function updateFooterOverlap() {
@@ -132,9 +183,11 @@ const tocInit = () => {
       const offset = getHeaderClearance() + 2
       let best = 0
       sections.forEach((el, i) => {
-        if (el && el.offsetTop > 0 && el.offsetTop <= scrollTop + offset) best = i
+        if (el && document.body.contains(el) && getDocumentTop(el) <= scrollTop + offset) best = i
       })
       activate(best)
+      updateTocStickyTop()
+      settleTocStickyTop()
       updateFooterOverlap()
     })
   }
@@ -145,7 +198,7 @@ const tocInit = () => {
       event.preventDefault()
       event.stopPropagation()
       const el = sections[i]
-      if (el && el.offsetTop > 0) {
+      if (el && document.body.contains(el)) {
         const top = el.getBoundingClientRect().top + window.scrollY - getHeaderClearance()
         window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
         history.replaceState(null, "", `#${row.dataset.target}`)
@@ -169,16 +222,21 @@ const tocInit = () => {
   }
 
   applyActive(0)
+  updateTocLayout()
   updateFooterOverlap()
   onScroll()
+  window.requestAnimationFrame(updateTocLayout)
+  window.setTimeout(updateTocLayout, 250)
+  document.fonts?.ready.then(updateTocLayout)
   window.addEventListener("scroll", onScroll, { passive: true })
-  window.addEventListener("resize", updateFooterOverlap, { passive: true })
+  window.addEventListener("resize", updateTocLayout, { passive: true })
   window.addCleanup(() => {
     window.removeEventListener("scroll", onScroll)
-    window.removeEventListener("resize", updateFooterOverlap)
+    window.removeEventListener("resize", updateTocLayout)
     wrapper?.removeEventListener("mouseenter", expand)
     wrapper?.removeEventListener("mouseleave", collapse)
     if (rafId) cancelAnimationFrame(rafId)
+    if (stickySettleTimer) clearTimeout(stickySettleTimer)
     clearStepTimers()
   })
 }
