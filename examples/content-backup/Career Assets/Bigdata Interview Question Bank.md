@@ -53,7 +53,7 @@ flowchart LR
 
 ### Data Engineering
 
-- 如何定义核心链路的 [[Data Pipeline SLA]]？
+- 如何定义核心链路的 [[DataPipelineSLA]]？
 - 如何用 [[Data Observability]] 降低数据事故恢复时间？
 - Kafka、Flink、OLAP 端到端延迟如何排查？
 

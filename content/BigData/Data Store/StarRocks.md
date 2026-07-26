@@ -1,5 +1,5 @@
 ---
-title: What's StarRocks
+title: StarRocks
 aliases:
   - SR
 tags:

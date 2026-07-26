@@ -121,5 +121,5 @@ SORT file.folder ASC, file.name ASC
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
+- part-of:: [[0-BigdataWikiOS]]
 - governed-by:: [[Obsidian Naming Governance]]

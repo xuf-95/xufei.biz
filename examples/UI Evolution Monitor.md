@@ -87,7 +87,7 @@ npm run ui:audit
 
 ### Phase 4: Design Review Loop
 
-- 每次新增样式后更新 [[Quartz Style Guide]] 和 Quartz Diagram Style Guide。
+- 每次新增样式后更新 [[QuartzStyleGuide]] 和 Quartz Diagram Style Guide。
 - 每次视觉问题修复后在本页记录 Changelog。
 - 对高频模式沉淀为 `quartz/styles/custom/*.scss`。
 
@@ -101,6 +101,6 @@ npm run ui:audit
 
 ## Links
 
-- related:: [[Quartz Style Guide]]
+- related:: [[QuartzStyleGuide]]
 - related:: Quartz Diagram Style Guide
-- supports:: [[Bigdata Wiki OS]]
+- supports:: [[0-BigdataWikiOS]]

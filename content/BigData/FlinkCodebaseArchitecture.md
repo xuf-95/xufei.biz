@@ -265,7 +265,7 @@ Flink 通过 `HighAvailabilityServices` 实现高可用：
 所有内置函数集中定义在 `BuiltInFunctionDefinitions` 中，涵盖标量函数（`TYPE_OF`、`IF_NULL`、`ARRAY_APPEND`、`MAP_KEYS`）和聚合函数（`SUM`、`AVG`、`COLLECT`）。
 
 > [!info]
-> Flink SQL 同时支持流模式和批模式执行。通过 Catalog 管理元数据（支持 Hive Metastore 集成），Materialized Table 提供物化视图能力。关于 Flink SQL 的使用细节，参见 [[Flink Table API and SQL]]。
+> Flink SQL 同时支持流模式和批模式执行。通过 Catalog 管理元数据（支持 Hive Metastore 集成），Materialized Table 提供物化视图能力。关于 Flink SQL 的使用细节，参见 [[FlinkTableAPIAndSQL]]。
 
 ## 连接器框架
 
@@ -281,7 +281,7 @@ Flink 通过可插拔的连接器架构对接外部系统。
 Sink v2 框架通过 `SinkWriter` → `Committer` 的两阶段协议实现 Exactly-Once 语义：Writer 预写数据并生成 Committable，Checkpoint 成功后 Committer 原子提交。
 
 > [!tip]
-> 关于 Flink CDC 连接器的使用，参见 [[Flink CDC]]。
+> 关于 Flink CDC 连接器的使用，参见 [[FlinkCDC]]。
 
 ## 部署与运维
 
@@ -324,7 +324,7 @@ Flink 提供完善的 Metrics 系统，通过 `RuntimeContext` 的 `MetricGroup`
 
 - related:: [[ApacheFlink|Apache Flink]]
 - related:: Flink State Management
-- related:: [[Flink Table API and SQL]]
-- related:: [[Flink CDC]]
+- related:: [[FlinkTableAPIAndSQL]]
+- related:: [[FlinkCDC]]
 - source:: [DeepWiki: apache/flink](https://deepwiki.com/apache/flink)
 - source:: [GitHub: apache/flink](https://github.com/apache/flink)

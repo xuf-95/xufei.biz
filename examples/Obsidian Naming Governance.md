@@ -14,7 +14,7 @@ publish: false
 
 ## Purpose
 
-这篇笔记用于约束 [[Bigdata Wiki OS]] 的命名系统，避免 tag 分散、同义词重复、孤立标签过多，以及 filename、title、aliases、双链各自承担的职责混乱。
+这篇笔记用于约束 [[0-BigdataWikiOS]] 的命名系统，避免 tag 分散、同义词重复、孤立标签过多，以及 filename、title、aliases、双链各自承担的职责混乱。
 
 核心原则：
 
@@ -160,5 +160,5 @@ Concept Catalog.md
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
+- part-of:: [[0-BigdataWikiOS]]
 - used-by:: [[Obsidian Tag Monitor]]

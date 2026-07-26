@@ -54,5 +54,5 @@ flowchart LR
 
 - part-of:: [[MOC-Data Architecture Map]]
 - supports:: [[Data Architecture Blueprint]]
-- used-in:: [[Bigdata Wiki OS]]
+- used-in:: [[0-BigdataWikiOS]]
 

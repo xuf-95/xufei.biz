@@ -34,7 +34,7 @@ flowchart LR
 - 数据架构：湖仓建设、实时数仓、数据中台、[[Data Architecture Blueprint]]。
 - 数据治理：元数据、标准、质量、安全、[[Data Governance Operating Model]]。
 - 数据建模：主题域、维度建模、指标体系、[[Semantic Layer]]。
-- 数据工程：采集同步、调度治理、[[Data Pipeline SLA]]、[[Data Observability]]。
+- 数据工程：采集同步、调度治理、[[DataPipelineSLA]]、[[Data Observability]]。
 - DATA+AI：[[Text2SQL]]、[[Data Agent Architecture]]、[[Agent Governance]]。
 
 ## Case Template

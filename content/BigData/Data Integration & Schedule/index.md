@@ -13,10 +13,10 @@ publish: false
 
 ### Tools
 
-- [[Apache Airflow]]
-- [[Apache Flume]]
-- [[Apache Pulsar]]
+- [[ApacheAirflow]]
+- [[ApacheFlume]]
+- [[ApachePulsar]]
 
 ### Concepts
 
-- [[Data Integration]]
+- [[DataIntegration]]

@@ -8,7 +8,7 @@ tags:
   - engineering
 description: 面向大数据全栈工程师的知识地图，连接数据采集、存储、计算、治理、服务、AI 增强与职业资产。
 date: 2026-06-11
-publish: true
+publish: false
 ---
 
 ## Scope
@@ -17,12 +17,12 @@ publish: true
 
 ## Core Concepts
 
-- [[Bigdata Wiki OS]]
+- [[0-BigdataWikiOS]]
 - [[Data Architecture]]
 - Data Integration
-- [[Data Pipeline SLA]]
+- [[DataPipelineSLA]]
 - [[Data Observability]]
-- [[Data Store]]
+- [[DataStoreHomepage]]
 - Data Model
 - Data Visual
 - [[Bigdata With AI]]
@@ -45,12 +45,12 @@ flowchart LR
 
 ## Technology Map
 
-- Ingestion: [[Kafka]], Kafka Connect, [[CDC（Change Data Capture）]], [[Apache Flume]], Apache Nifi
+- Ingestion: [[ApacheKafka]], Kafka Connect, [[CDC（Change Data Capture）]], [[ApacheFlume]], Apache Nifi
 - Batch: [[Apache Spark]], [[MapReduce]], Apache Hive
-- Streaming: [[ApacheFlink|Apache Flink]], [[Streaming Processing]], [[Flink CDC]]
-- Storage: [[HDFS]], [[Data Lake]], Lakehouse, ClickHouse, [[What's StarRocks]], [[Apache Doris]]
-- Scheduling: [[Apache Airflow]], [[Apache DolphinScheduler]]
-- Reliability: [[Data Pipeline SLA]], [[Data Observability]], [[Data Lineage]], [[Data Quality]]
+- Streaming: [[ApacheFlink|Apache Flink]], [[Streaming Processing]], [[FlinkCDC]]
+- Storage: [[HDFS]], [[Data Lake]], Lakehouse, ClickHouse, [[StarRocks]], [[ApacheDoris]]
+- Scheduling: [[ApacheAirflow]], [[ApacheDolphinScheduler]]
+- Reliability: [[DataPipelineSLA]], [[Data Observability]], [[Data Lineage]], [[Data Quality]]
 - Modeling: Dimensional Modeling, [[Indicator System]], [[Semantic Layer]]
 - AI Enablement: Data Agent Architecture, [[Text2SQL]], RAG, [[How Agentic Work]]
 
@@ -58,7 +58,7 @@ flowchart LR
 
 | 类型 | 笔记 | 用途 |
 | --- | --- | --- |
-| 工程实践卡 | [[Data Pipeline SLA]] | 定义链路时效、质量、恢复和通知承诺 |
+| 工程实践卡 | [[DataPipelineSLA]] | 定义链路时效、质量、恢复和通知承诺 |
 | 工程能力卡 | [[Data Observability]] | 监控新鲜度、质量、Schema、血缘和调度风险 |
 | 治理支撑卡 | [[Data Lineage]] | 支撑影响分析、质量追踪和问题定位 |
 | AI 能力卡 | [[Text2SQL]] | 把工程链路和语义层暴露给受控查询助手 |
@@ -89,7 +89,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
+- part-of:: [[0-BigdataWikiOS]]
 - related:: [[MOC-Data Architecture Map]]
 - related:: DATA Agent Map
 - supports:: MOC-职业资产地图

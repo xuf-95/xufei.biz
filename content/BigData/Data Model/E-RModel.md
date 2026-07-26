@@ -1,10 +1,11 @@
 ---
-title: "E-R Model"
+title: E-R Model
 tags:
   - model
   - concepts
 date: 2022-03-25
 draft: true
+publish:
 ---
 ## 概述
 

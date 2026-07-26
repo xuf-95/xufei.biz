@@ -51,7 +51,7 @@ flowchart LR
 
 ### Reliability
 
-- 是否定义 [[Data Pipeline SLA]]？
+- 是否定义 [[DataPipelineSLA]]？
 - 是否设计 [[Data Observability]]、告警分级和故障恢复？
 - 是否说明容量、成本、性能和扩展风险？
 

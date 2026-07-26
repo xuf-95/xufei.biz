@@ -10,7 +10,6 @@ tags:
   - mysql
   - oracle
 description:
-draft: false
 publishDate: 2025-09-26T15:38
 ---
 

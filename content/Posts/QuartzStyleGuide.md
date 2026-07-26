@@ -28,7 +28,7 @@ cardImage: /content/Posts/images/hand.png
 
 ## Style System Map
 
-当前样式入口在 [[Quartz MKD]] 和 `quartz/styles/custom.scss`，主要由 Quartz 官方基础样式和自定义模块组成。
+当前样式入口在 [[QuartzMKD]] 和 `quartz/styles/custom.scss`，主要由 Quartz 官方基础样式和自定义模块组成。
 
 | 样式模块 | 文件 | 用途 |
 | --- | --- | --- |
@@ -401,7 +401,7 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 | 2026-06-11 | 新增 UI 自动监视入口 | [[UI Evolution Monitor]] | 用 `npm run ui:audit` 检查关键页面和样式组件 |
 | 2026-06-11 | 记录已有样式模块清单 | `quartz/styles/custom.scss` | 明确当前可复用模块 |
 | 2026-06-03 | 新增图片布局测试样式 | `quartz/styles/images-layouts.scss` | 支持宽图、卡片、拼贴和浮动图片 |
-| 2026-05-26 | 维护 Quartz Markdown 样式实验页 | [[Quartz MKD]] | 记录 Callout、Gallery Card、Process Steps 等示例 |
+| 2026-05-26 | 维护 Quartz Markdown 样式实验页 | [[QuartzMKD]] | 记录 Callout、Gallery Card、Process Steps 等示例 |
 
 ## Maintenance Rules
 
@@ -417,8 +417,8 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 
 ## Links
 
-- related:: [[Quartz MKD]]
+- related:: [[QuartzMKD]]
 - related:: Quartz Diagram Style Guide
 - related:: [[UI Evolution Monitor]]
-- supports:: [[Bigdata Wiki OS]]
-- supports:: [[BigData Map]]
+- supports:: [[0-BigdataWikiOS]]
+- supports:: [[0-BigData Map]]

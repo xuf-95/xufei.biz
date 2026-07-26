@@ -53,8 +53,8 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[BigData Map]]
+- part-of:: [[0-BigData Map]]
 - depends-on:: [[Data Lineage]]
 - supports:: [[Data Quality]]
-- related:: [[Apache DolphinScheduler]]
+- related:: [[ApacheDolphinScheduler]]
 

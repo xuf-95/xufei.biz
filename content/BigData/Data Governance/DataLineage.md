@@ -7,7 +7,7 @@ tags:
   - metadata
 description: 数据血缘描述数据从源系统到模型、指标、报表和应用的加工链路，是影响分析和可信解释的基础。
 date: 2026-06-14
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据架构
 dama_area:

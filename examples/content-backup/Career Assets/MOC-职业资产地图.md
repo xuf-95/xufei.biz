@@ -16,7 +16,7 @@ status: seed
 
 ## Scope
 
-这张地图用于把 [[Bigdata Wiki OS]] 中的能力卡转化为职业资产：面试回答、项目案例、架构评审、演讲教程和个人作品集。
+这张地图用于把 [[0-BigdataWikiOS]] 中的能力卡转化为职业资产：面试回答、项目案例、架构评审、演讲教程和个人作品集。
 
 ## Core Assets
 
@@ -32,7 +32,7 @@ status: seed
 | 数据架构 | [[Data Architecture Blueprint]]、[[Data Architecture Decision Record]]  | 架构蓝图、ADR、迁移路线 | 架构演进故事 |
 | 数据治理 | [[Data Governance Operating Model]]、[[Data Lineage]]、[[Data Security]] | 治理机制、质量规则、责任矩阵 | 治理价值闭环 |
 | 建模语义 | [[Data Domain]]、[[Metrics Governance]]、[[Semantic Layer]]              | 指标体系、语义层方案 | 指标一致性案例 |
-| 工程可靠性 | [[Data Pipeline SLA]]、[[Data Observability]]                           | SLA、监控、故障复盘 | 数据可靠性体系 |
+| 工程可靠性 | [[DataPipelineSLA]]、[[Data Observability]]                           | SLA、监控、故障复盘 | 数据可靠性体系 |
 | DATA+AI | [[Text2SQL]]、[[Agent Governance]]、Data Agent Architecture              | Agent 方案、工具边界、上线检查 | DATA+AI 转型路线 |
 
 ## Maintenance Rules
@@ -43,7 +43,7 @@ status: seed
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
-- supports:: [[BigData Map]]
+- part-of:: [[0-BigdataWikiOS]]
+- supports:: [[0-BigData Map]]
 - supports:: [[MOC-Data Architecture Map]]
 

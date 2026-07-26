@@ -93,7 +93,7 @@ flowchart TB
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
+- part-of:: [[0-BigdataWikiOS]]
 - related:: [[MOC-DCMM-DAMA Map]]
 - related:: DATA Agent Map
 - supports:: MOC-职业资产地图

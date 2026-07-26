@@ -25,10 +25,10 @@ draft: true
 - [[content/bigdata/ClickHouse.md]] - ClickHouse架构图
 
 ### 数据集成与调度
-- [[Data Integration]] - 数据集成流程图
+- [[DataIntegration]] - 数据集成流程图
 - [[content/bigData/Apache Pulsar.md]] - Pulsar架构图
-- [[Apache Flume]] - Flume数据流图
-- [[Apache Airflow]] - Airflow DAG图
+- [[ApacheFlume]] - Flume数据流图
+- [[ApacheAirflow]] - Airflow DAG图
 
 ### Apache Hadoop生态
 - [[content/Apache Hadoop/index.md]] - Hadoop生态架构图
@@ -53,7 +53,7 @@ draft: true
 - [[content/bigdata/concepts/Vertical Scaling.md]] - 垂直扩展示意图
 
 ### 其他
-- [[content/posts/Quartz MKD.md]] - Quartz配置和架构图
+- [[QuartzMKD]] - Quartz配置和架构图
 
 ## 🖼️ 图片嵌入页面
 
@@ -82,7 +82,7 @@ draft: true
 - [[content/Data Store/Concepts/InnoDB.md]] - InnoDB存储引擎图
 - [[content/Data Store/Doirs/Apache Doris.md]] - Doris架构图
 - [[content/Data Store/StarRocks/StarRocks.md]] - StarRocks架构图
-- [[Open Sources DataSets]] - 开源数据集分类图
+- [[OpenSourcesDataSets]] - 开源数据集分类图
 - [[Database Design]] - 数据库设计示意图
 
 ### 数据可视化

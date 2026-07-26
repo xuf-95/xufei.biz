@@ -1,15 +1,14 @@
 ---
-title: "Apache Paimon"
+title: Apache Paimon
 aliases:
-  - paimon
+  - Apache Paimon
+  - Paimon
 tags:
   - streaming
   - data-lake
 date: 2025-01-21
 draft: true
 publish: true
-
-
 ---
 ## Overview
 
@@ -23,7 +22,7 @@ Apache Paimon (incubating) 是一项流式数据湖存储技术，可以为用�
 作为一种新型的可更新数据湖，Paimon具有以下特点
 - 大吞吐量的更新数据摄取，同时提供良好的查询性能
 - 具有主键过滤器的高性能查询，响应时间最快可达到百毫秒级别
-- 流式读取在 Lake Storage 上可用，Lake Storage 还可以与 [[Kafka]] 集成，以提供毫秒级流式读取
+- 流式读取在 Lake Storage 上可用，Lake Storage 还可以与 [[ApacheKafka]] 集成，以提供毫秒级流式读取
 
 ### 文件布局
 

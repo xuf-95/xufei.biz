@@ -14,4 +14,4 @@ NAT网关(NAT Gateway)是一款托管的VPC公网网关，作为VPC环境下公�
 
 ### JD Cloud 基础架构
 
-![[public/Open-BigData/images/jd-nat.png]]
+![[jd-nat.png]]

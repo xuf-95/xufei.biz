@@ -7,7 +7,7 @@ tags:
   - data-security
 description: 数据安全通过分类分级、权限、脱敏、审计和合规控制，保护数据资产在全生命周期中的安全使用。
 date: 2026-06-14
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据安全
 dama_area:

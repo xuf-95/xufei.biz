@@ -9,7 +9,7 @@ tags:
   - indicator
 description: 指标治理通过口径、维度、责任、变更和质量控制，保证企业核心指标一致可信。
 date: 2026-06-14
-publish: true
+publish: false
 type: playbook
 dcmm_domain: 数据标准
 dama_area:

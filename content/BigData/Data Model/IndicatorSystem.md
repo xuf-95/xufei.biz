@@ -10,7 +10,7 @@ tags:
   - bi
 description: 指标体系用于定义业务指标、维度、口径、层级和责任人，是 BI、经营分析、数据产品和 AI Agent 的共同语言。
 date: 2026-06-11
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据标准
 dama_area:

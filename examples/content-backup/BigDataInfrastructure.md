@@ -14,12 +14,13 @@ publish: false
 ## 技术分类
 
 ### 计算引擎
-| 引擎                | 类型   | 特点   | 延迟  | 吞吐  |
-| ----------------- | ---- | ---- | --- | --- |
-| [[Apache Hadoop Overview]] | 批处理  | 成熟稳定 | 高   | 高   |
-| [[Apache Spark]]         | 批流一体 | 生态丰富 | 中   | 高   |
-| [[ApacheFlink|Apache Flink]]         | 流计算  | 状态管理 | 低   | 高   |
-| [[What is Apache Storm?]]  | 流计算  | 低延迟  | 极低  | 中   |
+| 引擎                         | 类型             | 特点   | 延迟   | 吞吐  |     |
+| -------------------------- | -------------- | ---- | ---- | --- | --- |
+| [[Apache Hadoop Overview]] | 批处理            | 成熟稳定 | 高    | 高   |     |
+| [[Apache Spark]]           | 批流一体           | 生态丰富 | 中    | 高   |     |
+| [[content/BigData/ApacheFlink]]            | Apache Flink]] | 流计算  | 状态管理 | 低   | 高   |
+| [[ApacheStorm]]            | 流计算            | 低延迟  | 极低   | 中   |     |
+|                            |                |      |      |     |     |
 
 ### 存储系统
 - [[../../Data Store/]] - 数据存储总览
@@ -30,16 +31,16 @@ publish: false
 ### 数据集成
 #### 消息队列
 - [[../What is Apache Kafka?]] - 分布式消息系统
-- [[Apache Pulsar]] - 云原生消息系统
-- [[Apache Flume]] - 日志采集
+- [[ApachePulsar]] - 云原生消息系统
+- [[ApacheFlume]] - 日志采集
 
 #### 数据同步
 - [[../../Data Integration & Schedule/CDC]] - 变更数据捕获
 - [[Apache Nifi]] - 数据流自动化
 
 ### 调度系统
-- [[Apache Airflow]] - 工作流调度
-- [[Apache DolphinScheduler]] - 分布式调度
+- [[ApacheAirflow]] - 工作流调度
+- [[ApacheDolphinScheduler]] - 分布式调度
 
 ### 治理工具
 - [[Apache Atlas]] - 元数据管理

@@ -9,7 +9,7 @@ tags:
   - architecture
 description: 元数据管理用于描述、连接和治理数据资产，是数据目录、血缘、质量、权限、语义层和 AI Agent 的基础。
 date: 2026-06-11
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据架构
 dama_area:

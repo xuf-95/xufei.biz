@@ -58,7 +58,7 @@ C --> E
 
 ![[kappa-architecture.png]]
 
-### [[Lambda Architecture|Lamdba]]VS Kappa 
+### [[Lambda Architecture|Lamdba]] VS Kappa 
 
 | Content    | Lambda                                                                              | Kappa                                          |     |
 | ---------- | ----------------------------------------------------------------------------------- | ---------------------------------------------- | --- |

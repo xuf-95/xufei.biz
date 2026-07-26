@@ -25,14 +25,11 @@ Apache DolphinScheduler 旨在解决复杂的大数据任务依赖关系，并�
 
 ![[Apache DolphinScheduler.png]]
 
-
-
 ---
 ## Refer Resource
 
 - [dolphinscheduler office](https://dolphinscheduler.apache.org/zh-cn)
 - [dolphinscheduler blog](https://dolphinscheduler.apache.org/zh-cn/blog)
-
 - [Apache DolphinScheduler 中 ZooKeeper与CDH 不兼容问题的解决方案](https://dolphinscheduler.apache.org/zh-cn/blog/Solution_to_the_incompatibility_problem_between_ZooKeeper_and_CDH_in_Apache_DolphinScheduler)
 - [Apache DolphinScheduler 在 360 数科的实践](https://dolphinscheduler.apache.org/zh-cn/blog/How_Does_360_DIGITECH_process_10_000+_workflow_instances_per_day)
 - [企业级应用如何用 Apache DolphinScheduler 有针对性地进行告警插件开发？](https://dolphinscheduler.apache.org/zh-cn/blog/How_to_use_Apache_DolphinScheduler_for_targeted_alarm_plugin_development_for_enterprise_applications)

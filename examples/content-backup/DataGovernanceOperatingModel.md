@@ -8,7 +8,7 @@ tags:
   - operating-model
 description: 数据治理运行机制定义组织、制度、流程、平台和度量如何协同，保证治理可以持续落地。
 date: 2026-06-14
-publish: true
+publish: false
 type: playbook
 dcmm_domain: 数据治理
 dama_area:

@@ -8,7 +8,7 @@ tags:
   - architecture
 description: 数据域用于按照业务能力和管理边界组织数据资产，是数据架构、建模和治理协同的基本单元。
 date: 2026-06-14
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据架构
 dama_area:

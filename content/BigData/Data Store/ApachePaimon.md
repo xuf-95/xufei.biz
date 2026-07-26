@@ -1,5 +1,5 @@
 ---
-title: "What's Apache Paimon?"
+title: ApachePaimon
 aliases:
   - Apache Paimon
   - Paimon
@@ -34,7 +34,7 @@ publish: true
 
 ## Definition
 
-Apache Paimon 是一个面向 [[Data Lake]] / Lakehouse 场景的表格式与存储系统。它把数据文件、快照、元数据清单、Catalog 和读写提交协议组织成一个统一的 Lake Format，让同一份表可以被 Apache Flink、[[Apache Spark]]、Hive、Trino、Presto、[[Apache Doris]]、[[What's StarRocks|StarRocks]] 等计算引擎访问。
+Apache Paimon 是一个面向 [[Data Lake]] / Lakehouse 场景的表格式与存储系统。它把数据文件、快照、元数据清单、Catalog 和读写提交协议组织成一个统一的 Lake Format，让同一份表可以被 Apache Flink、[[Apache Spark]]、Hive、Trino、Presto、[[ApacheDoris]]、[[StarRocks|StarRocks]] 等计算引擎访问。
 
 > [!summary]
 > 如果用一句话描述：Paimon 试图把实时数据湖变成一个可更新、可回放、可治理、可被多引擎共享的表存储层。
@@ -234,6 +234,6 @@ Apache Paimon 是 Apache 生态中的实时数据湖存储系统。它通过 sna
 - official:: [Paimon Basic Concepts](https://paimon.apache.org/docs/master/concepts/basic-concepts)
 - related:: [[Data Lake]]
 - related:: Lakehouse
-- related:: [[Apache Doris]]
-- related:: [[What's StarRocks]]
+- related:: [[ApacheDoris]]
+- related:: [[StarRocks]]
 - related:: Apache Hive

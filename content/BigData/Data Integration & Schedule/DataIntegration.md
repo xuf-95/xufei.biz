@@ -1,5 +1,5 @@
 ---
-title: "Data Integration"
+title: Data Integration
 aliases:
   - 数据集成
   - 数据同步
@@ -10,7 +10,7 @@ tags:
   - integration
 date: 2022-01-21
 draft: true
-publish: false
+publish: true
 ---
 # MindMap
 
@@ -107,7 +107,7 @@ graph LR
 
 ### 数据集成技术 - 消息队列
 
-| 比较项      | [[Apache Kafka]]                              | TubeMQ                             | [[Apache Pulsar]]    |
+| 比较项      | [[ApacheKafka]]                              | TubeMQ                             | [[ApachePulsar]]    |
 |----------|-----------------------------------------------|------------------------------------|----------------------|
 | 数据时延     | 非用1，1oms                                      | 比较低，250ms                          | 非常低，10ms             |
 | TPS      | 高，14W+/s                                      | 一般，10W+/s                          | 高，14W+/s（高性能场景）      |
@@ -139,7 +139,7 @@ graph LR
 | 腾讯云 DataInLong       | [AWS Glue](https://aws.amazon.com/glue/) | Apache Seatunnal            |
 | 华为云 ROMA             | DBT                                      | Apache Gobblin              |
 | DataPipeline         | Azure Data-Factory                       | DataX                       |
-| Kettle               | Airbyte                                  | [[Flink CDC]]               |
+| Kettle               | Airbyte                                  | [[FlinkCDC]]               |
 |                      | Fivetran                                 | [[FlinkX （chunjun）]]        |
 |                      |                                          | [[Apache Nifi]]             |
 |                      |                                          |                              |

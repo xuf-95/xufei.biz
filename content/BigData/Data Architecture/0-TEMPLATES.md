@@ -110,18 +110,18 @@ bigdata/
 - [[What is Apache Storm?]]
 
 #### 存储系统
-- [[Data Store]]
+- [[DataStoreHomepage]]
 - [[Apache Paimon]]
 
 #### 数据集成
-- [[Kafka]]
-- [[Apache Pulsar]]
-- [[Apache Flume]]
+- [[ApacheKafka]]
+- [[ApachePulsar]]
+- [[ApacheFlume]]
 - [[Apache Nifi]]
 
 #### 调度系统
-- [[Apache Airflow]]
-- [[Apache DolphinScheduler]]
+- [[ApacheAirflow]]
+- [[ApacheDolphinScheduler]]
 
 #### 治理工具
 - [[Apache Atlas]]

@@ -51,7 +51,7 @@ publish: false
 
 ## 相关内容
 
-- [[Bigdata Wiki OS]] - 面向大数据全栈工程师、数据架构师与未来 CDO/CDAO 的个人知识图谱系统规划
+- [[0-BigdataWikiOS]] - 面向大数据全栈工程师、数据架构师与未来 CDO/CDAO 的个人知识图谱系统规划
 - [[MOC-Data Architecture Map]] - 数据架构师能力地图
 - [[MOC-DCMM-DAMA Map]] - DCMM、DAMA 与治理能力地图
 - [[CDO]] - CDO/CDAO 视角下的数据战略和商业价值

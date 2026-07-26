@@ -1,5 +1,5 @@
 ---
-title: "What is Apache Kafka?"
+title: Apache Kafka
 aliases:
   - Kafka
   - 卡夫卡
@@ -10,8 +10,6 @@ tags:
   - mq
 date: 2023-10-04
 publish: true
-
-
 ---
 ## Overview
 
@@ -39,7 +37,7 @@ Kafka拥有三个非常重要的角色特性
 
 A Kafka broker is a server process that handles client requests, stores and replicates messages, and participates in cluster coordination. Each broker runs a set of core components, each implemented as a class or subsystem in the codebase.
 
-![[public/BigData/images/kafka-broker-architecture.png]]__***High-Level Broker Component Diagram***__
+![[kafka-broker-architecture.png]]__***High-Level Broker Component Diagram***__
 
 ## Case
 
@@ -265,16 +263,16 @@ esac
 
 - [KAFKA EAGLE](https://www.kafka-eagle.org/#) short name EFAK (Eagle For Apache Kafka， previously known as Kafka Eagle) is A DISTRIBUTED AND HIGH-PERFORMANCE KAFKA MONITORING SYSTEM By Mr Smartloli.
 
-![[content/Open BigData/Data Integration & Schedule/images/EFKA.png]]_***EFKA Dashboard UI***_
+![[EFKA.png]]_***EFKA Dashboard UI***_
 
 - [KnowStreaming](https://doc.knowstreaming.com/product/1-brief-introduction) 是一套云原生的 Kafka 管控平台，脱胎于众多互联网内部多年的 Kafka 运营实践经验，专注于 Kafka 运维管控、监控告警、资源治理、多活容灾等核心场景，在用户体验、监控、运维管控上进行了平台化、可视化、智能化的建设，提供一系列特色的功能，极大地方便了用户和运维人员的日常使用，让普通运维人员都能成为 Kafka 专家
 
 - [CMAK](https://github.com/yahoo/CMAK) is a tool for managing Apache Kafka clusters
 
-![[content/Open BigData/Data Integration & Schedule/images/EMAK.png]]_***EMAK***_
+![[EMAK.png]]_***EMAK***_
 
 
-![[public/BigData/images/kafka-logo-readme-dark.svg]]
+![[kafka-logo-readme-dark.svg]]
 
 
 ### Question

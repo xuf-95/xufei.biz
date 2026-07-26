@@ -1,5 +1,5 @@
 ---
-title: "Apache Nifi"
+title: Apache Nifi
 tags:
   - integration
   - pipeline
@@ -9,6 +9,7 @@ tags:
 draft: true
 date: 2022-07-24
 updated: 2026-05-20
+publish:
 ---
 # Apache Nifi: 强大的数据流处理与分发系统
 

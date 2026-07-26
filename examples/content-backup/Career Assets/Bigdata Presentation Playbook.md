@@ -45,7 +45,7 @@ flowchart LR
 
 ### Engineering Reliability
 
-- 从任务成功率到 [[Data Pipeline SLA]]。
+- 从任务成功率到 [[DataPipelineSLA]]。
 - 用 [[Data Observability]] 做数据事故前置发现。
 - 数据链路故障复盘如何沉淀为资产。
 

@@ -5,7 +5,7 @@ tags:
   - governance
   - ide
 draft: false
-publish: true
+publish: false
 aliases:
   - Apache Atlas
 ---

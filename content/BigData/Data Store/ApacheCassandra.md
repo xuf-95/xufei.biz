@@ -12,10 +12,7 @@ date: 2023-04-21
 publish: true
 draft: true
 ---
-
-# Apache Cassandra 详解
-
-## 什么是 Apache Cassandra？
+## What's Apache Cassandra？
 
 Apache Cassandra 是一个开源的分布式 NoSQL 数据库系统，最初由 Facebook 开发并于 2008 年开源。它被设计用于处理大量数据，同时提供高可用性、线性可扩展性和容错能力。
 

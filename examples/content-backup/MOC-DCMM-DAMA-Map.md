@@ -10,7 +10,7 @@ tags:
   - moc
 description: 用 DCMM 和 DAMA 组织数据治理、数据管理成熟度和落地证据的知识地图。
 date: 2026-06-11
-publish: true
+publish: false
 ---
 
 ## Scope
@@ -100,7 +100,7 @@ flowchart LR
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
+- part-of:: [[0-BigdataWikiOS]]
 - related:: [[MOC-Data Architecture Map]]
 - supports:: [[CDO]]
 - supports:: MOC-职业资产地图

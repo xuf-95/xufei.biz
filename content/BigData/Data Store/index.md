@@ -35,7 +35,7 @@ draft: false
 ## Other
 
 - [[Database Design]]
-- [[Open Sources DataSets]]
+- [[OpenSourcesDataSets]]
 - [[如何选择合适的OLAP产品]]
 - [[常见的的数据压缩算法]]
 

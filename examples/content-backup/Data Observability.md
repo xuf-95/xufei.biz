@@ -8,7 +8,7 @@ tags:
   - data-quality
 description: 数据可观测性通过元数据、质量、血缘、任务和使用行为监控，持续发现数据链路风险。
 date: 2026-06-14
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据质量
 dama_area:
@@ -49,15 +49,11 @@ flowchart LR
 - 只监控技术任务，不监控业务指标异常。
 - 没有把观测结果回写到知识库和复盘文档。
 
-## Interview Answer
-
-数据可观测性解决的是数据平台“出问题太晚发现、发现后难定位”的问题。它把元数据、血缘、质量规则、调度日志和业务指标监控结合起来，让数据事故更早发现、更快恢复。
-
 ## Links
 
-- part-of:: [[BigData Map]]
+- part-of:: [[0-BigData Map]]
 - depends-on:: [[Metadata Management]]
 - depends-on:: [[Data Lineage]]
-- supports:: [[Data Pipeline SLA]]
+- supports:: [[DataPipelineSLA]]
 - supports:: [[Data Quality]]
 

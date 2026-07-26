@@ -10,7 +10,6 @@ aliases:
   - Pulsar
   - pulsar
 ---
-
 ## What's  Apache Pulsar?
 
 > Apache Pulsar is an open-source, distributed messaging and streaming platform built for the cloud, a multi-tenant, high-performance solution for server-to-server messaging. Originally developed by Yahoo
@@ -35,6 +34,4 @@ aliases:
 ## Business Example
 
 - 2022-10-22 [Apache Pulsar 在微信大流量实时推荐场景下的实践](https://www.infoq.cn/article/LKBS54VlX2VtC9phdN0B?utm_source=related_read&utm_medium=article)
-## Reference
-
 

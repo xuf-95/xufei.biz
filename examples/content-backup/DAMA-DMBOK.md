@@ -10,7 +10,7 @@ tags:
   - data-management
 description: DAMA-DMBOK 是国际数据管理知识体系，用于组织数据治理、架构、建模、质量、元数据、安全和 BI 等能力。
 date: 2026-06-11
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据治理
 dama_area:
@@ -22,7 +22,7 @@ status: seed
 
 **DAMA-DMBOK** 是 DAMA International 发布的数据管理知识体系，用于描述组织如何规划、治理、架构、建模、集成、存储、保护、管理质量并应用数据。
 
-在 [[Bigdata Wiki OS]] 中，DAMA-DMBOK 是国际化知识域坐标系；[[DCMM]] 是成熟度评估和落地证据坐标系。
+在 [[0-BigdataWikiOS]] 中，DAMA-DMBOK 是国际化知识域坐标系；[[DCMM]] 是成熟度评估和落地证据坐标系。
 
 ## Business Value
 

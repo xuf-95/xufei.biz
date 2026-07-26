@@ -68,7 +68,7 @@ flowchart TB
 - 先治理语义和元数据，再让 Agent 写 SQL。
 - 让 Agent 输出可审计的证据链：使用了哪些指标、表、规则和权限。
 - 将高风险动作限定为建议或草稿，人工确认后再执行。
-- 把 Agent 产物回流到 [[Bigdata Wiki OS]]，形成持续学习闭环。
+- 把 Agent 产物回流到 [[0-BigdataWikiOS]]，形成持续学习闭环。
 
 ## Questions
 
@@ -89,7 +89,7 @@ flowchart TB
 
 ## Links
 
-- part-of:: [[Bigdata Wiki OS]]
+- part-of:: [[0-BigdataWikiOS]]
 - depends-on:: [[Semantic Layer]]
 - depends-on:: [[Metadata Management]]
 - governed-by:: [[Data Quality]]

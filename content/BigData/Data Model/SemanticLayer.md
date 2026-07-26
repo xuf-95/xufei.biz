@@ -10,7 +10,7 @@ tags:
   - agentic
 description: 语义层把底层数据模型封装为业务可理解、指标一致、权限可控的语义接口。
 date: 2026-06-11
-publish: true
+publish: false
 type: concept
 dcmm_domain: 数据应用流通
 dama_area:

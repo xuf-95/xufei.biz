@@ -34,7 +34,7 @@ ZK是Apache开源提供的一个***分布式协调服务框架***，主要用来
 - 实时性：在一段时间之内，zk当中的消息，必定会送达每一个节点
 
 ##  架构
-![[public/OpenBigData/Apache-Hadoop/images/zk-architecture.png]]
+![[zk-architecture.png]]
 ### Leader
 
 - 事务请求的唯一调度和处理者，保证集群事务处理的顺序性
@@ -77,7 +77,7 @@ ZK是Apache开源提供的一个***分布式协调服务框架***，主要用来
 #### 集群Down机后选举
 
 ## 数据模型
-![[public/OpenBigData/Apache-Hadoop/images/zk-datamodel.png]]
+![[zk-datamodel.png]]
 采用的是**树形**的结构,每一个节点，称之为一个**znode**，每一个znode兼具有文件和文件夹的特性
 
 - 文件：可以存储数据
@@ -157,7 +157,7 @@ ZK遵循的是CP原则，即一致性和分区容错性，牺牲了可用性
 - TaskManager状态协调
 - 检查点(Checkpoint)协调
 
-### [[Kafka]]生态系统
+### [[ApacheKafka]]生态系统
 
 > [!note] v3.9 版本弃用
 

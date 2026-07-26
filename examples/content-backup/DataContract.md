@@ -24,7 +24,7 @@ status: seed
 ## Business Value
 
 - 降低 schema 变更、口径变更和任务延迟带来的下游事故。
-- 将 [[Data Quality]]、[[Data Standard]] 和 [[Data Pipeline SLA]] 前移到数据生产环节。
+- 将 [[Data Quality]]、[[Data Standard]] 和 [[DataPipelineSLA]] 前移到数据生产环节。
 - 让 [[Text2SQL]] 和 Data Agent Architecture 使用更稳定的上下文。
 
 ## Architecture / Flow
@@ -59,6 +59,6 @@ flowchart LR
 - part-of:: [[MOC-Data Architecture Map]]
 - depends-on:: [[Data Standard]]
 - depends-on:: [[Data Quality]]
-- supports:: [[Data Pipeline SLA]]
+- supports:: [[DataPipelineSLA]]
 - supports:: [[Data Product]]
 

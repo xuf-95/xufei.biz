@@ -1,8 +1,9 @@
 ---
-title: AIAgentic
+title: AI Agentic
 aliases:
   - Agentic AI 入门
   - AI Agent Illustrated Guide
+  - Agent
 tags:
   - ai-agent
   - agentic-ai
@@ -22,12 +23,9 @@ draft: false
 >
 > | Item | Value |
 > | --- | --- |
-> | Type | Concept Note |
-> | Domain | Agentic AI |
 > | 核心论文 | ReAct · Reflexion · CoALA |
 > | 核心指南 | Anthropic · OpenAI |
 > | 关键协议 | MCP (2024.11) |
-> | Status | Active |
 
 ## Definition
 
@@ -336,4 +334,4 @@ timeline
 ## Links
 
 - related:: [[MOC-DATA+AI Agent 地图]]
-- related:: [[Quartz Style Guide]]
+- related:: [[QuartzStyleGuide]]

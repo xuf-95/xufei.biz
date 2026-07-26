@@ -7,7 +7,7 @@ date: 2024-01-25
 draft: true
 publish: false
 ---
-### ClickHouse VS [[What's StarRocks]]
+### ClickHouse VS [[StarRocks]]
 
 
 | 特性      | ClickHouse                     | StarRocks                          |

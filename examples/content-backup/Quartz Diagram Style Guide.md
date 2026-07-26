@@ -261,6 +261,6 @@ The component must be responsive and work in dark mode.
 
 ## Links
 
-- related:: [[Quartz Style Guide]]
-- supports:: [[Bigdata Wiki OS]]
+- related:: [[QuartzStyleGuide]]
+- supports:: [[0-BigdataWikiOS]]
 - supports:: [[Data Agent Architecture]]

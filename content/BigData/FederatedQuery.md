@@ -13,7 +13,7 @@ draft:
 publish: true
 ---
 
-Federated Query 是一种跨多个异构数据源进行统一 SQL 查询的能力。它不要求先把所有数据同步到统一数仓，而是通过查询引擎和 Connector 直接访问 [[MySQL]]、[[Apache Hive Overview]]、Iceberg、[[Kafka]]、Elasticsearch 等系统。查询引擎会解析 SQL，生成执行计划，并尽可能把过滤、列裁剪、聚合等操作下推到源系统，然后拉取部分结果，在查询层完成 Join、聚合和排序。
+Federated Query 是一种跨多个异构数据源进行统一 SQL 查询的能力。它不要求先把所有数据同步到统一数仓，而是通过查询引擎和 Connector 直接访问 [[MySQL]]、[[Apache Hive Overview]]、Iceberg、[[ApacheKafka]]、Elasticsearch 等系统。查询引擎会解析 SQL，生成执行计划，并尽可能把过滤、列裁剪、聚合等操作下推到源系统，然后拉取部分结果，在查询层完成 Join、聚合和排序。
 
 它的优点是接入快、减少数据复制、适合临时分析和跨源探索；缺点是性能不稳定、网络开销大、跨源 Join 成本高、源库压力大、治理复杂。所以它通常不能完全替代 ETL/ELT，而是作为数据仓库、湖仓架构中的补充查询能力。
 

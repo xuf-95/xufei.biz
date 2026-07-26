@@ -104,7 +104,7 @@ C --> D
 
 ### [[Data Lake]]
 
-### [[Data Store|Data Store]]
+### [[DataStoreHomepage|Data Store]]
 
 ### 数据架构的评估
 

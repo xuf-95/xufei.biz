@@ -27,7 +27,7 @@ status: seed
 
 - 提升数据分析、SQL 编写、排障和文档沉淀效率。
 - 降低业务用户获取数据洞察的门槛。
-- 将 [[Bigdata Wiki OS]]、[[Metadata Management]]、[[Semantic Layer]] 和治理规则转化为 Agent 可用上下文。
+- 将 [[0-BigdataWikiOS]]、[[Metadata Management]]、[[Semantic Layer]] 和治理规则转化为 Agent 可用上下文。
 
 ## Architecture
 

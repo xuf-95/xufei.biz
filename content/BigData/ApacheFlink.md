@@ -270,8 +270,8 @@ Connector 负责与外部系统交换数据，format 负责序列化与反序列
 基础组合通常包括：
 
 - **消息与日志**：Kafka、Pulsar、Kinesis 等可重放 source/sink。
-- **文件与湖仓**：FileSystem connector + Parquet/Avro/ORC；需要更新表与 changelog 时结合 [[What's Apache Paimon?|Apache Paimon]] 等湖仓存储。
-- **数据库变更**：[[Flink CDC]] 是独立 Apache 项目，适合数据库 snapshot + change log 的流式集成，不等同于 Flink core 内置能力。
+- **文件与湖仓**：FileSystem connector + Parquet/Avro/ORC；需要更新表与 changelog 时结合 [[content/BigData/Data Store/ApachePaimon|Apache Paimon]] 等湖仓存储。
+- **数据库变更**：[[FlinkCDC]] 是独立 Apache 项目，适合数据库 snapshot + change log 的流式集成，不等同于 Flink core 内置能力。
 - **服务系统**：JDBC、Elasticsearch/OpenSearch 等；必须核对 append/upsert、幂等和事务语义。
 
 ### Deployment and operations
@@ -341,13 +341,13 @@ flowchart LR
 
 ## Related Notes
 
-- [[BigData Map]]：BigData Wiki 的工程能力入口。
-- [[Flink Codebase Architecture]]：源码模块、调度器、runtime 与网络栈。
-- [[Flink State Management]]：状态与 checkpoint 的专题笔记。
-- [[Flink Table API and SQL]]：动态表、SQL planner 与执行。
-- [[Flink CDC]]：数据库变更捕获和数据同步。
+- [[0-BigData Map]]：BigData Wiki 的工程能力入口。
+- [[FlinkCodebaseArchitecture]]：源码模块、调度器、runtime 与网络栈。
+- [[FlinkStateManagement]]：状态与 checkpoint 的专题笔记。
+- [[FlinkTableAPIAndSQL]]：动态表、SQL planner 与执行。
+- [[FlinkCDC]]：数据库变更捕获和数据同步。
 - [[Streaming Processing]]：流处理的通用概念。
-- [[What's Apache Paimon?|Apache Paimon]]：实时湖仓存储与 changelog。
+- [[content/BigData/Data Store/ApachePaimon|Apache Paimon]]：实时湖仓存储与 changelog。
 
 [^official-architecture]: Apache Flink, [What is Apache Flink? — Architecture](https://flink.apache.org/what-is-flink/flink-architecture/).
 

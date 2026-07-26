@@ -1,5 +1,5 @@
 ---
-title: "Dimensional Modeling"
+title: Dimensional Modeling
 date: 2023-03-25
 aliases:
   - Dimensional Model
@@ -8,7 +8,7 @@ tags:
   - seedling
   - to-trans
   - model
-draft: true
+publish:
 ---
 
 Developed by [Ralph Kimball](https://en.wikipedia.org/wiki/Ralph_Kimball), dimensional modeling is a popular technique used to model data for analytics. At it's core, dimensional modeling revolves around organizing data into two types of datasets: fact tables and dimension tables. Facts are usually comprised of numerical values that can be aggregated while dimensions hold descriptive attributes of entities/objects. A key tradeoff the dimensional model makes is it denormalizes data (increases data redundancy) in order to speed up queries.

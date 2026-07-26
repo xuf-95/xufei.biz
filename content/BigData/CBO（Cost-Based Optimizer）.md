@@ -405,7 +405,7 @@ Apache Kylin
 
 ---
 
-### **5.6 [[Apache Doris]]**
+### **5.6 [[ApacheDoris]]**
 
 Apache Doris 是 MPP 架构的实时数仓 / OLAP 数据库。
 
@@ -554,7 +554,7 @@ Join Key 分布
 |Trino / Presto|是|自研优化器|Join 顺序、Join 分布、Pushdown|
 |Calcite|是|优化器框架|关系代数、规则优化、代价优化|
 |Impala|是|自研优化器|Join 策略、Runtime Filter|
-|[[Apache Doris\|Doris]]|是|新优化器 CBO|MPP Join、物化视图、Runtime Filter|
+|[[ApacheDoris\|Doris]]|是|新优化器 CBO|MPP Join、物化视图、Runtime Filter|
 |StarRocks|是|CBO 优化器|Join Reorder、MV 改写、Colocate Join|
 |ClickHouse|部分具备|Query Analyzer / Planner|分区裁剪、索引跳过、Join 算法|
 |[[MaxCompute]]|是|云数仓优化器|分区裁剪、Join 优化、执行计划优化|

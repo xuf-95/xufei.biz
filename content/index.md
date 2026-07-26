@@ -45,13 +45,13 @@ On a broader level, I care about building knowledge systems that help data pract
 
 <div class="home-two-col-section">
 <div class="home-col-left">
-<h3 class="home-col-title">Bigdata Wiki OS</h3>
+<h3 class="home-col-title">Bigdata Area</h3>
 <ul>
 
-- [[BigData Map]]
-- [[MOC-DCMM-DAMA Map]]
-- [[Data Store|Data Store]]
-- [[MetadataManagement]]
+- [[MOC-DataArchitectureMap|Data Architecture]]
+- [[DataIntegration]]
+- [[DataStoreHomepage|Data Store]]
+- [[Data Visual]]
 
 </ul>
 </div>
@@ -87,8 +87,8 @@ On a broader level, I care about building knowledge systems that help data pract
 
 - [[如何更好的设计数据底座|How to better design the data foundation]]
 - [[常见的的数据压缩算法|Common data compression algorithms]]
-- [[What's StarRocks]]
-- [[What's Apache Paimon?]]
+- [[StarRocks]]
+- [[ApachePaimon|Apache Paimon]]
 
 </ul>
 </div>
@@ -110,7 +110,7 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Recent Posts</h3>
 <ul>
 
-- [[Quartz Style Guide]]
+- [[QuartzStyleGuide]]
 - [[goods|Goods Gallary]]
 - [[data-engineer-tools]]
 
