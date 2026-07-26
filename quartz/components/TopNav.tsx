@@ -153,8 +153,8 @@ header {
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-  height: 56px !important;
-  min-height: 56px !important;
+  height: 64px !important;
+  min-height: 64px !important;
   background: var(--light) !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
@@ -412,11 +412,15 @@ html[saved-theme="dark"] .nav-mega {
 /* ── Make the in-flow page header gap sensible ── */
 .page-header {
   margin-top: 0 !important;
-  padding-top: 56px !important;
+  padding-top: 64px !important;
 }
 
 /* ── Mobile ── */
 @media (max-width: 600px) {
+  .site-header-shell > .github-link,
+  .site-header-shell > .rss-link {
+    display: none !important;
+  }
   .nav-brand-name { display: none; }
   .nav-links {
     overflow-x: auto;

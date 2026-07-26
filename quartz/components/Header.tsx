@@ -24,12 +24,12 @@ header {
   max-width: var(--site-shell-max);
   height: 100%;
   margin-inline: auto;
-  padding-inline: var(--site-shell-pad);
+  padding-inline: 1.5rem;
 }
 
-@media all and (max-width: 1200px) {
+@media all and (min-width: 768px) {
   .site-header-shell {
-    width: calc(100% - 2rem);
+    padding-inline: 2rem;
   }
 }
 `

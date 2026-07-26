@@ -42,6 +42,13 @@
   }
 }
 
+@media all and ($tablet) {
+  :root {
+    // The tablet grid splits the former 320px left rail into two balanced gutters.
+    --content-column-left: calc(var(--page-layout-left) + 1rem + (#{$sidePanelWidth} / 2) + 5px);
+  }
+}
+
 %external-link-icon-base {
   content: "";
   width: var(--external-link-icon-width);

@@ -17,16 +17,6 @@ footer {
     font-family: var(--bodyFont);
   }
 
-  &.site-footer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background: var(--footer-rule);
-  }
-
   &.site-footer a {
     color: var(--darkgray);
     background: transparent;

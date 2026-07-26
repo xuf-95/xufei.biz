@@ -37,14 +37,17 @@ $mobileGrid: (
 );
 $tabletGrid: (
   templateRows: "auto auto auto auto",
-  templateColumns: "#{$sidePanelWidth} auto",
+  // Keep the article as wide as before, but split the tablet sidebar allowance
+  // evenly across both sides so the content does not jump toward the right edge.
+  templateColumns:
+    "minmax(0, 1fr) minmax(0, calc(100% - #{$sidePanelWidth} - 10px)) minmax(0, 1fr)",
   rowGap: "5px",
   columnGap: "5px",
   templateAreas:
-    '"grid-sidebar-left grid-header"\
-      "grid-sidebar-left grid-center"\
-      "grid-sidebar-left grid-sidebar-right"\
-      "grid-footer grid-footer"',
+    '"grid-sidebar-left grid-header ."\
+      "grid-sidebar-left grid-center ."\
+      "grid-sidebar-left grid-sidebar-right ."\
+      "grid-footer grid-footer grid-footer"',
 );
 $desktopGrid: (
   templateRows: "auto auto auto",
