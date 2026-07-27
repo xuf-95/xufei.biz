@@ -33,7 +33,7 @@ The client first contacts ZooKeeper to discover where `hbase:meta` lives, reads 
 ## Data Model
 
   <figure class="image-layout-bleed" style="--image-layout-width: 70%">
-    <img src="/Bigdata/images/hbase/hbase-data-model.svg" alt="Scaled viewport wide image layout" />
+    <img src="hbase-data-model.svg" alt="Scaled viewport wide image layout" />
     <figcaption></figcaption>
   </figure>
 

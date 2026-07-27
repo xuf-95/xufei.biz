@@ -9,7 +9,7 @@ publish: true
 ## Sherlock XuFei
 <br />
 
-
+%% 
 <div class="home-banner">
 
   <div class="home-banner-left">
@@ -22,13 +22,13 @@ publish: true
       <a href="https://xufei.site">xufei.site</a>
       <a href="https://github.com/xuf-95">GitHub</a>
     </div>
-</div></div> 
+</div></div>  %%
 
-<!-- 
+
 This is my little digital garden on the Internet — a place for notes, maps, and working references around data engineering, architecture and AI. based on the <a href = "https://quartz.jzhao.xyz/"> Quartz </a> build, by <a href = "https://obsidian.md/"> obsidian </a> for document management.
-<!-- 
+
 Currently, I’m exploring how modern data systems can become more understandable, governable, and useful: from big data infrastructure and cloud-native platforms, to data architecture, governance, semantic layers, and AI-assisted workflows.
-<!-- 
+
 On a broader level, I care about building knowledge systems that help data practitioners see the shape of a problem more clearly: how concepts connect, how tools fit together, and how architectural decisions compound over time.
 
 <!-- As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit: -->
@@ -49,7 +49,7 @@ On a broader level, I care about building knowledge systems that help data pract
 <ul>
 
 - [[MOC-DataArchitectureMap|Data Architecture]]
-- [[DataIntegration]]
+- [[DataIntegration|Data Integration]]
 - [[DataStoreHomepage|Data Store]]
 - [[Data Visual]]
 
