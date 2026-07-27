@@ -1,0 +1,101 @@
+html.footnote-jump {
+  scroll-behavior: auto !important;
+}
+
+article {
+  [data-footnote-ref] {
+    display: inline-block;
+    min-width: 1em;
+    padding: 0 0.08em;
+    border-radius: 0;
+    background: transparent;
+    color: var(--tertiary);
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    scroll-margin-top: 5rem;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: baseline;
+  }
+
+  [data-footnote-ref]:hover,
+  [data-footnote-ref]:focus-visible,
+  [data-footnote-ref]:target {
+    color: var(--secondary);
+  }
+
+  .footnotes {
+    margin-top: clamp(3rem, 8vw, 5rem);
+    padding-top: clamp(1.5rem, 4vw, 2.25rem);
+    border-top: 1px solid var(--lightgray);
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .footnotes #footnote-label {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .footnotes ol {
+    counter-reset: footnote;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footnotes li {
+    counter-increment: footnote;
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    column-gap: 0.25rem;
+    margin: 0.65rem 0;
+    scroll-margin-top: 5rem;
+  }
+
+  .footnotes li::before {
+    grid-column: 1;
+    grid-row: 1;
+    color: var(--gray);
+    content: counter(footnote);
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .footnotes li > * {
+    grid-column: 2;
+  }
+
+  .footnotes li:target,
+  [data-footnote-ref]:target {
+    border-radius: 0.2rem;
+    background: color-mix(in srgb, var(--tertiary) 12%, transparent);
+    outline: 0.2rem solid color-mix(in srgb, var(--tertiary) 12%, transparent);
+  }
+
+  .footnotes p {
+    margin: 0;
+  }
+
+  .footnotes a[data-footnote-backref] {
+    display: inline-block;
+    margin-inline-start: 0.25em;
+    padding: 0;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none;
+    color: var(--gray);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none !important;
+  }
+
+  .footnotes a[data-footnote-backref]:hover,
+  .footnotes a[data-footnote-backref]:focus-visible {
+    color: var(--darkgray);
+  }
+}

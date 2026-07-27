@@ -44,7 +44,7 @@ cardImage: /content/Posts/images/hand.png
 | Quote Tabs | `quartz/styles/custom/quote-tabs.scss` | Radio tab 切换式引用面板 |
 | Image Layouts | `quartz/styles/images-layouts.scss` | 图片卡片、宽图、浮动图、拼贴图 |
 | Diagram Components | `quartz/styles/custom/diagram-components.scss` | 架构图、流程图、能力地图和决策图 |
-| Sidenotes | `quartz/plugins/transformers/sidenotes.ts` + `quartz/components/scripts/sidenotes.inline.ts` + `quartz/styles/custom.scss` | Markdown 脚注自动变成桌面右侧标注 |
+| Footnotes | `quartz/components/scripts/footnotes.inline.ts` + `quartz/components/styles/footnotes.scss` | Markdown 脚注统一显示在 Page Body 底部，并支持即时双向跳转 |
 
 ## Writing Defaults
 
@@ -63,9 +63,9 @@ Quartz 基础样式已经为正文链接加下划线，内部链接有浅色背�
 - 同一个段落不要过度链接。
 - 外部链接用于官方文档、论文和工具主页。
 
-### Sidenotes / 右侧标注
+### Footnotes / 脚注
 
-右侧标注使用标准 Markdown 脚注语法。桌面端会把脚注复制到正文右侧，正文里的被标注词使用点状下划线，右侧说明默认是低对比灰色；鼠标 hover、键盘 focus 或点击脚注编号时，对应右侧说明会变亮。移动端继续显示为普通底部脚注，避免挤压正文。
+脚注使用标准 Markdown 语法，并在所有屏幕尺寸下统一显示在 Page Body 底部。点击正文中的脚注编号会立即跳到对应说明；点击说明末尾的 `↩` 会立即返回原文位置。链接保留原生锚点和键盘可访问语义。
 
 示例：Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para] 都适合作为概念首次出现时的轻量补充。
 
@@ -84,9 +84,9 @@ Zettelkasten[^style-sidenote-zettel] 和 PARA[^style-sidenote-para]
 使用规则：
 
 - 把脚注紧贴在要标注的词后面，例如 `Zettelkasten[^note]`。
-- 右侧标注适合短解释、来源、补充背景；超过两三句话时改用 Callout 或正文小节。
-- 桌面端底部脚注会隐藏，移动端仍保留底部脚注。
-- 中文长句里如果需要精确下划线，建议在目标词前后留出自然分隔，例如空格、标点或行内代码。
+- 脚注适合短解释、来源、补充背景；超过两三句话时改用 Callout 或正文小节。
+- 桌面端和移动端都在正文底部显示完整的 `Footnotes` 区域。
+- 脚注编号和返回符号都可通过键盘聚焦并激活。
 
 ### Tables
 
@@ -395,6 +395,7 @@ Quote Tabs 适合在专题页中对比不同角色视角。目前样式绑定了
 
 | Date | Change | Files | Impact |
 | --- | --- | --- | --- |
+| 2026-07-27 | 以 Page Body 底部 Footnotes 取代桌面 Sidenotes | `quartz/components/scripts/footnotes.inline.ts`、`quartz/components/styles/footnotes.scss` | 统一脚注布局并支持即时双向跳转 |
 | 2026-06-20 | 新增 Sidenotes 右侧标注说明 | `content/Posts/Quartz Style Guide.md` | 记录脚注转右侧标注的写法和交互规则 |
 | 2026-06-11 | 新增样式使用指南和 Demo 页面 | `content/Posts/Quartz Style Guide.md` | 为后续文章提供统一样式参考 |
 | 2026-06-11 | 新增 Diagram Components 规范 | Quartz Diagram Style Guide | 为架构图、流程图和能力地图提供 HTML 组件方案 |

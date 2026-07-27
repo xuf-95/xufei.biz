@@ -73,7 +73,6 @@ const config: QuartzConfig = {
         markdownLinkResolution: "shortest",
         externalLinkIcon: false,
       }),
-      Plugin.Sidenotes(),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],

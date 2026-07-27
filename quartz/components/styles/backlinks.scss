@@ -1,7 +1,6 @@
 @use "../../styles/variables.scss" as *;
 
-/* In the right sidebar, sit above the (tall) sidenotes aside and stick near
-   the top while scrolling — matching original Quartz's right-rail backlinks. */
+/* Keep right-rail backlinks near the top while scrolling. */
 .right.sidebar .backlinks {
   order: -1;
   align-self: flex-start;
