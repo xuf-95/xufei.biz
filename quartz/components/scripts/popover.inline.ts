@@ -4,8 +4,10 @@ import { fetchCanonical } from "./util"
 const p = new DOMParser()
 let hoverTimer: ReturnType<typeof setTimeout> | null = null
 let closeTimer: ReturnType<typeof setTimeout> | null = null
+let hoverRequestId = 0
 
 const SHORT_CONTENT_THRESHOLD = 180
+const SIDEBAR_PREVIEW_MIN_WIDTH = 1150
 
 function getSidebarPanel(): HTMLElement {
   let panel = document.getElementById("popover-sidebar-panel")
@@ -16,7 +18,8 @@ function getSidebarPanel(): HTMLElement {
 
     const closeBtn = document.createElement("button")
     closeBtn.classList.add("popover-sidebar-close")
-    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+    closeBtn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
     closeBtn.addEventListener("click", () => closeSidebarPanel())
     panel.appendChild(closeBtn)
 
@@ -38,16 +41,14 @@ function getSidebarPanel(): HTMLElement {
     panel.appendChild(content)
 
     panel.addEventListener("mouseenter", () => {
-      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
+      if (closeTimer) {
+        clearTimeout(closeTimer)
+        closeTimer = null
+      }
     })
     panel.addEventListener("mouseleave", () => scheduleClose())
 
-    const rightSidebar = document.querySelector(".sidebar.right")
-    if (rightSidebar) {
-      rightSidebar.insertBefore(panel, rightSidebar.firstChild)
-    } else {
-      document.body.appendChild(panel)
-    }
+    document.body.appendChild(panel)
   }
   return panel
 }
@@ -61,7 +62,8 @@ function getBubblePanel(): HTMLElement {
 
     const closeBtn = document.createElement("button")
     closeBtn.classList.add("popover-bubble-close")
-    closeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+    closeBtn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
     closeBtn.addEventListener("click", () => closeBubblePanel())
     bubble.appendChild(closeBtn)
 
@@ -75,7 +77,10 @@ function getBubblePanel(): HTMLElement {
     bubble.appendChild(content)
 
     bubble.addEventListener("mouseenter", () => {
-      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
+      if (closeTimer) {
+        clearTimeout(closeTimer)
+        closeTimer = null
+      }
     })
     bubble.addEventListener("mouseleave", () => scheduleClose())
 
@@ -106,6 +111,7 @@ function clearActiveLink() {
 
 function scheduleClose() {
   closeTimer = setTimeout(() => {
+    hoverRequestId++
     closeSidebarPanel()
     closeBubblePanel()
     closeTimer = null
@@ -115,7 +121,7 @@ function scheduleClose() {
 // ── 定位 bubble，margin 留出箭头字符空间 ──────────────────────────
 function positionBubble(bubble: HTMLElement, linkRect: DOMRect) {
   const bubbleW = 280
-  const arrowGap = 52  // 留给 ↬ 字符的水平空间
+  const arrowGap = 52 // 留给 ↬ 字符的水平空间
   const vp = { w: window.innerWidth, h: window.innerHeight }
 
   let left = linkRect.right + arrowGap
@@ -155,7 +161,7 @@ function drawConnector(
 
   // 水平中点放箭头
   const gapStart = bubble.side === "right" ? linkRect.right : bubble.left + bubble.w
-  const gapEnd   = bubble.side === "right" ? bubble.left    : linkRect.left
+  const gapEnd = bubble.side === "right" ? bubble.left : linkRect.left
   const midX = (gapStart + gapEnd) / 2
   const midY = linkRect.top + linkRect.height / 2
 
@@ -170,12 +176,16 @@ function drawConnector(
 }
 
 async function mouseEnterHandler(this: HTMLAnchorElement) {
-  if (window.innerWidth < 1000) return
+  if (window.innerWidth < SIDEBAR_PREVIEW_MIN_WIDTH) return
   if (this.dataset.noPopover === "true") return
 
   const link = this
+  const requestId = ++hoverRequestId
   if (hoverTimer) clearTimeout(hoverTimer)
-  if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
+  if (closeTimer) {
+    clearTimeout(closeTimer)
+    closeTimer = null
+  }
 
   hoverTimer = setTimeout(async () => {
     const targetUrl = new URL(link.href)
@@ -190,30 +200,19 @@ async function mouseEnterHandler(this: HTMLAnchorElement) {
     let cached = (window as any)[cacheKey]
 
     if (!cached) {
-      const panel = getSidebarPanel()
-      const contentEl = panel.querySelector(".popover-sidebar-content") as HTMLElement
-      contentEl.innerHTML = '<div class="popover-sidebar-loading">Loading</div>'
-      ;(panel.querySelector(".popover-sidebar-tags") as HTMLElement).innerHTML = ""
-      ;(panel.querySelector(".popover-sidebar-title") as HTMLElement).textContent = ""
-      ;(panel.querySelector(".popover-sidebar-meta") as HTMLElement).textContent = ""
-      panel.classList.add("active")
-      closeBubblePanel()
-
-      const response = await fetchCanonical(targetUrl).catch((err) => { console.error(err) })
-      if (!response) {
-        contentEl.innerHTML = '<div class="popover-sidebar-error">Failed to load.</div>'
-        return
-      }
+      const response = await fetchCanonical(targetUrl).catch((err) => {
+        console.error(err)
+      })
+      if (requestId !== hoverRequestId) return
+      if (!response) return
 
       const [contentType] = response.headers.get("Content-Type")!.split(";")
       const [contentTypeCategory] = contentType.split("/")
 
-      if (contentTypeCategory !== "text") {
-        contentEl.innerHTML = '<div class="popover-sidebar-error">Cannot preview this type.</div>'
-        return
-      }
+      if (contentTypeCategory !== "text") return
 
       const contents = await response.text()
+      if (requestId !== hoverRequestId) return
       const html = p.parseFromString(contents, "text/html")
       normalizeRelativeURLs(html, targetUrl)
       html.querySelectorAll("[id]").forEach((el) => {
@@ -230,6 +229,8 @@ async function mouseEnterHandler(this: HTMLAnchorElement) {
       }
       ;(window as any)[cacheKey] = cached
     }
+
+    if (requestId !== hoverRequestId) return
 
     if (cached.type === "empty") {
       showBubble('<div class="popover-bubble-empty">No preview available.</div>', link)
@@ -300,10 +301,16 @@ function renderSidebarContent(
     cloned.querySelector("h1.article-title") ||
     cloned.querySelector(".article-title") ||
     cloned.querySelector("h1")
-  if (titleNode) { titleEl.textContent = titleNode.textContent ?? ""; titleNode.remove() }
+  if (titleNode) {
+    titleEl.textContent = titleNode.textContent ?? ""
+    titleNode.remove()
+  }
 
   const metaNode = cloned.querySelector(".content-meta")
-  if (metaNode) { metaEl.textContent = metaNode.textContent ?? ""; metaNode.remove() }
+  if (metaNode) {
+    metaEl.textContent = metaNode.textContent ?? ""
+    metaNode.remove()
+  }
 
   cloned.querySelectorAll(".tags").forEach((el) => el.remove())
   contentEl.appendChild(cloned)
@@ -312,7 +319,9 @@ function renderSidebarContent(
 
 function scrollToHash(container: HTMLElement, hash: string) {
   if (hash !== "") {
-    const target = container.querySelector("#popover-internal-" + hash.slice(1)) as HTMLElement | null
+    const target = container.querySelector(
+      "#popover-internal-" + hash.slice(1),
+    ) as HTMLElement | null
     if (target) container.scroll({ top: target.offsetTop - 12, behavior: "instant" })
   } else {
     container.scrollTop = 0
@@ -320,7 +329,10 @@ function scrollToHash(container: HTMLElement, hash: string) {
 }
 
 function mouseLeaveHandler(this: HTMLAnchorElement) {
-  if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null }
+  if (hoverTimer) {
+    clearTimeout(hoverTimer)
+    hoverTimer = null
+  }
   scheduleClose()
 }
 
@@ -339,4 +351,17 @@ document.addEventListener("nav", () => {
       link.removeEventListener("mouseleave", mouseLeaveHandler)
     })
   }
+
+  const closeBelowPreviewWidth = () => {
+    if (window.innerWidth >= SIDEBAR_PREVIEW_MIN_WIDTH) return
+    hoverRequestId++
+    if (hoverTimer) {
+      clearTimeout(hoverTimer)
+      hoverTimer = null
+    }
+    closeSidebarPanel()
+    closeBubblePanel()
+  }
+  window.addEventListener("resize", closeBelowPreviewWidth)
+  window.addCleanup(() => window.removeEventListener("resize", closeBelowPreviewWidth))
 })

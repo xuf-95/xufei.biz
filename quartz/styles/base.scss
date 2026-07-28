@@ -216,10 +216,8 @@ a {
       grid-template-areas: #{map.get($mobileGrid, templateAreas)};
     }
 
-    @media all and not ($desktop) {
-      padding: 0 1rem;
-    }
     @media all and ($mobile) {
+      padding: 0 1rem;
       margin: 0 auto;
     }
 

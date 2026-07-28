@@ -44,4 +44,65 @@ No actionable P0, P1, or P2 differences remain for the requested header spacing 
 
 No blocking polish remains. A future dedicated mobile-navigation project could replace the compact inline links with a menu drawer, but that is outside this spacing-focused change.
 
+## Responsive proportional gutters QA
+
+Source visual truth:
+
+- `/var/folders/c7/nbdl4jdx6zq4wfvlk8ycg_qm0000gn/T/codex-clipboard-828094db-a31b-40a7-9633-0a211eb36c58.png`
+- `/var/folders/c7/nbdl4jdx6zq4wfvlk8ycg_qm0000gn/T/codex-clipboard-33a4b78a-d95c-4fb0-a544-4a513258766b.png`
+
+Implementation screenshots:
+
+- `.omx/state/responsive-percent-gutters/browse-1450.png`
+- `.omx/state/responsive-percent-gutters/browse-1000.png`
+
+The supplied screenshots expose the previous breakpoint jump rather than a new
+pixel-perfect target. The implementation keeps the existing visual language and
+replaces the discontinuous fixed-width rails with a shared proportional grid:
+22% left gutter, 56% content, and 22% right gutter for every viewport above the
+mobile breakpoint.
+
+Browser measurements confirm symmetric gutters with no horizontal overflow at
+1450, 1200, 1151, 1150, 1149, 1000, and 801 pixels. At the former desktop
+breakpoint, the gutter changes continuously from 256.02px at 1151px to 255.80px
+at 1150px and 255.58px at 1149px. The 800px mobile layout intentionally switches
+to a single content column with 16px safe padding.
+
+Required fidelity surfaces:
+
+- Layout rhythm: proportional gutters remain balanced while the viewport changes.
+- Typography and content: unchanged.
+- Header and footer behavior: preserved.
+- Responsive safety: no content clipping or horizontal overflow at tested widths.
+
+No actionable P0, P1, or P2 differences remain for the requested proportional
+margin behavior.
+
+## Hover preview stability QA
+
+Source evidence:
+
+- `/Users/xpf/Desktop/Screen Recording 2026-07-28 at 11.17.31.mov`
+- `/var/folders/c7/nbdl4jdx6zq4wfvlk8ycg_qm0000gn/T/codex-clipboard-0c6748cc-49af-4dd0-9a90-7cd2b38901b2.png`
+- `/var/folders/c7/nbdl4jdx6zq4wfvlk8ycg_qm0000gn/T/codex-clipboard-3c25b77f-82df-4e8f-a3d5-3981496dcd26.png`
+- `/var/folders/c7/nbdl4jdx6zq4wfvlk8ycg_qm0000gn/T/codex-clipboard-27f5118a-7891-4b60-b371-ad8c3df0a3b6.png`
+
+Implementation screenshots:
+
+- `.omx/state/popover-stability/browse-1450.png`
+- `.omx/state/popover-stability/browse-1100.png`
+
+The video confirms two failure modes: the preview enters the tablet grid's
+article column during resize, and late responses from previously hovered links
+can replace the current preview. The updated interaction only enables the
+right-rail preview when the dedicated desktop rail exists (1150px and wider).
+Below that width the page remains stable without an overlapping preview.
+
+Every hover request now owns an incrementing request identifier. Results are
+rendered only while they are still the latest request; closing the preview or
+resizing below the desktop threshold invalidates pending work.
+
+No P0, P1, or P2 visual differences remain for the requested preview placement
+and stability behavior.
+
 final result: passed

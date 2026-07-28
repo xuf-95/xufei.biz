@@ -37,10 +37,8 @@ $mobileGrid: (
 );
 $tabletGrid: (
   templateRows: "auto auto auto auto",
-  // Keep the article as wide as before, but split the tablet sidebar allowance
-  // evenly across both sides so the content does not jump toward the right edge.
-  templateColumns:
-    "minmax(0, 1fr) minmax(0, calc(100% - #{$sidePanelWidth} - 10px)) minmax(0, 1fr)",
+  // Use the same proportional shell as desktop so resizing stays continuous.
+  templateColumns: "22fr minmax(0, 56fr) 22fr",
   rowGap: "5px",
   columnGap: "5px",
   templateAreas:
@@ -51,7 +49,7 @@ $tabletGrid: (
 );
 $desktopGrid: (
   templateRows: "auto auto auto",
-  templateColumns: "#{$sidePanelWidth} auto #{$sidePanelWidth}",
+  templateColumns: "22fr minmax(0, 56fr) 22fr",
   rowGap: "5px",
   columnGap: "5px",
   templateAreas:

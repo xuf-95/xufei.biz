@@ -24,8 +24,11 @@
   --site-shell-pad: clamp(1.25rem, 6vw, 5.5rem);
   --site-shell-left: max(0px, calc((100vw - var(--site-shell-max)) / 2));
   --page-layout-max: calc(#{map.get($breakpoints, desktop)} + 300px);
+  --page-layout-width: min(100vw, var(--page-layout-max));
   --page-layout-left: max(0px, calc((100vw - var(--page-layout-max)) / 2));
-  --content-column-left: calc(var(--page-layout-left) + #{$sidePanelWidth} + 5px);
+  --content-column-left: calc(
+    var(--page-layout-left) + ((var(--page-layout-width) - 10px) * 0.22) + 5px
+  );
   --toc-heading-pad-left: 8px;
   --toc-rail-left: calc(
     var(--site-shell-left) + var(--site-shell-pad) - var(--toc-heading-pad-left)
@@ -44,8 +47,9 @@
 
 @media all and ($tablet) {
   :root {
-    // The tablet grid splits the former 320px left rail into two balanced gutters.
-    --content-column-left: calc(var(--page-layout-left) + 1rem + (#{$sidePanelWidth} / 2) + 5px);
+    --content-column-left: calc(
+      var(--page-layout-left) + ((var(--page-layout-width) - 10px) * 0.22) + 5px
+    );
   }
 }
 
