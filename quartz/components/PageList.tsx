@@ -96,22 +96,22 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
         return (
           <li class={`section-li ${imageSrc ? "has-image" : ""}`}>
             <div class="section">
-              <p class="section-date">
-                {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
-              </p>
               <div class="section-body">
                 <h3>
                   <a href={href} class="internal">
                     {title}
                   </a>
                 </h3>
-                {description && <p class="section-desc">{description}</p>}
+                {/* {description && <p class="section-desc">{description}</p>} */}
               </div>
-              {imageSrc && (
+              <p class="section-date">
+                {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
+              </p>
+              {/* {imageSrc && (
                 <a href={href} class="internal section-image">
                   <img src={imageSrc} alt="" loading="lazy" decoding="async" />
                 </a>
-              )}
+              )} */}
             </div>
           </li>
         )

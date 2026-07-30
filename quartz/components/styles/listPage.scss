@@ -11,17 +11,19 @@ li.section-li {
 
   & > .section {
     display: grid;
-    grid-template-columns: fit-content(10em) 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 0 1.5rem;
-    align-items: baseline;
+    align-items: start;
     padding: 1.2rem 0;
 
     & > .section-date {
+      justify-self: end;
       margin: 0;
       color: var(--gray);
       font-size: 0.88rem;
       font-weight: 500;
       letter-spacing: 0.02em;
+      text-align: right;
       white-space: nowrap;
       line-height: 1.6;
     }
@@ -34,6 +36,7 @@ li.section-li {
         font-size: 1rem;
         font-weight: 700;
         line-height: 1.5;
+        overflow-wrap: anywhere;
 
         & > a {
           background-color: transparent;
@@ -45,13 +48,14 @@ li.section-li {
         color: var(--darkgray);
         font-size: 0.92rem;
         line-height: 1.55;
+        overflow-wrap: anywhere;
       }
     }
   }
 
   /* ── With image: 3-column layout ── */
   &.has-image > .section {
-    grid-template-columns: fit-content(10em) 1fr minmax(120px, 240px);
+    grid-template-columns: minmax(0, 1fr) auto minmax(120px, 240px);
     align-items: start;
 
     & > .section-date {
@@ -88,12 +92,12 @@ li.section-li {
 /* ── Mobile: collapse to stacked layout ── */
 @media all and ($mobile) {
   li.section-li > .section {
-    grid-template-columns: 1fr !important;
-    gap: 0.2rem 0;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 0.2rem 0.75rem;
   }
 
   li.section-li.has-image > .section > .section-image {
-    grid-column: 1;
+    grid-column: 1 / -1;
     max-width: 200px;
     margin-top: 0.5rem;
   }
@@ -105,7 +109,7 @@ li.section-li {
 
 /* ── Popover context ── */
 .popover .section {
-  grid-template-columns: fit-content(8em) 1fr !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
 
   & > .section-image {
     display: none;
