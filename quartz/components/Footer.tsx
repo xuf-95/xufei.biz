@@ -19,39 +19,39 @@ interface FooterGroup {
 }
 
 const footerGroups: FooterGroup[] = [
-  {
-    title: "Index",
-    items: [
-      // { label: "Map", href: "/Map/" },
-      { label: "AI", href: "/AI/" },
-      { label: "BigData", href: "/BigData/" },
-      { label: "Data Architecture", href: "/BigData/Data-Architecture/" },
-      { label: "Data Store", href: "/BigData/Data-Store/" },
-      { label: "Data Cloud", href: "/BigData/Cloud/" },
-      { label: "Posts", href: "/Posts/" },
+  // {
+  //   title: "Index",
+  //   items: [
+  //     // { label: "Map", href: "/Map/" },
+  //     { label: "AI", href: "/AI/" },
+  //     { label: "BigData", href: "/BigData/" },
+  //     { label: "Data Architecture", href: "/BigData/Data-Architecture/" },
+  //     { label: "Data Store", href: "/BigData/Data-Store/" },
+  //     { label: "Data Cloud", href: "/BigData/Cloud/" },
+  //     { label: "Posts", href: "/Posts/" },
 
-    ],
-  },
-  {
-    title: "Open BigData",
-    items: [
-      { label: "Apache Spark", href: "/BigData/ApacheSpark" },
-      { label: "Apache Hadoop", href: "/BigData/ApacheHadoop" },
-      { label: "Apache Flink", href: "/BigData/ApacheFlink" },
-      { label: "Apache Hive", href: "/BigData/ApacheHive" },
-      { label: "Apache Paimon", href: "/BigData/ApachePaimon" },
-    ],
-  },
-  {
-    title: "Data Architecture",
-    items: [
-      { label: "DCMM", href: "/BigData/Data-Architecture/DCMM" },
-      { label: "Data Mesh", href: "/BigData/Data-Architecture/DataMesh" },
-      { label: "Data Lake", href: "/BigData/Data-Architecture/DataLake" },
-      { label: "Lakehouse", href: "/BigData/Data-Architecture/Lakehouse" },
-      { label: "Lambda Architecture", href: "/Data-Architecture/LambdaArchitecture" },
-    ],
-  },
+  //   ],
+  // },
+  // {
+  //   title: "Open BigData",
+  //   items: [
+  //     { label: "Apache Spark", href: "/BigData/ApacheSpark" },
+  //     { label: "Apache Hadoop", href: "/BigData/ApacheHadoop" },
+  //     { label: "Apache Flink", href: "/BigData/ApacheFlink" },
+  //     { label: "Apache Hive", href: "/BigData/ApacheHive" },
+  //     { label: "Apache Paimon", href: "/BigData/ApachePaimon" },
+  //   ],
+  // },
+  // {
+  //   title: "Data Architecture",
+  //   items: [
+  //     { label: "DCMM", href: "/BigData/Data-Architecture/DCMM" },
+  //     { label: "Data Mesh", href: "/BigData/Data-Architecture/DataMesh" },
+  //     { label: "Data Lake", href: "/BigData/Data-Architecture/DataLake" },
+  //     { label: "Lakehouse", href: "/BigData/Data-Architecture/Lakehouse" },
+  //     { label: "Lambda Architecture", href: "/Data-Architecture/LambdaArchitecture" },
+  //   ],
+  // },
 ]
 
 function siteRootPrefix(cfg: GlobalConfiguration | undefined): string {
@@ -79,7 +79,14 @@ export default ((opts?: Options) => {
     return (
       <footer class={`${displayClass ?? ""} site-footer`}>
         <div class="footer-shell">
-          <section class="footer-brand-panel" aria-label="Site">
+        <div class="footer-bottom">
+            <p>© {year} xufei.biz. All rights reserved.</p>
+            <p class="footer-powered">
+              {i18n(cfg.locale).components.footer.createdWith}{" "}
+              <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a>
+            </p>
+          </div>
+          {/* <section class="footer-brand-panel" aria-label="Site">
             <a href={absSitePath(cfg, "/")} class="footer-brand">
               <img src={iconPath} alt="" class="footer-logo" />
               <span class="footer-brand-name">{cfg.pageTitle}</span>
@@ -94,7 +101,7 @@ export default ((opts?: Options) => {
                 </li>
               ))}
             </ul>
-          </section>
+          </section> */}
 
           <nav class="footer-directory" aria-label="Index footer">
             {footerGroups.map((group) => (
@@ -111,13 +118,7 @@ export default ((opts?: Options) => {
             ))}
           </nav>
 
-          <div class="footer-bottom">
-            <p>© {year} xufei.biz. All rights reserved.</p>
-            <p class="footer-powered">
-              {i18n(cfg.locale).components.footer.createdWith}{" "}
-              <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a>
-            </p>
-          </div>
+          
         </div>
       </footer>
     )

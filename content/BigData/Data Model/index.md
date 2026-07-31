@@ -1,9 +1,9 @@
 ---
-title: "index"
+title: "Data Model"
 date: 2023-06-20
 tags:
   - index
-publish: false
+publish: true
 
 
 ---

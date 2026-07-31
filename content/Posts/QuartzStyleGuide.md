@@ -10,9 +10,9 @@ tags:
   - digital-garden
 description: Record the usage methods, applicable scenarios, sample codes and maintenance changes of the official Quartz styles and custom styles on this site.
 date: 2026-06-11
-publish: true
+publish: false
 draft: true
-cardImage: /content/Posts/images/hand.png
+cardImage:
 ---
 
 ## Purpose

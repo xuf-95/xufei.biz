@@ -36,12 +36,14 @@ export const sharedPageComponents: SharedLayout = {
     Component.Backlinks(),
   ],
 
-  footer: Component.Footer({
-    links: {
-      GitHub: "https://github.com/xuf-95",
-      "xufei.site": "https://xufei.site",
-    },
-  }),
+  footer: Component.Footer(
+    // {
+  //   links: {
+  //     GitHub: "https://github.com/xuf-95",
+  //     "xufei.site": "https://xufei.site",
+  //   },
+  // }
+),
 }
 
 export const defaultContentPageLayout: PageLayout = {
