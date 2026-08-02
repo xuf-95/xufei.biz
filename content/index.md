@@ -48,51 +48,60 @@ On a broader level, I care about building knowledge systems that help data pract
 <h3 class="home-col-title">Bigdata Area</h3>
 <ul>
 
+- [[Data Strategy]] 
+- [[Data Governance]]
 - [[MOC-DataArchitectureMap|Data Architecture]]
-- [[DataIntegration|Data Integration]]
-- [[DataStoreHomepage|Data Store]]
-- [[Data Visual]]
+- [[Data Asset]]
+- [[Data Standards]]
+- [[Data Quality]]
+- [[Data Security]]
+- [[Data Lifecycle]]
+- [[Data Application Circulation]]
 
 </ul>
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">AI Area</h3>
+<h3 class="home-col-title">Data Engineering</h3>
 <ul>
 
-- [[AIAgentic|AI Agentic]]
-- [[Token是如何计费的]]
-- [[What's RAG?]]
-- [[Bigdata With AI|Bigdata With AI]]
+- [[DataIntegration|Data Integration]]
+- [[Data Develelop]]
+- [[Data Store]]
+- [[Data Maintenance]]
+- [[Data Map]]
+- [[Data Metric]]
+- [[User profile]]
 
 </ul>
 </div>
 </div>
+
 <div class="home-two-col-section">
 <div class="home-col-left">
-<h3 class="home-col-title">Cloud Native</h3>
-<ul>
-
-- [[DataLakeFormation（DLF）|DataLake Formation（DLF）]]
-- [[MaxCompute]]
-- [[DataWorks]]
-- [[Dataphin]]
-
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">Warehouse & DataLake</h3>
+<h3 class="home-col-title">Data Center</h3>
 <ul>
 
 - [[如何更好的设计数据底座|How to better design the data foundation]]
-- [[常见的的数据压缩算法|Common data compression algorithms]]
-- [[StarRocks]]
-- [[ApachePaimon|Apache Paimon]]
+- [[Streaming & Batch ]]
+- [[DataWarehouse & Datalake]]
+
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Data Sources</h3>
+<ul>
+
+- [[Data Paper]]
+- [[Data Datasets ]]
+- [[Data Guide]]
+- [[Data Orgnization]]
 
 </ul>
 </div>
 </div>
+
 <div class="home-two-col-section">
 <div class="home-col-left">
 <h3 class="home-col-title">Data Architecture</h3>
@@ -107,13 +116,14 @@ On a broader level, I care about building knowledge systems that help data pract
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">Recent Posts</h3>
+<h3 class="home-col-title">AI Area</h3>
 <ul>
 
-- [[QuartzStyleGuide]]
-- [[goods|Goods Gallary]]
-- [[data-engineer-tools]]
-
+- [[Large Language Model（LLM]]
+- [[Prompt Enginering]]
+- [[What's RAG?]]
+- [[LangChain]]
+- [[Bigdata With AI|Bigdata With AI]]
 
 </ul>
 </div>
