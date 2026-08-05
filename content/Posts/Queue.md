@@ -1,9 +1,11 @@
 ---
 title: queue
+type: post
+tags:
+  - type/post
+  - posts
 date: 2024-01-09
 aliases:
-tags:
-  - posts
 description:
 language: EN
 draft:

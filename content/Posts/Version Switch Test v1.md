@@ -1,9 +1,11 @@
 ---
 title: Version Switch Test
-date: 2026-06-03
+type: post
 tags:
+  - type/post
   - quartz
   - test
+date: 2026-06-03
 draft: true
 publish: true
 description: Test page for the article version switcher.

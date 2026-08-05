@@ -1,5 +1,8 @@
 ---
 title: Home
+type: index
+tags:
+  - type/index
 draft: true
 publish: true
 ---

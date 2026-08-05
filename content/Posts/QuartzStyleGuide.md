@@ -1,13 +1,15 @@
 ---
 title: Quartz Style Guide
+type: post
+tags:
+  - type/post
+  - quartz
+  - style-guide
+  - digital-garden
 aliases:
   - Quartz 样式使用指南
   - Wiki Style Demo
   - Style Changelog
-tags:
-  - quartz
-  - style-guide
-  - digital-garden
 description: Record the usage methods, applicable scenarios, sample codes and maintenance changes of the official Quartz styles and custom styles on this site.
 date: 2026-06-11
 publish: false

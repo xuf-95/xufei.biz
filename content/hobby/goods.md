@@ -1,5 +1,8 @@
 ---
 title: "goods"
+type: post
+tags:
+  - type/post
 draft: false
 publish: true
 

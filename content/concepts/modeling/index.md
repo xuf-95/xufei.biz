@@ -1,0 +1,40 @@
+---
+title: "Data Model"
+type: index
+tags:
+  - type/index
+date: 2023-06-20
+publish: true
+
+
+---
+
+## Data Models
+
+### Formats
+
+- [[Avro]]
+- [[E-R Model]]
+- [[POJOs]]
+- [[Protocol Buffers]]
+- [[Thrift]]
+
+### Modeling Techniques
+
+- [[Dimensional Modeling]]
+- [[维度建模]]
+- [[范式建模]]
+- [[Indicator System]]
+- [[Semantic Layer]]
+- [[分析型数仓模型治理评价]]
+
+### Design Tools
+
+- [[UML]]
+
+### Governance & AI Links
+
+- [[Data Standard]]
+- [[Data Quality]]
+- [[Metadata Management]]
+- [[Data Agent Architecture]]

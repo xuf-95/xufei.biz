@@ -1,9 +1,11 @@
 ---
 title: Quartz MKD
-date: 2026-05-26
+type: post
 tags:
+  - type/post
   - quartz
   - md
+date: 2026-05-26
 description:
 cardImage: /content/Posts/images/antfu.png
 publishDate: 2026-03-19

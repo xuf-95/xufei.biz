@@ -1,0 +1,39 @@
+---
+title: What is Apache Storm?
+type: product
+tags:
+  - type/product
+  - lifecycle/compute
+  - latency/streaming
+  - ecosystem/apache
+aliases:
+description: Apache Storm 是一个开源分布式实时计算系统，提供对无界数据流的可靠处理能力。核心概念包括 Topology（计算图）、Spout（数据源）、Bolt（处理单元）和 Stream（元组序列），支持实时分析、在线机器学习、持续计算等场景，单节点处理速度超过百万元组/秒。
+summary:
+draft: true
+date: 2024-07-24
+publish: true
+---
+![[storm-logo.png]]
+
+### Why use Apache Storm?
+
+Apache Storm is a free and open source distributed realtime computation system. Apache Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing. Apache Storm is simple, can be used with any programming language, and is a lot of fun to use!
+
+Apache Storm has many use cases: realtime analytics, online machine learning, continuous computation, distributed RPC, ETL, and more. Apache Storm is fast: a benchmark clocked it at over **a million tuples processed per second per node**. It is scalable, fault-tolerant, guarantees your data will be processed, and is easy to set up and operate.
+
+Apache Storm integrates with the queueing and database technologies you already use. An Apache Storm topology consumes streams of data and processes those streams in arbitrarily complex ways, repartitioning the streams between each stage of the computation however needed. Read more in the tutorial.
+
+![[storm-architecture.excalidraw]]
+
+#### Stream groupings
+
+A stream grouping tells a topology how to send tuples between two components. Remember, spouts and bolts execute in parallel as many tasks across the cluster. If you look at how a topology is executing at the task level, it looks something like this
+
+![[storm-datamodel.png]]
+
+
+***
+
+- [Apache Storm ](https://storm.apache.org/)
+- [History of Apache Storm and lessons learned - thoughts from the red planet - thoughts from the red planet](http://nathanmarz.com/blog/history-of-apache-storm-and-lessons-learned.html)
+- [About Me - thoughts from the red planet](http://nathanmarz.com/about/) In 2011 created open-sourced Apache Storm Project
