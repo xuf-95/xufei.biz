@@ -34,6 +34,14 @@ Currently, I’m exploring how modern data systems can become more understandabl
 
 On a broader level, I care about building knowledge systems that help data practitioners see the shape of a problem more clearly: how concepts connect, how tools fit together, and how architectural decisions compound over time.
 
+
+
+**How This Garden is Organized？** Content lives in five genre-based zones — [[Products|Products]] (tool & platform profiles), **[[concepts/|Concepts]]** (principles & patterns), **[[frameworks/|Frameworks]]** (standards like DCMM), **[[practices/|Practices]]** (architecture decisions & implementation notes), and **[[recipes/|Recipes]]** (snippets, configs & cheat sheets).
+
+A six-dimension tag system handles the rest: `lifecycle/` (ingestion → storage → compute → serving → governance), `latency/` (batch · streaming · interactive), `ecosystem/` (Apache · Cloud-Native · AI · Web3), `tech/`, `type/`, and `status/`. Every note sits in exactly one folder but can carry tags from all six dimensions.
+
+**[[moc/|MOC]]** pages act as curated entry points — topic-driven reading paths that cut across all zones.
+
 <!-- As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit: -->
 <!-- 
 - DATA Agent Map: experiments and references around data, AI, and agents.

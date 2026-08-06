@@ -118,5 +118,21 @@
     "category": "Design",
     "date": "2026-02-23",
     "description": "photography gallary"
+  },
+  {
+    "title": "Justine Levine",  
+    "url": "https://justinlevine.me/",
+    "type": "link",
+    "category": "Design",
+    "date": "2026-08-06",
+    "description": "Justine Levine's website"
+  },
+  {
+    "title": "OpenSource UI",  
+    "url": "https://opensourceui.in/",
+    "type": "link",
+    "category": "Design",
+    "date": "2026-08-06",
+    "description": "OpenSource UI"
   }
 ]
