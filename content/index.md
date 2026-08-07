@@ -36,7 +36,7 @@ On a broader level, I care about building knowledge systems that help data pract
 
 
 
-**How This Garden is Organized？** Content lives in five genre-based zones — [[Products|Products]] (tool & platform profiles), **[[concepts/|Concepts]]** (principles & patterns), **[[frameworks/|Frameworks]]** (standards like DCMM), **[[practices/|Practices]]** (architecture decisions & implementation notes), and **[[recipes/|Recipes]]** (snippets, configs & cheat sheets).
+**How This Garden is Organized？** Content lives in five genre-based zones — **[[products|Products]]** eg:tool & platform profiles, **[[concepts|Concepts]]** principles & patterns, **[[frameworks|Frameworks]]** standards like DCMM, **[[practices/|Practices]]**(architecture decisions & implementation notes, and **[[recipes/|Recipes]]** snippets, configs & cheat sheets.
 
 A six-dimension tag system handles the rest: `lifecycle/` (ingestion → storage → compute → serving → governance), `latency/` (batch · streaming · interactive), `ecosystem/` (Apache · Cloud-Native · AI · Web3), `tech/`, `type/`, and `status/`. Every note sits in exactly one folder but can carry tags from all six dimensions.
 
@@ -53,104 +53,3 @@ A six-dimension tag system handles the rest: `lifecycle/` (ingestion → storage
 <!-- <figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
   <img src="/images/hand.png"/>
 </figure> -->
-
-<div class="home-two-col-section">
-<div class="home-col-left">
-<h3 class="home-col-title">Bigdata Area</h3>
-<ul>
-
-- [[Data Strategy]] 
-- [[Data Governance]]
-- [[MOC-DataArchitectureMap|Data Architecture]]
-- [[Data Asset]]
-- [[Data Standards]]
-- [[Data Quality]]
-- [[Data Security]]
-- [[Data Lifecycle]]
-- [[Data Application Circulation]]
-
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">Data Engineering</h3>
-<ul>
-
-- [[DataIntegration|Data Integration]]
-- [[Data Develelop]]
-- [[Data Store]]
-- [[Data Maintenance]]
-- [[Data Map]]
-- [[Data Metric]]
-- [[User profile]]
-
-</ul>
-</div>
-</div>
-
-<div class="home-two-col-section">
-<div class="home-col-left">
-<h3 class="home-col-title">Data Center</h3>
-<ul>
-
-- [[如何更好的设计数据底座|How to better design the data foundation]]
-- [[Streaming & Batch ]]
-- [[DataWarehouse & Datalake]]
-
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">Data Sources</h3>
-<ul>
-
-- [[Data Paper]]
-- [[Data Datasets ]]
-- [[Data Guide]]
-- [[Data Orgnization]]
-
-</ul>
-</div>
-</div>
-
-<div class="home-two-col-section">
-<div class="home-col-left">
-<h3 class="home-col-title">Data Architecture</h3>
-<ul>
-
-- [[LambdaArchitecture|What is Lambda Architecture]]
-- [[KappaArchitecture|What is Kappa Architecture?]]
-- [[Log-StructuredMergeTree（LSM）Architecture]]
-- [[MMP (Massively Parallel Processing)]]
-
-</ul>
-</div>
-
-<div class="home-col-right">
-<h3 class="home-col-title">AI Area</h3>
-<ul>
-
-- [[Large Language Model（LLM]]
-- [[Prompt Enginering]]
-- [[What's RAG?]]
-- [[LangChain]]
-- [[Bigdata With AI|Bigdata With AI]]
-
-</ul>
-</div>
-</div>
-
-
-%% **Commits Time Distribution of my wiki**
-
-<a href="https://next.ossinsight.io/widgets/official/compose-activity-trends?repo_id=1001533954" target="_blank" style="display: block" align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-activity-trends/thumbnail.png?repo_id=1001533954&image_size=auto&color_scheme=dark" width="815" height="auto">
-    <img alt="Activity Trends of xuf-95/xufei.biz - Last 28 days" src="https://next.ossinsight.io/widgets/official/compose-activity-trends/thumbnail.png?repo_id=1001533954&image_size=auto&color_scheme=light" width="815" height="auto">
-  </picture>
-</a>
-
-<!-- Made with [OSS Insight](https://ossinsight.io/) -->   %%
-
-
-

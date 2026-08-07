@@ -14,6 +14,100 @@ type: moc
 status: seed
 ---
 
+
+
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Bigdata Area</h3>
+<ul>
+
+- [[Data Strategy]] 
+- [[Data Governance]]
+- [[MOC-DataArchitectureMap|Data Architecture]]
+- [[Data Asset]]
+- [[Data Standards]]
+- [[Data Quality]]
+- [[Data Security]]
+- [[Data Lifecycle]]
+- [[Data Application Circulation]]
+
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Data Engineering</h3>
+<ul>
+
+- [[DataIntegration|Data Integration]]
+- [[Data Develelop]]
+- [[Data Store]]
+- [[Data Maintenance]]
+- [[Data Map]]
+- [[Data Metric]]
+- [[User profile]]
+
+</ul>
+</div>
+</div>
+
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Data Center</h3>
+<ul>
+
+- [[如何更好的设计数据底座|How to better design the data foundation]]
+- [[Streaming & Batch ]]
+- [[DataWarehouse & Datalake]]
+
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">Data Sources</h3>
+<ul>
+
+- [[Data Paper]]
+- [[Data Datasets ]]
+- [[Data Guide]]
+- [[Data Orgnization]]
+
+</ul>
+</div>
+</div>
+
+<div class="home-two-col-section">
+<div class="home-col-left">
+<h3 class="home-col-title">Data Architecture</h3>
+<ul>
+
+- [[LambdaArchitecture|What is Lambda Architecture]]
+- [[KappaArchitecture|What is Kappa Architecture?]]
+- [[Log-StructuredMergeTree（LSM）Architecture]]
+- [[MMP (Massively Parallel Processing)]]
+
+</ul>
+</div>
+
+<div class="home-col-right">
+<h3 class="home-col-title">AI Area</h3>
+<ul>
+
+- [[Large Language Model（LLM]]
+- [[Prompt Enginering]]
+- [[What's RAG?]]
+- [[LangChain]]
+- [[Bigdata With AI|Bigdata With AI]]
+
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
 ## Scope
 
 这张地图用于把 [[0-BigdataWikiOS]] 中的能力卡转化为职业资产：面试回答、项目案例、架构评审、演讲教程和个人作品集。
