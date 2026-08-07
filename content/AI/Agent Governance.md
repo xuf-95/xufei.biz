@@ -40,6 +40,7 @@ flowchart LR
   E --> F["Audit / Human Approval"]
 ```
 
+
 ## Commercial Practice
 
 低风险任务可以自动化，例如解释指标、生成 SQL 草稿、总结报表。高风险任务如写数据、改权限、发布任务、访问敏感明细，应默认要求人工审批。

@@ -41,12 +41,12 @@ export const BrowsePage: QuartzEmitterPlugin<Options> = (userOpts) => {
     },
     async *emit(ctx, content, resources) {
       const cfg = ctx.cfg.configuration
-      const slug = "browse/index" as FullSlug
+      const slug = "wiki/index" as FullSlug
       const [tree, vfile] = defaultProcessedContent({
         slug,
         text: "",
         // description: "Browse all content",
-        frontmatter: { title: "Browse All", tags: [] },
+        frontmatter: { title: "Wiki", tags: [] },
       })
 
       const externalResources = pageResources(pathToRoot(slug), resources)

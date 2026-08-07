@@ -155,6 +155,7 @@ declare module "vfile" {
         cardImage: string
         thumbnail: string
         comments: boolean | string
+        priority: number
         language: "EN" | "CN" | string
         versions: Array<{
           label: string

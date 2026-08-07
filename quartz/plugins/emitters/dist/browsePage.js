@@ -91,12 +91,12 @@ exports.BrowsePage = function (userOpts) {
                     switch (_b.label) {
                         case 0:
                             cfg = ctx.cfg.configuration;
-                            slug = "browse/index";
+                            slug = "wiki/index";
                             _a = vfile_1.defaultProcessedContent({
                                 slug: slug,
                                 text: "",
                                 // description: "Browse all content",
-                                frontmatter: { title: "Browse All", tags: [] }
+                                frontmatter: { title: "Wiki", tags: [] }
                             }), tree = _a[0], vfile = _a[1];
                             externalResources = renderPage_1.pageResources(path_1.pathToRoot(slug), resources);
                             componentData = {

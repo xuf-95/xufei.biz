@@ -97,7 +97,7 @@ article a.gallery-card,
   align-self: end;
   color: var(--gallery-card-title);
   font-family: var(--headerFont);
-  font-size: clamp(0.98rem, 1.45vw, 1.16rem);
+  font-size: clamp(0.78rem, 1.15vw, 0.92rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0;
@@ -110,8 +110,8 @@ article a.gallery-card,
   align-self: start;
   margin-top: 0.45rem;
   color: var(--gallery-card-muted);
-  font-size: clamp(0.78rem, 1.15vw, 0.92rem);
-  font-weight: 600;
+  font-size: clamp(0.68rem, 1vw, 0.82rem);
+  font-weight: 500;
   line-height: 1.25;
   transition:
     color 0.18s ease,

@@ -68,7 +68,7 @@ Apache Flink 是一个开源的`流处理框架`和`分布式处理引擎`，用
 ## 数据架构演变
 
 - **事务处理 OLTP**
-	![flink-oltp](public/OpenBigData/images/flink-oltp.png)
+	![flink-oltp](flink-oltp.png)
 
 - 分析处理 OLAP ： 将数据从业务数据库复制到数仓，再进行分析和查
 
