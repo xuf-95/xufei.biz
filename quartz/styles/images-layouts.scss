@@ -100,6 +100,11 @@ Edit record:
   object-fit: var(--image-layout-fit, cover);
 }
 
+// The homepage house is transparent line art: black in light mode, white in dark mode.
+:root[saved-theme="dark"] body[data-slug="index"] .image-layout-bleed img[src$="house.png"] {
+  filter: invert(1);
+}
+
 .image-layout-bleed figcaption {
   width: min(100% - 2rem, 56rem);
   margin: 0.55rem auto 0;
