@@ -12,7 +12,7 @@ publish: true
 <h3 class="home-col-title">DCMM</h3>
 <ul>
 
-- [[DCMM]]
+- [[Data Management Capability Maturity Assessment Model (DCMM)]]
 - [[DCMM Maturity Model]]
 
 </ul>
@@ -23,11 +23,12 @@ publish: true
 - [[Data Strategy]]
 - [[Data Governance]]
 - [[Data Architecture]]
+- [[Data Assets]]
 - [[Data Standard]]
 - [[Data Quality]]
 - [[Data Security]]
 - [[Data Lifecycle]]
-- [[Data Application]]
+- [[Data Application|Data Application and Circulation]]
 
 </ul>
 </div>
