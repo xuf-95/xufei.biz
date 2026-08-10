@@ -6,7 +6,6 @@ tags:
   - lifecycle/storage
   - tech/mysql
 date: 2023-10-14
-draft: true
 
 
 ---

@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-07-04
-draft: true
 aliases:
   - 业务术语
 ---

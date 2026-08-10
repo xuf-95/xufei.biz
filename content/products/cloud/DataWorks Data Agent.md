@@ -9,7 +9,6 @@ date: 2024-01-09
 aliases:
 description:
 language: EN
-draft:
 dcmm_domain:
 dama_area:
 cdo_value:

@@ -8,7 +8,6 @@ tags:
 aliases:
 description:
 date: 2024-03-04
-draft: true
 publish:
 ---
 ## Version

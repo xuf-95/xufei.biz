@@ -10,7 +10,6 @@ aliases:
 description:
 date: 2023-12-31
 publishDate: 2025-09-25T21:47
-draft: true
 publish: false
 
 

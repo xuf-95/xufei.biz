@@ -5,7 +5,6 @@ tags:
   - type/recipe
   - tech/mysql
 date: 2025-06-14
-draft: true
 publish: false
 ---
 

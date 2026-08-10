@@ -7,6 +7,7 @@ tags:
   - architecture
 aliases:
 date: 2023-09-08
+priority: 87
 publish: true
 ---
 

@@ -8,7 +8,6 @@ tags:
 date: 2025-01-09
 aliases:
 description:
-draft: true
 publishDate: 2025-01-10T16:58:00
 publish: true
 ---

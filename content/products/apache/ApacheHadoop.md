@@ -9,7 +9,6 @@ tags:
   - tech/hadoop
 aliases:
   - Hadoop
-draft: true
 date: 2022-01-24
 publish: true
 ---

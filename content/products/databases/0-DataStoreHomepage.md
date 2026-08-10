@@ -11,7 +11,6 @@ aliases:
   - DB
   - Data Store
 date: 2022-12-02
-draft: true
 publish: true
 ---
 ## 数据存储分类

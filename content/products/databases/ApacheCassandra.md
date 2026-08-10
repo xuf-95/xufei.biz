@@ -12,7 +12,6 @@ aliases:
 description:
 date: 2023-04-21
 publish: true
-draft: true
 ---
 ## What's Apache Cassandra？
 

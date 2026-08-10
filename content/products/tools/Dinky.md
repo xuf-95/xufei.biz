@@ -13,7 +13,6 @@ aliases:
 description: Apache Dinky - 开源实时计算平台，基于Apache Flink构建的一站式实时数据开发、部署和运维平台
 date: 2024-01-09
 publishDate: 2026-05-18T16:45
-draft: false
 publish: true
 
 

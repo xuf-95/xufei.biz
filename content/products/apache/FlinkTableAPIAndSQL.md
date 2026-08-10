@@ -9,7 +9,6 @@ tags:
   - tech/flink
   - sql
 date: 2024-02-11
-draft: true
 language: CN
 publish: true
 ---

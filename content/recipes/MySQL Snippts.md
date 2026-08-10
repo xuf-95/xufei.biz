@@ -6,7 +6,6 @@ tags:
   - lifecycle/storage
   - tech/mysql
 date: 2022-03-01
-draft: false
 publish: true
 
 
@@ -33,11 +32,6 @@ ALTER TABLE table_name DROP PRIMARY KEY;
 // 查看
 show index from tblname;
 show keys from tblname;
-
-作者：会灰翔的灰机
-链接：https://juejin.cn/post/7120408229414174727
-来源：稀土掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 ```
 
 ## 查看事务
@@ -220,10 +214,3 @@ find $BACKUP_DIR -name '*.zip' -ctime +14 -exec rm {} \;
 ```mysql
 ```
 
-
-```mysql
-```
-
-
-```mysql
-```

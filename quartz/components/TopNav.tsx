@@ -33,7 +33,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: "Wiki",
-    path: "/browse/",
+    path: "/wiki/",
     // children: [
     //   { label: "Map", desc: "Map of Content", path: "/Map/", abbr: "MP" },
     //   { label: "AI", desc: "AI tools & agents", path: "/ai/", abbr: "AI" },

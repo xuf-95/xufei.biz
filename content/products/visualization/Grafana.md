@@ -6,7 +6,6 @@ tags:
   - lifecycle/serving
   - ecosystem/bi
 date: 2023-08-04
-draft: true
 publish: false
 aliases:
   - Grafana

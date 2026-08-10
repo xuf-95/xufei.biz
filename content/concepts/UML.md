@@ -8,7 +8,6 @@ aliases:
   - Unified Modeling Language
   - UML
 date: 2023-04-15
-draft: true
 publish: false
 
 

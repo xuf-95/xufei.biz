@@ -41,12 +41,12 @@ export const BrowsePage: QuartzEmitterPlugin<Options> = (userOpts) => {
     },
     async *emit(ctx, content, resources) {
       const cfg = ctx.cfg.configuration
-      const slug = "browse/index" as FullSlug
+      const slug = "wiki/index" as FullSlug
       const [tree, vfile] = defaultProcessedContent({
         slug,
         text: "",
         // description: "Browse all content",
-        frontmatter: { title: "Browse All", tags: [] },
+        frontmatter: { title: "Wiki Home", tags: [] },
       })
 
       const externalResources = pageResources(pathToRoot(slug), resources)
@@ -64,6 +64,25 @@ export const BrowsePage: QuartzEmitterPlugin<Options> = (userOpts) => {
         ctx,
         content: renderPage(cfg, slug, componentData, opts, externalResources),
         slug,
+        ext: ".html",
+      })
+
+      yield write({
+        ctx,
+        content: `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting to Wiki</title>
+    <link rel="canonical" href="../wiki/">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0; url=../wiki/">
+  </head>
+  <body>
+    <p>Moved to <a href="../wiki/">Wiki</a>.</p>
+  </body>
+</html>`,
+        slug: "browse/index" as FullSlug,
         ext: ".html",
       })
     },

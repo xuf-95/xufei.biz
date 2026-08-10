@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2025-01-10
-draft: true
 aliases:
   - 数据集成与共享
 ---

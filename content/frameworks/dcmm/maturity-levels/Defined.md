@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-07-15
-draft: true
 aliases:
   - 稳健级
   - Level 3

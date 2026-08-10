@@ -11,7 +11,6 @@ description: Federated Query（联邦查询）是一种让你在不搬迁、不�
 date: 2026-06-01
 publishDate: 2026-06-20T22:54
 language: EN
-draft:
 publish: true
 ---
 

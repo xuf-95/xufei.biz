@@ -12,7 +12,7 @@ description: CBO = Cost-Based Optimizer，基于代价的优化器
 date: 2026-06-01
 publishDate: 2026-06-24T23:21
 language: EN
-draft:
+priority: 89
 publish: true
 ---
 ## **1. CBO 是什么？**

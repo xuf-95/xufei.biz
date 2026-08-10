@@ -6,7 +6,6 @@ tags:
   - lifecycle/compute
   - tech/mysql
 date: 2022-01-23
-draft: false
 publish: true
 
 

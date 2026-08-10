@@ -11,7 +11,6 @@ tags:
 aliases:
   - hdfs-architecture
 date: 2026-07-04
-draft: true
 publish: true
 description: HDFS (Hadoop Distributed File System) is a distributed file system designed to run on commodity hardware, providing high-throughput access to application data.
 language: CN

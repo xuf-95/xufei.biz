@@ -14,7 +14,6 @@ aliases:
 description: 用架构图、流程图和类比讲清楚 Agentic AI：定义、四大组件、ReAct 循环、五大工作流模式、记忆与上下文工程、MCP、多智能体与框架选型。资料来源为 Anthropic/OpenAI 官方指南、ReAct/Reflexion/CoALA 等论文与热门开源仓库。
 date: 2026-07-18
 publish: true
-draft: false
 ---
 
 > [!infobox]

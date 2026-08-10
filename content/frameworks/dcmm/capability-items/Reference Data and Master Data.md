@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-01-26
-draft: true
 aliases:
   - 参考数据和主数据
 ---

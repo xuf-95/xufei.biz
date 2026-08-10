@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-02-24
-draft: true
 aliases:
   - DCMM 成熟度模型
 ---

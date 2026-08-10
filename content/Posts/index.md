@@ -4,7 +4,7 @@ type: post
 tags:
   - type/post
 date: 2022-03-04
-public: true
+publish: true
 ---
 <!-- ### Reading & Resources
 

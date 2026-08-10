@@ -12,7 +12,7 @@ description: AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动�
 date: 2026-06-01
 publishDate: 2026-06-24T23:33
 language: EN
-draft:
+priority: 90
 publish: true
 ---
 AQE（Adaptive Query Execution，自适应查询执行）是大数据 SQL 引擎中的一种**运行时动态优化机制**。

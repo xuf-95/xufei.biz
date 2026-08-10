@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-09-29
-draft: true
 aliases:
   - 初始级
   - Level 1

@@ -8,7 +8,6 @@ tags:
   - ecosystem/apache
   - tech/airflow
 date: 2023-07-06
-draft: false
 publish: true
 socialImage: airflow-ui
 ---

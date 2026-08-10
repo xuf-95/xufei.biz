@@ -14,7 +14,6 @@ aliases:
 description: 基于 DeepWiki 对 Apache Flink 源码的分析，从架构、运行时、状态管理、SQL、连接器和部署六个维度总结 Flink 的内部实现。
 date: 2026-07-03
 publish: true
-draft: true
 ---
 
 > [!infobox]

@@ -9,7 +9,6 @@ aliases:
   - Tableau
 date: 2024-10-04
 publish: false
-draft: true
 ---
 
 ## Product

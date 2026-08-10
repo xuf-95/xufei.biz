@@ -8,7 +8,6 @@ aliases:
   - Proof of Concept
   - 证明概念
 date: 2022-09-05
-draft: false
 publish: true
 
 

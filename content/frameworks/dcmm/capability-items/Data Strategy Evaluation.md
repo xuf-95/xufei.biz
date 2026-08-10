@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2025-07-05
-draft: true
 aliases:
   - 数据战略评估
 ---

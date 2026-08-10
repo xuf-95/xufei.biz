@@ -5,8 +5,6 @@ tags:
   - type/concept
   - lifecycle/storage
 date: 2022-01-12
-draft: true
-tag:
 publish: false
 
 

@@ -15,7 +15,6 @@ description: Apache Paimon 是面向统一批流、实时更新、湖仓存储�
 date: 2026-06-14
 publishDate: 2026-06-14T00:00
 language: CN
-draft: false
 publish: true
 ---
 

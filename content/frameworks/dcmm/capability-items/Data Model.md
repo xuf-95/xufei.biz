@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-11-22
-draft: true
 aliases:
   - 数据模型
 ---

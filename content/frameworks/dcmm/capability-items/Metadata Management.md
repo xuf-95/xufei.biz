@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-01-31
-draft: true
 aliases:
   - 元数据管理
 ---

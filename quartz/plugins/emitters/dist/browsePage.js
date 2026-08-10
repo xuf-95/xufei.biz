@@ -67,7 +67,7 @@ var renderPage_1 = require("../../components/renderPage");
 var components_1 = require("../../components");
 var quartz_layout_1 = require("../../../quartz.layout");
 exports.BrowsePage = function (userOpts) {
-    var opts = __assign(__assign(__assign(__assign({}, quartz_layout_1.sharedPageComponents), quartz_layout_1.defaultListPageLayout), userOpts), { pageBody: components_1.BrowseAllContent({ showFolderCount: true }) });
+    var opts = __assign(__assign(__assign(__assign({}, quartz_layout_1.sharedPageComponents), quartz_layout_1.defaultListPageLayout), userOpts), { pageBody: components_1.BrowseAllContent() });
     var Head = opts.head, header = opts.header, beforeBody = opts.beforeBody, pageBody = opts.pageBody, afterBody = opts.afterBody, left = opts.left, right = opts.right, Footer = opts.footer;
     var Header = Header_1["default"]();
     var Body = Body_1["default"]();
@@ -91,12 +91,12 @@ exports.BrowsePage = function (userOpts) {
                     switch (_b.label) {
                         case 0:
                             cfg = ctx.cfg.configuration;
-                            slug = "browse/index";
+                            slug = "wiki/index";
                             _a = vfile_1.defaultProcessedContent({
                                 slug: slug,
                                 text: "",
                                 // description: "Browse all content",
-                                frontmatter: { title: "Browse All", tags: [] }
+                                frontmatter: { title: "Wiki Home", tags: [] }
                             }), tree = _a[0], vfile = _a[1];
                             externalResources = renderPage_1.pageResources(path_1.pathToRoot(slug), resources);
                             componentData = {
@@ -119,6 +119,15 @@ exports.BrowsePage = function (userOpts) {
                                 }))];
                         case 1: return [4 /*yield*/, _b.sent()];
                         case 2:
+                            _b.sent();
+                            return [4 /*yield*/, __await(helpers_1.write({
+                                    ctx: ctx,
+                                    content: "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Redirecting to Wiki</title>\n    <link rel=\"canonical\" href=\"../wiki/\">\n    <meta name=\"robots\" content=\"noindex\">\n    <meta http-equiv=\"refresh\" content=\"0; url=../wiki/\">\n  </head>\n  <body>\n    <p>Moved to <a href=\"../wiki/\">Wiki</a>.</p>\n  </body>\n</html>",
+                                    slug: "browse/index",
+                                    ext: ".html"
+                                }))];
+                        case 3: return [4 /*yield*/, _b.sent()];
+                        case 4:
                             _b.sent();
                             return [2 /*return*/];
                     }

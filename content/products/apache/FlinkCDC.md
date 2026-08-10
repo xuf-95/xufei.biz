@@ -9,7 +9,6 @@ tags:
   - tech/flink
   - cdc
 date: 2024-09-18
-draft: false
 publish: true
 
 

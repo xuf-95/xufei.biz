@@ -8,9 +8,9 @@ tags:
   - ecosystem/apache
   - tech/spark
 date: 2022-01-12
-draft: false
 description: Micro-batch
 publish: true
+priority: 84
 language: EN
 
 

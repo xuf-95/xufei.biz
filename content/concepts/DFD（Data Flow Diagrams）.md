@@ -8,7 +8,6 @@ aliases:
   - Data Flow Diagrams
   - 数据流图
 date: 2021-06-18
-draft: true
 ---
 ### What's DFD?
 

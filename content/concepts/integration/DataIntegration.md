@@ -10,7 +10,6 @@ aliases:
   - Data Integration
   - Data Integration Homepage
 date: 2022-01-21
-draft: true
 publish: true
 ---
 ## 01.数据集成的概念

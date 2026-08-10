@@ -9,7 +9,6 @@ tags:
 aliases:
   - SR
 date: 2024-09-12
-draft: false
 publish: true
 ---
 

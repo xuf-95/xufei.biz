@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-05-08
-draft: true
 aliases:
   - 数据设计和开发
 ---

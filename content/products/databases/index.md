@@ -5,7 +5,6 @@ tags:
   - type/index
   - lifecycle/storage
 date: 2023-06-20
-draft: false
 
 
 ---

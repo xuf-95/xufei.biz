@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-02-03
-draft: true
 aliases:
   - 优化级
   - Level 5

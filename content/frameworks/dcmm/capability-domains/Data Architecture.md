@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2025-09-30
-draft: true
 aliases:
   - 数据架构
 publish: true

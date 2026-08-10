@@ -11,7 +11,6 @@ aliases:
   - Apache Paimon
   - Paimon
 date: 2025-01-21
-draft: true
 publish: true
 ---
 ## Overview

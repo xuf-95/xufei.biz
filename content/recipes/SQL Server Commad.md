@@ -7,7 +7,6 @@ tags:
   - tech/sqlserver
 date: 2024-03-04
 publish: false
-draft: true
 
 
 ---

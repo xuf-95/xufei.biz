@@ -14,7 +14,6 @@ versions:
   - label: v2.0
     path: Posts/Version-Switch-Test-v2
     current: true
-draft: true
 ---
 
 This is the second version of the version switcher test page.

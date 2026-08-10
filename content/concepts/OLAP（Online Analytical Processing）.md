@@ -8,7 +8,6 @@ aliases:
   - On-Line Analytical Processing
   - OLAP
   - 联机分析处理
-draft: false
 date: 2023-04-08
 ---
 

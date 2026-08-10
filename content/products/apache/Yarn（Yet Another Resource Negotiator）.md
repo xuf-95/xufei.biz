@@ -10,7 +10,6 @@ tags:
   - architecture
 description: YARN 是 Yet Another Resource Negotiator（另一个资源管理器）的缩写，可充当 Hadoop 堆栈的集群协调组件。
 date: 2022-01-25
-draft: false
 publish: true
 aliases:
   - YARN

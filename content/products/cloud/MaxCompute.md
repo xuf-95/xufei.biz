@@ -11,7 +11,6 @@ aliases:
   - MaxCompute
   - MC
 date: 2023-03-11
-draft: true
 publish: true
 publishDate: 2026-06-27
 status: seed

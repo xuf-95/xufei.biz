@@ -11,7 +11,6 @@ aliases:
   - Flume
   - flume
 date: 2023-09-15
-draft: false
 publish: true
 ---
 ## Flume 概述

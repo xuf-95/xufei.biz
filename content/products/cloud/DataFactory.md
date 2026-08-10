@@ -7,7 +7,6 @@ tags:
   - ecosystem/azure
   - tech/sqlserver
 date: 2025-06-06
-draft: true
 aliases:
   - DataFactory
 ---

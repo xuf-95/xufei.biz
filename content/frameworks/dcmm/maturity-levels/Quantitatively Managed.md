@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-02-16
-draft: true
 aliases:
   - 量化管理级
   - Level 4

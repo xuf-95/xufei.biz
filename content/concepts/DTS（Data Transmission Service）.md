@@ -4,7 +4,7 @@ type: concept
 tags:
   - type/concept
   - lifecycle/ingestion
-publish: true - data-integration - cloud
+publish: true
 date: 2024-07-06
 ---
 

@@ -6,7 +6,6 @@ tags:
   - lifecycle/governance
   - ecosystem/standard
 date: 2026-03-18
-draft: true
 aliases:
   - 受管理级
   - Level 2

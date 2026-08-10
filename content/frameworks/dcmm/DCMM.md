@@ -10,7 +10,6 @@ aliases:
   - DCMM
   - Data management capability maturity assessment model
   - 数据管理能力成熟度评估模型
-draft: true
 date: 2024-12-01
 publish: true
 ---

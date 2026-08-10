@@ -9,6 +9,7 @@ import { concatenateResources } from "../../util/resources"
 import folderScript from "../scripts/folderFilter.inline"
 import { Icon } from "../Icon"
 import { FOLDER_PAGE_LIMIT } from "./folderList"
+import { byWikiPriority } from "./wikiSort"
 
 interface BrowseAllContentOptions {
   sort?: SortFn
@@ -26,13 +27,15 @@ export default ((opts?: Partial<BrowseAllContentOptions>) => {
     const excludedFolders = ["hobby", "tools", "programmer", "good"]
 
     // Include ALL real pages (skip index files and excluded folders)
-    const allPages: QuartzPluginData[] = allFiles.filter((f) => {
-      const slug = f.slug ?? ""
-      if (slug === "index" || slug.endsWith("/index")) return false
-      const topFolder = slug.split("/")[0]
-      if (excludedFolders.includes(topFolder)) return false
-      return true
-    })
+    const allPages: QuartzPluginData[] = allFiles
+      .filter((f) => {
+        const slug = f.slug ?? ""
+        if (slug === "index" || slug.endsWith("/index")) return false
+        const topFolder = slug.split("/")[0]
+        if (excludedFolders.includes(topFolder)) return false
+        return true
+      })
+      .sort(byWikiPriority)
 
     // Extract top-level folder names for filtering
     const subfolderSet = new Set<string>()
