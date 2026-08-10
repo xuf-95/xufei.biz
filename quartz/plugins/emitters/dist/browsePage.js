@@ -96,7 +96,7 @@ exports.BrowsePage = function (userOpts) {
                                 slug: slug,
                                 text: "",
                                 // description: "Browse all content",
-                                frontmatter: { title: "Browse All", tags: [] }
+                                frontmatter: { title: "Wiki Home", tags: [] }
                             }), tree = _a[0], vfile = _a[1];
                             externalResources = renderPage_1.pageResources(path_1.pathToRoot(slug), resources);
                             componentData = {

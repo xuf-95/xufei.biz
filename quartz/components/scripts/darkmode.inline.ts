@@ -1,5 +1,7 @@
-const userPref = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
-const currentTheme = localStorage.getItem("theme") ?? userPref
+// Default to the dark theme on first visit on any device, ignoring the
+// device's OS color-scheme preference. An explicit user choice made via the
+// toggle is still honored, since it's persisted to localStorage.
+const currentTheme = localStorage.getItem("theme") ?? "dark"
 document.documentElement.setAttribute("saved-theme", currentTheme)
 
 const emitThemeChangeEvent = (theme: "light" | "dark") => {

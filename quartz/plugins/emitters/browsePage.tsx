@@ -46,7 +46,7 @@ export const BrowsePage: QuartzEmitterPlugin<Options> = (userOpts) => {
         slug,
         text: "",
         // description: "Browse all content",
-        frontmatter: { title: "Browse All", tags: [] },
+        frontmatter: { title: "Wiki Home", tags: [] },
       })
 
       const externalResources = pageResources(pathToRoot(slug), resources)
