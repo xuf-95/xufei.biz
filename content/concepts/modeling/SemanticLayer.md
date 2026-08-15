@@ -44,8 +44,6 @@ flowchart LR
 
 语义层应优先覆盖高频、核心、跨团队使用的指标和维度。它需要和 [[Indicator System]]、[[Data Standard]]、[[Metadata Management]]、权限体系和质量规则一起设计。
 
-## Interview Answer
-
 语义层解决的是“业务问题和物理表之间缺少稳定翻译层”的问题。没有语义层，Text2SQL 容易生成看似正确但口径错误的 SQL；有语义层后，AI Agent 可以基于指标、维度、过滤条件和权限边界生成更可信的查询。
 
 ## Links

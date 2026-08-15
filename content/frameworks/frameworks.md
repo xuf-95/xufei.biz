@@ -13,7 +13,6 @@ publish: true
 <ul>
 
 - [[Data Management Capability Maturity Assessment Model (DCMM)]]
-- [[DCMM Maturity Model]]
 
 </ul>
 
@@ -34,17 +33,6 @@ publish: true
 </div>
 
 <div class="home-col-right">
-<h3 class="home-col-title">Maturity Levels</h3>
-<ul>
-
-- [[Initial]]
-- [[Managed]]
-- [[Defined]]
-- [[Quantitatively Managed]]
-- [[Optimizing]]
-
-</ul>
-
 <h3 class="home-col-title">Capability Items</h3>
 <ul>
 
