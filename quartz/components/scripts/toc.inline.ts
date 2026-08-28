@@ -139,7 +139,7 @@ const tocInit = () => {
     const activeEl = headingRows[idx]
     if (activeEl) {
       const target = activeEl.offsetTop - (sidebarEl.clientHeight - activeEl.offsetHeight) / 2
-      easeScroll(sidebarEl, Math.max(0, target), 320)
+      sidebarEl.scrollTop = Math.max(0, target)
     }
   }
 
@@ -192,7 +192,7 @@ const tocInit = () => {
     })
   }
 
-  // Clicking a TOC link: smooth-scroll the page and animate the indicator
+  // Clicking a TOC link: jump to the heading immediately and keep the indicator in sync.
   headingRows.forEach((row, i) => {
     row.addEventListener("click", (event) => {
       event.preventDefault()
@@ -200,26 +200,12 @@ const tocInit = () => {
       const el = sections[i]
       if (el && document.body.contains(el)) {
         const top = el.getBoundingClientRect().top + window.scrollY - getHeaderClearance()
-        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
+        window.scrollTo({ top: Math.max(0, top), behavior: "instant" })
         history.replaceState(null, "", `#${row.dataset.target}`)
-        activate(i)
+        applyActive(i)
       }
     })
   })
-
-  function easeScroll(el: HTMLElement, to: number, ms: number) {
-    const from = el.scrollTop
-    const delta = to - from
-    if (Math.abs(delta) < 1) return
-    let t0: number | null = null
-    function step(t: number) {
-      if (!t0) t0 = t
-      const p = Math.min((t - t0) / ms, 1)
-      el.scrollTop = from + delta * (1 - Math.pow(1 - p, 4))
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }
 
   applyActive(0)
   updateTocLayout()
