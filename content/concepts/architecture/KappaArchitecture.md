@@ -1,5 +1,5 @@
 ---
-title: what is Kappa Architecture?
+title: Kappa Architecture
 type: concept
 tags:
   - type/concept

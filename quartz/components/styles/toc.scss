@@ -141,6 +141,7 @@
 .toc-wrapper.is-expanded .toc-heading,
 .toc-wrapper:hover .toc-heading,
 .toc-wrapper:focus-within .toc-heading {
+  gap: 0;
   height: 22px;
 }
 .toc-wrapper.is-expanded .toc-h1,
@@ -260,6 +261,18 @@
 .toc-h3.near2 .toc-dash,
 .toc-h4.near2 .toc-dash {
   width: var(--dw3n2);
+}
+
+/* Expanded TOC shows text only; compact state keeps dash progress markers. */
+.toc-wrapper.is-expanded .toc-heading .toc-dash,
+.toc-wrapper:hover .toc-heading .toc-dash,
+.toc-wrapper:focus-within .toc-heading .toc-dash {
+  inline-size: 0;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  opacity: 0;
+  background: transparent;
 }
 
 /* ─── dark mode tweaks ─────────────────────────── */

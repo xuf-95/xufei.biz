@@ -5,7 +5,7 @@ tags:
   - type/index
 publish: true
 ---
-<br />
+
 
 <figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
   <img src="house.png"/>

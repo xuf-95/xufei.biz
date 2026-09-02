@@ -1,9 +1,9 @@
 
 # Version 1.0 
-![wiki1.0](./content/images/wikiV1.0.png)
+![wiki1.0](wikiV1.0.png)
 
 # Version 2.0 
-![wiki2.0](./content/images/wikiV2.0.png)
+![wiki2.0](./wikiV2.0.png)
 
 # Quartz v4
 

@@ -8,7 +8,7 @@ tags:
   - optimization
 aliases:
   - 自适应查询执行
-description: AQE（Adaptive Query Execution，自适应查询执行）是大数据 SQL 引擎中的一种运行时动态优化机制
+description: 
 date: 2026-06-01
 publishDate: 2026-06-24T23:33
 language: EN
@@ -16,16 +16,8 @@ priority: 90
 publish: true
 ---
 
->[!box] 
->AQE 是大数据 SQL 引擎在运行时基于真实数据反馈动态优化执行计划的能力，主要用于优化 Join、Shuffle 分区和数据倾斜问题，是 CBO 之后更进一步的动态优化机制。
-
-
-它的核心思想是：
-
 > [!box] 
-> AQE 是让 SQL 引擎“边跑边优化”
-> 
-> 传统 SQL 优化器在任务真正执行前，基于统计信息生成一个执行计划;AQE 则会在任务执行过程中，根据真实运行时数据量、Shuffle 结果、分区大小等信息，动态调整执行计划。
+> AQE 是 Adaptive Query Execution，自适应查询执行。它是在 SQL 执行过程中，根据运行时收集到的真实统计信息，对后续物理执行计划进行动态调整的一种优化机制。传统 CBO 主要依赖执行前的表统计信息，但这些统计信息可能不准确，所以 AQE 会在 Shuffle Stage 执行完成后，根据真实的分区大小、数据量、Join 两边大小等信息，重新优化执行计划。典型优化包括动态将 Sort Merge Join 转换为 Broadcast Hash Join、合并小的 Shuffle 分区、拆分倾斜分区来缓解数据倾斜。它可以减少 Shuffle、降低长尾任务、提升 SQL 执行稳定性，但它不能完全替代合理的数据建模、分区设计和倾斜治理。
 
 在大数据场景中，SQL 优化器通常会提前生成执行计划，比如：
 
@@ -33,11 +25,8 @@ publish: true
 SELECT * FROM orders o JOIN users u ON o.user_id = u.id;
 ```
 
-优化器需要决定：用 Broadcast Join 还是 Shuffle Join？Shuffle 分区数是多少？是否存在数据倾斜？哪些分区很小，可以合并？
+优化器需要决定：用 Broadcast Join 还是 Shuffle Join？Shuffle 分区数是多少？是否存在数据倾斜？哪些分区很小，可以合并？问题是：**执行前的统计信息经常不准。** 例如：表的统计信息过期;过滤条件选择率估算错误;某些 key 数据严重倾斜;小表实际比预估更小;Shuffle 后分区大小差异很大。所以，执行前生成的计划可能不是最优的。 AQE 就是为了解决这个问题：  **等一部分任务执行完，拿到真实数据，再动态调整后续执行计划。**
 
-问题是：**执行前的统计信息经常不准。** 例如：表的统计信息过期;过滤条件选择率估算错误;某些 key 数据严重倾斜;小表实际比预估更小;Shuffle 后分区大小差异很大
-
-所以，执行前生成的计划可能不是最优的。 AQE 就是为了解决这个问题：  **等一部分任务执行完，拿到真实数据，再动态调整后续执行计划。**
 ## **AQE 的核心概念**
 
 传统执行方式类似：
@@ -53,13 +42,14 @@ SQL -> 解析 -> 逻辑计划 -> 初始物理计划  -> 执行一部分 Stage ->
 ```
 
 也就是说，AQE 会在执行过程中利用真实信息，例如：Shuffle 后每个分区的大小;Join 两边表的实际数据量;某些 key 是否发生倾斜;某些分区是否过小。然后重新选择更合适的执行方式。
+
 ## **AQE 主要解决哪些问题？**
 
 ### **动态调整 Join 策略**
 
 执行前，优化器可能认为某张表很大，所以选择 Sort Merge Join：
 
-```text
+```sql
 orders
   Shuffle
     Sort Merge Join
@@ -69,23 +59,20 @@ users
 
 但实际执行后发现：users 过滤后只有 20MB。那么 AQE 可以把 Join 动态改成 Broadcast Hash Join：
 
-```text
-orders
-    -> 
-Broadcast Hash Join  ← users 被广播
+```sql
+orders -> Broadcast Hash Join  ← users 被广播
 ```
 
 这样可以减少 Shuffle，提高执行效率。对比：
 
 ```text
-原计划：
-大表 Shuffle + 小表 Shuffle + 排序 + Join
+原计划：大表 Shuffle + 小表 Shuffle + 排序 + Join
 
-AQE 后：
-小表 Broadcast，大表无需按 Join key Shuffle
+AQE后：小表 Broadcast，大表无需按 Join key Shuffle
 ```
 
 这是 AQE 最常见、最有价值的能力之一。
+
 ### **动态合并 Shuffle 小分区**
 
 [[ApacheSpark|Apache Spark]]、[[ApacheFlink|Apache Flink]]、[[ApacheHive|Apache Hive]] 等引擎中，经常会设置并行度或 Shuffle 分区数。比如 [[ApacheSpark|Apache Spark]] 默认可能是：
@@ -105,6 +92,7 @@ Partition 200 1MB
 ```
 
 任务太多会带来：调度开销大；小文件多；任务启动成本高；资源浪费。AQE 可以根据 Shuffle 结果，把小分区合并：原来：200 个小分区->优化后：20 个较合理分区。效果：减少 task 数量，减少调度开销，提高整体吞吐，降低小文件问题
+
 ### **动态处理数据倾斜 Join**
 
 数据倾斜是大数据 SQL 中非常常见的问题。例如：
@@ -130,9 +118,7 @@ Partition 3: 15GB   ← 倾斜分区
 Partition 4: 9MB
 ```
 
-结果就是：大部分 task 很快完成，少数 task 卡很久，整个任务被长尾拖死
-
-AQE 可以识别出特别大的 Shuffle 分区，然后把这个倾斜分区拆分成多个小分区：
+结果就是：大部分 task 很快完成，少数 task 卡很久，整个任务被长尾拖死。AQE 可以识别出特别大的 Shuffle 分区，然后把这个倾斜分区拆分成多个小分区：
 
 ```text
 原来：
@@ -146,7 +132,8 @@ Partition 3-3 = 1GB
 ```
 
 这样可以让多个 task 并行处理热点数据，减少长尾任务。
-## **AQE 的典型优化能力总结**
+
+## **AQE具备的优化能力**
 
 |**能力**|**解决的问题**|**典型效果**|
 |---|---|---|
@@ -156,7 +143,7 @@ Partition 3-3 = 1GB
 |动态调整并行度|初始并行度不合理|提高资源利用率|
 |利用运行时统计信息|静态统计信息不准|执行计划更贴近真实数据|
 
-## **AQE 在 [[Apache Spark]] SQL 中的理解**
+## **AQE 在Apache Spark SQL中的理解**
 
 在 [[Apache Spark]] SQL 中，AQE 是非常典型的优化能力。开启参数一般是：
 
@@ -181,13 +168,12 @@ spark.sql.shuffle.partitions=200
 假设有 SQL：
 
 ```sql
-SELECT * FROM fact_order f JOIN dim_user d ON f.user_id = d.user_id
-WHERE d.country = 'CN';
+SELECT * FROM fact_order f JOIN dim_user d ON f.user_id = d.user_id WHERE d.country = 'CN';
 ```
 
 执行前优化器可能认为：dim_user 很大，不能广播。所以选择：SortMergeJoin。初始计划：
 
-```text
+```properties
 fact_order Shuffle by user_id
 dim_user   Shuffle by user_id
 SortMergeJoin
@@ -195,13 +181,13 @@ SortMergeJoin
 
 但是实际执行时发现：
 
-```text
+```properties
 dim_user WHERE country = 'CN' 后只有 5MB
 ```
 
 AQE 会动态调整：
 
-```text
+```properties
 BroadcastHashJoin
 ```
 
@@ -230,5 +216,3 @@ AQE 的优点主要有：降低对统计信息准确性的依赖，自动优化 
 
 AQE 不是万能的,它也有一些限制：不是所有优化都能在运行时动态修改，通常依赖 Shuffle 边界，只有 Stage 之间才能重新优化，不能完全替代良好的数据建模和分区设计，严重数据倾斜仍然可能需要业务侧加盐、预聚合、拆热点 key，运行时重新优化本身也有一定开销。比如下面这种情况：某个 key 占全表 80%。AQE 可以缓解，但不一定彻底解决。  这时可能还要结合：热点 key 单独处理，加盐 Join，预聚合，Broadcast 小表，维度表缓存，分桶表
 
-> [!box] 
-> AQE 是 Adaptive Query Execution，自适应查询执行。它是在 SQL 执行过程中，根据运行时收集到的真实统计信息，对后续物理执行计划进行动态调整的一种优化机制。传统 CBO 主要依赖执行前的表统计信息，但这些统计信息可能不准确，所以 AQE 会在 Shuffle Stage 执行完成后，根据真实的分区大小、数据量、Join 两边大小等信息，重新优化执行计划。典型优化包括动态将 Sort Merge Join 转换为 Broadcast Hash Join、合并小的 Shuffle 分区、拆分倾斜分区来缓解数据倾斜。它可以减少 Shuffle、降低长尾任务、提升 SQL 执行稳定性，但它不能完全替代合理的数据建模、分区设计和倾斜治理。
