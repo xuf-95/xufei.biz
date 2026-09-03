@@ -23,6 +23,13 @@
   --site-shell-max: 96rem;
   --site-shell-pad: clamp(1.25rem, 6vw, 5.5rem);
   --site-shell-left: max(0px, calc((100vw - var(--site-shell-max)) / 2));
+  // 与 --site-shell-left 同值，但不受 max-width:1200px 覆盖影响。
+  // 用来复刻 header 壳子的真实几何（logo 的横向基准）。
+  --site-shell-gutter: max(0px, calc((100vw - var(--site-shell-max)) / 2));
+  // 对应 Header.tsx 中 .site-header-shell 的 padding-inline（>=768px 为 2rem）
+  --site-header-pad: 2rem;
+  // logo 左边缘的绝对位置
+  --site-logo-left: calc(var(--site-shell-gutter) + var(--site-header-pad));
   --page-layout-max: calc(#{map.get($breakpoints, desktop)} + 300px);
   --page-layout-width: min(100vw, var(--page-layout-max));
   --page-layout-left: max(0px, calc((100vw - var(--page-layout-max)) / 2));
@@ -30,10 +37,15 @@
     var(--page-layout-left) + ((var(--page-layout-width) - 10px) * 0.22) + 5px
   );
   --toc-heading-pad-left: 8px;
+  // TOC 短横线（可见的那条竖排刻度）与 logo 左边缘对齐。
+  // 想整体左/右移，只改这里的 --toc-rail-nudge：负值左移，正值右移。
+  --toc-rail-nudge: 0px;
   --toc-rail-left: calc(
-    var(--site-shell-left) + var(--site-shell-pad) - var(--toc-heading-pad-left)
+    var(--site-logo-left) - var(--toc-heading-pad-left) + var(--toc-rail-nudge)
   );
-  --toc-inline-offset: max(0px, calc(var(--toc-rail-left) - var(--page-layout-left) - 32px));
+  // 不再钳到 0：.sidebar.left 位于最大宽 1450px 的 .page 内，
+  // 宽屏时 .page 左边缘已经在 logo 右侧，必须允许负 margin 把 TOC 拉出去。
+  --toc-inline-offset: calc(var(--toc-rail-left) - var(--page-layout-left) - 32px);
   --footer-band-inset: calc(var(--site-shell-left) + var(--site-shell-pad));
   --external-link-icon-width: 1.16em;
   --external-link-icon-height: 1.16em;
