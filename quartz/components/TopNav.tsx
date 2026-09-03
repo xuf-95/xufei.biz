@@ -138,7 +138,7 @@ const TopNav: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponen
 
 TopNav.css = `
 /* ════════════════════════════════════════════
-   HEADER  —  full-width sticky bar
+   HEADER  —  full-width fixed bar
    (TopNav is flex:1; Search/Darkmode/ReaderMode
     appear as siblings on the right)
    ════════════════════════════════════════════ */
@@ -158,20 +158,10 @@ header {
   background: var(--light) !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
-  transition: transform 0.24s ease, background-color 0.18s ease !important;
-  will-change: transform;
+  transition: background-color 0.18s ease !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   padding: 0 !important;
-}
-
-header.header-hidden {
-  transform: translateY(calc(-100% + 8px)) !important;
-}
-
-header.header-hidden:hover,
-header.header-hidden:focus-within {
-  transform: translateY(0) !important;
 }
 
 .site-header-shell > .search,
@@ -437,8 +427,6 @@ html[saved-theme="dark"] .nav-mega {
 TopNav.afterDOMLoaded = `
 (function () {
   function initTopNav() {
-    var header = document.querySelector("header");
-
     // ── close all groups ──
     function closeAll() {
       document.querySelectorAll(".nav-group.open").forEach(function (g) {
@@ -470,68 +458,6 @@ TopNav.afterDOMLoaded = `
     var docHandler = function () { closeAll(); };
     document.addEventListener("click", docHandler);
     window.addCleanup(function () { document.removeEventListener("click", docHandler); });
-
-    if (header) {
-      var lastY = window.scrollY || 0;
-      var ticking = false;
-
-      function thresholdY() {
-        var content = document.querySelector("article.popover-hint") || document.querySelector("article");
-        if (!content) return header.offsetHeight * 2;
-        return Math.max(0, content.getBoundingClientRect().top + window.scrollY - header.offsetHeight);
-      }
-
-      function hasOpenOverlay() {
-        return Boolean(
-          document.querySelector(".nav-group.open") ||
-          document.querySelector(".search-container.active") ||
-          header.matches(":hover") ||
-          header.matches(":focus-within"),
-        );
-      }
-
-      function updateHeader() {
-        ticking = false;
-        var currentY = window.scrollY || 0;
-        var delta = currentY - lastY;
-        var beyondContentTop = currentY >= thresholdY();
-
-        if (currentY <= 4 || delta < -4 || hasOpenOverlay()) {
-          header.classList.remove("header-hidden");
-        } else if (delta > 4 && beyondContentTop) {
-          header.classList.add("header-hidden");
-        }
-
-        lastY = currentY;
-      }
-
-      function requestHeaderUpdate() {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(updateHeader);
-      }
-
-      function revealNearTop(event) {
-        if (event.clientY <= 12) {
-          header.classList.remove("header-hidden");
-        }
-      }
-
-      header.classList.remove("header-hidden");
-      window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
-      window.addEventListener("resize", requestHeaderUpdate);
-      document.addEventListener("mousemove", revealNearTop);
-      header.addEventListener("mouseenter", requestHeaderUpdate);
-      header.addEventListener("mouseleave", requestHeaderUpdate);
-      window.addCleanup(function () {
-        window.removeEventListener("scroll", requestHeaderUpdate);
-        window.removeEventListener("resize", requestHeaderUpdate);
-        document.removeEventListener("mousemove", revealNearTop);
-        header.removeEventListener("mouseenter", requestHeaderUpdate);
-        header.removeEventListener("mouseleave", requestHeaderUpdate);
-        header.classList.remove("header-hidden");
-      });
-    }
   }
 
   document.addEventListener("nav", initTopNav);
