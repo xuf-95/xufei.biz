@@ -1,0 +1,447 @@
+<title>Constellation Graph Preview</title>
+<style>
+  :root {
+    --bg: #121212;
+    --body: #d1d1d1;
+    --heading: #fff;
+    --gray: #888;
+    --accent: #f8850a;
+
+    /* star system tokens — mirror of graph.scss */
+    --graph-star-core: #7f8db3;
+    --graph-star-visited: #dfe6ff;
+    --graph-star-current: #f8850a;
+    --graph-star-glow: #9db4ff;
+    --graph-constellation-line: #5b6a92;
+    --graph-constellation-line-active: #cdd8ff;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.9rem 2rem;
+    background: rgba(18, 18, 18, 0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 0.82rem;
+  }
+  .toolbar span.label { color: var(--gray); margin-right: 0.25rem; }
+  .toolbar button {
+    font: inherit;
+    color: var(--body);
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .toolbar button:hover { border-color: #444; color: #fff; }
+  .toolbar button[aria-pressed="true"] {
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    color: #fff;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  .article {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 0;
+  }
+  .article p { line-height: 1.75; margin: 0 0 1.4em; color: var(--body); }
+  .divider { text-align: center; color: #555; letter-spacing: 1.2em; margin: 2.5rem 0 0; }
+
+  /* ---------- the band ---------- */
+  .band {
+    position: relative;
+    isolation: isolate;
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem 2.5rem;
+  }
+  .band::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset-block: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  /* BEFORE — flat panel */
+  body[data-mode="before"] .band::before { background: #1f1e1d; }
+  body[data-mode="before"] .graph-outer {
+    border: 1px solid rgba(136, 136, 136, 0.34);
+    border-radius: 5px;
+  }
+
+  /* AFTER — night sky */
+  body[data-mode="after"] .band::before { background: var(--bg); }
+  /* the night sky now lives inside the panel */
+  body[data-mode="after"] .graph-outer {
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background:
+      radial-gradient(70% 62% at 18% 18%, rgba(248, 133, 10, 0.05) 0%, transparent 70%),
+      radial-gradient(85% 75% at 82% 8%, rgba(112, 134, 224, 0.07) 0%, transparent 68%),
+      radial-gradient(120% 95% at 50% 118%, rgba(126, 152, 255, 0.10) 0%, transparent 62%),
+      linear-gradient(180deg, #0b0d16 0%, #0a0c14 55%, #090a11 100%);
+  }
+
+  body[data-mode="after"] .graph-outer::after,
+  body[data-mode="after"] .stars-near {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: repeat;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+  /* far layer */
+  body[data-mode="after"] .graph-outer::after {
+    background-size: 620px 420px;
+    background-image:
+      radial-gradient(1px 1px at 8% 18%, rgba(214, 226, 255, 0.42), transparent 62%),
+      radial-gradient(1px 1px at 23% 71%, rgba(214, 226, 255, 0.30), transparent 62%),
+      radial-gradient(1px 1px at 37% 34%, rgba(255, 255, 255, 0.36), transparent 62%),
+      radial-gradient(1px 1px at 52% 88%, rgba(214, 226, 255, 0.26), transparent 62%),
+      radial-gradient(1px 1px at 61% 12%, rgba(255, 255, 255, 0.32), transparent 62%),
+      radial-gradient(1px 1px at 74% 58%, rgba(214, 226, 255, 0.34), transparent 62%),
+      radial-gradient(1px 1px at 86% 27%, rgba(255, 255, 255, 0.24), transparent 62%),
+      radial-gradient(1px 1px at 94% 79%, rgba(214, 226, 255, 0.30), transparent 62%);
+    animation: drift-far 320s linear infinite;
+  }
+  /* near layer */
+  body[data-mode="after"] .stars-near {
+    display: block;
+    background-size: 330px 250px;
+    background-image:
+      radial-gradient(1.6px 1.6px at 14% 26%, rgba(255, 255, 255, 0.82), transparent 60%),
+      radial-gradient(1.3px 1.3px at 33% 64%, rgba(216, 228, 255, 0.62), transparent 60%),
+      radial-gradient(1.8px 1.8px at 49% 15%, rgba(255, 255, 255, 0.70), transparent 58%),
+      radial-gradient(1.2px 1.2px at 66% 47%, rgba(216, 228, 255, 0.55), transparent 60%),
+      radial-gradient(1.5px 1.5px at 81% 82%, rgba(255, 255, 255, 0.60), transparent 60%),
+      radial-gradient(1.2px 1.2px at 92% 38%, rgba(216, 228, 255, 0.50), transparent 60%);
+    animation: drift-near 190s linear infinite, twinkle 9s ease-in-out infinite alternate;
+  }
+  .stars-near { display: none; }
+
+  @keyframes drift-far { from { background-position: 0 0; } to { background-position: 620px 0; } }
+  @keyframes drift-near { from { background-position: 0 0; } to { background-position: -330px 0; } }
+  @keyframes twinkle { from { opacity: 0.68; } to { opacity: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .graph-outer::after, .stars-near { animation: none !important; }
+  }
+
+  .graph { max-width: 72rem; margin: 0 auto; }
+  .graph h4 { margin: 0 0 0.5em; font-size: 0.95rem; color: var(--heading); font-weight: 600; }
+  .graph-outer {
+    position: relative;
+    height: 360px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  canvas { display: block; width: 100%; height: 100%; }
+
+  .footer {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+  .note {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--gray);
+  }
+  .note code { color: #cdd8ff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.95em; }
+</style>
+
+<div class="toolbar">
+  <span class="label">预览</span>
+  <button id="btn-before" aria-pressed="false">改造前</button>
+  <button id="btn-after" aria-pressed="true">改造后 · 星座</button>
+  <span class="label" style="margin-left:auto">鼠标悬停节点可看星座连线点亮</span>
+</div>
+
+<div class="article">
+  <p>Currently, I'm exploring how modern data systems can become more understandable, governable,
+    and useful: from big data infrastructure and cloud-native platforms, to data architecture,
+    governance, semantic layers, and AI-assisted workflows.</p>
+  <p>Outside of programming, I enjoy coffee, cycling, and tennis.</p>
+  <div class="divider">* * *</div>
+</div>
+
+<div class="band">
+  <div class="graph">
+    <h4></h4>
+    <div class="graph-outer"><div class="stars-near"></div><canvas id="c"></canvas></div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>© 2026 xufei.biz. All rights reserved.</span>
+  <span>Created with Quartz v4.5.1</span>
+</div>
+
+<div class="note">
+  这是本地预览稿，用 Canvas 2D 复刻了 Pixi 的观感。实际代码改动在
+  <code>quartz/components/styles/graph.scss</code>、<code>quartz/styles/custom.scss</code>、
+  <code>quartz/components/scripts/graph.inline.ts</code> 三个文件里，星星颜色全部由
+  <code>--graph-star-*</code> 变量驱动。
+</div>
+
+<script>
+(function () {
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d");
+  const css = getComputedStyle(document.documentElement);
+  const V = (n) => css.getPropertyValue(n).trim();
+
+  const nodes = [
+    { id: "Home", kind: "current" },
+    { id: "concepts-moc", kind: "visited" },
+    { id: "recipes-moc", kind: "visited" },
+    { id: "practices-moc", kind: "core" },
+    { id: "products-moc", kind: "core" },
+    { id: "frameworks-moc", kind: "visited" },
+    { id: "moc", kind: "core" },
+    { id: "#type/", kind: "tag" },
+  ];
+  const linkPairs = [
+    ["Home", "concepts-moc"], ["Home", "recipes-moc"], ["Home", "practices-moc"],
+    ["Home", "products-moc"], ["Home", "frameworks-moc"], ["Home", "moc"],
+    ["#type/", "concepts-moc"], ["#type/", "recipes-moc"], ["#type/", "practices-moc"],
+    ["#type/", "products-moc"], ["#type/", "frameworks-moc"], ["#type/", "moc"],
+    ["#type/", "Home"],
+  ];
+  const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+  const links = linkPairs.map(([a, b]) => ({ s: byId[a], t: byId[b] }));
+
+  nodes.forEach((n, i) => {
+    const a = (i / nodes.length) * Math.PI * 2;
+    n.x = Math.cos(a) * 90 + (Math.random() - 0.5) * 20;
+    n.y = Math.sin(a) * 55 + (Math.random() - 0.5) * 20;
+    n.vx = 0; n.vy = 0;
+    n.deg = linkPairs.filter((p) => p.includes(n.id)).length;
+    n.r = 2 + Math.sqrt(n.deg);
+    n.phase = Math.random() * Math.PI * 2;
+  });
+
+  const degs = nodes.map((n) => n.deg);
+  const minDeg = Math.min(...degs), maxDeg = Math.max(...degs);
+  const hubness = (n) => (n.deg - minDeg) / Math.max(1, maxDeg - minDeg);
+  const RING = Math.max(42 * 1.4, (nodes.length * 15) / (2 * Math.PI));
+
+  let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  // framing — mirrors graph.inline.ts: settle, then stretch + zoom to fill
+  let STRETCH = 2, ZOOM = 2, CX = 0, CY = 0;
+  function frame() {
+    const padX = Math.max(72, Math.round(W * 0.08)), padY = 36;
+    const xs = nodes.map((n) => n.x), ys = nodes.map((n) => n.y);
+    const rawW = Math.max(...xs) - Math.min(...xs), rawH = Math.max(...ys) - Math.min(...ys);
+    const boxW = Math.max(W - padX * 2, 120), boxH = Math.max(H - padY * 2, 120);
+    if (rawW > 1 && rawH > 1) STRETCH = Math.min(3.6, Math.max(1.2, (boxW / boxH) / (rawW / rawH)));
+    CX = ((Math.min(...xs) + Math.max(...xs)) / 2) * STRETCH;
+    CY = (Math.min(...ys) + Math.max(...ys)) / 2;
+    ZOOM = Math.min(3.2, Math.max(0.8, Math.min(boxW / (rawW * STRETCH), boxH / rawH)));
+  }
+
+  let hovered = null;
+  const neighbours = new Set();
+
+  function toScreen(n) {
+    return { x: W / 2 + (n.x * STRETCH - CX) * ZOOM, y: H / 2 + (n.y - CY) * ZOOM };
+  }
+
+  canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    let found = null;
+    for (const n of nodes) {
+      const p = toScreen(n);
+      if (Math.hypot(p.x - mx, p.y - my) < Math.max(10, n.r * ZOOM + 8)) { found = n; break; }
+    }
+    if (found !== hovered) {
+      hovered = found;
+      neighbours.clear();
+      if (found) {
+        neighbours.add(found.id);
+        links.forEach((l) => {
+          if (l.s === found) neighbours.add(l.t.id);
+          if (l.t === found) neighbours.add(l.s.id);
+        });
+      }
+      canvas.style.cursor = found ? "pointer" : "default";
+    }
+  });
+  canvas.addEventListener("mouseleave", () => { hovered = null; neighbours.clear(); });
+
+  function tick() {
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        let dx = b.x - a.x, dy = b.y - a.y;
+        let d2 = dx * dx + dy * dy || 0.01;
+        const f = 900 / d2;
+        const d = Math.sqrt(d2);
+        a.vx -= (dx / d) * f; a.vy -= (dy / d) * f;
+        b.vx += (dx / d) * f; b.vy += (dy / d) * f;
+      }
+    }
+    for (const l of links) {
+      const dx = l.t.x - l.s.x, dy = l.t.y - l.s.y;
+      const d = Math.hypot(dx, dy) || 0.01;
+      const f = (d - 62) * 0.012;
+      l.s.vx += (dx / d) * f; l.s.vy += (dy / d) * f;
+      l.t.vx -= (dx / d) * f; l.t.vy -= (dy / d) * f;
+    }
+    for (const n of nodes) {
+      // hub-and-spoke: pull each node onto a ring whose radius shrinks with
+      // how connected it is, so hubs end up in the middle (mirrors forceRadial)
+      const dr = Math.hypot(n.x, n.y) || 0.01;
+      const target = RING * Math.pow(1 - hubness(n), 1.5);
+      const rf = (target - dr) * 0.09;
+      n.vx += (n.x / dr) * rf; n.vy += (n.y / dr) * rf;
+
+      n.vx -= n.x * 0.006; n.vy -= n.y * 0.010;
+      n.vx *= 0.85; n.vy *= 0.85;
+      n.x += n.vx; n.y += n.vy;
+    }
+  }
+
+  const colorFor = (n) => {
+    if (document.body.dataset.mode === "before") {
+      if (n.kind === "current") return "#ffffff";
+      if (n.kind === "tag") return "#121212";
+      if (n.kind === "visited") return "#a0a0a0";
+      return "#888888";
+    }
+    if (n.kind === "current") return V("--graph-star-current");
+    if (n.kind === "tag") return "#0a0c14";
+    if (n.kind === "visited") return V("--graph-star-visited");
+    return V("--graph-star-core");
+  };
+
+  function draw(time) {
+    ctx.clearRect(0, 0, W, H);
+    const starry = document.body.dataset.mode === "after";
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // halos
+    if (starry) {
+      for (const n of nodes) {
+        const p = toScreen(n);
+        const R = n.r * ZOOM * 1.7;
+        const tw = reduce ? 1 : 0.78 + 0.22 * Math.sin(time / 1500 + n.phase);
+        const alpha = (hovered && !neighbours.has(n.id) ? 0.14 : 1) * tw;
+        ctx.fillStyle = hexA(colorFor(n), 0.3 * alpha);
+        ctx.beginPath(); ctx.arc(p.x, p.y, R, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    // links
+    for (const l of links) {
+      const a = toScreen(l.s), b = toScreen(l.t);
+      const active = hovered && neighbours.has(l.s.id) && neighbours.has(l.t.id);
+      let alpha = starry ? 0.55 : 1;
+      if (hovered) alpha = active ? 1 : alpha * 0.25;
+      ctx.strokeStyle = hexA(
+        starry
+          ? (active ? V("--graph-constellation-line-active") : V("--graph-constellation-line"))
+          : (active ? "#888888" : "#2a2a2a"),
+        alpha,
+      );
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
+
+    // nodes + labels
+    for (const n of nodes) {
+      const p = toScreen(n);
+      const related = !hovered || neighbours.has(n.id);
+      const alpha = related ? 1 : 0.14;
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = colorFor(n);
+      ctx.beginPath(); ctx.arc(p.x, p.y, n.r * ZOOM, 0, Math.PI * 2); ctx.fill();
+      if (n.kind === "tag") {
+        ctx.strokeStyle = starry ? V("--graph-star-visited") : "#a0a0a0";
+        ctx.lineWidth = 2; ctx.stroke();
+      } else if (starry) {
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0.9, n.r * ZOOM * 0.45), 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.fillStyle = starry ? "#ffffff" : "#ffffff";
+      ctx.globalAlpha = related ? 1 : 0.12;
+      const labelPx = (15 * 0.6 * 2) / 1.1;
+      ctx.font = `${hovered === n ? labelPx * 1.1 : labelPx}px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif`;
+      ctx.textAlign = "center";
+      ctx.fillText(n.id, p.x, p.y - n.r * ZOOM * 1.1 - labelPx * 0.9);
+      ctx.globalAlpha = 1;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  function hexA(hex, a) {
+    hex = (hex || "#ffffff").trim();
+    if (hex.startsWith("rgb")) return hex;
+    let h = hex.replace("#", "");
+    if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+    const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  for (let i = 0; i < 400; i++) tick();
+  frame();
+  window.addEventListener("resize", () => { resize(); frame(); });
+
+  document.body.dataset.mode = "after";
+  const bb = document.getElementById("btn-before"), ba = document.getElementById("btn-after");
+  function setMode(m) {
+    document.body.dataset.mode = m;
+    bb.setAttribute("aria-pressed", String(m === "before"));
+    ba.setAttribute("aria-pressed", String(m === "after"));
+  }
+  bb.addEventListener("click", () => setMode("before"));
+  ba.addEventListener("click", () => setMode("after"));
+
+  requestAnimationFrame(draw);
+})();
+</script>

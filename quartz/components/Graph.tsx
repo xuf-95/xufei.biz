@@ -32,14 +32,14 @@ const defaultOptions: GraphOptions = {
     zoom: true,
     depth: 1,
     scale: 1.1,
-    repelForce: 0.5,
+    repelForce: 0.8,
     centerForce: 0.3,
-    linkDistance: 30,
+    linkDistance: 42,
     fontSize: 0.6,
-    opacityScale: 2,//1
+    opacityScale: 2, //1
     showTags: true,
     removeTags: [],
-    focusOnHover: false,
+    focusOnHover: true,
     enableRadial: false,
   },
   globalGraph: {

@@ -22,10 +22,23 @@
     border-radius: 5px;
     border: 1px solid var(--lightgray);
     box-sizing: border-box;
-    height: 250px;
+    height: 360px;
     margin: 0.5em 0;
     position: relative;
     overflow: hidden;
+
+    /* graph.inline.ts sizes the Pixi canvas from this element's offsetWidth /
+       offsetHeight, and an unsized div reports 0 — which silently fell back to
+       the hardcoded 250px. The canvas then covered only the top of the panel
+       and nodes dragged into the lower part were clipped away. */
+    & > .graph-container {
+      width: 100%;
+      height: 100%;
+
+      & > canvas {
+        display: block;
+      }
+    }
 
     & > .global-graph-icon {
       cursor: pointer;
@@ -84,8 +97,25 @@
   }
 }
 
-/* Keep the graph aligned to the article column while extending its dark
-   background across the viewport, matching the Backlinks band above it. */
+/* ============================================================================
+   Constellation graph (dark mode only)
+   The graph panel itself is the night sky: .graph-outer paints the sky gradient
+   and its two pseudo elements add parallax star layers. Everything around the
+   panel keeps the ordinary page background. Nodes become glowing stars in
+   graph.inline.ts, which reads the --graph-star-* custom properties declared
+   here — undefine them and the graph silently falls back to the plain look.
+   ============================================================================ */
+
+:root[saved-theme="dark"] {
+  --graph-star-core: #7f8db3; /* unvisited note: distant, dim star */
+  --graph-star-visited: #dfe6ff; /* visited note: bright white star */
+  --graph-star-current: #f8850a; /* current page: the accent-coloured star */
+  --graph-star-glow: #9db4ff; /* halo tint around every star */
+  --graph-constellation-line: #5b6a92; /* resting constellation line */
+  --graph-constellation-line-active: #cdd8ff; /* line lit up on hover */
+}
+
+/* Keep the graph aligned to the article column; nothing is painted behind it. */
 :root[saved-theme="dark"] #quartz-body .center .page-footer > .graph {
   position: relative;
   z-index: 4;
@@ -95,5 +125,107 @@
 
   & > .graph-outer {
     border-color: color-mix(in srgb, var(--darkgray) 34%, transparent);
+  }
+}
+
+/* The sky only applies where the graph panel is actually shown — listing pages
+   keep the plain panel. */
+:root[saved-theme="dark"]
+  #quartz-body:not(:has(.center .page-listing))
+  .center
+  .page-footer:has(> .graph)
+  > .graph
+  > .graph-outer {
+  isolation: isolate;
+  border-color: rgba(255, 255, 255, 0.05);
+  background:
+    radial-gradient(70% 62% at 18% 18%, rgba(248, 133, 10, 0.05) 0%, transparent 70%),
+    radial-gradient(85% 75% at 82% 8%, rgba(112, 134, 224, 0.07) 0%, transparent 68%),
+    radial-gradient(120% 95% at 50% 118%, rgba(126, 152, 255, 0.1) 0%, transparent 62%),
+    linear-gradient(180deg, #0b0d16 0%, #0a0c14 55%, #090a11 100%);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: repeat;
+    /* fade the star field out at the edges of the panel */
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-composite: source-in;
+  }
+
+  /* far star layer — small, faint, drifts very slowly */
+  &::before {
+    background-size: 620px 420px;
+    background-image:
+      radial-gradient(1px 1px at 8% 18%, rgba(214, 226, 255, 0.42), transparent 62%),
+      radial-gradient(1px 1px at 23% 71%, rgba(214, 226, 255, 0.3), transparent 62%),
+      radial-gradient(1px 1px at 37% 34%, rgba(255, 255, 255, 0.36), transparent 62%),
+      radial-gradient(1px 1px at 52% 88%, rgba(214, 226, 255, 0.26), transparent 62%),
+      radial-gradient(1px 1px at 61% 12%, rgba(255, 255, 255, 0.32), transparent 62%),
+      radial-gradient(1px 1px at 74% 58%, rgba(214, 226, 255, 0.34), transparent 62%),
+      radial-gradient(1px 1px at 86% 27%, rgba(255, 255, 255, 0.24), transparent 62%),
+      radial-gradient(1px 1px at 94% 79%, rgba(214, 226, 255, 0.3), transparent 62%);
+    animation: graph-sky-drift-far 320s linear infinite;
+  }
+
+  /* near star layer — slightly larger, brighter, breathes */
+  &::after {
+    background-size: 330px 250px;
+    background-image:
+      radial-gradient(1.6px 1.6px at 14% 26%, rgba(255, 255, 255, 0.82), transparent 60%),
+      radial-gradient(1.3px 1.3px at 33% 64%, rgba(216, 228, 255, 0.62), transparent 60%),
+      radial-gradient(1.8px 1.8px at 49% 15%, rgba(255, 255, 255, 0.7), transparent 58%),
+      radial-gradient(1.2px 1.2px at 66% 47%, rgba(216, 228, 255, 0.55), transparent 60%),
+      radial-gradient(1.5px 1.5px at 81% 82%, rgba(255, 255, 255, 0.6), transparent 60%),
+      radial-gradient(1.2px 1.2px at 92% 38%, rgba(216, 228, 255, 0.5), transparent 60%);
+    animation:
+      graph-sky-drift-near 190s linear infinite,
+      graph-sky-twinkle 9s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes graph-sky-drift-far {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 620px 0;
+  }
+}
+
+@keyframes graph-sky-drift-near {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -330px 0;
+  }
+}
+
+@keyframes graph-sky-twinkle {
+  from {
+    opacity: 0.68;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[saved-theme="dark"] #quartz-body .center .page-footer > .graph > .graph-outer {
+    &::before,
+    &::after {
+      animation: none;
+    }
   }
 }

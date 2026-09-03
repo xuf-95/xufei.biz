@@ -423,7 +423,9 @@ article a:hover,
   inset-block: 0;
   left: calc(var(--footer-band-inset) - var(--content-column-left));
   width: calc(100vw - var(--footer-band-inset) - var(--footer-band-inset));
-  background: #1f1e1d;
+  /* the band keeps the ordinary page background — the night sky lives inside
+     the graph panel only (see .graph-outer in graph.scss) */
+  background: var(--light);
   pointer-events: none;
 }
 
