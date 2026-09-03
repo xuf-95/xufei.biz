@@ -107,12 +107,12 @@
    ============================================================================ */
 
 :root[saved-theme="dark"] {
-  --graph-star-core: #7f8db3; /* unvisited note: distant, dim star */
-  --graph-star-visited: #dfe6ff; /* visited note: bright white star */
-  --graph-star-current: #f8850a; /* current page: the accent-coloured star */
-  --graph-star-glow: #9db4ff; /* halo tint around every star */
-  --graph-constellation-line: #5b6a92; /* resting constellation line */
-  --graph-constellation-line-active: #cdd8ff; /* line lit up on hover */
+  /* monochrome by design: the graph reads as black / white / grey only */
+  --graph-star-core: #7c7c7c; /* unvisited note: distant, dim star */
+  --graph-star-visited: #b8b8b8; /* visited note: brighter star */
+  --graph-star-current: #ffffff; /* current page: the brightest star */
+  --graph-constellation-line: #4a4a4a; /* resting constellation line */
+  --graph-constellation-line-active: #d8d8d8; /* line lit up on hover */
 }
 
 /* Keep the graph aligned to the article column; nothing is painted behind it. */
@@ -137,12 +137,7 @@
   > .graph
   > .graph-outer {
   isolation: isolate;
-  border-color: rgba(255, 255, 255, 0.05);
-  background:
-    radial-gradient(70% 62% at 18% 18%, rgba(248, 133, 10, 0.05) 0%, transparent 70%),
-    radial-gradient(85% 75% at 82% 8%, rgba(112, 134, 224, 0.07) 0%, transparent 68%),
-    radial-gradient(120% 95% at 50% 118%, rgba(126, 152, 255, 0.1) 0%, transparent 62%),
-    linear-gradient(180deg, #0b0d16 0%, #0a0c14 55%, #090a11 100%);
+  background: var(--light);
 
   &::before,
   &::after {
@@ -167,14 +162,14 @@
   &::before {
     background-size: 620px 420px;
     background-image:
-      radial-gradient(1px 1px at 8% 18%, rgba(214, 226, 255, 0.42), transparent 62%),
-      radial-gradient(1px 1px at 23% 71%, rgba(214, 226, 255, 0.3), transparent 62%),
-      radial-gradient(1px 1px at 37% 34%, rgba(255, 255, 255, 0.36), transparent 62%),
-      radial-gradient(1px 1px at 52% 88%, rgba(214, 226, 255, 0.26), transparent 62%),
-      radial-gradient(1px 1px at 61% 12%, rgba(255, 255, 255, 0.32), transparent 62%),
-      radial-gradient(1px 1px at 74% 58%, rgba(214, 226, 255, 0.34), transparent 62%),
-      radial-gradient(1px 1px at 86% 27%, rgba(255, 255, 255, 0.24), transparent 62%),
-      radial-gradient(1px 1px at 94% 79%, rgba(214, 226, 255, 0.3), transparent 62%);
+      radial-gradient(1px 1px at 8% 18%, rgba(255, 255, 255, 0.3), transparent 62%),
+      radial-gradient(1px 1px at 23% 71%, rgba(255, 255, 255, 0.2), transparent 62%),
+      radial-gradient(1px 1px at 37% 34%, rgba(255, 255, 255, 0.26), transparent 62%),
+      radial-gradient(1px 1px at 52% 88%, rgba(255, 255, 255, 0.17), transparent 62%),
+      radial-gradient(1px 1px at 61% 12%, rgba(255, 255, 255, 0.23), transparent 62%),
+      radial-gradient(1px 1px at 74% 58%, rgba(255, 255, 255, 0.24), transparent 62%),
+      radial-gradient(1px 1px at 86% 27%, rgba(255, 255, 255, 0.16), transparent 62%),
+      radial-gradient(1px 1px at 94% 79%, rgba(255, 255, 255, 0.21), transparent 62%);
     animation: graph-sky-drift-far 320s linear infinite;
   }
 
@@ -182,12 +177,12 @@
   &::after {
     background-size: 330px 250px;
     background-image:
-      radial-gradient(1.6px 1.6px at 14% 26%, rgba(255, 255, 255, 0.82), transparent 60%),
-      radial-gradient(1.3px 1.3px at 33% 64%, rgba(216, 228, 255, 0.62), transparent 60%),
-      radial-gradient(1.8px 1.8px at 49% 15%, rgba(255, 255, 255, 0.7), transparent 58%),
-      radial-gradient(1.2px 1.2px at 66% 47%, rgba(216, 228, 255, 0.55), transparent 60%),
-      radial-gradient(1.5px 1.5px at 81% 82%, rgba(255, 255, 255, 0.6), transparent 60%),
-      radial-gradient(1.2px 1.2px at 92% 38%, rgba(216, 228, 255, 0.5), transparent 60%);
+      radial-gradient(1.6px 1.6px at 14% 26%, rgba(255, 255, 255, 0.55), transparent 60%),
+      radial-gradient(1.3px 1.3px at 33% 64%, rgba(255, 255, 255, 0.4), transparent 60%),
+      radial-gradient(1.8px 1.8px at 49% 15%, rgba(255, 255, 255, 0.46), transparent 58%),
+      radial-gradient(1.2px 1.2px at 66% 47%, rgba(255, 255, 255, 0.36), transparent 60%),
+      radial-gradient(1.5px 1.5px at 81% 82%, rgba(255, 255, 255, 0.4), transparent 60%),
+      radial-gradient(1.2px 1.2px at 92% 38%, rgba(255, 255, 255, 0.33), transparent 60%);
     animation:
       graph-sky-drift-near 190s linear infinite,
       graph-sky-twinkle 9s ease-in-out infinite alternate;

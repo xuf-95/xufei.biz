@@ -293,7 +293,6 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     core: starVar("--graph-star-core") || "#ffffff",
     visited: starVar("--graph-star-visited") || "#ffffff",
     current: starVar("--graph-star-current") || "#ffffff",
-    glow: starVar("--graph-star-glow") || "#ffffff",
     line: starVar("--graph-constellation-line") || computedStyleMap["--lightgray"],
     lineActive: starVar("--graph-constellation-line-active") || computedStyleMap["--gray"],
   }
@@ -314,7 +313,9 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   function nodeRadius(d: NodeData) {
-    return 2 + Math.sqrt(degreeById.get(d.id) ?? 0)
+    const r = 2 + Math.sqrt(degreeById.get(d.id) ?? 0)
+    // the page you are on is the brightest and biggest star in the sky
+    return d.id === slug ? r * 1.2 : r
   }
 
   let hoveredNodeId: string | null = null
