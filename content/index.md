@@ -24,11 +24,3 @@ Currently, I’m exploring how modern data systems can become more understandabl
 
 Outside of programming, I enjoy coffee, cycling, and tennis.
 
-<!-- As far as “about” pages go, I hope this acts as an open invitation into the many paths throughout this garden. Here are some places you may want to visit: -->
-<!-- 
-- DATA Agent Map: experiments and references around data, AI, and agents.
-- [[BigData Map]]: a capability map for full-stack data engineering;
-- [[MOC-DCMM-DAMA Map]]: a governance-oriented path through DCMM, DAMA, and CDO topics; -->
-
-<!-- --> 
-

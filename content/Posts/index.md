@@ -1,29 +1,14 @@
 ---
-title: Posts
+title: "index"
 type: post
 tags:
   - type/post
-date: 2022-03-04
+date: 2025-05-05
 publish: true
+
+
 ---
-<!-- ### Reading & Resources
 
-- [[Bigdata Paper]]
-- [[Interesting Website]]
-- [[Links Anythings]]
+## Collections
 
-### Tools & Tutorials
-
-- [[Quartz MKD]]
-- [[Quartz Style Guide]]
-- [[Quartz Diagram Style Guide]]
-- [[UI Evolution Monitor]]
-- [[Astro Paper]]
-
-### Collections
-
-- [[Awesome Digital Garden]]
-- [[Bigdata Product & Tools]]
-- [[Bloger List]]
-- [[Collections Photography]]
-- [[Data Build]] -->
+- [[goods]]

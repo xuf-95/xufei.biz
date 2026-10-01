@@ -10,7 +10,7 @@ aliases:
   - Bigdata Wiki OS Maps
 description: Bigdata Wiki OS 的地图入口，汇总角色能力、数据治理、数据架构和 DATA+AI Agent 导航。
 date: 2026-06-14
-publish: true
+publish: false
 ---
 <!-- 
 ## Bigdata Wiki OS
