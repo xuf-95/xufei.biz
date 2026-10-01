@@ -12,7 +12,7 @@ publish: true
 <h3 class="home-col-title">DCMM</h3>
 <ul>
 
-- [[Data Management Capability Maturity Assessment Model (DCMM)]]
+- [[Data Management Capability Maturity Assessment Model DCMM]]
 
 </ul>
 

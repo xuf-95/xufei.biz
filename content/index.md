@@ -6,11 +6,13 @@ tags:
 publish: true
 ---
 
-
+<!-- 
 <figure class="image-layout-bleed" style="--image-layout-width: 70%; --image-layout-height: 20rem;">
   <img src="house.png"/>
-</figure>
+</figure> -->
 <br />
+
+---
 
 This is my wiki knowledge & digital garden on the Internet, which mainly records the learning record of data ecology, problem summary, resource sorting and so on. **How This Garden is Organized？** 
 
